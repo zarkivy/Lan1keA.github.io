@@ -2,7 +2,7 @@
     <title>XV6-RISCV</title>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="/lib/page.css">
-    <style> html * { color: #f2f2f2 !important; font-family: Terminus !important; } </style>
+    <style> html * { color: #f2f2f2 !important; font-family: Terminus; } </style>
 </header>
 
 <body>
@@ -113,7 +113,7 @@ The kernel functions argint, argaddr, and argstr retrieve the n ’th system cal
 They all call argraw to retrieve the appropriate saved user register.
 
 目前可以公开的情报：
-<pre style="font-family: 'Lucida Console';">
+<pre style="font-family: monospace, 'Lucida Console';">
                                ┌───────┐
     ┌───────┐    ┌────────┐    │argint │    ┌──────┐
     │syscall├────►sys_xxxx├────►argaddr├────►argraw│
