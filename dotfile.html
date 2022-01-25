@@ -55,13 +55,21 @@ set -g status-style bg='#0C8A92',fg=black
 
 <br><h2>.zshrc</h2>
 <pre>
-export ZSH="/root/.oh-my-zsh"
+export LS_COLORS="di=34:ln=35:so=32:pi=33:ex=31:bd=34:cd=34:su=30:sg=30:tw=30:ow=30"
 
-ZSH_THEME="robbyrussell"
-
-plugins=(git)
+# ZSH_THEME="robbyrussell"
+ZSH_THEME="avit"
+# ZSH_THEME="refined"
+# ZSH_THEME="agnoster"
 
 source $ZSH/oh-my-zsh.sh
+
+plugins=(
+    git
+    sudo
+    zsh-autosuggestions
+    zsh-syntax-highlighting
+)
 
 alias l='/bin/ls'
 alias ls='lsd'
