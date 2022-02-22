@@ -8,16 +8,43 @@
 <body>
     <h1>>_ Dotfile</h1>
 
-<br><h2>.vimrc</h2>
+<br><h2>init.vim</h2>
 <pre>
-set nu
-set autoindent
-set tabstop=4
-set softtabstop=4
+set number
+set tabstop=8
 set shiftwidth=4
-syntax on
+set encoding=utf-8
+set fileencodings=utf-8,gbk,gb2312
 
-filetype plugin indent on
+inoremap jj &lt;Esc&gt;
+nnoremap &lt;Esc&gt; ZZ
+nnoremap &lt;C-t&gt; &lt;C-w&gt;s&lt;C-w&gt;j:terminal&lt;CR&gt;i
+tnoremap &lt;Esc&gt; &lt;C-\&gt;&lt;C-n&gt;
+
+call plug#begin()
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    Plug 'preservim/nerdtree'
+    Plug 'junegunn/seoul256.vim'
+    Plug 'mhinz/vim-startify'
+    Plug 'jiangmiao/auto-pairs'
+    Plug 'vim-airline/vim-airline'
+    Plug 'vim-airline/vim-airline-themes'
+    Plug 'octol/vim-cpp-enhanced-highlight'
+    Plug 'luochen1990/rainbow'
+call plug#end()
+
+let g:seoul256_background = 233
+colorscheme seoul256
+
+nnoremap &lt;C-n&gt; :NERDTreeToggle&lt;CR&gt;
+nnoremap &lt;C-f&gt; :NERDTreeFind&lt;CR&gt;
+
+inoremap &lt;expr&gt; &lt;Tab&gt; pumvisible() ? "\&lt;C-n&gt;" : "\&lt;Tab&gt;"
+inoremap &lt;expr&gt; &lt;S-Tab&gt; pumvisible() ? "\&lt;C-p&gt;" : "\&lt;S-Tab&gt;"
+
+let g:startify_custom_header = startify#pad(split(system('figlet -w 100 ZKVIM'), '\n'))
+let g:airline_theme='seoul256'
+let g:rainbow_active = 1
 </pre>
 
 <br><h2>.tmux.conf</h2>
@@ -42,7 +69,7 @@ bind -n S-Right next-window
 
 # Set easier window split keys
 bind-key v split-window -h
-bind-key h split-window -v
+bind-key s split-window -v
 
 # Easy config reload
 bind-key r source-file ~/.tmux.conf \; display-message "tmux.conf reloaded"
@@ -50,7 +77,7 @@ bind-key r source-file ~/.tmux.conf \; display-message "tmux.conf reloaded"
 set -g status on
 set -g pane-border-style fg='#555555'
 set -g pane-active-border-style fg=white
-set -g status-style bg='#0C8A92',fg=black
+set -g status-style bg='#3f4f65',fg=black
 </pre>
 
 <br><h2>.zshrc</h2>
@@ -62,14 +89,14 @@ ZSH_THEME="avit"
 # ZSH_THEME="refined"
 # ZSH_THEME="agnoster"
 
-source $ZSH/oh-my-zsh.sh
-
 plugins=(
     git
     sudo
     zsh-autosuggestions
     zsh-syntax-highlighting
 )
+
+source $ZSH/oh-my-zsh.sh
 
 alias l='/bin/ls'
 alias ls='lsd'
@@ -81,6 +108,7 @@ alias ipy='ipython3'
 alias py='python3 -q'
 alias f.n='find . -name'
 alias pms='python -m http.server'
+alias v='nvim'
 </pre>
 
 <br><h2>~/.config/lsd/themes/light.yaml</h2>
