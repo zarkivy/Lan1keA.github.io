@@ -24,7 +24,8 @@ tnoremap &lt;Esc&gt; &lt;C-\&gt;&lt;C-n&gt;
 call plug#begin()
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'preservim/nerdtree'
-    Plug 'junegunn/seoul256.vim'
+    " Plug 'junegunn/seoul256.vim'
+    " Plug 'sonph/onehalf', { 'rtp': 'vim' }
     Plug 'mhinz/vim-startify'
     Plug 'jiangmiao/auto-pairs'
     Plug 'vim-airline/vim-airline'
@@ -33,8 +34,9 @@ call plug#begin()
     Plug 'luochen1990/rainbow'
 call plug#end()
 
-let g:seoul256_background = 233
-colorscheme seoul256
+" let g:seoul256_background = 233
+" colorscheme seoul256
+" colorscheme onehalflight
 
 nnoremap &lt;C-n&gt; :NERDTreeToggle&lt;CR&gt;
 nnoremap &lt;C-f&gt; :NERDTreeFind&lt;CR&gt;
