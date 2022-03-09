@@ -1,0 +1,135 @@
+<header>
+    <title>Cross debug kernel from 0x7c00 to ring3</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/lib/page.css">
+    <style> html * { color: #f2f2f2 !important; font-family: Terminus !important; } </style>
+</header>
+
+<body>
+    <h1>>_ Cross debug kernel from 0x7c00 to ring3</h1>
+    From this post, our goal is tracing the execution procedure from kernel entry to userspace process (busybox init) by using qemu-system and gdb-multiarch.
+
+    <h2>Preparation</h2>
+
+    <h3>qemu-system-arm</h3>
+    Compile it from source code or just use <i>sudo apt install qemu-system-arm</i>.
+
+    <h3>linux kernel v4.1 for armel</h3>
+    Check it from <a href="how_to_compile_an_old_version_kernel.html">this post</a>.
+
+    <h3>busybox</h3>
+<pre>
+Even though we can use the busybox from the filesystem directly, we got no debug symbols from it.
+Thus we should compile busybox manually:
+
+    git clone https://git.busybox.net/busybox/
+    make menuconfig
+    make CROSS_COMPILE=/opt/crossc/armel-uclibc-gcc-4/usr/bin/arm-buildroot-linux-uclibcgnueabi- -j$(nproc)
+
+Then the <i>busybox_unstripped</i> is produced.
+</pre>
+
+    <h3>filesystem</h3>
+<pre>
+Hummm maybe obtain it by yourself?<br>
+As for my situation, I just extract the filesystem from a TP-Link firmware. 
+And we need do some modification to turn our filesystem directory to a filesystem image.
+Assume we have the rootfs directory made by <i>bin etc sys usr var tmp ...</i>
+First of all, use <i>dd</i> to create a 50MB file filled with \x00 : (block size set as 4kB is proper I think...)
+
+    dd if=/dev/zero of=rootfs.img bs=4k count=12800
+
+We will regard this rootfs.img as our virtual disk containing root filesystem. So, continue modifing it.
+The next step is create disk partitions using <i>fdisk</i> on rootfs.img :
+
+    echo -e "o\nn\np\n1\n\n\nw" | sudo /sbin/fdisk rootfs.img
+
+With disk partition be ready, rootfs.img could be mounted to the host filesystem using kpartx :
+
+    sudo kpartx -a -s -v rootfs.img
+
+After that we got the corresponding device located at <i>/dev/mapper/loop0p1</i>
+Mount it to host filesystem path wherever you like :
+
+    sudo mount /dev/mapper/loop0p1 ./mount_dir
+
+With loop device mounted to a specific directory, we can formatting its major partition to ext2 format :
+
+    mkfs.ext2 /dev/mapper/loop0p1
+    sync
+
+We are done preparing here. All we should do next is copying all the files recursively from the origin root filesystem directory to our mounted directory,
+so that we got a rootfs.img image file containing the armel filesystem we want.
+Don't forget replace the origin <i>bin/busybox</i> with our manually compiled version.
+</pre>
+
+<h2>Tracing time !</h2>
+<pre>
+Now we have :
+
+    workdir $ ls
+    mount_dir rootfs.img vmlinux zImage
+
+Full system emulation command line :
+
+    qemu-system-arm -M virt -kernel ./zImage -drive if=none,file=rootfs.img,format=raw,id=rootfs -device virtio-blk-device,drive=rootfs -append "root=/dev/vda1 console=ttyS0 rw" -nographic -s -S
+
+tips :
+-s              shorthand for -gdb tcp::1234
+-S              freeze CPU at startup (use 'c' to start execution)
+Terminate qemu-system-arm process with Ctrl-A + x
+
+<i>qemu-system-arm</i> process should be paused until we attach to it using <i>gdb-multiarch</i> :
+
+    ~$ gdb-multiarch
+    (gdb)$ set architecture arm
+    The target architecture is set to "arm".
+    (gdb)$ file vmlinux
+    Reading symbols from vmlinux...
+    (gdb)$ target remote :1234
+
+We can not reach the bootloader's entry address 0x7c00 because we are not using our own bootloader and pass the <i>-bios</i> parameter to qemu.
+(I gave a cheating title 😛, and I don't care about how bootloader work at this moment. Inspecting how bootloader loads kernel is also not a very challenging work.
+
+If you want to learn how kernel initialize itself, just use :
+
+    (gdb)$ b kernel_init
+    (gdb)$ c
+
+After a bunch of initializing work on memory, paging, hardware and drive, etc being done, the <i>init</i> binary (who has PID 1) is about to be execved.
+The problem is, <i>init</i> is a usermode process and running in ring3, which has the defferent thread with kernel and virtual memory space, how we trace to it?
+The answer is straightforward: the program counter register (PC) is always holding the instruction's virtual address being excuted by CPU.
+So we can just check the entry address of <i>init</i>, and set a breakpoint at this address.
+Because I am using busybox to supply <i>init</i>, and this binary is belong to armel architecture, so I should typing :
+
+    arm-buildroot-linux-uclibcgnueabi-readelf -h mount_dir/bin/busybox
+
+It gave me :
+
+    ELF Header:
+    Magic:   7f 45 4c 46 01 01 01 00 00 00 00 00 00 00 00 00 
+    Class:                             ELF32
+    Data:                              2's complement, little endian
+    Version:                           1 (current)
+    OS/ABI:                            UNIX - System V
+    ABI Version:                       0
+    Type:                              EXEC (Executable file)
+    Machine:                           ARM
+    Version:                           0x1
+    Entry point address:               0x87a0
+    Start of program headers:          52 (bytes into file)
+    Start of section headers:          4008884 (bytes into file)
+    Flags:                             0x5000202, has entry point, Version5 EABI, soft-float ABI
+    Size of this header:               52 (bytes)
+    Size of program headers:           32 (bytes)
+    Number of program headers:         5
+    Size of section headers:           40 (bytes)
+    Number of section headers:         30
+    Section header string table index: 27
+
+We find that the entry point address is 0x87a0.
+0x87a0 is such a strange address that seems can not be a break point address.
+The reason is that busybox is not compiled with CFLAG -no-pie. so add this CFLAG and compile busybox again, we will get the avaliable breakpoint address by readelf.
+So set a breakpoint at busybox's entry address and send <i>c</i> to gdb, we will reach to userspace directly.
+</pre>
+</body>

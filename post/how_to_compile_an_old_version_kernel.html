@@ -46,6 +46,16 @@ cd to /buildroot/output/build/host-m4-1.4.17 and excute :
 
 Then type make again, we will get the old version of GCC we want.
 Ready for compiling the old version linux kernel :)
+
+    git clone https://github.com/torvalds/linux.git
+    git checkout v4.1
+    make ARCH=arm O=./build/armel menuconfig
+
+Make sure that CONFIG_DEBUG_INFO is enabled. (You can configure it in the .config file directly, or in kernel-hack item from menuconfig interface.)
+
+    make ARCH=arm O=./build/armel CROSS_COMPILE=/opt/crossc/armel-uclibc-gcc-4/usr/bin/arm-buildroot-linux-uclibcgnueabi- zImage -j$(nproc)
+
+We got zImage at <i>build/armel/arch/arm/boot/zImage</i> and vmlinux (with debug symbols) at <i>build/armel</i>
 </pre>
 
 </body>
