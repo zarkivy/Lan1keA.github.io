@@ -35,7 +35,7 @@ Hummm maybe obtain it by yourself?<br>
 As for my situation, I just extract the filesystem from a TP-Link firmware. 
 And we need do some modification to turn our filesystem directory to a filesystem image.
 Assume we have the rootfs directory made by <i>bin etc sys usr var tmp ...</i>
-First of all, use <i>dd</i> to create a 50MB file filled with \x00 : (block size set as 4kB is proper I think...)
+First of all, use <i>dd</i> to create a 50MB file filled with \x00
 
     dd if=/dev/zero of=rootfs.img bs=4k count=12800
 
@@ -97,7 +97,7 @@ If you want to learn how kernel initialize itself, just use :
     (gdb)$ c
 
 After a bunch of initializing work on memory, paging, hardware and drive, etc being done, the <i>init</i> binary (who has PID 1) is about to be execved.
-The problem is, <i>init</i> is a usermode process and running in ring3, which has the defferent thread with kernel and virtual memory space, how we trace to it?
+The problem is, <i>init</i> is a usermode process and running in ring3, which has the different thread with kernel and virtual memory space, how we trace to it?
 The answer is straightforward: the program counter register (PC) is always holding the instruction's virtual address being excuted by CPU.
 So we can just check the entry address of <i>init</i>, and set a breakpoint at this address.
 Because I am using busybox to supply <i>init</i>, and this binary is belong to armel architecture, so I should typing :
@@ -128,7 +128,7 @@ It gave me :
     Section header string table index: 27
 
 We find that the entry point address is 0x87a0.
-0x87a0 is such a strange address that seems can not be a break point address.
+0x87a0 is such a strange address that seems can not be a breakpoint address.
 The reason is that busybox is not compiled with CFLAG -no-pie. so add this CFLAG and compile busybox again, we will get the avaliable breakpoint address by readelf.
 So set a breakpoint at busybox's entry address and send <i>c</i> to gdb, we will reach to userspace directly.
 </pre>
