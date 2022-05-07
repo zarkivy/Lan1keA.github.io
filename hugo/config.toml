@@ -6,7 +6,7 @@ languageCode = "zh"
 DefaultContentLanguage = "zh"
 enableInlineShortcodes = true
 footnoteReturnLinkContents = "^"
-theme = "zorigin"
+theme = "origin"
 watch = true
 
 [params]
