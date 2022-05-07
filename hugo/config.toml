@@ -7,6 +7,7 @@ DefaultContentLanguage = "zh"
 enableInlineShortcodes = true
 footnoteReturnLinkContents = "^"
 theme = "origin"
+publishDir = ".."
 watch = true
 
 [params]
