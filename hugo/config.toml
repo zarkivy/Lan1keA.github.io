@@ -1,4 +1,40 @@
-baseURL = "http://example.org/"
-languageCode = "en-us"
-title = "My New Hugo Site"
-theme = "origin"
+baseURL = "https://dev2ero.github.io/"
+title = "〉Zikey Vi _"
+copyright = "© 2022, Zikey Vi"
+paginate = 4
+languageCode = "zh"
+DefaultContentLanguage = "zh"
+enableInlineShortcodes = true
+footnoteReturnLinkContents = "^"
+theme = "zorigin"
+watch = true
+
+[params]
+  description = "Zikey Vi's Blog Site"
+  featured = true
+  cssonly = false
+
+  [params.socials]
+    github = "https://github.com/dev2ero"
+    twitter = "https://twitter.com/dev2ero"
+
+[menu]
+
+  [[menu.main]]
+    identifier = "about"
+    name = "About"
+    url = "/main/about/"
+    weight = 1
+
+  [[menu.main]]
+    name = "Friend"
+    url = "/main/friend/"
+    weight = 2
+
+[markup]
+  [markup.highlight]
+    style = "github"
+    tabWidth = 4
+
+[markup.goldmark.renderer]
+unsafe = true
