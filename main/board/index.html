@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="zh"><head>
+    <meta charset="UTF-8">
+    <title>〉Zikey Vi _</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="fast clipboard" />
+
+    <meta property="og:title" content="Board" />
+    <meta property="og:description" content="fast clipboard" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://dev2ero.github.io/main/board/" />
+    <meta itemprop="name" content="Board">
+    <meta itemprop="description" content="fast clipboard">
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:title" content="Board"/>
+    <meta name="twitter:description" content="fast clipboard"/>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+
+    
+    <link rel="stylesheet" href="https://dev2ero.github.io/scss/style.min.7d924ef9774ec20834568e42ea359840e26958ba74814c521b70b3cb5161c0bf.css" >
+</head>
+<body>
+    <header>
+    <div class="header header-frame">
+        <div>
+          
+            <h1 class="header__title">Board</h1>
+          
+            
+                <div class="header__description">fast clipboard</div>
+            
+        </div>
+        <nav class="header-nav">
+            <ul class="header-nav-list header-nav-list--menu">
+                
+                
+                    
+                        <li class="header-nav-list__item">
+                            <a class="header-nav-list__link" href="/main/about/">
+                                
+                                <span>About</span>
+                            </a>
+                        </li>
+                    
+                
+                    
+                        <li class="header-nav-list__item">
+                            <a class="header-nav-list__link" href="/main/friend/">
+                                
+                                <span>Friend</span>
+                            </a>
+                        </li>
+                    
+                
+            </ul>
+            <button class="header-nav-list__nav-btn">Nav</button>
+        </nav>
+        <button class="mb-header__menu-btn">
+            <span class="mb-header__menu-btn-line"></span>
+            <span class="mb-header__menu-btn-line"></span>
+            <span class="mb-header__menu-btn-line"></span>
+        </button>
+    </div>
+    <nav id="mobile-header-nav" class="mb-header-nav">
+  
+  
+  <button class="mb-header-nav__close-btn flex-center">
+    <svg
+            class="mb-header-nav__svg-icon"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            width="32"
+            height="32"
+            >
+            <path
+                d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+                />
+            <path d="M0 0h24v24H0z" fill="none" />
+        </svg>
+    </button>
+    
+    <div class="mb-header-nav__wrapper">
+        <div class="mb-header-nav__container">
+            <svg
+                width="240"
+                height="72"
+                viewBox="0 0 240 72"
+                class="mb-header-nav__title"
+                >
+                <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle">
+                Tags
+                </text>
+            </svg>
+            <ul class="mb-header-nav-list">
+                
+                    
+                        
+                          <li class="mb-header-nav-list__item ">
+                        <a class="mb-header-nav-list__link" href="https://dev2ero.github.io/tags/main/"
+                                                            >main</a
+                                                        >
+                    </li>
+                        
+                    
+                
+            </ul>
+        </div>
+        <div class="mb-header-nav__container">
+            <svg
+                width="240"
+                height="72"
+                viewBox="0 0 240 72"
+                class="mb-header-nav__title"
+                >
+                <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle">
+                Menu
+                </text>
+            </svg>
+            <ul class="mb-header-nav-list">
+                
+                
+                    
+                      <li class="mb-header-nav-list__item ">
+                            <a class="mb-header-nav-list__link" href="/main/about/">
+                                About
+                            </a>
+                        </li>
+                    
+                
+                    
+                      <li class="mb-header-nav-list__item ">
+                            <a class="mb-header-nav-list__link" href="/main/friend/">
+                                Friend
+                            </a>
+                        </li>
+                    
+                
+            </ul>
+        </div>
+    </div>
+</nav>
+
+</header>
+
+
+
+    <div id="content">
+<article class="post">
+  
+    <div class="post-content"><h1 id="自用-dotfiles">自用 dotfiles</h1>
+<h2 id="zshrc">zshrc</h2>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#0086b3">export</span> <span style="color:#008080">LS_COLORS</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;di=34:ln=35:so=32:pi=33:ex=31:bd=34:cd=34:su=30:sg=30:tw=30:ow=30&#34;</span>
+<span style="color:#0086b3">export</span> <span style="color:#008080">PROMPT_EOL_MARK</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;↵&#39;</span>
+
+<span style="color:#008080">ZSH_THEME</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;avit&#34;</span>
+<span style="color:#998;font-style:italic"># ZSH_THEME=&#34;robbyrussell&#34;</span>
+<span style="color:#998;font-style:italic"># ZSH_THEME=&#34;refined&#34;</span>
+<span style="color:#998;font-style:italic"># ZSH_THEME=&#34;agnoster&#34;</span>
+
+<span style="color:#008080">plugins</span><span style="color:#000;font-weight:bold">=(</span>
+    git
+    sudo
+    zsh-autosuggestions
+    zsh-syntax-highlighting
+<span style="color:#000;font-weight:bold">)</span>
+
+<span style="color:#0086b3">source</span> <span style="color:#008080">$ZSH</span>/oh-my-zsh.sh
+
+<span style="color:#0086b3">alias</span> <span style="color:#008080">l</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;/bin/ls&#39;</span>
+<span style="color:#0086b3">alias</span> <span style="color:#008080">ls</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;lsd&#39;</span>
+<span style="color:#0086b3">alias</span> <span style="color:#008080">ll</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;ls -l&#39;</span>
+<span style="color:#0086b3">alias</span> <span style="color:#008080">la</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;ls -a&#39;</span>
+<span style="color:#0086b3">alias</span> <span style="color:#008080">lla</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;ls -la&#39;</span>
+<span style="color:#0086b3">alias</span> <span style="color:#008080">lt</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;ls --tree&#39;</span>
+<span style="color:#0086b3">alias</span> <span style="color:#008080">ipy</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;ipython3&#39;</span>
+<span style="color:#0086b3">alias</span> <span style="color:#008080">py</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;python3 -q&#39;</span>
+<span style="color:#0086b3">alias</span> f.n<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;find . -name&#39;</span>
+<span style="color:#0086b3">alias</span> <span style="color:#008080">pms</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;python -m http.server&#39;</span>
+<span style="color:#0086b3">alias</span> <span style="color:#008080">v</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;nvim&#39;</span>
+</code></pre></div><p>配合：</p>
+<ul>
+<li>lsd美化ls：<a href="https://github.com/Peltoche/lsd">https://github.com/Peltoche/lsd</a>
+<ul>
+<li>lsd需配合nerdfont：<a href="https://www.nerdfonts.com/">https://www.nerdfonts.com/</a></li>
+</ul>
+</li>
+<li>插件zsh-syntax-highlighting：<a href="https://github.com/zsh-users/zsh-syntax-highlighting">https://github.com/zsh-users/zsh-syntax-highlighting</a></li>
+<li>插件zsh-autosuggestions：<a href="https://github.com/zsh-users/zsh-autosuggestions">https://github.com/zsh-users/zsh-autosuggestions</a></li>
+</ul>
+<p>使用</p>
+<h2 id="initvim">init.vim</h2>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ini" data-lang="ini"><span style="color:#008080">set number</span>
+<span style="color:#008080">set noshowmode</span>
+<span style="color:#008080">set expandtab</span>
+<span style="color:#008080">set tabstop</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">4</span>
+<span style="color:#008080">set shiftwidth</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">4</span>
+<span style="color:#008080">set encoding</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">utf-8</span>
+<span style="color:#008080">set fileencodings</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">utf-8,gbk,gb2312</span>
+
+<span style="color:#008080">inoremap jj &lt;Esc&gt;</span>
+<span style="color:#008080">nnoremap &lt;Esc&gt; ZZ</span>
+<span style="color:#008080">nnoremap &lt;C-t&gt; &lt;C-w&gt;s&lt;C-w&gt;j:terminal&lt;CR&gt;i</span>
+<span style="color:#008080">tnoremap &lt;Esc&gt; &lt;C-\&gt;&lt;C-n&gt;</span>
+
+<span style="color:#008080">call plug#begin()</span>
+    <span style="color:#008080">Plug &#39;neoclide/coc.nvim&#39;, {&#39;branch&#39;: &#39;release&#39;}</span>
+    <span style="color:#008080">Plug &#39;preservim/nerdtree&#39;</span>
+    <span style="color:#008080">&#34; Plug &#39;junegunn/seoul256.vim&#39;</span>
+    <span style="color:#008080">Plug &#39;sonph/onehalf&#39;, { &#39;rtp&#39;: &#39;vim&#39;  }</span>
+    <span style="color:#008080">Plug &#39;mhinz/vim-startify&#39;</span>
+    <span style="color:#008080">Plug &#39;jiangmiao/auto-pairs&#39;</span>
+    <span style="color:#008080">Plug &#39;vim-airline/vim-airline&#39;</span>
+    <span style="color:#008080">Plug &#39;vim-airline/vim-airline-themes&#39;</span>
+    <span style="color:#008080">Plug &#39;octol/vim-cpp-enhanced-highlight&#39;</span>
+    <span style="color:#008080">&#34; Plug &#39;luochen1990/rainbow&#39;</span>
+<span style="color:#008080">call plug#end()</span>
+
+<span style="color:#008080">&#34; let g:seoul256_background</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">233</span>
+<span style="color:#008080">&#34; colorscheme seoul256</span>
+<span style="color:#008080">colorscheme onehalflight</span>
+
+<span style="color:#008080">nnoremap &lt;C-n&gt; :NERDTreeToggle&lt;CR&gt;</span>
+<span style="color:#008080">nnoremap &lt;C-f&gt; :NERDTreeFind&lt;CR&gt;</span>
+
+<span style="color:#008080">inoremap &lt;expr&gt; &lt;Tab&gt; pumvisible() ? &#34;\&lt;C-n&gt;&#34; : &#34;\&lt;Tab&gt;&#34;</span>
+<span style="color:#008080">inoremap &lt;expr&gt; &lt;S-Tab&gt; pumvisible() ? &#34;\&lt;C-p&gt;&#34; : &#34;\&lt;S-Tab&gt;&#34;</span>
+
+<span style="color:#008080">let g:startify_custom_header</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">startify#pad(split(system(&#39;figlet -w 100 ZKVIM&#39;), &#39;\n&#39;))</span>
+<span style="color:#008080">let g:airline_theme</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;seoul256&#39;</span>
+<span style="color:#008080">let g:rainbow_active</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">1</span>
+</code></pre></div><p>配合</p>
+<ul>
+<li>vim-plug插件管理器：https://github.com/junegunn/vim-plug</li>
+<li>coc.nvim自动补全：https://github.com/neoclide/coc.nvim
+<ul>
+<li>coc插件市场：<code>CocInstall coc-marketplace</code></li>
+<li>C与C++自动补全：<code>CocInstall coc-clangd</code>
+<ul>
+<li>apt install clangd</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="tmuxconf">.tmux.conf</h2>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">set-option -g prefix C-x
+unbind-key C-x
+bind-key C-x send-prefix
+
+<span style="color:#0086b3">bind</span> -n M-Left <span style="color:#000;font-weight:bold">select</span>-pane -L
+<span style="color:#0086b3">bind</span> -n M-Right <span style="color:#000;font-weight:bold">select</span>-pane -R
+<span style="color:#0086b3">bind</span> -n M-Up <span style="color:#000;font-weight:bold">select</span>-pane -U
+<span style="color:#0086b3">bind</span> -n M-Down <span style="color:#000;font-weight:bold">select</span>-pane -D
+
+<span style="color:#0086b3">bind</span> -n S-Left previous-window
+<span style="color:#0086b3">bind</span> -n S-Right next-window
+
+<span style="color:#0086b3">set</span> -g mouse on
+
+bind-key v split-window -h
+bind-key s split-window -v
+
+bind-key r source-file ~/.tmux.conf <span style="color:#d14">\;</span> display-message <span style="color:#d14">&#34;[+] tmux.conf reloading&#34;</span>
+
+<span style="color:#0086b3">set</span> -g status on
+<span style="color:#0086b3">set</span> -g status-style <span style="color:#008080">fg</span><span style="color:#000;font-weight:bold">=</span>black,bg<span style="color:#000;font-weight:bold">=</span>white
+<span style="color:#0086b3">set</span> -g status-justify <span style="color:#d14">&#39;centre&#39;</span>
+<span style="color:#0086b3">set</span> -g status-left-length <span style="color:#d14">&#39;100&#39;</span>
+<span style="color:#0086b3">set</span> -g status-right-length <span style="color:#d14">&#39;100&#39;</span>
+<span style="color:#0086b3">set</span> -g pane-border-style <span style="color:#008080">fg</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;#000000&#39;</span>
+<span style="color:#0086b3">set</span> -g pane-active-border-style <span style="color:#008080">fg</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;#8BC24A&#39;</span>
+<span style="color:#0086b3">set</span> -g status-left <span style="color:#d14">&#39;#[fg=colour232,bg=white] #S #[fg=green,bg=white] #W &#39;</span>
+<span style="color:#0086b3">set</span> -g status-right <span style="color:#d14">&#39;#[fg=colour222,bg=white] #(whoami) #[fg=blue,bg=white] #H &#39;</span>
+setw -g window-status-format <span style="color:#d14">&#39;#[fg=white,bg=white,nobold,nounderscore,noitalics]⌈#[default] #I ‣ #W #[fg=white,bg=white,nobold,nounderscore,noitalics]⌋&#39;</span>
+setw -g window-status-current-format <span style="color:#d14">&#39;#[fg=white,bg=white,nobold,nounderscore,noitalics]⎡#[fg=cyan,bg=white] #I ▶︎ #W #[fg=white,bg=white,nobold,nounderscore,noitalics]⎦&#39;</span>
+</code></pre></div><p>就此扔掉鼠标和本地计算，all-in 云</p>
+<h2 id="configlsdthemeslightyaml">~/.config/lsd/themes/light.yaml</h2>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#000080">user</span>:<span style="color:#bbb"> </span><span style="color:#099">241</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#000080">group</span>:<span style="color:#bbb"> </span><span style="color:#099">246</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#000080">permission</span>:<span style="color:#bbb">
+</span><span style="color:#bbb">    </span><span style="color:#000080">read</span>:<span style="color:#bbb"> </span>dark_green<span style="color:#bbb">
+</span><span style="color:#bbb">    </span><span style="color:#000080">write</span>:<span style="color:#bbb"> </span>dark_yellow<span style="color:#bbb">
+</span><span style="color:#bbb">    </span><span style="color:#000080">exec</span>:<span style="color:#bbb"> </span>dark_red<span style="color:#bbb">
+</span><span style="color:#bbb">    </span><span style="color:#000080">exec-sticky</span>:<span style="color:#bbb"> </span><span style="color:#099">5</span><span style="color:#bbb">
+</span><span style="color:#bbb">    </span><span style="color:#000080">no-access</span>:<span style="color:#bbb"> </span><span style="color:#099">245</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#000080">date</span>:<span style="color:#bbb">
+</span><span style="color:#bbb">    </span><span style="color:#000080">hour-old</span>:<span style="color:#bbb"> </span><span style="color:#099">40</span><span style="color:#bbb">
+</span><span style="color:#bbb">    </span><span style="color:#000080">day-old</span>:<span style="color:#bbb"> </span><span style="color:#099">42</span><span style="color:#bbb">
+</span><span style="color:#bbb">    </span><span style="color:#000080">older</span>:<span style="color:#bbb"> </span><span style="color:#099">36</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#000080">size</span>:<span style="color:#bbb">
+</span><span style="color:#bbb">    </span><span style="color:#000080">none</span>:<span style="color:#bbb"> </span><span style="color:#099">244</span><span style="color:#bbb">
+</span><span style="color:#bbb">    </span><span style="color:#000080">small</span>:<span style="color:#bbb"> </span><span style="color:#099">221</span><span style="color:#bbb">
+</span><span style="color:#bbb">    </span><span style="color:#000080">medium</span>:<span style="color:#bbb"> </span><span style="color:#099">130</span><span style="color:#bbb">
+</span><span style="color:#bbb">    </span><span style="color:#000080">large</span>:<span style="color:#bbb"> </span><span style="color:#099">125</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#000080">inode</span>:<span style="color:#bbb">
+</span><span style="color:#bbb">    </span><span style="color:#000080">valid</span>:<span style="color:#bbb"> </span><span style="color:#099">13</span><span style="color:#bbb">
+</span><span style="color:#bbb">    </span><span style="color:#000080">invalid</span>:<span style="color:#bbb"> </span><span style="color:#099">245</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#000080">links</span>:<span style="color:#bbb">
+</span><span style="color:#bbb">    </span><span style="color:#000080">valid</span>:<span style="color:#bbb"> </span><span style="color:#099">13</span><span style="color:#bbb">
+</span><span style="color:#bbb">    </span><span style="color:#000080">invalid</span>:<span style="color:#bbb"> </span><span style="color:#099">245</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#000080">tree-edge</span>:<span style="color:#bbb"> </span><span style="color:#099">245</span><span style="color:#bbb">   
+</span></code></pre></div><p>lsd亮色主题，解决终端在亮色背景下lsd输出看不清的问题</p>
+<h2 id="gdbinit">.gdbinit</h2>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#0086b3">set</span> syntax-highlight-style tango
+</code></pre></div><h1 id="trick">Trick</h1>
+<h3 id="谁在ping我">谁在ping我？</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">tcpdump -i eth0 <span style="color:#d14">&#39;icmp and icmp[icmptype]=icmp-echo&#39;</span>
+<span style="color:#998;font-style:italic"># root权限执行，eth0 换成你需要抓包的网卡iframe</span>
+</code></pre></div><h1 id="key-value">Key-Value</h1>
+<h3 id="ansi-颜色">ANSI 颜色</h3>
+<table>
+<thead>
+<tr>
+<th>重置</th>
+<th>\x1b[0m</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>红色</td>
+<td>\x1b[31m</td>
+</tr>
+<tr>
+<td>绿色</td>
+<td>\x1b[32m</td>
+</tr>
+<tr>
+<td>橙色</td>
+<td>\x1b[33m</td>
+</tr>
+<tr>
+<td>蓝色</td>
+<td>\x1b[34m</td>
+</tr>
+<tr>
+<td>紫色</td>
+<td>\x1b[35m</td>
+</tr>
+<tr>
+<td>青色</td>
+<td>\x1b[36m</td>
+</tr>
+<tr>
+<td>白色</td>
+<td>\x1b[37m</td>
+</tr>
+<tr>
+<td>灰色</td>
+<td>\x1b[1;30m</td>
+</tr>
+<tr>
+<td>深红色</td>
+<td>\x1b[1;31m</td>
+</tr>
+<tr>
+<td>浅绿色</td>
+<td>\x1b[1;32m</td>
+</tr>
+<tr>
+<td>黄色</td>
+<td>\x1b[1;33m</td>
+</tr>
+<tr>
+<td>天蓝色</td>
+<td>\x1b[1;34m</td>
+</tr>
+<tr>
+<td>深紫色</td>
+<td>\x1b[1;35m</td>
+</tr>
+<tr>
+<td>深青色</td>
+<td>\x1b[1;36m</td>
+</tr>
+<tr>
+<td>闪烁红色</td>
+<td>\x1b[5;31m</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>在bash中使用时需稍加变换，例：echo $'\x1b[31mTEST\x1b[0m'</p>
+</blockquote>
+</div>
+  
+</article>
+<button class="floating-button">
+    <a class="floating-button__link" href="https://dev2ero.github.io/">
+        <span>home</span>
+    </a>
+</button>
+
+
+    </div>
+    
+    <footer class="post-footer">
+    <div class="footer">
+        
+            <div>© 2022, Zikey Vi</div>
+        
+        <div class="footer__socials">
+
+
+
+<a
+  href="https://twitter.com/dev2ero"
+  target="_blank"
+  class="social-link"
+  title="Twitter link"
+  rel="noopener"
+  aria-label="follow on Twitter——Opens in a new window"
+>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0v24h24v-24h-24zm18.862 9.237c.208 4.617-3.235 9.765-9.33 9.765-1.854 0-3.579-.543-5.032-1.475 1.742.205 3.48-.278 4.86-1.359-1.437-.027-2.649-.976-3.066-2.28.515.098 1.021.069 1.482-.056-1.579-.317-2.668-1.739-2.633-3.26.442.246.949.394 1.486.411-1.461-.977-1.875-2.907-1.016-4.383 1.619 1.986 4.038 3.293 6.766 3.43-.479-2.053 1.079-4.03 3.198-4.03.944 0 1.797.398 2.396 1.037.748-.147 1.451-.42 2.085-.796-.245.767-.766 1.41-1.443 1.816.664-.08 1.297-.256 1.885-.517-.44.656-.997 1.234-1.638 1.697z"/></svg>
+</a>
+
+
+
+
+
+<a
+  href="https://github.com/dev2ero"
+  target="_blank"
+  class="social-link"
+  title="Github link"
+  rel="noopener"
+  aria-label="follow on Github——Opens in a new window"
+>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0v24h24v-24h-24zm14.534 19.59c-.406.078-.534-.171-.534-.384v-2.195c0-.747-.262-1.233-.55-1.481 1.782-.198 3.654-.875 3.654-3.947 0-.874-.311-1.588-.824-2.147.083-.202.357-1.016-.079-2.117 0 0-.671-.215-2.198.82-.639-.18-1.323-.267-2.003-.271-.68.003-1.364.091-2.003.269-1.528-1.035-2.2-.82-2.2-.82-.434 1.102-.16 1.915-.077 2.118-.512.56-.824 1.273-.824 2.147 0 3.064 1.867 3.751 3.645 3.954-.229.2-.436.552-.508 1.07-.457.204-1.614.557-2.328-.666 0 0-.423-.768-1.227-.825 0 0-.78-.01-.055.487 0 0 .525.246.889 1.17 0 0 .463 1.428 2.688.944v1.489c0 .211-.129.459-.528.385-3.18-1.057-5.472-4.056-5.472-7.59 0-4.419 3.582-8 8-8s8 3.581 8 8c0 3.533-2.289 6.531-5.466 7.59z"/></svg>
+</a>
+
+
+
+
+</div>
+    </div>
+</footer>
+
+
+    
+    
+      
+<script src="https://dev2ero.github.io/js/script.js"></script>
+
+    
+  </body>
+</html>

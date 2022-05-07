@@ -1,17 +1,16 @@
-+++
-title = "Love"
-description = "Zikey Vi"
-date = "2022-05-07"
-author = "zkv"
-
-+++
-
+---
+title: "Love"
+description: "QiQi && ViVi"
+date: 2022-05-07T18:53:05+08:00
+tags: [ "main" ]
+imagelink: "https://s2.loli.net/2022/05/07/AvUVHB48G5fOdEC.png"
+---
 
 
 
 <div align="center">
     <br>
-<div class="timer" style="font-size: 32px;">
+<div class="timer" style="font-size: 32px; color: #3f4f65">
     【 <b id="d"></b> 天 <b id="h"></b> 时 <b id="m"></b> 分 <b id="s"></b> 秒 】
 </div>
 <script>

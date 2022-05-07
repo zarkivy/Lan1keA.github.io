@@ -7,11 +7,74 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>© 2022, Zikey Vi</copyright>
-    <lastBuildDate>Sat, 07 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://dev2ero.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 07 May 2022 22:53:05 +0800</lastBuildDate><atom:link href="https://dev2ero.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Awesome_colors</title>
+      <link>https://dev2ero.github.io/post/awesome_colors/</link>
+      <pubDate>Sat, 07 May 2022 22:53:05 +0800</pubDate>
+      
+      <guid>https://dev2ero.github.io/post/awesome_colors/</guid>
+      <description>Awesome colors 波尔多红 #4f0009  克莱因蓝 #002FA7  普鲁士蓝 #003153  勃艮第红 #800020  邦迪蓝 #0095b6  木乃伊棕 #8f4b28  卡布里蓝 #1a5599  提香红 #b05923  蒂芙尼蓝 #81d8d0  覆盆子红 #9e2e24  虎皮黄 #e2af42  薄荷绿 #407d52  草黄 #cfb64a  星蓝 #9ab4cd  鸢尾蓝 #418ab4  苋菜紫 #8e2961  钢蓝 #101420  云峰白 #dae3e6  岩石棕 #8c502c  橄榄石绿 #b8ce8e  竹绿 #4fa485  钴蓝 #4692b9  月影白 #c2c4c3  笋皮棕 #6b331a  琉璃蓝 #22406a  黛蓝 #3f4f65  青白 #bee0d0  墨色 #4e606c  黯 #3f545b  玄青 #3b3a4e  漆黑 #141722  玄色 #370708  </description>
+    </item>
+    
+    <item>
+      <title>Beautify_KDE</title>
+      <link>https://dev2ero.github.io/post/beautify_kde/</link>
+      <pubDate>Sat, 07 May 2022 22:50:57 +0800</pubDate>
+      
+      <guid>https://dev2ero.github.io/post/beautify_kde/</guid>
+      <description>Window bar transparency effect Use BreezeBlurred or SierraBreeze. As for BreezeBlurred, a compilation error occurred when install on Arch Linux. But this bro gave us a available package.
+Panel transparency https://www.joxrays.com/kde-panel-transparency/
+Component transparency Kvantum
+Real-time monitoring of system resources on the desktop conky
+Music visualization panon
+MacOS dock style latte-dock
+Shell beautification zsh + oh-my-zsh + lsd + zsh-syntax-highlighting + Nerd Fonts
+Grub&amp;rsquo;s theme https://www.gnome-look.org/browse/cat/109/order/latest/</description>
+    </item>
+    
+    <item>
+      <title>Utils</title>
+      <link>https://dev2ero.github.io/main/utils/</link>
+      <pubDate>Sat, 07 May 2022 19:53:05 +0800</pubDate>
+      
+      <guid>https://dev2ero.github.io/main/utils/</guid>
+      <description>操作系统 https://linux-kernel-labs.github.io/
+ Linux kernel lab
+ https://sysprog21.github.io/lkmpg/
+ 内核模块编程教程
+ https://pdos.csail.mit.edu/6.828/2021/schedule.html
+ 大名鼎鼎的 MIT 操作系统课程 2021
+ 编程 https://cppinsights.io/
+ 展开编译细节，向你展示C++代码背后的秘密
+ 指令集 https://simplemachines.it/doc/arm_inst.pdf
+ ARM 指令集胎教教程
+ 虚拟化 https://airbus-seclab.github.io/qemu_blog/
+ 空中巴士航空公司信息安全团队的 QEMU 内部机制解析
+ 漏洞挖掘 https://pascal-group.bitbucket.io/teaching.html
+ 南京大学软件分析课程
+ 体系结构 http://csapp.cs.cmu.edu/3e/labs.html
+ CS:APP 的实验课
+ 计算机杂项 https://missing.csail.mit.edu/
+ MIT 的课程——磨刀不误砍柴工系列
+ https://learngitbranching.js.org/?locale=zh_CN
+ Git branch 的教程
+ </description>
+    </item>
+    
+    <item>
+      <title>Love</title>
+      <link>https://dev2ero.github.io/main/love/</link>
+      <pubDate>Sat, 07 May 2022 18:53:05 +0800</pubDate>
+      
+      <guid>https://dev2ero.github.io/main/love/</guid>
+      <description>【  天  时  分  秒 】   function timer() { var start = new Date(2017, 8, 30); var t = new Date() - start; var h = ~~(t / 1000 / 60 / 60 % 24); if (h  </description>
+    </item>
+    
     <item>
       <title>Friend</title>
       <link>https://dev2ero.github.io/main/friend/</link>
-      <pubDate>Sat, 07 May 2022 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 07 May 2022 17:53:05 +0800</pubDate>
       
       <guid>https://dev2ero.github.io/main/friend/</guid>
       <description>https://foada.github.io/
@@ -36,18 +99,20 @@ http://blog.eonew.cn/</description>
     </item>
     
     <item>
-      <title>Love</title>
-      <link>https://dev2ero.github.io/main/love/</link>
-      <pubDate>Sat, 07 May 2022 00:00:00 +0000</pubDate>
+      <title>Board</title>
+      <link>https://dev2ero.github.io/main/board/</link>
+      <pubDate>Sat, 07 May 2022 16:53:05 +0800</pubDate>
       
-      <guid>https://dev2ero.github.io/main/love/</guid>
-      <description>【  天  时  分  秒 】   function timer() { var start = new Date(2017, 8, 30); var t = new Date() - start; var h = ~~(t / 1000 / 60 / 60 % 24); if (h  </description>
+      <guid>https://dev2ero.github.io/main/board/</guid>
+      <description>自用 dotfiles zshrc export LS_COLORS=&amp;#34;di=34:ln=35:so=32:pi=33:ex=31:bd=34:cd=34:su=30:sg=30:tw=30:ow=30&amp;#34; export PROMPT_EOL_MARK=&amp;#39;↵&amp;#39; ZSH_THEME=&amp;#34;avit&amp;#34; # ZSH_THEME=&amp;#34;robbyrussell&amp;#34; # ZSH_THEME=&amp;#34;refined&amp;#34; # ZSH_THEME=&amp;#34;agnoster&amp;#34; plugins=( git sudo zsh-autosuggestions zsh-syntax-highlighting ) source $ZSH/oh-my-zsh.sh alias l=&amp;#39;/bin/ls&amp;#39; alias ls=&amp;#39;lsd&amp;#39; alias ll=&amp;#39;ls -l&amp;#39; alias la=&amp;#39;ls -a&amp;#39; alias lla=&amp;#39;ls -la&amp;#39; alias lt=&amp;#39;ls --tree&amp;#39; alias ipy=&amp;#39;ipython3&amp;#39; alias py=&amp;#39;python3 -q&amp;#39; alias f.n=&amp;#39;find . -name&amp;#39; alias pms=&amp;#39;python -m http.server&amp;#39; alias v=&amp;#39;nvim&amp;#39; 配合：
+ lsd美化ls：https://github.com/Peltoche/lsd  lsd需配合nerdfont：https://www.nerdfonts.com/   插件zsh-syntax-highlighting：https://github.com/zsh-users/zsh-syntax-highlighting 插件zsh-autosuggestions：https://github.com/zsh-users/zsh-autosuggestions  使用
+init.vim set number set noshowmode set expandtab set tabstop=4 set shiftwidth=4 set encoding=utf-8 set fileencodings=utf-8,gbk,gb2312 inoremap jj &amp;lt;Esc&amp;gt; nnoremap &amp;lt;Esc&amp;gt; ZZ nnoremap &amp;lt;C-t&amp;gt; &amp;lt;C-w&amp;gt;s&amp;lt;C-w&amp;gt;j:terminal&amp;lt;CR&amp;gt;i tnoremap &amp;lt;Esc&amp;gt; &amp;lt;C-\&amp;gt;&amp;lt;C-n&amp;gt; call plug#begin() Plug &amp;#39;neoclide/coc.</description>
     </item>
     
     <item>
       <title>About</title>
       <link>https://dev2ero.github.io/main/about/</link>
-      <pubDate>Tue, 07 May 2019 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 07 May 2022 15:53:05 +0800</pubDate>
       
       <guid>https://dev2ero.github.io/main/about/</guid>
       <description>A cyber nyan dog .</description>

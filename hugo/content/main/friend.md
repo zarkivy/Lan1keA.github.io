@@ -1,9 +1,10 @@
-+++
-title = "Friend"
-description = "Zikey Vi"
-date = "2022-05-07"
-author = "zkv"
-+++
+---
+title: "Friend"
+description: "friend links"
+date: 2022-05-07T17:53:05+08:00
+tags: [ "main" ]
+imagelink: "https://s2.loli.net/2022/05/07/AvUVHB48G5fOdEC.png"
+---
 
 
 

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>linux on 〉Zikey Vi _</title>
+    <link>https://dev2ero.github.io/tags/linux/</link>
+    <description>Recent content in linux on 〉Zikey Vi _</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>© 2022, Zikey Vi</copyright>
+    <lastBuildDate>Sat, 07 May 2022 22:50:57 +0800</lastBuildDate><atom:link href="https://dev2ero.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Beautify_KDE</title>
+      <link>https://dev2ero.github.io/post/beautify_kde/</link>
+      <pubDate>Sat, 07 May 2022 22:50:57 +0800</pubDate>
+      
+      <guid>https://dev2ero.github.io/post/beautify_kde/</guid>
+      <description>Window bar transparency effect Use BreezeBlurred or SierraBreeze. As for BreezeBlurred, a compilation error occurred when install on Arch Linux. But this bro gave us a available package.
+Panel transparency https://www.joxrays.com/kde-panel-transparency/
+Component transparency Kvantum
+Real-time monitoring of system resources on the desktop conky
+Music visualization panon
+MacOS dock style latte-dock
+Shell beautification zsh + oh-my-zsh + lsd + zsh-syntax-highlighting + Nerd Fonts
+Grub&amp;rsquo;s theme https://www.gnome-look.org/browse/cat/109/order/latest/</description>
+    </item>
+    
+  </channel>
+</rss>

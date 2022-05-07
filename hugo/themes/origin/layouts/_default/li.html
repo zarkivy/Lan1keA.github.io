@@ -7,9 +7,9 @@
             <div class="post-item__description">{{.Description}}</div>
         {{end}}
         </a>
-        {{if isset .Params "image"}}
+        {{if (or (isset .Params "image") (isset .Params "imagelink"))}}
         <a class="post-item--right post-item__image" href="{{.Permalink}}">
-            <img src="{{printf "%s%s" .File.Dir .Params.image | absURL}}" alt="{{.Title}}" />
+            <img src="{{ if isset .Params "image"}}{{printf "%s%s" .File.Dir .Params.image | absURL }}{{else if (isset .Params "imagelink")}}{{.Params.imagelink}}{{end}}" alt="{{.Params.imageTitle}}" />
         </a>
         {{end}}
         {{if isset .Params "tags"}}
