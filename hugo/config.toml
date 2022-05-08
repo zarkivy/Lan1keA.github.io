@@ -13,6 +13,7 @@ watch = true
 [params]
   description = "Zikey Vi's Blog Site"
   featured = true
+  favicon = "https://dev2ero.github.io/favicon-32.png"
   cssonly = false
 
   [params.socials]
