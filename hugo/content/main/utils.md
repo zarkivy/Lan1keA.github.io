@@ -65,8 +65,9 @@ tags: [ "main" ]
   - [https://libc.blukat.me/](https://libc.blukat.me/)
 - How to Hunt - 咋挖洞
   - https://kathan19.gitbook.io/
--  几十年历史的老黑客杂志，里面不少文章具有开创性价值
+- 几十年历史的老黑客杂志，里面不少文章具有开创性价值
   - [http://www.phrack.org/](http://www.phrack.org/)
+
 - Fuzzing 入门胎教教程 Fuzzing101
   - https://github.com/antonio-morales/Fuzzing101
 
