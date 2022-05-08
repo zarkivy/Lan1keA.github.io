@@ -13,7 +13,6 @@ watch = true
 [params]
   description = "Zikey Vi's Blog Site"
   featured = true
-  favicon = "/img/favicon-32.png"
   cssonly = false
 
   [params.socials]
