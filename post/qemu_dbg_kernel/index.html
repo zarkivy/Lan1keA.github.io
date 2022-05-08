@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="zh"><head>
+    <meta charset="UTF-8">
+    <title>bin cat flag</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="nothing" />
+    <meta property="og:title" content="Cross debug kernel using qemu-system" />
+    <meta property="og:description" content="nothing" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://dev2ero.github.io/post/qemu_dbg_kernel/" />
+    <meta itemprop="name" content="Cross debug kernel using qemu-system">
+    <meta itemprop="description" content="nothing">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+    
+    <link rel="stylesheet" href="https://dev2ero.github.io/scss/style.min.d678b35be22cdd4cbc648725d4e3f46f2f7de91e1dd0e3047e9aa12a1adff17f.css" >
+</head>
+<body>
+    <header>
+    <div class="header header-frame">
+        <div>
+          
+            <h1 class="header__title">Cross debug kernel using qemu-system</h1>
+          
+            
+                <div class="header__description">nothing</div>
+            
+        </div>
+        <nav class="header-nav">
+            <ul class="header-nav-list header-nav-list--menu">
+                
+                
+                    
+                        <li class="header-nav-list__item">
+                            <a class="header-nav-list__link" href="/main/about/">
+                                
+                                <span>About</span>
+                            </a>
+                        </li>
+                    
+                
+                    
+                        <li class="header-nav-list__item">
+                            <a class="header-nav-list__link" href="/main/board/">
+                                
+                                <span>Board</span>
+                            </a>
+                        </li>
+                    
+                
+                    
+                        <li class="header-nav-list__item">
+                            <a class="header-nav-list__link" href="/main/friend/">
+                                
+                                <span>Friend</span>
+                            </a>
+                        </li>
+                    
+                
+                    
+                        <li class="header-nav-list__item">
+                            <a class="header-nav-list__link" href="/main/utils/">
+                                
+                                <span>Utils</span>
+                            </a>
+                        </li>
+                    
+                
+            </ul>
+            <button class="header-nav-list__nav-btn">⨈</button>
+        </nav>
+        <button class="mb-header__menu-btn">
+            <span class="mb-header__menu-btn-line"></span>
+            <span class="mb-header__menu-btn-line"></span>
+            <span class="mb-header__menu-btn-line"></span>
+        </button>
+    </div>
+    <nav id="mobile-header-nav" class="mb-header-nav">
+  
+  
+  <button class="mb-header-nav__close-btn flex-center">
+    <svg
+            class="mb-header-nav__svg-icon"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            width="32"
+            height="32"
+            >
+            <path
+                d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+                />
+            <path d="M0 0h24v24H0z" fill="none" />
+        </svg>
+    </button>
+    
+    <div class="mb-header-nav__wrapper">
+        <div class="mb-header-nav__container">
+            <svg
+                width="240"
+                height="72"
+                viewBox="0 0 240 72"
+                class="mb-header-nav__title"
+                >
+                <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle">
+                Tags
+                </text>
+            </svg>
+            <ul class="mb-header-nav-list">
+                
+                    
+                        
+                    
+                        
+                          <li class="mb-header-nav-list__item ">
+                        <a class="mb-header-nav-list__link" href="https://dev2ero.github.io/tags/linux/"
+                                                            >linux</a
+                                                        >
+                    </li>
+                        
+                    
+                
+            </ul>
+        </div>
+        <div class="mb-header-nav__container">
+            <svg
+                width="240"
+                height="72"
+                viewBox="0 0 240 72"
+                class="mb-header-nav__title"
+                >
+                <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle">
+                Menu
+                </text>
+            </svg>
+            <ul class="mb-header-nav-list">
+                
+                
+                    
+                      <li class="mb-header-nav-list__item ">
+                            <a class="mb-header-nav-list__link" href="/main/about/">
+                                About
+                            </a>
+                        </li>
+                    
+                
+                    
+                      <li class="mb-header-nav-list__item ">
+                            <a class="mb-header-nav-list__link" href="/main/board/">
+                                Board
+                            </a>
+                        </li>
+                    
+                
+                    
+                      <li class="mb-header-nav-list__item ">
+                            <a class="mb-header-nav-list__link" href="/main/friend/">
+                                Friend
+                            </a>
+                        </li>
+                    
+                
+                    
+                      <li class="mb-header-nav-list__item ">
+                            <a class="mb-header-nav-list__link" href="/main/utils/">
+                                Utils
+                            </a>
+                        </li>
+                    
+                
+            </ul>
+        </div>
+    </div>
+</nav>
+
+</header>
+
+
+
+    <div id="content">
+<article class="post">
+  
+    <div class="post-content"><blockquote>
+<p>From this post, our goal is tracing the execution procedure from kernel entry to userspace process (busybox init) by using qemu-system and gdb-multiarch. (The concept of ring exists only on x86. Called EL in arm.)</p>
+</blockquote>
+<h2 id="preparation">Preparation</h2>
+<h3 id="qemu-system-arm">qemu-system-arm</h3>
+<p>Compile it from source code or just use <code>sudo apt install qemu-system-arm</code>.</p>
+<h3 id="kernel">kernel</h3>
+<p>Linux kernel v4.1 for armel as an example.
+Compiling a linux kernel requires a matched version of gcc.
+For example, the linux kernel v4.1 requires the gcc version between 3 and 5:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">linunx-v4.1 $ find . -name <span style="color:#d14">&#34;compiler-gcc*.h&#34;</span>
+./include/linux/compiler-gcc.h
+./include/linux/compiler-gcc3.h
+./include/linux/compiler-gcc4.h
+./include/linux/compiler-gcc5.h
+</code></pre></div><p>So how can we get the old version gcc?
+You can always rely on buildroot: <a href="https://buildroot.org/download.html">https://buildroot.org/download.html</a></p>
+<p>Just clone it&rsquo;s repository:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">git clone https://git.buildroot.net/buildroot
+</code></pre></div><p>And switch to the specific old release you required.
+You can check gcc release history from here</p>
+<p>GCC5 is released in 2015, so we switch buildroot&rsquo;s release version to 2015.08.x :</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">git switch 2015.08.x
+</code></pre></div><p>And then,</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">make menuconfig
+<span style="color:#998;font-style:italic"># edit with yourself</span>
+make
+</code></pre></div><p>But an error occured in this step (this because we are using an old version of buildroot) :</p>
+<blockquote>
+<p>error &ldquo;Please port gnulib freadahead.c to your platform!</p>
+</blockquote>
+<p>cd to /buildroot/output/build/host-m4-1.4.17 and excute :</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">sed -i <span style="color:#d14">&#39;s/IO_ftrylockfile/IO_EOF_SEEN/&#39;</span> lib/*.c
+<span style="color:#0086b3">echo</span> <span style="color:#d14">&#34;#define _IO_IN_BACKUP 0x100&#34;</span> &gt;&gt; lib/stdio-impl.h
+</code></pre></div><p>Then type make again, we will get the old version of GCC we want.
+Ready for compiling the old version linux kernel :)</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">git clone https://github.com/torvalds/linux.git
+git checkout v4.1
+make <span style="color:#008080">ARCH</span><span style="color:#000;font-weight:bold">=</span>arm <span style="color:#008080">O</span><span style="color:#000;font-weight:bold">=</span>./build/armel menuconfig
+</code></pre></div><p>Make sure that CONFIG_DEBUG_INFO is enabled. (You can configure it in the .config file directly, or in kernel-hack item from menuconfig interface.)</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">make <span style="color:#008080">ARCH</span><span style="color:#000;font-weight:bold">=</span>arm <span style="color:#008080">O</span><span style="color:#000;font-weight:bold">=</span>./build/armel <span style="color:#008080">CROSS_COMPILE</span><span style="color:#000;font-weight:bold">=</span>/opt/crossc/armel-uclibc-gcc-4/usr/bin/arm-buildroot-linux-uclibcgnueabi- zImage -j<span style="color:#000;font-weight:bold">$(</span>nproc<span style="color:#000;font-weight:bold">)</span>
+</code></pre></div><p>We got zImage at build/armel/arch/arm/boot/zImage and vmlinux (with debug symbols) at build/armel</p>
+<h3 id="busybox">busybox</h3>
+<p>Even though we can use the busybox from the filesystem directly, we got no debug symbols from it.
+Thus we should compile busybox manually:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">git clone https://git.busybox.net/busybox/
+make menuconfig
+make <span style="color:#008080">CROSS_COMPILE</span><span style="color:#000;font-weight:bold">=</span>/opt/crossc/armel-uclibc-gcc-4/usr/bin/arm-buildroot-linux-uclibcgnueabi- -j<span style="color:#000;font-weight:bold">$(</span>nproc<span style="color:#000;font-weight:bold">)</span>
+</code></pre></div><p>Then the busybox_unstripped is produced.</p>
+<h3 id="filesystem">filesystem</h3>
+<p>Hummm maybe obtain it by yourself?</p>
+<p>As for my situation, I just extract the filesystem from a TP-Link firmware.
+And we need do some modification to turn our filesystem directory to a filesystem image.
+Assume we have the rootfs directory made by bin etc sys usr var tmp &hellip;
+First of all, use dd to create a 50MB file filled with \x00</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">dd <span style="color:#000;font-weight:bold">if</span><span style="color:#000;font-weight:bold">=</span>/dev/zero <span style="color:#008080">of</span><span style="color:#000;font-weight:bold">=</span>rootfs.img <span style="color:#008080">bs</span><span style="color:#000;font-weight:bold">=</span>4k <span style="color:#008080">count</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">12800</span>
+</code></pre></div><p>We will regard this rootfs.img as our virtual disk containing root filesystem. So, continue modifing it.
+The next step is create disk partitions using fdisk on rootfs.img :</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#0086b3">echo</span> -e <span style="color:#d14">&#34;o\nn\np\n1\n\n\nw&#34;</span> | sudo /sbin/fdisk rootfs.img
+</code></pre></div><p>With disk partition be ready, rootfs.img could be mounted to the host filesystem using kpartx :</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">sudo kpartx -a -s -v rootfs.img
+</code></pre></div><p>After that we got the corresponding device located at /dev/mapper/loop0p1
+Mount it to host filesystem path wherever you like :</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">sudo mount /dev/mapper/loop0p1 ./mount_dir
+</code></pre></div><p>With loop device mounted to a specific directory, we can formatting its major partition to ext2 format :</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">mkfs.ext2 /dev/mapper/loop0p1
+sync
+</code></pre></div><p>We are done preparing here. All we should do next is copying all the files recursively from the origin root filesystem directory to our mounted directory,
+so that we got a rootfs.img image file containing the armel filesystem we want.
+Don&rsquo;t forget replace the origin bin/busybox with our manually compiled version.</p>
+<h3 id="tracing-time-">Tracing time !</h3>
+<p>Now we have :</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">workdir $ ls
+mount_dir rootfs.img vmlinux zImage
+</code></pre></div><p>Full system emulation command line :</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">qemu-system-arm -M virt -kernel ./zImage -drive <span style="color:#000;font-weight:bold">if</span><span style="color:#000;font-weight:bold">=</span>none,file<span style="color:#000;font-weight:bold">=</span>rootfs.img,format<span style="color:#000;font-weight:bold">=</span>raw,id<span style="color:#000;font-weight:bold">=</span>rootfs -device virtio-blk-device,drive<span style="color:#000;font-weight:bold">=</span>rootfs -append <span style="color:#d14">&#34;root=/dev/vda1 console=ttyS0 rw&#34;</span> -nographic -s -S
+</code></pre></div><blockquote>
+<p>tips :
+-s              shorthand for -gdb tcp::1234
+-S              freeze CPU at startup (use &lsquo;c&rsquo; to start execution)
+Terminate qemu-system-arm process with Ctrl-A + x</p>
+</blockquote>
+<p>qemu-system-arm process should be paused until we attach to it using gdb-multiarch:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">~$ gdb-multiarch
+<span style="color:#000;font-weight:bold">(</span>gdb<span style="color:#000;font-weight:bold">)</span>$ <span style="color:#0086b3">set</span> architecture arm
+The target architecture is <span style="color:#0086b3">set</span> to <span style="color:#d14">&#34;arm&#34;</span>.
+<span style="color:#000;font-weight:bold">(</span>gdb<span style="color:#000;font-weight:bold">)</span>$ file vmlinux
+Reading symbols from vmlinux...
+<span style="color:#000;font-weight:bold">(</span>gdb<span style="color:#000;font-weight:bold">)</span>$ target remote :1234
+</code></pre></div><p>We can not reach the bootloader&rsquo;s entry address 0x7c00 because we are not using our own bootloader and pass the -bios parameter to qemu.</p>
+<p>If you want to learn how kernel initialize itself, just use :</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#000;font-weight:bold">(</span>gdb<span style="color:#000;font-weight:bold">)</span>$ b kernel_init
+<span style="color:#000;font-weight:bold">(</span>gdb<span style="color:#000;font-weight:bold">)</span>$ c
+</code></pre></div><p>After a bunch of initializing work on memory, paging, hardware and drive, etc being done, the init binary (who has PID 1) is about to be execved.
+The problem is, init is a usermode process and running in ring3, which has the different thread with kernel and virtual memory space, how we trace to it?
+The answer is straightforward: the program counter register (PC) is always holding the instruction&rsquo;s virtual address being excuted by CPU.
+So we can just check the entry address of init, and set a breakpoint at this address.
+Because I am using busybox to supply init, and this binary is belong to armel architecture, so I should typing :</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">arm-buildroot-linux-uclibcgnueabi-readelf -h mount_dir/bin/busybox
+</code></pre></div><p>It gave me :</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ini" data-lang="ini"><span style="color:#008080">ELF Header:</span>
+<span style="color:#008080">Magic:   7f 45 4c 46 01 01 01 00 00 00 00 00 00 00 00 00 </span>
+<span style="color:#008080">Class:                             ELF32</span>
+<span style="color:#008080">Data:                              2&#39;s complement, little endian</span>
+<span style="color:#008080">Version:                           1 (current)</span>
+<span style="color:#008080">OS/ABI:                            UNIX - System V</span>
+<span style="color:#008080">ABI Version:                       0</span>
+<span style="color:#008080">Type:                              EXEC (Executable file)</span>
+<span style="color:#008080">Machine:                           ARM</span>
+<span style="color:#008080">Version:                           0x1</span>
+<span style="color:#008080">Entry point address:               0x87a0</span>
+<span style="color:#008080">Start of program headers:          52 (bytes into file)</span>
+<span style="color:#008080">Start of section headers:          4008884 (bytes into file)</span>
+<span style="color:#008080">Flags:                             0x5000202, has entry point, Version5 EABI, soft-float ABI</span>
+<span style="color:#008080">Size of this header:               52 (bytes)</span>
+<span style="color:#008080">Size of program headers:           32 (bytes)</span>
+<span style="color:#008080">Number of program headers:         5</span>
+<span style="color:#008080">Size of section headers:           40 (bytes)</span>
+<span style="color:#008080">Number of section headers:         30</span>
+<span style="color:#008080">Section header string table index: 27</span>
+</code></pre></div><p>We find that the entry point address is 0x87a0.
+0x87a0 is such a strange address that seems can not be a breakpoint address.
+The reason is that busybox is not compiled with CFLAG -no-pie. so add this CFLAG and compile busybox again, we will get the avaliable breakpoint address by readelf.
+So set a breakpoint at busybox&rsquo;s entry address and send c to gdb, we will reach to userspace directly.</p>
+</div>
+  
+</article>
+<button class="floating-button">
+    <a class="floating-button__link" href="https://dev2ero.github.io/">
+        <span style="font-size: large;">⪡</span>
+    </a>
+</button>
+
+
+    </div>
+    
+    <footer class="post-footer">
+    <div class="footer">
+        
+            <div>© 2022, Zikey Vi</div>
+        
+        <div class="footer__socials">
+
+
+<a
+  href="mailto:dev2ero@foxmail.com"
+  target="_blank"
+  class="social-link"
+  rel="noopener"
+>
+  <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Gmail</title><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg>
+</a>&nbsp;
+
+
+
+<a
+  href="https://github.com/dev2ero"
+  target="_blank"
+  class="social-link"
+  rel="noopener"
+>
+  <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+</a>&nbsp;
+
+
+
+<a
+  href="https://twitter.com/dev2ero"
+  target="_blank"
+  class="social-link"
+  rel="noopener"
+>
+  <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Twitter</title><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
+</a>&nbsp;
+
+
+
+<a
+  href="https://space.bilibili.com/210892014"
+  target="_blank"
+  class="social-link"
+  rel="noopener"
+>
+  <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Bilibili</title><path d="M17.813 4.653h.854c1.51.054 2.769.578 3.773 1.574 1.004.995 1.524 2.249 1.56 3.76v7.36c-.036 1.51-.556 2.769-1.56 3.773s-2.262 1.524-3.773 1.56H5.333c-1.51-.036-2.769-.556-3.773-1.56S.036 18.858 0 17.347v-7.36c.036-1.511.556-2.765 1.56-3.76 1.004-.996 2.262-1.52 3.773-1.574h.774l-1.174-1.12a1.234 1.234 0 0 1-.373-.906c0-.356.124-.658.373-.907l.027-.027c.267-.249.573-.373.92-.373.347 0 .653.124.92.373L9.653 4.44c.071.071.134.142.187.213h4.267a.836.836 0 0 1 .16-.213l2.853-2.747c.267-.249.573-.373.92-.373.347 0 .662.151.929.4.267.249.391.551.391.907 0 .355-.124.657-.373.906zM5.333 7.24c-.746.018-1.373.276-1.88.773-.506.498-.769 1.13-.786 1.894v7.52c.017.764.28 1.395.786 1.893.507.498 1.134.756 1.88.773h13.334c.746-.017 1.373-.275 1.88-.773.506-.498.769-1.129.786-1.893v-7.52c-.017-.765-.28-1.396-.786-1.894-.507-.497-1.134-.755-1.88-.773zM8 11.107c.373 0 .684.124.933.373.25.249.383.569.4.96v1.173c-.017.391-.15.711-.4.96-.249.25-.56.374-.933.374s-.684-.125-.933-.374c-.25-.249-.383-.569-.4-.96V12.44c0-.373.129-.689.386-.947.258-.257.574-.386.947-.386zm8 0c.373 0 .684.124.933.373.25.249.383.569.4.96v1.173c-.017.391-.15.711-.4.96-.249.25-.56.374-.933.374s-.684-.125-.933-.374c-.25-.249-.383-.569-.4-.96V12.44c.017-.391.15-.711.4-.96.249-.249.56-.373.933-.373Z"/></svg>
+</a>&nbsp;
+
+
+
+<a
+  href="https://www.zhihu.com/people/izay01"
+  target="_blank"
+  class="social-link"
+  rel="noopener"
+>
+  <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Zhihu</title><path d="M5.721 0C2.251 0 0 2.25 0 5.719V18.28C0 21.751 2.252 24 5.721 24h12.56C21.751 24 24 21.75 24 18.281V5.72C24 2.249 21.75 0 18.281 0zm1.964 4.078c-.271.73-.5 1.434-.68 2.11h4.587c.545-.006.445 1.168.445 1.171H9.384a58.104 58.104 0 01-.112 3.797h2.712c.388.023.393 1.251.393 1.266H9.183a9.223 9.223 0 01-.408 2.102l.757-.604c.452.456 1.512 1.712 1.906 2.177.473.681.063 2.081.063 2.081l-2.794-3.382c-.653 2.518-1.845 3.607-1.845 3.607-.523.468-1.58.82-2.64.516 2.218-1.73 3.44-3.917 3.667-6.497H4.491c0-.015.197-1.243.806-1.266h2.71c.024-.32.086-3.254.086-3.797H6.598c-.136.406-.158.447-.268.753-.594 1.095-1.603 1.122-1.907 1.155.906-1.821 1.416-3.6 1.591-4.064.425-1.124 1.671-1.125 1.671-1.125zM13.078 6h6.377v11.33h-2.573l-2.184 1.373-.401-1.373h-1.219zm1.313 1.219v8.86h.623l.263.937 1.455-.938h1.456v-8.86z"/></svg>
+</a>&nbsp;
+</div>
+    </div>
+</footer>
+
+
+    
+    
+      
+<script src="https://dev2ero.github.io/js/script.js"></script>
+
+    
+  </body>
+</html>

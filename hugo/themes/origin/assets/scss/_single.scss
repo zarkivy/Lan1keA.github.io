@@ -92,17 +92,20 @@
     box-shadow: 5px 5px var(--color-boxshadow);
     border: 1px solid var(--color-border);
     margin: 1rem 0;
+    font-family: 'Courier New', Courier, monospace;
   }
   .highlight pre {
     padding: 1rem;
     overflow: auto;
     margin: 0;
+    font-family: 'Courier New', Courier, monospace;
   }
   .highlight code {
     color: inherit;
     background-color: inherit;
     padding: 0;
     border-radius: inherit;
+    font-family: 'Courier New', Courier, monospace;
   }
   ul {
     list-style-type: disc;

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>虚拟化 on Zikey Vi</title>
+    <link>https://dev2ero.github.io/tags/%E8%99%9A%E6%8B%9F%E5%8C%96/</link>
+    <description>Recent content in 虚拟化 on Zikey Vi</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>© 2022, Zikey Vi</copyright>
+    <lastBuildDate>Sun, 08 May 2022 19:35:11 +0800</lastBuildDate><atom:link href="https://dev2ero.github.io/tags/%E8%99%9A%E6%8B%9F%E5%8C%96/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cross debug kernel using qemu-system</title>
+      <link>https://dev2ero.github.io/post/qemu_dbg_kernel/</link>
+      <pubDate>Sun, 08 May 2022 19:35:11 +0800</pubDate>
+      
+      <guid>https://dev2ero.github.io/post/qemu_dbg_kernel/</guid>
+      <description>From this post, our goal is tracing the execution procedure from kernel entry to userspace process (busybox init) by using qemu-system and gdb-multiarch. (The concept of ring exists only on x86. Called EL in arm.)
+ Preparation qemu-system-arm Compile it from source code or just use sudo apt install qemu-system-arm.
+kernel Linux kernel v4.1 for armel as an example. Compiling a linux kernel requires a matched version of gcc. For example, the linux kernel v4.</description>
+    </item>
+    
+  </channel>
+</rss>

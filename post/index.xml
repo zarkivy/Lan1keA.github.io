@@ -7,14 +7,25 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>© 2022, Zikey Vi</copyright>
-    <lastBuildDate>Sun, 08 May 2022 14:08:16 +0800</lastBuildDate><atom:link href="https://dev2ero.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 08 May 2022 19:35:11 +0800</lastBuildDate><atom:link href="https://dev2ero.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cross debug kernel using qemu-system</title>
+      <link>https://dev2ero.github.io/post/qemu_dbg_kernel/</link>
+      <pubDate>Sun, 08 May 2022 19:35:11 +0800</pubDate>
+      
+      <guid>https://dev2ero.github.io/post/qemu_dbg_kernel/</guid>
+      <description>From this post, our goal is tracing the execution procedure from kernel entry to userspace process (busybox init) by using qemu-system and gdb-multiarch. (The concept of ring exists only on x86. Called EL in arm.)
+ Preparation qemu-system-arm Compile it from source code or just use sudo apt install qemu-system-arm.
+kernel Linux kernel v4.1 for armel as an example. Compiling a linux kernel requires a matched version of gcc. For example, the linux kernel v4.</description>
+    </item>
+    
     <item>
       <title>嵌入式软件环境搭建一把梭</title>
       <link>https://dev2ero.github.io/post/embeded_env/</link>
       <pubDate>Sun, 08 May 2022 14:08:16 +0800</pubDate>
       
       <guid>https://dev2ero.github.io/post/embeded_env/</guid>
-      <description>\x01 构建 \x02 运行 \x03 调试 </description>
+      <description>\x01 构建 编译工具链 \x02 运行 \x03 调试 </description>
     </item>
     
     <item>

@@ -13,12 +13,14 @@ watch = true
 [params]
   description = "Zikey Vi's Blog Site"
   featured = true
-  favicon = "https://dev2ero.github.io/favicon-32.png"
   cssonly = false
 
   [params.socials]
+    email = "mailto:dev2ero@foxmail.com"
     github = "https://github.com/dev2ero"
     twitter = "https://twitter.com/dev2ero"
+    bilibili = "https://space.bilibili.com/210892014"
+    zhihu = "https://www.zhihu.com/people/izay01"
 
 [menu]
 
