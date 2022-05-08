@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Mains on 〉Zikey Vi _</title>
+    <title>Mains on Zikey Vi</title>
     <link>https://dev2ero.github.io/main/</link>
-    <description>Recent content in Mains on 〉Zikey Vi _</description>
+    <description>Recent content in Mains on Zikey Vi</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>© 2022, Zikey Vi</copyright>
@@ -14,27 +14,7 @@
       <pubDate>Sat, 07 May 2022 19:53:05 +0800</pubDate>
       
       <guid>https://dev2ero.github.io/main/utils/</guid>
-      <description>操作系统 https://linux-kernel-labs.github.io/
- Linux kernel lab
- https://sysprog21.github.io/lkmpg/
- 内核模块编程教程
- https://pdos.csail.mit.edu/6.828/2021/schedule.html
- 大名鼎鼎的 MIT 操作系统课程 2021
- 编程 https://cppinsights.io/
- 展开编译细节，向你展示C++代码背后的秘密
- 指令集 https://simplemachines.it/doc/arm_inst.pdf
- ARM 指令集胎教教程
- 虚拟化 https://airbus-seclab.github.io/qemu_blog/
- 空中巴士航空公司信息安全团队的 QEMU 内部机制解析
- 漏洞挖掘 https://pascal-group.bitbucket.io/teaching.html
- 南京大学软件分析课程
- 体系结构 http://csapp.cs.cmu.edu/3e/labs.html
- CS:APP 的实验课
- 计算机杂项 https://missing.csail.mit.edu/
- MIT 的课程——磨刀不误砍柴工系列
- https://learngitbranching.js.org/?locale=zh_CN
- Git branch 的教程
- </description>
+      <description>操作系统  Linux kernel lab  https://linux-kernel-labs.github.io/   内核模块编程教程  https://sysprog21.github.io/lkmpg/   MIT 操作系统课程 2021  https://pdos.csail.mit.edu/6.828/2021/schedule.html   Linux inside  https://0xax.gitbooks.io/linux-insides/content/Initialization/linux-initialization-1.html    编程  高级语言源代码与汇编结果的实时对照  https://godbolt.org/   展开编译细节，向你展示C++代码背后的秘密  https://cppinsights.io/   图形化展示你的正则表达式，学习正则好帮手  https://jex.im/regulex/#!flags=&amp;amp;re=%5E(a%7Cb)*%3F%24   C++ STL 算法库  https://zh.cppreference.com/w/cpp/algorithm    指令集  ARM 指令集胎教教程  https://simplemachines.it/doc/arm_inst.pdf   ARM 指令集考试小抄  https://pages.cs.wisc.edu/~markhill/restricted/arm_isa_quick_reference.pdf   x86与x64指令速查  https://www.felixcloutier.com/x86/ https://cs.</description>
     </item>
     
     <item>
@@ -79,9 +59,8 @@ http://blog.eonew.cn/</description>
       <pubDate>Sat, 07 May 2022 16:53:05 +0800</pubDate>
       
       <guid>https://dev2ero.github.io/main/board/</guid>
-      <description>自用 dotfiles zshrc export LS_COLORS=&amp;#34;di=34:ln=35:so=32:pi=33:ex=31:bd=34:cd=34:su=30:sg=30:tw=30:ow=30&amp;#34; export PROMPT_EOL_MARK=&amp;#39;↵&amp;#39; ZSH_THEME=&amp;#34;avit&amp;#34; # ZSH_THEME=&amp;#34;robbyrussell&amp;#34; # ZSH_THEME=&amp;#34;refined&amp;#34; # ZSH_THEME=&amp;#34;agnoster&amp;#34; plugins=( git sudo zsh-autosuggestions zsh-syntax-highlighting ) source $ZSH/oh-my-zsh.sh alias l=&amp;#39;/bin/ls&amp;#39; alias ls=&amp;#39;lsd&amp;#39; alias ll=&amp;#39;ls -l&amp;#39; alias la=&amp;#39;ls -a&amp;#39; alias lla=&amp;#39;ls -la&amp;#39; alias lt=&amp;#39;ls --tree&amp;#39; alias ipy=&amp;#39;ipython3&amp;#39; alias py=&amp;#39;python3 -q&amp;#39; alias f.n=&amp;#39;find . -name&amp;#39; alias pms=&amp;#39;python -m http.server&amp;#39; alias v=&amp;#39;nvim&amp;#39; 配合：
- lsd美化ls：https://github.com/Peltoche/lsd  lsd需配合nerdfont：https://www.nerdfonts.com/   插件zsh-syntax-highlighting：https://github.com/zsh-users/zsh-syntax-highlighting 插件zsh-autosuggestions：https://github.com/zsh-users/zsh-autosuggestions  使用
-init.vim set number set noshowmode set expandtab set tabstop=4 set shiftwidth=4 set encoding=utf-8 set fileencodings=utf-8,gbk,gb2312 inoremap jj &amp;lt;Esc&amp;gt; nnoremap &amp;lt;Esc&amp;gt; ZZ nnoremap &amp;lt;C-t&amp;gt; &amp;lt;C-w&amp;gt;s&amp;lt;C-w&amp;gt;j:terminal&amp;lt;CR&amp;gt;i tnoremap &amp;lt;Esc&amp;gt; &amp;lt;C-\&amp;gt;&amp;lt;C-n&amp;gt; call plug#begin() Plug &amp;#39;neoclide/coc.</description>
+      <description>自用 dotfiles .zshrc export LS_COLORS=&amp;#34;di=34:ln=35:so=32:pi=33:ex=31:bd=34:cd=34:su=30:sg=30:tw=30:ow=30&amp;#34; export PROMPT_EOL_MARK=&amp;#39;↵&amp;#39; ZSH_THEME=&amp;#34;avit&amp;#34; # ZSH_THEME=&amp;#34;robbyrussell&amp;#34; # ZSH_THEME=&amp;#34;refined&amp;#34; # ZSH_THEME=&amp;#34;agnoster&amp;#34; plugins=( git sudo zsh-autosuggestions zsh-syntax-highlighting ) source $ZSH/oh-my-zsh.sh alias l=&amp;#39;/bin/ls&amp;#39; alias ls=&amp;#39;lsd&amp;#39; alias ll=&amp;#39;ls -l&amp;#39; alias la=&amp;#39;ls -a&amp;#39; alias lla=&amp;#39;ls -la&amp;#39; alias lt=&amp;#39;ls --tree&amp;#39; alias ipy=&amp;#39;ipython3&amp;#39; alias py=&amp;#39;python3 -q&amp;#39; alias f.n=&amp;#39;find . -name&amp;#39; alias pms=&amp;#39;python -m http.server&amp;#39; alias v=&amp;#39;nvim&amp;#39; 配合使用：
+ lsd美化ls：https://github.com/Peltoche/lsd  lsd需配合nerdfont：https://www.nerdfonts.com/   插件zsh-syntax-highlighting：https://github.com/zsh-users/zsh-syntax-highlighting 插件zsh-autosuggestions：https://github.com/zsh-users/zsh-autosuggestions  init.vim set number set noshowmode set expandtab set tabstop=4 set shiftwidth=4 set encoding=utf-8 set fileencodings=utf-8,gbk,gb2312 inoremap jj &amp;lt;Esc&amp;gt; nnoremap &amp;lt;Esc&amp;gt; ZZ nnoremap &amp;lt;C-t&amp;gt; &amp;lt;C-w&amp;gt;s&amp;lt;C-w&amp;gt;j:terminal&amp;lt;CR&amp;gt;i tnoremap &amp;lt;Esc&amp;gt; &amp;lt;C-\&amp;gt;&amp;lt;C-n&amp;gt; call plug#begin() Plug &amp;#39;neoclide/coc.</description>
     </item>
     
     <item>

@@ -3,14 +3,13 @@ title: "Board"
 description: "fast clipboard"
 date: 2022-05-07T16:53:05+08:00
 tags: [ "main" ]
-imagelink: "https://s2.loli.net/2022/05/07/AvUVHB48G5fOdEC.png"
 ---
 
 
 
-# 自用 dotfiles
+## 自用 dotfiles
 
-## zshrc
+### .zshrc
 
 ```sh
 export LS_COLORS="di=34:ln=35:so=32:pi=33:ex=31:bd=34:cd=34:su=30:sg=30:tw=30:ow=30"
@@ -43,18 +42,16 @@ alias pms='python -m http.server'
 alias v='nvim'
 ```
 
-配合：
+配合使用：
 
 - lsd美化ls：[https://github.com/Peltoche/lsd](https://github.com/Peltoche/lsd)
   - lsd需配合nerdfont：[https://www.nerdfonts.com/](https://www.nerdfonts.com/)
 - 插件zsh-syntax-highlighting：[https://github.com/zsh-users/zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
 - 插件zsh-autosuggestions：[https://github.com/zsh-users/zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
 
-使用
 
 
-
-## init.vim
+### init.vim
 
 ```ini
 set number
@@ -98,7 +95,7 @@ let g:airline_theme='seoul256'
 let g:rainbow_active = 1
 ```
 
-配合
+配合使用：
 
 - vim-plug插件管理器：https://github.com/junegunn/vim-plug
 - coc.nvim自动补全：https://github.com/neoclide/coc.nvim
@@ -108,7 +105,7 @@ let g:rainbow_active = 1
 
 
 
-## .tmux.conf
+### .tmux.conf
 
 ```sh
 set-option -g prefix C-x
@@ -147,7 +144,7 @@ setw -g window-status-current-format '#[fg=white,bg=white,nobold,nounderscore,no
 
 
 
-## ~/.config/lsd/themes/light.yaml
+### ~/.config/lsd/themes/light.yaml
 
 ```yaml
 user: 241
@@ -180,7 +177,7 @@ lsd亮色主题，解决终端在亮色背景下lsd输出看不清的问题
 
 
 
-## .gdbinit
+### .gdbinit
 
 ```sh
 set syntax-highlight-style tango
@@ -190,7 +187,7 @@ set syntax-highlight-style tango
 
 
 
-# Trick
+## Trick
 
 ### 谁在ping我？
 
@@ -201,7 +198,7 @@ tcpdump -i eth0 'icmp and icmp[icmptype]=icmp-echo'
 
 
 
-# Key-Value
+## Key-Value
 
 ### ANSI 颜色
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh"><head>
     <meta charset="UTF-8">
-    <title>〉Zikey Vi _</title>
+    <title>Zikey Vi</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <meta name="description" content="fast clipboard" />
@@ -48,6 +48,15 @@
                 
                     
                         <li class="header-nav-list__item">
+                            <a class="header-nav-list__link" href="/main/board/">
+                                
+                                <span>Board</span>
+                            </a>
+                        </li>
+                    
+                
+                    
+                        <li class="header-nav-list__item">
                             <a class="header-nav-list__link" href="/main/friend/">
                                 
                                 <span>Friend</span>
@@ -55,8 +64,17 @@
                         </li>
                     
                 
+                    
+                        <li class="header-nav-list__item">
+                            <a class="header-nav-list__link" href="/main/utils/">
+                                
+                                <span>Utils</span>
+                            </a>
+                        </li>
+                    
+                
             </ul>
-            <button class="header-nav-list__nav-btn">Nav</button>
+            <button class="header-nav-list__nav-btn">⨈</button>
         </nav>
         <button class="mb-header__menu-btn">
             <span class="mb-header__menu-btn-line"></span>
@@ -132,8 +150,24 @@
                 
                     
                       <li class="mb-header-nav-list__item ">
+                            <a class="mb-header-nav-list__link" href="/main/board/">
+                                Board
+                            </a>
+                        </li>
+                    
+                
+                    
+                      <li class="mb-header-nav-list__item ">
                             <a class="mb-header-nav-list__link" href="/main/friend/">
                                 Friend
+                            </a>
+                        </li>
+                    
+                
+                    
+                      <li class="mb-header-nav-list__item ">
+                            <a class="mb-header-nav-list__link" href="/main/utils/">
+                                Utils
                             </a>
                         </li>
                     
@@ -150,8 +184,8 @@
     <div id="content">
 <article class="post">
   
-    <div class="post-content"><h1 id="自用-dotfiles">自用 dotfiles</h1>
-<h2 id="zshrc">zshrc</h2>
+    <div class="post-content"><h2 id="自用-dotfiles">自用 dotfiles</h2>
+<h3 id="zshrc">.zshrc</h3>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#0086b3">export</span> <span style="color:#008080">LS_COLORS</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;di=34:ln=35:so=32:pi=33:ex=31:bd=34:cd=34:su=30:sg=30:tw=30:ow=30&#34;</span>
 <span style="color:#0086b3">export</span> <span style="color:#008080">PROMPT_EOL_MARK</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;↵&#39;</span>
 
@@ -180,7 +214,7 @@
 <span style="color:#0086b3">alias</span> f.n<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;find . -name&#39;</span>
 <span style="color:#0086b3">alias</span> <span style="color:#008080">pms</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;python -m http.server&#39;</span>
 <span style="color:#0086b3">alias</span> <span style="color:#008080">v</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;nvim&#39;</span>
-</code></pre></div><p>配合：</p>
+</code></pre></div><p>配合使用：</p>
 <ul>
 <li>lsd美化ls：<a href="https://github.com/Peltoche/lsd">https://github.com/Peltoche/lsd</a>
 <ul>
@@ -190,8 +224,7 @@
 <li>插件zsh-syntax-highlighting：<a href="https://github.com/zsh-users/zsh-syntax-highlighting">https://github.com/zsh-users/zsh-syntax-highlighting</a></li>
 <li>插件zsh-autosuggestions：<a href="https://github.com/zsh-users/zsh-autosuggestions">https://github.com/zsh-users/zsh-autosuggestions</a></li>
 </ul>
-<p>使用</p>
-<h2 id="initvim">init.vim</h2>
+<h3 id="initvim">init.vim</h3>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ini" data-lang="ini"><span style="color:#008080">set number</span>
 <span style="color:#008080">set noshowmode</span>
 <span style="color:#008080">set expandtab</span>
@@ -231,7 +264,7 @@
 <span style="color:#008080">let g:startify_custom_header</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">startify#pad(split(system(&#39;figlet -w 100 ZKVIM&#39;), &#39;\n&#39;))</span>
 <span style="color:#008080">let g:airline_theme</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;seoul256&#39;</span>
 <span style="color:#008080">let g:rainbow_active</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">1</span>
-</code></pre></div><p>配合</p>
+</code></pre></div><p>配合使用：</p>
 <ul>
 <li>vim-plug插件管理器：https://github.com/junegunn/vim-plug</li>
 <li>coc.nvim自动补全：https://github.com/neoclide/coc.nvim
@@ -245,7 +278,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="tmuxconf">.tmux.conf</h2>
+<h3 id="tmuxconf">.tmux.conf</h3>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">set-option -g prefix C-x
 unbind-key C-x
 bind-key C-x send-prefix
@@ -277,7 +310,7 @@ bind-key r source-file ~/.tmux.conf <span style="color:#d14">\;</span> display-m
 setw -g window-status-format <span style="color:#d14">&#39;#[fg=white,bg=white,nobold,nounderscore,noitalics]⌈#[default] #I ‣ #W #[fg=white,bg=white,nobold,nounderscore,noitalics]⌋&#39;</span>
 setw -g window-status-current-format <span style="color:#d14">&#39;#[fg=white,bg=white,nobold,nounderscore,noitalics]⎡#[fg=cyan,bg=white] #I ▶︎ #W #[fg=white,bg=white,nobold,nounderscore,noitalics]⎦&#39;</span>
 </code></pre></div><p>就此扔掉鼠标和本地计算，all-in 云</p>
-<h2 id="configlsdthemeslightyaml">~/.config/lsd/themes/light.yaml</h2>
+<h3 id="configlsdthemeslightyaml">~/.config/lsd/themes/light.yaml</h3>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#000080">user</span>:<span style="color:#bbb"> </span><span style="color:#099">241</span><span style="color:#bbb">
 </span><span style="color:#bbb"></span><span style="color:#000080">group</span>:<span style="color:#bbb"> </span><span style="color:#099">246</span><span style="color:#bbb">
 </span><span style="color:#bbb"></span><span style="color:#000080">permission</span>:<span style="color:#bbb">
@@ -303,13 +336,13 @@ setw -g window-status-current-format <span style="color:#d14">&#39;#[fg=white,bg
 </span><span style="color:#bbb">    </span><span style="color:#000080">invalid</span>:<span style="color:#bbb"> </span><span style="color:#099">245</span><span style="color:#bbb">
 </span><span style="color:#bbb"></span><span style="color:#000080">tree-edge</span>:<span style="color:#bbb"> </span><span style="color:#099">245</span><span style="color:#bbb">   
 </span></code></pre></div><p>lsd亮色主题，解决终端在亮色背景下lsd输出看不清的问题</p>
-<h2 id="gdbinit">.gdbinit</h2>
+<h3 id="gdbinit">.gdbinit</h3>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#0086b3">set</span> syntax-highlight-style tango
-</code></pre></div><h1 id="trick">Trick</h1>
+</code></pre></div><h2 id="trick">Trick</h2>
 <h3 id="谁在ping我">谁在ping我？</h3>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">tcpdump -i eth0 <span style="color:#d14">&#39;icmp and icmp[icmptype]=icmp-echo&#39;</span>
 <span style="color:#998;font-style:italic"># root权限执行，eth0 换成你需要抓包的网卡iframe</span>
-</code></pre></div><h1 id="key-value">Key-Value</h1>
+</code></pre></div><h2 id="key-value">Key-Value</h2>
 <h3 id="ansi-颜色">ANSI 颜色</h3>
 <table>
 <thead>

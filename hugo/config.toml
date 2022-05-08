@@ -1,5 +1,5 @@
 baseURL = "https://dev2ero.github.io/"
-title = "〉Zikey Vi _"
+title = "Zikey Vi"
 copyright = "© 2022, Zikey Vi"
 paginate = 4
 languageCode = "zh"
@@ -28,9 +28,20 @@ watch = true
     weight = 1
 
   [[menu.main]]
+    name = "Board"
+    url = "/main/board/"
+    weight = 2
+
+  [[menu.main]]
     name = "Friend"
     url = "/main/friend/"
-    weight = 2
+    weight = 3
+
+  [[menu.main]]
+    name = "Utils"
+    url = "/main/utils/"
+    weight = 4
+
 
 [markup]
   [markup.highlight]

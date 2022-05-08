@@ -1,28 +1,37 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on 〉Zikey Vi _</title>
+    <title>Tags on Zikey Vi</title>
     <link>https://dev2ero.github.io/tags/</link>
-    <description>Recent content in Tags on 〉Zikey Vi _</description>
+    <description>Recent content in Tags on Zikey Vi</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>© 2022, Zikey Vi</copyright>
-    <lastBuildDate>Sat, 07 May 2022 22:53:05 +0800</lastBuildDate><atom:link href="https://dev2ero.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 08 May 2022 14:08:16 +0800</lastBuildDate><atom:link href="https://dev2ero.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>utils</title>
-      <link>https://dev2ero.github.io/tags/utils/</link>
-      <pubDate>Sat, 07 May 2022 22:53:05 +0800</pubDate>
+      <title>embeded</title>
+      <link>https://dev2ero.github.io/tags/embeded/</link>
+      <pubDate>Sun, 08 May 2022 14:08:16 +0800</pubDate>
       
-      <guid>https://dev2ero.github.io/tags/utils/</guid>
+      <guid>https://dev2ero.github.io/tags/embeded/</guid>
       <description></description>
     </item>
     
     <item>
       <title>linux</title>
       <link>https://dev2ero.github.io/tags/linux/</link>
-      <pubDate>Sat, 07 May 2022 22:50:57 +0800</pubDate>
+      <pubDate>Sun, 08 May 2022 14:08:16 +0800</pubDate>
       
       <guid>https://dev2ero.github.io/tags/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>utils</title>
+      <link>https://dev2ero.github.io/tags/utils/</link>
+      <pubDate>Sat, 07 May 2022 22:53:05 +0800</pubDate>
+      
+      <guid>https://dev2ero.github.io/tags/utils/</guid>
       <description></description>
     </item>
     
