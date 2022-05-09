@@ -35,10 +35,16 @@ tags: [ "main" ]
 
 ### 指令集
 
-- ARM 指令集胎教教程
+- ARMv7 指令集胎教教程
   - [https://simplemachines.it/doc/arm_inst.pdf](https://simplemachines.it/doc/arm_inst.pdf)
-- ARM 指令集考试小抄
+- ARMv7 指令集考试小抄
   - https://pages.cs.wisc.edu/~markhill/restricted/arm_isa_quick_reference.pdf
+- ARMv8 指令集考试小抄
+  - https://courses.cs.washington.edu/courses/cse469/19wi/arm64.pdf
+
+- ARMv8 指令集宝宝识字挂图
+  - https://s2.loli.net/2022/05/09/UxFIkpBivKWzX6M.png
+
 - x86与x64指令速查
   - [https://www.felixcloutier.com/x86/](https://www.felixcloutier.com/x86/)
   - [https://cs.brown.edu/courses/cs033/docs/guides/x64_cheatsheet.pdf](https://cs.brown.edu/courses/cs033/docs/guides/x64_cheatsheet.pdf)
