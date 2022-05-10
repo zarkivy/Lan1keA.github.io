@@ -14,12 +14,15 @@
       <pubDate>Mon, 09 May 2022 11:03:28 +0800</pubDate>
       
       <guid>https://dev2ero.github.io/post/fgfw/</guid>
-      <description> 当我老了，回顾一生，就会发觉，我三分之一的生命，都浪费在和GFW作斗争上了。
-呜呼！多么宏伟啊！千年前的巨石，砌就秦帝国的坚不可摧；今日那日夜呼啸的服务器集群，彰显共和国非凡的制度自信。
+      <description>当我老了，回顾一生，就会发觉，我三分之一的生命，都浪费在和GFW作斗争上了。
+呜呼！何等宏伟啊！两千年多前的巨石，砌就秦帝国的坚不可摧；今日那日夜呼啸的服务器集群，彰显共和国非凡的制度自信。
  Top-level solution selection In terms of the ways I have tried myself:
  Use a VPN application Rent an overseas server Subscribe to an airport service  The last option strikes the best balance between price and convenience.
 As for the first two option:
- Beware of phishing High cost in time or money Stability is a concern  </description>
+ Beware of phishing High cost in time or money Stability is a concern  个人客户端解决方案  具体使用方面就大白话讲了
+ 垃机佬出身的我，手里硬件设备的数量经常令得旁人惊异。即使到了渐渐退烧的今天，我手中也是保有了各个主流操作系统平台的物理机。
+顶层协议方面，v2ray和ssr都有使用，未尝试过自行编写或改进加密协议。服务端一年200左右的机场全够用了。客户端目前使用方案如下：
+ Windows  v2rayNG：https://github.</description>
     </item>
     
   </channel>
