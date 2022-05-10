@@ -8,7 +8,7 @@
   rel="noopener"
 >
   {{partial "svg/gmail.svg"}}
-</a>&nbsp;
+</a>&nbsp;&nbsp;
 {{ end }}
 
 {{ with .Site.Params.socials.github}}
@@ -19,7 +19,7 @@
   rel="noopener"
 >
   {{partial "svg/github.svg"}}
-</a>&nbsp;
+</a>&nbsp;&nbsp;
 {{ end }}
 
 {{ with .Site.Params.socials.twitter}}
@@ -30,7 +30,7 @@
   rel="noopener"
 >
   {{partial "svg/twitter.svg"}}
-</a>&nbsp;
+</a>&nbsp;&nbsp;
 {{ end }}
 
 {{ with .Site.Params.socials.bilibili}}
@@ -41,7 +41,7 @@
   rel="noopener"
 >
   {{partial "svg/bilibili.svg"}}
-</a>&nbsp;
+</a>&nbsp;&nbsp;
 {{ end }}
 
 {{ with .Site.Params.socials.zhihu}}
@@ -52,5 +52,16 @@
   rel="noopener"
 >
   {{partial "svg/zhihu.svg"}}
-</a>&nbsp;
+</a>&nbsp;&nbsp;
+{{ end }}
+
+{{ with .Site.Params.socials.love}}
+<a
+  href="{{ . }}"
+  target="_blank"
+  class="social-link"
+  rel="noopener"
+>
+  {{partial "svg/love.svg"}}
+</a>
 {{ end }}
