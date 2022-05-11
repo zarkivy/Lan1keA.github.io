@@ -3,6 +3,41 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://dev2ero.github.io/tags/linux/</loc>
+    <lastmod>2022-05-10T21:13:54+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dev2ero.github.io/post/</loc>
+    <lastmod>2022-05-10T21:13:54+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dev2ero.github.io/tags/</loc>
+    <lastmod>2022-05-10T21:13:54+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dev2ero.github.io/</loc>
+    <lastmod>2022-05-10T21:13:54+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dev2ero.github.io/post/some_installation/</loc>
+    <lastmod>2022-05-10T21:13:54+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dev2ero.github.io/post/build_run_embeded_linux_vm/</loc>
+    <lastmod>2022-05-10T20:59:43+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dev2ero.github.io/tags/%E8%99%9A%E6%8B%9F%E5%8C%96/</loc>
+    <lastmod>2022-05-10T20:59:43+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://dev2ero.github.io/post/fgfw/</loc>
     <lastmod>2022-05-09T11:03:28+08:00</lastmod>
   </url>
@@ -13,37 +48,12 @@
   </url>
   
   <url>
-    <loc>https://dev2ero.github.io/post/</loc>
-    <lastmod>2022-05-09T11:03:28+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://dev2ero.github.io/tags/</loc>
-    <lastmod>2022-05-09T11:03:28+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://dev2ero.github.io/</loc>
-    <lastmod>2022-05-09T11:03:28+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://dev2ero.github.io/tags/linux/</loc>
-    <lastmod>2022-05-08T21:45:00+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://dev2ero.github.io/post/linux_syscalls/</loc>
     <lastmod>2022-05-08T21:45:00+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://dev2ero.github.io/post/qemu_dbg_kernel/</loc>
-    <lastmod>2022-05-08T19:35:11+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://dev2ero.github.io/tags/%E8%99%9A%E6%8B%9F%E5%8C%96/</loc>
     <lastmod>2022-05-08T19:35:11+08:00</lastmod>
   </url>
   

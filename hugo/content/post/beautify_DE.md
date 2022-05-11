@@ -80,17 +80,29 @@ sudo apt install gnome-tweaks
 
 使用gnome-tweaks就可以做一些此前没有的定制化了，同时作为后续美化的基本依赖。
 
-安装gnome插件管理器 **GNOME Shell Extensions**：
+接下来安装gnome插件管理器 **GNOME Shell Extensions**：
 
-[https://extensions.gnome.org/](https://extensions.gnome.org/)
+插件管理器的用户接口是基于浏览器提供的，需安装对应的Chrome或Firefox插件即可。
 
-插件管理器的用户接口是基于浏览器提供的，所以按照提示选择安装对应的Chrome或Firefox插件即可。
+对于Chrome，除了可以从Chrome商店下载外，也可以直接使用软件源里的包安装：
+
+```sh
+sudo apt install chrome-gnome-shell
+```
+
+Firefox插件地址为：[https://addons.mozilla.org/en-US/firefox/addon/gnome-shell-integration/](https://addons.mozilla.org/en-US/firefox/addon/gnome-shell-integration/)
+
+然后就可以访问 [https://extensions.gnome.org/](https://extensions.gnome.org/) 来管理gnome插件了：
 
 为了使用用户文件中的主题，需要安装 **User Themes** 插件并启用：
 
 [https://extensions.gnome.org/extension/19/user-themes/](https://extensions.gnome.org/extension/19/user-themes/)
 
-此后，尽情探索[https://www.gnome-look.org/](https://www.gnome-look.org/)，然后将下载到的资源在gnome-tweaks中启用即可。
+然后在家目录建立名为 `.themes` 的文件夹，将下载到的各种主题资源解压至此。
+
+此后，尽情探索[https://www.gnome-look.org/](https://www.gnome-look.org/)，将下载到的资源在gnome-tweaks中启用即可。
+
+
 
 
 
@@ -126,9 +138,17 @@ shell并不属于DE的一部分，有个字符终端足矣。
 
 ### grub主题（开机时的引导器界面主题）
 
-来自gnome-look，但啥DE都能用，毕竟定制的是grub。
+来自gnome-look，但啥DE都能用，毕竟定制的是grub：
 
 [https://www.gnome-look.org/browse/cat/109/order/latest/](https://www.gnome-look.org/browse/cat/109/order/latest/)
+
+
+
+### 终端配色
+
+如下仓库，应有尽有：
+
+https://github.com/mbadolato/iTerm2-Color-Schemes
 
 
 
