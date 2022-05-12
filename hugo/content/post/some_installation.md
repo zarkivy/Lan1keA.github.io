@@ -12,7 +12,7 @@ imagelink: "https://s2.loli.net/2022/05/11/7aWbNEkesXlmYxH.jpg"
 
 
 
-### 个人 apt 源 Linux 初始环境软件安装
+## 个人 apt 源 Linux 初始环境软件安装
 
 ```sh
 sudo apt install zsh git man man-db manpages ssh neovim tmux \
@@ -20,7 +20,23 @@ sudo apt install zsh git man man-db manpages ssh neovim tmux \
 	curl wget netcat net-tools nmap tcpdump \
 	python3 ipython3 python-is-python3 python3-pip \
 	build-essential binutils xxd strace libncurses5 \
-	neofetch zip unzip ncdu htop ca-certificates
+	neofetch zip unzip ncdu htop
+```
+
+
+
+## dotfiles 快速就位
+
+```sh
+git clone https://github.com/dev2ero/dotfiles.git
+sh -c "$(curl -fsSL https://gitee.com/mirrors/oh-my-zsh/raw/master/tools/install.sh)"
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+mkdir -p ~/.config/nvim/
+cp `pwd`/dotfiles/init.vim ~/.config/nvim/init.vim
+cp `pwd`/dotfiles/zshrc ~/.zshrc
+source ~/.zshrc
 ```
 
 
@@ -32,4 +48,12 @@ sudo apt install zsh git man man-db manpages ssh neovim tmux \
 ```sh
 curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
 ```
+
+拉取特定镜像并设定共享文件夹：
+
+```sh
+sudo docker run -it -v /home/zkv/docker_share/:/share ubuntu:16.04
+```
+
+
 

@@ -49,9 +49,9 @@
                 
                     
                         <li class="header-nav-list__item">
-                            <a class="header-nav-list__link" href="/main/friend/">
+                            <a class="header-nav-list__link" href="/main/flink/">
                                 
-                                <span>Friend</span>
+                                <span>Flink</span>
                             </a>
                         </li>
                     
@@ -61,6 +61,15 @@
                             <a class="header-nav-list__link" href="/main/utils/">
                                 
                                 <span>Utils</span>
+                            </a>
+                        </li>
+                    
+                
+                    
+                        <li class="header-nav-list__item">
+                            <a class="header-nav-list__link" href="/main/love/">
+                                
+                                <span>love</span>
                             </a>
                         </li>
                     
@@ -152,8 +161,8 @@
                 
                     
                       <li class="mb-header-nav-list__item ">
-                            <a class="mb-header-nav-list__link" href="/main/friend/">
-                                Friend
+                            <a class="mb-header-nav-list__link" href="/main/flink/">
+                                Flink
                             </a>
                         </li>
                     
@@ -162,6 +171,14 @@
                       <li class="mb-header-nav-list__item ">
                             <a class="mb-header-nav-list__link" href="/main/utils/">
                                 Utils
+                            </a>
+                        </li>
+                    
+                
+                    
+                      <li class="mb-header-nav-list__item ">
+                            <a class="mb-header-nav-list__link" href="/main/love/">
+                                love
                             </a>
                         </li>
                     
@@ -239,12 +256,12 @@ The next step is create disk partitions using fdisk on rootfs.img :</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#0086b3">echo</span> -e <span style="color:#d14">&#34;o\nn\np\n1\n\n\nw&#34;</span> | sudo /sbin/fdisk rootfs.img
 </code></pre></div><p>With disk partition be ready, rootfs.img could be mounted to the host filesystem using kpartx :</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">sudo kpartx -a -s -v rootfs.img
-</code></pre></div><p>After that we got the corresponding device located at /dev/mapper/loop0p1
-Mount it to host filesystem path wherever you like :</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">sudo mount /dev/mapper/loop0p1 ./mount_dir
-</code></pre></div><p>With loop device mounted to a specific directory, we can formatting its major partition to ext2 format :</p>
+</code></pre></div><p>After that we got the corresponding device located at /dev/mapper/loop0p1</p>
+<p>Format its major partition as ext2 format :</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">mkfs.ext2 /dev/mapper/loop0p1
 sync
+</code></pre></div><p>And then mount it to host filesystem path wherever you like :</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">sudo mount /dev/mapper/loop0p1 ./mount_dir
 </code></pre></div><p>We are done preparing here. All we should do next is copying all the files recursively from the origin root filesystem directory to our mounted directory,
 so that we got a rootfs.img image file containing the armel filesystem we want.
 Don&rsquo;t forget replace the origin bin/busybox with our manually compiled version.</p>

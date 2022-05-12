@@ -123,22 +123,24 @@ sudo kpartx -a -s -v rootfs.img
 ```
 
 After that we got the corresponding device located at /dev/mapper/loop0p1
-Mount it to host filesystem path wherever you like :
 
-```sh
-sudo mount /dev/mapper/loop0p1 ./mount_dir
-```
-
-With loop device mounted to a specific directory, we can formatting its major partition to ext2 format :
+Format its major partition as ext2 format :
 
 ```sh
 mkfs.ext2 /dev/mapper/loop0p1
 sync
 ```
 
+And then mount it to host filesystem path wherever you like :
+
+```sh
+sudo mount /dev/mapper/loop0p1 ./mount_dir
+```
+
 We are done preparing here. All we should do next is copying all the files recursively from the origin root filesystem directory to our mounted directory,
 so that we got a rootfs.img image file containing the armel filesystem we want.
 Don't forget replace the origin bin/busybox with our manually compiled version.
+
 ### Tracing time !
 Now we have :
 

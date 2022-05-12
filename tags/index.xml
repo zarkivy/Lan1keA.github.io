@@ -7,11 +7,11 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>© 2022, Zikey Vi</copyright>
-    <lastBuildDate>Tue, 10 May 2022 21:13:54 +0800</lastBuildDate><atom:link href="https://dev2ero.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 12 May 2022 16:35:52 +0800</lastBuildDate><atom:link href="https://dev2ero.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>linux</title>
       <link>https://dev2ero.github.io/tags/linux/</link>
-      <pubDate>Tue, 10 May 2022 21:13:54 +0800</pubDate>
+      <pubDate>Thu, 12 May 2022 16:35:52 +0800</pubDate>
       
       <guid>https://dev2ero.github.io/tags/linux/</guid>
       <description></description>
@@ -20,9 +20,27 @@
     <item>
       <title>虚拟化</title>
       <link>https://dev2ero.github.io/tags/%E8%99%9A%E6%8B%9F%E5%8C%96/</link>
-      <pubDate>Tue, 10 May 2022 20:59:43 +0800</pubDate>
+      <pubDate>Thu, 12 May 2022 16:35:52 +0800</pubDate>
       
       <guid>https://dev2ero.github.io/tags/%E8%99%9A%E6%8B%9F%E5%8C%96/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>embeded</title>
+      <link>https://dev2ero.github.io/tags/embeded/</link>
+      <pubDate>Wed, 11 May 2022 16:27:10 +0800</pubDate>
+      
+      <guid>https://dev2ero.github.io/tags/embeded/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>fuzzing</title>
+      <link>https://dev2ero.github.io/tags/fuzzing/</link>
+      <pubDate>Wed, 11 May 2022 13:57:01 +0800</pubDate>
+      
+      <guid>https://dev2ero.github.io/tags/fuzzing/</guid>
       <description></description>
     </item>
     
@@ -32,15 +50,6 @@
       <pubDate>Mon, 09 May 2022 11:03:28 +0800</pubDate>
       
       <guid>https://dev2ero.github.io/tags/net/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>embeded</title>
-      <link>https://dev2ero.github.io/tags/embeded/</link>
-      <pubDate>Sun, 08 May 2022 14:08:16 +0800</pubDate>
-      
-      <guid>https://dev2ero.github.io/tags/embeded/</guid>
       <description></description>
     </item>
     

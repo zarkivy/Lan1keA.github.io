@@ -37,14 +37,21 @@ watch = true
     weight = 2
 
   [[menu.main]]
-    name = "Friend"
-    url = "/main/friend/"
+    name = "Flink"
+    url = "/main/flink/"
     weight = 3
 
   [[menu.main]]
     name = "Utils"
     url = "/main/utils/"
     weight = 4
+
+  [[menu.main]]
+    name = "love"
+    url = "/main/love/"
+    weight = 5
+
+  
 
 
 [markup]

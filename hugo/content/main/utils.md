@@ -76,6 +76,9 @@ tags: [ "main" ]
 
 - Fuzzing 入门胎教教程 Fuzzing101
   - https://github.com/antonio-morales/Fuzzing101
+- 课程：使用 CodeQL 挖掘 U-boot 漏洞
+  - [https://lab.github.com/githubtraining/codeql-u-boot-challenge-%28cc++%29](https://lab.github.com/githubtraining/codeql-u-boot-challenge-%28cc++%29)
+
 
 
 

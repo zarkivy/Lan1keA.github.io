@@ -7,7 +7,29 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>© 2022, Zikey Vi</copyright>
-    <lastBuildDate>Sun, 08 May 2022 14:08:16 +0800</lastBuildDate><atom:link href="https://dev2ero.github.io/tags/embeded/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 11 May 2022 16:27:10 +0800</lastBuildDate><atom:link href="https://dev2ero.github.io/tags/embeded/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>华硕梅林固件的编译</title>
+      <link>https://dev2ero.github.io/post/compile_asuswrt-merlin/</link>
+      <pubDate>Wed, 11 May 2022 16:27:10 +0800</pubDate>
+      
+      <guid>https://dev2ero.github.io/post/compile_asuswrt-merlin/</guid>
+      <description>获取梅林 官网如下：asuswrt-merlin.net
+新梅林：https://github.com/RMerl/asuswrt-merlin.ng
+旧梅林（停止开发）：https://github.com/RMerl/asuswrt-merlin
+这里选用asuswrt-merlin.ng进行编译构建
+wget https://github.com/RMerl/asuswrt-merlin.ng/archive/refs/heads/master.zip （下载zip而非clone仓库，节省.git的占用
+环境准备 README.txt 给出了编译方式：https://github.com/RMerl/asuswrt-merlin.ng/blob/master/README.TXT
+包依赖非常多，所以尽力将本地环境贴合它的编译说明，以避免未知错误。
+所以选取 ubuntu:16.04 作为编译平台。
+故首先安装docker，快速安装cheatsheet在此：http://zikey.vip/post/some_installation/
+拉取ubuntu 16.04镜像并设定共享文件夹：
+sudo docker run -it -v /home/zkv/docker_share/:/share ubuntu:16.04 依赖安装 进入docker ubuntu环境后，下载并解压梅林ng：
+apt install wget unzip wget https://github.com/RMerl/asuswrt-merlin.ng/archive/refs/heads/master.zip unzip master.zip README.txt 中提到，需安装部分32位依赖包，故先添加32位软件源：
+dpkg --add-architecture i386 apt update 此后便可以直接依照说明安装所有依赖包：
+apt install libncurses5 libncurses5-dev m4 bison gawk flex libstdc++6-4.7-dev g++-4.7 g++ gengetopt git gitk zlib1g-dev autoconf autopoint libtool-bin shtool autogen mtd-utils intltool sharutils docbook-xsl-* libstdc++5 texinfo dos2unix xsltproc u-boot-tools device-tree-compiler qemu gperf liblzo2-dev uuid-dev build-essential lzma-dev liblzma-dev lzma binutils-dev patch cmake intltool libglib2.</description>
+    </item>
+    
     <item>
       <title>嵌入式软件环境搭建一把梭</title>
       <link>https://dev2ero.github.io/post/embeded_env/</link>
