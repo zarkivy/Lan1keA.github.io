@@ -1,6 +1,6 @@
 ---
 title: "Love"
-description: "QiQi && ViVi"
+description: "かわいい ❤️ QiQi"
 date: 2022-05-07T18:53:05+08:00
 tags: [ "main" ]
 ---

@@ -1,8 +1,9 @@
 ---
-title: "Qemu System_net_config"
-description: "nothing"
+title: "QEMU guest的网络配置"
+description: "linux guest os"
 date: 2022-05-12T16:35:52+08:00
 tags: [ "虚拟化", "linux" ]
+imagelink: "https://s2.loli.net/2022/05/13/2Nksl7aevZTpd1G.jpg"
 ---
 
 

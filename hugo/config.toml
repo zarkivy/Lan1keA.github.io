@@ -47,7 +47,7 @@ watch = true
     weight = 4
 
   [[menu.main]]
-    name = "love"
+    name = "Love"
     url = "/main/love/"
     weight = 5
 
