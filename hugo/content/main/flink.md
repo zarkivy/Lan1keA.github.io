@@ -27,6 +27,7 @@ tags: [ "main" ]
 - [https://eternalsakura13.com/](https://eternalsakura13.com/)
 - [https://lancern.xyz/](https://lancern.xyz/)
 - [http://www.aloxaf.com/](http://www.aloxaf.com/)
+- https://kiprey.github.io/
 - [https://www.ksroido.art/](https://www.ksroido.art/)
 - [https://blog.flanker017.me/](https://blog.flanker017.me/)
 - [https://thunderjie.github.io/](https://thunderjie.github.io/)
@@ -38,6 +39,5 @@ tags: [ "main" ]
 - [https://a1ex.online/](https://a1ex.online/)
 - [http://p4nda.top/](http://p4nda.top/)
 - [https://o0xmuhe.github.io/](https://o0xmuhe.github.io/)
-
-
+- [https://evilpan.com/](https://evilpan.com/)
 
