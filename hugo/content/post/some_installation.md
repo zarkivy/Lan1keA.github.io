@@ -57,3 +57,12 @@ sudo docker run -it -v /home/zkv/docker_share/:/share ubuntu:16.04
 
 
 
+## pwn 环境简易就位
+
+```sh
+apt install gdb gdb-multiarch gdbserver
+git clone https://github.com/pwndbg/pwndbg; cd pwndbg; ./setup.sh
+echo -n "set syntax-highlight-style tango" >> ~/.gdbinit
+pip install pwntools -i https://pypi.tuna.tsinghua.edu.cn/simple some-package
+```
+

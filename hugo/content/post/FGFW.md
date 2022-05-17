@@ -106,10 +106,10 @@ proxy=http://127.0.0.1:1080
 
 #### git
 
-（将`http://127.0.0.1:1080`替换为你本地的http代理地址）
+（将`http://127.0.0.1:1080`替换为你本地的socks5代理地址）
 
 ```sh
-git config --global http.proxy http://127.0.0.1:1080
+git config --global http.proxy socks5://127.0.0.1:1080
 ```
 
 #### apt

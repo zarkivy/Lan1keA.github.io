@@ -25,7 +25,7 @@
       <pubDate>Sat, 07 May 2022 18:53:05 +0800</pubDate>
       
       <guid>https://dev2ero.github.io/main/love/</guid>
-      <description>【  天  时  分  秒 】   function timer() { var start = new Date(2017, 8, 30); var t = new Date() - start; var h = ~~(t / 1000 / 60 / 60 % 24); if (h  </description>
+      <description>【  天  时  分  秒 】function timer() {var start = new Date(2017, 8, 30);var t = new Date() - start;var h = ~~(t / 1000 / 60 / 60 % 24);if (h </description>
     </item>
     
     <item>
@@ -34,7 +34,7 @@
       <pubDate>Sat, 07 May 2022 17:53:05 +0800</pubDate>
       
       <guid>https://dev2ero.github.io/main/flink/</guid>
-      <description> https://foada.github.io/ https://fromhex.cn/ https://blog.xiabee.cn/ https://migraine-sudo.github.io/ https://m4x.fun/ https://ifpop.github.io/ https://blog.fkynjyq.com/ https://eacryo.gitee.io/ https://vang3lis.github.io/ https://emptystack.top/ https://l1b0.github.io/ https://yourbutterfly.github.io/  BigBrothers  https://eternalsakura13.com/ https://lancern.xyz/ http://www.aloxaf.com/ https://www.ksroido.art/ https://blog.flanker017.me/ https://thunderjie.github.io/ http://blog.eonew.cn/ https://xuanxuanblingbling.github.io/ https://chenx6.github.io/  </description>
+      <description> https://foada.github.io/ https://fromhex.cn/ https://blog.xiabee.cn/ https://migraine-sudo.github.io/ https://m4x.fun/ https://ifpop.github.io/ https://blog.fkynjyq.com/ https://eacryo.gitee.io/ https://vang3lis.github.io/ https://emptystack.top/ https://l1b0.github.io/ https://yourbutterfly.github.io/  BigBrothers  https://eternalsakura13.com/ https://lancern.xyz/ http://www.aloxaf.com/ https://kiprey.github.io/ https://www.ksroido.art/ https://blog.flanker017.me/ https://thunderjie.github.io/ http://blog.eonew.cn/ https://xuanxuanblingbling.github.io/ https://chenx6.github.io/ https://blog.kyrios.cn/ https://etenal.me/ https://a1ex.online/ http://p4nda.top/ https://o0xmuhe.github.io/ https://evilpan.com/  </description>
     </item>
     
     <item>
@@ -43,8 +43,8 @@
       <pubDate>Sat, 07 May 2022 16:53:05 +0800</pubDate>
       
       <guid>https://dev2ero.github.io/main/board/</guid>
-      <description>自用 dotfiles .zshrc export LS_COLORS=&amp;#34;di=34:ln=35:so=32:pi=33:ex=31:bd=34:cd=34:su=30:sg=30:tw=30:ow=30&amp;#34; export PROMPT_EOL_MARK=&amp;#39;↵&amp;#39; ZSH_THEME=&amp;#34;avit&amp;#34; # ZSH_THEME=&amp;#34;robbyrussell&amp;#34; # ZSH_THEME=&amp;#34;refined&amp;#34; # ZSH_THEME=&amp;#34;agnoster&amp;#34; plugins=( git sudo zsh-autosuggestions zsh-syntax-highlighting ) source $ZSH/oh-my-zsh.sh alias l=&amp;#39;/bin/ls&amp;#39; alias ls=&amp;#39;lsd&amp;#39; alias ll=&amp;#39;ls -l&amp;#39; alias la=&amp;#39;ls -a&amp;#39; alias lla=&amp;#39;ls -la&amp;#39; alias lt=&amp;#39;ls --tree&amp;#39; alias ipy=&amp;#39;ipython3&amp;#39; alias py=&amp;#39;python3 -q&amp;#39; alias f.n=&amp;#39;find . -name&amp;#39; alias pms=&amp;#39;python -m http.server&amp;#39; alias v=&amp;#39;nvim&amp;#39; 配合使用：
- lsd美化ls：https://github.com/Peltoche/lsd  lsd需配合nerdfont：https://www.nerdfonts.com/   插件zsh-syntax-highlighting：https://github.com/zsh-users/zsh-syntax-highlighting 插件zsh-autosuggestions：https://github.com/zsh-users/zsh-autosuggestions  init.vim set number set noshowmode set expandtab set tabstop=4 set shiftwidth=4 set encoding=utf-8 set fileencodings=utf-8,gbk,gb2312 inoremap jj &amp;lt;Esc&amp;gt; nnoremap &amp;lt;Esc&amp;gt; ZZ nnoremap &amp;lt;C-t&amp;gt; &amp;lt;C-w&amp;gt;s&amp;lt;C-w&amp;gt;j:terminal&amp;lt;CR&amp;gt;i tnoremap &amp;lt;Esc&amp;gt; &amp;lt;C-\&amp;gt;&amp;lt;C-n&amp;gt; call plug#begin() Plug &amp;#39;neoclide/coc.</description>
+      <description>自用 dotfiles .zshrc export LS_COLORS=&amp;#34;di=34:ln=35:so=32:pi=33:ex=31:bd=34:cd=34:su=30:sg=30:tw=30:ow=30&amp;#34; export PROMPT_EOL_MARK=&amp;#39;↵&amp;#39;  ZSH_THEME=&amp;#34;avit&amp;#34; # ZSH_THEME=&amp;#34;robbyrussell&amp;#34; # ZSH_THEME=&amp;#34;refined&amp;#34; # ZSH_THEME=&amp;#34;agnoster&amp;#34;  plugins=(  git  sudo  zsh-autosuggestions  zsh-syntax-highlighting )  source $ZSH/oh-my-zsh.sh  alias l=&amp;#39;/bin/ls&amp;#39; alias ls=&amp;#39;lsd&amp;#39; alias ll=&amp;#39;ls -l&amp;#39; alias la=&amp;#39;ls -a&amp;#39; alias lla=&amp;#39;ls -la&amp;#39; alias lt=&amp;#39;ls --tree&amp;#39; alias ipy=&amp;#39;ipython3&amp;#39; alias py=&amp;#39;python3 -q&amp;#39; alias f.n=&amp;#39;find . -name&amp;#39; alias pms=&amp;#39;python -m http.server&amp;#39; alias v=&amp;#39;nvim&amp;#39; 配合使用：
+ lsd美化ls：https://github.com/Peltoche/lsd  lsd需配合nerdfont：https://www.nerdfonts.com/   插件zsh-syntax-highlighting：https://github.com/zsh-users/zsh-syntax-highlighting 插件zsh-autosuggestions：https://github.com/zsh-users/zsh-autosuggestions  init.</description>
     </item>
     
     <item>

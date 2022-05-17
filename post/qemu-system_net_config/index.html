@@ -12,7 +12,7 @@
     <meta itemprop="description" content="linux guest os">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
     
-    <link rel="stylesheet" href="https://dev2ero.github.io/scss/style.min.4a5f391b929320bd1a57298f874836c209f535ef2480eb9d5ba98ad43491dc9d.css" >
+    <link rel="stylesheet" href="https://dev2ero.github.io/scss/style.min.5cc161ce25a37cfa33a6a8df8803b39268d6c4b6a5be5bb9d1f929e7f113117f.css" >
 </head>
 <body>
     <header>
@@ -197,10 +197,10 @@
   
     <div class="post-content"><p>首先准备网桥与tun/tap虚拟网卡：</p>
 <p>创建网桥br0：</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">sudo brctl addbr br0
-</code></pre></div><p>为当前用户创建tun/tap虚拟网卡tap0：</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">tunctl -t tap0 -u <span style="color:#d14">${</span><span style="color:#008080">USER</span><span style="color:#d14">}</span>
-</code></pre></div><p>若发现brctl与tunctl命令未找到，则需要先安装相应软件包。这里推荐一个网站，可以方便的查询一个命令在不同软件源中对应的包名：<a href="https://command-not-found.com/">https://command-not-found.com/</a>（专治command not found 20 年）</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>sudo brctl addbr br0
+</span></span></code></pre></div><p>为当前用户创建tun/tap虚拟网卡tap0：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>tunctl -t tap0 -u <span style="color:#d14">${</span><span style="color:#008080">USER</span><span style="color:#d14">}</span>
+</span></span></code></pre></div><p>若发现brctl与tunctl命令未找到，则需要先安装相应软件包。这里推荐一个网站，可以方便的查询一个命令在不同软件源中对应的包名：<a href="https://command-not-found.com/">https://command-not-found.com/</a>（专治command not found 20 年）</p>
 </div>
   
 </article>
