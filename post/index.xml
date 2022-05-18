@@ -19,8 +19,9 @@
 sudo apt source sudo 却被告知：
 NOTICE: &amp;#39;sudo&amp;#39; packaging is maintained in the &amp;#39;Git&amp;#39; version control system at: https://salsa.debian.org/sudo-team/sudo.git Please use: git clone https://salsa.debian.org/sudo-team/sudo.git to retrieve the latest (possibly unreleased) updates to the package. 于是听话，从git仓库获取源码：
 git clone https://salsa.debian.org/sudo-team/sudo.git 接下来进行构建：
-# clone configure make git reset --hard 36955b3ef399efeea25824d32e6cfbaa444e9f07 # v1.9.5p1 ./configure --sysconfdir=`pwd`/examples --with-plugindir=`pwd`/plugins/sudoers/.libs make -j`nproc` 漏洞成因 sudo.c 中的 main 函数，会调用 parse_args 函数来处理sudo的命令行参数：
-/* Parse command line arguments. */ sudo_mode = parse_args(argc, argv, &amp;amp;submit_optind, &amp;amp;nargc, &amp;amp;nargv, &amp;amp;settings, &amp;amp;env_add); parse_args 函数于 parse_args.</description>
+# clone configure make git reset --hard 36955b3ef399efeea25824d32e6cfbaa444e9f07 # v1.9.5p1 CFLAGS+=-g ./configure --sysconfdir=`pwd`/examples --with-plugindir=`pwd`/plugins/sudoers/.libs make -j`nproc` 构建完成后在root用户下可以执行测试：
+LD_LIBRARY_PATH=./lib/util/.libs/ src/.libs/sudo 验证编译目标的确存在漏洞，前需事先创建名为 sudoedit 的 sudo 的软链接以绕过后续检查：
+cd src/.libs ln -s sudo sudoedit cd .</description>
     </item>
     
     <item>
@@ -150,7 +151,7 @@ kernel Linux kernel v4.1 for armel as an example. Compiling a linux kernel requi
       <pubDate>Sat, 07 May 2022 22:53:05 +0800</pubDate>
       
       <guid>https://dev2ero.github.io/post/awesome_colors/</guid>
-      <description>Awesome colors 波尔多红#4f0009克莱因蓝#002FA7普鲁士蓝#003153勃艮第红#800020邦迪蓝#0095b6木乃伊棕#8f4b28卡布里蓝#1a5599提香红#b05923蒂芙尼蓝#81d8d0覆盆子红#9e2e24虎皮黄#e2af42薄荷绿#407d52草黄#cfb64a星蓝#9ab4cd鸢尾蓝#418ab4苋菜紫#8e2961钢蓝#101420云峰白#dae3e6岩石棕#8c502c橄榄石绿#b8ce8e竹绿#4fa485钴蓝#4692b9月影白#c2c4c3笋皮棕#6b331a琉璃蓝#22406a黛蓝#3f4f65青白#bee0d0墨色#4e606c黯#3f545b玄青#3b3a4e漆黑#141722玄色#370708</description>
+      <description>Awesome colors 波尔多红 #4f0009  克莱因蓝 #002FA7  普鲁士蓝 #003153  勃艮第红 #800020  邦迪蓝 #0095b6  木乃伊棕 #8f4b28  卡布里蓝 #1a5599  提香红 #b05923  蒂芙尼蓝 #81d8d0  覆盆子红 #9e2e24  虎皮黄 #e2af42  薄荷绿 #407d52  草黄 #cfb64a  星蓝 #9ab4cd  鸢尾蓝 #418ab4  苋菜紫 #8e2961  钢蓝 #101420  云峰白 #dae3e6  岩石棕 #8c502c  橄榄石绿 #b8ce8e  竹绿 #4fa485  钴蓝 #4692b9  月影白 #c2c4c3  笋皮棕 #6b331a  琉璃蓝 #22406a  黛蓝 #3f4f65  青白 #bee0d0  墨色 #4e606c  黯 #3f545b  玄青 #3b3a4e  漆黑 #141722  玄色 #370708  </description>
     </item>
     
     <item>

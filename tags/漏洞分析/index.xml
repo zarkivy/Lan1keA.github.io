@@ -19,8 +19,9 @@
 sudo apt source sudo 却被告知：
 NOTICE: &amp;#39;sudo&amp;#39; packaging is maintained in the &amp;#39;Git&amp;#39; version control system at: https://salsa.debian.org/sudo-team/sudo.git Please use: git clone https://salsa.debian.org/sudo-team/sudo.git to retrieve the latest (possibly unreleased) updates to the package. 于是听话，从git仓库获取源码：
 git clone https://salsa.debian.org/sudo-team/sudo.git 接下来进行构建：
-# clone configure make git reset --hard 36955b3ef399efeea25824d32e6cfbaa444e9f07 # v1.9.5p1 ./configure --sysconfdir=`pwd`/examples --with-plugindir=`pwd`/plugins/sudoers/.libs make -j`nproc` 漏洞成因 sudo.c 中的 main 函数，会调用 parse_args 函数来处理sudo的命令行参数：
-/* Parse command line arguments. */ sudo_mode = parse_args(argc, argv, &amp;amp;submit_optind, &amp;amp;nargc, &amp;amp;nargv, &amp;amp;settings, &amp;amp;env_add); parse_args 函数于 parse_args.</description>
+# clone configure make git reset --hard 36955b3ef399efeea25824d32e6cfbaa444e9f07 # v1.9.5p1 CFLAGS+=-g ./configure --sysconfdir=`pwd`/examples --with-plugindir=`pwd`/plugins/sudoers/.libs make -j`nproc` 构建完成后在root用户下可以执行测试：
+LD_LIBRARY_PATH=./lib/util/.libs/ src/.libs/sudo 验证编译目标的确存在漏洞，前需事先创建名为 sudoedit 的 sudo 的软链接以绕过后续检查：
+cd src/.libs ln -s sudo sudoedit cd .</description>
     </item>
     
   </channel>

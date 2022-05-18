@@ -282,7 +282,7 @@
 </span></span></code></pre></div><blockquote>
 <p>不支持socks5协议</p>
 </blockquote>
-<h4 id="curl">curl</h4>
+<h4 id="curlwget">curl、wget</h4>
 <p>许多posix标准的命令行程序会遵从两个环境变量：</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#0086b3">export</span> <span style="color:#008080">http_proxy</span><span style="color:#000;font-weight:bold">=</span>http://proxyserver:port/
 </span></span><span style="display:flex;"><span><span style="color:#0086b3">export</span> <span style="color:#008080">https_proxy</span><span style="color:#000;font-weight:bold">=</span>https://proxyserver:port/
@@ -290,7 +290,9 @@
 <p>同时，也可以使用curl的<code>-x</code>、<code>--proxy</code>参数达到同样效果：</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>-x, --proxy &lt;<span style="color:#000;font-weight:bold">[</span>protocol://<span style="color:#000;font-weight:bold">][</span>user:password@<span style="color:#000;font-weight:bold">]</span>proxyhost<span style="color:#000;font-weight:bold">[</span>:port<span style="color:#000;font-weight:bold">]</span>&gt;
 </span></span></code></pre></div><p>若想要curl的代理配置永久生效，向<code>~/.curlrc</code>写入：<code>socks5 = &quot;127.0.0.1:1080&quot;</code>。</p>
-</div>
+<p>同时，curl遵循但wget不遵循的环境变量为：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#0086b3">export</span> <span style="color:#008080">all_proxy</span><span style="color:#000;font-weight:bold">=</span>http://proxyserver:port/
+</span></span></code></pre></div></div>
   
 </article>
 <button class="floating-button">
