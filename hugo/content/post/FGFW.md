@@ -123,7 +123,7 @@ Acquire::https::Proxy "http://127.0.0.1:1080/";
 
 > 不支持socks5协议
 
-#### curl
+#### curl、wget
 
 许多posix标准的命令行程序会遵从两个环境变量：
 
@@ -141,3 +141,10 @@ curl也是其中之一。
 ```
 
 若想要curl的代理配置永久生效，向`~/.curlrc`写入：`socks5 = "127.0.0.1:1080"`。
+
+同时，curl遵循但wget不遵循的环境变量为：
+
+```sh
+export all_proxy=http://proxyserver:port/
+```
+
