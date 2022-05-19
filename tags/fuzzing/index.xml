@@ -9,17 +9,23 @@
     <copyright>© 2022, Zikey Vi</copyright>
     <lastBuildDate>Wed, 11 May 2022 13:57:01 +0800</lastBuildDate><atom:link href="https://dev2ero.github.io/tags/fuzzing/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>ZKV的Fuzzing学习之路</title>
+      <title>ZKV的Fuzzing早教</title>
       <link>https://dev2ero.github.io/post/fuzzer_zkv/</link>
       <pubDate>Wed, 11 May 2022 13:57:01 +0800</pubDate>
       
       <guid>https://dev2ero.github.io/post/fuzzer_zkv/</guid>
-      <description>\x00 早教教程 教程 谷歌的Fuzzing教程 https://github.com/google/fuzzing
-Flanker的Fuzzing战争 Fuzzing战争: 从刀剑弓斧到星球大战
+      <description>\x00 早教教程 教程 谷歌的Fuzzing教程
+Fuzzingbook
+课程 南京大学：软件分析
+南京大学：软件分析课程视频
+博文 Fuzzing战争: 从刀剑弓斧到星球大战
 Fuzzing战争系列之二：不畏浮云遮望眼
-论文 练兵场 Fuzzing101
+练兵场 Fuzzing101
 兵器 AFL
-AFLplusplus</description>
+AFLplusplus
+\x01 学步车 最简单的 fuzzing demo 使用AFL，故先安装：
+git clone https://github.com/google/AFL.git cd AFL make -j`nproc` sudo make install 接着准备被测程序源码：
+#include &amp;lt;stdio.h&amp;gt;#include &amp;lt;string.h&amp;gt; #include &amp;lt;signal.h&amp;gt; int vuln(char *str) {  int len = strlen(str);  if(str[0] == &amp;#39;A&amp;#39; &amp;amp;&amp;amp; len == 66)  raise(SIGSEGV);  else if(str[0] == &amp;#39;F&amp;#39; &amp;amp;&amp;amp; len == 6)  raise(SIGSEGV);  else  puts(&amp;#34;\nnothing happened&amp;#34;);  return 0; } int main(int argc, char *argv[]) {  char buf[100]={0};  gets(buf);  printf(buf);  vuln(buf);  return 0; } 使用afl-gcc插装编译：</description>
     </item>
     
   </channel>

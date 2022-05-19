@@ -4,11 +4,11 @@
     <title>やれやれ DA✰ZE</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="from 0 to 1" />
-    <meta property="og:title" content="ZKV的Fuzzing学习之路" />
+    <meta property="og:title" content="ZKV的Fuzzing早教" />
     <meta property="og:description" content="from 0 to 1" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://dev2ero.github.io/post/fuzzer_zkv/" />
-    <meta itemprop="name" content="ZKV的Fuzzing学习之路">
+    <meta itemprop="name" content="ZKV的Fuzzing早教">
     <meta itemprop="description" content="from 0 to 1">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
     
@@ -19,7 +19,7 @@
     <div class="header header-frame">
         <div>
           
-            <h1 class="header__title">ZKV的Fuzzing学习之路</h1>
+            <h1 class="header__title">ZKV的Fuzzing早教</h1>
           
             
                 <div class="header__description">from 0 to 1</div>
@@ -194,19 +194,140 @@
 <article class="post">
   
     <div class="post-content"><h2 id="x00-早教教程">\x00 早教教程</h2>
-<h2 id="教程">教程</h2>
-<h3 id="谷歌的fuzzing教程">谷歌的Fuzzing教程</h3>
-<p><a href="https://github.com/google/fuzzing">https://github.com/google/fuzzing</a></p>
-<h4 id="flanker的fuzzing战争">Flanker的Fuzzing战争</h4>
+<h3 id="教程">教程</h3>
+<p><a href="https://github.com/google/fuzzing">谷歌的Fuzzing教程</a></p>
+<p><a href="https://www.fuzzingbook.org/">Fuzzingbook</a></p>
+<h3 id="课程">课程</h3>
+<p><a href="https://pascal-group.bitbucket.io/teaching.html">南京大学：软件分析</a></p>
+<p><a href="https://www.bilibili.com/video/BV1b7411K7P4/?spm_id_from=333.788.videocard.1">南京大学：软件分析课程视频</a></p>
+<h3 id="博文">博文</h3>
 <p><a href="https://blog.flanker017.me/fuzzing%e6%88%98%e4%ba%89-%e4%bb%8e%e5%88%80%e5%89%91%e5%bc%93%e6%96%a7%e5%88%b0%e6%98%9f%e7%90%83%e5%a4%a7%e6%88%98/">Fuzzing战争: 从刀剑弓斧到星球大战</a></p>
 <p><a href="https://blog.flanker017.me/fuzzing%e6%88%98%e4%ba%89%e7%b3%bb%e5%88%97%e4%b9%8b%e4%ba%8c%ef%bc%9a%e4%b8%8d%e7%95%8f%e6%b5%ae%e4%ba%91%e9%81%ae%e6%9c%9b%e7%9c%bc/">Fuzzing战争系列之二：不畏浮云遮望眼</a></p>
-<h2 id="论文">论文</h2>
-<h2 id="练兵场">练兵场</h2>
+<h3 id="练兵场">练兵场</h3>
 <p><a href="https://github.com/antonio-morales/Fuzzing101">Fuzzing101</a></p>
-<h2 id="兵器">兵器</h2>
+<h3 id="兵器">兵器</h3>
 <p><a href="https://github.com/google/AFL">AFL</a></p>
 <p><a href="https://github.com/AFLplusplus/AFLplusplus">AFLplusplus</a></p>
-</div>
+<h2 id="x01-学步车">\x01 学步车</h2>
+<h3 id="最简单的-fuzzing-demo">最简单的 fuzzing demo</h3>
+<p>使用AFL，故先安装：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>git clone https://github.com/google/AFL.git
+</span></span><span style="display:flex;"><span><span style="color:#0086b3">cd</span> AFL
+</span></span><span style="display:flex;"><span>make -j<span style="color:#d14">`</span>nproc<span style="color:#d14">`</span>
+</span></span><span style="display:flex;"><span>sudo make install
+</span></span></code></pre></div><p>接着准备被测程序源码：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#999;font-weight:bold;font-style:italic">#include</span> <span style="color:#999;font-weight:bold;font-style:italic">&lt;stdio.h&gt;</span><span style="color:#999;font-weight:bold;font-style:italic">
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-weight:bold;font-style:italic">#include</span> <span style="color:#999;font-weight:bold;font-style:italic">&lt;string.h&gt; </span><span style="color:#999;font-weight:bold;font-style:italic">
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-weight:bold;font-style:italic">#include</span> <span style="color:#999;font-weight:bold;font-style:italic">&lt;signal.h&gt; </span><span style="color:#999;font-weight:bold;font-style:italic">
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-weight:bold;font-style:italic"></span><span style="color:#458;font-weight:bold">int</span> <span style="color:#900;font-weight:bold">vuln</span>(<span style="color:#458;font-weight:bold">char</span> <span style="color:#000;font-weight:bold">*</span>str) {
+</span></span><span style="display:flex;"><span>    <span style="color:#458;font-weight:bold">int</span> len <span style="color:#000;font-weight:bold">=</span> strlen(str);
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">if</span>(str[<span style="color:#099">0</span>] <span style="color:#000;font-weight:bold">==</span> <span style="color:#d14">&#39;A&#39;</span> <span style="color:#000;font-weight:bold">&amp;&amp;</span> len <span style="color:#000;font-weight:bold">==</span> <span style="color:#099">66</span>)
+</span></span><span style="display:flex;"><span>        raise(SIGSEGV);
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">else</span> <span style="color:#000;font-weight:bold">if</span>(str[<span style="color:#099">0</span>] <span style="color:#000;font-weight:bold">==</span> <span style="color:#d14">&#39;F&#39;</span> <span style="color:#000;font-weight:bold">&amp;&amp;</span> len <span style="color:#000;font-weight:bold">==</span> <span style="color:#099">6</span>)
+</span></span><span style="display:flex;"><span>        raise(SIGSEGV);
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">else</span>
+</span></span><span style="display:flex;"><span>        puts(<span style="color:#d14">&#34;</span><span style="color:#d14">\n</span><span style="color:#d14">nothing happened&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">return</span> <span style="color:#099">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#458;font-weight:bold">int</span> <span style="color:#900;font-weight:bold">main</span>(<span style="color:#458;font-weight:bold">int</span> argc, <span style="color:#458;font-weight:bold">char</span> <span style="color:#000;font-weight:bold">*</span>argv[]) {
+</span></span><span style="display:flex;"><span>    <span style="color:#458;font-weight:bold">char</span> buf[<span style="color:#099">100</span>]<span style="color:#000;font-weight:bold">=</span>{<span style="color:#099">0</span>};
+</span></span><span style="display:flex;"><span>    gets(buf);
+</span></span><span style="display:flex;"><span>    printf(buf);
+</span></span><span style="display:flex;"><span>    vuln(buf);
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">return</span> <span style="color:#099">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>使用afl-gcc插装编译：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>afl-gcc vulner.c -o vulner
+</span></span></code></pre></div><p>准备fuzzing输入与输出的文件夹：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>mkdir fuzz_in fuzz_out
+</span></span></code></pre></div><p>创建两个样例输入：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#0086b3">echo</span> -n AAAA &gt; fuzz_in/input_case_1
+</span></span><span style="display:flex;"><span><span style="color:#0086b3">echo</span> -e -n <span style="color:#d14">&#34;\x01\x02\x03\x04&#34;</span> &gt; fuzz_in/input_case_2
+</span></span></code></pre></div><p>启动fuzzing：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>afl-fuzz -i fuzz_in -o fuzz_out ./vulner
+</span></span></code></pre></div><p>Ctrl+C停止后，由fuzzing_out中拿到fuzzing结果。用其中的一个crash输入测试下：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>➜ ./vulner &lt; fuzz_out/crashes/id:000000,sig:06,src:000000,op:havoc,rep:32
+</span></span><span style="display:flex;"><span><span style="color:#099">6666</span>
+</span></span><span style="display:flex;"><span>nothing happened
+</span></span><span style="display:flex;"><span>*** stack smashing detected ***: terminated
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>1<span style="color:#000;font-weight:bold">]</span>    <span style="color:#099">1541204</span> abort      ./vulner &lt; fuzz_out/crashes/id:000000,sig:06,src:000000,op:havoc,rep:32
+</span></span></code></pre></div><p>可以看到发生了栈溢出。</p>
+<h3 id="为学步车装上名为sanitizers的轮子">为学步车装上名为sanitizers的轮子</h3>
+<p>借助于<a href="https://github.com/google/sanitizers">sanitizers</a>获得更多崩溃的详细信息：</p>
+<p>开启<a href="https://github.com/google/fuzzing/blob/master/docs/ASan">AddressSanitizer</a>重新编译程序：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span> afl-clang -fsanitize<span style="color:#000;font-weight:bold">=</span>address vulner.c -o vulner
+</span></span></code></pre></div><p>使用上一部分相同的crash输入用例，来测试打开了AddressSanitizer的程序：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>➜ ./vulner &lt; fuzz_out/crashes/id:000000,sig:06,src:000000,op:havoc,rep:32
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">=================================================================</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">==</span><span style="color:#008080">1541245</span><span style="color:#000;font-weight:bold">==</span>ERROR: AddressSanitizer: stack-buffer-overflow on address 0x7ffe9090e564 at pc 0x0000004393cb bp 0x7ffe9090e3a0 sp 0x7ffe9090db28
+</span></span><span style="display:flex;"><span>READ of size <span style="color:#099">116</span> at 0x7ffe9090e564 thread T0
+</span></span><span style="display:flex;"><span>    <span style="color:#998;font-style:italic">#0 0x4393ca in printf_common(void*, char const*, __va_list_tag*) (/f/lab/fuzzing_baby/vulner+0x4393ca)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#998;font-style:italic">#1 0x43af1e in printf (/f/lab/fuzzing_baby/vulner+0x43af1e)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#998;font-style:italic">#2 0x4c3418 in main /root/lab/fuzzing_baby/vulner.c:17:5</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#998;font-style:italic">#3 0x7f09a7252082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#998;font-style:italic">#4 0x41b33d in _start (/f/lab/fuzzing_baby/vulner+0x41b33d)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Address 0x7ffe9090e564 is located in stack of thread T0 at offset <span style="color:#099">132</span> in frame
+</span></span><span style="display:flex;"><span>    <span style="color:#998;font-style:italic">#0 0x4c32cf in main /root/lab/fuzzing_baby/vulner.c:14</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  This frame has <span style="color:#099">1</span> object<span style="color:#000;font-weight:bold">(</span>s<span style="color:#000;font-weight:bold">)</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">[</span>32, 132<span style="color:#000;font-weight:bold">)</span> <span style="color:#d14">&#39;buf&#39;</span> <span style="color:#000;font-weight:bold">(</span>line 15<span style="color:#000;font-weight:bold">)</span> &lt;<span style="color:#000;font-weight:bold">==</span> Memory access at offset <span style="color:#099">132</span> overflows this variable
+</span></span><span style="display:flex;"><span>HINT: this may be a <span style="color:#0086b3">false</span> positive <span style="color:#000;font-weight:bold">if</span> your program uses some custom stack unwind mechanism, swapcontext or vfork
+</span></span><span style="display:flex;"><span>      <span style="color:#000;font-weight:bold">(</span>longjmp and C++ exceptions *are* supported<span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>SUMMARY: AddressSanitizer: stack-buffer-overflow <span style="color:#000;font-weight:bold">(</span>/f/lab/fuzzing_baby/vulner+0x4393ca<span style="color:#000;font-weight:bold">)</span> in printf_common<span style="color:#000;font-weight:bold">(</span>void*, char const*, __va_list_tag*<span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>Shadow bytes around the buggy address:
+</span></span><span style="display:flex;"><span>  0x100052119c50: <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span>
+</span></span><span style="display:flex;"><span>  0x100052119c60: <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span>
+</span></span><span style="display:flex;"><span>  0x100052119c70: <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span>
+</span></span><span style="display:flex;"><span>  0x100052119c80: <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span>
+</span></span><span style="display:flex;"><span>  0x100052119c90: <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> f1 f1 f1 <span style="color:#008080">f1</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">=</span>&gt;0x100052119ca0: <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> 00<span style="color:#000;font-weight:bold">[</span>04<span style="color:#000;font-weight:bold">]</span>f3 f3 f3
+</span></span><span style="display:flex;"><span>  0x100052119cb0: f3 f3 f3 f3 <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span>
+</span></span><span style="display:flex;"><span>  0x100052119cc0: <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span>
+</span></span><span style="display:flex;"><span>  0x100052119cd0: <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span>
+</span></span><span style="display:flex;"><span>  0x100052119ce0: <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span>
+</span></span><span style="display:flex;"><span>  0x100052119cf0: <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span>
+</span></span><span style="display:flex;"><span>Shadow byte legend <span style="color:#000;font-weight:bold">(</span>one shadow byte represents <span style="color:#099">8</span> application bytes<span style="color:#000;font-weight:bold">)</span>:
+</span></span><span style="display:flex;"><span>  Addressable:           <span style="color:#099">00</span>
+</span></span><span style="display:flex;"><span>  Partially addressable: <span style="color:#099">01</span> <span style="color:#099">02</span> <span style="color:#099">03</span> <span style="color:#099">04</span> <span style="color:#099">05</span> <span style="color:#099">06</span> <span style="color:#099">07</span>
+</span></span><span style="display:flex;"><span>  Heap left redzone:       fa
+</span></span><span style="display:flex;"><span>  Freed heap region:       fd
+</span></span><span style="display:flex;"><span>  Stack left redzone:      f1
+</span></span><span style="display:flex;"><span>  Stack mid redzone:       f2
+</span></span><span style="display:flex;"><span>  Stack right redzone:     f3
+</span></span><span style="display:flex;"><span>  Stack after <span style="color:#000;font-weight:bold">return</span>:      f5
+</span></span><span style="display:flex;"><span>  Stack use after scope:   f8
+</span></span><span style="display:flex;"><span>  Global redzone:          f9
+</span></span><span style="display:flex;"><span>  Global init order:       f6
+</span></span><span style="display:flex;"><span>  Poisoned by user:        f7
+</span></span><span style="display:flex;"><span>  Container overflow:      <span style="color:#0086b3">fc</span>
+</span></span><span style="display:flex;"><span>  Array cookie:            ac
+</span></span><span style="display:flex;"><span>  Intra object redzone:    bb
+</span></span><span style="display:flex;"><span>  ASan internal:           fe
+</span></span><span style="display:flex;"><span>  Left alloca redzone:     ca
+</span></span><span style="display:flex;"><span>  Right alloca redzone:    cb
+</span></span><span style="display:flex;"><span>  Shadow gap:              <span style="color:#008080">cc</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">==</span><span style="color:#008080">1541245</span><span style="color:#000;font-weight:bold">==</span>ABORTING
+</span></span></code></pre></div><p>由此得到了crash的详细信息输出。</p>
+<h3 id="黑盒测试qemu-mode拆走源码の轮儿">黑盒测试QEMU mode——拆走源码の轮儿</h3>
+<p>AFL的QEMU mode不会默认安装，而是需要我们手动安装：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>sudo apt install libtool libtool-bin libcapstone-dev
+</span></span><span style="display:flex;"><span><span style="color:#0086b3">cd</span> AFL/qemu_mode
+</span></span><span style="display:flex;"><span>./build_qemu_support.sh
+</span></span><span style="display:flex;"><span><span style="color:#0086b3">cd</span> ..
+</span></span><span style="display:flex;"><span>sudo make install 
+</span></span></code></pre></div><p>如果遇到编译错误，可以使用这份fork：https://github.com/blurbdust/AFL.git</p>
+<p>不插桩重新编译程序：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>gcc vulner.c -o vulner
+</span></span></code></pre></div><p>开始QEMU mode黑盒fuzzing</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>afl-fuzz -Q -i fuzz_in -o fuzz_out ./vulner
+</span></span></code></pre></div><h3 id="afl并发学步车的四缸引擎">AFL并发——学步车的四缸引擎</h3>
+<p>通过-M指定master fuzzer进程，-S指定一系列slave fuzzer进程即可。四核机器就：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>afl-fuzz -i fuzz_in -o fuzz_out -M fuzzer1 ./vulner
+</span></span><span style="display:flex;"><span>afl-fuzz -i fuzz_in -o fuzz_out -S fuzzer2 ./vulner
+</span></span><span style="display:flex;"><span>afl-fuzz -i fuzz_in -o fuzz_out -S fuzzer3 ./vulner
+</span></span><span style="display:flex;"><span>afl-fuzz -i fuzz_in -o fuzz_out -S fuzzer4 ./vulner
+</span></span></code></pre></div></div>
   
 </article>
 <button class="floating-button">
