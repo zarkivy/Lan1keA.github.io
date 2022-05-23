@@ -2,7 +2,7 @@
 title: "Linux系统调用大全"
 description: "multi-instruction set"
 date: 2022-05-08T21:45:00+08:00
-tags: [ "linux" ]
+tags: [ "Linux" ]
 imagelink: "https://s2.loli.net/2022/05/08/1vXerd2a3qCgcfQ.jpg"
 ---
 

@@ -7,7 +7,18 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>© 2022, Zikey Vi</copyright>
-    <lastBuildDate>Fri, 13 May 2022 23:02:59 +0800</lastBuildDate><atom:link href="https://dev2ero.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 20 May 2022 17:57:07 +0800</lastBuildDate><atom:link href="https://dev2ero.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CVE-2014-0160 心脏滴血漏洞挖掘与分析</title>
+      <link>https://dev2ero.github.io/post/cve-2014-0160/</link>
+      <pubDate>Fri, 20 May 2022 17:57:07 +0800</pubDate>
+      
+      <guid>https://dev2ero.github.io/post/cve-2014-0160/</guid>
+      <description>Fuzzing 挖掘 CVE-2014-0160 使用Google的fuzzer-test-suite来实践，先构建包含漏洞的openssl：
+git clone https://github.com/google/fuzzer-test-suite.git mkdir CVE-2014-0160; cd CVE-2014-0160 ../fuzzer-test-suite/openssl-1.0.1f/build.sh This command will download the openssl sources at the affected revision and build the fuzzer for one specific API that has the bug, see openssl-1.0.1f/target.cc：
+// Copyright 2016 Google Inc. All Rights Reserved. // Licensed under the Apache License, Version 2.0 (the &amp;#34;License&amp;#34;); #include &amp;lt;openssl/ssl.h&amp;gt;#include &amp;lt;openssl/err.h&amp;gt;#include &amp;lt;assert.h&amp;gt;#include &amp;lt;stdint.h&amp;gt;#include &amp;lt;stddef.h&amp;gt; SSL_CTX *Init() {  SSL_library_init();  SSL_load_error_strings();  ERR_load_BIO_strings();  OpenSSL_add_all_algorithms();  SSL_CTX *sctx;  assert (sctx = SSL_CTX_new(TLSv1_method()));  /* These two file were created with this command: openssl req -x509 -newkey rsa:512 -keyout server.</description>
+    </item>
+    
     <item>
       <title>CVE-2021-3156 sudo 提权漏洞分析</title>
       <link>https://dev2ero.github.io/post/cve-2021-3156/</link>
@@ -73,7 +84,7 @@ Fuzzing战争系列之二：不畏浮云遮望眼
 练兵场 Fuzzing101
 兵器 AFL
 AFLplusplus
-\x01 学步车 最简单的 fuzzing demo 使用AFL，故先安装：
+\x01 学步车AFL 最简单的 fuzzing demo 使用AFL，故先安装：
 git clone https://github.com/google/AFL.git cd AFL make -j`nproc` sudo make install 接着准备被测程序源码：
 #include &amp;lt;stdio.h&amp;gt;#include &amp;lt;string.h&amp;gt; #include &amp;lt;signal.h&amp;gt; int vuln(char *str) {  int len = strlen(str);  if(str[0] == &amp;#39;A&amp;#39; &amp;amp;&amp;amp; len == 66)  raise(SIGSEGV);  else if(str[0] == &amp;#39;F&amp;#39; &amp;amp;&amp;amp; len == 6)  raise(SIGSEGV);  else  puts(&amp;#34;\nnothing happened&amp;#34;);  return 0; } int main(int argc, char *argv[]) {  char buf[100]={0};  gets(buf);  printf(buf);  vuln(buf);  return 0; } 使用afl-gcc插装编译：</description>
     </item>

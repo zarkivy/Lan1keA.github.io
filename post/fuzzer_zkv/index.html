@@ -119,7 +119,7 @@
                         
                           <li class="mb-header-nav-list__item ">
                         <a class="mb-header-nav-list__link" href="https://dev2ero.github.io/tags/fuzzing/"
-                                                            >fuzzing</a
+                                                            >Fuzzing</a
                                                         >
                     </li>
                         
@@ -208,7 +208,7 @@
 <h3 id="兵器">兵器</h3>
 <p><a href="https://github.com/google/AFL">AFL</a></p>
 <p><a href="https://github.com/AFLplusplus/AFLplusplus">AFLplusplus</a></p>
-<h2 id="x01-学步车">\x01 学步车</h2>
+<h2 id="x01-学步车afl">\x01 学步车AFL</h2>
 <h3 id="最简单的-fuzzing-demo">最简单的 fuzzing demo</h3>
 <p>使用AFL，故先安装：</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>git clone https://github.com/google/AFL.git
@@ -327,7 +327,179 @@
 </span></span><span style="display:flex;"><span>afl-fuzz -i fuzz_in -o fuzz_out -S fuzzer2 ./vulner
 </span></span><span style="display:flex;"><span>afl-fuzz -i fuzz_in -o fuzz_out -S fuzzer3 ./vulner
 </span></span><span style="display:flex;"><span>afl-fuzz -i fuzz_in -o fuzz_out -S fuzzer4 ./vulner
-</span></span></code></pre></div></div>
+</span></span></code></pre></div><h2 id="x02-四轮单车libfuzzer">\x02 四轮单车libFuzzer</h2>
+<h3 id="环境准备">环境准备</h3>
+<blockquote>
+<p>LibFuzzer is an in-process, coverage-guided, evolutionary fuzzing engine.</p>
+</blockquote>
+<ul>
+<li><a href="https://llvm.org/docs/LibFuzzer.html">官方文档</a></li>
+<li><a href="https://github.com/google/fuzzing/blob/master/tutorial/libFuzzerTutorial.md">Google的libFuzzer教程</a></li>
+</ul>
+<p>☝️接下来读一练二</p>
+<p>将教程仓库clone下来：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>git clone https://github.com/google/fuzzing.git fuzzing
+</span></span></code></pre></div><p>由于：</p>
+<blockquote>
+<p>Recent versions of Clang (starting from 6.0) include libFuzzer, and no extra installation is necessary.</p>
+</blockquote>
+<p>所以可以直接测试一下环境是否就绪：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>clang++ -g -fsanitize<span style="color:#000;font-weight:bold">=</span>address,fuzzer fuzzing/tutorial/libFuzzer/fuzz_me.cc
+</span></span><span style="display:flex;"><span>./a.out 2&gt;&amp;<span style="color:#099">1</span> | grep ERROR
+</span></span></code></pre></div><p>我得到了：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">==</span><span style="color:#008080">2118349</span><span style="color:#000;font-weight:bold">==</span>ERROR: AddressSanitizer: heap-buffer-overflow on address 0x60200003d473 at pc 0x000000550453 bp 0x7fff521da530 sp 0x7fff521da528
+</span></span></code></pre></div><p>看来没问题，继续前进。</p>
+<h3 id="火花塞打火demo拆解">火花塞打火——demo拆解</h3>
+<p>样例程序如下：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#998;font-style:italic">#include &lt;stdint.h&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">#include &lt;stddef.h&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>bool FuzzMe<span style="color:#000;font-weight:bold">(</span>const uint8_t *Data, size_t DataSize<span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000;font-weight:bold">return</span> DataSize &gt;<span style="color:#000;font-weight:bold">=</span> <span style="color:#099">3</span> <span style="color:#000;font-weight:bold">&amp;&amp;</span>
+</span></span><span style="display:flex;"><span>      Data<span style="color:#000;font-weight:bold">[</span>0<span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">==</span> <span style="color:#d14">&#39;F&#39;</span> <span style="color:#000;font-weight:bold">&amp;&amp;</span>
+</span></span><span style="display:flex;"><span>      Data<span style="color:#000;font-weight:bold">[</span>1<span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">==</span> <span style="color:#d14">&#39;U&#39;</span> <span style="color:#000;font-weight:bold">&amp;&amp;</span>
+</span></span><span style="display:flex;"><span>      Data<span style="color:#000;font-weight:bold">[</span>2<span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">==</span> <span style="color:#d14">&#39;Z&#39;</span> <span style="color:#000;font-weight:bold">&amp;&amp;</span>
+</span></span><span style="display:flex;"><span>      Data<span style="color:#000;font-weight:bold">[</span>3<span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">==</span> <span style="color:#d14">&#39;Z&#39;</span>;  // :‑&lt;
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>extern <span style="color:#d14">&#34;C&#34;</span> int LLVMFuzzerTestOneInput<span style="color:#000;font-weight:bold">(</span>const uint8_t *Data, size_t Size<span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>  FuzzMe<span style="color:#000;font-weight:bold">(</span>Data, Size<span style="color:#000;font-weight:bold">)</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#000;font-weight:bold">return</span> 0;
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
+</span></span></code></pre></div><p>使用libFuzzer时我们的Fuzz目标是？</p>
+<p>Definition: a <strong>fuzz target</strong> is a function that has the following signature and does something interesting with it&rsquo;s arguments:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">extern</span> <span style="color:#d14">&#34;C&#34;</span> <span style="color:#458;font-weight:bold">int</span> LLVMFuzzerTestOneInput(<span style="color:#000;font-weight:bold">const</span> <span style="color:#458;font-weight:bold">uint8_t</span> <span style="color:#000;font-weight:bold">*</span>Data, size_t Size) {
+</span></span><span style="display:flex;"><span>  DoSomethingWithData(Data, Size);
+</span></span><span style="display:flex;"><span>  <span style="color:#000;font-weight:bold">return</span> <span style="color:#099">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>所以对于样例程序，我们先准备好待测函数：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#458;font-weight:bold">bool</span> <span style="color:#900;font-weight:bold">FuzzMe</span>(<span style="color:#000;font-weight:bold">const</span> <span style="color:#458;font-weight:bold">uint8_t</span> <span style="color:#000;font-weight:bold">*</span>Data, size_t DataSize) {
+</span></span><span style="display:flex;"><span>  <span style="color:#000;font-weight:bold">return</span> DataSize <span style="color:#000;font-weight:bold">&gt;=</span> <span style="color:#099">3</span> <span style="color:#000;font-weight:bold">&amp;&amp;</span>
+</span></span><span style="display:flex;"><span>      Data[<span style="color:#099">0</span>] <span style="color:#000;font-weight:bold">==</span> <span style="color:#d14">&#39;F&#39;</span> <span style="color:#000;font-weight:bold">&amp;&amp;</span>
+</span></span><span style="display:flex;"><span>      Data[<span style="color:#099">1</span>] <span style="color:#000;font-weight:bold">==</span> <span style="color:#d14">&#39;U&#39;</span> <span style="color:#000;font-weight:bold">&amp;&amp;</span>
+</span></span><span style="display:flex;"><span>      Data[<span style="color:#099">2</span>] <span style="color:#000;font-weight:bold">==</span> <span style="color:#d14">&#39;Z&#39;</span> <span style="color:#000;font-weight:bold">&amp;&amp;</span>
+</span></span><span style="display:flex;"><span>      Data[<span style="color:#099">3</span>] <span style="color:#000;font-weight:bold">==</span> <span style="color:#d14">&#39;Z&#39;</span>;  <span style="color:#998;font-style:italic">// :‑&lt;
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>}
+</span></span></code></pre></div><p>在为其准备fuzz wrapper函数：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">extern</span> <span style="color:#d14">&#34;C&#34;</span> <span style="color:#458;font-weight:bold">int</span> LLVMFuzzerTestOneInput(<span style="color:#000;font-weight:bold">const</span> <span style="color:#458;font-weight:bold">uint8_t</span> <span style="color:#000;font-weight:bold">*</span>Data, size_t Size) {
+</span></span><span style="display:flex;"><span>  FuzzMe(Data, Size);
+</span></span><span style="display:flex;"><span>  <span style="color:#000;font-weight:bold">return</span> <span style="color:#099">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>使用版本6以上的clang，开启如下三个选项进行编译：</p>
+<ul>
+<li><code>-fsanitize=fuzzer</code> (required): provides in-process coverage information to libFuzzer and links with the libFuzzer runtime.</li>
+<li><code>-fsanitize=address</code> (recommended): enables <a href="http://clang.llvm.org/docs/AddressSanitizer.html">AddressSanitizer</a></li>
+<li><code>-g</code> (recommended): enables debug info, makes the error messages easier to read.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>clang<span style="color:#000;font-weight:bold">++</span> <span style="color:#000;font-weight:bold">-</span>g <span style="color:#000;font-weight:bold">-</span>fsanitize<span style="color:#000;font-weight:bold">=</span>address,fuzzer fuzzing<span style="color:#000;font-weight:bold">/</span>tutorial<span style="color:#000;font-weight:bold">/</span>libFuzzer<span style="color:#000;font-weight:bold">/</span>fuzz_me.cc
+</span></span></code></pre></div><p>运行编译出的程序，即输出了：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>➜  fuzzing git:<span style="color:#000;font-weight:bold">(</span>master<span style="color:#000;font-weight:bold">)</span> ✗ ./a.out
+</span></span><span style="display:flex;"><span>INFO: Seed: <span style="color:#099">122504861</span>
+</span></span><span style="display:flex;"><span>INFO: Loaded <span style="color:#099">1</span> modules   <span style="color:#000;font-weight:bold">(</span><span style="color:#099">7</span> inline 8-bit counters<span style="color:#000;font-weight:bold">)</span>: <span style="color:#099">7</span> <span style="color:#000;font-weight:bold">[</span>0x5a6eb0, 0x5a6eb7<span style="color:#000;font-weight:bold">)</span>,
+</span></span><span style="display:flex;"><span>INFO: Loaded <span style="color:#099">1</span> PC tables <span style="color:#000;font-weight:bold">(</span><span style="color:#099">7</span> PCs<span style="color:#000;font-weight:bold">)</span>: <span style="color:#099">7</span> <span style="color:#000;font-weight:bold">[</span>0x56b140,0x56b1b0<span style="color:#000;font-weight:bold">)</span>,
+</span></span><span style="display:flex;"><span>INFO: -max_len is not provided; libFuzzer will not generate inputs larger than <span style="color:#099">4096</span> bytes
+</span></span><span style="display:flex;"><span>INFO: A corpus is not provided, starting from an empty corpus
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">#2      INITED cov: 3 ft: 3 corp: 1/1b exec/s: 0 rss: 27Mb</span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">#3      NEW    cov: 4 ft: 4 corp: 2/5b lim: 4 exec/s: 0 rss: 27Mb L: 4/4 MS: 1 CrossOver-</span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">#13     REDUCE cov: 4 ft: 4 corp: 2/4b lim: 4 exec/s: 0 rss: 27Mb L: 3/3 MS: 5 ChangeBit-ShuffleBytes-ChangeByte-CrossOver-CrossOver-</span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">#446    REDUCE cov: 5 ft: 5 corp: 3/7b lim: 8 exec/s: 0 rss: 27Mb L: 3/3 MS: 3 ChangeByte-CopyPart-CMP- DE: &#34;F\x00&#34;-</span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">#4543   NEW    cov: 6 ft: 6 corp: 4/11b lim: 48 exec/s: 0 rss: 27Mb L: 4/4 MS: 2 InsertByte-ChangeByte-</span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">#4880   REDUCE cov: 6 ft: 6 corp: 4/10b lim: 48 exec/s: 0 rss: 27Mb L: 3/3 MS: 2 ChangeByte-EraseBytes-</span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">#7716   REDUCE cov: 7 ft: 7 corp: 5/14b lim: 74 exec/s: 0 rss: 27Mb L: 4/4 MS: 1 InsertByte-</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">=================================================================</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">==</span><span style="color:#008080">2119678</span><span style="color:#000;font-weight:bold">==</span>ERROR: AddressSanitizer: heap-buffer-overflow on address 0x6020000303f3 at pc 0x000000550453 bp 0x7fffcad0db90 sp 0x7fffcad0db88
+</span></span><span style="display:flex;"><span>READ of size <span style="color:#099">1</span> at 0x6020000303f3 thread T0
+</span></span><span style="display:flex;"><span>    <span style="color:#998;font-style:italic">#0 0x550452 in FuzzMe(unsigned char const*, unsigned long) /root/lab/fuzzing_baby/fuzzing/tutorial/libFuzzer/fuzz_me.cc:9:7</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#998;font-style:italic">#1 0x5504f4 in LLVMFuzzerTestOneInput /root/lab/fuzzing_baby/fuzzing/tutorial/libFuzzer/fuzz_me.cc:13:3</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#998;font-style:italic">#2 0x458671 in fuzzer::Fuzzer::ExecuteCallback(unsigned char const*, unsigned long) (/f/lab/fuzzing_baby/fuzzing/a.out+0x458671)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#998;font-style:italic">#3 0x457db5 in fuzzer::Fuzzer::RunOne(unsigned char const*, unsigned long, bool, fuzzer::InputInfo*, bool*) (/f/lab/fuzzing_baby/fuzzing/a.out+0x457db5)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#998;font-style:italic">#4 0x45a057 in fuzzer::Fuzzer::MutateAndTestOne() (/f/lab/fuzzing_baby/fuzzing/a.out+0x45a057)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#998;font-style:italic">#5 0x45ad55 in fuzzer::Fuzzer::Loop(std::__Fuzzer::vector&lt;fuzzer::SizedFile, fuzzer::fuzzer_allocator&lt;fuzzer::SizedFile&gt; &gt;&amp;) (/f/lab/fuzzing_baby/fuzzing/</span>
+</span></span><span style="display:flex;"><span>a.out+0x45ad55<span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#998;font-style:italic">#6 0x44970e in fuzzer::FuzzerDriver(int*, char***, int (*)(unsigned char const*, unsigned long)) (/f/lab/fuzzing_baby/fuzzing/a.out+0x44970e)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#998;font-style:italic">#7 0x472552 in main (/f/lab/fuzzing_baby/fuzzing/a.out+0x472552)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#998;font-style:italic">#8 0x7f9d13710082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#998;font-style:italic">#9 0x41e4ad in _start (/f/lab/fuzzing_baby/fuzzing/a.out+0x41e4ad)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>0x6020000303f3 is located <span style="color:#099">0</span> bytes to the right of 3-byte region <span style="color:#000;font-weight:bold">[</span>0x6020000303f0,0x6020000303f3<span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>allocated by thread T0 here:
+</span></span><span style="display:flex;"><span>    <span style="color:#998;font-style:italic">#0 0x51e1dd in malloc (/f/lab/fuzzing_baby/fuzzing/a.out+0x51e1dd)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#998;font-style:italic">#1 0x432897 in operator new(unsigned long) (/f/lab/fuzzing_baby/fuzzing/a.out+0x432897)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#998;font-style:italic">#2 0x457db5 in fuzzer::Fuzzer::RunOne(unsigned char const*, unsigned long, bool, fuzzer::InputInfo*, bool*) (/f/lab/fuzzing_baby/fuzzing/a.out+0x457db5)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#998;font-style:italic">#3 0x45a057 in fuzzer::Fuzzer::MutateAndTestOne() (/f/lab/fuzzing_baby/fuzzing/a.out+0x45a057)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#998;font-style:italic">#4 0x45ad55 in fuzzer::Fuzzer::Loop(std::__Fuzzer::vector&lt;fuzzer::SizedFile, fuzzer::fuzzer_allocator&lt;fuzzer::SizedFile&gt; &gt;&amp;) (/f/lab/fuzzing_baby/fuzzing/</span>
+</span></span><span style="display:flex;"><span>a.out+0x45ad55<span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#998;font-style:italic">#5 0x44970e in fuzzer::FuzzerDriver(int*, char***, int (*)(unsigned char const*, unsigned long)) (/f/lab/fuzzing_baby/fuzzing/a.out+0x44970e)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#998;font-style:italic">#6 0x472552 in main (/f/lab/fuzzing_baby/fuzzing/a.out+0x472552)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#998;font-style:italic">#7 0x7f9d13710082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>SUMMARY: AddressSanitizer: heap-buffer-overflow /root/lab/fuzzing_baby/fuzzing/tutorial/libFuzzer/fuzz_me.cc:9:7 in FuzzMe<span style="color:#000;font-weight:bold">(</span>unsigned char const*, unsigned long
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>Shadow bytes around the buggy address:
+</span></span><span style="display:flex;"><span>  0x0c047fffe020: fa fa fd fa fa fa fd fa fa fa fd fa fa fa fd fa
+</span></span><span style="display:flex;"><span>  0x0c047fffe030: fa fa fd fa fa fa fd fa fa fa fd fa fa fa fd fa
+</span></span><span style="display:flex;"><span>  0x0c047fffe040: fa fa fd fa fa fa fd fd fa fa fd fa fa fa fd fa
+</span></span><span style="display:flex;"><span>  0x0c047fffe050: fa fa fd fa fa fa fd fa fa fa fd fa fa fa fd fa
+</span></span><span style="display:flex;"><span>  0x0c047fffe060: fa fa fd fa fa fa fd fa fa fa fd fa fa fa fd <span style="color:#008080">fa</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">=</span>&gt;0x0c047fffe070: fa fa fd fd fa fa fd fd fa fa fd fa fa fa<span style="color:#000;font-weight:bold">[</span>03<span style="color:#000;font-weight:bold">]</span>fa
+</span></span><span style="display:flex;"><span>  0x0c047fffe080: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+</span></span><span style="display:flex;"><span>  0x0c047fffe090: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+</span></span><span style="display:flex;"><span>  0x0c047fffe0a0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+</span></span><span style="display:flex;"><span>  0x0c047fffe0b0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+</span></span><span style="display:flex;"><span>  0x0c047fffe0c0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+</span></span><span style="display:flex;"><span>Shadow byte legend <span style="color:#000;font-weight:bold">(</span>one shadow byte represents <span style="color:#099">8</span> application bytes<span style="color:#000;font-weight:bold">)</span>:
+</span></span><span style="display:flex;"><span>  Addressable:           <span style="color:#099">00</span>
+</span></span><span style="display:flex;"><span>  Partially addressable: <span style="color:#099">01</span> <span style="color:#099">02</span> <span style="color:#099">03</span> <span style="color:#099">04</span> <span style="color:#099">05</span> <span style="color:#099">06</span> <span style="color:#099">07</span>
+</span></span><span style="display:flex;"><span>  Heap left redzone:       fa
+</span></span><span style="display:flex;"><span>  Freed heap region:       fd
+</span></span><span style="display:flex;"><span>  Stack left redzone:      f1
+</span></span><span style="display:flex;"><span>  Stack mid redzone:       f2
+</span></span><span style="display:flex;"><span>  Stack right redzone:     f3
+</span></span><span style="display:flex;"><span>  Stack after <span style="color:#000;font-weight:bold">return</span>:      f5
+</span></span><span style="display:flex;"><span>  Stack use after scope:   f8
+</span></span><span style="display:flex;"><span>  Global redzone:          f9
+</span></span><span style="display:flex;"><span>  Global init order:       f6
+</span></span><span style="display:flex;"><span>  Poisoned by user:        f7
+</span></span><span style="display:flex;"><span>  Container overflow:      <span style="color:#0086b3">fc</span>
+</span></span><span style="display:flex;"><span>  Array cookie:            ac
+</span></span><span style="display:flex;"><span>  Intra object redzone:    bb
+</span></span><span style="display:flex;"><span>  ASan internal:           fe
+</span></span><span style="display:flex;"><span>  Left alloca redzone:     ca
+</span></span><span style="display:flex;"><span>  Right alloca redzone:    cb
+</span></span><span style="display:flex;"><span>  Shadow gap:              <span style="color:#008080">cc</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">==</span><span style="color:#008080">2119678</span><span style="color:#000;font-weight:bold">==</span>ABORTING
+</span></span><span style="display:flex;"><span>MS: <span style="color:#099">1</span> EraseBytes-; base unit: 9a96b9fc7e2f4543fde6948573fd8bb47ec80fd0
+</span></span><span style="display:flex;"><span>0x46,0x55,0x5a,
+</span></span><span style="display:flex;"><span>FUZ
+</span></span><span style="display:flex;"><span><span style="color:#008080">artifact_prefix</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;./&#39;</span>; Test unit written to ./crash-0eb8e4ed029b774d80f2b66408203801cb982a60
+</span></span></code></pre></div><p>同时生成了触发如上crash的输入crash-0eb8e4ed029b774d80f2b66408203801cb982a60，内容为：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>➜  fuzzing git:<span style="color:#000;font-weight:bold">(</span>master<span style="color:#000;font-weight:bold">)</span> ✗ hd crash-0eb8e4ed029b774d80f2b66408203801cb982a60
+</span></span><span style="display:flex;"><span><span style="color:#099">00000000</span>  <span style="color:#099">46</span> <span style="color:#099">55</span> 5a                                          |FUZ|
+</span></span><span style="display:flex;"><span><span style="color:#099">00000003</span>
+</span></span></code></pre></div><p>使用其复现漏洞：</p>
+<pre tabindex="0"><code>./a.out &lt; crash-0eb8e4ed029b774d80f2b66408203801cb982a60
+</code></pre><p>由此便是借助libFuzzer完成的最简单的Fuzzing与找到的漏洞。</p>
+<h3 id="下赛道后的复盘fuzzing输出解析">下赛道后的复盘——fuzzing输出解析</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>INFO: Seed: <span style="color:#099">3918206239</span>
+</span></span></code></pre></div><p>The fuzzer has started with this random seed. Rerun it with <code>-seed=3918206239</code> to get the same result.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>INFO: -max_len is not provided; libFuzzer will not generate inputs larger than <span style="color:#099">4096</span> bytes
+</span></span><span style="display:flex;"><span>INFO: A corpus is not provided, starting from an empty corpus
+</span></span></code></pre></div><p>By default, libFuzzer assumes that all inputs are 4096 bytes or smaller. To change that either use <code>-max_len=N</code> or run with a non-empty <a href="https://github.com/google/fuzzing/blob/master/tutorial/libFuzzerTutorial.md#seed-corpus">seed corpus</a>.</p>
+<pre tabindex="0"><code>#0      READ units: 1
+#1      INITED cov: 3 ft: 3 corp: 1/1b exec/s: 0 rss: 26Mb
+#8      NEW    cov: 4 ft: 4 corp: 2/29b exec/s: 0 rss: 26Mb L: 28 MS: 2 InsertByte-InsertRepeatedBytes-
+#3405   NEW    cov: 5 ft: 5 corp: 3/82b exec/s: 0 rss: 27Mb L: 53 MS: 4 InsertByte-EraseBytes-...
+#8664   NEW    cov: 6 ft: 6 corp: 4/141b exec/s: 0 rss: 27Mb L: 59 MS: 3 CrossOver-EraseBytes-...
+#272167 NEW    cov: 7 ft: 7 corp: 5/201b exec/s: 0 rss: 51Mb L: 60 MS: 1 InsertByte-
+</code></pre><p>libFuzzer has tried at least 272167 inputs (<code>#272167</code>) and has discovered 5 inputs of 201 bytes total (<code>corp: 5/201b</code>) that together cover 7 <em>coverage points</em> (<code>cov: 7</code>). You may think of coverage points as of <a href="https://en.wikipedia.org/wiki/Basic_block">basic blocks</a> in the code.</p>
+<pre tabindex="0"><code>==2335==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x602000155c13 at pc 0x0000004ee637...
+READ of size 1 at 0x602000155c13 thread T0
+    #0 0x4ee636 in FuzzMe(unsigned char const*, unsigned long) fuzzing/tutorial/libFuzzer/fuzz_me.cc:10:7
+    #1 0x4ee6aa in LLVMFuzzerTestOneInput fuzzing/tutorial/libFuzzer/fuzz_me.cc:14:3
+</code></pre><p>On one of the inputs AddressSanitizer has detected a <code>heap-buffer-overflow</code> bug and aborted the execution.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#008080">artifact_prefix</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;./&#39;</span>; Test unit written to ./crash-0eb8e4ed029b774d80f2b66408203801cb982a60
+</span></span></code></pre></div><p>Before exiting the process libFuzzer has created a file on disc with the bytes that triggered the crash.</p>
+</div>
   
 </article>
 <button class="floating-button">

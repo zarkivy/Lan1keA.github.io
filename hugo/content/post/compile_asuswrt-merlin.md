@@ -2,7 +2,7 @@
 title: "华硕梅林固件的编译"
 description: "记录一下手动编译asuswrt-merlin的过程"
 date: 2022-05-11T16:27:10+08:00
-tags: [ "embeded", "linux" ]
+tags: [ "Embeded", "Linux" ]
 imagelink : "https://www.asuswrt-merlin.net/sites/default/files/inline-images/main_page_sm_2.png"
 ---
 

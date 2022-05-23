@@ -2,7 +2,7 @@
 title: "ZKV的Fuzzing早教"
 description: "from 0 to 1"
 date: 2022-05-11T13:57:01+08:00
-tags: [ "fuzzing" ]
+tags: [ "Fuzzing" ]
 imagelink: "https://lcamtuf.coredump.cx/afl/afl_screen.png"
 ---
 
@@ -40,7 +40,7 @@ imagelink: "https://lcamtuf.coredump.cx/afl/afl_screen.png"
 
 
 
-## \x01 学步车
+## \x01 学步车AFL
 
 ### 最简单的 fuzzing demo
 
@@ -220,3 +220,245 @@ afl-fuzz -i fuzz_in -o fuzz_out -S fuzzer3 ./vulner
 afl-fuzz -i fuzz_in -o fuzz_out -S fuzzer4 ./vulner
 ```
 
+
+
+## \x02 四轮单车libFuzzer
+
+### 环境准备
+
+> LibFuzzer is an in-process, coverage-guided, evolutionary fuzzing engine.
+
+- [官方文档](https://llvm.org/docs/LibFuzzer.html)
+- [Google的libFuzzer教程](https://github.com/google/fuzzing/blob/master/tutorial/libFuzzerTutorial.md)
+
+☝️接下来读一练二
+
+将教程仓库clone下来：
+
+```sh
+git clone https://github.com/google/fuzzing.git fuzzing
+```
+
+由于：
+
+> Recent versions of Clang (starting from 6.0) include libFuzzer, and no extra installation is necessary.
+
+所以可以直接测试一下环境是否就绪：
+
+```sh
+clang++ -g -fsanitize=address,fuzzer fuzzing/tutorial/libFuzzer/fuzz_me.cc
+./a.out 2>&1 | grep ERROR
+```
+
+我得到了：
+
+```sh
+==2118349==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x60200003d473 at pc 0x000000550453 bp 0x7fff521da530 sp 0x7fff521da528
+```
+
+看来没问题，继续前进。
+
+### 火花塞打火——demo拆解
+
+样例程序如下：
+
+```sh
+#include <stdint.h>
+#include <stddef.h>
+
+bool FuzzMe(const uint8_t *Data, size_t DataSize) {
+  return DataSize >= 3 &&
+      Data[0] == 'F' &&
+      Data[1] == 'U' &&
+      Data[2] == 'Z' &&
+      Data[3] == 'Z';  // :‑<
+}
+
+extern "C" int LLVMFuzzerTestOneInput(const uint8_t *Data, size_t Size) {
+  FuzzMe(Data, Size);
+  return 0;
+}
+```
+
+使用libFuzzer时我们的Fuzz目标是？
+
+Definition: a **fuzz target** is a function that has the following signature and does something interesting with it's arguments:
+
+```c
+extern "C" int LLVMFuzzerTestOneInput(const uint8_t *Data, size_t Size) {
+  DoSomethingWithData(Data, Size);
+  return 0;
+}
+```
+
+所以对于样例程序，我们先准备好待测函数：
+
+```c
+bool FuzzMe(const uint8_t *Data, size_t DataSize) {
+  return DataSize >= 3 &&
+      Data[0] == 'F' &&
+      Data[1] == 'U' &&
+      Data[2] == 'Z' &&
+      Data[3] == 'Z';  // :‑<
+}
+```
+
+在为其准备fuzz wrapper函数：
+
+```c
+extern "C" int LLVMFuzzerTestOneInput(const uint8_t *Data, size_t Size) {
+  FuzzMe(Data, Size);
+  return 0;
+}
+```
+
+使用版本6以上的clang，开启如下三个选项进行编译：
+
+- `-fsanitize=fuzzer` (required): provides in-process coverage information to libFuzzer and links with the libFuzzer runtime.
+- `-fsanitize=address` (recommended): enables [AddressSanitizer](http://clang.llvm.org/docs/AddressSanitizer.html)
+- `-g` (recommended): enables debug info, makes the error messages easier to read.
+
+```c
+clang++ -g -fsanitize=address,fuzzer fuzzing/tutorial/libFuzzer/fuzz_me.cc
+```
+
+运行编译出的程序，即输出了：
+
+```sh
+➜  fuzzing git:(master) ✗ ./a.out
+INFO: Seed: 122504861
+INFO: Loaded 1 modules   (7 inline 8-bit counters): 7 [0x5a6eb0, 0x5a6eb7),
+INFO: Loaded 1 PC tables (7 PCs): 7 [0x56b140,0x56b1b0),
+INFO: -max_len is not provided; libFuzzer will not generate inputs larger than 4096 bytes
+INFO: A corpus is not provided, starting from an empty corpus
+#2      INITED cov: 3 ft: 3 corp: 1/1b exec/s: 0 rss: 27Mb
+#3      NEW    cov: 4 ft: 4 corp: 2/5b lim: 4 exec/s: 0 rss: 27Mb L: 4/4 MS: 1 CrossOver-
+#13     REDUCE cov: 4 ft: 4 corp: 2/4b lim: 4 exec/s: 0 rss: 27Mb L: 3/3 MS: 5 ChangeBit-ShuffleBytes-ChangeByte-CrossOver-CrossOver-
+#446    REDUCE cov: 5 ft: 5 corp: 3/7b lim: 8 exec/s: 0 rss: 27Mb L: 3/3 MS: 3 ChangeByte-CopyPart-CMP- DE: "F\x00"-
+#4543   NEW    cov: 6 ft: 6 corp: 4/11b lim: 48 exec/s: 0 rss: 27Mb L: 4/4 MS: 2 InsertByte-ChangeByte-
+#4880   REDUCE cov: 6 ft: 6 corp: 4/10b lim: 48 exec/s: 0 rss: 27Mb L: 3/3 MS: 2 ChangeByte-EraseBytes-
+#7716   REDUCE cov: 7 ft: 7 corp: 5/14b lim: 74 exec/s: 0 rss: 27Mb L: 4/4 MS: 1 InsertByte-
+=================================================================
+==2119678==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x6020000303f3 at pc 0x000000550453 bp 0x7fffcad0db90 sp 0x7fffcad0db88
+READ of size 1 at 0x6020000303f3 thread T0
+    #0 0x550452 in FuzzMe(unsigned char const*, unsigned long) /root/lab/fuzzing_baby/fuzzing/tutorial/libFuzzer/fuzz_me.cc:9:7
+    #1 0x5504f4 in LLVMFuzzerTestOneInput /root/lab/fuzzing_baby/fuzzing/tutorial/libFuzzer/fuzz_me.cc:13:3
+    #2 0x458671 in fuzzer::Fuzzer::ExecuteCallback(unsigned char const*, unsigned long) (/f/lab/fuzzing_baby/fuzzing/a.out+0x458671)
+    #3 0x457db5 in fuzzer::Fuzzer::RunOne(unsigned char const*, unsigned long, bool, fuzzer::InputInfo*, bool*) (/f/lab/fuzzing_baby/fuzzing/a.out+0x457db5)
+    #4 0x45a057 in fuzzer::Fuzzer::MutateAndTestOne() (/f/lab/fuzzing_baby/fuzzing/a.out+0x45a057)
+    #5 0x45ad55 in fuzzer::Fuzzer::Loop(std::__Fuzzer::vector<fuzzer::SizedFile, fuzzer::fuzzer_allocator<fuzzer::SizedFile> >&) (/f/lab/fuzzing_baby/fuzzing/
+a.out+0x45ad55)
+    #6 0x44970e in fuzzer::FuzzerDriver(int*, char***, int (*)(unsigned char const*, unsigned long)) (/f/lab/fuzzing_baby/fuzzing/a.out+0x44970e)
+    #7 0x472552 in main (/f/lab/fuzzing_baby/fuzzing/a.out+0x472552)
+    #8 0x7f9d13710082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #9 0x41e4ad in _start (/f/lab/fuzzing_baby/fuzzing/a.out+0x41e4ad)
+
+0x6020000303f3 is located 0 bytes to the right of 3-byte region [0x6020000303f0,0x6020000303f3)
+allocated by thread T0 here:
+    #0 0x51e1dd in malloc (/f/lab/fuzzing_baby/fuzzing/a.out+0x51e1dd)
+    #1 0x432897 in operator new(unsigned long) (/f/lab/fuzzing_baby/fuzzing/a.out+0x432897)
+    #2 0x457db5 in fuzzer::Fuzzer::RunOne(unsigned char const*, unsigned long, bool, fuzzer::InputInfo*, bool*) (/f/lab/fuzzing_baby/fuzzing/a.out+0x457db5)
+    #3 0x45a057 in fuzzer::Fuzzer::MutateAndTestOne() (/f/lab/fuzzing_baby/fuzzing/a.out+0x45a057)
+    #4 0x45ad55 in fuzzer::Fuzzer::Loop(std::__Fuzzer::vector<fuzzer::SizedFile, fuzzer::fuzzer_allocator<fuzzer::SizedFile> >&) (/f/lab/fuzzing_baby/fuzzing/
+a.out+0x45ad55)
+    #5 0x44970e in fuzzer::FuzzerDriver(int*, char***, int (*)(unsigned char const*, unsigned long)) (/f/lab/fuzzing_baby/fuzzing/a.out+0x44970e)
+    #6 0x472552 in main (/f/lab/fuzzing_baby/fuzzing/a.out+0x472552)
+    #7 0x7f9d13710082 in __libc_start_main /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:308:16
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow /root/lab/fuzzing_baby/fuzzing/tutorial/libFuzzer/fuzz_me.cc:9:7 in FuzzMe(unsigned char const*, unsigned long
+)
+Shadow bytes around the buggy address:
+  0x0c047fffe020: fa fa fd fa fa fa fd fa fa fa fd fa fa fa fd fa
+  0x0c047fffe030: fa fa fd fa fa fa fd fa fa fa fd fa fa fa fd fa
+  0x0c047fffe040: fa fa fd fa fa fa fd fd fa fa fd fa fa fa fd fa
+  0x0c047fffe050: fa fa fd fa fa fa fd fa fa fa fd fa fa fa fd fa
+  0x0c047fffe060: fa fa fd fa fa fa fd fa fa fa fd fa fa fa fd fa
+=>0x0c047fffe070: fa fa fd fd fa fa fd fd fa fa fd fa fa fa[03]fa
+  0x0c047fffe080: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fffe090: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fffe0a0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fffe0b0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fffe0c0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+  Shadow gap:              cc
+==2119678==ABORTING
+MS: 1 EraseBytes-; base unit: 9a96b9fc7e2f4543fde6948573fd8bb47ec80fd0
+0x46,0x55,0x5a,
+FUZ
+artifact_prefix='./'; Test unit written to ./crash-0eb8e4ed029b774d80f2b66408203801cb982a60
+```
+
+同时生成了触发如上crash的输入crash-0eb8e4ed029b774d80f2b66408203801cb982a60，内容为：
+
+```sh
+➜  fuzzing git:(master) ✗ hd crash-0eb8e4ed029b774d80f2b66408203801cb982a60
+00000000  46 55 5a                                          |FUZ|
+00000003
+```
+
+使用其复现漏洞：
+
+```
+./a.out < crash-0eb8e4ed029b774d80f2b66408203801cb982a60
+```
+
+由此便是借助libFuzzer完成的最简单的Fuzzing与找到的漏洞。
+
+### 下赛道后的复盘——fuzzing输出解析
+
+```sh
+INFO: Seed: 3918206239
+```
+
+The fuzzer has started with this random seed. Rerun it with `-seed=3918206239` to get the same result.
+
+```sh
+INFO: -max_len is not provided; libFuzzer will not generate inputs larger than 4096 bytes
+INFO: A corpus is not provided, starting from an empty corpus
+```
+
+By default, libFuzzer assumes that all inputs are 4096 bytes or smaller. To change that either use `-max_len=N` or run with a non-empty [seed corpus](https://github.com/google/fuzzing/blob/master/tutorial/libFuzzerTutorial.md#seed-corpus).
+
+```
+#0      READ units: 1
+#1      INITED cov: 3 ft: 3 corp: 1/1b exec/s: 0 rss: 26Mb
+#8      NEW    cov: 4 ft: 4 corp: 2/29b exec/s: 0 rss: 26Mb L: 28 MS: 2 InsertByte-InsertRepeatedBytes-
+#3405   NEW    cov: 5 ft: 5 corp: 3/82b exec/s: 0 rss: 27Mb L: 53 MS: 4 InsertByte-EraseBytes-...
+#8664   NEW    cov: 6 ft: 6 corp: 4/141b exec/s: 0 rss: 27Mb L: 59 MS: 3 CrossOver-EraseBytes-...
+#272167 NEW    cov: 7 ft: 7 corp: 5/201b exec/s: 0 rss: 51Mb L: 60 MS: 1 InsertByte-
+```
+
+libFuzzer has tried at least 272167 inputs (`#272167`) and has discovered 5 inputs of 201 bytes total (`corp: 5/201b`) that together cover 7 *coverage points* (`cov: 7`). You may think of coverage points as of [basic blocks](https://en.wikipedia.org/wiki/Basic_block) in the code.
+
+```
+==2335==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x602000155c13 at pc 0x0000004ee637...
+READ of size 1 at 0x602000155c13 thread T0
+    #0 0x4ee636 in FuzzMe(unsigned char const*, unsigned long) fuzzing/tutorial/libFuzzer/fuzz_me.cc:10:7
+    #1 0x4ee6aa in LLVMFuzzerTestOneInput fuzzing/tutorial/libFuzzer/fuzz_me.cc:14:3
+```
+
+On one of the inputs AddressSanitizer has detected a `heap-buffer-overflow` bug and aborted the execution.
+
+```sh
+artifact_prefix='./'; Test unit written to ./crash-0eb8e4ed029b774d80f2b66408203801cb982a60
+```
+
+Before exiting the process libFuzzer has created a file on disc with the bytes that triggered the crash. 

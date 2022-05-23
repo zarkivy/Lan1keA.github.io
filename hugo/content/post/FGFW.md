@@ -2,7 +2,7 @@
 title: "Fuck the Great Fire Wall"
 description: "👆👆👆（这是食指"
 date: 2022-05-09T11:03:28+08:00
-tags: [ "net" ]
+tags: [ "Net" ]
 imagelink: "https://s2.loli.net/2022/05/09/FrNVRw5lSbfusgx.jpg"
 ---
 

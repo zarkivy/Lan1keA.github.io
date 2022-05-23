@@ -40,4 +40,4 @@ tags: [ "main" ]
 - [http://p4nda.top/](http://p4nda.top/)
 - [https://o0xmuhe.github.io/](https://o0xmuhe.github.io/)
 - [https://evilpan.com/](https://evilpan.com/)
-
+- https://myfzy.top/

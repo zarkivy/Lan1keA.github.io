@@ -2,7 +2,7 @@
 title: "构建与运行嵌入式linux虚拟机"
 description: "with buildroot and qemu-system"
 date: 2022-05-10T20:59:43+08:00
-tags: [ "虚拟化", "linux" ]
+tags: [ "虚拟化", "Linux" ]
 imagelink: "https://s2.loli.net/2022/05/11/nNfYF7Lz4i3hBDT.jpg"
 ---
 

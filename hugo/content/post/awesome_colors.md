@@ -2,7 +2,7 @@
 title: "Awesome Colors"
 description: "collection of some awesome colors"
 date: 2022-05-07T22:53:05+08:00
-tags: [ "utils" ]
+tags: [ "Utils" ]
 imagelink: "https://s2.loli.net/2022/05/07/QW6X8VuxZCJnmfc.jpg"
 ---
 
