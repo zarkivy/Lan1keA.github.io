@@ -462,3 +462,73 @@ artifact_prefix='./'; Test unit written to ./crash-0eb8e4ed029b774d80f2b66408203
 ```
 
 Before exiting the process libFuzzer has created a file on disc with the bytes that triggered the crash. 
+
+### 驾校实习——CVE-2014-0160
+
+[见CVE-2014-0160分析](/post/cve-2014-0160/)
+
+### 种子语料库
+
+使用谷歌的教程仓库实验：
+
+```sh
+git clone https://github.com/google/fuzzer-test-suite.git
+mkdir woff; cd woff;
+../fuzzer-test-suite/woff2-2016-05-06/build.sh
+```
+
+开始运行fuzzer：
+
+```sh
+./woff2-2016-05-06-fsanitize_fuzzer 
+```
+
+Most likely you will see that the fuzzer is stuck -- it is running millions of inputs but can not find many new code paths.
+
+```sh
+#1      INITED cov: 18 ft: 15 corp: 1/1b exec/s: 0 rss: 27Mb
+#15     NEW    cov: 23 ft: 16 corp: 2/5b exec/s: 0 rss: 27Mb L: 4 MS: 4 InsertByte-...
+#262144 pulse  cov: 23 ft: 16 corp: 2/5b exec/s: 131072 rss: 45Mb
+#524288 pulse  cov: 23 ft: 16 corp: 2/5b exec/s: 131072 rss: 62Mb
+#1048576        pulse  cov: 23 ft: 16 corp: 2/5b exec/s: 116508 rss: 97Mb
+#2097152        pulse  cov: 23 ft: 16 corp: 2/5b exec/s: 110376 rss: 167Mb
+#4194304        pulse  cov: 23 ft: 16 corp: 2/5b exec/s: 107546 rss: 306Mb
+#8388608        pulse  cov: 23 ft: 16 corp: 2/5b exec/s: 106184 rss: 584Mb
+```
+
+The first step you should make in such case is to find some inputs that trigger enough code paths -- the more the better. The woff2 fuzz target consumes web fonts in `.woff2` format and so you can just find any such file(s). The build script you have just executed has downloaded a project with some `.woff2` files and placed it into the directory `./seeds/`. Inspect this directory. What do you see? Are there any `.woff2` files?
+
+Now you can use the woff2 fuzzer with a seed corpus. Do it like this:
+
+```sh
+mkdir MY_CORPUS
+./woff2-2016-05-06-fsanitize_fuzzer MY_CORPUS/ seeds/
+```
+
+When a libFuzzer-based fuzzer is executed with one more directory as arguments, it will first read files from every directory recursively and execute the target function on all of them. Then, any input that triggers interesting code path(s) will be written back into the first corpus directory (in this case, `MY_CORPUS`).
+
+Let us look at the output:
+
+```sh
+INFO: Seed: 3976665814
+INFO: Loaded 1 modules   (9611 inline 8-bit counters): 9611 [0x93c710, 0x93ec9b), 
+INFO: Loaded 1 PC tables (9611 PCs): 9611 [0x6e8628,0x70ded8), 
+INFO:        0 files found in MY_CORPUS/
+INFO:       62 files found in seeds/
+INFO: -max_len is not provided; libFuzzer will not generate inputs larger than 168276 bytes
+INFO: seed corpus: files: 62 min: 14b max: 168276b total: 3896056b rss: 37Mb
+#63     INITED cov: 632 ft: 1096 corp: 13/766Kb exec/s: 0 rss: 61Mb
+        NEW_FUNC[0/1]: 0x5aae80 in TransformDictionaryWord...
+#64     NEW    cov: 651 ft: 1148 corp: 14/832Kb exec/s: 0 rss: 63Mb L: 67832/68784 MS: 1 ChangeBinInt-
+...
+#535    NEW    cov: 705 ft: 1620 corp: 48/3038Kb exec/s: 0 rss: 162Mb L: 68784/68784 MS: 1 ChangeBinInt-
+...
+#288595 NEW    cov: 839 ft: 2909 corp: 489/30Mb exec/s: 1873 rss: 488Mb L: 62832/68784 MS: 1 ShuffleBytes-
+...
+```
+
+As you can see, the initial coverage is much greater than before (`INITED cov: 632`) and it keeps growing.
+
+The size of the inputs that libFuzzer tries is now limited by 168276, which is the size of the largest file in the seed corpus. You may change that with `-max_len=N`.
+
+You may interrupt the fuzzer at any moment and restart it using the same command line. It will start from where it stopped.

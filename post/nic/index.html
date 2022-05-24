@@ -3,13 +3,13 @@
     <meta charset="UTF-8">
     <title>やれやれ DA✰ZE</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="friend links" />
-    <meta property="og:title" content="Friend" />
-    <meta property="og:description" content="friend links" />
+    <meta name="description" content="一些相关的零碎记录" />
+    <meta property="og:title" content="关于Linux下的网卡与网络设备" />
+    <meta property="og:description" content="一些相关的零碎记录" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://dev2ero.github.io/main/flink/" />
-    <meta itemprop="name" content="Friend">
-    <meta itemprop="description" content="friend links">
+    <meta property="og:url" content="https://dev2ero.github.io/post/nic/" />
+    <meta itemprop="name" content="关于Linux下的网卡与网络设备">
+    <meta itemprop="description" content="一些相关的零碎记录">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
     
     <link rel="stylesheet" href="https://dev2ero.github.io/scss/style.min.5cc161ce25a37cfa33a6a8df8803b39268d6c4b6a5be5bb9d1f929e7f113117f.css" >
@@ -19,10 +19,10 @@
     <div class="header header-frame">
         <div>
           
-            <h1 class="header__title">Friend</h1>
+            <h1 class="header__title">关于Linux下的网卡与网络设备</h1>
           
             
-                <div class="header__description">friend links</div>
+                <div class="header__description">一些相关的零碎记录</div>
             
         </div>
         <nav class="header-nav">
@@ -118,8 +118,16 @@
                     
                         
                           <li class="mb-header-nav-list__item ">
-                        <a class="mb-header-nav-list__link" href="https://dev2ero.github.io/tags/main/"
-                                                            >main</a
+                        <a class="mb-header-nav-list__link" href="https://dev2ero.github.io/tags/net/"
+                                                            >Net</a
+                                                        >
+                    </li>
+                        
+                    
+                        
+                          <li class="mb-header-nav-list__item ">
+                        <a class="mb-header-nav-list__link" href="https://dev2ero.github.io/tags/linux/"
+                                                            >Linux</a
                                                         >
                     </li>
                         
@@ -193,42 +201,44 @@
     <div id="content">
 <article class="post">
   
-    <div class="post-content"><ul>
-<li><a href="https://foada.github.io/">https://foada.github.io/</a></li>
-<li><a href="https://fromhex.cn/">https://fromhex.cn/</a></li>
-<li><a href="https://blog.xiabee.cn/">https://blog.xiabee.cn/</a></li>
-<li><a href="https://migraine-sudo.github.io/">https://migraine-sudo.github.io/</a></li>
-<li><a href="https://m4x.fun/">https://m4x.fun/</a></li>
-<li><a href="https://ifpop.github.io/">https://ifpop.github.io/</a></li>
-<li><a href="https://blog.fkynjyq.com/">https://blog.fkynjyq.com/</a></li>
-<li><a href="https://eacryo.gitee.io/">https://eacryo.gitee.io/</a></li>
-<li><a href="https://vang3lis.github.io/">https://vang3lis.github.io/</a></li>
-<li><a href="https://emptystack.top/">https://emptystack.top/</a></li>
-<li><a href="https://l1b0.github.io/">https://l1b0.github.io/</a></li>
-<li><a href="https://yourbutterfly.github.io/">https://yourbutterfly.github.io/</a></li>
-</ul>
-<br>
-<h3 id="bigbrothers">BigBrothers</h3>
+    <div class="post-content"><h3 id="linux下的虚拟网络设备">Linux下的虚拟网络设备</h3>
+<p>通过<code>ip link add</code>可以创建多种类型的虚拟网络设备，在<code>man ip link</code>中可以得知有以下类型的device:</p>
 <ul>
-<li><a href="https://eternalsakura13.com/">https://eternalsakura13.com/</a></li>
-<li><a href="https://lancern.xyz/">https://lancern.xyz/</a></li>
-<li><a href="http://www.aloxaf.com/">http://www.aloxaf.com/</a></li>
-<li><a href="https://kiprey.github.io/">https://kiprey.github.io/</a></li>
-<li><a href="https://www.ksroido.art/">https://www.ksroido.art/</a></li>
-<li><a href="https://blog.flanker017.me/">https://blog.flanker017.me/</a></li>
-<li><a href="https://thunderjie.github.io/">https://thunderjie.github.io/</a></li>
-<li><a href="http://blog.eonew.cn/">http://blog.eonew.cn/</a></li>
-<li><a href="https://xuanxuanblingbling.github.io/">https://xuanxuanblingbling.github.io/</a></li>
-<li><a href="https://chenx6.github.io/">https://chenx6.github.io/</a></li>
-<li><a href="https://blog.kyrios.cn/">https://blog.kyrios.cn/</a></li>
-<li><a href="https://etenal.me/">https://etenal.me/</a></li>
-<li><a href="https://a1ex.online/">https://a1ex.online/</a></li>
-<li><a href="http://p4nda.top/">http://p4nda.top/</a></li>
-<li><a href="https://o0xmuhe.github.io/">https://o0xmuhe.github.io/</a></li>
-<li><a href="https://evilpan.com/">https://evilpan.com/</a></li>
-<li><a href="https://myfzy.top/">https://myfzy.top/</a></li>
-<li><a href="https://exexute.github.io/">https://exexute.github.io/</a></li>
-<li><a href="https://zhou-yuxin.github.io/">https://zhou-yuxin.github.io/</a></li>
+<li>bridge - Ethernet Bridge device</li>
+<li>bond - Bonding device</li>
+<li>dummy - Dummy network interface</li>
+<li>hsr - High-availability Seamless Redundancy device</li>
+<li>ifb - Intermediate Functional Block device</li>
+<li>ipoib - IP over Infiniband device</li>
+<li>macvlan - Virtual interface base on link layer address (MAC)</li>
+<li>macvtap - Virtual interface based on link layer address (MAC) and TAP.</li>
+<li>vcan - Virtual Controller Area Network interface</li>
+<li>vxcan - Virtual Controller Area Network tunnel interface</li>
+<li>veth - Virtual ethernet interface</li>
+<li>vlan - 802.1q tagged virtual LAN interface</li>
+<li>vxlan - Virtual eXtended LAN</li>
+<li>ip6tnl - Virtual tunnel interface IPv4|IPv6 over IPv6</li>
+<li>ipip - Virtual tunnel interface IPv4 over IPv4</li>
+<li>sit - Virtual tunnel interface IPv6 over IPv4</li>
+<li>gre - Virtual tunnel interface GRE over IPv4</li>
+<li>gretap - Virtual L2 tunnel interface GRE over IPv4</li>
+<li>erspan - Encapsulated Remote SPAN over GRE and IPv4</li>
+<li>ip6gre - Virtual tunnel interface GRE over IPv6</li>
+<li>ip6gretap - Virtual L2 tunnel interface GRE over IPv6</li>
+<li>ip6erspan - Encapsulated Remote SPAN over GRE and IPv6</li>
+<li>vti - Virtual tunnel interface</li>
+<li>nlmon - Netlink monitoring device</li>
+<li>ipvlan - Interface for L3 (IPv6/IPv4) based VLANs</li>
+<li>ipvtap - Interface for L3 (IPv6/IPv4) based VLANs and TAP</li>
+<li>lowpan - Interface for 6LoWPAN (IPv6) over IEEE 802.15.4 / Bluetooth</li>
+<li>geneve - GEneric NEtwork Virtualization Encapsulation</li>
+<li>bareudp - Bare UDP L3 encapsulation support</li>
+<li>amt - Automatic Multicast Tunneling (AMT)</li>
+<li>macsec - Interface for IEEE 802.1AE MAC Security (MACsec)</li>
+<li>vrf - Interface for L3 VRF domains</li>
+<li>netdevsim - Interface for netdev API tests</li>
+<li>rmnet - Qualcomm rmnet device</li>
+<li>xfrm - Virtual xfrm interface</li>
 </ul>
 </div>
   

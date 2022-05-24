@@ -7,7 +7,17 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>© 2022, Zikey Vi</copyright>
-    <lastBuildDate>Mon, 09 May 2022 11:03:28 +0800</lastBuildDate><atom:link href="https://dev2ero.github.io/tags/net/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 23 May 2022 23:21:12 +0800</lastBuildDate><atom:link href="https://dev2ero.github.io/tags/net/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>关于Linux下的网卡与网络设备</title>
+      <link>https://dev2ero.github.io/post/nic/</link>
+      <pubDate>Mon, 23 May 2022 23:21:12 +0800</pubDate>
+      
+      <guid>https://dev2ero.github.io/post/nic/</guid>
+      <description>Linux下的虚拟网络设备 通过ip link add可以创建多种类型的虚拟网络设备，在man ip link中可以得知有以下类型的device:
+ bridge - Ethernet Bridge device bond - Bonding device dummy - Dummy network interface hsr - High-availability Seamless Redundancy device ifb - Intermediate Functional Block device ipoib - IP over Infiniband device macvlan - Virtual interface base on link layer address (MAC) macvtap - Virtual interface based on link layer address (MAC) and TAP. vcan - Virtual Controller Area Network interface vxcan - Virtual Controller Area Network tunnel interface veth - Virtual ethernet interface vlan - 802.</description>
+    </item>
+    
     <item>
       <title>Fuck the Great Fire Wall</title>
       <link>https://dev2ero.github.io/post/fgfw/</link>

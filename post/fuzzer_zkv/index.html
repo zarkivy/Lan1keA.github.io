@@ -499,6 +499,48 @@ READ of size 1 at 0x602000155c13 thread T0
 </code></pre><p>On one of the inputs AddressSanitizer has detected a <code>heap-buffer-overflow</code> bug and aborted the execution.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#008080">artifact_prefix</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;./&#39;</span>; Test unit written to ./crash-0eb8e4ed029b774d80f2b66408203801cb982a60
 </span></span></code></pre></div><p>Before exiting the process libFuzzer has created a file on disc with the bytes that triggered the crash.</p>
+<h3 id="驾校实习cve-2014-0160">驾校实习——CVE-2014-0160</h3>
+<p><a href="/post/cve-2014-0160/">见CVE-2014-0160分析</a></p>
+<h3 id="种子语料库">种子语料库</h3>
+<p>使用谷歌的教程仓库实验：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>git clone https://github.com/google/fuzzer-test-suite.git
+</span></span><span style="display:flex;"><span>mkdir woff; <span style="color:#0086b3">cd</span> woff;
+</span></span><span style="display:flex;"><span>../fuzzer-test-suite/woff2-2016-05-06/build.sh
+</span></span></code></pre></div><p>开始运行fuzzer：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>./woff2-2016-05-06-fsanitize_fuzzer 
+</span></span></code></pre></div><p>Most likely you will see that the fuzzer is stuck &ndash; it is running millions of inputs but can not find many new code paths.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#998;font-style:italic">#1      INITED cov: 18 ft: 15 corp: 1/1b exec/s: 0 rss: 27Mb</span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">#15     NEW    cov: 23 ft: 16 corp: 2/5b exec/s: 0 rss: 27Mb L: 4 MS: 4 InsertByte-...</span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">#262144 pulse  cov: 23 ft: 16 corp: 2/5b exec/s: 131072 rss: 45Mb</span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">#524288 pulse  cov: 23 ft: 16 corp: 2/5b exec/s: 131072 rss: 62Mb</span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">#1048576        pulse  cov: 23 ft: 16 corp: 2/5b exec/s: 116508 rss: 97Mb</span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">#2097152        pulse  cov: 23 ft: 16 corp: 2/5b exec/s: 110376 rss: 167Mb</span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">#4194304        pulse  cov: 23 ft: 16 corp: 2/5b exec/s: 107546 rss: 306Mb</span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">#8388608        pulse  cov: 23 ft: 16 corp: 2/5b exec/s: 106184 rss: 584Mb</span>
+</span></span></code></pre></div><p>The first step you should make in such case is to find some inputs that trigger enough code paths &ndash; the more the better. The woff2 fuzz target consumes web fonts in <code>.woff2</code> format and so you can just find any such file(s). The build script you have just executed has downloaded a project with some <code>.woff2</code> files and placed it into the directory <code>./seeds/</code>. Inspect this directory. What do you see? Are there any <code>.woff2</code> files?</p>
+<p>Now you can use the woff2 fuzzer with a seed corpus. Do it like this:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>mkdir MY_CORPUS
+</span></span><span style="display:flex;"><span>./woff2-2016-05-06-fsanitize_fuzzer MY_CORPUS/ seeds/
+</span></span></code></pre></div><p>When a libFuzzer-based fuzzer is executed with one more directory as arguments, it will first read files from every directory recursively and execute the target function on all of them. Then, any input that triggers interesting code path(s) will be written back into the first corpus directory (in this case, <code>MY_CORPUS</code>).</p>
+<p>Let us look at the output:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>INFO: Seed: <span style="color:#099">3976665814</span>
+</span></span><span style="display:flex;"><span>INFO: Loaded <span style="color:#099">1</span> modules   <span style="color:#000;font-weight:bold">(</span><span style="color:#099">9611</span> inline 8-bit counters<span style="color:#000;font-weight:bold">)</span>: <span style="color:#099">9611</span> <span style="color:#000;font-weight:bold">[</span>0x93c710, 0x93ec9b<span style="color:#000;font-weight:bold">)</span>, 
+</span></span><span style="display:flex;"><span>INFO: Loaded <span style="color:#099">1</span> PC tables <span style="color:#000;font-weight:bold">(</span><span style="color:#099">9611</span> PCs<span style="color:#000;font-weight:bold">)</span>: <span style="color:#099">9611</span> <span style="color:#000;font-weight:bold">[</span>0x6e8628,0x70ded8<span style="color:#000;font-weight:bold">)</span>, 
+</span></span><span style="display:flex;"><span>INFO:        <span style="color:#099">0</span> files found in MY_CORPUS/
+</span></span><span style="display:flex;"><span>INFO:       <span style="color:#099">62</span> files found in seeds/
+</span></span><span style="display:flex;"><span>INFO: -max_len is not provided; libFuzzer will not generate inputs larger than <span style="color:#099">168276</span> bytes
+</span></span><span style="display:flex;"><span>INFO: seed corpus: files: <span style="color:#099">62</span> min: 14b max: 168276b total: 3896056b rss: 37Mb
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">#63     INITED cov: 632 ft: 1096 corp: 13/766Kb exec/s: 0 rss: 61Mb</span>
+</span></span><span style="display:flex;"><span>        NEW_FUNC<span style="color:#000;font-weight:bold">[</span>0/1<span style="color:#000;font-weight:bold">]</span>: 0x5aae80 in TransformDictionaryWord...
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">#64     NEW    cov: 651 ft: 1148 corp: 14/832Kb exec/s: 0 rss: 63Mb L: 67832/68784 MS: 1 ChangeBinInt-</span>
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">#535    NEW    cov: 705 ft: 1620 corp: 48/3038Kb exec/s: 0 rss: 162Mb L: 68784/68784 MS: 1 ChangeBinInt-</span>
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">#288595 NEW    cov: 839 ft: 2909 corp: 489/30Mb exec/s: 1873 rss: 488Mb L: 62832/68784 MS: 1 ShuffleBytes-</span>
+</span></span><span style="display:flex;"><span>...
+</span></span></code></pre></div><p>As you can see, the initial coverage is much greater than before (<code>INITED cov: 632</code>) and it keeps growing.</p>
+<p>The size of the inputs that libFuzzer tries is now limited by 168276, which is the size of the largest file in the seed corpus. You may change that with <code>-max_len=N</code>.</p>
+<p>You may interrupt the fuzzer at any moment and restart it using the same command line. It will start from where it stopped.</p>
 </div>
   
 </article>
