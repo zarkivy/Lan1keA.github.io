@@ -17,6 +17,9 @@ tags: [ "main" ]
   - [https://pdos.csail.mit.edu/6.828/2021/schedule.html](https://pdos.csail.mit.edu/6.828/2021/schedule.html)
 - Linux inside
   - https://0xax.gitbooks.io/linux-insides/content/Initialization/linux-initialization-1.html
+- 在线浏览 Linux 源码
+  - https://elixir.bootlin.com/linux/latest/source
+
 
 
 

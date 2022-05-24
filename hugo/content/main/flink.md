@@ -33,6 +33,7 @@ tags: [ "main" ]
 - [https://thunderjie.github.io/](https://thunderjie.github.io/)
 - [http://blog.eonew.cn/](http://blog.eonew.cn/)
 - [https://xuanxuanblingbling.github.io/](https://xuanxuanblingbling.github.io/)
+- https://atum.li/
 - [https://chenx6.github.io/](https://chenx6.github.io/)
 - [https://blog.kyrios.cn/](https://blog.kyrios.cn/)
 - [https://etenal.me/](https://etenal.me/)
@@ -43,3 +44,4 @@ tags: [ "main" ]
 - [https://myfzy.top/](https://myfzy.top/)
 - [https://exexute.github.io/](https://exexute.github.io/)
 - [https://zhou-yuxin.github.io/](https://zhou-yuxin.github.io/)
+- https://houjingyi233.com/

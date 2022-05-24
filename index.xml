@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>© 2022, Zikey Vi</copyright>
-    <lastBuildDate>Mon, 23 May 2022 23:21:12 +0800</lastBuildDate><atom:link href="https://dev2ero.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 24 May 2022 17:43:25 +0800</lastBuildDate><atom:link href="https://dev2ero.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CVE-2016-5195 Linux DirtyCOW漏洞分析</title>
+      <link>https://dev2ero.github.io/post/cve-2016-5195/</link>
+      <pubDate>Tue, 24 May 2022 17:43:25 +0800</pubDate>
+      
+      <guid>https://dev2ero.github.io/post/cve-2016-5195/</guid>
+      <description>https://dirtycow.ninja/</description>
+    </item>
+    
     <item>
       <title>关于Linux下的网卡与网络设备</title>
       <link>https://dev2ero.github.io/post/nic/</link>
@@ -23,7 +32,11 @@
       <pubDate>Fri, 20 May 2022 17:57:07 +0800</pubDate>
       
       <guid>https://dev2ero.github.io/post/cve-2014-0160/</guid>
-      <description>漏洞编号：CVE-2014-0160 漏洞类型：内存越界访问 漏洞危害：信息泄露 影响范围：OpenSSL1.0.1、OpenSSL 1.0.1a~ OpenSSL 1.0.1f、OpenSSL 1.0.2-beta 漏洞描述：OpenSSL 在实现 TLS（传输层安全协议）和 DTLS（数据报安全传输协议）的心跳包处理逻辑时存在问题。OpenSSL 的 Heartbleed 模块在处理心跳包时没有检查心跳包中的长度字段是否与后续的数据字段一致，攻击者利用该漏洞构造异常数据包，可获取服务器内存中多达 64KB 的数据。这些数据可能会包含证书私钥、用户账号、密码、邮件内容等敏感信息。
+      <description>漏洞编号：CVE-2014-0160
+漏洞类型：内存越界访问
+漏洞危害：信息泄露
+影响范围：OpenSSL1.0.1、OpenSSL 1.0.1a~ OpenSSL 1.0.1f、OpenSSL 1.0.2-beta
+漏洞描述：OpenSSL 在实现 TLS（传输层安全协议）和 DTLS（数据报安全传输协议）的心跳包处理逻辑时存在问题。OpenSSL 的 Heartbleed 模块在处理心跳包时没有检查心跳包中的长度字段是否与后续的数据字段一致，攻击者利用该漏洞构造异常数据包，可获取服务器内存中多达 64KB 的数据。这些数据可能会包含证书私钥、用户账号、密码、邮件内容等敏感信息。
  背景知识 简介 传输层安全性协议SSL
 SSL 全称 Secure Sockets Layer（安全套接字层协议），要求建立在可靠的传输层协议（TCP）之上，主要提供机密性、认证性及数据完整性服务。SSL 最初（SSL 1.0、SSL2.0、SSL 3.0 版本）由网景公司设计和维护，从 3.1 版本开始，SSL 协议由因特网工程任务小组（IETF）正式接管，并更名为 TLS（传输层安全协议，Transport Layer Security），发展至今已有 TLS 1.0、TLS1.1、TLS1.2 三个版本。
 SSL/TLS 协议能够提供的安全服务主要包括：
@@ -222,9 +235,8 @@ sudo apt install chrome-gnome-shell Firefox插件地址为：https://addons.</de
       <pubDate>Sat, 07 May 2022 19:53:05 +0800</pubDate>
       
       <guid>https://dev2ero.github.io/main/utils/</guid>
-      <description>操作系统  Linux kernel lab  https://linux-kernel-labs.github.io/   内核模块编程教程  https://sysprog21.github.io/lkmpg/   MIT 操作系统课程 2021  https://pdos.csail.mit.edu/6.828/2021/schedule.html   Linux inside  https://0xax.gitbooks.io/linux-insides/content/Initialization/linux-initialization-1.html    编程  高级语言源代码与汇编结果的实时对照  https://godbolt.org/   展开编译细节，向你展示C++代码背后的秘密  https://cppinsights.io/   图形化展示你的正则表达式，学习正则好帮手  https://jex.im/regulex/#!flags=&amp;amp;re=%5E(a%7Cb)*%3F%24   C++ STL 算法库  https://zh.cppreference.com/w/cpp/algorithm    指令集   ARMv7 指令集胎教教程
- https://simplemachines.it/doc/arm_inst.pdf    ARMv7 指令集考试小抄
- https://pages.cs.wisc.edu/~markhill/restricted/arm_isa_quick_reference.pdf    ARMv8 指令集考试小抄</description>
+      <description>操作系统  Linux kernel lab  https://linux-kernel-labs.github.io/   内核模块编程教程  https://sysprog21.github.io/lkmpg/   MIT 操作系统课程 2021  https://pdos.csail.mit.edu/6.828/2021/schedule.html   Linux inside  https://0xax.gitbooks.io/linux-insides/content/Initialization/linux-initialization-1.html   在线浏览 Linux 源码  https://elixir.bootlin.com/linux/latest/source    编程  高级语言源代码与汇编结果的实时对照  https://godbolt.org/   展开编译细节，向你展示C++代码背后的秘密  https://cppinsights.io/   图形化展示你的正则表达式，学习正则好帮手  https://jex.im/regulex/#!flags=&amp;amp;re=%5E(a%7Cb)*%3F%24   C++ STL 算法库  https://zh.cppreference.com/w/cpp/algorithm    指令集   ARMv7 指令集胎教教程
+ https://simplemachines.it/doc/arm_inst.pdf    ARMv7 指令集考试小抄</description>
     </item>
     
     <item>
@@ -242,7 +254,7 @@ sudo apt install chrome-gnome-shell Firefox插件地址为：https://addons.</de
       <pubDate>Sat, 07 May 2022 17:53:05 +0800</pubDate>
       
       <guid>https://dev2ero.github.io/main/flink/</guid>
-      <description> https://foada.github.io/ https://fromhex.cn/ https://blog.xiabee.cn/ https://migraine-sudo.github.io/ https://m4x.fun/ https://ifpop.github.io/ https://blog.fkynjyq.com/ https://eacryo.gitee.io/ https://vang3lis.github.io/ https://emptystack.top/ https://l1b0.github.io/ https://yourbutterfly.github.io/  BigBrothers  https://eternalsakura13.com/ https://lancern.xyz/ http://www.aloxaf.com/ https://kiprey.github.io/ https://www.ksroido.art/ https://blog.flanker017.me/ https://thunderjie.github.io/ http://blog.eonew.cn/ https://xuanxuanblingbling.github.io/ https://chenx6.github.io/ https://blog.kyrios.cn/ https://etenal.me/ https://a1ex.online/ http://p4nda.top/ https://o0xmuhe.github.io/ https://evilpan.com/ https://myfzy.top/ https://exexute.github.io/ https://zhou-yuxin.github.io/  </description>
+      <description> https://foada.github.io/ https://fromhex.cn/ https://blog.xiabee.cn/ https://migraine-sudo.github.io/ https://m4x.fun/ https://ifpop.github.io/ https://blog.fkynjyq.com/ https://eacryo.gitee.io/ https://vang3lis.github.io/ https://emptystack.top/ https://l1b0.github.io/ https://yourbutterfly.github.io/  BigBrothers  https://eternalsakura13.com/ https://lancern.xyz/ http://www.aloxaf.com/ https://kiprey.github.io/ https://www.ksroido.art/ https://blog.flanker017.me/ https://thunderjie.github.io/ http://blog.eonew.cn/ https://xuanxuanblingbling.github.io/ https://atum.li/ https://chenx6.github.io/ https://blog.kyrios.cn/ https://etenal.me/ https://a1ex.online/ http://p4nda.top/ https://o0xmuhe.github.io/ https://evilpan.com/ https://myfzy.top/ https://exexute.github.io/ https://zhou-yuxin.github.io/ https://houjingyi233.com/  </description>
     </item>
     
     <item>
