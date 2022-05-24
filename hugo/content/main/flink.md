@@ -40,6 +40,6 @@ tags: [ "main" ]
 - [http://p4nda.top/](http://p4nda.top/)
 - [https://o0xmuhe.github.io/](https://o0xmuhe.github.io/)
 - [https://evilpan.com/](https://evilpan.com/)
-- https://myfzy.top/
-- https://exexute.github.io/
-- https://zhou-yuxin.github.io/
+- [https://myfzy.top/](https://myfzy.top/)
+- [https://exexute.github.io/](https://exexute.github.io/)
+- [https://zhou-yuxin.github.io/](https://zhou-yuxin.github.io/)

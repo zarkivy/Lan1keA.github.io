@@ -201,7 +201,33 @@
     <div id="content">
 <article class="post">
   
-    <div class="post-content"><h3 id="linux下的虚拟网络设备">Linux下的虚拟网络设备</h3>
+    <div class="post-content"><h3 id="ip与ifconfig命令输出">ip与ifconfig命令输出</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>~$ ip a
+</span></span><span style="display:flex;"><span>eth0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu <span style="color:#099">1500</span> qdisc fq_codel state UP group default qlen <span style="color:#099">1000</span>
+</span></span><span style="display:flex;"><span>    link/ether 00:0c:29:02:e4:a7 brd ff:ff:ff:ff:ff:ff
+</span></span><span style="display:flex;"><span>    inet 192.168.188.129/24 brd 192.168.188.255 scope global dynamic noprefixroute eth0
+</span></span><span style="display:flex;"><span>       valid_lft 1126sec preferred_lft 1126sec
+</span></span><span style="display:flex;"><span>    inet6 fe80::20c:29ff:fe02:e4a7/64 scope link noprefixroute 
+</span></span><span style="display:flex;"><span>       valid_lft forever preferred_lft forever
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>~$ ifconfig
+</span></span><span style="display:flex;"><span>eth0: <span style="color:#008080">flags</span><span style="color:#000;font-weight:bold">=</span>4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu <span style="color:#099">1500</span>
+</span></span><span style="display:flex;"><span>        inet 192.168.188.129  netmask 255.255.255.0  broadcast 192.168.188.255
+</span></span><span style="display:flex;"><span>        inet6 fe80::20c:29ff:fe02:e4a7  prefixlen <span style="color:#099">64</span>  scopeid 0x20&lt;link&gt;
+</span></span><span style="display:flex;"><span>        ether 00:0c:29:02:e4:a7  txqueuelen <span style="color:#099">1000</span>  <span style="color:#000;font-weight:bold">(</span>Ethernet<span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>        RX packets <span style="color:#099">959</span>  bytes <span style="color:#099">62153</span> <span style="color:#000;font-weight:bold">(</span>60.6 KiB<span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>        RX errors <span style="color:#099">0</span>  dropped <span style="color:#099">0</span>  overruns <span style="color:#099">0</span>  frame <span style="color:#099">0</span>
+</span></span><span style="display:flex;"><span>        TX packets <span style="color:#099">66</span>  bytes <span style="color:#099">7598</span> <span style="color:#000;font-weight:bold">(</span>7.4 KiB<span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>        TX errors <span style="color:#099">0</span>  dropped <span style="color:#099">0</span> overruns <span style="color:#099">0</span>  carrier <span style="color:#099">0</span>  collisions <span style="color:#099">0</span>
+</span></span></code></pre></div><h3 id="网卡的工作模式">网卡的工作模式</h3>
+<ol>
+<li>广播模式（Broad Cast Model）：它的物理地址（MAC）地址是 0xffffff 的帧为广播帧，工作在广播模式的网卡接收广播帧；</li>
+<li>多播传送（MultiCast Model）：多播传送地址作为目的物理地址的帧可以被组内的其它主机同时接收，而组外主机却接收不到。但是，如果将网卡设置为多播传送模式，它可以接收所有的多播传送帧，而不论它是不是组内成员；</li>
+<li>直接模式（Direct Model）：工作在直接模式下的网卡只接收目地址是自己 Mac地址的帧；</li>
+<li>混杂模式（Promiscuous Model）：工作在混杂模式下的网卡接收所有的流过网卡的帧，信包捕获程序就是在这种模式下运行的。</li>
+</ol>
+<p>网卡的缺省工作模式包含广播模式和直接模式，即它只接收广播帧和发给自己的帧。如果采用混杂模式，一个站点的网卡将接受同一网络内所有站点所发送的数据包这样就可以到达对于网络信息监视捕获的目的。</p>
+<h3 id="linux下的虚拟网络设备">Linux下的虚拟网络设备</h3>
 <p>通过<code>ip link add</code>可以创建多种类型的虚拟网络设备，在<code>man ip link</code>中可以得知有以下类型的device:</p>
 <ul>
 <li>bridge - Ethernet Bridge device</li>
@@ -240,6 +266,22 @@
 <li>rmnet - Qualcomm rmnet device</li>
 <li>xfrm - Virtual xfrm interface</li>
 </ul>
+<h3 id="tuntap">TUN/TAP</h3>
+<p>TUN是Linux系统里的虚拟网络设备，它的原理和使用在<a href="https://www.kernel.org/doc/Documentation/networking/tuntap.txt">Kernel Doc</a>和<a href="https://en.wikipedia.org/wiki/TUN/TAP">Wiki</a>做了比较清楚的说明。</p>
+<p>TUN设备模拟网络层设备(network layer)，处理三层报文，IP报文等，用于将报文注入到网络协议栈。</p>
+<p><img src="https://www.lijiaocn.com/img/net-devices/tun-work.png" alt="TUN设备工作原理"></p>
+<p>应用程序(app)可以从物理网卡上读写报文，经过处理后通过TUN回送，或者从TUN读取报文处理后经物理网卡送出。</p>
+<p><img src="https://www.lijiaocn.com/img/net-devices/tun-app-work.png" alt="利用TUN实现VPN"></p>
+<p>TAP是Linux系统里的虚拟网络设备，它的原理和使用在<a href="https://www.kernel.org/doc/Documentation/networking/tuntap.txt">Kernel Doc</a>和<a href="https://en.wikipedia.org/wiki/TUN/TAP">Wiki</a>做了比较清楚的说明。</p>
+<p>不同于TUN的是，TAP设备模拟链路层设备(link layer)，处理二层报文，以太网帧等。</p>
+<p>TAP设备与TUN设备的区别在于:</p>
+<ul>
+<li>TAP虚拟的是一个二层设备，具有MAC地址，接收、发送的是二层包。</li>
+<li>TUN虚拟的是一个三层设备，没有MAC地址，接收、发送的是三层包。</li>
+</ul>
+<h3 id="最小的虚拟网卡">最小的虚拟网卡</h3>
+<p>参见：</p>
+<p><a href="https://zhou-yuxin.github.io/articles/2017/%E7%AC%AC%E4%B8%80%E4%B8%AALinux%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87%E9%A9%B1%E5%8A%A8%E2%80%94%E2%80%94%E6%9C%80%E7%AE%80%E8%99%9A%E6%8B%9F%E7%BD%91%E5%8D%A1virnet/index.html">https://zhou-yuxin.github.io/articles/2017/%E7%AC%AC%E4%B8%80%E4%B8%AALinux%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87%E9%A9%B1%E5%8A%A8%E2%80%94%E2%80%94%E6%9C%80%E7%AE%80%E8%99%9A%E6%8B%9F%E7%BD%91%E5%8D%A1virnet/index.html</a></p>
 </div>
   
 </article>

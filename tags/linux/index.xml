@@ -14,8 +14,7 @@
       <pubDate>Mon, 23 May 2022 23:21:12 +0800</pubDate>
       
       <guid>https://dev2ero.github.io/post/nic/</guid>
-      <description>Linux下的虚拟网络设备 通过ip link add可以创建多种类型的虚拟网络设备，在man ip link中可以得知有以下类型的device:
- bridge - Ethernet Bridge device bond - Bonding device dummy - Dummy network interface hsr - High-availability Seamless Redundancy device ifb - Intermediate Functional Block device ipoib - IP over Infiniband device macvlan - Virtual interface base on link layer address (MAC) macvtap - Virtual interface based on link layer address (MAC) and TAP. vcan - Virtual Controller Area Network interface vxcan - Virtual Controller Area Network tunnel interface veth - Virtual ethernet interface vlan - 802.</description>
+      <description>ip与ifconfig命令输出 ~$ ip a eth0: &amp;lt;BROADCAST,MULTICAST,UP,LOWER_UP&amp;gt; mtu 1500 qdisc fq_codel state UP group default qlen 1000  link/ether 00:0c:29:02:e4:a7 brd ff:ff:ff:ff:ff:ff  inet 192.168.188.129/24 brd 192.168.188.255 scope global dynamic noprefixroute eth0  valid_lft 1126sec preferred_lft 1126sec  inet6 fe80::20c:29ff:fe02:e4a7/64 scope link noprefixroute  valid_lft forever preferred_lft forever  ~$ ifconfig eth0: flags=4163&amp;lt;UP,BROADCAST,RUNNING,MULTICAST&amp;gt; mtu 1500  inet 192.168.188.129 netmask 255.255.255.0 broadcast 192.168.188.255  inet6 fe80::20c:29ff:fe02:e4a7 prefixlen 64 scopeid 0x20&amp;lt;link&amp;gt;  ether 00:0c:29:02:e4:a7 txqueuelen 1000 (Ethernet)  RX packets 959 bytes 62153 (60.</description>
     </item>
     
     <item>
