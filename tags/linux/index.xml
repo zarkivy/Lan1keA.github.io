@@ -113,7 +113,19 @@ kernel Linux kernel v4.1 for armel as an example. Compiling a linux kernel requi
       <pubDate>Sun, 08 May 2022 14:08:16 +0800</pubDate>
       
       <guid>https://dev2ero.github.io/post/embeded_env/</guid>
-      <description>\x01 构建 编译工具链 \x02 运行 \x03 调试 </description>
+      <description>\x01 构建 编译工具链  命名遵循 arch-vendor-(os-)abi 的格式
+ 获取编译工具链的方式，可以直接从这些地方下载到：
+  arm cortex-a:The GNU Toolchain for the Cortex-A Family Downloads
+  arm cortex-m:GNU Arm Embedded Toolchain Downloads
+  Linaro:arm:https://www.linaro.org/downloads/
+  risc-v:https://github.com/riscv/riscv-gnu-toolchain/releases
+  mips:https://www.mips.com/develop/tools/compilers/linux-toolchain/
+  uclibc:https://www.uclibc.org/downloads/binaries/
+  http://download.ronetix.info/toolchains/
+  也可以使用buildroot手动构建：
+ https://buildroot.org/  OS/ABI的匹配 通常情况下，选取编译交叉编译工具链时，指令集、平台之类的内容是不容易弄错的。但 OS/ABI 却是个容易造成故障的点。
+举例来讲，在我一次对libnvram.so的编译时，得到的目标ELF文件为：
+~$ file libnvram.so libnvram.so: ELF 32-bit LSB shared object, ARM, version 1 (ARM), dynamically linked, not stripped  ~$ armv5l-readelf -h libnvram.</description>
     </item>
     
     <item>
