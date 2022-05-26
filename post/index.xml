@@ -7,7 +7,17 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>© 2022, Zikey Vi</copyright>
-    <lastBuildDate>Tue, 24 May 2022 17:43:25 +0800</lastBuildDate><atom:link href="https://dev2ero.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 26 May 2022 15:51:22 +0800</lastBuildDate><atom:link href="https://dev2ero.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>记一次qemu-system-arm的排错</title>
+      <link>https://dev2ero.github.io/post/qemu_armv8_dbg/</link>
+      <pubDate>Thu, 26 May 2022 15:51:22 +0800</pubDate>
+      
+      <guid>https://dev2ero.github.io/post/qemu_armv8_dbg/</guid>
+      <description>探案 在一次尝试使用qemu-system-arm对于asuswrt的固件进行仿真运行时，出现了十分诡异的问题：整个qemu-system、linux内核、固件文件系统运行完全正常，除了在使用到openssl时：
+admin@(none):/tmp/home/root# openssl [ 9.765639] openssl (274): undefined instruction: pc=b6cf31a8 [ 9.765770] CPU: 0 PID: 274 Comm: openssl Tainted: G W 4.1.17+ #10 [ 9.766031] Hardware name: Generic DT based system [ 9.766149] task: cef58b40 ti: cef80000 task.ti: cef80000 [ 9.766367] PC is at 0xb6cf31a8 [ 9.766423] LR is at 0xb6dcedb0 [ 9.766475] pc : [&amp;lt;b6cf31a8&amp;gt;] lr : [&amp;lt;b6dcedb0&amp;gt;] psr: 200b0010 [ 9.766475] sp : bee2c7c8 ip : 00000000 fp : 00000000 [ 9.</description>
+    </item>
+    
     <item>
       <title>CVE-2016-5195 Linux DirtyCOW漏洞分析</title>
       <link>https://dev2ero.github.io/post/cve-2016-5195/</link>

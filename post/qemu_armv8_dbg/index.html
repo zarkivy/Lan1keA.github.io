@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="zh"><head>
+    <meta charset="UTF-8">
+    <title>やれやれ DA✰ZE</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="居然是指令集的锅？" />
+    <meta property="og:title" content="记一次qemu-system-arm的排错" />
+    <meta property="og:description" content="居然是指令集的锅？" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://dev2ero.github.io/post/qemu_armv8_dbg/" />
+    <meta itemprop="name" content="记一次qemu-system-arm的排错">
+    <meta itemprop="description" content="居然是指令集的锅？">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+    
+    <link rel="stylesheet" href="https://dev2ero.github.io/scss/style.min.5cc161ce25a37cfa33a6a8df8803b39268d6c4b6a5be5bb9d1f929e7f113117f.css" >
+</head>
+<body>
+    <header>
+    <div class="header header-frame">
+        <div>
+          
+            <h1 class="header__title">记一次qemu-system-arm的排错</h1>
+          
+            
+                <div class="header__description">居然是指令集的锅？</div>
+            
+        </div>
+        <nav class="header-nav">
+            <ul class="header-nav-list header-nav-list--menu">
+                
+                
+                    
+                        <li class="header-nav-list__item">
+                            <a class="header-nav-list__link" href="/main/about/">
+                                
+                                <span>About</span>
+                            </a>
+                        </li>
+                    
+                
+                    
+                        <li class="header-nav-list__item">
+                            <a class="header-nav-list__link" href="/main/board/">
+                                
+                                <span>Board</span>
+                            </a>
+                        </li>
+                    
+                
+                    
+                        <li class="header-nav-list__item">
+                            <a class="header-nav-list__link" href="/main/flink/">
+                                
+                                <span>Flink</span>
+                            </a>
+                        </li>
+                    
+                
+                    
+                        <li class="header-nav-list__item">
+                            <a class="header-nav-list__link" href="/main/utils/">
+                                
+                                <span>Utils</span>
+                            </a>
+                        </li>
+                    
+                
+                    
+                        <li class="header-nav-list__item">
+                            <a class="header-nav-list__link" href="/main/love/">
+                                
+                                <span>Love</span>
+                            </a>
+                        </li>
+                    
+                
+            </ul>
+            <button class="header-nav-list__nav-btn">⨈</button>
+        </nav>
+        <button class="mb-header__menu-btn">
+            <span class="mb-header__menu-btn-line"></span>
+            <span class="mb-header__menu-btn-line"></span>
+            <span class="mb-header__menu-btn-line"></span>
+        </button>
+    </div>
+    <nav id="mobile-header-nav" class="mb-header-nav">
+  
+  
+  <button class="mb-header-nav__close-btn flex-center">
+    <svg
+            class="mb-header-nav__svg-icon"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            width="32"
+            height="32"
+            >
+            <path
+                d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+                />
+            <path d="M0 0h24v24H0z" fill="none" />
+        </svg>
+    </button>
+    
+    <div class="mb-header-nav__wrapper">
+        <div class="mb-header-nav__container">
+            <svg
+                width="240"
+                height="72"
+                viewBox="0 0 240 72"
+                class="mb-header-nav__title"
+                >
+                <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle">
+                Tags
+                </text>
+            </svg>
+            <ul class="mb-header-nav-list">
+                
+                    
+                        
+                    
+                        
+                          <li class="mb-header-nav-list__item ">
+                        <a class="mb-header-nav-list__link" href="https://dev2ero.github.io/tags/linux/"
+                                                            >Linux</a
+                                                        >
+                    </li>
+                        
+                    
+                
+            </ul>
+        </div>
+        <div class="mb-header-nav__container">
+            <svg
+                width="240"
+                height="72"
+                viewBox="0 0 240 72"
+                class="mb-header-nav__title"
+                >
+                <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle">
+                Menu
+                </text>
+            </svg>
+            <ul class="mb-header-nav-list">
+                
+                
+                    
+                      <li class="mb-header-nav-list__item ">
+                            <a class="mb-header-nav-list__link" href="/main/about/">
+                                About
+                            </a>
+                        </li>
+                    
+                
+                    
+                      <li class="mb-header-nav-list__item ">
+                            <a class="mb-header-nav-list__link" href="/main/board/">
+                                Board
+                            </a>
+                        </li>
+                    
+                
+                    
+                      <li class="mb-header-nav-list__item ">
+                            <a class="mb-header-nav-list__link" href="/main/flink/">
+                                Flink
+                            </a>
+                        </li>
+                    
+                
+                    
+                      <li class="mb-header-nav-list__item ">
+                            <a class="mb-header-nav-list__link" href="/main/utils/">
+                                Utils
+                            </a>
+                        </li>
+                    
+                
+                    
+                      <li class="mb-header-nav-list__item ">
+                            <a class="mb-header-nav-list__link" href="/main/love/">
+                                Love
+                            </a>
+                        </li>
+                    
+                
+            </ul>
+        </div>
+    </div>
+</nav>
+
+</header>
+
+
+
+    <div id="content">
+<article class="post">
+  
+    <div class="post-content"><h2 id="探案">探案</h2>
+<p>在一次尝试使用<code>qemu-system-arm</code>对于asuswrt的固件进行仿真运行时，出现了十分诡异的问题：整个qemu-system、linux内核、固件文件系统运行完全正常，除了在使用到<code>openssl</code>时：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>admin@<span style="color:#000;font-weight:bold">(</span>none<span style="color:#000;font-weight:bold">)</span>:/tmp/home/root# openssl
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>    9.765639<span style="color:#000;font-weight:bold">]</span> openssl <span style="color:#000;font-weight:bold">(</span>274<span style="color:#000;font-weight:bold">)</span>: undefined instruction: <span style="color:#008080">pc</span><span style="color:#000;font-weight:bold">=</span>b6cf31a8
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>    9.765770<span style="color:#000;font-weight:bold">]</span> CPU: <span style="color:#099">0</span> PID: <span style="color:#099">274</span> Comm: openssl Tainted: G        W       4.1.17+ <span style="color:#998;font-style:italic">#10</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>    9.766031<span style="color:#000;font-weight:bold">]</span> Hardware name: Generic DT based system
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>    9.766149<span style="color:#000;font-weight:bold">]</span> task: cef58b40 ti: cef80000 task.ti: cef80000
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>    9.766367<span style="color:#000;font-weight:bold">]</span> PC is at 0xb6cf31a8
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>    9.766423<span style="color:#000;font-weight:bold">]</span> LR is at 0xb6dcedb0
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>    9.766475<span style="color:#000;font-weight:bold">]</span> pc : <span style="color:#000;font-weight:bold">[</span>&lt;b6cf31a8&gt;<span style="color:#000;font-weight:bold">]</span>    lr : <span style="color:#000;font-weight:bold">[</span>&lt;b6dcedb0&gt;<span style="color:#000;font-weight:bold">]</span>    psr: 200b0010
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>    9.766475<span style="color:#000;font-weight:bold">]</span> sp : bee2c7c8  ip : <span style="color:#099">00000000</span>  fp : <span style="color:#099">00000000</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>    9.766741<span style="color:#000;font-weight:bold">]</span> r10: <span style="color:#099">00000001</span>  r9 : bee2cdc4  r8 : <span style="color:#099">00000000</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>    9.766903<span style="color:#000;font-weight:bold">]</span> r7 : 000a5848  r6 : b6f6ace0  r5 : b6eb7adc  r4 : 00a43020
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>    9.766989<span style="color:#000;font-weight:bold">]</span> r3 : 00a43050  r2 : <span style="color:#099">00000001</span>  r1 : <span style="color:#099">00000000</span>  r0 : 00a43020
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>    9.767253<span style="color:#000;font-weight:bold">]</span> Flags: nzCv  IRQs on  FIQs on  Mode USER_32  ISA ARM  Segment user
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>    9.767372<span style="color:#000;font-weight:bold">]</span> Control: 10c5387d  Table: 4ef78059  DAC: <span style="color:#099">00000015</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>    9.767547<span style="color:#000;font-weight:bold">]</span> Code: e5845000 e5843014 e3a02001 e2843030 <span style="color:#000;font-weight:bold">(</span>e183fc92<span style="color:#000;font-weight:bold">)</span> 
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>    9.767878<span style="color:#000;font-weight:bold">]</span> potentially unexpected fatal signal 4.
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>    9.767978<span style="color:#000;font-weight:bold">]</span> CPU: <span style="color:#099">0</span> PID: <span style="color:#099">274</span> Comm: openssl Tainted: G        W       4.1.17+ <span style="color:#998;font-style:italic">#10</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>    9.768206<span style="color:#000;font-weight:bold">]</span> Hardware name: Generic DT based system
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>    9.768282<span style="color:#000;font-weight:bold">]</span> task: cef58b40 ti: cef80000 task.ti: cef80000
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>    9.768395<span style="color:#000;font-weight:bold">]</span> PC is at 0xb6cf31a8
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>    9.768504<span style="color:#000;font-weight:bold">]</span> LR is at 0xb6dcedb0
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>    9.768639<span style="color:#000;font-weight:bold">]</span> pc : <span style="color:#000;font-weight:bold">[</span>&lt;b6cf31a8&gt;<span style="color:#000;font-weight:bold">]</span>    lr : <span style="color:#000;font-weight:bold">[</span>&lt;b6dcedb0&gt;<span style="color:#000;font-weight:bold">]</span>    psr: 200b0010
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>    9.768639<span style="color:#000;font-weight:bold">]</span> sp : bee2c7c8  ip : <span style="color:#099">00000000</span>  fp : <span style="color:#099">00000000</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>    9.768908<span style="color:#000;font-weight:bold">]</span> r10: <span style="color:#099">00000001</span>  r9 : bee2cdc4  r8 : <span style="color:#099">00000000</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>    9.768980<span style="color:#000;font-weight:bold">]</span> r7 : 000a5848  r6 : b6f6ace0  r5 : b6eb7adc  r4 : 00a43020
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>    9.769094<span style="color:#000;font-weight:bold">]</span> r3 : 00a43050  r2 : <span style="color:#099">00000001</span>  r1 : <span style="color:#099">00000000</span>  r0 : 00a43020
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>    9.769279<span style="color:#000;font-weight:bold">]</span> Flags: nzCv  IRQs on  FIQs on  Mode USER_32  ISA ARM  Segment user
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>    9.769437<span style="color:#000;font-weight:bold">]</span> Control: 10c5387d  Table: 4ef78059  DAC: <span style="color:#099">00000015</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>    9.769517<span style="color:#000;font-weight:bold">]</span> CPU: <span style="color:#099">0</span> PID: <span style="color:#099">274</span> Comm: openssl Tainted: G        W       4.1.17+ <span style="color:#998;font-style:italic">#10</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>    9.769739<span style="color:#000;font-weight:bold">]</span> Hardware name: Generic DT based system
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>    9.769898<span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">[</span>&lt;c001c8dc&gt;<span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">(</span>unwind_backtrace<span style="color:#000;font-weight:bold">)</span> from <span style="color:#000;font-weight:bold">[</span>&lt;c0019c70&gt;<span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">(</span>show_stack+0x10/0x14<span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>    9.770003<span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">[</span>&lt;c0019c70&gt;<span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">(</span>show_stack<span style="color:#000;font-weight:bold">)</span> from <span style="color:#000;font-weight:bold">[</span>&lt;c002e6cc&gt;<span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">(</span>get_signal+0x41c/0x47c<span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>    9.770168<span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">[</span>&lt;c002e6cc&gt;<span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">(</span>get_signal<span style="color:#000;font-weight:bold">)</span> from <span style="color:#000;font-weight:bold">[</span>&lt;c00194a8&gt;<span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">(</span>do_signal+0x8c/0x35c<span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>    9.770312<span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">[</span>&lt;c00194a8&gt;<span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">(</span>do_signal<span style="color:#000;font-weight:bold">)</span> from <span style="color:#000;font-weight:bold">[</span>&lt;c00198d8&gt;<span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">(</span>do_work_pending+0x54/0xac<span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>    9.770408<span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">[</span>&lt;c00198d8&gt;<span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">(</span>do_work_pending<span style="color:#000;font-weight:bold">)</span> from <span style="color:#000;font-weight:bold">[</span>&lt;c0016c8c&gt;<span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">(</span>work_pending+0xc/0x20<span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>Illegal instruction <span style="color:#000;font-weight:bold">(</span>core dumped<span style="color:#000;font-weight:bold">)</span>
+</span></span></code></pre></div><p>当然，用到了<code>openssl</code>的各个组件，如<code>httpd</code>，也是由此无法正常工作的。</p>
+<p>动态调试看看。在<code>qemu-system-arm</code>环境中启动<code>gdbserver</code>：（gdbserver可以来这里获取：<a href="https://github.com/dev2ero/embins">https://github.com/dev2ero/embins</a>）</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>gdbserver :1234 /usr/sbin/openssl
+</span></span></code></pre></div><p>在宿主机使用gdb-multiarch作为gdb client调试：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>~$ gdb-multiarch
+</span></span><span style="display:flex;"><span>pwndbg&gt; <span style="color:#0086b3">set</span> architecture armv5
+</span></span><span style="display:flex;"><span>The target architecture is <span style="color:#0086b3">set</span> to <span style="color:#d14">&#34;armv5&#34;</span>.
+</span></span><span style="display:flex;"><span>pwndbg&gt; target remote 192.168.50.1:1234
+</span></span><span style="display:flex;"><span>Remote debugging using 192.168.50.1:1234
+</span></span><span style="display:flex;"><span>pwndbg&gt; file asuswrt/usr/sbin/openssl 
+</span></span><span style="display:flex;"><span>Reading symbols from asuswrt/usr/sbin/openssl...
+</span></span><span style="display:flex;"><span>pwndbg&gt; c
+</span></span></code></pre></div><p>触发<code>SIGILL</code>：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>Program received signal SIGILL, Illegal instruction.
+</span></span><span style="display:flex;"><span>0xb6d871a8 in BIO_new <span style="color:#000;font-weight:bold">()</span> from target:/usr/lib/libcrypto.so.1.1
+</span></span><span style="display:flex;"><span>LEGEND: STACK | HEAP | CODE | DATA | RWX | RODATA
+</span></span><span style="display:flex;"><span>───────────────────────────────────────────────────<span style="color:#000;font-weight:bold">[</span> REGISTERS <span style="color:#000;font-weight:bold">]</span>────────────────────────────────────────────────────
+</span></span><span style="display:flex;"><span>*R0   0xaf020 —▸ 0xb6f4badc ◂— 0x402
+</span></span><span style="display:flex;"><span> R1   0x0
+</span></span><span style="display:flex;"><span>*R2   0x1
+</span></span><span style="display:flex;"><span>*R3   0xaf050 ◂— 0x0
+</span></span><span style="display:flex;"><span>*R4   0xaf020 —▸ 0xb6f4badc ◂— 0x402
+</span></span><span style="display:flex;"><span>*R5   0xb6f4badc ◂— 0x402
+</span></span><span style="display:flex;"><span>*R6   0xb6ffece0 <span style="color:#000;font-weight:bold">(</span>__stack_chk_guard<span style="color:#000;font-weight:bold">)</span> ◂— 0x10072e00
+</span></span><span style="display:flex;"><span>*R7   0xa5848 —▸ 0xa5738 ◂— 0x1
+</span></span><span style="display:flex;"><span> R8   0x0
+</span></span><span style="display:flex;"><span>*R9   0xbefffdb4 —▸ 0xbefffea8 ◂— <span style="color:#d14">&#39;/usr/sbin/openssl&#39;</span>
+</span></span><span style="display:flex;"><span>*R10  0x1
+</span></span><span style="display:flex;"><span> R11  0x0
+</span></span><span style="display:flex;"><span> R12  0x0
+</span></span><span style="display:flex;"><span>*SP   0xbefff7b8 —▸ 0xb6ff9648 —▸ 0x1e6a9 ◂— cdpmi  p0, <span style="color:#998;font-style:italic">#4, c5, c5, c15, #2 /* &#39;OPENSSL_1_1_0&#39; */</span>
+</span></span><span style="display:flex;"><span>*PC   0xb6d871a8 <span style="color:#000;font-weight:bold">(</span>BIO_new+84<span style="color:#000;font-weight:bold">)</span> ◂— 0xe183fc92
+</span></span><span style="display:flex;"><span>─────────────────────────────────────────────────────<span style="color:#000;font-weight:bold">[</span> DISASM <span style="color:#000;font-weight:bold">]</span>─────────────────────────────────────────────────────
+</span></span><span style="display:flex;"><span>Invalid instructions at 0xb6d871a8
+</span></span></code></pre></div><p>看来是<code>libcrypto.so.1.1</code>中的<code>BIO_new()</code>函数包含了非法指令。反汇编看看是哪条指令出了问题：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>pwndbg&gt; disassemble BIO_new
+</span></span><span style="display:flex;"><span>Dump of assembler code <span style="color:#000;font-weight:bold">for</span> <span style="color:#000;font-weight:bold">function</span> BIO_new:
+</span></span><span style="display:flex;"><span>   ......
+</span></span><span style="display:flex;"><span>   0xb6d871a4 &lt;+80&gt;:    add     r3, r4, <span style="color:#998;font-style:italic">#48     ; 0x30</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">=</span>&gt; 0xb6d871a8 &lt;+84&gt;:    stl     r2, <span style="color:#000;font-weight:bold">[</span>r3<span style="color:#000;font-weight:bold">]</span>
+</span></span><span style="display:flex;"><span>   0xb6d871ac &lt;+88&gt;:    add     r7, r4, <span style="color:#998;font-style:italic">#72     ; 0x48</span>
+</span></span><span style="display:flex;"><span>   ......
+</span></span></code></pre></div><p><code>stl</code>指令是非法指令？为什么呢？Google一下得到：</p>
+<p><a href="https://developer.arm.com/documentation/100076/0200/a32-t32-instruction-set-reference/a32-and-t32-instructions/stl?lang=en">https://developer.arm.com/documentation/100076/0200/a32-t32-instruction-set-reference/a32-and-t32-instructions/stl?lang=en</a></p>
+<p>其中注明了：</p>
+<blockquote>
+<p>This 32-bit instruction is available in A32 and T32.</p>
+<p>There is no 16-bit version of this instruction.</p>
+</blockquote>
+<p><code>stl</code>指令只是A32和T32架构下可用，那么这两个架构对应的指令集是什么呢？继续Google：</p>
+<p><a href="https://developer.arm.com/Processors/Cortex-A32">https://developer.arm.com/Processors/Cortex-A32</a></p>
+<p>得到：</p>
+<blockquote>
+<p>Architecture: 32-bit Armv8-A</p>
+</blockquote>
+<p>这是一条<code>Armv8</code>的指令。那我们此时的<code>qemu-system-arm</code>用的是什么环境呢？</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>qemu-system-arm -M <span style="color:#0086b3">help</span>
+</span></span><span style="display:flex;"><span>......
+</span></span><span style="display:flex;"><span>virt-6.1             QEMU 6.1 ARM Virtual Machine
+</span></span><span style="display:flex;"><span>virt-6.2             QEMU 6.2 ARM Virtual Machine
+</span></span><span style="display:flex;"><span>virt                 QEMU 7.0 ARM Virtual Machine <span style="color:#000;font-weight:bold">(</span><span style="color:#0086b3">alias</span> of virt-7.0<span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>virt-7.0             QEMU 7.0 ARM Virtual Machine
+</span></span><span style="display:flex;"><span>......
+</span></span></code></pre></div><p>machine的说明中只说明了我所用的<code>virt</code>是指<code>QEMU 7.0 ARM Virtual Machine</code>，并未介绍更多信息</p>
+<p>那么去虚拟环境中直接看看：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>admin@<span style="color:#000;font-weight:bold">(</span>none<span style="color:#000;font-weight:bold">)</span>:/# cat /proc/cpuinfo 
+</span></span><span style="display:flex;"><span>processor       : <span style="color:#099">0</span>
+</span></span><span style="display:flex;"><span>model name      : ARMv7 Processor rev <span style="color:#099">1</span> <span style="color:#000;font-weight:bold">(</span>v7l<span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>BogoMIPS        : 125.00
+</span></span><span style="display:flex;"><span>Features        : half thumb fastmult vfp edsp neon vfpv3 tls vfpv4 idiva idivt vfpd32 lpae evtstrm 
+</span></span><span style="display:flex;"><span>CPU implementer : 0x41
+</span></span><span style="display:flex;"><span>CPU architecture: <span style="color:#099">7</span>
+</span></span><span style="display:flex;"><span>CPU variant     : 0x2
+</span></span><span style="display:flex;"><span>CPU part        : 0xc0f
+</span></span><span style="display:flex;"><span>CPU revision    : <span style="color:#099">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Hardware        : Generic DT based system
+</span></span><span style="display:flex;"><span>Revision        : <span style="color:#099">0000</span>
+</span></span><span style="display:flex;"><span>Serial          : <span style="color:#099">0000000000000000</span>
+</span></span></code></pre></div><p>问题原因找到了，此时我们虚拟环境的CPU所用指令集为<code>Armv7</code>，并未包含<code>Armv8</code>下的<code>stl</code>指令。</p>
+<p>做个实验验证下猜想：</p>
+<p>准备一份arm下的hello world源码：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-asm" data-lang="asm"><span style="display:flex;"><span><span style="color:#008080">.section</span> <span style="color:#008080">.data</span>
+</span></span><span style="display:flex;"><span><span style="color:#900;font-weight:bold">hello:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#008080">.ascii</span> <span style="color:#d14">&#34;hello world\n&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#008080">.equ</span> <span style="color:#008080">len</span>, . - <span style="color:#008080">hello</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">.section</span> <span style="color:#008080">.text</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">.global</span> <span style="color:#008080">_start</span>
+</span></span><span style="display:flex;"><span><span style="color:#900;font-weight:bold">_start:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#900;font-weight:bold">mov</span> <span style="color:#008080">r0</span>, <span style="color:#998;font-style:italic">#1
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>    <span style="color:#008080">ldr</span> <span style="color:#008080">r1</span>, <span style="color:#a61717;background-color:#e3d2d2">=</span><span style="color:#008080">hello</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#900;font-weight:bold">mov</span> <span style="color:#008080">r2</span>, <span style="color:#998;font-style:italic">#len
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>    <span style="color:#008080">mov</span> <span style="color:#008080">r7</span>, <span style="color:#998;font-style:italic">#4
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>    <span style="color:#008080">swi</span> <span style="color:#998;font-style:italic">#0
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>
+</span></span><span style="display:flex;"><span><span style="color:#900;font-weight:bold">exit:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#900;font-weight:bold">mov</span> <span style="color:#008080">r0</span>, <span style="color:#998;font-style:italic">#0
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>    <span style="color:#008080">mov</span> <span style="color:#008080">r7</span>, <span style="color:#998;font-style:italic">#1
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>    <span style="color:#008080">swi</span> <span style="color:#998;font-style:italic">#0
+</span></span></span></code></pre></div><p>使用旧版<code>arm-linux-gnueabi-gcc</code>，可以正常汇编链接运行：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>~$ /opt/cross/gcc-linaro-arm-linux-gnueabihf/bin/arm-linux-gnueabihf-as hello.s -o hello.o
+</span></span><span style="display:flex;"><span>~$ /opt/cross/gcc-linaro-arm-linux-gnueabihf/bin/arm-linux-gnueabihf-ld hello.o -o hello.out
+</span></span><span style="display:flex;"><span>~$ qemu-arm hello.out 
+</span></span><span style="display:flex;"><span>hello world
+</span></span></code></pre></div><p>而为其添加上一行stl指令后则汇编失败：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>~$ /opt/cross/gcc-linaro-arm-linux-gnueabihf/bin/arm-linux-gnueabihf-as hello.s -o hello.o
+</span></span><span style="display:flex;"><span>hello.s: Assembler messages:
+</span></span><span style="display:flex;"><span>hello.s:11: Error: bad instruction <span style="color:#d14">`</span>stl r0,<span style="color:#000;font-weight:bold">[</span>r1<span style="color:#000;font-weight:bold">]</span><span style="color:#a61717;background-color:#e3d2d2">&#39;</span>
+</span></span></code></pre></div><p>由此验证了上面的原因推断。</p>
+<p>继续来看看固件中的ELF指令集版本：</p>
+<p>首先我们刚刚的<code>hello.out</code>是<code>Armv4</code>：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>~$ /opt/cross/gcc-linaro-arm-linux-gnueabihf/bin/arm-linux-gnueabihf-readelf -A hello.out                    
+</span></span><span style="display:flex;"><span>Attribute Section: aeabi
+</span></span><span style="display:flex;"><span>File Attributes
+</span></span><span style="display:flex;"><span>  Tag_CPU_arch: v4
+</span></span><span style="display:flex;"><span>  Tag_ARM_ISA_use: Yes
+</span></span><span style="display:flex;"><span>  Tag_DIV_use: Not allowed
+</span></span></code></pre></div><p>固件中的<code>busybox</code>和出问题的<code>libcrypto.so.1.1</code>则是：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>~$ /opt/cross/gcc-linaro-arm-linux-gnueabihf/bin/arm-linux-gnueabihf-readelf -A asuswrt/busybox                    
+</span></span><span style="display:flex;"><span>Attribute Section: aeabi
+</span></span><span style="display:flex;"><span>File Attributes
+</span></span><span style="display:flex;"><span>  Tag_CPU_name: <span style="color:#d14">&#34;Cortex-A9&#34;</span>
+</span></span><span style="display:flex;"><span>  Tag_CPU_arch: v7
+</span></span><span style="display:flex;"><span>  Tag_CPU_arch_profile: Application
+</span></span><span style="display:flex;"><span>  Tag_ARM_ISA_use: Yes
+</span></span><span style="display:flex;"><span>  Tag_THUMB_ISA_use: Thumb-2
+</span></span><span style="display:flex;"><span>  Tag_ABI_PCS_wchar_t: <span style="color:#099">4</span>
+</span></span><span style="display:flex;"><span>  Tag_ABI_FP_rounding: Needed
+</span></span><span style="display:flex;"><span>  Tag_ABI_FP_denormal: Needed
+</span></span><span style="display:flex;"><span>  Tag_ABI_FP_exceptions: Needed
+</span></span><span style="display:flex;"><span>  Tag_ABI_FP_number_model: IEEE <span style="color:#099">754</span>
+</span></span><span style="display:flex;"><span>  Tag_ABI_align_needed: 8-byte
+</span></span><span style="display:flex;"><span>  Tag_ABI_align_preserved: 8-byte, except leaf SP
+</span></span><span style="display:flex;"><span>  Tag_ABI_enum_size: int
+</span></span><span style="display:flex;"><span>  Tag_CPU_unaligned_access: v6
+</span></span><span style="display:flex;"><span>  Tag_MPextension_use: Allowed
+</span></span><span style="display:flex;"><span>  Tag_Virtualization_use: TrustZone
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>~$ /opt/cross/gcc-linaro-arm-linux-gnueabihf/bin/arm-linux-gnueabihf-readelf -A asuswrt/usr/lib/libcrypto.so.1.1
+</span></span><span style="display:flex;"><span>Attribute Section: aeabi
+</span></span><span style="display:flex;"><span>File Attributes
+</span></span><span style="display:flex;"><span>  Tag_CPU_name: <span style="color:#d14">&#34;8-A&#34;</span>
+</span></span><span style="display:flex;"><span>  Tag_CPU_arch: ??? <span style="color:#000;font-weight:bold">(</span>14<span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>  Tag_CPU_arch_profile: Application
+</span></span><span style="display:flex;"><span>  Tag_ARM_ISA_use: Yes
+</span></span><span style="display:flex;"><span>  Tag_THUMB_ISA_use: Thumb-2
+</span></span><span style="display:flex;"><span>  Tag_FP_arch: VFPv3
+</span></span><span style="display:flex;"><span>  Tag_Advanced_SIMD_arch: NEONv1
+</span></span><span style="display:flex;"><span>  Tag_ABI_PCS_wchar_t: <span style="color:#099">4</span>
+</span></span><span style="display:flex;"><span>  Tag_ABI_FP_rounding: Needed
+</span></span><span style="display:flex;"><span>  Tag_ABI_FP_denormal: Needed
+</span></span><span style="display:flex;"><span>  Tag_ABI_FP_exceptions: Needed
+</span></span><span style="display:flex;"><span>  Tag_ABI_FP_number_model: IEEE <span style="color:#099">754</span>
+</span></span><span style="display:flex;"><span>  Tag_ABI_align_needed: 8-byte
+</span></span><span style="display:flex;"><span>  Tag_ABI_enum_size: int
+</span></span><span style="display:flex;"><span>  Tag_CPU_unaligned_access: v6
+</span></span><span style="display:flex;"><span>  Tag_MPextension_use: Allowed
+</span></span><span style="display:flex;"><span>  Tag_Virtualization_use: TrustZone and Virtualization Extensions
+</span></span></code></pre></div><p>一个固件中的不同组件还用了不同的编译工具链？！</p>
+<p><code>busybox</code>是<code>Armv7</code>，而<code>libcrypto.so.1.1</code>则是<code>Armv8-A</code>。</p>
+<p>这也解释了为什么我在仿真旧版本固件时是没有该故障存在的。旧版本固件中的是<code>Armv7</code>的<code>libcrypto.so.1.0.0</code>。</p>
+<p>我们来到固件的下载页面：<a href="https://www.asus.com.cn/Networking-IoT-Servers/WiFi-Routers/ASUS-WiFi-Routers/RT-AC86U/HelpDesk_BIOS/">https://www.asus.com.cn/Networking-IoT-Servers/WiFi-Routers/ASUS-WiFi-Routers/RT-AC86U/HelpDesk_BIOS/</a></p>
+<p>可以看到新版本固件中华硕对于OpenSSL的漏洞进行了修复：</p>
+<blockquote>
+<p>版本 3.0.0.4.386.48260</p>
+<p>2022/03/25 62.81 MBytes</p>
+<p>ASUS RT-AC86U 固件版本 3.0.0.4.386.48260</p>
+<ol>
+<li>修正 OpenSSL CVE-2022-0778</li>
+</ol>
+<p>​    &hellip;&hellip;</p>
+</blockquote>
+<p>原来他们修复时并没有将固件全量编译，而是只换用了新编译工具链将出问题的<code>openssl</code>重新编译了。</p>
+<p>恰好我手头有华硕的路由器真机，来看看真机环境是什么：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>zkv@RT-AC86U:/tmp/home/root# uname -a
+</span></span><span style="display:flex;"><span>Linux RT-AC86U 4.1.27 <span style="color:#998;font-style:italic">#2 SMP PREEMPT Thu Nov 11 17:12:59 CST 2021 aarch64</span>
+</span></span></code></pre></div><p>好家伙，直接是<code>aarch64</code>的linux内核。至于CPU，型号是<code>Boardcom BCM4906</code>：<a href="https://www.broadcom.com/products/wireless/wireless-lan-infrastructure/bcm49408">https://www.broadcom.com/products/wireless/wireless-lan-infrastructure/bcm49408</a></p>
+<p>原来是<code>Armv8-A</code>的<code>A53</code>：<a href="https://developer.arm.com/Processors/Cortex-A53">https://developer.arm.com/Processors/Cortex-A53</a></p>
+<p>其中注明了：</p>
+<blockquote>
+<p>ISA Support</p>
+<ul>
+<li>AArch32 for full backward compatibility with Armv7</li>
+<li>AArch64 for 64-bit support and new architectural features</li>
+<li>&hellip;&hellip;</li>
+</ul>
+</blockquote>
+<p>由此破案了：华硕为这台路由器用了较新的A53 64位CPU和64位内核，内部软件却都是较旧的<code>Armv7</code>指令集下的32位软件。整台机器相当于是跑在一个“向下兼容模式”。</p>
+<p>——直到他们修复OpenSSL CVE-2022-0778时，固件中才首次出现了<code>Armv8</code>的软件<code>libcrypto.so.1.1</code>。</p>
+<h2 id="收网">收网</h2>
+</div>
+  
+</article>
+<button class="floating-button">
+    <a class="floating-button__link" href="https://dev2ero.github.io/">
+        <span style="font-size: large;">⪡</span>
+    </a>
+</button>
+
+
+    </div>
+    
+    <footer class="post-footer">
+    <div class="footer">
+        
+            <div>© 2022, Zikey Vi</div>
+        
+        <div class="footer__socials">
+
+
+<a
+  href="mailto:dev2ero@foxmail.com"
+  target="_blank"
+  class="social-link"
+  rel="noopener"
+>
+  <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Gmail</title><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg>
+</a>&nbsp;&nbsp;
+
+
+
+<a
+  href="https://github.com/dev2ero"
+  target="_blank"
+  class="social-link"
+  rel="noopener"
+>
+  <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+</a>&nbsp;&nbsp;
+
+
+
+<a
+  href="https://twitter.com/dev2ero"
+  target="_blank"
+  class="social-link"
+  rel="noopener"
+>
+  <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Twitter</title><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
+</a>&nbsp;&nbsp;
+
+
+
+<a
+  href="https://space.bilibili.com/210892014"
+  target="_blank"
+  class="social-link"
+  rel="noopener"
+>
+  <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Bilibili</title><path d="M17.813 4.653h.854c1.51.054 2.769.578 3.773 1.574 1.004.995 1.524 2.249 1.56 3.76v7.36c-.036 1.51-.556 2.769-1.56 3.773s-2.262 1.524-3.773 1.56H5.333c-1.51-.036-2.769-.556-3.773-1.56S.036 18.858 0 17.347v-7.36c.036-1.511.556-2.765 1.56-3.76 1.004-.996 2.262-1.52 3.773-1.574h.774l-1.174-1.12a1.234 1.234 0 0 1-.373-.906c0-.356.124-.658.373-.907l.027-.027c.267-.249.573-.373.92-.373.347 0 .653.124.92.373L9.653 4.44c.071.071.134.142.187.213h4.267a.836.836 0 0 1 .16-.213l2.853-2.747c.267-.249.573-.373.92-.373.347 0 .662.151.929.4.267.249.391.551.391.907 0 .355-.124.657-.373.906zM5.333 7.24c-.746.018-1.373.276-1.88.773-.506.498-.769 1.13-.786 1.894v7.52c.017.764.28 1.395.786 1.893.507.498 1.134.756 1.88.773h13.334c.746-.017 1.373-.275 1.88-.773.506-.498.769-1.129.786-1.893v-7.52c-.017-.765-.28-1.396-.786-1.894-.507-.497-1.134-.755-1.88-.773zM8 11.107c.373 0 .684.124.933.373.25.249.383.569.4.96v1.173c-.017.391-.15.711-.4.96-.249.25-.56.374-.933.374s-.684-.125-.933-.374c-.25-.249-.383-.569-.4-.96V12.44c0-.373.129-.689.386-.947.258-.257.574-.386.947-.386zm8 0c.373 0 .684.124.933.373.25.249.383.569.4.96v1.173c-.017.391-.15.711-.4.96-.249.25-.56.374-.933.374s-.684-.125-.933-.374c-.25-.249-.383-.569-.4-.96V12.44c.017-.391.15-.711.4-.96.249-.249.56-.373.933-.373Z"/></svg>
+</a>&nbsp;&nbsp;
+
+
+
+<a
+  href="https://www.zhihu.com/people/izay01"
+  target="_blank"
+  class="social-link"
+  rel="noopener"
+>
+  <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Zhihu</title><path d="M5.721 0C2.251 0 0 2.25 0 5.719V18.28C0 21.751 2.252 24 5.721 24h12.56C21.751 24 24 21.75 24 18.281V5.72C24 2.249 21.75 0 18.281 0zm1.964 4.078c-.271.73-.5 1.434-.68 2.11h4.587c.545-.006.445 1.168.445 1.171H9.384a58.104 58.104 0 01-.112 3.797h2.712c.388.023.393 1.251.393 1.266H9.183a9.223 9.223 0 01-.408 2.102l.757-.604c.452.456 1.512 1.712 1.906 2.177.473.681.063 2.081.063 2.081l-2.794-3.382c-.653 2.518-1.845 3.607-1.845 3.607-.523.468-1.58.82-2.64.516 2.218-1.73 3.44-3.917 3.667-6.497H4.491c0-.015.197-1.243.806-1.266h2.71c.024-.32.086-3.254.086-3.797H6.598c-.136.406-.158.447-.268.753-.594 1.095-1.603 1.122-1.907 1.155.906-1.821 1.416-3.6 1.591-4.064.425-1.124 1.671-1.125 1.671-1.125zM13.078 6h6.377v11.33h-2.573l-2.184 1.373-.401-1.373h-1.219zm1.313 1.219v8.86h.623l.263.937 1.455-.938h1.456v-8.86z"/></svg>
+</a>&nbsp;&nbsp;
+
+
+
+<a
+  href="/main/love/"
+  target="_blank"
+  class="social-link"
+  rel="noopener"
+>
+  <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Love</title><path d="M12 6.306L7.796 2.102 0 9.898l12 12 12-12-7.796-7.796zm0 12L3.592 9.898l4.204-4.204L12 9.898l4.184-4.184 4.204 4.204"/></svg>
+</a>
+</div>
+    </div>
+</footer>
+
+
+    
+    
+      
+<script src="https://dev2ero.github.io/js/script.js"></script>
+
+    
+  </body>
+</html>
