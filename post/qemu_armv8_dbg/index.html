@@ -4,11 +4,11 @@
     <title>やれやれ DA✰ZE</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="居然是指令集的锅？" />
-    <meta property="og:title" content="记一次qemu-system-arm的排错" />
+    <meta property="og:title" content="记一次qemu-system-arm仿真的排错" />
     <meta property="og:description" content="居然是指令集的锅？" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://dev2ero.github.io/post/qemu_armv8_dbg/" />
-    <meta itemprop="name" content="记一次qemu-system-arm的排错">
+    <meta itemprop="name" content="记一次qemu-system-arm仿真的排错">
     <meta itemprop="description" content="居然是指令集的锅？">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
     
@@ -19,7 +19,7 @@
     <div class="header header-frame">
         <div>
           
-            <h1 class="header__title">记一次qemu-system-arm的排错</h1>
+            <h1 class="header__title">记一次qemu-system-arm仿真的排错</h1>
           
             
                 <div class="header__description">居然是指令集的锅？</div>
@@ -195,7 +195,7 @@
     <div id="content">
 <article class="post">
   
-    <div class="post-content"><h2 id="探案">探案</h2>
+    <div class="post-content"><h2 id="探案">🕵️探案</h2>
 <p>在一次尝试使用<code>qemu-system-arm</code>对于asuswrt的固件进行仿真运行时，出现了十分诡异的问题：整个qemu-system、linux内核、固件文件系统运行完全正常，除了在使用到<code>openssl</code>时：</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>admin@<span style="color:#000;font-weight:bold">(</span>none<span style="color:#000;font-weight:bold">)</span>:/tmp/home/root# openssl
 </span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>    9.765639<span style="color:#000;font-weight:bold">]</span> openssl <span style="color:#000;font-weight:bold">(</span>274<span style="color:#000;font-weight:bold">)</span>: undefined instruction: <span style="color:#008080">pc</span><span style="color:#000;font-weight:bold">=</span>b6cf31a8
@@ -238,8 +238,8 @@
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>gdbserver :1234 /usr/sbin/openssl
 </span></span></code></pre></div><p>在宿主机使用gdb-multiarch作为gdb client调试：</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>~$ gdb-multiarch
-</span></span><span style="display:flex;"><span>pwndbg&gt; <span style="color:#0086b3">set</span> architecture armv5
-</span></span><span style="display:flex;"><span>The target architecture is <span style="color:#0086b3">set</span> to <span style="color:#d14">&#34;armv5&#34;</span>.
+</span></span><span style="display:flex;"><span>pwndbg&gt; <span style="color:#0086b3">set</span> architecture armv7
+</span></span><span style="display:flex;"><span>The target architecture is <span style="color:#0086b3">set</span> to <span style="color:#d14">&#34;armv7&#34;</span>.
 </span></span><span style="display:flex;"><span>pwndbg&gt; target remote 192.168.50.1:1234
 </span></span><span style="display:flex;"><span>Remote debugging using 192.168.50.1:1234
 </span></span><span style="display:flex;"><span>pwndbg&gt; file asuswrt/usr/sbin/openssl 
@@ -351,7 +351,7 @@
 </span></span><span style="display:flex;"><span>  Tag_CPU_arch: v4
 </span></span><span style="display:flex;"><span>  Tag_ARM_ISA_use: Yes
 </span></span><span style="display:flex;"><span>  Tag_DIV_use: Not allowed
-</span></span></code></pre></div><p>固件中的<code>busybox</code>和出问题的<code>libcrypto.so.1.1</code>则是：</p>
+</span></span></code></pre></div><p>固件中的<code>busybox</code>、<code>openssl</code>，和出问题的<code>libcrypto.so.1.1</code>则是：</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>~$ /opt/cross/gcc-linaro-arm-linux-gnueabihf/bin/arm-linux-gnueabihf-readelf -A asuswrt/busybox                    
 </span></span><span style="display:flex;"><span>Attribute Section: aeabi
 </span></span><span style="display:flex;"><span>File Attributes
@@ -371,6 +371,26 @@
 </span></span><span style="display:flex;"><span>  Tag_CPU_unaligned_access: v6
 </span></span><span style="display:flex;"><span>  Tag_MPextension_use: Allowed
 </span></span><span style="display:flex;"><span>  Tag_Virtualization_use: TrustZone
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>~$ /opt/cross/gcc-linaro-arm-linux-gnueabihf/bin/arm-linux-gnueabihf-readelf -A ../usr/sbin/openssl 
+</span></span><span style="display:flex;"><span>Attribute Section: aeabi
+</span></span><span style="display:flex;"><span>File Attributes
+</span></span><span style="display:flex;"><span>  Tag_CPU_name: <span style="color:#d14">&#34;8-A&#34;</span>
+</span></span><span style="display:flex;"><span>  Tag_CPU_arch: ??? <span style="color:#000;font-weight:bold">(</span>14<span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>  Tag_CPU_arch_profile: Application
+</span></span><span style="display:flex;"><span>  Tag_ARM_ISA_use: Yes
+</span></span><span style="display:flex;"><span>  Tag_THUMB_ISA_use: Thumb-2
+</span></span><span style="display:flex;"><span>  Tag_ABI_PCS_wchar_t: <span style="color:#099">4</span>
+</span></span><span style="display:flex;"><span>  Tag_ABI_FP_rounding: Needed
+</span></span><span style="display:flex;"><span>  Tag_ABI_FP_denormal: Needed
+</span></span><span style="display:flex;"><span>  Tag_ABI_FP_exceptions: Needed
+</span></span><span style="display:flex;"><span>  Tag_ABI_FP_number_model: IEEE <span style="color:#099">754</span>
+</span></span><span style="display:flex;"><span>  Tag_ABI_align_needed: 8-byte
+</span></span><span style="display:flex;"><span>  Tag_ABI_align_preserved: 8-byte, except leaf SP
+</span></span><span style="display:flex;"><span>  Tag_ABI_enum_size: int
+</span></span><span style="display:flex;"><span>  Tag_CPU_unaligned_access: v6
+</span></span><span style="display:flex;"><span>  Tag_MPextension_use: Allowed
+</span></span><span style="display:flex;"><span>  Tag_Virtualization_use: TrustZone and Virtualization Extensions
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>~$ /opt/cross/gcc-linaro-arm-linux-gnueabihf/bin/arm-linux-gnueabihf-readelf -A asuswrt/usr/lib/libcrypto.so.1.1
 </span></span><span style="display:flex;"><span>Attribute Section: aeabi
@@ -393,7 +413,7 @@
 </span></span><span style="display:flex;"><span>  Tag_MPextension_use: Allowed
 </span></span><span style="display:flex;"><span>  Tag_Virtualization_use: TrustZone and Virtualization Extensions
 </span></span></code></pre></div><p>一个固件中的不同组件还用了不同的编译工具链？！</p>
-<p><code>busybox</code>是<code>Armv7</code>，而<code>libcrypto.so.1.1</code>则是<code>Armv8-A</code>。</p>
+<p><code>busybox</code>是<code>Armv7</code>，而<code>openssl</code>和<code>libcrypto.so.1.1</code>则是<code>Armv8-A</code>。</p>
 <p>这也解释了为什么我在仿真旧版本固件时是没有该故障存在的。旧版本固件中的是<code>Armv7</code>的<code>libcrypto.so.1.0.0</code>。</p>
 <p>我们来到固件的下载页面：<a href="https://www.asus.com.cn/Networking-IoT-Servers/WiFi-Routers/ASUS-WiFi-Routers/RT-AC86U/HelpDesk_BIOS/">https://www.asus.com.cn/Networking-IoT-Servers/WiFi-Routers/ASUS-WiFi-Routers/RT-AC86U/HelpDesk_BIOS/</a></p>
 <p>可以看到新版本固件中华硕对于OpenSSL的漏洞进行了修复：</p>
@@ -422,9 +442,128 @@
 </ul>
 </blockquote>
 <p>由此破案了：华硕为这台路由器用了较新的A53 64位CPU和64位内核，内部软件却都是较旧的<code>Armv7</code>指令集下的32位软件。整台机器相当于是跑在一个“向下兼容模式”。</p>
-<p>——直到他们修复OpenSSL CVE-2022-0778时，固件中才首次出现了<code>Armv8</code>的软件<code>libcrypto.so.1.1</code>。</p>
-<h2 id="收网">收网</h2>
-</div>
+<p>——直到他们修复OpenSSL CVE-2022-0778时，固件中才首次出现了<code>Armv8</code>的软件OpenSSL。（当然配套依赖也引入了，如<code>ld-linux-aarch64.so.1</code>）</p>
+<h2 id="收网">👮收网</h2>
+<p>qemu难道就不包含<code>Armv8</code>了吗？</p>
+<p>使用<code>qemu-user</code>试试：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>~$ chroot asuswrt openssl
+</span></span><span style="display:flex;"><span>OpenSSL&gt;
+</span></span></code></pre></div><p>是可以正常执行的。说明qemu是有写过<code>Armv8</code>的代码的。</p>
+<p>这里要说明下为什么可以直接使用<code>chroot guest_rootfs_dir target_elf</code>的形式直接执行其它指令集的ELF。</p>
+<p>我们都知道的是，Linux下的<strong>可执行文件</strong>，是一个广义词。文件系统中inode标记了x位，即可执行位的文件，都算作可执行文件。</p>
+<p>那么，.sh、.py、ELF等等，都算是可执行文件了。但他们的执行方式却又多种多样，这又是怎么区分的呢？</p>
+<p>实际上是借助于不同可执行文件的文件头，来调用不同的“解释器”，完成对于可执行文件的不同方式执行：</p>
+<ul>
+<li>
+<p>ELF，二进制文件，有狭义文件头，魔数为<code>\x7fELF</code>，解释器为<code>ld.so</code>，即标明：“本可执行文件请交由<code>ld.so</code>来执行”</p>
+</li>
+<li>
+<p>.sh，文本文件，无狭义文件头，<code>#!/bin/sh</code>作为文件起始内容，即标明：“本可执行文件请交由<code>/bin/sh</code>来执行”</p>
+<ul>
+<li>
+<p>没有显式注明解释器的可执行文件默认当作sh脚本文件处理：</p>
+</li>
+<li>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>~$ <span style="color:#0086b3">echo</span> deadbeef &gt; <span style="color:#0086b3">test</span>
+</span></span><span style="display:flex;"><span>~$ chmod +x <span style="color:#0086b3">test</span>
+</span></span><span style="display:flex;"><span>~$ ./test    
+</span></span><span style="display:flex;"><span>./test: 1: deadbeef: not found
+</span></span></code></pre></div></li>
+</ul>
+</li>
+</ul>
+<p>那同样的道理，在一台安装了qemu-user的机器上，直接<code>./</code>执行一个其它指令集的可执行文件时。由于<code>qemu-user</code>已经将这种文件的文件头信息在系统中注册了，即表明：“遇到这些其它指令集对应的文件头的文件时，请交由我<code>qemu-user</code>来解释执行。”</p>
+<p>那么，静态链接的异构程序，在安装了<code>qemu-user</code>的系统中，就可以直接<code>./</code>执行了。而动态链接的异构程序，由于需要载入其它异构的链接库文件，故需要先<code>chroot</code>到异构的根文件系统中。</p>
+<p><code>qemu-system-arm</code>是32位时代的arm实现（aarch32），从<code>Armv7</code>到<code>Armv8</code>的升级，才引入了64位支持（aarch64）。所以我们应该换用<code>qemu-system-aarch64</code>：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>~$ qemu-system-arm -cpu <span style="color:#0086b3">help</span>
+</span></span><span style="display:flex;"><span>Available CPUs:
+</span></span><span style="display:flex;"><span>  arm1026
+</span></span><span style="display:flex;"><span>  arm1136
+</span></span><span style="display:flex;"><span>  arm1136-r2
+</span></span><span style="display:flex;"><span>  arm1176
+</span></span><span style="display:flex;"><span>  arm11mpcore
+</span></span><span style="display:flex;"><span>  arm926
+</span></span><span style="display:flex;"><span>  arm946
+</span></span><span style="display:flex;"><span>  cortex-a15
+</span></span><span style="display:flex;"><span>  cortex-a7
+</span></span><span style="display:flex;"><span>  cortex-a8
+</span></span><span style="display:flex;"><span>  cortex-a9
+</span></span><span style="display:flex;"><span>  cortex-m0
+</span></span><span style="display:flex;"><span>  cortex-m3
+</span></span><span style="display:flex;"><span>  cortex-m33
+</span></span><span style="display:flex;"><span>  cortex-m4
+</span></span><span style="display:flex;"><span>  cortex-m55
+</span></span><span style="display:flex;"><span>  cortex-m7
+</span></span><span style="display:flex;"><span>  cortex-r5
+</span></span><span style="display:flex;"><span>  cortex-r5f
+</span></span><span style="display:flex;"><span>  max
+</span></span><span style="display:flex;"><span>  pxa250
+</span></span><span style="display:flex;"><span>  pxa255
+</span></span><span style="display:flex;"><span>  pxa260
+</span></span><span style="display:flex;"><span>  pxa261
+</span></span><span style="display:flex;"><span>  pxa262
+</span></span><span style="display:flex;"><span>  pxa270-a0
+</span></span><span style="display:flex;"><span>  pxa270-a1
+</span></span><span style="display:flex;"><span>  pxa270
+</span></span><span style="display:flex;"><span>  pxa270-b0
+</span></span><span style="display:flex;"><span>  pxa270-b1
+</span></span><span style="display:flex;"><span>  pxa270-c0
+</span></span><span style="display:flex;"><span>  pxa270-c5
+</span></span><span style="display:flex;"><span>  sa1100
+</span></span><span style="display:flex;"><span>  sa1110
+</span></span><span style="display:flex;"><span>  ti925t
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>~$ qemu-system-aarch64 -cpu <span style="color:#0086b3">help</span>
+</span></span><span style="display:flex;"><span>Available CPUs:
+</span></span><span style="display:flex;"><span>  a64fx
+</span></span><span style="display:flex;"><span>  arm1026
+</span></span><span style="display:flex;"><span>  arm1136
+</span></span><span style="display:flex;"><span>  arm1136-r2
+</span></span><span style="display:flex;"><span>  arm1176
+</span></span><span style="display:flex;"><span>  arm11mpcore
+</span></span><span style="display:flex;"><span>  arm926
+</span></span><span style="display:flex;"><span>  arm946
+</span></span><span style="display:flex;"><span>  cortex-a15
+</span></span><span style="display:flex;"><span>  cortex-a53
+</span></span><span style="display:flex;"><span>  cortex-a57
+</span></span><span style="display:flex;"><span>  cortex-a7
+</span></span><span style="display:flex;"><span>  cortex-a72
+</span></span><span style="display:flex;"><span>  cortex-a8
+</span></span><span style="display:flex;"><span>  cortex-a9
+</span></span><span style="display:flex;"><span>  cortex-m0
+</span></span><span style="display:flex;"><span>  cortex-m3
+</span></span><span style="display:flex;"><span>  cortex-m33
+</span></span><span style="display:flex;"><span>  cortex-m4
+</span></span><span style="display:flex;"><span>  cortex-m55
+</span></span><span style="display:flex;"><span>  cortex-m7
+</span></span><span style="display:flex;"><span>  cortex-r5
+</span></span><span style="display:flex;"><span>  cortex-r5f
+</span></span><span style="display:flex;"><span>  max
+</span></span><span style="display:flex;"><span>  pxa250
+</span></span><span style="display:flex;"><span>  pxa255
+</span></span><span style="display:flex;"><span>  pxa260
+</span></span><span style="display:flex;"><span>  pxa261
+</span></span><span style="display:flex;"><span>  pxa262
+</span></span><span style="display:flex;"><span>  pxa270-a0
+</span></span><span style="display:flex;"><span>  pxa270-a1
+</span></span><span style="display:flex;"><span>  pxa270
+</span></span><span style="display:flex;"><span>  pxa270-b0
+</span></span><span style="display:flex;"><span>  pxa270-b1
+</span></span><span style="display:flex;"><span>  pxa270-c0
+</span></span><span style="display:flex;"><span>  pxa270-c5
+</span></span><span style="display:flex;"><span>  sa1100
+</span></span><span style="display:flex;"><span>  sa1110
+</span></span><span style="display:flex;"><span>  ti925t
+</span></span></code></pre></div><p>同时手动指定CPU为<code>cortex-a53</code>：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>qemu-system-aarch64 
+</span></span><span style="display:flex;"><span>	-M virt -cpu cortex-a53 <span style="color:#d14">\
+</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>	-m <span style="color:#099">256</span> -kernel zImage.aarch64 <span style="color:#d14">\
+</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>	-append <span style="color:#d14">&#34;rootwait root=/dev/vda1 console=ttyAMA0&#34;</span> <span style="color:#d14">\
+</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>    -drive <span style="color:#000;font-weight:bold">if</span><span style="color:#000;font-weight:bold">=</span>none,file<span style="color:#000;font-weight:bold">=</span>rootfs.img,format<span style="color:#000;font-weight:bold">=</span>raw,id<span style="color:#000;font-weight:bold">=</span>rootfs <span style="color:#d14">\
+</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>    -device virtio-blk-device,drive<span style="color:#000;font-weight:bold">=</span>rootfs <span style="color:#d14">\
+</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>    -netdev <span style="color:#008080">type</span><span style="color:#000;font-weight:bold">=</span>tap,id<span style="color:#000;font-weight:bold">=</span>net0,ifname<span style="color:#000;font-weight:bold">=</span>tap0,script<span style="color:#000;font-weight:bold">=</span>no,downscript<span style="color:#000;font-weight:bold">=</span>no -device virtio-net-device,netdev<span style="color:#000;font-weight:bold">=</span>net0 <span style="color:#d14">\
+</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>    -nographic 
+</span></span></code></pre></div></div>
   
 </article>
 <button class="floating-button">

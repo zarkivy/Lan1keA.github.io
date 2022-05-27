@@ -1,5 +1,5 @@
 ---
-title: "记一次qemu-system-arm的排错"
+title: "记一次qemu-system-arm仿真的排错"
 description: "居然是指令集的锅？"
 date: 2022-05-26T15:51:22+08:00
 tags: [ "虚拟化", "Linux" ]
@@ -8,7 +8,7 @@ imagelink: "https://s2.loli.net/2022/05/26/RS1JrGW2t4vzD3M.jpg"
 
 
 
-## 探案
+## 🕵️探案
 
 在一次尝试使用`qemu-system-arm`对于asuswrt的固件进行仿真运行时，出现了十分诡异的问题：整个qemu-system、linux内核、固件文件系统运行完全正常，除了在使用到`openssl`时：
 
@@ -63,8 +63,8 @@ gdbserver :1234 /usr/sbin/openssl
 
 ```sh
 ~$ gdb-multiarch
-pwndbg> set architecture armv5
-The target architecture is set to "armv5".
+pwndbg> set architecture armv7
+The target architecture is set to "armv7".
 pwndbg> target remote 192.168.50.1:1234
 Remote debugging using 192.168.50.1:1234
 pwndbg> file asuswrt/usr/sbin/openssl 
@@ -220,7 +220,7 @@ File Attributes
   Tag_DIV_use: Not allowed
 ```
 
-固件中的`busybox`和出问题的`libcrypto.so.1.1`则是：
+固件中的`busybox`、`openssl`，和出问题的`libcrypto.so.1.1`则是：
 
 ```sh
 ~$ /opt/cross/gcc-linaro-arm-linux-gnueabihf/bin/arm-linux-gnueabihf-readelf -A asuswrt/busybox                    
@@ -242,6 +242,26 @@ File Attributes
   Tag_CPU_unaligned_access: v6
   Tag_MPextension_use: Allowed
   Tag_Virtualization_use: TrustZone
+  
+~$ /opt/cross/gcc-linaro-arm-linux-gnueabihf/bin/arm-linux-gnueabihf-readelf -A ../usr/sbin/openssl 
+Attribute Section: aeabi
+File Attributes
+  Tag_CPU_name: "8-A"
+  Tag_CPU_arch: ??? (14)
+  Tag_CPU_arch_profile: Application
+  Tag_ARM_ISA_use: Yes
+  Tag_THUMB_ISA_use: Thumb-2
+  Tag_ABI_PCS_wchar_t: 4
+  Tag_ABI_FP_rounding: Needed
+  Tag_ABI_FP_denormal: Needed
+  Tag_ABI_FP_exceptions: Needed
+  Tag_ABI_FP_number_model: IEEE 754
+  Tag_ABI_align_needed: 8-byte
+  Tag_ABI_align_preserved: 8-byte, except leaf SP
+  Tag_ABI_enum_size: int
+  Tag_CPU_unaligned_access: v6
+  Tag_MPextension_use: Allowed
+  Tag_Virtualization_use: TrustZone and Virtualization Extensions
 
 ~$ /opt/cross/gcc-linaro-arm-linux-gnueabihf/bin/arm-linux-gnueabihf-readelf -A asuswrt/usr/lib/libcrypto.so.1.1
 Attribute Section: aeabi
@@ -267,7 +287,7 @@ File Attributes
 
 一个固件中的不同组件还用了不同的编译工具链？！
 
-`busybox`是`Armv7`，而`libcrypto.so.1.1`则是`Armv8-A`。
+`busybox`是`Armv7`，而`openssl`和`libcrypto.so.1.1`则是`Armv8-A`。
 
 这也解释了为什么我在仿真旧版本固件时是没有该故障存在的。旧版本固件中的是`Armv7`的`libcrypto.so.1.0.0`。
 
@@ -308,8 +328,142 @@ Linux RT-AC86U 4.1.27 #2 SMP PREEMPT Thu Nov 11 17:12:59 CST 2021 aarch64
 
 由此破案了：华硕为这台路由器用了较新的A53 64位CPU和64位内核，内部软件却都是较旧的`Armv7`指令集下的32位软件。整台机器相当于是跑在一个“向下兼容模式”。
 
-——直到他们修复OpenSSL CVE-2022-0778时，固件中才首次出现了`Armv8`的软件`libcrypto.so.1.1`。
+——直到他们修复OpenSSL CVE-2022-0778时，固件中才首次出现了`Armv8`的软件OpenSSL。（当然配套依赖也引入了，如`ld-linux-aarch64.so.1`）
 
 
 
-## 收网
+## 👮收网
+
+qemu难道就不包含`Armv8`了吗？
+
+使用`qemu-user`试试：
+
+```sh
+~$ chroot asuswrt openssl
+OpenSSL>
+```
+
+是可以正常执行的。说明qemu是有写过`Armv8`的代码的。
+
+这里要说明下为什么可以直接使用`chroot guest_rootfs_dir target_elf`的形式直接执行其它指令集的ELF。
+
+我们都知道的是，Linux下的**可执行文件**，是一个广义词。文件系统中inode标记了x位，即可执行位的文件，都算作可执行文件。
+
+那么，.sh、.py、ELF等等，都算是可执行文件了。但他们的执行方式却又多种多样，这又是怎么区分的呢？
+
+实际上是借助于不同可执行文件的文件头，来调用不同的“解释器”，完成对于可执行文件的不同方式执行：
+
+- ELF，二进制文件，有狭义文件头，魔数为`\x7fELF`，解释器为`ld.so`，即标明：“本可执行文件请交由`ld.so`来执行”
+
+- .sh，文本文件，无狭义文件头，`#!/bin/sh`作为文件起始内容，即标明：“本可执行文件请交由`/bin/sh`来执行”
+
+  - 没有显式注明解释器的可执行文件默认当作sh脚本文件处理：
+
+  - ```sh
+    ~$ echo deadbeef > test
+    ~$ chmod +x test
+    ~$ ./test    
+    ./test: 1: deadbeef: not found
+    ```
+
+那同样的道理，在一台安装了qemu-user的机器上，直接`./`执行一个其它指令集的可执行文件时。由于`qemu-user`已经将这种文件的文件头信息在系统中注册了，即表明：“遇到这些其它指令集对应的文件头的文件时，请交由我`qemu-user`来解释执行。”
+
+那么，静态链接的异构程序，在安装了`qemu-user`的系统中，就可以直接`./`执行了。而动态链接的异构程序，由于需要载入其它异构的链接库文件，故需要先`chroot`到异构的根文件系统中。
+
+`qemu-system-arm`是32位时代的arm实现（aarch32），从`Armv7`到`Armv8`的升级，才引入了64位支持（aarch64）。所以我们应该换用`qemu-system-aarch64`：
+
+```sh
+~$ qemu-system-arm -cpu help
+Available CPUs:
+  arm1026
+  arm1136
+  arm1136-r2
+  arm1176
+  arm11mpcore
+  arm926
+  arm946
+  cortex-a15
+  cortex-a7
+  cortex-a8
+  cortex-a9
+  cortex-m0
+  cortex-m3
+  cortex-m33
+  cortex-m4
+  cortex-m55
+  cortex-m7
+  cortex-r5
+  cortex-r5f
+  max
+  pxa250
+  pxa255
+  pxa260
+  pxa261
+  pxa262
+  pxa270-a0
+  pxa270-a1
+  pxa270
+  pxa270-b0
+  pxa270-b1
+  pxa270-c0
+  pxa270-c5
+  sa1100
+  sa1110
+  ti925t
+
+~$ qemu-system-aarch64 -cpu help
+Available CPUs:
+  a64fx
+  arm1026
+  arm1136
+  arm1136-r2
+  arm1176
+  arm11mpcore
+  arm926
+  arm946
+  cortex-a15
+  cortex-a53
+  cortex-a57
+  cortex-a7
+  cortex-a72
+  cortex-a8
+  cortex-a9
+  cortex-m0
+  cortex-m3
+  cortex-m33
+  cortex-m4
+  cortex-m55
+  cortex-m7
+  cortex-r5
+  cortex-r5f
+  max
+  pxa250
+  pxa255
+  pxa260
+  pxa261
+  pxa262
+  pxa270-a0
+  pxa270-a1
+  pxa270
+  pxa270-b0
+  pxa270-b1
+  pxa270-c0
+  pxa270-c5
+  sa1100
+  sa1110
+  ti925t
+```
+
+同时手动指定CPU为`cortex-a53`：
+
+```sh
+qemu-system-aarch64 
+	-M virt -cpu cortex-a53 \
+	-m 256 -kernel zImage.aarch64 \
+	-append "rootwait root=/dev/vda1 console=ttyAMA0" \
+    -drive if=none,file=rootfs.img,format=raw,id=rootfs \
+    -device virtio-blk-device,drive=rootfs \
+    -netdev type=tap,id=net0,ifname=tap0,script=no,downscript=no -device virtio-net-device,netdev=net0 \
+    -nographic 
+```
+
