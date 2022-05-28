@@ -485,18 +485,18 @@
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>INFO: -max_len is not provided; libFuzzer will not generate inputs larger than <span style="color:#099">4096</span> bytes
 </span></span><span style="display:flex;"><span>INFO: A corpus is not provided, starting from an empty corpus
 </span></span></code></pre></div><p>By default, libFuzzer assumes that all inputs are 4096 bytes or smaller. To change that either use <code>-max_len=N</code> or run with a non-empty <a href="https://github.com/google/fuzzing/blob/master/tutorial/libFuzzerTutorial.md#seed-corpus">seed corpus</a>.</p>
-<pre tabindex="0"><code>#0      READ units: 1
-#1      INITED cov: 3 ft: 3 corp: 1/1b exec/s: 0 rss: 26Mb
-#8      NEW    cov: 4 ft: 4 corp: 2/29b exec/s: 0 rss: 26Mb L: 28 MS: 2 InsertByte-InsertRepeatedBytes-
-#3405   NEW    cov: 5 ft: 5 corp: 3/82b exec/s: 0 rss: 27Mb L: 53 MS: 4 InsertByte-EraseBytes-...
-#8664   NEW    cov: 6 ft: 6 corp: 4/141b exec/s: 0 rss: 27Mb L: 59 MS: 3 CrossOver-EraseBytes-...
-#272167 NEW    cov: 7 ft: 7 corp: 5/201b exec/s: 0 rss: 51Mb L: 60 MS: 1 InsertByte-
-</code></pre><p>libFuzzer has tried at least 272167 inputs (<code>#272167</code>) and has discovered 5 inputs of 201 bytes total (<code>corp: 5/201b</code>) that together cover 7 <em>coverage points</em> (<code>cov: 7</code>). You may think of coverage points as of <a href="https://en.wikipedia.org/wiki/Basic_block">basic blocks</a> in the code.</p>
-<pre tabindex="0"><code>==2335==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x602000155c13 at pc 0x0000004ee637...
-READ of size 1 at 0x602000155c13 thread T0
-    #0 0x4ee636 in FuzzMe(unsigned char const*, unsigned long) fuzzing/tutorial/libFuzzer/fuzz_me.cc:10:7
-    #1 0x4ee6aa in LLVMFuzzerTestOneInput fuzzing/tutorial/libFuzzer/fuzz_me.cc:14:3
-</code></pre><p>On one of the inputs AddressSanitizer has detected a <code>heap-buffer-overflow</code> bug and aborted the execution.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#998;font-style:italic">#0      READ units: 1</span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">#1      INITED cov: 3 ft: 3 corp: 1/1b exec/s: 0 rss: 26Mb</span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">#8      NEW    cov: 4 ft: 4 corp: 2/29b exec/s: 0 rss: 26Mb L: 28 MS: 2 InsertByte-InsertRepeatedBytes-</span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">#3405   NEW    cov: 5 ft: 5 corp: 3/82b exec/s: 0 rss: 27Mb L: 53 MS: 4 InsertByte-EraseBytes-...</span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">#8664   NEW    cov: 6 ft: 6 corp: 4/141b exec/s: 0 rss: 27Mb L: 59 MS: 3 CrossOver-EraseBytes-...</span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">#272167 NEW    cov: 7 ft: 7 corp: 5/201b exec/s: 0 rss: 51Mb L: 60 MS: 1 InsertByte-</span>
+</span></span></code></pre></div><p>libFuzzer has tried at least 272167 inputs (<code>#272167</code>) and has discovered 5 inputs of 201 bytes total (<code>corp: 5/201b</code>) that together cover 7 <em>coverage points</em> (<code>cov: 7</code>). You may think of coverage points as of <a href="https://en.wikipedia.org/wiki/Basic_block">basic blocks</a> in the code.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">==</span><span style="color:#008080">2335</span><span style="color:#000;font-weight:bold">==</span>ERROR: AddressSanitizer: heap-buffer-overflow on address 0x602000155c13 at pc 0x0000004ee637...
+</span></span><span style="display:flex;"><span>READ of size <span style="color:#099">1</span> at 0x602000155c13 thread T0
+</span></span><span style="display:flex;"><span>    <span style="color:#998;font-style:italic">#0 0x4ee636 in FuzzMe(unsigned char const*, unsigned long) fuzzing/tutorial/libFuzzer/fuzz_me.cc:10:7</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#998;font-style:italic">#1 0x4ee6aa in LLVMFuzzerTestOneInput fuzzing/tutorial/libFuzzer/fuzz_me.cc:14:3</span>
+</span></span></code></pre></div><p>On one of the inputs AddressSanitizer has detected a <code>heap-buffer-overflow</code> bug and aborted the execution.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#008080">artifact_prefix</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;./&#39;</span>; Test unit written to ./crash-0eb8e4ed029b774d80f2b66408203801cb982a60
 </span></span></code></pre></div><p>Before exiting the process libFuzzer has created a file on disc with the bytes that triggered the crash.</p>
 <h3 id="驾校实习cve-2014-0160">驾校实习——CVE-2014-0160</h3>

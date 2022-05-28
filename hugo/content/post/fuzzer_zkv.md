@@ -437,7 +437,7 @@ INFO: A corpus is not provided, starting from an empty corpus
 
 By default, libFuzzer assumes that all inputs are 4096 bytes or smaller. To change that either use `-max_len=N` or run with a non-empty [seed corpus](https://github.com/google/fuzzing/blob/master/tutorial/libFuzzerTutorial.md#seed-corpus).
 
-```
+```sh
 #0      READ units: 1
 #1      INITED cov: 3 ft: 3 corp: 1/1b exec/s: 0 rss: 26Mb
 #8      NEW    cov: 4 ft: 4 corp: 2/29b exec/s: 0 rss: 26Mb L: 28 MS: 2 InsertByte-InsertRepeatedBytes-
@@ -448,7 +448,7 @@ By default, libFuzzer assumes that all inputs are 4096 bytes or smaller. To chan
 
 libFuzzer has tried at least 272167 inputs (`#272167`) and has discovered 5 inputs of 201 bytes total (`corp: 5/201b`) that together cover 7 *coverage points* (`cov: 7`). You may think of coverage points as of [basic blocks](https://en.wikipedia.org/wiki/Basic_block) in the code.
 
-```
+```sh
 ==2335==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x602000155c13 at pc 0x0000004ee637...
 READ of size 1 at 0x602000155c13 thread T0
     #0 0x4ee636 in FuzzMe(unsigned char const*, unsigned long) fuzzing/tutorial/libFuzzer/fuzz_me.cc:10:7
