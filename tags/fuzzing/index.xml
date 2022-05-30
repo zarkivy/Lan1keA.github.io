@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Fuzzing on Zikey Vi</title>
-    <link>https://dev2ero.github.io/tags/fuzzing/</link>
+    <link>https://cerr.cc/tags/fuzzing/</link>
     <description>Recent content in Fuzzing on Zikey Vi</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>© 2022, Zikey Vi</copyright>
-    <lastBuildDate>Fri, 20 May 2022 17:57:07 +0800</lastBuildDate><atom:link href="https://dev2ero.github.io/tags/fuzzing/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 20 May 2022 17:57:07 +0800</lastBuildDate><atom:link href="https://cerr.cc/tags/fuzzing/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>CVE-2014-0160 心脏滴血漏洞挖掘与分析</title>
-      <link>https://dev2ero.github.io/post/cve-2014-0160/</link>
+      <link>https://cerr.cc/post/cve-2014-0160/</link>
       <pubDate>Fri, 20 May 2022 17:57:07 +0800</pubDate>
       
-      <guid>https://dev2ero.github.io/post/cve-2014-0160/</guid>
+      <guid>https://cerr.cc/post/cve-2014-0160/</guid>
       <description>漏洞编号：CVE-2014-0160
 漏洞类型：内存越界访问
 漏洞危害：信息泄露
@@ -28,10 +28,10 @@ SSL Heartbeat  Heartbleed was introduced by the Heartbeat Extension in the OpenS
     
     <item>
       <title>ZKV的Fuzzing早教</title>
-      <link>https://dev2ero.github.io/post/fuzzer_zkv/</link>
+      <link>https://cerr.cc/post/fuzzer_zkv/</link>
       <pubDate>Wed, 11 May 2022 13:57:01 +0800</pubDate>
       
-      <guid>https://dev2ero.github.io/post/fuzzer_zkv/</guid>
+      <guid>https://cerr.cc/post/fuzzer_zkv/</guid>
       <description>\x00 早教教程 教程 谷歌的Fuzzing教程
 Fuzzingbook
 课程 南京大学：软件分析

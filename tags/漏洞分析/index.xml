@@ -2,27 +2,27 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>漏洞分析 on Zikey Vi</title>
-    <link>https://dev2ero.github.io/tags/%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/</link>
+    <link>https://cerr.cc/tags/%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/</link>
     <description>Recent content in 漏洞分析 on Zikey Vi</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>© 2022, Zikey Vi</copyright>
-    <lastBuildDate>Tue, 24 May 2022 17:43:25 +0800</lastBuildDate><atom:link href="https://dev2ero.github.io/tags/%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 24 May 2022 17:43:25 +0800</lastBuildDate><atom:link href="https://cerr.cc/tags/%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>CVE-2016-5195 Linux DirtyCOW漏洞分析</title>
-      <link>https://dev2ero.github.io/post/cve-2016-5195/</link>
+      <link>https://cerr.cc/post/cve-2016-5195/</link>
       <pubDate>Tue, 24 May 2022 17:43:25 +0800</pubDate>
       
-      <guid>https://dev2ero.github.io/post/cve-2016-5195/</guid>
+      <guid>https://cerr.cc/post/cve-2016-5195/</guid>
       <description>https://dirtycow.ninja/</description>
     </item>
     
     <item>
       <title>CVE-2014-0160 心脏滴血漏洞挖掘与分析</title>
-      <link>https://dev2ero.github.io/post/cve-2014-0160/</link>
+      <link>https://cerr.cc/post/cve-2014-0160/</link>
       <pubDate>Fri, 20 May 2022 17:57:07 +0800</pubDate>
       
-      <guid>https://dev2ero.github.io/post/cve-2014-0160/</guid>
+      <guid>https://cerr.cc/post/cve-2014-0160/</guid>
       <description>漏洞编号：CVE-2014-0160
 漏洞类型：内存越界访问
 漏洞危害：信息泄露
@@ -37,10 +37,10 @@ SSL Heartbeat  Heartbleed was introduced by the Heartbeat Extension in the OpenS
     
     <item>
       <title>CVE-2021-3156 sudo 提权漏洞分析</title>
-      <link>https://dev2ero.github.io/post/cve-2021-3156/</link>
+      <link>https://cerr.cc/post/cve-2021-3156/</link>
       <pubDate>Fri, 13 May 2022 23:02:59 +0800</pubDate>
       
-      <guid>https://dev2ero.github.io/post/cve-2021-3156/</guid>
+      <guid>https://cerr.cc/post/cve-2021-3156/</guid>
       <description>CVE-2021-3156是sudo中存在一个堆溢出漏洞。影响从1.8.2~1.8.31p2下的所有旧版本sudo，以及1.9.0~1.9.5p1的所有稳定版sudo。可以使得任何没有特权的用户均可使用默认的sudo配置获取root权限
  环境准备 使用apt获取软件源提供的sudo源码：
 sudo apt source sudo 却被告知：

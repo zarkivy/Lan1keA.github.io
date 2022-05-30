@@ -2,56 +2,56 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Mains on Zikey Vi</title>
-    <link>https://dev2ero.github.io/main/</link>
+    <link>https://cerr.cc/main/</link>
     <description>Recent content in Mains on Zikey Vi</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>© 2022, Zikey Vi</copyright>
-    <lastBuildDate>Sat, 07 May 2022 19:53:05 +0800</lastBuildDate><atom:link href="https://dev2ero.github.io/main/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 07 May 2022 19:53:05 +0800</lastBuildDate><atom:link href="https://cerr.cc/main/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Utils</title>
-      <link>https://dev2ero.github.io/main/utils/</link>
+      <link>https://cerr.cc/main/utils/</link>
       <pubDate>Sat, 07 May 2022 19:53:05 +0800</pubDate>
       
-      <guid>https://dev2ero.github.io/main/utils/</guid>
+      <guid>https://cerr.cc/main/utils/</guid>
       <description>操作系统  Linux kernel lab  https://linux-kernel-labs.github.io/   内核模块编程教程  https://sysprog21.github.io/lkmpg/   MIT 操作系统课程 2021  https://pdos.csail.mit.edu/6.828/2021/schedule.html   Linux inside  https://0xax.gitbooks.io/linux-insides/content/Initialization/linux-initialization-1.html   在线浏览 Linux 源码  https://elixir.bootlin.com/linux/latest/source    编程  高级语言源代码与汇编结果的实时对照  https://godbolt.org/   展开编译细节，向你展示C++代码背后的秘密  https://cppinsights.io/   图形化展示你的正则表达式，学习正则好帮手  https://jex.im/regulex/#!flags=&amp;amp;re=%5E(a%7Cb)*%3F%24   C++ STL 算法库  https://zh.cppreference.com/w/cpp/algorithm    指令集   ARMv7 指令集胎教教程
  https://simplemachines.it/doc/arm_inst.pdf    ARMv7 指令集考试小抄</description>
     </item>
     
     <item>
       <title>Love</title>
-      <link>https://dev2ero.github.io/main/love/</link>
+      <link>https://cerr.cc/main/love/</link>
       <pubDate>Sat, 07 May 2022 18:53:05 +0800</pubDate>
       
-      <guid>https://dev2ero.github.io/main/love/</guid>
+      <guid>https://cerr.cc/main/love/</guid>
       <description>【  天  时  分  秒 】   function timer() { var start = new Date(2017, 8, 30); var t = new Date() - start; var h = ~~(t / 1000 / 60 / 60 % 24); if (h  </description>
     </item>
     
     <item>
       <title>Friend</title>
-      <link>https://dev2ero.github.io/main/flink/</link>
+      <link>https://cerr.cc/main/flink/</link>
       <pubDate>Sat, 07 May 2022 17:53:05 +0800</pubDate>
       
-      <guid>https://dev2ero.github.io/main/flink/</guid>
+      <guid>https://cerr.cc/main/flink/</guid>
       <description> https://foada.github.io/ https://fromhex.cn/ https://blog.xiabee.cn/ https://migraine-sudo.github.io/ https://m4x.fun/ https://ifpop.github.io/ https://blog.fkynjyq.com/ https://eacryo.gitee.io/ https://vang3lis.github.io/ https://emptystack.top/ https://l1b0.github.io/ https://yourbutterfly.github.io/  BigBrothers  https://eternalsakura13.com/ https://lancern.xyz/ http://www.aloxaf.com/ https://kiprey.github.io/ https://www.ksroido.art/ https://blog.flanker017.me/ https://thunderjie.github.io/ http://blog.eonew.cn/ https://xuanxuanblingbling.github.io/ https://atum.li/ https://bsauce.github.io/ https://ray-cp.github.io/ https://chenx6.github.io/ https://blog.kyrios.cn/ https://etenal.me/ https://a1ex.online/ http://p4nda.top/ https://o0xmuhe.github.io/ https://evilpan.com/ https://myfzy.top/ https://exexute.github.io/ https://zhou-yuxin.github.io/ https://houjingyi233.com/  </description>
     </item>
     
     <item>
       <title>Board</title>
-      <link>https://dev2ero.github.io/main/board/</link>
+      <link>https://cerr.cc/main/board/</link>
       <pubDate>Sat, 07 May 2022 16:53:05 +0800</pubDate>
       
-      <guid>https://dev2ero.github.io/main/board/</guid>
+      <guid>https://cerr.cc/main/board/</guid>
       <description>自用 dotfiles .zshrc export LS_COLORS=&amp;#34;di=34:ln=35:so=32:pi=33:ex=31:bd=34:cd=34:su=30:sg=30:tw=30:ow=30&amp;#34; export PROMPT_EOL_MARK=&amp;#39;↵&amp;#39;  ZSH_THEME=&amp;#34;avit&amp;#34; # ZSH_THEME=&amp;#34;robbyrussell&amp;#34; # ZSH_THEME=&amp;#34;refined&amp;#34; # ZSH_THEME=&amp;#34;agnoster&amp;#34;  plugins=(  git  sudo  zsh-autosuggestions  zsh-syntax-highlighting )  source $ZSH/oh-my-zsh.sh  alias l=&amp;#39;/bin/ls&amp;#39; alias ls=&amp;#39;lsd&amp;#39; alias ll=&amp;#39;ls -l&amp;#39; alias la=&amp;#39;ls -a&amp;#39; alias lla=&amp;#39;ls -la&amp;#39; alias lt=&amp;#39;ls --tree&amp;#39; alias ipy=&amp;#39;ipython3&amp;#39; alias py=&amp;#39;python3 -q&amp;#39; alias f.n=&amp;#39;find . -name&amp;#39; alias pms=&amp;#39;python -m http.server&amp;#39; alias v=&amp;#39;nvim&amp;#39; 配合使用：
  lsd美化ls：https://github.com/Peltoche/lsd  lsd需配合nerdfont：https://www.nerdfonts.com/   插件zsh-syntax-highlighting：https://github.com/zsh-users/zsh-syntax-highlighting 插件zsh-autosuggestions：https://github.com/zsh-users/zsh-autosuggestions  init.</description>
     </item>
     
     <item>
       <title>About</title>
-      <link>https://dev2ero.github.io/main/about/</link>
+      <link>https://cerr.cc/main/about/</link>
       <pubDate>Sat, 07 May 2022 15:53:05 +0800</pubDate>
       
-      <guid>https://dev2ero.github.io/main/about/</guid>
+      <guid>https://cerr.cc/main/about/</guid>
       <description> Yet anothor cyber nyandog
  </description>
     </item>

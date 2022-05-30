@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Zikey Vi</title>
-    <link>https://dev2ero.github.io/categories/</link>
+    <link>https://cerr.cc/categories/</link>
     <description>Recent content in Categories on Zikey Vi</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <copyright>© 2022, Zikey Vi</copyright><atom:link href="https://dev2ero.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>© 2022, Zikey Vi</copyright><atom:link href="https://cerr.cc/categories/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

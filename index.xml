@@ -2,46 +2,46 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Zikey Vi</title>
-    <link>https://dev2ero.github.io/</link>
+    <link>https://cerr.cc/</link>
     <description>Recent content on Zikey Vi</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>© 2022, Zikey Vi</copyright>
-    <lastBuildDate>Thu, 26 May 2022 15:51:22 +0800</lastBuildDate><atom:link href="https://dev2ero.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 26 May 2022 15:51:22 +0800</lastBuildDate><atom:link href="https://cerr.cc/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>记一次qemu-system-arm仿真的排错</title>
-      <link>https://dev2ero.github.io/post/qemu_armv8_dbg/</link>
+      <link>https://cerr.cc/post/qemu_armv8_dbg/</link>
       <pubDate>Thu, 26 May 2022 15:51:22 +0800</pubDate>
       
-      <guid>https://dev2ero.github.io/post/qemu_armv8_dbg/</guid>
+      <guid>https://cerr.cc/post/qemu_armv8_dbg/</guid>
       <description>🕵️探案 在一次尝试使用qemu-system-arm对于asuswrt的固件进行仿真运行时，出现了十分诡异的问题：整个qemu-system、linux内核、固件文件系统运行完全正常，除了在使用到openssl时：
 admin@(none):/tmp/home/root# openssl [ 9.765639] openssl (274): undefined instruction: pc=b6cf31a8 [ 9.765770] CPU: 0 PID: 274 Comm: openssl Tainted: G W 4.1.17+ #10 [ 9.766031] Hardware name: Generic DT based system [ 9.766149] task: cef58b40 ti: cef80000 task.ti: cef80000 [ 9.766367] PC is at 0xb6cf31a8 [ 9.766423] LR is at 0xb6dcedb0 [ 9.766475] pc : [&amp;lt;b6cf31a8&amp;gt;] lr : [&amp;lt;b6dcedb0&amp;gt;] psr: 200b0010 [ 9.766475] sp : bee2c7c8 ip : 00000000 fp : 00000000 [ 9.</description>
     </item>
     
     <item>
       <title>CVE-2016-5195 Linux DirtyCOW漏洞分析</title>
-      <link>https://dev2ero.github.io/post/cve-2016-5195/</link>
+      <link>https://cerr.cc/post/cve-2016-5195/</link>
       <pubDate>Tue, 24 May 2022 17:43:25 +0800</pubDate>
       
-      <guid>https://dev2ero.github.io/post/cve-2016-5195/</guid>
+      <guid>https://cerr.cc/post/cve-2016-5195/</guid>
       <description>https://dirtycow.ninja/</description>
     </item>
     
     <item>
       <title>关于Linux下的网卡与网络设备</title>
-      <link>https://dev2ero.github.io/post/nic/</link>
+      <link>https://cerr.cc/post/nic/</link>
       <pubDate>Mon, 23 May 2022 23:21:12 +0800</pubDate>
       
-      <guid>https://dev2ero.github.io/post/nic/</guid>
+      <guid>https://cerr.cc/post/nic/</guid>
       <description>ip与ifconfig命令输出 ~$ ip a eth0: &amp;lt;BROADCAST,MULTICAST,UP,LOWER_UP&amp;gt; mtu 1500 qdisc fq_codel state UP group default qlen 1000  link/ether 00:0c:29:02:e4:a7 brd ff:ff:ff:ff:ff:ff  inet 192.168.188.129/24 brd 192.168.188.255 scope global dynamic noprefixroute eth0  valid_lft 1126sec preferred_lft 1126sec  inet6 fe80::20c:29ff:fe02:e4a7/64 scope link noprefixroute  valid_lft forever preferred_lft forever  ~$ ifconfig eth0: flags=4163&amp;lt;UP,BROADCAST,RUNNING,MULTICAST&amp;gt; mtu 1500  inet 192.168.188.129 netmask 255.255.255.0 broadcast 192.168.188.255  inet6 fe80::20c:29ff:fe02:e4a7 prefixlen 64 scopeid 0x20&amp;lt;link&amp;gt;  ether 00:0c:29:02:e4:a7 txqueuelen 1000 (Ethernet)  RX packets 959 bytes 62153 (60.</description>
     </item>
     
     <item>
       <title>CVE-2014-0160 心脏滴血漏洞挖掘与分析</title>
-      <link>https://dev2ero.github.io/post/cve-2014-0160/</link>
+      <link>https://cerr.cc/post/cve-2014-0160/</link>
       <pubDate>Fri, 20 May 2022 17:57:07 +0800</pubDate>
       
-      <guid>https://dev2ero.github.io/post/cve-2014-0160/</guid>
+      <guid>https://cerr.cc/post/cve-2014-0160/</guid>
       <description>漏洞编号：CVE-2014-0160
 漏洞类型：内存越界访问
 漏洞危害：信息泄露
@@ -56,10 +56,10 @@ SSL Heartbeat  Heartbleed was introduced by the Heartbeat Extension in the OpenS
     
     <item>
       <title>CVE-2021-3156 sudo 提权漏洞分析</title>
-      <link>https://dev2ero.github.io/post/cve-2021-3156/</link>
+      <link>https://cerr.cc/post/cve-2021-3156/</link>
       <pubDate>Fri, 13 May 2022 23:02:59 +0800</pubDate>
       
-      <guid>https://dev2ero.github.io/post/cve-2021-3156/</guid>
+      <guid>https://cerr.cc/post/cve-2021-3156/</guid>
       <description>CVE-2021-3156是sudo中存在一个堆溢出漏洞。影响从1.8.2~1.8.31p2下的所有旧版本sudo，以及1.9.0~1.9.5p1的所有稳定版sudo。可以使得任何没有特权的用户均可使用默认的sudo配置获取root权限
  环境准备 使用apt获取软件源提供的sudo源码：
 sudo apt source sudo 却被告知：
@@ -72,10 +72,10 @@ cd src/.libs ln -s sudo sudoedit cd .</description>
     
     <item>
       <title>QEMU guest的网络配置</title>
-      <link>https://dev2ero.github.io/post/qemu-system_net_config/</link>
+      <link>https://cerr.cc/post/qemu-system_net_config/</link>
       <pubDate>Thu, 12 May 2022 16:35:52 +0800</pubDate>
       
-      <guid>https://dev2ero.github.io/post/qemu-system_net_config/</guid>
+      <guid>https://cerr.cc/post/qemu-system_net_config/</guid>
       <description>首先准备网桥与tun/tap虚拟网卡：
 创建网桥br0：
 sudo brctl addbr br0 为当前用户创建tun/tap虚拟网卡tap0：
@@ -84,10 +84,10 @@ tunctl -t tap0 -u ${USER} 若发现brctl与tunctl命令未找到，则需要先�
     
     <item>
       <title>华硕梅林固件的编译</title>
-      <link>https://dev2ero.github.io/post/compile_asuswrt-merlin/</link>
+      <link>https://cerr.cc/post/compile_asuswrt-merlin/</link>
       <pubDate>Wed, 11 May 2022 16:27:10 +0800</pubDate>
       
-      <guid>https://dev2ero.github.io/post/compile_asuswrt-merlin/</guid>
+      <guid>https://cerr.cc/post/compile_asuswrt-merlin/</guid>
       <description>获取梅林 官网如下：asuswrt-merlin.net
 新梅林：https://github.com/RMerl/asuswrt-merlin.ng
 旧梅林（停止开发）：https://github.com/RMerl/asuswrt-merlin
@@ -106,10 +106,10 @@ apt install libncurses5 libncurses5-dev m4 bison gawk flex libstdc++6-4.7-dev g+
     
     <item>
       <title>ZKV的Fuzzing早教</title>
-      <link>https://dev2ero.github.io/post/fuzzer_zkv/</link>
+      <link>https://cerr.cc/post/fuzzer_zkv/</link>
       <pubDate>Wed, 11 May 2022 13:57:01 +0800</pubDate>
       
-      <guid>https://dev2ero.github.io/post/fuzzer_zkv/</guid>
+      <guid>https://cerr.cc/post/fuzzer_zkv/</guid>
       <description>\x00 早教教程 教程 谷歌的Fuzzing教程
 Fuzzingbook
 课程 南京大学：软件分析
@@ -126,20 +126,20 @@ git clone https://github.com/google/AFL.git cd AFL make -j`nproc` sudo make inst
     
     <item>
       <title>一些配环境的cheasheet</title>
-      <link>https://dev2ero.github.io/post/some_installation/</link>
+      <link>https://cerr.cc/post/some_installation/</link>
       <pubDate>Tue, 10 May 2022 21:13:54 +0800</pubDate>
       
-      <guid>https://dev2ero.github.io/post/some_installation/</guid>
+      <guid>https://cerr.cc/post/some_installation/</guid>
       <description>作为一个系统重装爱好者和硬件收集拾荒人，为了减少在环境配置上浪费的生命，记录常用环境配置命令用以直接复制粘贴
  个人 apt 源 Linux 初始环境软件安装 sudo apt install zsh git man man-db manpages ssh neovim tmux \ 	gcc g++ gdb gdb-multiarch gdbserver flex bison \ 	curl wget netcat net-tools nmap tcpdump \ 	python3 ipython3 python-is-python3 python3-pip \ 	build-essential binutils xxd strace libncurses5 \ 	neofetch zip unzip ncdu htop dotfiles 快速就位 git clone https://github.com/dev2ero/dotfiles.git sh -c &amp;#34;$(curl -fsSL https://gitee.com/mirrors/oh-my-zsh/raw/master/tools/install.sh)&amp;#34; git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions git clone https://github.</description>
     </item>
     
     <item>
       <title>构建与运行嵌入式linux虚拟机</title>
-      <link>https://dev2ero.github.io/post/build_run_embeded_linux_vm/</link>
+      <link>https://cerr.cc/post/build_run_embeded_linux_vm/</link>
       <pubDate>Tue, 10 May 2022 20:59:43 +0800</pubDate>
       
-      <guid>https://dev2ero.github.io/post/build_run_embeded_linux_vm/</guid>
+      <guid>https://cerr.cc/post/build_run_embeded_linux_vm/</guid>
       <description>Easymode 通过git或http获取buildroot：
 官网：https://buildroot.org/
 git：git clone https://git.busybox.net/buildroot
@@ -152,10 +152,10 @@ output/images/zImage # 内核 output/images/rootfs.ext2 # ext2根文件系统镜
     
     <item>
       <title>Fuck the Great Fire Wall</title>
-      <link>https://dev2ero.github.io/post/fgfw/</link>
+      <link>https://cerr.cc/post/fgfw/</link>
       <pubDate>Mon, 09 May 2022 11:03:28 +0800</pubDate>
       
-      <guid>https://dev2ero.github.io/post/fgfw/</guid>
+      <guid>https://cerr.cc/post/fgfw/</guid>
       <description>当我老了，回顾一生，就会发觉，我三分之一的生命，都浪费在和GFW作斗争上了。
 呜呼！何等宏伟啊！两千年多前的巨石，砌就秦帝国的坚不可摧；今日那日夜呼啸的服务器集群，彰显共和国非凡的制度自信。
  Top-level solution selection In terms of the ways I have tried myself:
@@ -169,20 +169,20 @@ As for the first two option:
     
     <item>
       <title>Linux系统调用大全</title>
-      <link>https://dev2ero.github.io/post/linux_syscalls/</link>
+      <link>https://cerr.cc/post/linux_syscalls/</link>
       <pubDate>Sun, 08 May 2022 21:45:00 +0800</pubDate>
       
-      <guid>https://dev2ero.github.io/post/linux_syscalls/</guid>
+      <guid>https://cerr.cc/post/linux_syscalls/</guid>
       <description>传参规则    arch syscall NR return arg0 arg1 arg2 arg3 arg4 arg5     arm r7 r0 r0 r1 r2 r3 r4 r5   arm64 x8 x0 x0 x1 x2 x3 x4 x5   x86 eax eax ebx ecx edx esi edi ebp   x86_64 rax rax rdi rsi rdx r10 r8 r9    x86_64 系统调用表  以下调用表皆基于linux4.14.0
     NR syscall name %rax arg0 (%rdi) arg1 (%rsi) arg2 (%rdx)     0 read 0x00 unsigned int fd char *buf size_t count   1 write 0x01 unsigned int fd const char *buf size_t count   2 open 0x02 const char *filename int flags umode_t mode   3 close 0x03 unsigned int fd - -   4 stat 0x04 const char *filename struct __old_kernel_stat *statbuf -   5 fstat 0x05 unsigned int fd struct __old_kernel_stat *statbuf -   6 lstat 0x06 const char *filename struct __old_kernel_stat *statbuf -   7 poll 0x07 struct pollfd *ufds unsigned int nfds int timeout   8 lseek 0x08 unsigned int fd off_t offset unsigned int whence   9 mmap 0x09 ?</description>
     </item>
     
     <item>
       <title>Cross debug kernel using qemu-system</title>
-      <link>https://dev2ero.github.io/post/qemu_dbg_kernel/</link>
+      <link>https://cerr.cc/post/qemu_dbg_kernel/</link>
       <pubDate>Sun, 08 May 2022 19:35:11 +0800</pubDate>
       
-      <guid>https://dev2ero.github.io/post/qemu_dbg_kernel/</guid>
+      <guid>https://cerr.cc/post/qemu_dbg_kernel/</guid>
       <description>From this post, our goal is tracing the execution procedure from kernel entry to userspace process (busybox init) by using qemu-system and gdb-multiarch. (The concept of ring exists only on x86. Called EL in arm.)
  Preparation qemu-system-arm Compile it from source code or just use sudo apt install qemu-system-arm.
 kernel Linux kernel v4.1 for armel as an example. Compiling a linux kernel requires a matched version of gcc. For example, the linux kernel v4.</description>
@@ -190,10 +190,10 @@ kernel Linux kernel v4.1 for armel as an example. Compiling a linux kernel requi
     
     <item>
       <title>嵌入式软件环境搭建一把梭</title>
-      <link>https://dev2ero.github.io/post/embeded_env/</link>
+      <link>https://cerr.cc/post/embeded_env/</link>
       <pubDate>Sun, 08 May 2022 14:08:16 +0800</pubDate>
       
-      <guid>https://dev2ero.github.io/post/embeded_env/</guid>
+      <guid>https://cerr.cc/post/embeded_env/</guid>
       <description>\x01 构建 编译工具链  命名遵循 arch-vendor-(os-)abi 的格式
  获取编译工具链的方式，可以直接从这些地方下载到：
   arm cortex-a:The GNU Toolchain for the Cortex-A Family Downloads
@@ -211,19 +211,19 @@ kernel Linux kernel v4.1 for armel as an example. Compiling a linux kernel requi
     
     <item>
       <title>Awesome Colors</title>
-      <link>https://dev2ero.github.io/post/awesome_colors/</link>
+      <link>https://cerr.cc/post/awesome_colors/</link>
       <pubDate>Sat, 07 May 2022 22:53:05 +0800</pubDate>
       
-      <guid>https://dev2ero.github.io/post/awesome_colors/</guid>
+      <guid>https://cerr.cc/post/awesome_colors/</guid>
       <description>Awesome colors 波尔多红 #4f0009  克莱因蓝 #002FA7  普鲁士蓝 #003153  勃艮第红 #800020  邦迪蓝 #0095b6  木乃伊棕 #8f4b28  卡布里蓝 #1a5599  提香红 #b05923  蒂芙尼蓝 #81d8d0  覆盆子红 #9e2e24  虎皮黄 #e2af42  薄荷绿 #407d52  草黄 #cfb64a  星蓝 #9ab4cd  鸢尾蓝 #418ab4  苋菜紫 #8e2961  钢蓝 #101420  云峰白 #dae3e6  岩石棕 #8c502c  橄榄石绿 #b8ce8e  竹绿 #4fa485  钴蓝 #4692b9  月影白 #c2c4c3  笋皮棕 #6b331a  琉璃蓝 #22406a  黛蓝 #3f4f65  青白 #bee0d0  墨色 #4e606c  黯 #3f545b  玄青 #3b3a4e  漆黑 #141722  玄色 #370708  </description>
     </item>
     
     <item>
       <title>关于Linux桌面的美化工作</title>
-      <link>https://dev2ero.github.io/post/beautify_de/</link>
+      <link>https://cerr.cc/post/beautify_de/</link>
       <pubDate>Sat, 07 May 2022 22:50:57 +0800</pubDate>
       
-      <guid>https://dev2ero.github.io/post/beautify_de/</guid>
+      <guid>https://cerr.cc/post/beautify_de/</guid>
       <description>GNU/Linux 的桌面生态，开放虽是好事，但却由此带来了混乱。没有像微软这样的赛博中央政府制定规则，就产生了眼下这般群雄割据的态势。作为用户的我能做的，也只是择巨木而栖 —— 唯二的自由巨头 KDE 与 Gnome，二选其一。幼年气盛，爱好折腾，留下了些许美化的经验。时至今日，能回忆起的已然不多。尽力而为做些记录，为日后回归赛博左派留些盘缠。
 KDE plasma UI的（乡土风）现代感，很大部分要归因与透明化的效果。一年前的我也是透明化爱好者，恰逢那时使用 Archlinux + KDE，故记录如下KDE透明化配置方法。KDE自身本就具有各大DE中最为强大的视觉效果定制功能，所以如下所述只是KDE本身能力之外的美化方法：
 窗口边框透明化 使用
@@ -253,48 +253,48 @@ sudo apt install chrome-gnome-shell Firefox插件地址为：https://addons.</de
     
     <item>
       <title>Utils</title>
-      <link>https://dev2ero.github.io/main/utils/</link>
+      <link>https://cerr.cc/main/utils/</link>
       <pubDate>Sat, 07 May 2022 19:53:05 +0800</pubDate>
       
-      <guid>https://dev2ero.github.io/main/utils/</guid>
+      <guid>https://cerr.cc/main/utils/</guid>
       <description>操作系统  Linux kernel lab  https://linux-kernel-labs.github.io/   内核模块编程教程  https://sysprog21.github.io/lkmpg/   MIT 操作系统课程 2021  https://pdos.csail.mit.edu/6.828/2021/schedule.html   Linux inside  https://0xax.gitbooks.io/linux-insides/content/Initialization/linux-initialization-1.html   在线浏览 Linux 源码  https://elixir.bootlin.com/linux/latest/source    编程  高级语言源代码与汇编结果的实时对照  https://godbolt.org/   展开编译细节，向你展示C++代码背后的秘密  https://cppinsights.io/   图形化展示你的正则表达式，学习正则好帮手  https://jex.im/regulex/#!flags=&amp;amp;re=%5E(a%7Cb)*%3F%24   C++ STL 算法库  https://zh.cppreference.com/w/cpp/algorithm    指令集   ARMv7 指令集胎教教程
  https://simplemachines.it/doc/arm_inst.pdf    ARMv7 指令集考试小抄</description>
     </item>
     
     <item>
       <title>Love</title>
-      <link>https://dev2ero.github.io/main/love/</link>
+      <link>https://cerr.cc/main/love/</link>
       <pubDate>Sat, 07 May 2022 18:53:05 +0800</pubDate>
       
-      <guid>https://dev2ero.github.io/main/love/</guid>
+      <guid>https://cerr.cc/main/love/</guid>
       <description>【  天  时  分  秒 】   function timer() { var start = new Date(2017, 8, 30); var t = new Date() - start; var h = ~~(t / 1000 / 60 / 60 % 24); if (h  </description>
     </item>
     
     <item>
       <title>Friend</title>
-      <link>https://dev2ero.github.io/main/flink/</link>
+      <link>https://cerr.cc/main/flink/</link>
       <pubDate>Sat, 07 May 2022 17:53:05 +0800</pubDate>
       
-      <guid>https://dev2ero.github.io/main/flink/</guid>
+      <guid>https://cerr.cc/main/flink/</guid>
       <description> https://foada.github.io/ https://fromhex.cn/ https://blog.xiabee.cn/ https://migraine-sudo.github.io/ https://m4x.fun/ https://ifpop.github.io/ https://blog.fkynjyq.com/ https://eacryo.gitee.io/ https://vang3lis.github.io/ https://emptystack.top/ https://l1b0.github.io/ https://yourbutterfly.github.io/  BigBrothers  https://eternalsakura13.com/ https://lancern.xyz/ http://www.aloxaf.com/ https://kiprey.github.io/ https://www.ksroido.art/ https://blog.flanker017.me/ https://thunderjie.github.io/ http://blog.eonew.cn/ https://xuanxuanblingbling.github.io/ https://atum.li/ https://bsauce.github.io/ https://ray-cp.github.io/ https://chenx6.github.io/ https://blog.kyrios.cn/ https://etenal.me/ https://a1ex.online/ http://p4nda.top/ https://o0xmuhe.github.io/ https://evilpan.com/ https://myfzy.top/ https://exexute.github.io/ https://zhou-yuxin.github.io/ https://houjingyi233.com/  </description>
     </item>
     
     <item>
       <title>Board</title>
-      <link>https://dev2ero.github.io/main/board/</link>
+      <link>https://cerr.cc/main/board/</link>
       <pubDate>Sat, 07 May 2022 16:53:05 +0800</pubDate>
       
-      <guid>https://dev2ero.github.io/main/board/</guid>
+      <guid>https://cerr.cc/main/board/</guid>
       <description>自用 dotfiles .zshrc export LS_COLORS=&amp;#34;di=34:ln=35:so=32:pi=33:ex=31:bd=34:cd=34:su=30:sg=30:tw=30:ow=30&amp;#34; export PROMPT_EOL_MARK=&amp;#39;↵&amp;#39;  ZSH_THEME=&amp;#34;avit&amp;#34; # ZSH_THEME=&amp;#34;robbyrussell&amp;#34; # ZSH_THEME=&amp;#34;refined&amp;#34; # ZSH_THEME=&amp;#34;agnoster&amp;#34;  plugins=(  git  sudo  zsh-autosuggestions  zsh-syntax-highlighting )  source $ZSH/oh-my-zsh.sh  alias l=&amp;#39;/bin/ls&amp;#39; alias ls=&amp;#39;lsd&amp;#39; alias ll=&amp;#39;ls -l&amp;#39; alias la=&amp;#39;ls -a&amp;#39; alias lla=&amp;#39;ls -la&amp;#39; alias lt=&amp;#39;ls --tree&amp;#39; alias ipy=&amp;#39;ipython3&amp;#39; alias py=&amp;#39;python3 -q&amp;#39; alias f.n=&amp;#39;find . -name&amp;#39; alias pms=&amp;#39;python -m http.server&amp;#39; alias v=&amp;#39;nvim&amp;#39; 配合使用：
  lsd美化ls：https://github.com/Peltoche/lsd  lsd需配合nerdfont：https://www.nerdfonts.com/   插件zsh-syntax-highlighting：https://github.com/zsh-users/zsh-syntax-highlighting 插件zsh-autosuggestions：https://github.com/zsh-users/zsh-autosuggestions  init.</description>
     </item>
     
     <item>
       <title>About</title>
-      <link>https://dev2ero.github.io/main/about/</link>
+      <link>https://cerr.cc/main/about/</link>
       <pubDate>Sat, 07 May 2022 15:53:05 +0800</pubDate>
       
-      <guid>https://dev2ero.github.io/main/about/</guid>
+      <guid>https://cerr.cc/main/about/</guid>
       <description> Yet anothor cyber nyandog
  </description>
     </item>
