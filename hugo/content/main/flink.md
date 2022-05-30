@@ -34,6 +34,8 @@ tags: [ "main" ]
 - [http://blog.eonew.cn/](http://blog.eonew.cn/)
 - [https://xuanxuanblingbling.github.io/](https://xuanxuanblingbling.github.io/)
 - https://atum.li/
+- https://bsauce.github.io/
+- https://ray-cp.github.io/
 - [https://chenx6.github.io/](https://chenx6.github.io/)
 - [https://blog.kyrios.cn/](https://blog.kyrios.cn/)
 - [https://etenal.me/](https://etenal.me/)
