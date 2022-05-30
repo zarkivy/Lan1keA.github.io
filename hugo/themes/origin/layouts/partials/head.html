@@ -12,4 +12,5 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
     {{ $style := resources.Get "//scss/style.scss" | resources.ToCSS | resources.Minify | resources.Fingerprint }}
     <link rel="stylesheet" href="{{$style.Permalink}}" >
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 </head>
