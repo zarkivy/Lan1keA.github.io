@@ -6,5 +6,7 @@ tags: [ "main" ]
 ---
 
 > **Yet anothor cyber nyandog**
+>
+> With this Rolling release blog
 
 <img src="https://nyancatcollection.com/images/Glitch.gif" alt="img" style="zoom:50%;display:block;margin:0 auto; box-shadow: 10px 10px #454c46"/>

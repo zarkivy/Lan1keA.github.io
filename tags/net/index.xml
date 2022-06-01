@@ -14,7 +14,7 @@
       <pubDate>Mon, 23 May 2022 23:21:12 +0800</pubDate>
       
       <guid>https://cerr.cc/post/nic/</guid>
-      <description>ip与ifconfig命令输出 ~$ ip a eth0: &amp;lt;BROADCAST,MULTICAST,UP,LOWER_UP&amp;gt; mtu 1500 qdisc fq_codel state UP group default qlen 1000  link/ether 00:0c:29:02:e4:a7 brd ff:ff:ff:ff:ff:ff  inet 192.168.188.129/24 brd 192.168.188.255 scope global dynamic noprefixroute eth0  valid_lft 1126sec preferred_lft 1126sec  inet6 fe80::20c:29ff:fe02:e4a7/64 scope link noprefixroute  valid_lft forever preferred_lft forever  ~$ ifconfig eth0: flags=4163&amp;lt;UP,BROADCAST,RUNNING,MULTICAST&amp;gt; mtu 1500  inet 192.168.188.129 netmask 255.255.255.0 broadcast 192.168.188.255  inet6 fe80::20c:29ff:fe02:e4a7 prefixlen 64 scopeid 0x20&amp;lt;link&amp;gt;  ether 00:0c:29:02:e4:a7 txqueuelen 1000 (Ethernet)  RX packets 959 bytes 62153 (60.</description>
+      <description>ip与ifconfig命令输出 ~$ ip a eth0: &amp;lt;BROADCAST,MULTICAST,UP,LOWER_UP&amp;gt; mtu 1500 qdisc fq_codel state UP group default qlen 1000 link/ether 00:0c:29:02:e4:a7 brd ff:ff:ff:ff:ff:ff inet 192.168.188.129/24 brd 192.168.188.255 scope global dynamic noprefixroute eth0 valid_lft 1126sec preferred_lft 1126sec inet6 fe80::20c:29ff:fe02:e4a7/64 scope link noprefixroute valid_lft forever preferred_lft forever ~$ ifconfig eth0: flags=4163&amp;lt;UP,BROADCAST,RUNNING,MULTICAST&amp;gt; mtu 1500 inet 192.168.188.129 netmask 255.255.255.0 broadcast 192.168.188.255 inet6 fe80::20c:29ff:fe02:e4a7 prefixlen 64 scopeid 0x20&amp;lt;link&amp;gt; ether 00:0c:29:02:e4:a7 txqueuelen 1000 (Ethernet) RX packets 959 bytes 62153 (60.</description>
     </item>
     
     <item>
@@ -25,13 +25,13 @@
       <guid>https://cerr.cc/post/fgfw/</guid>
       <description>当我老了，回顾一生，就会发觉，我三分之一的生命，都浪费在和GFW作斗争上了。
 呜呼！何等宏伟啊！两千年多前的巨石，砌就秦帝国的坚不可摧；今日那日夜呼啸的服务器集群，彰显共和国非凡的制度自信。
- Top-level solution selection In terms of the ways I have tried myself:
- Use a VPN application Rent an overseas server Subscribe to an airport service  The last option strikes the best balance between price and convenience.
+Top-level solution selection In terms of the ways I have tried myself:
+Use a VPN application Rent an overseas server Subscribe to an airport service The last option strikes the best balance between price and convenience.
 As for the first two option:
- Beware of phishing High cost in time or money Stability is a concern  个人客户端解决方案  具体使用方面就大白话讲了
- 垃机佬出身的我，手里硬件设备的数量经常令得旁人惊异。即使到了渐渐退烧的今天，我手中也是保有了各个主流操作系统平台的物理机。
+Beware of phishing High cost in time or money Stability is a concern 个人客户端解决方案 具体使用方面就大白话讲了
+垃机佬出身的我，手里硬件设备的数量经常令得旁人惊异。即使到了渐渐退烧的今天，我手中也是保有了各个主流操作系统平台的物理机。
 顶层协议方面，v2ray和ssr都有使用，未尝试过自行编写或改进加密协议。服务端一年200左右的机场全够用了。客户端目前使用方案如下：
- Windows  v2rayNG：https://github.</description>
+Windows v2rayNG：https://github.com/2dust/v2rayN Linux v2rayA：https://github.com/v2rayA/v2rayA MacOS ClashX：https://github.com/yichengchen/clashX iOS shadowrocket：外区APP Store下载 Android v2rayNG：https://github.</description>
     </item>
     
   </channel>

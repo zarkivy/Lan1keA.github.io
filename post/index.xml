@@ -7,7 +7,17 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>© 2022, Zikey Vi</copyright>
-    <lastBuildDate>Thu, 26 May 2022 15:51:22 +0800</lastBuildDate><atom:link href="https://cerr.cc/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 01 Jun 2022 10:55:17 +0800</lastBuildDate><atom:link href="https://cerr.cc/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ARM简史</title>
+      <link>https://cerr.cc/post/arm-architecture/</link>
+      <pubDate>Wed, 01 Jun 2022 10:55:17 +0800</pubDate>
+      
+      <guid>https://cerr.cc/post/arm-architecture/</guid>
+      <description>ARM (stylised in lowercase as arm, formerly an acronym for Advanced RISC Machines and originally Acorn RISC Machine) is a family of reduced instruction set computer (RISC) instruction set architectures for computer processors, configured for various environments.
+reference https://en.wikipedia.org/wiki/ARM_architecture_family </description>
+    </item>
+    
     <item>
       <title>记一次qemu-system-arm仿真的排错</title>
       <link>https://cerr.cc/post/qemu_armv8_dbg/</link>
@@ -33,7 +43,7 @@ admin@(none):/tmp/home/root# openssl [ 9.765639] openssl (274): undefined instru
       <pubDate>Mon, 23 May 2022 23:21:12 +0800</pubDate>
       
       <guid>https://cerr.cc/post/nic/</guid>
-      <description>ip与ifconfig命令输出 ~$ ip a eth0: &amp;lt;BROADCAST,MULTICAST,UP,LOWER_UP&amp;gt; mtu 1500 qdisc fq_codel state UP group default qlen 1000  link/ether 00:0c:29:02:e4:a7 brd ff:ff:ff:ff:ff:ff  inet 192.168.188.129/24 brd 192.168.188.255 scope global dynamic noprefixroute eth0  valid_lft 1126sec preferred_lft 1126sec  inet6 fe80::20c:29ff:fe02:e4a7/64 scope link noprefixroute  valid_lft forever preferred_lft forever  ~$ ifconfig eth0: flags=4163&amp;lt;UP,BROADCAST,RUNNING,MULTICAST&amp;gt; mtu 1500  inet 192.168.188.129 netmask 255.255.255.0 broadcast 192.168.188.255  inet6 fe80::20c:29ff:fe02:e4a7 prefixlen 64 scopeid 0x20&amp;lt;link&amp;gt;  ether 00:0c:29:02:e4:a7 txqueuelen 1000 (Ethernet)  RX packets 959 bytes 62153 (60.</description>
+      <description>ip与ifconfig命令输出 ~$ ip a eth0: &amp;lt;BROADCAST,MULTICAST,UP,LOWER_UP&amp;gt; mtu 1500 qdisc fq_codel state UP group default qlen 1000 link/ether 00:0c:29:02:e4:a7 brd ff:ff:ff:ff:ff:ff inet 192.168.188.129/24 brd 192.168.188.255 scope global dynamic noprefixroute eth0 valid_lft 1126sec preferred_lft 1126sec inet6 fe80::20c:29ff:fe02:e4a7/64 scope link noprefixroute valid_lft forever preferred_lft forever ~$ ifconfig eth0: flags=4163&amp;lt;UP,BROADCAST,RUNNING,MULTICAST&amp;gt; mtu 1500 inet 192.168.188.129 netmask 255.255.255.0 broadcast 192.168.188.255 inet6 fe80::20c:29ff:fe02:e4a7 prefixlen 64 scopeid 0x20&amp;lt;link&amp;gt; ether 00:0c:29:02:e4:a7 txqueuelen 1000 (Ethernet) RX packets 959 bytes 62153 (60.</description>
     </item>
     
     <item>
@@ -47,11 +57,11 @@ admin@(none):/tmp/home/root# openssl [ 9.765639] openssl (274): undefined instru
 漏洞危害：信息泄露
 影响范围：OpenSSL1.0.1、OpenSSL 1.0.1a~ OpenSSL 1.0.1f、OpenSSL 1.0.2-beta
 漏洞描述：OpenSSL 在实现 TLS（传输层安全协议）和 DTLS（数据报安全传输协议）的心跳包处理逻辑时存在问题。OpenSSL 的 Heartbleed 模块在处理心跳包时没有检查心跳包中的长度字段是否与后续的数据字段一致，攻击者利用该漏洞构造异常数据包，可获取服务器内存中多达 64KB 的数据。这些数据可能会包含证书私钥、用户账号、密码、邮件内容等敏感信息。
- 背景知识 简介 传输层安全性协议SSL
+背景知识 简介 传输层安全性协议SSL
 SSL 全称 Secure Sockets Layer（安全套接字层协议），要求建立在可靠的传输层协议（TCP）之上，主要提供机密性、认证性及数据完整性服务。SSL 最初（SSL 1.0、SSL2.0、SSL 3.0 版本）由网景公司设计和维护，从 3.1 版本开始，SSL 协议由因特网工程任务小组（IETF）正式接管，并更名为 TLS（传输层安全协议，Transport Layer Security），发展至今已有 TLS 1.0、TLS1.1、TLS1.2 三个版本。
 SSL/TLS 协议能够提供的安全服务主要包括：
- 认证性——使用数字证书认证服务器和客户端身份，防止身份伪造； 机密性——使用加密算法防止第三方窃听； 完整性——使用消息认证码（MAC）保障数据完整性，防止消息被篡改； 重放保护——通过使用隐式序列号防止重放攻击；  SSL握手过程 客户端获取服务器的数字证书后，协商后续数据传输所使用的对称加密密钥。
-SSL Heartbeat  Heartbleed was introduced by the Heartbeat Extension in the OpenSSL version 1.0.11 . This extension enables a low-cost, keepalive mechanism for peers to know that they’re still connected and all is well at the TLS layer.</description>
+认证性——使用数字证书认证服务器和客户端身份，防止身份伪造； 机密性——使用加密算法防止第三方窃听； 完整性——使用消息认证码（MAC）保障数据完整性，防止消息被篡改； 重放保护——通过使用隐式序列号防止重放攻击； SSL握手过程 客户端获取服务器的数字证书后，协商后续数据传输所使用的对称加密密钥。
+SSL Heartbeat Heartbleed was introduced by the Heartbeat Extension in the OpenSSL version 1.0.11 . This extension enables a low-cost, keepalive mechanism for peers to know that they’re still connected and all is well at the TLS layer.</description>
     </item>
     
     <item>
@@ -61,7 +71,7 @@ SSL Heartbeat  Heartbleed was introduced by the Heartbeat Extension in the OpenS
       
       <guid>https://cerr.cc/post/cve-2021-3156/</guid>
       <description>CVE-2021-3156是sudo中存在一个堆溢出漏洞。影响从1.8.2~1.8.31p2下的所有旧版本sudo，以及1.9.0~1.9.5p1的所有稳定版sudo。可以使得任何没有特权的用户均可使用默认的sudo配置获取root权限
- 环境准备 使用apt获取软件源提供的sudo源码：
+环境准备 使用apt获取软件源提供的sudo源码：
 sudo apt source sudo 却被告知：
 NOTICE: &amp;#39;sudo&amp;#39; packaging is maintained in the &amp;#39;Git&amp;#39; version control system at: https://salsa.debian.org/sudo-team/sudo.git Please use: git clone https://salsa.debian.org/sudo-team/sudo.git to retrieve the latest (possibly unreleased) updates to the package. 于是听话，从git仓库获取源码：
 git clone https://salsa.debian.org/sudo-team/sudo.git 接下来进行构建：
@@ -121,7 +131,7 @@ Fuzzing战争系列之二：不畏浮云遮望眼
 AFLplusplus
 \x01 学步车AFL 最简单的 fuzzing demo 使用AFL，故先安装：
 git clone https://github.com/google/AFL.git cd AFL make -j`nproc` sudo make install 接着准备被测程序源码：
-#include &amp;lt;stdio.h&amp;gt;#include &amp;lt;string.h&amp;gt; #include &amp;lt;signal.h&amp;gt; int vuln(char *str) {  int len = strlen(str);  if(str[0] == &amp;#39;A&amp;#39; &amp;amp;&amp;amp; len == 66)  raise(SIGSEGV);  else if(str[0] == &amp;#39;F&amp;#39; &amp;amp;&amp;amp; len == 6)  raise(SIGSEGV);  else  puts(&amp;#34;\nnothing happened&amp;#34;);  return 0; } int main(int argc, char *argv[]) {  char buf[100]={0};  gets(buf);  printf(buf);  vuln(buf);  return 0; } 使用afl-gcc插装编译：</description>
+#include &amp;lt;stdio.h&amp;gt; #include &amp;lt;string.h&amp;gt; #include &amp;lt;signal.h&amp;gt; int vuln(char *str) { int len = strlen(str); if(str[0] == &amp;#39;A&amp;#39; &amp;amp;&amp;amp; len == 66) raise(SIGSEGV); else if(str[0] == &amp;#39;F&amp;#39; &amp;amp;&amp;amp; len == 6) raise(SIGSEGV); else puts(&amp;#34;\nnothing happened&amp;#34;); return 0; } int main(int argc, char *argv[]) { char buf[100]={0}; gets(buf); printf(buf); vuln(buf); return 0; } 使用afl-gcc插装编译：</description>
     </item>
     
     <item>
@@ -131,7 +141,7 @@ git clone https://github.com/google/AFL.git cd AFL make -j`nproc` sudo make inst
       
       <guid>https://cerr.cc/post/some_installation/</guid>
       <description>作为一个系统重装爱好者和硬件收集拾荒人，为了减少在环境配置上浪费的生命，记录常用环境配置命令用以直接复制粘贴
- 个人 apt 源 Linux 初始环境软件安装 sudo apt install zsh git man man-db manpages ssh neovim tmux \ 	gcc g++ gdb gdb-multiarch gdbserver flex bison \ 	curl wget netcat net-tools nmap tcpdump \ 	python3 ipython3 python-is-python3 python3-pip \ 	build-essential binutils xxd strace libncurses5 \ 	neofetch zip unzip ncdu htop dotfiles 快速就位 git clone https://github.com/dev2ero/dotfiles.git sh -c &amp;#34;$(curl -fsSL https://gitee.com/mirrors/oh-my-zsh/raw/master/tools/install.sh)&amp;#34; git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions git clone https://github.</description>
+个人 apt 源 Linux 初始环境软件安装 sudo apt install zsh git man man-db manpages ssh neovim tmux \ gcc g++ gdb gdb-multiarch gdbserver flex bison \ curl wget netcat net-tools nmap tcpdump \ python3 ipython3 python-is-python3 python3-pip \ build-essential binutils xxd strace libncurses5 \ neofetch zip unzip ncdu htop dotfiles 快速就位 git clone https://github.com/dev2ero/dotfiles.git sh -c &amp;#34;$(curl -fsSL https://gitee.com/mirrors/oh-my-zsh/raw/master/tools/install.sh)&amp;#34; git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting sh -c &amp;#39;curl -fLo &amp;#34;${XDG_DATA_HOME:-$HOME/.</description>
     </item>
     
     <item>
@@ -158,13 +168,13 @@ output/images/zImage # 内核 output/images/rootfs.ext2 # ext2根文件系统镜
       <guid>https://cerr.cc/post/fgfw/</guid>
       <description>当我老了，回顾一生，就会发觉，我三分之一的生命，都浪费在和GFW作斗争上了。
 呜呼！何等宏伟啊！两千年多前的巨石，砌就秦帝国的坚不可摧；今日那日夜呼啸的服务器集群，彰显共和国非凡的制度自信。
- Top-level solution selection In terms of the ways I have tried myself:
- Use a VPN application Rent an overseas server Subscribe to an airport service  The last option strikes the best balance between price and convenience.
+Top-level solution selection In terms of the ways I have tried myself:
+Use a VPN application Rent an overseas server Subscribe to an airport service The last option strikes the best balance between price and convenience.
 As for the first two option:
- Beware of phishing High cost in time or money Stability is a concern  个人客户端解决方案  具体使用方面就大白话讲了
- 垃机佬出身的我，手里硬件设备的数量经常令得旁人惊异。即使到了渐渐退烧的今天，我手中也是保有了各个主流操作系统平台的物理机。
+Beware of phishing High cost in time or money Stability is a concern 个人客户端解决方案 具体使用方面就大白话讲了
+垃机佬出身的我，手里硬件设备的数量经常令得旁人惊异。即使到了渐渐退烧的今天，我手中也是保有了各个主流操作系统平台的物理机。
 顶层协议方面，v2ray和ssr都有使用，未尝试过自行编写或改进加密协议。服务端一年200左右的机场全够用了。客户端目前使用方案如下：
- Windows  v2rayNG：https://github.</description>
+Windows v2rayNG：https://github.com/2dust/v2rayN Linux v2rayA：https://github.com/v2rayA/v2rayA MacOS ClashX：https://github.com/yichengchen/clashX iOS shadowrocket：外区APP Store下载 Android v2rayNG：https://github.</description>
     </item>
     
     <item>
@@ -173,8 +183,8 @@ As for the first two option:
       <pubDate>Sun, 08 May 2022 21:45:00 +0800</pubDate>
       
       <guid>https://cerr.cc/post/linux_syscalls/</guid>
-      <description>传参规则    arch syscall NR return arg0 arg1 arg2 arg3 arg4 arg5     arm r7 r0 r0 r1 r2 r3 r4 r5   arm64 x8 x0 x0 x1 x2 x3 x4 x5   x86 eax eax ebx ecx edx esi edi ebp   x86_64 rax rax rdi rsi rdx r10 r8 r9    x86_64 系统调用表  以下调用表皆基于linux4.14.0
-    NR syscall name %rax arg0 (%rdi) arg1 (%rsi) arg2 (%rdx)     0 read 0x00 unsigned int fd char *buf size_t count   1 write 0x01 unsigned int fd const char *buf size_t count   2 open 0x02 const char *filename int flags umode_t mode   3 close 0x03 unsigned int fd - -   4 stat 0x04 const char *filename struct __old_kernel_stat *statbuf -   5 fstat 0x05 unsigned int fd struct __old_kernel_stat *statbuf -   6 lstat 0x06 const char *filename struct __old_kernel_stat *statbuf -   7 poll 0x07 struct pollfd *ufds unsigned int nfds int timeout   8 lseek 0x08 unsigned int fd off_t offset unsigned int whence   9 mmap 0x09 ?</description>
+      <description>传参规则 arch syscall NR return arg0 arg1 arg2 arg3 arg4 arg5 arm r7 r0 r0 r1 r2 r3 r4 r5 arm64 x8 x0 x0 x1 x2 x3 x4 x5 x86 eax eax ebx ecx edx esi edi ebp x86_64 rax rax rdi rsi rdx r10 r8 r9 x86_64 系统调用表 以下调用表皆基于linux4.14.0
+NR syscall name %rax arg0 (%rdi) arg1 (%rsi) arg2 (%rdx) 0 read 0x00 unsigned int fd char *buf size_t count 1 write 0x01 unsigned int fd const char *buf size_t count 2 open 0x02 const char *filename int flags umode_t mode 3 close 0x03 unsigned int fd - - 4 stat 0x04 const char *filename struct __old_kernel_stat *statbuf - 5 fstat 0x05 unsigned int fd struct __old_kernel_stat *statbuf - 6 lstat 0x06 const char *filename struct __old_kernel_stat *statbuf - 7 poll 0x07 struct pollfd *ufds unsigned int nfds int timeout 8 lseek 0x08 unsigned int fd off_t offset unsigned int whence 9 mmap 0x09 ?</description>
     </item>
     
     <item>
@@ -184,7 +194,7 @@ As for the first two option:
       
       <guid>https://cerr.cc/post/qemu_dbg_kernel/</guid>
       <description>From this post, our goal is tracing the execution procedure from kernel entry to userspace process (busybox init) by using qemu-system and gdb-multiarch. (The concept of ring exists only on x86. Called EL in arm.)
- Preparation qemu-system-arm Compile it from source code or just use sudo apt install qemu-system-arm.
+Preparation qemu-system-arm Compile it from source code or just use sudo apt install qemu-system-arm.
 kernel Linux kernel v4.1 for armel as an example. Compiling a linux kernel requires a matched version of gcc. For example, the linux kernel v4.</description>
     </item>
     
@@ -194,19 +204,19 @@ kernel Linux kernel v4.1 for armel as an example. Compiling a linux kernel requi
       <pubDate>Sun, 08 May 2022 14:08:16 +0800</pubDate>
       
       <guid>https://cerr.cc/post/embeded_env/</guid>
-      <description>\x01 构建 编译工具链  命名遵循 arch-vendor-(os-)abi 的格式
- 获取编译工具链的方式，可以直接从这些地方下载到：
-  arm cortex-a:The GNU Toolchain for the Cortex-A Family Downloads
-  arm cortex-m:GNU Arm Embedded Toolchain Downloads
-  Linaro:arm:https://www.linaro.org/downloads/
-  risc-v:https://github.com/riscv/riscv-gnu-toolchain/releases
-  mips:https://www.mips.com/develop/tools/compilers/linux-toolchain/
-  uclibc:https://www.uclibc.org/downloads/binaries/
-  http://download.ronetix.info/toolchains/
-  也可以使用buildroot手动构建：
- https://buildroot.org/  OS/ABI的匹配 通常情况下，选取编译交叉编译工具链时，指令集、平台之类的内容是不容易弄错的。但 OS/ABI 却是个容易造成故障的点。
+      <description>\x01 构建 编译工具链 命名遵循 arch-vendor-(os-)abi 的格式
+获取编译工具链的方式，可以直接从这些地方下载到：
+arm cortex-a:The GNU Toolchain for the Cortex-A Family Downloads
+arm cortex-m:GNU Arm Embedded Toolchain Downloads
+Linaro:arm:https://www.linaro.org/downloads/
+risc-v:https://github.com/riscv/riscv-gnu-toolchain/releases
+mips:https://www.mips.com/develop/tools/compilers/linux-toolchain/
+uclibc:https://www.uclibc.org/downloads/binaries/
+http://download.ronetix.info/toolchains/
+也可以使用buildroot手动构建：
+https://buildroot.org/ OS/ABI的匹配 通常情况下，选取编译交叉编译工具链时，指令集、平台之类的内容是不容易弄错的。但 OS/ABI 却是个容易造成故障的点。
 举例来讲，在我一次对libnvram.so的编译时，得到的目标ELF文件为：
-~$ file libnvram.so libnvram.so: ELF 32-bit LSB shared object, ARM, version 1 (ARM), dynamically linked, not stripped  ~$ armv5l-readelf -h libnvram.</description>
+~$ file libnvram.so libnvram.so: ELF 32-bit LSB shared object, ARM, version 1 (ARM), dynamically linked, not stripped ~$ armv5l-readelf -h libnvram.so ELF Header: Magic: 7f 45 4c 46 01 01 01 61 00 00 00 00 00 00 00 00 Class: ELF32 Data: 2&amp;#39;s complement, little endian Version: 1 (current) OS/ABI: ARM .</description>
     </item>
     
     <item>
@@ -215,7 +225,7 @@ kernel Linux kernel v4.1 for armel as an example. Compiling a linux kernel requi
       <pubDate>Sat, 07 May 2022 22:53:05 +0800</pubDate>
       
       <guid>https://cerr.cc/post/awesome_colors/</guid>
-      <description>Awesome colors 波尔多红 #4f0009  克莱因蓝 #002FA7  普鲁士蓝 #003153  勃艮第红 #800020  邦迪蓝 #0095b6  木乃伊棕 #8f4b28  卡布里蓝 #1a5599  提香红 #b05923  蒂芙尼蓝 #81d8d0  覆盆子红 #9e2e24  虎皮黄 #e2af42  薄荷绿 #407d52  草黄 #cfb64a  星蓝 #9ab4cd  鸢尾蓝 #418ab4  苋菜紫 #8e2961  钢蓝 #101420  云峰白 #dae3e6  岩石棕 #8c502c  橄榄石绿 #b8ce8e  竹绿 #4fa485  钴蓝 #4692b9  月影白 #c2c4c3  笋皮棕 #6b331a  琉璃蓝 #22406a  黛蓝 #3f4f65  青白 #bee0d0  墨色 #4e606c  黯 #3f545b  玄青 #3b3a4e  漆黑 #141722  玄色 #370708  </description>
+      <description>Awesome colors 波尔多红 #4f0009 克莱因蓝 #002FA7 普鲁士蓝 #003153 勃艮第红 #800020 邦迪蓝 #0095b6 木乃伊棕 #8f4b28 卡布里蓝 #1a5599 提香红 #b05923 蒂芙尼蓝 #81d8d0 覆盆子红 #9e2e24 虎皮黄 #e2af42 薄荷绿 #407d52 草黄 #cfb64a 星蓝 #9ab4cd 鸢尾蓝 #418ab4 苋菜紫 #8e2961 钢蓝 #101420 云峰白 #dae3e6 岩石棕 #8c502c 橄榄石绿 #b8ce8e 竹绿 #4fa485 钴蓝 #4692b9 月影白 #c2c4c3 笋皮棕 #6b331a 琉璃蓝 #22406a 黛蓝 #3f4f65 青白 #bee0d0 墨色 #4e606c 黯 #3f545b 玄青 #3b3a4e 漆黑 #141722 玄色 #370708 </description>
     </item>
     
     <item>
@@ -227,8 +237,8 @@ kernel Linux kernel v4.1 for armel as an example. Compiling a linux kernel requi
       <description>GNU/Linux 的桌面生态，开放虽是好事，但却由此带来了混乱。没有像微软这样的赛博中央政府制定规则，就产生了眼下这般群雄割据的态势。作为用户的我能做的，也只是择巨木而栖 —— 唯二的自由巨头 KDE 与 Gnome，二选其一。幼年气盛，爱好折腾，留下了些许美化的经验。时至今日，能回忆起的已然不多。尽力而为做些记录，为日后回归赛博左派留些盘缠。
 KDE plasma UI的（乡土风）现代感，很大部分要归因与透明化的效果。一年前的我也是透明化爱好者，恰逢那时使用 Archlinux + KDE，故记录如下KDE透明化配置方法。KDE自身本就具有各大DE中最为强大的视觉效果定制功能，所以如下所述只是KDE本身能力之外的美化方法：
 窗口边框透明化 使用
- https://github.com/ishovkun/SierraBreeze  或
- https://github.com/alex47/BreezeBlurred  在Archlinux上若出现编译错误，可以使用这位老哥打包好的安装包  https://github.com/alex47/BreezeBlurred/issues/24      面板透明化 需要自己魔改，参考如下大佬留下的教程：
+https://github.com/ishovkun/SierraBreeze 或
+https://github.com/alex47/BreezeBlurred 在Archlinux上若出现编译错误，可以使用这位老哥打包好的安装包 https://github.com/alex47/BreezeBlurred/issues/24 面板透明化 需要自己魔改，参考如下大佬留下的教程：
 https://www.joxrays.com/kde-panel-transparency/
 原始论坛帖子：
 https://forum.manjaro.org/t/where-can-the-transparency-of-the-kde-panel-be-set/50219
@@ -248,7 +258,9 @@ sudo apt install gnome-tweaks 使用gnome-tweaks就可以做一些此前没有�
 接下来安装gnome插件管理器 GNOME Shell Extensions：
 插件管理器的用户接口是基于浏览器提供的，需安装对应的Chrome或Firefox插件即可。
 对于Chrome，除了可以从Chrome商店下载外，也可以直接使用软件源里的包安装：
-sudo apt install chrome-gnome-shell Firefox插件地址为：https://addons.</description>
+sudo apt install chrome-gnome-shell Firefox插件地址为：https://addons.mozilla.org/en-US/firefox/addon/gnome-shell-integration/
+然后就可以访问 https://extensions.gnome.org/ 来管理gnome插件了：
+为了使用用户文件中的主题，需要安装 User Themes 插件并启用：</description>
     </item>
     
   </channel>

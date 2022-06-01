@@ -2,16 +2,22 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://cerr.cc/tags/linux/</loc>
-    <lastmod>2022-05-26T15:51:22+08:00</lastmod>
+    <loc>https://cerr.cc/tags/arch/</loc>
+    <lastmod>2022-06-01T10:55:17+08:00</lastmod>
+  </url><url>
+    <loc>https://cerr.cc/post/arm-architecture/</loc>
+    <lastmod>2022-06-01T10:55:17+08:00</lastmod>
   </url><url>
     <loc>https://cerr.cc/post/</loc>
-    <lastmod>2022-05-26T15:51:22+08:00</lastmod>
+    <lastmod>2022-06-01T10:55:17+08:00</lastmod>
   </url><url>
     <loc>https://cerr.cc/tags/</loc>
-    <lastmod>2022-05-26T15:51:22+08:00</lastmod>
+    <lastmod>2022-06-01T10:55:17+08:00</lastmod>
   </url><url>
     <loc>https://cerr.cc/</loc>
+    <lastmod>2022-06-01T10:55:17+08:00</lastmod>
+  </url><url>
+    <loc>https://cerr.cc/tags/linux/</loc>
     <lastmod>2022-05-26T15:51:22+08:00</lastmod>
   </url><url>
     <loc>https://cerr.cc/post/qemu_armv8_dbg/</loc>

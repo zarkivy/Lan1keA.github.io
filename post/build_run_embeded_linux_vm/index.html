@@ -195,7 +195,7 @@
     <div id="content">
 <article class="post">
   
-    <div class="post-content"><h2 id="easymode">Easymode</h2>
+    <div class="post-content"><h1 id="easymode">Easymode</h1>
 <p>通过git或http获取buildroot：</p>
 <p>官网：https://buildroot.org/</p>
 <p>git：<code>git clone https://git.busybox.net/buildroot</code></p>
@@ -260,10 +260,105 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>	-serial stdio <span style="color:#d14">\
 </span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>	-nographic
 </span></span></code></pre></div><p>弄完发现过程竟如此简单，buildroot把所有活都干了……</p>
-<h2 id="manual-mode">Manual Mode</h2>
-<p>另一篇使用qemu-system调试内核的文章中已描述：</p>
-<p><a href="/post/qemu_dbg_kernel/">http://zikey.vip/post/qemu_dbg_kernel/</a></p>
-</div>
+<h1 id="manual-mode">Manual Mode</h1>
+<p>另一篇使用qemu-system调试内核的文章中已有部分描述：</p>
+<p><a href="/post/qemu_dbg_kernel/">http://cerr.cc/post/qemu_dbg_kernel/</a></p>
+<p>不过接下来还是记录下另一次实践。</p>
+<h2 id="kernel">Kernel</h2>
+<h3 id="linux源码结构">Linux源码结构</h3>
+<p>手动构建内核前，先了解下内核源码的文件树结构。以2022/6/1的linux源码为例：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>➜  linux git:<span style="color:#000;font-weight:bold">(</span>master<span style="color:#000;font-weight:bold">)</span> ls
+</span></span><span style="display:flex;"><span>arch   COPYING  Documentation  include  Kbuild   lib          Makefile  README   security  usr
+</span></span><span style="display:flex;"><span>block  CREDITS  drivers        init     Kconfig  LICENSES     mm        samples  sound     virt
+</span></span><span style="display:flex;"><span>certs  crypto   fs             ipc      kernel   MAINTAINERS  net       scripts  tools
+</span></span></code></pre></div><ul>
+<li><strong>arch</strong>
+<ul>
+<li>The <code>arch</code> subdirectory contains all of the architecture specific kernel code. It has further subdirectories, one per supported architecture, for example <code>i386</code> and <code>alpha</code>.</li>
+</ul>
+</li>
+<li><strong>include</strong>
+<ul>
+<li>The <code>include</code> subdirectory contains most of the include files needed to build the kernel code. It too has further subdirectories including one for every architecture supported. The <code>/include/asm</code> subdirectory is a soft link to the real include directory needed for this architecture, for example <code>/include/asm-i386</code>. To change architectures you need to edit the kernel makefile and rerun the Linux kernel configuration program.</li>
+</ul>
+</li>
+<li><strong>init</strong>
+<ul>
+<li>This directory contains the initialization code for the kernel and it is a very good place to start looking at how the kernel works.</li>
+</ul>
+</li>
+<li><strong>mm</strong>
+<ul>
+<li>This directory contains all of the memory management code. The architecture specific memory management code lives down in <code>/arch/*/mm/</code>, for example <code>/arch/i386/mm/fault.c</code>.</li>
+</ul>
+</li>
+<li><strong>drivers</strong>
+<ul>
+<li>All of the system&rsquo;s device drivers live in this directory. They are further sub-divided into classes of device driver, for example <code>block</code>.</li>
+</ul>
+</li>
+<li><strong>ipc</strong>
+<ul>
+<li>This directory contains the kernels inter-process communications code.</li>
+</ul>
+</li>
+<li><strong>modules</strong>
+<ul>
+<li>This is simply a directory used to hold built modules.</li>
+</ul>
+</li>
+<li><strong>fs</strong>
+<ul>
+<li>All of the file system code. This is further sub-divided into directories, one per supported file system, for example <code>vfat</code> and <code>ext2</code>.</li>
+</ul>
+</li>
+<li><strong>kernel</strong>
+<ul>
+<li>The main kernel code. Again, the architecture specific kernel code is in <code>/arch/*/kernel</code>.</li>
+</ul>
+</li>
+<li><strong>net</strong>
+<ul>
+<li>The kernel&rsquo;s networking code.</li>
+</ul>
+</li>
+<li><strong>lib</strong>
+<ul>
+<li>This directory contains the kernel&rsquo;s library code. The architecture specific library code can be found in <code>/arch/*/lib/</code>.</li>
+</ul>
+</li>
+<li><strong>scripts</strong>
+<ul>
+<li>This directory contains the scripts (for example <em>awk</em> and <em>tk</em> scripts) that are used when the kernel is configured.</li>
+</ul>
+</li>
+</ul>
+<h3 id="linux构建系统">Linux构建系统</h3>
+<p>同时需要先了解下 <code>.config</code>、<code>defconfig</code>、<code>Kconfig</code></p>
+<ul>
+<li><a href="https://stackoverflow.com/questions/41885015/what-exactly-does-linux-kernels-make-defconfig-do">https://stackoverflow.com/questions/41885015/what-exactly-does-linux-kernels-make-defconfig-do</a></li>
+<li><a href="https://www.linuxjournal.com/content/kbuild-linux-kernel-build-system">https://www.linuxjournal.com/content/kbuild-linux-kernel-build-system</a></li>
+</ul>
+<p>总的来说，The Linux Kernel Build System has four main components:</p>
+<ul>
+<li>Config symbols: compilation options that can be used to compile code conditionally in source files and to decide which objects to include in a kernel image or its modules.</li>
+<li>Kconfig files: define each config symbol and its attributes, such as its type, description and dependencies. Programs that generate an option menu tree (for example, <code>make menuconfig</code>) read the menu entries from these files.</li>
+<li>.config file: stores each config symbol&rsquo;s selected value. You can edit this file manually or use one of the many <code>make</code> configuration targets, such as menuconfig and xconfig, that call specialized programs to build a tree-like menu and automatically update (and create) the .config file for you.</li>
+<li>Makefiles: normal GNU makefiles that describe the relationship between source files and the commands needed to generate each make target, such as kernel images and modules.</li>
+</ul>
+<p>至于<code>defconfig</code>，则一般由平台厂商提供，里面含有了目标平台相关的一些默认参数，内核编译用做.config的参考。同时遵守如下规则：</p>
+<ul>
+<li>if option is mentioned in <code>defconfig</code>, build system puts that option into <code>.config</code> with value chosen in <code>defconfig</code></li>
+<li>if option isn&rsquo;t mentioned in <code>defconfig</code>, build system puts that option into <code>.config</code> using its default value, specified in corresponding <code>Kconfig</code></li>
+</ul>
+<p>由此确保构建出的内核与特定平台匹配。</p>
+<p><code>defconfig</code>文件存放于<code>arch/*/configs/</code>路径下，如：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>➜  linux git:<span style="color:#000;font-weight:bold">(</span>master<span style="color:#000;font-weight:bold">)</span> ls arch/arm/configs/
+</span></span><span style="display:flex;"><span>am200epdkit_defconfig     gemini_defconfig         multi_v5_defconfig    s5pv210_defconfig
+</span></span><span style="display:flex;"><span>aspeed_g4_defconfig       h3600_defconfig          multi_v7_defconfig    sama5_defconfig
+</span></span><span style="display:flex;"><span>aspeed_g5_defconfig       h5000_defconfig          mv78xx0_defconfig     sama7_defconfig
+</span></span><span style="display:flex;"><span>......
+</span></span></code></pre></div></div>
   
 </article>
 <button class="floating-button">
