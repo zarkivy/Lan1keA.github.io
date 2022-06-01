@@ -19,6 +19,9 @@ tags: [ "main" ]
   - https://0xax.gitbooks.io/linux-insides/content/Initialization/linux-initialization-1.html
 - 在线浏览 Linux 源码
   - https://elixir.bootlin.com/linux/latest/source
+- Linux内核实践百科
+  - [https://github.com/cirosantilli/linux-kernel-module-cheat](https://github.com/cirosantilli/linux-kernel-module-cheat)
+
 
 
 

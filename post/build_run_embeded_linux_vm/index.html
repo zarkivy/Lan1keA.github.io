@@ -196,6 +196,7 @@
 <article class="post">
   
     <div class="post-content"><h1 id="easymode">Easymode</h1>
+<h2 id="default">Default</h2>
 <p>通过git或http获取buildroot：</p>
 <p>官网：https://buildroot.org/</p>
 <p>git：<code>git clone https://git.busybox.net/buildroot</code></p>
@@ -260,10 +261,78 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>	-serial stdio <span style="color:#d14">\
 </span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>	-nographic
 </span></span></code></pre></div><p>弄完发现过程竟如此简单，buildroot把所有活都干了……</p>
-<h1 id="manual-mode">Manual Mode</h1>
+<h2 id="全自动方案中的定制">全自动方案中的定制</h2>
+<p>即使需要定制部分组件，也是能借力buildroot的全自动化方案的。</p>
+<p>先导入自己需要的全自动方案的默认配置，再使用<code>make menuconfig</code>对其生成的<code>.config</code>进行定制：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>make qemu_aarch64_virt_defconfig
+</span></span><span style="display:flex;"><span>make menuconfig
+</span></span></code></pre></div><p>举例来说，如果我的需求是使用第三方内核，则修改：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span> Kernel  ---&gt;
+</span></span><span style="display:flex;"><span>         Kernel version <span style="color:#000;font-weight:bold">(</span>Custom Git repository<span style="color:#000;font-weight:bold">)</span>
+</span></span></code></pre></div><h1 id="manual-mode">Manual Mode</h1>
 <p>另一篇使用qemu-system调试内核的文章中已有部分描述：</p>
 <p><a href="/post/qemu_dbg_kernel/">http://cerr.cc/post/qemu_dbg_kernel/</a></p>
-<p>不过接下来还是记录下另一次实践。</p>
+<p>不过接下来还是记录下另一次实践。目标设定为aarch64 linux 5.4</p>
+<h2 id="编译工具链">编译工具链</h2>
+<p>这个好说，方才Easymode里不是刚好做了一个嘛。buildroot构建好了所有target目标，自然也为此生成了完整的host构建工具链。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>➜  buildroot git:<span style="color:#000;font-weight:bold">(</span>master<span style="color:#000;font-weight:bold">)</span> ls
+</span></span><span style="display:flex;"><span>arch   CHANGES           configs     dl    linux            output   support    utils
+</span></span><span style="display:flex;"><span>board  Config.in         COPYING     docs  Makefile         package  system
+</span></span><span style="display:flex;"><span>boot   Config.in.legacy  DEVELOPERS  fs    Makefile.legacy  README   toolchain
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>➜  buildroot git:<span style="color:#000;font-weight:bold">(</span>master<span style="color:#000;font-weight:bold">)</span> ls output
+</span></span><span style="display:flex;"><span>build  host  images  staging  target
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>➜  buildroot git:<span style="color:#000;font-weight:bold">(</span>master<span style="color:#000;font-weight:bold">)</span> ls output/build
+</span></span><span style="display:flex;"><span>buildroot-config                  host-meson-0.62.1
+</span></span><span style="display:flex;"><span>buildroot-fs                      host-mpc-1.2.1
+</span></span><span style="display:flex;"><span>build-time.log                    host-mpfr-4.1.0
+</span></span><span style="display:flex;"><span>busybox-1.35.0                    host-ninja-1.10.2.g51db2.kitware.jobserver-1
+</span></span><span style="display:flex;"><span>host-acl-2.3.1                    host-openssl
+</span></span><span style="display:flex;"><span>host-attr-2.5.1                   host-patchelf-0.9
+</span></span><span style="display:flex;"><span>host-autoconf-2.71                host-pcre-8.45
+</span></span><span style="display:flex;"><span>host-autoconf-archive-2021.02.19  host-pixman-0.40.0
+</span></span><span style="display:flex;"><span>host-automake-1.16.5              host-pkgconf-1.6.3
+</span></span><span style="display:flex;"><span>host-binutils-2.37                host-python3-3.10.4
+</span></span><span style="display:flex;"><span>host-bison-3.8.2                  host-python-setuptools-62.1.0
+</span></span><span style="display:flex;"><span>host-cmake-3.18.6                 host-qemu-7.0.0
+</span></span><span style="display:flex;"><span>host-dtc-1.6.1                    host-skeleton
+</span></span><span style="display:flex;"><span>host-e2fsprogs-1.46.5             host-util-linux-2.38
+</span></span><span style="display:flex;"><span>host-expat-2.4.7                  host-zlib
+</span></span><span style="display:flex;"><span>host-fakeroot-1.26                ifupdown-scripts
+</span></span><span style="display:flex;"><span>host-flex-2.6.4                   initscripts
+</span></span><span style="display:flex;"><span>host-gcc-final-10.3.0             linux-5.15.18
+</span></span><span style="display:flex;"><span>host-gcc-initial-10.3.0           linux-headers-5.15.18
+</span></span><span style="display:flex;"><span>host-gettext                      locales.nopurge
+</span></span><span style="display:flex;"><span>host-gettext-tiny-0.3.2           packages-file-list-host.txt
+</span></span><span style="display:flex;"><span>host-gmp-6.2.1                    packages-file-list-staging.txt
+</span></span><span style="display:flex;"><span>host-kmod-29                      packages-file-list.txt
+</span></span><span style="display:flex;"><span>host-libffi-3.4.2                 skeleton
+</span></span><span style="display:flex;"><span>host-libglib2-2.70.4              skeleton-init-common
+</span></span><span style="display:flex;"><span>host-libopenssl-1.1.1o            skeleton-init-sysv
+</span></span><span style="display:flex;"><span>host-libtool-2.4.6                toolchain
+</span></span><span style="display:flex;"><span>host-libzlib-1.2.12               toolchain-buildroot
+</span></span><span style="display:flex;"><span>host-m4-1.4.19                    uclibc-1.0.40
+</span></span><span style="display:flex;"><span>host-makedevs                     urandom-scripts
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>➜  buildroot git:<span style="color:#000;font-weight:bold">(</span>master<span style="color:#000;font-weight:bold">)</span> ls output/host
+</span></span><span style="display:flex;"><span>aarch64-buildroot-linux-uclibc  bin  doc  etc  include  lib  lib64  libexec  sbin  share  usr  var
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>➜  buildroot git:<span style="color:#000;font-weight:bold">(</span>master<span style="color:#000;font-weight:bold">)</span> ls output/target
+</span></span><span style="display:flex;"><span>bin  etc  lib64    media  opt   root  sbin  THIS_IS_NOT_YOUR_ROOT_FILESYSTEM  usr
+</span></span><span style="display:flex;"><span>dev  lib  linuxrc  mnt    proc  run   sys   tmp                               var
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>➜  buildroot git:<span style="color:#000;font-weight:bold">(</span>master<span style="color:#000;font-weight:bold">)</span> ls output/images
+</span></span><span style="display:flex;"><span>Image  rootfs.ext2  rootfs.ext4  start-qemu.sh
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>➜  buildroot git:<span style="color:#000;font-weight:bold">(</span>master<span style="color:#000;font-weight:bold">)</span> ls output/staging
+</span></span><span style="display:flex;"><span>bin  dev  etc  lib  lib64  media  mnt  opt  proc  root  run  sbin  sys  tmp  usr
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>➜  buildroot git:<span style="color:#000;font-weight:bold">(</span>master<span style="color:#000;font-weight:bold">)</span> file output/staging
+</span></span><span style="display:flex;"><span>output/staging: symbolic link to /f/software/buildroot/output/host/aarch64-buildroot-linux-uclibc/sysroot
+</span></span></code></pre></div><p><code>output/host</code>下即是面向buildroot构建前设定的目标平台的编译工具链。</p>
+<p>或者也可以来这里直接下载：<a href="https://releases.linaro.org/components/toolchain/binaries/">https://releases.linaro.org/components/toolchain/binaries/</a></p>
+<p>或 <code>apt install gcc-aarch64-linux-gnu</code></p>
 <h2 id="kernel">Kernel</h2>
 <h3 id="linux源码结构">Linux源码结构</h3>
 <p>手动构建内核前，先了解下内核源码的文件树结构。以2022/6/1的linux源码为例：</p>
@@ -339,7 +408,7 @@
 <li><a href="https://stackoverflow.com/questions/41885015/what-exactly-does-linux-kernels-make-defconfig-do">https://stackoverflow.com/questions/41885015/what-exactly-does-linux-kernels-make-defconfig-do</a></li>
 <li><a href="https://www.linuxjournal.com/content/kbuild-linux-kernel-build-system">https://www.linuxjournal.com/content/kbuild-linux-kernel-build-system</a></li>
 </ul>
-<p>总的来说，The Linux Kernel Build System has four main components:</p>
+<p>总的来说，the Linux Kernel Build System has four main components:</p>
 <ul>
 <li>Config symbols: compilation options that can be used to compile code conditionally in source files and to decide which objects to include in a kernel image or its modules.</li>
 <li>Kconfig files: define each config symbol and its attributes, such as its type, description and dependencies. Programs that generate an option menu tree (for example, <code>make menuconfig</code>) read the menu entries from these files.</li>
@@ -358,6 +427,51 @@
 </span></span><span style="display:flex;"><span>aspeed_g4_defconfig       h3600_defconfig          multi_v7_defconfig    sama5_defconfig
 </span></span><span style="display:flex;"><span>aspeed_g5_defconfig       h5000_defconfig          mv78xx0_defconfig     sama7_defconfig
 </span></span><span style="display:flex;"><span>......
+</span></span></code></pre></div><p>至于<code>make defconfig</code>究竟干了啥，可以使用<code>V=1</code>参数查看：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>make <span style="color:#008080">V</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">1</span> defconfig
+</span></span></code></pre></div><h3 id="开始构建">开始构建</h3>
+<p>现来此挑选中意的内核版本：<a href="https://en.wikipedia.org/wiki/Linux_kernel_version_history">https://en.wikipedia.org/wiki/Linux_kernel_version_history</a></p>
+<p>我这边以5.4版本内核为例继续实验：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>git clone https://github.com/torvalds/linux.git
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># 1day mirror</span>
+</span></span><span style="display:flex;"><span>git clone https://gitee.com/mirrors/linux_old1.git
+</span></span><span style="display:flex;"><span><span style="color:#0086b3">cd</span> linux
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># 切换到特定版本</span>
+</span></span><span style="display:flex;"><span>git checkout v5.4
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># 创建目标文件夹</span>
+</span></span><span style="display:flex;"><span>mkdir build
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># 导入aarch64的defconfig</span>
+</span></span><span style="display:flex;"><span>make <span style="color:#008080">ARCH</span><span style="color:#000;font-weight:bold">=</span>arm64 <span style="color:#008080">O</span><span style="color:#000;font-weight:bold">=</span>./build defconfig
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># 自定义配置</span>
+</span></span><span style="display:flex;"><span>make <span style="color:#008080">O</span><span style="color:#000;font-weight:bold">=</span>./build menuconfig
+</span></span></code></pre></div><p>由于我们的目标平台是QEMU Virtio，故需要于<code>make menuconfig</code>中启用相应配置：<code>VIRTIO_BLK, SCSI_BLK, VIRTIO_NET, HVC_DRIVER, VIRTIO_CONSOLE, VIRTIO, VIRTIO_MMIO</code>。</p>
+<p>至于Virtio具体是个啥，参考：</p>
+<ul>
+<li><a href="https://wiki.libvirt.org/page/Virtio">https://wiki.libvirt.org/page/Virtio</a></li>
+<li><a href="https://wiki.osdev.org/Virtio">https://wiki.osdev.org/Virtio</a></li>
+<li><a href="https://www.linux-kvm.org/page/Virtio">https://www.linux-kvm.org/page/Virtio</a></li>
+</ul>
+<p>在<code>make menuconfig</code>中启用路径如下：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>Device Drivers  ---&gt;
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">[</span>*<span style="color:#000;font-weight:bold">]</span> Virtio drivers
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Device Drivers  ---&gt;
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">[</span>*<span style="color:#000;font-weight:bold">]</span> Network device support  ---&gt;
+</span></span><span style="display:flex;"><span>                &lt;*&gt;   Virtio network driver
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Device Drivers  ---&gt;
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">[</span>*<span style="color:#000;font-weight:bold">]</span> Block devices  ---&gt;
+</span></span><span style="display:flex;"><span>                &lt;*&gt;   Virtio block driver
+</span></span></code></pre></div><p>配置完毕，开始编译：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>make <span style="color:#008080">O</span><span style="color:#000;font-weight:bold">=</span>./build <span style="color:#008080">CROSS_COMPILE</span><span style="color:#000;font-weight:bold">=</span>aarch64-linux-gnu- -j<span style="color:#d14">`</span>nproc<span style="color:#d14">`</span>
+</span></span></code></pre></div><blockquote>
+<p>注意将 <code>aarch64-linux-gnu-</code> 换成你当前的编译工具链路径</p>
+</blockquote>
+<p>得到的Image和vmlinux路径为：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>➜  linux git:<span style="color:#000;font-weight:bold">(</span>219d54332a09<span style="color:#000;font-weight:bold">)</span> find . -name Image
+</span></span><span style="display:flex;"><span>./build/arch/arm64/boot/Image
+</span></span><span style="display:flex;"><span>➜  linux git:<span style="color:#000;font-weight:bold">(</span>219d54332a09<span style="color:#000;font-weight:bold">)</span> find . -name vmlinux
+</span></span><span style="display:flex;"><span>./build/vmlinux
 </span></span></code></pre></div></div>
   
 </article>

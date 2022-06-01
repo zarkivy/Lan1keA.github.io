@@ -36,14 +36,14 @@ tunctl -t tap0 -u ${USER} 若发现brctl与tunctl命令未找到，则需要先�
       <pubDate>Tue, 10 May 2022 20:59:43 +0800</pubDate>
       
       <guid>https://cerr.cc/post/build_run_embeded_linux_vm/</guid>
-      <description>Easymode 通过git或http获取buildroot：
+      <description>Easymode Default 通过git或http获取buildroot：
 官网：https://buildroot.org/
 git：git clone https://git.busybox.net/buildroot
 进入buildroot根目录，可以看到一个叫configs的文件夹，其中记录了许多硬件平台和部分qemu虚拟平台的默认配置参数。执行 ls configs | grep qemu，可以看到：
 qemu_aarch64_sbsa_defconfig qemu_aarch64_virt_defconfig qemu_arm_versatile_defconfig qemu_arm_versatile_nommu_defconfig qemu_arm_vexpress_defconfig qemu_arm_vexpress_tz_defconfig qemu_m68k_mcf5208_defconfig qemu_m68k_q800_defconfig qemu_microblazebe_mmu_defconfig qemu_microblazeel_mmu_defconfig qemu_mips32r2el_malta_defconfig qemu_mips32r2_malta_defconfig qemu_mips32r6el_malta_defconfig qemu_mips32r6_malta_defconfig qemu_mips64el_malta_defconfig qemu_mips64_malta_defconfig qemu_mips64r6el_malta_defconfig qemu_mips64r6_malta_defconfig qemu_nios2_10m50_defconfig qemu_or1k_defconfig qemu_ppc64_e5500_defconfig qemu_ppc64le_powernv8_defconfig qemu_ppc64le_pseries_defconfig qemu_ppc64_pseries_defconfig qemu_ppc_bamboo_defconfig qemu_ppc_e500mc_defconfig qemu_ppc_g3beige_defconfig qemu_ppc_mac99_defconfig qemu_ppc_mpc8544ds_defconfig qemu_riscv32_virt_defconfig qemu_riscv64_virt_defconfig qemu_s390x_defconfig qemu_sh4eb_r2d_defconfig qemu_sh4_r2d_defconfig qemu_sparc64_sun4u_defconfig qemu_sparc_ss10_defconfig qemu_x86_64_defconfig qemu_x86_defconfig qemu_xtensa_lx60_defconfig qemu_xtensa_lx60_nommu_defconfig 举例来讲，我们使用 make qemu_arm_vexpress_defconfig，将qemu模拟的vexperss平台设为编译目标：
 make qemu_arm_vexpress_defconfig make 或者使用 make menuconfig 手动配置。
 等待编译完成，即可在output文件夹中拿到相应目标文件：
-output/images/zImage # 内核 output/images/rootfs.ext2 # ext2根文件系统镜像 output/images/vexpress-v2p-ca9.dtb # arm设备树 使用qemu-system-arm运行得到的linux：</description>
+output/images/zImage # 内核 output/images/rootfs.ext2 # ext2根文件系统镜像 output/images/vexpress-v2p-ca9.</description>
     </item>
     
     <item>

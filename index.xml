@@ -10,10 +10,10 @@
     <lastBuildDate>Wed, 01 Jun 2022 10:55:17 +0800</lastBuildDate><atom:link href="https://cerr.cc/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>ARM简史</title>
-      <link>https://cerr.cc/post/arm-architecture/</link>
+      <link>https://cerr.cc/post/arm_architecture/</link>
       <pubDate>Wed, 01 Jun 2022 10:55:17 +0800</pubDate>
       
-      <guid>https://cerr.cc/post/arm-architecture/</guid>
+      <guid>https://cerr.cc/post/arm_architecture/</guid>
       <description>ARM (stylised in lowercase as arm, formerly an acronym for Advanced RISC Machines and originally Acorn RISC Machine) is a family of reduced instruction set computer (RISC) instruction set architectures for computer processors, configured for various environments.
 reference https://en.wikipedia.org/wiki/ARM_architecture_family </description>
     </item>
@@ -150,14 +150,14 @@ git clone https://github.com/google/AFL.git cd AFL make -j`nproc` sudo make inst
       <pubDate>Tue, 10 May 2022 20:59:43 +0800</pubDate>
       
       <guid>https://cerr.cc/post/build_run_embeded_linux_vm/</guid>
-      <description>Easymode 通过git或http获取buildroot：
+      <description>Easymode Default 通过git或http获取buildroot：
 官网：https://buildroot.org/
 git：git clone https://git.busybox.net/buildroot
 进入buildroot根目录，可以看到一个叫configs的文件夹，其中记录了许多硬件平台和部分qemu虚拟平台的默认配置参数。执行 ls configs | grep qemu，可以看到：
 qemu_aarch64_sbsa_defconfig qemu_aarch64_virt_defconfig qemu_arm_versatile_defconfig qemu_arm_versatile_nommu_defconfig qemu_arm_vexpress_defconfig qemu_arm_vexpress_tz_defconfig qemu_m68k_mcf5208_defconfig qemu_m68k_q800_defconfig qemu_microblazebe_mmu_defconfig qemu_microblazeel_mmu_defconfig qemu_mips32r2el_malta_defconfig qemu_mips32r2_malta_defconfig qemu_mips32r6el_malta_defconfig qemu_mips32r6_malta_defconfig qemu_mips64el_malta_defconfig qemu_mips64_malta_defconfig qemu_mips64r6el_malta_defconfig qemu_mips64r6_malta_defconfig qemu_nios2_10m50_defconfig qemu_or1k_defconfig qemu_ppc64_e5500_defconfig qemu_ppc64le_powernv8_defconfig qemu_ppc64le_pseries_defconfig qemu_ppc64_pseries_defconfig qemu_ppc_bamboo_defconfig qemu_ppc_e500mc_defconfig qemu_ppc_g3beige_defconfig qemu_ppc_mac99_defconfig qemu_ppc_mpc8544ds_defconfig qemu_riscv32_virt_defconfig qemu_riscv64_virt_defconfig qemu_s390x_defconfig qemu_sh4eb_r2d_defconfig qemu_sh4_r2d_defconfig qemu_sparc64_sun4u_defconfig qemu_sparc_ss10_defconfig qemu_x86_64_defconfig qemu_x86_defconfig qemu_xtensa_lx60_defconfig qemu_xtensa_lx60_nommu_defconfig 举例来讲，我们使用 make qemu_arm_vexpress_defconfig，将qemu模拟的vexperss平台设为编译目标：
 make qemu_arm_vexpress_defconfig make 或者使用 make menuconfig 手动配置。
 等待编译完成，即可在output文件夹中拿到相应目标文件：
-output/images/zImage # 内核 output/images/rootfs.ext2 # ext2根文件系统镜像 output/images/vexpress-v2p-ca9.dtb # arm设备树 使用qemu-system-arm运行得到的linux：</description>
+output/images/zImage # 内核 output/images/rootfs.ext2 # ext2根文件系统镜像 output/images/vexpress-v2p-ca9.</description>
     </item>
     
     <item>
@@ -269,7 +269,7 @@ sudo apt install chrome-gnome-shell Firefox插件地址为：https://addons.mozi
       <pubDate>Sat, 07 May 2022 19:53:05 +0800</pubDate>
       
       <guid>https://cerr.cc/main/utils/</guid>
-      <description>操作系统 Linux kernel lab https://linux-kernel-labs.github.io/ 内核模块编程教程 https://sysprog21.github.io/lkmpg/ MIT 操作系统课程 2021 https://pdos.csail.mit.edu/6.828/2021/schedule.html Linux inside https://0xax.gitbooks.io/linux-insides/content/Initialization/linux-initialization-1.html 在线浏览 Linux 源码 https://elixir.bootlin.com/linux/latest/source 编程 高级语言源代码与汇编结果的实时对照 https://godbolt.org/ 展开编译细节，向你展示C++代码背后的秘密 https://cppinsights.io/ 图形化展示你的正则表达式，学习正则好帮手 https://jex.im/regulex/#!flags=&amp;amp;re=%5E(a%7Cb)*%3F%24 C++ STL 算法库 https://zh.cppreference.com/w/cpp/algorithm 指令集 ARMv7 指令集胎教教程
+      <description>操作系统 Linux kernel lab https://linux-kernel-labs.github.io/ 内核模块编程教程 https://sysprog21.github.io/lkmpg/ MIT 操作系统课程 2021 https://pdos.csail.mit.edu/6.828/2021/schedule.html Linux inside https://0xax.gitbooks.io/linux-insides/content/Initialization/linux-initialization-1.html 在线浏览 Linux 源码 https://elixir.bootlin.com/linux/latest/source Linux内核实践百科 https://github.com/cirosantilli/linux-kernel-module-cheat 编程 高级语言源代码与汇编结果的实时对照 https://godbolt.org/ 展开编译细节，向你展示C++代码背后的秘密 https://cppinsights.io/ 图形化展示你的正则表达式，学习正则好帮手 https://jex.im/regulex/#!flags=&amp;amp;re=%5E(a%7Cb)*%3F%24 C++ STL 算法库 https://zh.cppreference.com/w/cpp/algorithm 指令集 ARMv7 指令集胎教教程
 https://simplemachines.it/doc/arm_inst.pdf ARMv7 指令集考试小抄
 https://pages.cs.wisc.edu/~markhill/restricted/arm_isa_quick_reference.pdf ARMv8 指令集考试小抄
 https://courses.cs.washington.edu/courses/cse469/19wi/arm64.pdf ARMv8 指令集宝宝识字挂图

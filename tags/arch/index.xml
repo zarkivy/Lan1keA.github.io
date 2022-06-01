@@ -10,10 +10,10 @@
     <lastBuildDate>Wed, 01 Jun 2022 10:55:17 +0800</lastBuildDate><atom:link href="https://cerr.cc/tags/arch/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>ARM简史</title>
-      <link>https://cerr.cc/post/arm-architecture/</link>
+      <link>https://cerr.cc/post/arm_architecture/</link>
       <pubDate>Wed, 01 Jun 2022 10:55:17 +0800</pubDate>
       
-      <guid>https://cerr.cc/post/arm-architecture/</guid>
+      <guid>https://cerr.cc/post/arm_architecture/</guid>
       <description>ARM (stylised in lowercase as arm, formerly an acronym for Advanced RISC Machines and originally Acorn RISC Machine) is a family of reduced instruction set computer (RISC) instruction set architectures for computer processors, configured for various environments.
 reference https://en.wikipedia.org/wiki/ARM_architecture_family </description>
     </item>

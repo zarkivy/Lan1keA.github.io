@@ -10,6 +10,8 @@ imagelink: "https://s2.loli.net/2022/05/11/nNfYF7Lz4i3hBDT.jpg"
 
 # Easymode
 
+## Default
+
 通过git或http获取buildroot：
 
 官网：https://buildroot.org/
@@ -95,6 +97,24 @@ qemu-system-arm \
 
 弄完发现过程竟如此简单，buildroot把所有活都干了……
 
+## 全自动方案中的定制
+
+即使需要定制部分组件，也是能借力buildroot的全自动化方案的。
+
+先导入自己需要的全自动方案的默认配置，再使用`make menuconfig`对其生成的`.config`进行定制：
+
+```sh
+make qemu_aarch64_virt_defconfig
+make menuconfig
+```
+
+举例来说，如果我的需求是使用第三方内核，则修改：
+
+```sh
+ Kernel  --->
+         Kernel version (Custom Git repository)
+```
+
 
 
 # Manual Mode
@@ -103,7 +123,75 @@ qemu-system-arm \
 
 [http://cerr.cc/post/qemu_dbg_kernel/](/post/qemu_dbg_kernel/)
 
-不过接下来还是记录下另一次实践。
+不过接下来还是记录下另一次实践。目标设定为aarch64 linux 5.4
+
+## 编译工具链
+
+这个好说，方才Easymode里不是刚好做了一个嘛。buildroot构建好了所有target目标，自然也为此生成了完整的host构建工具链。
+
+```sh
+➜  buildroot git:(master) ls
+arch   CHANGES           configs     dl    linux            output   support    utils
+board  Config.in         COPYING     docs  Makefile         package  system
+boot   Config.in.legacy  DEVELOPERS  fs    Makefile.legacy  README   toolchain
+
+➜  buildroot git:(master) ls output
+build  host  images  staging  target
+
+➜  buildroot git:(master) ls output/build
+buildroot-config                  host-meson-0.62.1
+buildroot-fs                      host-mpc-1.2.1
+build-time.log                    host-mpfr-4.1.0
+busybox-1.35.0                    host-ninja-1.10.2.g51db2.kitware.jobserver-1
+host-acl-2.3.1                    host-openssl
+host-attr-2.5.1                   host-patchelf-0.9
+host-autoconf-2.71                host-pcre-8.45
+host-autoconf-archive-2021.02.19  host-pixman-0.40.0
+host-automake-1.16.5              host-pkgconf-1.6.3
+host-binutils-2.37                host-python3-3.10.4
+host-bison-3.8.2                  host-python-setuptools-62.1.0
+host-cmake-3.18.6                 host-qemu-7.0.0
+host-dtc-1.6.1                    host-skeleton
+host-e2fsprogs-1.46.5             host-util-linux-2.38
+host-expat-2.4.7                  host-zlib
+host-fakeroot-1.26                ifupdown-scripts
+host-flex-2.6.4                   initscripts
+host-gcc-final-10.3.0             linux-5.15.18
+host-gcc-initial-10.3.0           linux-headers-5.15.18
+host-gettext                      locales.nopurge
+host-gettext-tiny-0.3.2           packages-file-list-host.txt
+host-gmp-6.2.1                    packages-file-list-staging.txt
+host-kmod-29                      packages-file-list.txt
+host-libffi-3.4.2                 skeleton
+host-libglib2-2.70.4              skeleton-init-common
+host-libopenssl-1.1.1o            skeleton-init-sysv
+host-libtool-2.4.6                toolchain
+host-libzlib-1.2.12               toolchain-buildroot
+host-m4-1.4.19                    uclibc-1.0.40
+host-makedevs                     urandom-scripts
+
+➜  buildroot git:(master) ls output/host
+aarch64-buildroot-linux-uclibc  bin  doc  etc  include  lib  lib64  libexec  sbin  share  usr  var
+
+➜  buildroot git:(master) ls output/target
+bin  etc  lib64    media  opt   root  sbin  THIS_IS_NOT_YOUR_ROOT_FILESYSTEM  usr
+dev  lib  linuxrc  mnt    proc  run   sys   tmp                               var
+
+➜  buildroot git:(master) ls output/images
+Image  rootfs.ext2  rootfs.ext4  start-qemu.sh
+
+➜  buildroot git:(master) ls output/staging
+bin  dev  etc  lib  lib64  media  mnt  opt  proc  root  run  sbin  sys  tmp  usr
+
+➜  buildroot git:(master) file output/staging
+output/staging: symbolic link to /f/software/buildroot/output/host/aarch64-buildroot-linux-uclibc/sysroot
+```
+
+`output/host`下即是面向buildroot构建前设定的目标平台的编译工具链。
+
+或者也可以来这里直接下载：[https://releases.linaro.org/components/toolchain/binaries/](https://releases.linaro.org/components/toolchain/binaries/)
+
+或 `apt install gcc-aarch64-linux-gnu`
 
 ## Kernel
 
@@ -150,7 +238,7 @@ certs  crypto   fs             ipc      kernel   MAINTAINERS  net       scripts 
 - https://stackoverflow.com/questions/41885015/what-exactly-does-linux-kernels-make-defconfig-do
 - https://www.linuxjournal.com/content/kbuild-linux-kernel-build-system
 
-总的来说，The Linux Kernel Build System has four main components:
+总的来说，the Linux Kernel Build System has four main components:
 
 - Config symbols: compilation options that can be used to compile code conditionally in source files and to decide which objects to include in a kernel image or its modules.
 - Kconfig files: define each config symbol and its attributes, such as its type, description and dependencies. Programs that generate an option menu tree (for example, `make menuconfig`) read the menu entries from these files.
@@ -172,5 +260,72 @@ am200epdkit_defconfig     gemini_defconfig         multi_v5_defconfig    s5pv210
 aspeed_g4_defconfig       h3600_defconfig          multi_v7_defconfig    sama5_defconfig
 aspeed_g5_defconfig       h5000_defconfig          mv78xx0_defconfig     sama7_defconfig
 ......
+```
+
+至于`make defconfig`究竟干了啥，可以使用`V=1`参数查看：
+
+```sh
+make V=1 defconfig
+```
+
+### 开始构建
+
+现来此挑选中意的内核版本：[https://en.wikipedia.org/wiki/Linux_kernel_version_history](https://en.wikipedia.org/wiki/Linux_kernel_version_history)
+
+我这边以5.4版本内核为例继续实验：
+
+```sh
+git clone https://github.com/torvalds/linux.git
+# 1day mirror
+git clone https://gitee.com/mirrors/linux_old1.git
+cd linux
+# 切换到特定版本
+git checkout v5.4
+# 创建目标文件夹
+mkdir build
+# 导入aarch64的defconfig
+make ARCH=arm64 O=./build defconfig
+# 自定义配置
+make O=./build menuconfig
+```
+
+由于我们的目标平台是QEMU Virtio，故需要于`make menuconfig`中启用相应配置：`VIRTIO_BLK, SCSI_BLK, VIRTIO_NET, HVC_DRIVER, VIRTIO_CONSOLE, VIRTIO, VIRTIO_MMIO`。
+
+至于Virtio具体是个啥，参考：
+
+- [https://wiki.libvirt.org/page/Virtio](https://wiki.libvirt.org/page/Virtio)
+- [https://wiki.osdev.org/Virtio](https://wiki.osdev.org/Virtio)
+- [https://www.linux-kvm.org/page/Virtio](https://www.linux-kvm.org/page/Virtio)
+
+在`make menuconfig`中启用路径如下：
+
+```sh
+Device Drivers  --->
+        [*] Virtio drivers
+
+Device Drivers  --->
+        [*] Network device support  --->
+                <*>   Virtio network driver
+
+Device Drivers  --->
+        [*] Block devices  --->
+                <*>   Virtio block driver
+```
+
+配置完毕，开始编译：
+
+```sh
+make O=./build CROSS_COMPILE=aarch64-linux-gnu- -j`nproc`
+```
+
+> 注意将 `aarch64-linux-gnu-` 换成你当前的编译工具链路径
+
+得到的Image和vmlinux路径为：
+
+```sh
+➜  linux git:(219d54332a09) find . -name Image
+./build/arch/arm64/boot/Image
+➜  linux git:(219d54332a09) find . -name vmlinux
+./build/vmlinux
 ```
 

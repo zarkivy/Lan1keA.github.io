@@ -14,7 +14,7 @@
       <pubDate>Sat, 07 May 2022 19:53:05 +0800</pubDate>
       
       <guid>https://cerr.cc/main/utils/</guid>
-      <description>操作系统 Linux kernel lab https://linux-kernel-labs.github.io/ 内核模块编程教程 https://sysprog21.github.io/lkmpg/ MIT 操作系统课程 2021 https://pdos.csail.mit.edu/6.828/2021/schedule.html Linux inside https://0xax.gitbooks.io/linux-insides/content/Initialization/linux-initialization-1.html 在线浏览 Linux 源码 https://elixir.bootlin.com/linux/latest/source 编程 高级语言源代码与汇编结果的实时对照 https://godbolt.org/ 展开编译细节，向你展示C++代码背后的秘密 https://cppinsights.io/ 图形化展示你的正则表达式，学习正则好帮手 https://jex.im/regulex/#!flags=&amp;amp;re=%5E(a%7Cb)*%3F%24 C++ STL 算法库 https://zh.cppreference.com/w/cpp/algorithm 指令集 ARMv7 指令集胎教教程
+      <description>操作系统 Linux kernel lab https://linux-kernel-labs.github.io/ 内核模块编程教程 https://sysprog21.github.io/lkmpg/ MIT 操作系统课程 2021 https://pdos.csail.mit.edu/6.828/2021/schedule.html Linux inside https://0xax.gitbooks.io/linux-insides/content/Initialization/linux-initialization-1.html 在线浏览 Linux 源码 https://elixir.bootlin.com/linux/latest/source Linux内核实践百科 https://github.com/cirosantilli/linux-kernel-module-cheat 编程 高级语言源代码与汇编结果的实时对照 https://godbolt.org/ 展开编译细节，向你展示C++代码背后的秘密 https://cppinsights.io/ 图形化展示你的正则表达式，学习正则好帮手 https://jex.im/regulex/#!flags=&amp;amp;re=%5E(a%7Cb)*%3F%24 C++ STL 算法库 https://zh.cppreference.com/w/cpp/algorithm 指令集 ARMv7 指令集胎教教程
 https://simplemachines.it/doc/arm_inst.pdf ARMv7 指令集考试小抄
 https://pages.cs.wisc.edu/~markhill/restricted/arm_isa_quick_reference.pdf ARMv8 指令集考试小抄
 https://courses.cs.washington.edu/courses/cse469/19wi/arm64.pdf ARMv8 指令集宝宝识字挂图

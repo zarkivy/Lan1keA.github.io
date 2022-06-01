@@ -75,7 +75,7 @@ ELF Header:
 
 > ABI描述应用程序与操作系统、应用程序与库、应用程序的组成部分之间的低层接口。ABI允许编译好的目标代码在使用兼容ABI的系统中无需改动就能运行
 
-导致这一结果的原因是：使用OABI编译工具链编译出的结果为`OS/ABI: ARM`，而使用EABI编译工具链编译出的结果为`OS/ABI: UNIX - System V`。关于OABI与EABI的区别，参见：https://docs.embeddedts.com/EABI_vs_OABI
+导致这一结果的原因是：使用OABI编译工具链编译出的结果为`OS/ABI: ARM`，而使用EABI编译工具链编译出的结果为`OS/ABI: UNIX - System V`。关于OABI与EABI的区别，参见：[https://docs.embeddedts.com/EABI_vs_OABI](https://docs.embeddedts.com/EABI_vs_OABI)
 
 故换用标识了eabi的工具链重新编译即解决了该问题。
 
