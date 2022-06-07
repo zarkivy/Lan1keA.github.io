@@ -8,7 +8,7 @@ imagelink: "https://s2.loli.net/2022/05/08/MGJ3tsAVHSYrThj.jpg"
 
 
 
-> From this post, our goal is tracing the execution procedure from kernel entry to userspace process (busybox init) by using qemu-system and gdb-multiarch. (The concept of ring exists only on x86. Called EL in arm.)
+> From this post, our goal is tracing the execution procedure from kernel entry to userspace process (busybox init) by using qemu-system and gdb-multiarch.
 
 ## Preparation
 ### qemu-system-arm
@@ -67,7 +67,7 @@ sed -i 's/IO_ftrylockfile/IO_EOF_SEEN/' lib/*.c
 echo "#define _IO_IN_BACKUP 0x100" >> lib/stdio-impl.h
 ```
 
-Then type make again, we will get the old version of GCC we want.
+Then make again, we will get the old version of GCC we want.
 Ready for compiling the old version linux kernel :)
 
 ```sh

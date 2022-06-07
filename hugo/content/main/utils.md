@@ -9,6 +9,9 @@ tags: [ "main" ]
 
 ### 操作系统
 
+- Linux kernel doc
+  - https://www.kernel.org/doc/html/latest/
+
 - Linux kernel lab
   - [https://linux-kernel-labs.github.io/](https://linux-kernel-labs.github.io/)
 - 内核模块编程教程
@@ -144,3 +147,10 @@ tags: [ "main" ]
   - https://web.archive.org/
 - 一个提供各种 IDA Pro 泄露版的暗网网站
   - http://fckilfkscwusoopguhi7i6yg3l6tknaz7lrumvlhg5mvtxzxbbxlimid.onion/
+
+
+
+### Q&A
+
+- [What's the difference between set, export and env and when should I use each?](https://askubuntu.com/questions/205688/whats-the-difference-between-set-export-and-env-and-when-should-i-use-each)
+- [TTY 到底是什么？](https://www.kawabangga.com/posts/4515)

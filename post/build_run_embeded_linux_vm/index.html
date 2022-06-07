@@ -275,6 +275,9 @@
 <p>不过接下来还是记录下另一次实践。目标设定为aarch64 linux 5.4</p>
 <h2 id="编译工具链">编译工具链</h2>
 <p>这个好说，方才Easymode里不是刚好做了一个嘛。buildroot构建好了所有target目标，自然也为此生成了完整的host构建工具链。</p>
+<blockquote>
+<p>若目标为旧版本内核，则需要旧版本工具链，构建方式在另一篇文章中有记录：<a href="post/qemu_dbg_kernel/">https://cerr.cc/post/qemu_dbg_kernel/</a></p>
+</blockquote>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>➜  buildroot git:<span style="color:#000;font-weight:bold">(</span>master<span style="color:#000;font-weight:bold">)</span> ls
 </span></span><span style="display:flex;"><span>arch   CHANGES           configs     dl    linux            output   support    utils
 </span></span><span style="display:flex;"><span>board  Config.in         COPYING     docs  Makefile         package  system
@@ -450,6 +453,9 @@
 <li><a href="https://wiki.libvirt.org/page/Virtio">https://wiki.libvirt.org/page/Virtio</a></li>
 <li><a href="https://wiki.osdev.org/Virtio">https://wiki.osdev.org/Virtio</a></li>
 <li><a href="https://www.linux-kvm.org/page/Virtio">https://www.linux-kvm.org/page/Virtio</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/68154666">https://zhuanlan.zhihu.com/p/68154666</a></li>
+<li><a href="https://www.anquanke.com/post/id/224001">https://www.anquanke.com/post/id/224001</a></li>
+<li><a href="https://developer.ibm.com/articles/l-virtio/">https://developer.ibm.com/articles/l-virtio/</a></li>
 </ul>
 <p>在<code>make menuconfig</code>中启用路径如下：</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>Device Drivers  ---&gt;

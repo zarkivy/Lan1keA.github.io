@@ -15,7 +15,10 @@
       
       <guid>https://cerr.cc/post/arm_architecture/</guid>
       <description>ARM (stylised in lowercase as arm, formerly an acronym for Advanced RISC Machines and originally Acorn RISC Machine) is a family of reduced instruction set computer (RISC) instruction set architectures for computer processors, configured for various environments.
-reference https://en.wikipedia.org/wiki/ARM_architecture_family </description>
+AArch32 armel : arm eabi little-endian, use soft float
+armhf : arm hard float, arm with FPU
+from AArch32 to AArch64 Transitioning rom ARMv7 to ARMv8, all the basics you must know:
+https://events.static.linuxfound.org/sites/events/files/slides/KoreaLinuxForum-2014.pdf Can legacy 32 bit app.</description>
     </item>
     
     <item>
@@ -193,9 +196,9 @@ NR syscall name %rax arg0 (%rdi) arg1 (%rsi) arg2 (%rdx) 0 read 0x00 unsigned in
       <pubDate>Sun, 08 May 2022 19:35:11 +0800</pubDate>
       
       <guid>https://cerr.cc/post/qemu_dbg_kernel/</guid>
-      <description>From this post, our goal is tracing the execution procedure from kernel entry to userspace process (busybox init) by using qemu-system and gdb-multiarch. (The concept of ring exists only on x86. Called EL in arm.)
+      <description>From this post, our goal is tracing the execution procedure from kernel entry to userspace process (busybox init) by using qemu-system and gdb-multiarch.
 Preparation qemu-system-arm Compile it from source code or just use sudo apt install qemu-system-arm.
-kernel Linux kernel v4.1 for armel as an example. Compiling a linux kernel requires a matched version of gcc. For example, the linux kernel v4.</description>
+kernel Linux kernel v4.1 for armel as an example. Compiling a linux kernel requires a matched version of gcc. For example, the linux kernel v4.1 requires the gcc version between 3 and 5:</description>
     </item>
     
     <item>
@@ -269,15 +272,21 @@ sudo apt install chrome-gnome-shell Firefox插件地址为：https://addons.mozi
       <pubDate>Sat, 07 May 2022 19:53:05 +0800</pubDate>
       
       <guid>https://cerr.cc/main/utils/</guid>
-      <description>操作系统 Linux kernel lab https://linux-kernel-labs.github.io/ 内核模块编程教程 https://sysprog21.github.io/lkmpg/ MIT 操作系统课程 2021 https://pdos.csail.mit.edu/6.828/2021/schedule.html Linux inside https://0xax.gitbooks.io/linux-insides/content/Initialization/linux-initialization-1.html 在线浏览 Linux 源码 https://elixir.bootlin.com/linux/latest/source Linux内核实践百科 https://github.com/cirosantilli/linux-kernel-module-cheat 编程 高级语言源代码与汇编结果的实时对照 https://godbolt.org/ 展开编译细节，向你展示C++代码背后的秘密 https://cppinsights.io/ 图形化展示你的正则表达式，学习正则好帮手 https://jex.im/regulex/#!flags=&amp;amp;re=%5E(a%7Cb)*%3F%24 C++ STL 算法库 https://zh.cppreference.com/w/cpp/algorithm 指令集 ARMv7 指令集胎教教程
+      <description>操作系统 Linux kernel doc
+https://www.kernel.org/doc/html/latest/ Linux kernel lab
+https://linux-kernel-labs.github.io/ 内核模块编程教程
+https://sysprog21.github.io/lkmpg/ MIT 操作系统课程 2021
+https://pdos.csail.mit.edu/6.828/2021/schedule.html Linux inside
+https://0xax.gitbooks.io/linux-insides/content/Initialization/linux-initialization-1.html 在线浏览 Linux 源码
+https://elixir.bootlin.com/linux/latest/source Linux内核实践百科
+https://github.com/cirosantilli/linux-kernel-module-cheat 编程 高级语言源代码与汇编结果的实时对照 https://godbolt.org/ 展开编译细节，向你展示C++代码背后的秘密 https://cppinsights.io/ 图形化展示你的正则表达式，学习正则好帮手 https://jex.im/regulex/#!flags=&amp;amp;re=%5E(a%7Cb)*%3F%24 C++ STL 算法库 https://zh.cppreference.com/w/cpp/algorithm 指令集 ARMv7 指令集胎教教程
 https://simplemachines.it/doc/arm_inst.pdf ARMv7 指令集考试小抄
 https://pages.cs.wisc.edu/~markhill/restricted/arm_isa_quick_reference.pdf ARMv8 指令集考试小抄
 https://courses.cs.washington.edu/courses/cse469/19wi/arm64.pdf ARMv8 指令集宝宝识字挂图
 https://s2.loli.net/2022/05/09/UxFIkpBivKWzX6M.png x86与x64指令速查
 https://www.felixcloutier.com/x86/ https://cs.brown.edu/courses/cs033/docs/guides/x64_cheatsheet.pdf 虚拟化 空中巴士航空公司信息安全团队的 QEMU 内部机制解析 https://airbus-seclab.github.io/qemu_blog/ 开箱即用的嵌入式 debian rootfs 的 QEMU 镜像 https://people.debian.org/~aurel32/qemu/ 漏洞挖掘与利用 南京大学软件分析课程
 https://pascal-group.bitbucket.io/teaching.html 二进制shellcode database
-http://shell-storm.org/shellcode/ 两个libc在线查询网站
-https://libc.rip/ https://libc.blukat.me/ How to Hunt - 咋挖洞</description>
+http://shell-storm.org/shellcode/ 两个libc在线查询网站</description>
     </item>
     
     <item>
@@ -295,7 +304,7 @@ https://libc.rip/ https://libc.blukat.me/ How to Hunt - 咋挖洞</description>
       <pubDate>Sat, 07 May 2022 17:53:05 +0800</pubDate>
       
       <guid>https://cerr.cc/main/flink/</guid>
-      <description> https://foada.github.io/ https://fromhex.cn/ https://blog.xiabee.cn/ https://migraine-sudo.github.io/ https://m4x.fun/ https://ifpop.github.io/ https://blog.fkynjyq.com/ https://eacryo.gitee.io/ https://vang3lis.github.io/ https://emptystack.top/ https://l1b0.github.io/ https://yourbutterfly.github.io/ BigBrothers https://eternalsakura13.com/ https://lancern.xyz/ http://www.aloxaf.com/ https://kiprey.github.io/ https://www.ksroido.art/ https://blog.flanker017.me/ https://thunderjie.github.io/ http://blog.eonew.cn/ https://xuanxuanblingbling.github.io/ https://atum.li/ https://bsauce.github.io/ https://ray-cp.github.io/ https://chenx6.github.io/ https://blog.kyrios.cn/ https://etenal.me/ https://a1ex.online/ http://p4nda.top/ https://o0xmuhe.github.io/ https://evilpan.com/ https://myfzy.top/ https://exexute.github.io/ https://zhou-yuxin.github.io/ https://houjingyi233.com/ </description>
+      <description> https://foada.github.io/ https://fromhex.cn/ https://blog.xiabee.cn/ https://migraine-sudo.github.io/ https://m4x.fun/ https://ifpop.github.io/ https://blog.fkynjyq.com/ https://eacryo.gitee.io/ https://vang3lis.github.io/ https://emptystack.top/ https://l1b0.github.io/ https://yourbutterfly.github.io/ BigBrothers https://eternalsakura13.com/ https://lancern.xyz/ http://www.aloxaf.com/ https://kiprey.github.io/ https://www.ksroido.art/ https://blog.flanker017.me/ https://thunderjie.github.io/ http://blog.eonew.cn/ https://xuanxuanblingbling.github.io/ https://atum.li/ https://bsauce.github.io/ https://ray-cp.github.io/ https://chenx6.github.io/ https://blog.kyrios.cn/ https://etenal.me/ https://a1ex.online/ http://p4nda.top/ https://o0xmuhe.github.io/ https://evilpan.com/ https://myfzy.top/ https://exexute.github.io/ https://zhou-yuxin.github.io/ https://houjingyi233.com/ https://hhdx.xyz/post/ </description>
     </item>
     
     <item>

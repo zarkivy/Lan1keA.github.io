@@ -196,7 +196,7 @@
 <article class="post">
   
     <div class="post-content"><blockquote>
-<p>From this post, our goal is tracing the execution procedure from kernel entry to userspace process (busybox init) by using qemu-system and gdb-multiarch. (The concept of ring exists only on x86. Called EL in arm.)</p>
+<p>From this post, our goal is tracing the execution procedure from kernel entry to userspace process (busybox init) by using qemu-system and gdb-multiarch.</p>
 </blockquote>
 <h2 id="preparation">Preparation</h2>
 <h3 id="qemu-system-arm">qemu-system-arm</h3>
@@ -229,7 +229,7 @@ You can check gcc release history from here</p>
 <p>cd to /buildroot/output/build/host-m4-1.4.17 and excute :</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>sed -i <span style="color:#d14">&#39;s/IO_ftrylockfile/IO_EOF_SEEN/&#39;</span> lib/*.c
 </span></span><span style="display:flex;"><span><span style="color:#0086b3">echo</span> <span style="color:#d14">&#34;#define _IO_IN_BACKUP 0x100&#34;</span> &gt;&gt; lib/stdio-impl.h
-</span></span></code></pre></div><p>Then type make again, we will get the old version of GCC we want.
+</span></span></code></pre></div><p>Then make again, we will get the old version of GCC we want.
 Ready for compiling the old version linux kernel :)</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>git clone https://github.com/torvalds/linux.git
 </span></span><span style="display:flex;"><span>git checkout v4.1

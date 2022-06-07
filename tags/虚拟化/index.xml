@@ -52,9 +52,9 @@ output/images/zImage # 内核 output/images/rootfs.ext2 # ext2根文件系统镜
       <pubDate>Sun, 08 May 2022 19:35:11 +0800</pubDate>
       
       <guid>https://cerr.cc/post/qemu_dbg_kernel/</guid>
-      <description>From this post, our goal is tracing the execution procedure from kernel entry to userspace process (busybox init) by using qemu-system and gdb-multiarch. (The concept of ring exists only on x86. Called EL in arm.)
+      <description>From this post, our goal is tracing the execution procedure from kernel entry to userspace process (busybox init) by using qemu-system and gdb-multiarch.
 Preparation qemu-system-arm Compile it from source code or just use sudo apt install qemu-system-arm.
-kernel Linux kernel v4.1 for armel as an example. Compiling a linux kernel requires a matched version of gcc. For example, the linux kernel v4.</description>
+kernel Linux kernel v4.1 for armel as an example. Compiling a linux kernel requires a matched version of gcc. For example, the linux kernel v4.1 requires the gcc version between 3 and 5:</description>
     </item>
     
   </channel>

@@ -129,6 +129,8 @@ make menuconfig
 
 这个好说，方才Easymode里不是刚好做了一个嘛。buildroot构建好了所有target目标，自然也为此生成了完整的host构建工具链。
 
+> 若目标为旧版本内核，则需要旧版本工具链，构建方式在另一篇文章中有记录：[https://cerr.cc/post/qemu_dbg_kernel/](post/qemu_dbg_kernel/)
+
 ```sh
 ➜  buildroot git:(master) ls
 arch   CHANGES           configs     dl    linux            output   support    utils
@@ -296,6 +298,9 @@ make O=./build menuconfig
 - [https://wiki.libvirt.org/page/Virtio](https://wiki.libvirt.org/page/Virtio)
 - [https://wiki.osdev.org/Virtio](https://wiki.osdev.org/Virtio)
 - [https://www.linux-kvm.org/page/Virtio](https://www.linux-kvm.org/page/Virtio)
+- https://zhuanlan.zhihu.com/p/68154666
+- https://www.anquanke.com/post/id/224001
+- https://developer.ibm.com/articles/l-virtio/
 
 在`make menuconfig`中启用路径如下：
 

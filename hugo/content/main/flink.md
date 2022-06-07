@@ -47,3 +47,4 @@ tags: [ "main" ]
 - [https://exexute.github.io/](https://exexute.github.io/)
 - [https://zhou-yuxin.github.io/](https://zhou-yuxin.github.io/)
 - https://houjingyi233.com/
+- https://hhdx.xyz/post/
