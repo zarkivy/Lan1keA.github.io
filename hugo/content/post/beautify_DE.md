@@ -104,6 +104,10 @@ Firefox插件地址为：[https://addons.mozilla.org/en-US/firefox/addon/gnome-s
 
 
 
+## Openbox
+
+[https://www.box-look.org/](https://www.box-look.org/)
+
 
 
 ## 通用
@@ -157,3 +161,9 @@ https://github.com/mbadolato/iTerm2-Color-Schemes
 使用 **conky**，仓库如下：
 
 [https://github.com/brndnmtthws/conky](https://github.com/brndnmtthws/conky)
+
+
+
+### 无X11
+
+**fbterm**

@@ -1,6 +1,6 @@
 ---
 title: "一些配环境的cheasheet"
-description: "nothing"
+description: "personal"
 date: 2022-05-10T21:13:54+08:00
 tags: [ "Linux" ]
 imagelink: "https://s2.loli.net/2022/05/11/7aWbNEkesXlmYxH.jpg"
@@ -20,7 +20,7 @@ sudo apt install zsh git man man-db manpages ssh neovim tmux \
 	curl wget netcat net-tools nmap tcpdump \
 	python3 ipython3 python-is-python3 python3-pip \
 	build-essential binutils xxd strace libncurses5 \
-	neofetch zip unzip ncdu htop
+	neofetch zip unzip ncdu htop dosfstools
 ```
 
 
@@ -63,6 +63,6 @@ sudo docker run -it -v /home/zkv/docker_share/:/share ubuntu:16.04
 apt install gdb gdb-multiarch gdbserver
 git clone https://github.com/pwndbg/pwndbg; cd pwndbg; ./setup.sh
 echo -n "set syntax-highlight-style tango" >> ~/.gdbinit
-pip install pwntools -i https://pypi.tuna.tsinghua.edu.cn/simple some-package
+pip install some-package -i https://pypi.tuna.tsinghua.edu.cn/simple
 ```
 

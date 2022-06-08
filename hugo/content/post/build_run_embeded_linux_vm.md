@@ -317,6 +317,8 @@ Device Drivers  --->
                 <*>   Virtio block driver
 ```
 
+如想要手动添加内核驱动，参考：[https://stackoverflow.com/questions/11710022/adding-new-driver-code-to-linux-source-code](https://stackoverflow.com/questions/11710022/adding-new-driver-code-to-linux-source-code)
+
 配置完毕，开始编译：
 
 ```sh

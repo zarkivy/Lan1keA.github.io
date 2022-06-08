@@ -154,3 +154,4 @@ tags: [ "main" ]
 
 - [What's the difference between set, export and env and when should I use each?](https://askubuntu.com/questions/205688/whats-the-difference-between-set-export-and-env-and-when-should-i-use-each)
 - [TTY 到底是什么？](https://www.kawabangga.com/posts/4515)
+- [Adding new driver code to linux source code](https://stackoverflow.com/questions/11710022/adding-new-driver-code-to-linux-source-code)

@@ -468,7 +468,8 @@
 </span></span><span style="display:flex;"><span>Device Drivers  ---&gt;
 </span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">[</span>*<span style="color:#000;font-weight:bold">]</span> Block devices  ---&gt;
 </span></span><span style="display:flex;"><span>                &lt;*&gt;   Virtio block driver
-</span></span></code></pre></div><p>配置完毕，开始编译：</p>
+</span></span></code></pre></div><p>如想要手动添加内核驱动，参考：<a href="https://stackoverflow.com/questions/11710022/adding-new-driver-code-to-linux-source-code">https://stackoverflow.com/questions/11710022/adding-new-driver-code-to-linux-source-code</a></p>
+<p>配置完毕，开始编译：</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>make <span style="color:#008080">O</span><span style="color:#000;font-weight:bold">=</span>./build <span style="color:#008080">CROSS_COMPILE</span><span style="color:#000;font-weight:bold">=</span>aarch64-linux-gnu- -j<span style="color:#d14">`</span>nproc<span style="color:#d14">`</span>
 </span></span></code></pre></div><blockquote>
 <p>注意将 <code>aarch64-linux-gnu-</code> 换成你当前的编译工具链路径</p>
