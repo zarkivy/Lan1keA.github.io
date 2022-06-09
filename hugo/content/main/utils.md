@@ -10,7 +10,7 @@ tags: [ "main" ]
 ### 操作系统
 
 - Linux kernel doc
-  - https://www.kernel.org/doc/html/latest/
+  - [https://www.kernel.org/doc/html/latest/](https://www.kernel.org/doc/html/latest/)
 
 - Linux kernel lab
   - [https://linux-kernel-labs.github.io/](https://linux-kernel-labs.github.io/)
@@ -38,7 +38,7 @@ tags: [ "main" ]
 - 图形化展示你的正则表达式，学习正则好帮手
   - [https://jex.im/regulex/#!flags=&re=%5E(a%7Cb)*%3F%24](https://jex.im/regulex/#!flags=&re=%5E(a%7Cb)*%3F%24)
 - C++ STL 算法库
-  - https://zh.cppreference.com/w/cpp/algorithm
+  - [https://zh.cppreference.com/w/cpp/algorithm](https://zh.cppreference.com/w/cpp/algorithm)
 
 
 
@@ -84,7 +84,7 @@ tags: [ "main" ]
   - [http://www.phrack.org/](http://www.phrack.org/)
 
 - Fuzzing 入门胎教教程 Fuzzing101
-  - https://github.com/antonio-morales/Fuzzing101
+  - [https://github.com/antonio-morales/Fuzzing101](https://github.com/antonio-morales/Fuzzing101)
 - 课程：使用 CodeQL 挖掘 U-boot 漏洞
   - [https://lab.github.com/githubtraining/codeql-u-boot-challenge-%28cc++%29](https://lab.github.com/githubtraining/codeql-u-boot-challenge-%28cc++%29)
 
@@ -105,22 +105,22 @@ tags: [ "main" ]
 - 固件 all-in-one 系统
   - [http://www.firmware.re/](http://www.firmware.re/)
 - 各种路由器默认密码的查询
-  - http://routerpasswords.com/
-  - https://cirt.net/passwords
+  - [http://routerpasswords.com/](http://routerpasswords.com/)
+  - [https://cirt.net/passwords](https://cirt.net/passwords)
 
 
 
 ### 浏览器
 
 - 谷歌的浏览器内在机制教程
-  - https://developers.google.com/web/updates/2018/09/inside-browser-part1
+  - [https://developers.google.com/web/updates/2018/09/inside-browser-part1](https://developers.google.com/web/updates/2018/09/inside-browser-part1)
 
 
 
 ### Online Judge
 
 - pwn.college 个人认为目前最好的pwn入门课程与靶场
-  - https://pwn.college/
+  - [https://pwn.college/](https://pwn.college/)
 - 密码学靶场
   - [https://cryptohack.org/challenges/](https://cryptohack.org/challenges/)
 
@@ -155,3 +155,8 @@ tags: [ "main" ]
 - [What's the difference between set, export and env and when should I use each?](https://askubuntu.com/questions/205688/whats-the-difference-between-set-export-and-env-and-when-should-i-use-each)
 - [TTY 到底是什么？](https://www.kawabangga.com/posts/4515)
 - [Adding new driver code to linux source code](https://stackoverflow.com/questions/11710022/adding-new-driver-code-to-linux-source-code)
+
+
+
+### Wiki
+- [Terminal devices: tty ttyS pts etc.](https://docs.kernel.org/admin-guide/devices.html#terminal-devices)

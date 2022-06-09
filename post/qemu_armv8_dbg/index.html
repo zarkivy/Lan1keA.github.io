@@ -12,7 +12,7 @@
     <meta itemprop="description" content="居然是指令集的锅？">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
     
-    <link rel="stylesheet" href="https://cerr.cc/scss/style.min.a0720376e5afaef93db0bffb06929b9812afcbdd2dd422b40e3950899c8f8811.css" >
+    <link rel="stylesheet" href="https://cerr.cc/scss/style.min.b4c0fcfc62fbfeae4d796e4b4d66a7d8620cd3cd45974d8b814046dbc6a0b859.css" >
 </head>
 <body>
     <header>
@@ -197,85 +197,85 @@
   
     <div class="post-content"><h2 id="探案">🕵️探案</h2>
 <p>在一次尝试使用<code>qemu-system-arm</code>对于asuswrt的固件进行仿真运行时，出现了十分诡异的问题：整个qemu-system、linux内核、固件文件系统运行完全正常，除了在使用到<code>openssl</code>时：</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>admin@<span style="color:#000;font-weight:bold">(</span>none<span style="color:#000;font-weight:bold">)</span>:/tmp/home/root# openssl
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>    9.765639<span style="color:#000;font-weight:bold">]</span> openssl <span style="color:#000;font-weight:bold">(</span>274<span style="color:#000;font-weight:bold">)</span>: undefined instruction: <span style="color:#008080">pc</span><span style="color:#000;font-weight:bold">=</span>b6cf31a8
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>    9.765770<span style="color:#000;font-weight:bold">]</span> CPU: <span style="color:#099">0</span> PID: <span style="color:#099">274</span> Comm: openssl Tainted: G        W       4.1.17+ <span style="color:#998;font-style:italic">#10</span>
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>    9.766031<span style="color:#000;font-weight:bold">]</span> Hardware name: Generic DT based system
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>    9.766149<span style="color:#000;font-weight:bold">]</span> task: cef58b40 ti: cef80000 task.ti: cef80000
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>    9.766367<span style="color:#000;font-weight:bold">]</span> PC is at 0xb6cf31a8
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>    9.766423<span style="color:#000;font-weight:bold">]</span> LR is at 0xb6dcedb0
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>    9.766475<span style="color:#000;font-weight:bold">]</span> pc : <span style="color:#000;font-weight:bold">[</span>&lt;b6cf31a8&gt;<span style="color:#000;font-weight:bold">]</span>    lr : <span style="color:#000;font-weight:bold">[</span>&lt;b6dcedb0&gt;<span style="color:#000;font-weight:bold">]</span>    psr: 200b0010
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>    9.766475<span style="color:#000;font-weight:bold">]</span> sp : bee2c7c8  ip : <span style="color:#099">00000000</span>  fp : <span style="color:#099">00000000</span>
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>    9.766741<span style="color:#000;font-weight:bold">]</span> r10: <span style="color:#099">00000001</span>  r9 : bee2cdc4  r8 : <span style="color:#099">00000000</span>
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>    9.766903<span style="color:#000;font-weight:bold">]</span> r7 : 000a5848  r6 : b6f6ace0  r5 : b6eb7adc  r4 : 00a43020
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>    9.766989<span style="color:#000;font-weight:bold">]</span> r3 : 00a43050  r2 : <span style="color:#099">00000001</span>  r1 : <span style="color:#099">00000000</span>  r0 : 00a43020
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>    9.767253<span style="color:#000;font-weight:bold">]</span> Flags: nzCv  IRQs on  FIQs on  Mode USER_32  ISA ARM  Segment user
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>    9.767372<span style="color:#000;font-weight:bold">]</span> Control: 10c5387d  Table: 4ef78059  DAC: <span style="color:#099">00000015</span>
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>    9.767547<span style="color:#000;font-weight:bold">]</span> Code: e5845000 e5843014 e3a02001 e2843030 <span style="color:#000;font-weight:bold">(</span>e183fc92<span style="color:#000;font-weight:bold">)</span> 
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>    9.767878<span style="color:#000;font-weight:bold">]</span> potentially unexpected fatal signal 4.
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>    9.767978<span style="color:#000;font-weight:bold">]</span> CPU: <span style="color:#099">0</span> PID: <span style="color:#099">274</span> Comm: openssl Tainted: G        W       4.1.17+ <span style="color:#998;font-style:italic">#10</span>
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>    9.768206<span style="color:#000;font-weight:bold">]</span> Hardware name: Generic DT based system
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>    9.768282<span style="color:#000;font-weight:bold">]</span> task: cef58b40 ti: cef80000 task.ti: cef80000
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>    9.768395<span style="color:#000;font-weight:bold">]</span> PC is at 0xb6cf31a8
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>    9.768504<span style="color:#000;font-weight:bold">]</span> LR is at 0xb6dcedb0
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>    9.768639<span style="color:#000;font-weight:bold">]</span> pc : <span style="color:#000;font-weight:bold">[</span>&lt;b6cf31a8&gt;<span style="color:#000;font-weight:bold">]</span>    lr : <span style="color:#000;font-weight:bold">[</span>&lt;b6dcedb0&gt;<span style="color:#000;font-weight:bold">]</span>    psr: 200b0010
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>    9.768639<span style="color:#000;font-weight:bold">]</span> sp : bee2c7c8  ip : <span style="color:#099">00000000</span>  fp : <span style="color:#099">00000000</span>
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>    9.768908<span style="color:#000;font-weight:bold">]</span> r10: <span style="color:#099">00000001</span>  r9 : bee2cdc4  r8 : <span style="color:#099">00000000</span>
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>    9.768980<span style="color:#000;font-weight:bold">]</span> r7 : 000a5848  r6 : b6f6ace0  r5 : b6eb7adc  r4 : 00a43020
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>    9.769094<span style="color:#000;font-weight:bold">]</span> r3 : 00a43050  r2 : <span style="color:#099">00000001</span>  r1 : <span style="color:#099">00000000</span>  r0 : 00a43020
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>    9.769279<span style="color:#000;font-weight:bold">]</span> Flags: nzCv  IRQs on  FIQs on  Mode USER_32  ISA ARM  Segment user
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>    9.769437<span style="color:#000;font-weight:bold">]</span> Control: 10c5387d  Table: 4ef78059  DAC: <span style="color:#099">00000015</span>
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>    9.769517<span style="color:#000;font-weight:bold">]</span> CPU: <span style="color:#099">0</span> PID: <span style="color:#099">274</span> Comm: openssl Tainted: G        W       4.1.17+ <span style="color:#998;font-style:italic">#10</span>
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>    9.769739<span style="color:#000;font-weight:bold">]</span> Hardware name: Generic DT based system
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>    9.769898<span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">[</span>&lt;c001c8dc&gt;<span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">(</span>unwind_backtrace<span style="color:#000;font-weight:bold">)</span> from <span style="color:#000;font-weight:bold">[</span>&lt;c0019c70&gt;<span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">(</span>show_stack+0x10/0x14<span style="color:#000;font-weight:bold">)</span>
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>    9.770003<span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">[</span>&lt;c0019c70&gt;<span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">(</span>show_stack<span style="color:#000;font-weight:bold">)</span> from <span style="color:#000;font-weight:bold">[</span>&lt;c002e6cc&gt;<span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">(</span>get_signal+0x41c/0x47c<span style="color:#000;font-weight:bold">)</span>
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>    9.770168<span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">[</span>&lt;c002e6cc&gt;<span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">(</span>get_signal<span style="color:#000;font-weight:bold">)</span> from <span style="color:#000;font-weight:bold">[</span>&lt;c00194a8&gt;<span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">(</span>do_signal+0x8c/0x35c<span style="color:#000;font-weight:bold">)</span>
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>    9.770312<span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">[</span>&lt;c00194a8&gt;<span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">(</span>do_signal<span style="color:#000;font-weight:bold">)</span> from <span style="color:#000;font-weight:bold">[</span>&lt;c00198d8&gt;<span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">(</span>do_work_pending+0x54/0xac<span style="color:#000;font-weight:bold">)</span>
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>    9.770408<span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">[</span>&lt;c00198d8&gt;<span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">(</span>do_work_pending<span style="color:#000;font-weight:bold">)</span> from <span style="color:#000;font-weight:bold">[</span>&lt;c0016c8c&gt;<span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">(</span>work_pending+0xc/0x20<span style="color:#000;font-weight:bold">)</span>
-</span></span><span style="display:flex;"><span>Illegal instruction <span style="color:#000;font-weight:bold">(</span>core dumped<span style="color:#000;font-weight:bold">)</span>
-</span></span></code></pre></div><p>当然，用到了<code>openssl</code>的各个组件，如<code>httpd</code>，也是由此无法正常工作的。</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">admin@<span style="color:#000;font-weight:bold">(</span>none<span style="color:#000;font-weight:bold">)</span>:/tmp/home/root# openssl
+<span style="color:#000;font-weight:bold">[</span>    9.765639<span style="color:#000;font-weight:bold">]</span> openssl <span style="color:#000;font-weight:bold">(</span>274<span style="color:#000;font-weight:bold">)</span>: undefined instruction: <span style="color:#008080">pc</span><span style="color:#000;font-weight:bold">=</span>b6cf31a8
+<span style="color:#000;font-weight:bold">[</span>    9.765770<span style="color:#000;font-weight:bold">]</span> CPU: <span style="color:#099">0</span> PID: <span style="color:#099">274</span> Comm: openssl Tainted: G        W       4.1.17+ <span style="color:#998;font-style:italic">#10</span>
+<span style="color:#000;font-weight:bold">[</span>    9.766031<span style="color:#000;font-weight:bold">]</span> Hardware name: Generic DT based system
+<span style="color:#000;font-weight:bold">[</span>    9.766149<span style="color:#000;font-weight:bold">]</span> task: cef58b40 ti: cef80000 task.ti: cef80000
+<span style="color:#000;font-weight:bold">[</span>    9.766367<span style="color:#000;font-weight:bold">]</span> PC is at 0xb6cf31a8
+<span style="color:#000;font-weight:bold">[</span>    9.766423<span style="color:#000;font-weight:bold">]</span> LR is at 0xb6dcedb0
+<span style="color:#000;font-weight:bold">[</span>    9.766475<span style="color:#000;font-weight:bold">]</span> pc : <span style="color:#000;font-weight:bold">[</span>&lt;b6cf31a8&gt;<span style="color:#000;font-weight:bold">]</span>    lr : <span style="color:#000;font-weight:bold">[</span>&lt;b6dcedb0&gt;<span style="color:#000;font-weight:bold">]</span>    psr: 200b0010
+<span style="color:#000;font-weight:bold">[</span>    9.766475<span style="color:#000;font-weight:bold">]</span> sp : bee2c7c8  ip : <span style="color:#099">00000000</span>  fp : <span style="color:#099">00000000</span>
+<span style="color:#000;font-weight:bold">[</span>    9.766741<span style="color:#000;font-weight:bold">]</span> r10: <span style="color:#099">00000001</span>  r9 : bee2cdc4  r8 : <span style="color:#099">00000000</span>
+<span style="color:#000;font-weight:bold">[</span>    9.766903<span style="color:#000;font-weight:bold">]</span> r7 : 000a5848  r6 : b6f6ace0  r5 : b6eb7adc  r4 : 00a43020
+<span style="color:#000;font-weight:bold">[</span>    9.766989<span style="color:#000;font-weight:bold">]</span> r3 : 00a43050  r2 : <span style="color:#099">00000001</span>  r1 : <span style="color:#099">00000000</span>  r0 : 00a43020
+<span style="color:#000;font-weight:bold">[</span>    9.767253<span style="color:#000;font-weight:bold">]</span> Flags: nzCv  IRQs on  FIQs on  Mode USER_32  ISA ARM  Segment user
+<span style="color:#000;font-weight:bold">[</span>    9.767372<span style="color:#000;font-weight:bold">]</span> Control: 10c5387d  Table: 4ef78059  DAC: <span style="color:#099">00000015</span>
+<span style="color:#000;font-weight:bold">[</span>    9.767547<span style="color:#000;font-weight:bold">]</span> Code: e5845000 e5843014 e3a02001 e2843030 <span style="color:#000;font-weight:bold">(</span>e183fc92<span style="color:#000;font-weight:bold">)</span> 
+<span style="color:#000;font-weight:bold">[</span>    9.767878<span style="color:#000;font-weight:bold">]</span> potentially unexpected fatal signal 4.
+<span style="color:#000;font-weight:bold">[</span>    9.767978<span style="color:#000;font-weight:bold">]</span> CPU: <span style="color:#099">0</span> PID: <span style="color:#099">274</span> Comm: openssl Tainted: G        W       4.1.17+ <span style="color:#998;font-style:italic">#10</span>
+<span style="color:#000;font-weight:bold">[</span>    9.768206<span style="color:#000;font-weight:bold">]</span> Hardware name: Generic DT based system
+<span style="color:#000;font-weight:bold">[</span>    9.768282<span style="color:#000;font-weight:bold">]</span> task: cef58b40 ti: cef80000 task.ti: cef80000
+<span style="color:#000;font-weight:bold">[</span>    9.768395<span style="color:#000;font-weight:bold">]</span> PC is at 0xb6cf31a8
+<span style="color:#000;font-weight:bold">[</span>    9.768504<span style="color:#000;font-weight:bold">]</span> LR is at 0xb6dcedb0
+<span style="color:#000;font-weight:bold">[</span>    9.768639<span style="color:#000;font-weight:bold">]</span> pc : <span style="color:#000;font-weight:bold">[</span>&lt;b6cf31a8&gt;<span style="color:#000;font-weight:bold">]</span>    lr : <span style="color:#000;font-weight:bold">[</span>&lt;b6dcedb0&gt;<span style="color:#000;font-weight:bold">]</span>    psr: 200b0010
+<span style="color:#000;font-weight:bold">[</span>    9.768639<span style="color:#000;font-weight:bold">]</span> sp : bee2c7c8  ip : <span style="color:#099">00000000</span>  fp : <span style="color:#099">00000000</span>
+<span style="color:#000;font-weight:bold">[</span>    9.768908<span style="color:#000;font-weight:bold">]</span> r10: <span style="color:#099">00000001</span>  r9 : bee2cdc4  r8 : <span style="color:#099">00000000</span>
+<span style="color:#000;font-weight:bold">[</span>    9.768980<span style="color:#000;font-weight:bold">]</span> r7 : 000a5848  r6 : b6f6ace0  r5 : b6eb7adc  r4 : 00a43020
+<span style="color:#000;font-weight:bold">[</span>    9.769094<span style="color:#000;font-weight:bold">]</span> r3 : 00a43050  r2 : <span style="color:#099">00000001</span>  r1 : <span style="color:#099">00000000</span>  r0 : 00a43020
+<span style="color:#000;font-weight:bold">[</span>    9.769279<span style="color:#000;font-weight:bold">]</span> Flags: nzCv  IRQs on  FIQs on  Mode USER_32  ISA ARM  Segment user
+<span style="color:#000;font-weight:bold">[</span>    9.769437<span style="color:#000;font-weight:bold">]</span> Control: 10c5387d  Table: 4ef78059  DAC: <span style="color:#099">00000015</span>
+<span style="color:#000;font-weight:bold">[</span>    9.769517<span style="color:#000;font-weight:bold">]</span> CPU: <span style="color:#099">0</span> PID: <span style="color:#099">274</span> Comm: openssl Tainted: G        W       4.1.17+ <span style="color:#998;font-style:italic">#10</span>
+<span style="color:#000;font-weight:bold">[</span>    9.769739<span style="color:#000;font-weight:bold">]</span> Hardware name: Generic DT based system
+<span style="color:#000;font-weight:bold">[</span>    9.769898<span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">[</span>&lt;c001c8dc&gt;<span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">(</span>unwind_backtrace<span style="color:#000;font-weight:bold">)</span> from <span style="color:#000;font-weight:bold">[</span>&lt;c0019c70&gt;<span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">(</span>show_stack+0x10/0x14<span style="color:#000;font-weight:bold">)</span>
+<span style="color:#000;font-weight:bold">[</span>    9.770003<span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">[</span>&lt;c0019c70&gt;<span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">(</span>show_stack<span style="color:#000;font-weight:bold">)</span> from <span style="color:#000;font-weight:bold">[</span>&lt;c002e6cc&gt;<span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">(</span>get_signal+0x41c/0x47c<span style="color:#000;font-weight:bold">)</span>
+<span style="color:#000;font-weight:bold">[</span>    9.770168<span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">[</span>&lt;c002e6cc&gt;<span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">(</span>get_signal<span style="color:#000;font-weight:bold">)</span> from <span style="color:#000;font-weight:bold">[</span>&lt;c00194a8&gt;<span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">(</span>do_signal+0x8c/0x35c<span style="color:#000;font-weight:bold">)</span>
+<span style="color:#000;font-weight:bold">[</span>    9.770312<span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">[</span>&lt;c00194a8&gt;<span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">(</span>do_signal<span style="color:#000;font-weight:bold">)</span> from <span style="color:#000;font-weight:bold">[</span>&lt;c00198d8&gt;<span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">(</span>do_work_pending+0x54/0xac<span style="color:#000;font-weight:bold">)</span>
+<span style="color:#000;font-weight:bold">[</span>    9.770408<span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">[</span>&lt;c00198d8&gt;<span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">(</span>do_work_pending<span style="color:#000;font-weight:bold">)</span> from <span style="color:#000;font-weight:bold">[</span>&lt;c0016c8c&gt;<span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">(</span>work_pending+0xc/0x20<span style="color:#000;font-weight:bold">)</span>
+Illegal instruction <span style="color:#000;font-weight:bold">(</span>core dumped<span style="color:#000;font-weight:bold">)</span>
+</code></pre></div><p>当然，用到了<code>openssl</code>的各个组件，如<code>httpd</code>，也是由此无法正常工作的。</p>
 <p>动态调试看看。在<code>qemu-system-arm</code>环境中启动<code>gdbserver</code>：（gdbserver可以来这里获取：<a href="https://github.com/dev2ero/embins">https://github.com/dev2ero/embins</a>）</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>gdbserver :1234 /usr/sbin/openssl
-</span></span></code></pre></div><p>在宿主机使用gdb-multiarch作为gdb client调试：</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>~$ gdb-multiarch
-</span></span><span style="display:flex;"><span>pwndbg&gt; <span style="color:#0086b3">set</span> architecture armv7
-</span></span><span style="display:flex;"><span>The target architecture is <span style="color:#0086b3">set</span> to <span style="color:#d14">&#34;armv7&#34;</span>.
-</span></span><span style="display:flex;"><span>pwndbg&gt; target remote 192.168.50.1:1234
-</span></span><span style="display:flex;"><span>Remote debugging using 192.168.50.1:1234
-</span></span><span style="display:flex;"><span>pwndbg&gt; file asuswrt/usr/sbin/openssl 
-</span></span><span style="display:flex;"><span>Reading symbols from asuswrt/usr/sbin/openssl...
-</span></span><span style="display:flex;"><span>pwndbg&gt; c
-</span></span></code></pre></div><p>触发<code>SIGILL</code>：</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>Program received signal SIGILL, Illegal instruction.
-</span></span><span style="display:flex;"><span>0xb6d871a8 in BIO_new <span style="color:#000;font-weight:bold">()</span> from target:/usr/lib/libcrypto.so.1.1
-</span></span><span style="display:flex;"><span>LEGEND: STACK | HEAP | CODE | DATA | RWX | RODATA
-</span></span><span style="display:flex;"><span>───────────────────────────────────────────────────<span style="color:#000;font-weight:bold">[</span> REGISTERS <span style="color:#000;font-weight:bold">]</span>────────────────────────────────────────────────────
-</span></span><span style="display:flex;"><span>*R0   0xaf020 —▸ 0xb6f4badc ◂— 0x402
-</span></span><span style="display:flex;"><span> R1   0x0
-</span></span><span style="display:flex;"><span>*R2   0x1
-</span></span><span style="display:flex;"><span>*R3   0xaf050 ◂— 0x0
-</span></span><span style="display:flex;"><span>*R4   0xaf020 —▸ 0xb6f4badc ◂— 0x402
-</span></span><span style="display:flex;"><span>*R5   0xb6f4badc ◂— 0x402
-</span></span><span style="display:flex;"><span>*R6   0xb6ffece0 <span style="color:#000;font-weight:bold">(</span>__stack_chk_guard<span style="color:#000;font-weight:bold">)</span> ◂— 0x10072e00
-</span></span><span style="display:flex;"><span>*R7   0xa5848 —▸ 0xa5738 ◂— 0x1
-</span></span><span style="display:flex;"><span> R8   0x0
-</span></span><span style="display:flex;"><span>*R9   0xbefffdb4 —▸ 0xbefffea8 ◂— <span style="color:#d14">&#39;/usr/sbin/openssl&#39;</span>
-</span></span><span style="display:flex;"><span>*R10  0x1
-</span></span><span style="display:flex;"><span> R11  0x0
-</span></span><span style="display:flex;"><span> R12  0x0
-</span></span><span style="display:flex;"><span>*SP   0xbefff7b8 —▸ 0xb6ff9648 —▸ 0x1e6a9 ◂— cdpmi  p0, <span style="color:#998;font-style:italic">#4, c5, c5, c15, #2 /* &#39;OPENSSL_1_1_0&#39; */</span>
-</span></span><span style="display:flex;"><span>*PC   0xb6d871a8 <span style="color:#000;font-weight:bold">(</span>BIO_new+84<span style="color:#000;font-weight:bold">)</span> ◂— 0xe183fc92
-</span></span><span style="display:flex;"><span>─────────────────────────────────────────────────────<span style="color:#000;font-weight:bold">[</span> DISASM <span style="color:#000;font-weight:bold">]</span>─────────────────────────────────────────────────────
-</span></span><span style="display:flex;"><span>Invalid instructions at 0xb6d871a8
-</span></span></code></pre></div><p>看来是<code>libcrypto.so.1.1</code>中的<code>BIO_new()</code>函数包含了非法指令。反汇编看看是哪条指令出了问题：</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>pwndbg&gt; disassemble BIO_new
-</span></span><span style="display:flex;"><span>Dump of assembler code <span style="color:#000;font-weight:bold">for</span> <span style="color:#000;font-weight:bold">function</span> BIO_new:
-</span></span><span style="display:flex;"><span>   ......
-</span></span><span style="display:flex;"><span>   0xb6d871a4 &lt;+80&gt;:    add     r3, r4, <span style="color:#998;font-style:italic">#48     ; 0x30</span>
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">=</span>&gt; 0xb6d871a8 &lt;+84&gt;:    stl     r2, <span style="color:#000;font-weight:bold">[</span>r3<span style="color:#000;font-weight:bold">]</span>
-</span></span><span style="display:flex;"><span>   0xb6d871ac &lt;+88&gt;:    add     r7, r4, <span style="color:#998;font-style:italic">#72     ; 0x48</span>
-</span></span><span style="display:flex;"><span>   ......
-</span></span></code></pre></div><p><code>stl</code>指令是非法指令？为什么呢？Google一下得到：</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">gdbserver :1234 /usr/sbin/openssl
+</code></pre></div><p>在宿主机使用gdb-multiarch作为gdb client调试：</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">~$ gdb-multiarch
+pwndbg&gt; <span style="color:#0086b3">set</span> architecture armv7
+The target architecture is <span style="color:#0086b3">set</span> to <span style="color:#d14">&#34;armv7&#34;</span>.
+pwndbg&gt; target remote 192.168.50.1:1234
+Remote debugging using 192.168.50.1:1234
+pwndbg&gt; file asuswrt/usr/sbin/openssl 
+Reading symbols from asuswrt/usr/sbin/openssl...
+pwndbg&gt; c
+</code></pre></div><p>触发<code>SIGILL</code>：</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">Program received signal SIGILL, Illegal instruction.
+0xb6d871a8 in BIO_new <span style="color:#000;font-weight:bold">()</span> from target:/usr/lib/libcrypto.so.1.1
+LEGEND: STACK | HEAP | CODE | DATA | RWX | RODATA
+───────────────────────────────────────────────────<span style="color:#000;font-weight:bold">[</span> REGISTERS <span style="color:#000;font-weight:bold">]</span>────────────────────────────────────────────────────
+*R0   0xaf020 —▸ 0xb6f4badc ◂— 0x402
+ R1   0x0
+*R2   0x1
+*R3   0xaf050 ◂— 0x0
+*R4   0xaf020 —▸ 0xb6f4badc ◂— 0x402
+*R5   0xb6f4badc ◂— 0x402
+*R6   0xb6ffece0 <span style="color:#000;font-weight:bold">(</span>__stack_chk_guard<span style="color:#000;font-weight:bold">)</span> ◂— 0x10072e00
+*R7   0xa5848 —▸ 0xa5738 ◂— 0x1
+ R8   0x0
+*R9   0xbefffdb4 —▸ 0xbefffea8 ◂— <span style="color:#d14">&#39;/usr/sbin/openssl&#39;</span>
+*R10  0x1
+ R11  0x0
+ R12  0x0
+*SP   0xbefff7b8 —▸ 0xb6ff9648 —▸ 0x1e6a9 ◂— cdpmi  p0, <span style="color:#998;font-style:italic">#4, c5, c5, c15, #2 /* &#39;OPENSSL_1_1_0&#39; */</span>
+*PC   0xb6d871a8 <span style="color:#000;font-weight:bold">(</span>BIO_new+84<span style="color:#000;font-weight:bold">)</span> ◂— 0xe183fc92
+─────────────────────────────────────────────────────<span style="color:#000;font-weight:bold">[</span> DISASM <span style="color:#000;font-weight:bold">]</span>─────────────────────────────────────────────────────
+Invalid instructions at 0xb6d871a8
+</code></pre></div><p>看来是<code>libcrypto.so.1.1</code>中的<code>BIO_new()</code>函数包含了非法指令。反汇编看看是哪条指令出了问题：</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">pwndbg&gt; disassemble BIO_new
+Dump of assembler code <span style="color:#000;font-weight:bold">for</span> <span style="color:#000;font-weight:bold">function</span> BIO_new:
+   ......
+   0xb6d871a4 &lt;+80&gt;:    add     r3, r4, <span style="color:#998;font-style:italic">#48     ; 0x30</span>
+<span style="color:#000;font-weight:bold">=</span>&gt; 0xb6d871a8 &lt;+84&gt;:    stl     r2, <span style="color:#000;font-weight:bold">[</span>r3<span style="color:#000;font-weight:bold">]</span>
+   0xb6d871ac &lt;+88&gt;:    add     r7, r4, <span style="color:#998;font-style:italic">#72     ; 0x48</span>
+   ......
+</code></pre></div><p><code>stl</code>指令是非法指令？为什么呢？Google一下得到：</p>
 <p><a href="https://developer.arm.com/documentation/100076/0200/a32-t32-instruction-set-reference/a32-and-t32-instructions/stl?lang=en">https://developer.arm.com/documentation/100076/0200/a32-t32-instruction-set-reference/a32-and-t32-instructions/stl?lang=en</a></p>
 <p>其中注明了：</p>
 <blockquote>
@@ -289,130 +289,130 @@
 <p>Architecture: 32-bit Armv8-A</p>
 </blockquote>
 <p>这是一条<code>Armv8</code>的指令。那我们此时的<code>qemu-system-arm</code>用的是什么环境呢？</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>qemu-system-arm -M <span style="color:#0086b3">help</span>
-</span></span><span style="display:flex;"><span>......
-</span></span><span style="display:flex;"><span>virt-6.1             QEMU 6.1 ARM Virtual Machine
-</span></span><span style="display:flex;"><span>virt-6.2             QEMU 6.2 ARM Virtual Machine
-</span></span><span style="display:flex;"><span>virt                 QEMU 7.0 ARM Virtual Machine <span style="color:#000;font-weight:bold">(</span><span style="color:#0086b3">alias</span> of virt-7.0<span style="color:#000;font-weight:bold">)</span>
-</span></span><span style="display:flex;"><span>virt-7.0             QEMU 7.0 ARM Virtual Machine
-</span></span><span style="display:flex;"><span>......
-</span></span></code></pre></div><p>machine的说明中只说明了我所用的<code>virt</code>是指<code>QEMU 7.0 ARM Virtual Machine</code>，并未介绍更多信息</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">qemu-system-arm -M <span style="color:#0086b3">help</span>
+......
+virt-6.1             QEMU 6.1 ARM Virtual Machine
+virt-6.2             QEMU 6.2 ARM Virtual Machine
+virt                 QEMU 7.0 ARM Virtual Machine <span style="color:#000;font-weight:bold">(</span><span style="color:#0086b3">alias</span> of virt-7.0<span style="color:#000;font-weight:bold">)</span>
+virt-7.0             QEMU 7.0 ARM Virtual Machine
+......
+</code></pre></div><p>machine的说明中只说明了我所用的<code>virt</code>是指<code>QEMU 7.0 ARM Virtual Machine</code>，并未介绍更多信息</p>
 <p>那么去虚拟环境中直接看看：</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>admin@<span style="color:#000;font-weight:bold">(</span>none<span style="color:#000;font-weight:bold">)</span>:/# cat /proc/cpuinfo 
-</span></span><span style="display:flex;"><span>processor       : <span style="color:#099">0</span>
-</span></span><span style="display:flex;"><span>model name      : ARMv7 Processor rev <span style="color:#099">1</span> <span style="color:#000;font-weight:bold">(</span>v7l<span style="color:#000;font-weight:bold">)</span>
-</span></span><span style="display:flex;"><span>BogoMIPS        : 125.00
-</span></span><span style="display:flex;"><span>Features        : half thumb fastmult vfp edsp neon vfpv3 tls vfpv4 idiva idivt vfpd32 lpae evtstrm 
-</span></span><span style="display:flex;"><span>CPU implementer : 0x41
-</span></span><span style="display:flex;"><span>CPU architecture: <span style="color:#099">7</span>
-</span></span><span style="display:flex;"><span>CPU variant     : 0x2
-</span></span><span style="display:flex;"><span>CPU part        : 0xc0f
-</span></span><span style="display:flex;"><span>CPU revision    : <span style="color:#099">1</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Hardware        : Generic DT based system
-</span></span><span style="display:flex;"><span>Revision        : <span style="color:#099">0000</span>
-</span></span><span style="display:flex;"><span>Serial          : <span style="color:#099">0000000000000000</span>
-</span></span></code></pre></div><p>问题原因找到了，此时我们虚拟环境的CPU所用指令集为<code>Armv7</code>，并未包含<code>Armv8</code>下的<code>stl</code>指令。</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">admin@<span style="color:#000;font-weight:bold">(</span>none<span style="color:#000;font-weight:bold">)</span>:/# cat /proc/cpuinfo 
+processor       : <span style="color:#099">0</span>
+model name      : ARMv7 Processor rev <span style="color:#099">1</span> <span style="color:#000;font-weight:bold">(</span>v7l<span style="color:#000;font-weight:bold">)</span>
+BogoMIPS        : 125.00
+Features        : half thumb fastmult vfp edsp neon vfpv3 tls vfpv4 idiva idivt vfpd32 lpae evtstrm 
+CPU implementer : 0x41
+CPU architecture: <span style="color:#099">7</span>
+CPU variant     : 0x2
+CPU part        : 0xc0f
+CPU revision    : <span style="color:#099">1</span>
+
+Hardware        : Generic DT based system
+Revision        : <span style="color:#099">0000</span>
+Serial          : <span style="color:#099">0000000000000000</span>
+</code></pre></div><p>问题原因找到了，此时我们虚拟环境的CPU所用指令集为<code>Armv7</code>，并未包含<code>Armv8</code>下的<code>stl</code>指令。</p>
 <p>做个实验验证下猜想：</p>
 <p>准备一份arm下的hello world源码：</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-asm" data-lang="asm"><span style="display:flex;"><span><span style="color:#008080">.section</span> <span style="color:#008080">.data</span>
-</span></span><span style="display:flex;"><span><span style="color:#900;font-weight:bold">hello:</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#008080">.ascii</span> <span style="color:#d14">&#34;hello world\n&#34;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#008080">.equ</span> <span style="color:#008080">len</span>, . - <span style="color:#008080">hello</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#008080">.section</span> <span style="color:#008080">.text</span>
-</span></span><span style="display:flex;"><span><span style="color:#008080">.global</span> <span style="color:#008080">_start</span>
-</span></span><span style="display:flex;"><span><span style="color:#900;font-weight:bold">_start:</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#900;font-weight:bold">mov</span> <span style="color:#008080">r0</span>, <span style="color:#998;font-style:italic">#1
-</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>    <span style="color:#008080">ldr</span> <span style="color:#008080">r1</span>, <span style="color:#a61717;background-color:#e3d2d2">=</span><span style="color:#008080">hello</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#900;font-weight:bold">mov</span> <span style="color:#008080">r2</span>, <span style="color:#998;font-style:italic">#len
-</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>    <span style="color:#008080">mov</span> <span style="color:#008080">r7</span>, <span style="color:#998;font-style:italic">#4
-</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>    <span style="color:#008080">swi</span> <span style="color:#998;font-style:italic">#0
-</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>
-</span></span><span style="display:flex;"><span><span style="color:#900;font-weight:bold">exit:</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#900;font-weight:bold">mov</span> <span style="color:#008080">r0</span>, <span style="color:#998;font-style:italic">#0
-</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>    <span style="color:#008080">mov</span> <span style="color:#008080">r7</span>, <span style="color:#998;font-style:italic">#1
-</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>    <span style="color:#008080">swi</span> <span style="color:#998;font-style:italic">#0
-</span></span></span></code></pre></div><p>使用旧版<code>arm-linux-gnueabi-gcc</code>，可以正常汇编链接运行：</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>~$ /opt/cross/gcc-linaro-arm-linux-gnueabihf/bin/arm-linux-gnueabihf-as hello.s -o hello.o
-</span></span><span style="display:flex;"><span>~$ /opt/cross/gcc-linaro-arm-linux-gnueabihf/bin/arm-linux-gnueabihf-ld hello.o -o hello.out
-</span></span><span style="display:flex;"><span>~$ qemu-arm hello.out 
-</span></span><span style="display:flex;"><span>hello world
-</span></span></code></pre></div><p>而为其添加上一行stl指令后则汇编失败：</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>~$ /opt/cross/gcc-linaro-arm-linux-gnueabihf/bin/arm-linux-gnueabihf-as hello.s -o hello.o
-</span></span><span style="display:flex;"><span>hello.s: Assembler messages:
-</span></span><span style="display:flex;"><span>hello.s:11: Error: bad instruction <span style="color:#d14">`</span>stl r0,<span style="color:#000;font-weight:bold">[</span>r1<span style="color:#000;font-weight:bold">]</span><span style="color:#a61717;background-color:#e3d2d2">&#39;</span>
-</span></span></code></pre></div><p>由此验证了上面的原因推断。</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-asm" data-lang="asm"><span style="color:#008080">.section</span> <span style="color:#008080">.data</span>
+<span style="color:#900;font-weight:bold">hello:</span>
+    <span style="color:#008080">.ascii</span> <span style="color:#d14">&#34;hello world\n&#34;</span>
+    <span style="color:#008080">.equ</span> <span style="color:#008080">len</span>, . - <span style="color:#008080">hello</span>
+
+<span style="color:#008080">.section</span> <span style="color:#008080">.text</span>
+<span style="color:#008080">.global</span> <span style="color:#008080">_start</span>
+<span style="color:#900;font-weight:bold">_start:</span>
+    <span style="color:#900;font-weight:bold">mov</span> <span style="color:#008080">r0</span>, <span style="color:#998;font-style:italic">#1
+</span><span style="color:#998;font-style:italic"></span>    <span style="color:#008080">ldr</span> <span style="color:#008080">r1</span>, <span style="color:#a61717;background-color:#e3d2d2">=</span><span style="color:#008080">hello</span>
+    <span style="color:#900;font-weight:bold">mov</span> <span style="color:#008080">r2</span>, <span style="color:#998;font-style:italic">#len
+</span><span style="color:#998;font-style:italic"></span>    <span style="color:#008080">mov</span> <span style="color:#008080">r7</span>, <span style="color:#998;font-style:italic">#4
+</span><span style="color:#998;font-style:italic"></span>    <span style="color:#008080">swi</span> <span style="color:#998;font-style:italic">#0
+</span><span style="color:#998;font-style:italic"></span>
+<span style="color:#900;font-weight:bold">exit:</span>
+    <span style="color:#900;font-weight:bold">mov</span> <span style="color:#008080">r0</span>, <span style="color:#998;font-style:italic">#0
+</span><span style="color:#998;font-style:italic"></span>    <span style="color:#008080">mov</span> <span style="color:#008080">r7</span>, <span style="color:#998;font-style:italic">#1
+</span><span style="color:#998;font-style:italic"></span>    <span style="color:#008080">swi</span> <span style="color:#998;font-style:italic">#0
+</span></code></pre></div><p>使用旧版<code>arm-linux-gnueabi-gcc</code>，可以正常汇编链接运行：</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">~$ /opt/cross/gcc-linaro-arm-linux-gnueabihf/bin/arm-linux-gnueabihf-as hello.s -o hello.o
+~$ /opt/cross/gcc-linaro-arm-linux-gnueabihf/bin/arm-linux-gnueabihf-ld hello.o -o hello.out
+~$ qemu-arm hello.out 
+hello world
+</code></pre></div><p>而为其添加上一行stl指令后则汇编失败：</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">~$ /opt/cross/gcc-linaro-arm-linux-gnueabihf/bin/arm-linux-gnueabihf-as hello.s -o hello.o
+hello.s: Assembler messages:
+hello.s:11: Error: bad instruction <span style="color:#d14">`</span>stl r0,<span style="color:#000;font-weight:bold">[</span>r1<span style="color:#000;font-weight:bold">]</span><span style="color:#a61717;background-color:#e3d2d2">&#39;</span>
+</code></pre></div><p>由此验证了上面的原因推断。</p>
 <p>继续来看看固件中的ELF指令集版本：</p>
 <p>首先我们刚刚的<code>hello.out</code>是<code>Armv4</code>：</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>~$ /opt/cross/gcc-linaro-arm-linux-gnueabihf/bin/arm-linux-gnueabihf-readelf -A hello.out                    
-</span></span><span style="display:flex;"><span>Attribute Section: aeabi
-</span></span><span style="display:flex;"><span>File Attributes
-</span></span><span style="display:flex;"><span>  Tag_CPU_arch: v4
-</span></span><span style="display:flex;"><span>  Tag_ARM_ISA_use: Yes
-</span></span><span style="display:flex;"><span>  Tag_DIV_use: Not allowed
-</span></span></code></pre></div><p>固件中的<code>busybox</code>、<code>openssl</code>，和出问题的<code>libcrypto.so.1.1</code>则是：</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>~$ /opt/cross/gcc-linaro-arm-linux-gnueabihf/bin/arm-linux-gnueabihf-readelf -A asuswrt/busybox                    
-</span></span><span style="display:flex;"><span>Attribute Section: aeabi
-</span></span><span style="display:flex;"><span>File Attributes
-</span></span><span style="display:flex;"><span>  Tag_CPU_name: <span style="color:#d14">&#34;Cortex-A9&#34;</span>
-</span></span><span style="display:flex;"><span>  Tag_CPU_arch: v7
-</span></span><span style="display:flex;"><span>  Tag_CPU_arch_profile: Application
-</span></span><span style="display:flex;"><span>  Tag_ARM_ISA_use: Yes
-</span></span><span style="display:flex;"><span>  Tag_THUMB_ISA_use: Thumb-2
-</span></span><span style="display:flex;"><span>  Tag_ABI_PCS_wchar_t: <span style="color:#099">4</span>
-</span></span><span style="display:flex;"><span>  Tag_ABI_FP_rounding: Needed
-</span></span><span style="display:flex;"><span>  Tag_ABI_FP_denormal: Needed
-</span></span><span style="display:flex;"><span>  Tag_ABI_FP_exceptions: Needed
-</span></span><span style="display:flex;"><span>  Tag_ABI_FP_number_model: IEEE <span style="color:#099">754</span>
-</span></span><span style="display:flex;"><span>  Tag_ABI_align_needed: 8-byte
-</span></span><span style="display:flex;"><span>  Tag_ABI_align_preserved: 8-byte, except leaf SP
-</span></span><span style="display:flex;"><span>  Tag_ABI_enum_size: int
-</span></span><span style="display:flex;"><span>  Tag_CPU_unaligned_access: v6
-</span></span><span style="display:flex;"><span>  Tag_MPextension_use: Allowed
-</span></span><span style="display:flex;"><span>  Tag_Virtualization_use: TrustZone
-</span></span><span style="display:flex;"><span>  
-</span></span><span style="display:flex;"><span>~$ /opt/cross/gcc-linaro-arm-linux-gnueabihf/bin/arm-linux-gnueabihf-readelf -A ../usr/sbin/openssl 
-</span></span><span style="display:flex;"><span>Attribute Section: aeabi
-</span></span><span style="display:flex;"><span>File Attributes
-</span></span><span style="display:flex;"><span>  Tag_CPU_name: <span style="color:#d14">&#34;8-A&#34;</span>
-</span></span><span style="display:flex;"><span>  Tag_CPU_arch: ??? <span style="color:#000;font-weight:bold">(</span>14<span style="color:#000;font-weight:bold">)</span>
-</span></span><span style="display:flex;"><span>  Tag_CPU_arch_profile: Application
-</span></span><span style="display:flex;"><span>  Tag_ARM_ISA_use: Yes
-</span></span><span style="display:flex;"><span>  Tag_THUMB_ISA_use: Thumb-2
-</span></span><span style="display:flex;"><span>  Tag_ABI_PCS_wchar_t: <span style="color:#099">4</span>
-</span></span><span style="display:flex;"><span>  Tag_ABI_FP_rounding: Needed
-</span></span><span style="display:flex;"><span>  Tag_ABI_FP_denormal: Needed
-</span></span><span style="display:flex;"><span>  Tag_ABI_FP_exceptions: Needed
-</span></span><span style="display:flex;"><span>  Tag_ABI_FP_number_model: IEEE <span style="color:#099">754</span>
-</span></span><span style="display:flex;"><span>  Tag_ABI_align_needed: 8-byte
-</span></span><span style="display:flex;"><span>  Tag_ABI_align_preserved: 8-byte, except leaf SP
-</span></span><span style="display:flex;"><span>  Tag_ABI_enum_size: int
-</span></span><span style="display:flex;"><span>  Tag_CPU_unaligned_access: v6
-</span></span><span style="display:flex;"><span>  Tag_MPextension_use: Allowed
-</span></span><span style="display:flex;"><span>  Tag_Virtualization_use: TrustZone and Virtualization Extensions
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>~$ /opt/cross/gcc-linaro-arm-linux-gnueabihf/bin/arm-linux-gnueabihf-readelf -A asuswrt/usr/lib/libcrypto.so.1.1
-</span></span><span style="display:flex;"><span>Attribute Section: aeabi
-</span></span><span style="display:flex;"><span>File Attributes
-</span></span><span style="display:flex;"><span>  Tag_CPU_name: <span style="color:#d14">&#34;8-A&#34;</span>
-</span></span><span style="display:flex;"><span>  Tag_CPU_arch: ??? <span style="color:#000;font-weight:bold">(</span>14<span style="color:#000;font-weight:bold">)</span>
-</span></span><span style="display:flex;"><span>  Tag_CPU_arch_profile: Application
-</span></span><span style="display:flex;"><span>  Tag_ARM_ISA_use: Yes
-</span></span><span style="display:flex;"><span>  Tag_THUMB_ISA_use: Thumb-2
-</span></span><span style="display:flex;"><span>  Tag_FP_arch: VFPv3
-</span></span><span style="display:flex;"><span>  Tag_Advanced_SIMD_arch: NEONv1
-</span></span><span style="display:flex;"><span>  Tag_ABI_PCS_wchar_t: <span style="color:#099">4</span>
-</span></span><span style="display:flex;"><span>  Tag_ABI_FP_rounding: Needed
-</span></span><span style="display:flex;"><span>  Tag_ABI_FP_denormal: Needed
-</span></span><span style="display:flex;"><span>  Tag_ABI_FP_exceptions: Needed
-</span></span><span style="display:flex;"><span>  Tag_ABI_FP_number_model: IEEE <span style="color:#099">754</span>
-</span></span><span style="display:flex;"><span>  Tag_ABI_align_needed: 8-byte
-</span></span><span style="display:flex;"><span>  Tag_ABI_enum_size: int
-</span></span><span style="display:flex;"><span>  Tag_CPU_unaligned_access: v6
-</span></span><span style="display:flex;"><span>  Tag_MPextension_use: Allowed
-</span></span><span style="display:flex;"><span>  Tag_Virtualization_use: TrustZone and Virtualization Extensions
-</span></span></code></pre></div><p>一个固件中的不同组件还用了不同的编译工具链？！</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">~$ /opt/cross/gcc-linaro-arm-linux-gnueabihf/bin/arm-linux-gnueabihf-readelf -A hello.out                    
+Attribute Section: aeabi
+File Attributes
+  Tag_CPU_arch: v4
+  Tag_ARM_ISA_use: Yes
+  Tag_DIV_use: Not allowed
+</code></pre></div><p>固件中的<code>busybox</code>、<code>openssl</code>，和出问题的<code>libcrypto.so.1.1</code>则是：</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">~$ /opt/cross/gcc-linaro-arm-linux-gnueabihf/bin/arm-linux-gnueabihf-readelf -A asuswrt/busybox                    
+Attribute Section: aeabi
+File Attributes
+  Tag_CPU_name: <span style="color:#d14">&#34;Cortex-A9&#34;</span>
+  Tag_CPU_arch: v7
+  Tag_CPU_arch_profile: Application
+  Tag_ARM_ISA_use: Yes
+  Tag_THUMB_ISA_use: Thumb-2
+  Tag_ABI_PCS_wchar_t: <span style="color:#099">4</span>
+  Tag_ABI_FP_rounding: Needed
+  Tag_ABI_FP_denormal: Needed
+  Tag_ABI_FP_exceptions: Needed
+  Tag_ABI_FP_number_model: IEEE <span style="color:#099">754</span>
+  Tag_ABI_align_needed: 8-byte
+  Tag_ABI_align_preserved: 8-byte, except leaf SP
+  Tag_ABI_enum_size: int
+  Tag_CPU_unaligned_access: v6
+  Tag_MPextension_use: Allowed
+  Tag_Virtualization_use: TrustZone
+  
+~$ /opt/cross/gcc-linaro-arm-linux-gnueabihf/bin/arm-linux-gnueabihf-readelf -A ../usr/sbin/openssl 
+Attribute Section: aeabi
+File Attributes
+  Tag_CPU_name: <span style="color:#d14">&#34;8-A&#34;</span>
+  Tag_CPU_arch: ??? <span style="color:#000;font-weight:bold">(</span>14<span style="color:#000;font-weight:bold">)</span>
+  Tag_CPU_arch_profile: Application
+  Tag_ARM_ISA_use: Yes
+  Tag_THUMB_ISA_use: Thumb-2
+  Tag_ABI_PCS_wchar_t: <span style="color:#099">4</span>
+  Tag_ABI_FP_rounding: Needed
+  Tag_ABI_FP_denormal: Needed
+  Tag_ABI_FP_exceptions: Needed
+  Tag_ABI_FP_number_model: IEEE <span style="color:#099">754</span>
+  Tag_ABI_align_needed: 8-byte
+  Tag_ABI_align_preserved: 8-byte, except leaf SP
+  Tag_ABI_enum_size: int
+  Tag_CPU_unaligned_access: v6
+  Tag_MPextension_use: Allowed
+  Tag_Virtualization_use: TrustZone and Virtualization Extensions
+
+~$ /opt/cross/gcc-linaro-arm-linux-gnueabihf/bin/arm-linux-gnueabihf-readelf -A asuswrt/usr/lib/libcrypto.so.1.1
+Attribute Section: aeabi
+File Attributes
+  Tag_CPU_name: <span style="color:#d14">&#34;8-A&#34;</span>
+  Tag_CPU_arch: ??? <span style="color:#000;font-weight:bold">(</span>14<span style="color:#000;font-weight:bold">)</span>
+  Tag_CPU_arch_profile: Application
+  Tag_ARM_ISA_use: Yes
+  Tag_THUMB_ISA_use: Thumb-2
+  Tag_FP_arch: VFPv3
+  Tag_Advanced_SIMD_arch: NEONv1
+  Tag_ABI_PCS_wchar_t: <span style="color:#099">4</span>
+  Tag_ABI_FP_rounding: Needed
+  Tag_ABI_FP_denormal: Needed
+  Tag_ABI_FP_exceptions: Needed
+  Tag_ABI_FP_number_model: IEEE <span style="color:#099">754</span>
+  Tag_ABI_align_needed: 8-byte
+  Tag_ABI_enum_size: int
+  Tag_CPU_unaligned_access: v6
+  Tag_MPextension_use: Allowed
+  Tag_Virtualization_use: TrustZone and Virtualization Extensions
+</code></pre></div><p>一个固件中的不同组件还用了不同的编译工具链？！</p>
 <p><code>busybox</code>是<code>Armv7</code>，而<code>openssl</code>和<code>libcrypto.so.1.1</code>则是<code>Armv8-A</code>。</p>
 <p>这也解释了为什么我在仿真旧版本固件时是没有该故障存在的。旧版本固件中的是<code>Armv7</code>的<code>libcrypto.so.1.0.0</code>。</p>
 <p>我们来到固件的下载页面：<a href="https://www.asus.com.cn/Networking-IoT-Servers/WiFi-Routers/ASUS-WiFi-Routers/RT-AC86U/HelpDesk_BIOS/">https://www.asus.com.cn/Networking-IoT-Servers/WiFi-Routers/ASUS-WiFi-Routers/RT-AC86U/HelpDesk_BIOS/</a></p>
@@ -428,9 +428,9 @@
 </blockquote>
 <p>原来他们修复时并没有将固件全量编译，而是只换用了新编译工具链将出问题的<code>openssl</code>重新编译了。</p>
 <p>恰好我手头有华硕的路由器真机，来看看真机环境是什么：</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>zkv@RT-AC86U:/tmp/home/root# uname -a
-</span></span><span style="display:flex;"><span>Linux RT-AC86U 4.1.27 <span style="color:#998;font-style:italic">#2 SMP PREEMPT Thu Nov 11 17:12:59 CST 2021 aarch64</span>
-</span></span></code></pre></div><p>好家伙，直接是<code>aarch64</code>的linux内核。至于CPU，型号是<code>Boardcom BCM4906</code>：<a href="https://www.broadcom.com/products/wireless/wireless-lan-infrastructure/bcm49408">https://www.broadcom.com/products/wireless/wireless-lan-infrastructure/bcm49408</a></p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">zkv@RT-AC86U:/tmp/home/root# uname -a
+Linux RT-AC86U 4.1.27 <span style="color:#998;font-style:italic">#2 SMP PREEMPT Thu Nov 11 17:12:59 CST 2021 aarch64</span>
+</code></pre></div><p>好家伙，直接是<code>aarch64</code>的linux内核。至于CPU，型号是<code>Boardcom BCM4906</code>：<a href="https://www.broadcom.com/products/wireless/wireless-lan-infrastructure/bcm49408">https://www.broadcom.com/products/wireless/wireless-lan-infrastructure/bcm49408</a></p>
 <p>原来是<code>Armv8-A</code>的<code>A53</code>：<a href="https://developer.arm.com/Processors/Cortex-A53">https://developer.arm.com/Processors/Cortex-A53</a></p>
 <p>其中注明了：</p>
 <blockquote>
@@ -446,9 +446,9 @@
 <h2 id="收网">👮收网</h2>
 <p>qemu难道就不包含<code>Armv8</code>了吗？</p>
 <p>使用<code>qemu-user</code>试试：</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>~$ chroot asuswrt openssl
-</span></span><span style="display:flex;"><span>OpenSSL&gt;
-</span></span></code></pre></div><p>是可以正常执行的。说明qemu是有写过<code>Armv8</code>的代码的。</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">~$ chroot asuswrt openssl
+OpenSSL&gt;
+</code></pre></div><p>是可以正常执行的。说明qemu是有写过<code>Armv8</code>的代码的。</p>
 <p>这里要说明下为什么可以直接使用<code>chroot guest_rootfs_dir target_elf</code>的形式直接执行其它指令集的ELF。</p>
 <p>我们都知道的是，Linux下的<strong>可执行文件</strong>，是一个广义词。文件系统中inode标记了x位，即可执行位的文件，都算作可执行文件。</p>
 <p>那么，.sh、.py、ELF等等，都算是可执行文件了。但他们的执行方式却又多种多样，这又是怎么区分的呢？</p>
@@ -464,106 +464,106 @@
 <p>没有显式注明解释器的可执行文件默认当作sh脚本文件处理：</p>
 </li>
 <li>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>~$ <span style="color:#0086b3">echo</span> deadbeef &gt; <span style="color:#0086b3">test</span>
-</span></span><span style="display:flex;"><span>~$ chmod +x <span style="color:#0086b3">test</span>
-</span></span><span style="display:flex;"><span>~$ ./test    
-</span></span><span style="display:flex;"><span>./test: 1: deadbeef: not found
-</span></span></code></pre></div></li>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">~$ <span style="color:#0086b3">echo</span> deadbeef &gt; <span style="color:#0086b3">test</span>
+~$ chmod +x <span style="color:#0086b3">test</span>
+~$ ./test    
+./test: 1: deadbeef: not found
+</code></pre></div></li>
 </ul>
 </li>
 </ul>
 <p>那同样的道理，在一台安装了qemu-user的机器上，直接<code>./</code>执行一个其它指令集的可执行文件时。由于<code>qemu-user</code>已经将这种文件的文件头信息在系统中注册了，即表明：“遇到这些其它指令集对应的文件头的文件时，请交由我<code>qemu-user</code>来解释执行。”</p>
 <p>那么，静态链接的异构程序，在安装了<code>qemu-user</code>的系统中，就可以直接<code>./</code>执行了。而动态链接的异构程序，由于需要载入其它异构的链接库文件，故需要先<code>chroot</code>到异构的根文件系统中。</p>
 <p><code>qemu-system-arm</code>是32位时代的arm实现（aarch32），从<code>Armv7</code>到<code>Armv8</code>的升级，才引入了64位支持（aarch64）。所以我们应该换用<code>qemu-system-aarch64</code>：</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>~$ qemu-system-arm -cpu <span style="color:#0086b3">help</span>
-</span></span><span style="display:flex;"><span>Available CPUs:
-</span></span><span style="display:flex;"><span>  arm1026
-</span></span><span style="display:flex;"><span>  arm1136
-</span></span><span style="display:flex;"><span>  arm1136-r2
-</span></span><span style="display:flex;"><span>  arm1176
-</span></span><span style="display:flex;"><span>  arm11mpcore
-</span></span><span style="display:flex;"><span>  arm926
-</span></span><span style="display:flex;"><span>  arm946
-</span></span><span style="display:flex;"><span>  cortex-a15
-</span></span><span style="display:flex;"><span>  cortex-a7
-</span></span><span style="display:flex;"><span>  cortex-a8
-</span></span><span style="display:flex;"><span>  cortex-a9
-</span></span><span style="display:flex;"><span>  cortex-m0
-</span></span><span style="display:flex;"><span>  cortex-m3
-</span></span><span style="display:flex;"><span>  cortex-m33
-</span></span><span style="display:flex;"><span>  cortex-m4
-</span></span><span style="display:flex;"><span>  cortex-m55
-</span></span><span style="display:flex;"><span>  cortex-m7
-</span></span><span style="display:flex;"><span>  cortex-r5
-</span></span><span style="display:flex;"><span>  cortex-r5f
-</span></span><span style="display:flex;"><span>  max
-</span></span><span style="display:flex;"><span>  pxa250
-</span></span><span style="display:flex;"><span>  pxa255
-</span></span><span style="display:flex;"><span>  pxa260
-</span></span><span style="display:flex;"><span>  pxa261
-</span></span><span style="display:flex;"><span>  pxa262
-</span></span><span style="display:flex;"><span>  pxa270-a0
-</span></span><span style="display:flex;"><span>  pxa270-a1
-</span></span><span style="display:flex;"><span>  pxa270
-</span></span><span style="display:flex;"><span>  pxa270-b0
-</span></span><span style="display:flex;"><span>  pxa270-b1
-</span></span><span style="display:flex;"><span>  pxa270-c0
-</span></span><span style="display:flex;"><span>  pxa270-c5
-</span></span><span style="display:flex;"><span>  sa1100
-</span></span><span style="display:flex;"><span>  sa1110
-</span></span><span style="display:flex;"><span>  ti925t
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>~$ qemu-system-aarch64 -cpu <span style="color:#0086b3">help</span>
-</span></span><span style="display:flex;"><span>Available CPUs:
-</span></span><span style="display:flex;"><span>  a64fx
-</span></span><span style="display:flex;"><span>  arm1026
-</span></span><span style="display:flex;"><span>  arm1136
-</span></span><span style="display:flex;"><span>  arm1136-r2
-</span></span><span style="display:flex;"><span>  arm1176
-</span></span><span style="display:flex;"><span>  arm11mpcore
-</span></span><span style="display:flex;"><span>  arm926
-</span></span><span style="display:flex;"><span>  arm946
-</span></span><span style="display:flex;"><span>  cortex-a15
-</span></span><span style="display:flex;"><span>  cortex-a53
-</span></span><span style="display:flex;"><span>  cortex-a57
-</span></span><span style="display:flex;"><span>  cortex-a7
-</span></span><span style="display:flex;"><span>  cortex-a72
-</span></span><span style="display:flex;"><span>  cortex-a8
-</span></span><span style="display:flex;"><span>  cortex-a9
-</span></span><span style="display:flex;"><span>  cortex-m0
-</span></span><span style="display:flex;"><span>  cortex-m3
-</span></span><span style="display:flex;"><span>  cortex-m33
-</span></span><span style="display:flex;"><span>  cortex-m4
-</span></span><span style="display:flex;"><span>  cortex-m55
-</span></span><span style="display:flex;"><span>  cortex-m7
-</span></span><span style="display:flex;"><span>  cortex-r5
-</span></span><span style="display:flex;"><span>  cortex-r5f
-</span></span><span style="display:flex;"><span>  max
-</span></span><span style="display:flex;"><span>  pxa250
-</span></span><span style="display:flex;"><span>  pxa255
-</span></span><span style="display:flex;"><span>  pxa260
-</span></span><span style="display:flex;"><span>  pxa261
-</span></span><span style="display:flex;"><span>  pxa262
-</span></span><span style="display:flex;"><span>  pxa270-a0
-</span></span><span style="display:flex;"><span>  pxa270-a1
-</span></span><span style="display:flex;"><span>  pxa270
-</span></span><span style="display:flex;"><span>  pxa270-b0
-</span></span><span style="display:flex;"><span>  pxa270-b1
-</span></span><span style="display:flex;"><span>  pxa270-c0
-</span></span><span style="display:flex;"><span>  pxa270-c5
-</span></span><span style="display:flex;"><span>  sa1100
-</span></span><span style="display:flex;"><span>  sa1110
-</span></span><span style="display:flex;"><span>  ti925t
-</span></span></code></pre></div><p>同时手动指定CPU为<code>cortex-a53</code>：</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>qemu-system-aarch64 
-</span></span><span style="display:flex;"><span>	-M virt -cpu cortex-a53 <span style="color:#d14">\
-</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>	-m <span style="color:#099">256</span> -kernel zImage.aarch64 <span style="color:#d14">\
-</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>	-append <span style="color:#d14">&#34;rootwait root=/dev/vda1 console=ttyAMA0&#34;</span> <span style="color:#d14">\
-</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>    -drive <span style="color:#000;font-weight:bold">if</span><span style="color:#000;font-weight:bold">=</span>none,file<span style="color:#000;font-weight:bold">=</span>rootfs.img,format<span style="color:#000;font-weight:bold">=</span>raw,id<span style="color:#000;font-weight:bold">=</span>rootfs <span style="color:#d14">\
-</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>    -device virtio-blk-device,drive<span style="color:#000;font-weight:bold">=</span>rootfs <span style="color:#d14">\
-</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>    -netdev <span style="color:#008080">type</span><span style="color:#000;font-weight:bold">=</span>tap,id<span style="color:#000;font-weight:bold">=</span>net0,ifname<span style="color:#000;font-weight:bold">=</span>tap0,script<span style="color:#000;font-weight:bold">=</span>no,downscript<span style="color:#000;font-weight:bold">=</span>no -device virtio-net-device,netdev<span style="color:#000;font-weight:bold">=</span>net0 <span style="color:#d14">\
-</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>    -nographic 
-</span></span></code></pre></div></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">~$ qemu-system-arm -cpu <span style="color:#0086b3">help</span>
+Available CPUs:
+  arm1026
+  arm1136
+  arm1136-r2
+  arm1176
+  arm11mpcore
+  arm926
+  arm946
+  cortex-a15
+  cortex-a7
+  cortex-a8
+  cortex-a9
+  cortex-m0
+  cortex-m3
+  cortex-m33
+  cortex-m4
+  cortex-m55
+  cortex-m7
+  cortex-r5
+  cortex-r5f
+  max
+  pxa250
+  pxa255
+  pxa260
+  pxa261
+  pxa262
+  pxa270-a0
+  pxa270-a1
+  pxa270
+  pxa270-b0
+  pxa270-b1
+  pxa270-c0
+  pxa270-c5
+  sa1100
+  sa1110
+  ti925t
+
+~$ qemu-system-aarch64 -cpu <span style="color:#0086b3">help</span>
+Available CPUs:
+  a64fx
+  arm1026
+  arm1136
+  arm1136-r2
+  arm1176
+  arm11mpcore
+  arm926
+  arm946
+  cortex-a15
+  cortex-a53
+  cortex-a57
+  cortex-a7
+  cortex-a72
+  cortex-a8
+  cortex-a9
+  cortex-m0
+  cortex-m3
+  cortex-m33
+  cortex-m4
+  cortex-m55
+  cortex-m7
+  cortex-r5
+  cortex-r5f
+  max
+  pxa250
+  pxa255
+  pxa260
+  pxa261
+  pxa262
+  pxa270-a0
+  pxa270-a1
+  pxa270
+  pxa270-b0
+  pxa270-b1
+  pxa270-c0
+  pxa270-c5
+  sa1100
+  sa1110
+  ti925t
+</code></pre></div><p>同时手动指定CPU为<code>cortex-a53</code>：</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">qemu-system-aarch64 
+	-M virt -cpu cortex-a53 <span style="color:#d14">\
+</span><span style="color:#d14"></span>	-m <span style="color:#099">256</span> -kernel zImage.aarch64 <span style="color:#d14">\
+</span><span style="color:#d14"></span>	-append <span style="color:#d14">&#34;rootwait root=/dev/vda1 console=ttyAMA0&#34;</span> <span style="color:#d14">\
+</span><span style="color:#d14"></span>    -drive <span style="color:#000;font-weight:bold">if</span><span style="color:#000;font-weight:bold">=</span>none,file<span style="color:#000;font-weight:bold">=</span>rootfs.img,format<span style="color:#000;font-weight:bold">=</span>raw,id<span style="color:#000;font-weight:bold">=</span>rootfs <span style="color:#d14">\
+</span><span style="color:#d14"></span>    -device virtio-blk-device,drive<span style="color:#000;font-weight:bold">=</span>rootfs <span style="color:#d14">\
+</span><span style="color:#d14"></span>    -netdev <span style="color:#008080">type</span><span style="color:#000;font-weight:bold">=</span>tap,id<span style="color:#000;font-weight:bold">=</span>net0,ifname<span style="color:#000;font-weight:bold">=</span>tap0,script<span style="color:#000;font-weight:bold">=</span>no,downscript<span style="color:#000;font-weight:bold">=</span>no -device virtio-net-device,netdev<span style="color:#000;font-weight:bold">=</span>net0 <span style="color:#d14">\
+</span><span style="color:#d14"></span>    -nographic 
+</code></pre></div></div>
   
 </article>
 <button class="floating-button">

@@ -7,7 +7,11 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>© 2022, Zikey Vi</copyright>
-    <lastBuildDate>Thu, 26 May 2022 15:51:22 +0800</lastBuildDate><atom:link href="https://cerr.cc/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 26 May 2022 15:51:22 +0800</lastBuildDate>
+    
+	<atom:link href="https://cerr.cc/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    
+    
     <item>
       <title>记一次qemu-system-arm仿真的排错</title>
       <link>https://cerr.cc/post/qemu_armv8_dbg/</link>
@@ -77,7 +81,7 @@ apt install libncurses5 libncurses5-dev m4 bison gawk flex libstdc++6-4.7-dev g+
       
       <guid>https://cerr.cc/post/some_installation/</guid>
       <description>作为一个系统重装爱好者和硬件收集拾荒人，为了减少在环境配置上浪费的生命，记录常用环境配置命令用以直接复制粘贴
-个人 apt 源 Linux 初始环境软件安装 sudo apt install zsh git man man-db manpages ssh neovim tmux \ gcc g++ gdb gdb-multiarch gdbserver flex bison \ curl wget netcat net-tools nmap tcpdump \ python3 ipython3 python-is-python3 python3-pip \ build-essential binutils xxd strace libncurses5 \ neofetch zip unzip ncdu htop dosfstools dotfiles 快速就位 git clone https://github.com/dev2ero/dotfiles.git sh -c &amp;#34;$(curl -fsSL https://gitee.com/mirrors/oh-my-zsh/raw/master/tools/install.sh)&amp;#34; git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting sh -c &amp;#39;curl -fLo &amp;#34;${XDG_DATA_HOME:-$HOME/.</description>
+ 个人 apt 源 Linux 初始环境软件安装 sudo apt install zsh git man man-db manpages ssh neovim tmux \ 	gcc g++ gdb gdb-multiarch gdbserver flex bison \ 	curl wget netcat net-tools nmap tcpdump \ 	python3 ipython3 python-is-python3 python3-pip \ 	build-essential binutils xxd strace libncurses5 \ 	neofetch zip unzip ncdu htop dosfstools dotfiles 快速就位 git clone https://github.com/dev2ero/dotfiles.git sh -c &amp;#34;$(curl -fsSL https://gitee.com/mirrors/oh-my-zsh/raw/master/tools/install.sh)&amp;#34; git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.</description>
     </item>
     
     <item>
@@ -102,8 +106,8 @@ output/images/zImage # 内核 output/images/rootfs.ext2 # ext2根文件系统镜
       <pubDate>Sun, 08 May 2022 21:45:00 +0800</pubDate>
       
       <guid>https://cerr.cc/post/linux_syscalls/</guid>
-      <description>传参规则 arch syscall NR return arg0 arg1 arg2 arg3 arg4 arg5 arm r7 r0 r0 r1 r2 r3 r4 r5 arm64 x8 x0 x0 x1 x2 x3 x4 x5 x86 eax eax ebx ecx edx esi edi ebp x86_64 rax rax rdi rsi rdx r10 r8 r9 x86_64 系统调用表 以下调用表皆基于linux4.14.0
-NR syscall name %rax arg0 (%rdi) arg1 (%rsi) arg2 (%rdx) 0 read 0x00 unsigned int fd char *buf size_t count 1 write 0x01 unsigned int fd const char *buf size_t count 2 open 0x02 const char *filename int flags umode_t mode 3 close 0x03 unsigned int fd - - 4 stat 0x04 const char *filename struct __old_kernel_stat *statbuf - 5 fstat 0x05 unsigned int fd struct __old_kernel_stat *statbuf - 6 lstat 0x06 const char *filename struct __old_kernel_stat *statbuf - 7 poll 0x07 struct pollfd *ufds unsigned int nfds int timeout 8 lseek 0x08 unsigned int fd off_t offset unsigned int whence 9 mmap 0x09 ?</description>
+      <description>传参规则    arch syscall NR return arg0 arg1 arg2 arg3 arg4 arg5     arm r7 r0 r0 r1 r2 r3 r4 r5   arm64 x8 x0 x0 x1 x2 x3 x4 x5   x86 eax eax ebx ecx edx esi edi ebp   x86_64 rax rax rdi rsi rdx r10 r8 r9    x86_64 系统调用表  以下调用表皆基于linux4.14.0
+    NR syscall name %rax arg0 (%rdi) arg1 (%rsi) arg2 (%rdx)     0 read 0x00 unsigned int fd char *buf size_t count   1 write 0x01 unsigned int fd const char *buf size_t count   2 open 0x02 const char *filename int flags umode_t mode   3 close 0x03 unsigned int fd - -   4 stat 0x04 const char *filename struct __old_kernel_stat *statbuf -   5 fstat 0x05 unsigned int fd struct __old_kernel_stat *statbuf -   6 lstat 0x06 const char *filename struct __old_kernel_stat *statbuf -   7 poll 0x07 struct pollfd *ufds unsigned int nfds int timeout   8 lseek 0x08 unsigned int fd off_t offset unsigned int whence   9 mmap 0x09 ?</description>
     </item>
     
     <item>
@@ -113,7 +117,7 @@ NR syscall name %rax arg0 (%rdi) arg1 (%rsi) arg2 (%rdx) 0 read 0x00 unsigned in
       
       <guid>https://cerr.cc/post/qemu_dbg_kernel/</guid>
       <description>From this post, our goal is tracing the execution procedure from kernel entry to userspace process (busybox init) by using qemu-system and gdb-multiarch.
-Preparation qemu-system-arm Compile it from source code or just use sudo apt install qemu-system-arm.
+ Preparation qemu-system-arm Compile it from source code or just use sudo apt install qemu-system-arm.
 kernel Linux kernel v4.1 for armel as an example. Compiling a linux kernel requires a matched version of gcc. For example, the linux kernel v4.1 requires the gcc version between 3 and 5:</description>
     </item>
     
@@ -123,19 +127,19 @@ kernel Linux kernel v4.1 for armel as an example. Compiling a linux kernel requi
       <pubDate>Sun, 08 May 2022 14:08:16 +0800</pubDate>
       
       <guid>https://cerr.cc/post/embeded_env/</guid>
-      <description>\x01 构建 编译工具链 命名遵循 arch-vendor-(os-)abi 的格式
-获取编译工具链的方式，可以直接从这些地方下载到：
-arm cortex-a:The GNU Toolchain for the Cortex-A Family Downloads
-arm cortex-m:GNU Arm Embedded Toolchain Downloads
-Linaro:arm:https://www.linaro.org/downloads/
-risc-v:https://github.com/riscv/riscv-gnu-toolchain/releases
-mips:https://www.mips.com/develop/tools/compilers/linux-toolchain/
-uclibc:https://www.uclibc.org/downloads/binaries/
-http://download.ronetix.info/toolchains/
-也可以使用buildroot手动构建：
-https://buildroot.org/ OS/ABI的匹配 通常情况下，选取编译交叉编译工具链时，指令集、平台之类的内容是不容易弄错的。但 OS/ABI 却是个容易造成故障的点。
+      <description>\x01 构建 编译工具链  命名遵循 arch-vendor-(os-)abi 的格式
+ 获取编译工具链的方式，可以直接从这些地方下载到：
+  arm cortex-a:The GNU Toolchain for the Cortex-A Family Downloads
+  arm cortex-m:GNU Arm Embedded Toolchain Downloads
+  Linaro:arm:https://www.linaro.org/downloads/
+  risc-v:https://github.com/riscv/riscv-gnu-toolchain/releases
+  mips:https://www.mips.com/develop/tools/compilers/linux-toolchain/
+  uclibc:https://www.uclibc.org/downloads/binaries/
+  http://download.ronetix.info/toolchains/
+  也可以使用buildroot手动构建：
+ https://buildroot.org/  OS/ABI的匹配 通常情况下，选取编译交叉编译工具链时，指令集、平台之类的内容是不容易弄错的。但 OS/ABI 却是个容易造成故障的点。
 举例来讲，在我一次对libnvram.so的编译时，得到的目标ELF文件为：
-~$ file libnvram.so libnvram.so: ELF 32-bit LSB shared object, ARM, version 1 (ARM), dynamically linked, not stripped ~$ armv5l-readelf -h libnvram.so ELF Header: Magic: 7f 45 4c 46 01 01 01 61 00 00 00 00 00 00 00 00 Class: ELF32 Data: 2&amp;#39;s complement, little endian Version: 1 (current) OS/ABI: ARM .</description>
+~$ file libnvram.so libnvram.so: ELF 32-bit LSB shared object, ARM, version 1 (ARM), dynamically linked, not stripped ~$ armv5l-readelf -h libnvram.</description>
     </item>
     
     <item>
@@ -147,8 +151,8 @@ https://buildroot.org/ OS/ABI的匹配 通常情况下，选取编译交叉编�
       <description>GNU/Linux 的桌面生态，开放虽是好事，但却由此带来了混乱。没有像微软这样的赛博中央政府制定规则，就产生了眼下这般群雄割据的态势。作为用户的我能做的，也只是择巨木而栖 —— 唯二的自由巨头 KDE 与 Gnome，二选其一。幼年气盛，爱好折腾，留下了些许美化的经验。时至今日，能回忆起的已然不多。尽力而为做些记录，为日后回归赛博左派留些盘缠。
 KDE plasma UI的（乡土风）现代感，很大部分要归因与透明化的效果。一年前的我也是透明化爱好者，恰逢那时使用 Archlinux + KDE，故记录如下KDE透明化配置方法。KDE自身本就具有各大DE中最为强大的视觉效果定制功能，所以如下所述只是KDE本身能力之外的美化方法：
 窗口边框透明化 使用
-https://github.com/ishovkun/SierraBreeze 或
-https://github.com/alex47/BreezeBlurred 在Archlinux上若出现编译错误，可以使用这位老哥打包好的安装包 https://github.com/alex47/BreezeBlurred/issues/24 面板透明化 需要自己魔改，参考如下大佬留下的教程：
+ https://github.com/ishovkun/SierraBreeze  或
+ https://github.com/alex47/BreezeBlurred  在Archlinux上若出现编译错误，可以使用这位老哥打包好的安装包  https://github.com/alex47/BreezeBlurred/issues/24      面板透明化 需要自己魔改，参考如下大佬留下的教程：
 https://www.joxrays.com/kde-panel-transparency/
 原始论坛帖子：
 https://forum.manjaro.org/t/where-can-the-transparency-of-the-kde-panel-be-set/50219
@@ -168,9 +172,7 @@ sudo apt install gnome-tweaks 使用gnome-tweaks就可以做一些此前没有�
 接下来安装gnome插件管理器 GNOME Shell Extensions：
 插件管理器的用户接口是基于浏览器提供的，需安装对应的Chrome或Firefox插件即可。
 对于Chrome，除了可以从Chrome商店下载外，也可以直接使用软件源里的包安装：
-sudo apt install chrome-gnome-shell Firefox插件地址为：https://addons.mozilla.org/en-US/firefox/addon/gnome-shell-integration/
-然后就可以访问 https://extensions.gnome.org/ 来管理gnome插件了：
-为了使用用户文件中的主题，需要安装 User Themes 插件并启用：</description>
+sudo apt install chrome-gnome-shell Firefox插件地址为：https://addons.</description>
     </item>
     
   </channel>

@@ -12,7 +12,7 @@
     <meta itemprop="description" content="一些相关的零碎记录">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
     
-    <link rel="stylesheet" href="https://cerr.cc/scss/style.min.a0720376e5afaef93db0bffb06929b9812afcbdd2dd422b40e3950899c8f8811.css" >
+    <link rel="stylesheet" href="https://cerr.cc/scss/style.min.b4c0fcfc62fbfeae4d796e4b4d66a7d8620cd3cd45974d8b814046dbc6a0b859.css" >
 </head>
 <body>
     <header>
@@ -202,24 +202,24 @@
 <article class="post">
   
     <div class="post-content"><h3 id="ip与ifconfig命令输出">ip与ifconfig命令输出</h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>~$ ip a
-</span></span><span style="display:flex;"><span>eth0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu <span style="color:#099">1500</span> qdisc fq_codel state UP group default qlen <span style="color:#099">1000</span>
-</span></span><span style="display:flex;"><span>    link/ether 00:0c:29:02:e4:a7 brd ff:ff:ff:ff:ff:ff
-</span></span><span style="display:flex;"><span>    inet 192.168.188.129/24 brd 192.168.188.255 scope global dynamic noprefixroute eth0
-</span></span><span style="display:flex;"><span>       valid_lft 1126sec preferred_lft 1126sec
-</span></span><span style="display:flex;"><span>    inet6 fe80::20c:29ff:fe02:e4a7/64 scope link noprefixroute 
-</span></span><span style="display:flex;"><span>       valid_lft forever preferred_lft forever
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>~$ ifconfig
-</span></span><span style="display:flex;"><span>eth0: <span style="color:#008080">flags</span><span style="color:#000;font-weight:bold">=</span>4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu <span style="color:#099">1500</span>
-</span></span><span style="display:flex;"><span>        inet 192.168.188.129  netmask 255.255.255.0  broadcast 192.168.188.255
-</span></span><span style="display:flex;"><span>        inet6 fe80::20c:29ff:fe02:e4a7  prefixlen <span style="color:#099">64</span>  scopeid 0x20&lt;link&gt;
-</span></span><span style="display:flex;"><span>        ether 00:0c:29:02:e4:a7  txqueuelen <span style="color:#099">1000</span>  <span style="color:#000;font-weight:bold">(</span>Ethernet<span style="color:#000;font-weight:bold">)</span>
-</span></span><span style="display:flex;"><span>        RX packets <span style="color:#099">959</span>  bytes <span style="color:#099">62153</span> <span style="color:#000;font-weight:bold">(</span>60.6 KiB<span style="color:#000;font-weight:bold">)</span>
-</span></span><span style="display:flex;"><span>        RX errors <span style="color:#099">0</span>  dropped <span style="color:#099">0</span>  overruns <span style="color:#099">0</span>  frame <span style="color:#099">0</span>
-</span></span><span style="display:flex;"><span>        TX packets <span style="color:#099">66</span>  bytes <span style="color:#099">7598</span> <span style="color:#000;font-weight:bold">(</span>7.4 KiB<span style="color:#000;font-weight:bold">)</span>
-</span></span><span style="display:flex;"><span>        TX errors <span style="color:#099">0</span>  dropped <span style="color:#099">0</span> overruns <span style="color:#099">0</span>  carrier <span style="color:#099">0</span>  collisions <span style="color:#099">0</span>
-</span></span></code></pre></div><h3 id="网卡的工作模式">网卡的工作模式</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">~$ ip a
+eth0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu <span style="color:#099">1500</span> qdisc fq_codel state UP group default qlen <span style="color:#099">1000</span>
+    link/ether 00:0c:29:02:e4:a7 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.188.129/24 brd 192.168.188.255 scope global dynamic noprefixroute eth0
+       valid_lft 1126sec preferred_lft 1126sec
+    inet6 fe80::20c:29ff:fe02:e4a7/64 scope link noprefixroute 
+       valid_lft forever preferred_lft forever
+
+~$ ifconfig
+eth0: <span style="color:#008080">flags</span><span style="color:#000;font-weight:bold">=</span>4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu <span style="color:#099">1500</span>
+        inet 192.168.188.129  netmask 255.255.255.0  broadcast 192.168.188.255
+        inet6 fe80::20c:29ff:fe02:e4a7  prefixlen <span style="color:#099">64</span>  scopeid 0x20&lt;link&gt;
+        ether 00:0c:29:02:e4:a7  txqueuelen <span style="color:#099">1000</span>  <span style="color:#000;font-weight:bold">(</span>Ethernet<span style="color:#000;font-weight:bold">)</span>
+        RX packets <span style="color:#099">959</span>  bytes <span style="color:#099">62153</span> <span style="color:#000;font-weight:bold">(</span>60.6 KiB<span style="color:#000;font-weight:bold">)</span>
+        RX errors <span style="color:#099">0</span>  dropped <span style="color:#099">0</span>  overruns <span style="color:#099">0</span>  frame <span style="color:#099">0</span>
+        TX packets <span style="color:#099">66</span>  bytes <span style="color:#099">7598</span> <span style="color:#000;font-weight:bold">(</span>7.4 KiB<span style="color:#000;font-weight:bold">)</span>
+        TX errors <span style="color:#099">0</span>  dropped <span style="color:#099">0</span> overruns <span style="color:#099">0</span>  carrier <span style="color:#099">0</span>  collisions <span style="color:#099">0</span>
+</code></pre></div><h3 id="网卡的工作模式">网卡的工作模式</h3>
 <ol>
 <li>广播模式（Broad Cast Model）：它的物理地址（MAC）地址是 0xffffff 的帧为广播帧，工作在广播模式的网卡接收广播帧；</li>
 <li>多播传送（MultiCast Model）：多播传送地址作为目的物理地址的帧可以被组内的其它主机同时接收，而组外主机却接收不到。但是，如果将网卡设置为多播传送模式，它可以接收所有的多播传送帧，而不论它是不是组内成员；</li>

@@ -12,7 +12,7 @@
     <meta itemprop="description" content="personal">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
     
-    <link rel="stylesheet" href="https://cerr.cc/scss/style.min.a0720376e5afaef93db0bffb06929b9812afcbdd2dd422b40e3950899c8f8811.css" >
+    <link rel="stylesheet" href="https://cerr.cc/scss/style.min.b4c0fcfc62fbfeae4d796e4b4d66a7d8620cd3cd45974d8b814046dbc6a0b859.css" >
 </head>
 <body>
     <header>
@@ -197,33 +197,33 @@
 <p>作为一个系统重装爱好者和硬件收集拾荒人，为了减少在环境配置上浪费的生命，记录常用环境配置命令用以直接复制粘贴</p>
 </blockquote>
 <h2 id="个人-apt-源-linux-初始环境软件安装">个人 apt 源 Linux 初始环境软件安装</h2>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>sudo apt install zsh git man man-db manpages ssh neovim tmux <span style="color:#d14">\
-</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>	gcc g++ gdb gdb-multiarch gdbserver flex bison <span style="color:#d14">\
-</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>	curl wget netcat net-tools nmap tcpdump <span style="color:#d14">\
-</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>	python3 ipython3 python-is-python3 python3-pip <span style="color:#d14">\
-</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>	build-essential binutils xxd strace libncurses5 <span style="color:#d14">\
-</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>	neofetch zip unzip ncdu htop dosfstools
-</span></span></code></pre></div><h2 id="dotfiles-快速就位">dotfiles 快速就位</h2>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>git clone https://github.com/dev2ero/dotfiles.git
-</span></span><span style="display:flex;"><span>sh -c <span style="color:#d14">&#34;</span><span style="color:#000;font-weight:bold">$(</span>curl -fsSL https://gitee.com/mirrors/oh-my-zsh/raw/master/tools/install.sh<span style="color:#000;font-weight:bold">)</span><span style="color:#d14">&#34;</span>
-</span></span><span style="display:flex;"><span>git clone https://github.com/zsh-users/zsh-autosuggestions <span style="color:#d14">${</span><span style="color:#008080">ZSH_CUSTOM</span><span style="color:#000;font-weight:bold">:-</span>~/.oh-my-zsh/custom<span style="color:#d14">}</span>/plugins/zsh-autosuggestions
-</span></span><span style="display:flex;"><span>git clone https://github.com/zsh-users/zsh-syntax-highlighting.git <span style="color:#d14">${</span><span style="color:#008080">ZSH_CUSTOM</span><span style="color:#000;font-weight:bold">:-</span>~/.oh-my-zsh/custom<span style="color:#d14">}</span>/plugins/zsh-syntax-highlighting
-</span></span><span style="display:flex;"><span>sh -c <span style="color:#d14">&#39;curl -fLo &#34;${XDG_DATA_HOME:-$HOME/.local/share}&#34;/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim&#39;</span>
-</span></span><span style="display:flex;"><span>mkdir -p ~/.config/nvim/
-</span></span><span style="display:flex;"><span>cp <span style="color:#d14">`</span><span style="color:#0086b3">pwd</span><span style="color:#d14">`</span>/dotfiles/init.vim ~/.config/nvim/init.vim
-</span></span><span style="display:flex;"><span>cp <span style="color:#d14">`</span><span style="color:#0086b3">pwd</span><span style="color:#d14">`</span>/dotfiles/zshrc ~/.zshrc
-</span></span><span style="display:flex;"><span><span style="color:#0086b3">source</span> ~/.zshrc
-</span></span></code></pre></div><h2 id="docker-安装">docker 安装</h2>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">sudo apt install zsh git man man-db manpages ssh neovim tmux <span style="color:#d14">\
+</span><span style="color:#d14"></span>	gcc g++ gdb gdb-multiarch gdbserver flex bison <span style="color:#d14">\
+</span><span style="color:#d14"></span>	curl wget netcat net-tools nmap tcpdump <span style="color:#d14">\
+</span><span style="color:#d14"></span>	python3 ipython3 python-is-python3 python3-pip <span style="color:#d14">\
+</span><span style="color:#d14"></span>	build-essential binutils xxd strace libncurses5 <span style="color:#d14">\
+</span><span style="color:#d14"></span>	neofetch zip unzip ncdu htop dosfstools
+</code></pre></div><h2 id="dotfiles-快速就位">dotfiles 快速就位</h2>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">git clone https://github.com/dev2ero/dotfiles.git
+sh -c <span style="color:#d14">&#34;</span><span style="color:#000;font-weight:bold">$(</span>curl -fsSL https://gitee.com/mirrors/oh-my-zsh/raw/master/tools/install.sh<span style="color:#000;font-weight:bold">)</span><span style="color:#d14">&#34;</span>
+git clone https://github.com/zsh-users/zsh-autosuggestions <span style="color:#d14">${</span><span style="color:#008080">ZSH_CUSTOM</span><span style="color:#000;font-weight:bold">:-</span>~/.oh-my-zsh/custom<span style="color:#d14">}</span>/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git <span style="color:#d14">${</span><span style="color:#008080">ZSH_CUSTOM</span><span style="color:#000;font-weight:bold">:-</span>~/.oh-my-zsh/custom<span style="color:#d14">}</span>/plugins/zsh-syntax-highlighting
+sh -c <span style="color:#d14">&#39;curl -fLo &#34;${XDG_DATA_HOME:-$HOME/.local/share}&#34;/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim&#39;</span>
+mkdir -p ~/.config/nvim/
+cp <span style="color:#d14">`</span><span style="color:#0086b3">pwd</span><span style="color:#d14">`</span>/dotfiles/init.vim ~/.config/nvim/init.vim
+cp <span style="color:#d14">`</span><span style="color:#0086b3">pwd</span><span style="color:#d14">`</span>/dotfiles/zshrc ~/.zshrc
+<span style="color:#0086b3">source</span> ~/.zshrc
+</code></pre></div><h2 id="docker-安装">docker 安装</h2>
 <p>官方安装脚本：</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
-</span></span></code></pre></div><p>拉取特定镜像并设定共享文件夹：</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>sudo docker run -it -v /home/zkv/docker_share/:/share ubuntu:16.04
-</span></span></code></pre></div><h2 id="pwn-环境简易就位">pwn 环境简易就位</h2>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>apt install gdb gdb-multiarch gdbserver
-</span></span><span style="display:flex;"><span>git clone https://github.com/pwndbg/pwndbg; <span style="color:#0086b3">cd</span> pwndbg; ./setup.sh
-</span></span><span style="display:flex;"><span><span style="color:#0086b3">echo</span> -n <span style="color:#d14">&#34;set syntax-highlight-style tango&#34;</span> &gt;&gt; ~/.gdbinit
-</span></span><span style="display:flex;"><span>pip install some-package -i https://pypi.tuna.tsinghua.edu.cn/simple
-</span></span></code></pre></div></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
+</code></pre></div><p>拉取特定镜像并设定共享文件夹：</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">sudo docker run -it -v /home/zkv/docker_share/:/share ubuntu:16.04
+</code></pre></div><h2 id="pwn-环境简易就位">pwn 环境简易就位</h2>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">apt install gdb gdb-multiarch gdbserver
+git clone https://github.com/pwndbg/pwndbg; <span style="color:#0086b3">cd</span> pwndbg; ./setup.sh
+<span style="color:#0086b3">echo</span> -n <span style="color:#d14">&#34;set syntax-highlight-style tango&#34;</span> &gt;&gt; ~/.gdbinit
+pip install some-package -i https://pypi.tuna.tsinghua.edu.cn/simple
+</code></pre></div></div>
   
 </article>
 <button class="floating-button">

@@ -319,6 +319,8 @@ Device Drivers  --->
 
 如想要手动添加内核驱动，参考：[https://stackoverflow.com/questions/11710022/adding-new-driver-code-to-linux-source-code](https://stackoverflow.com/questions/11710022/adding-new-driver-code-to-linux-source-code)
 
+> Tip: If you want a sample of linux.config for a specific platform, take a look at `buildroot/board`
+
 配置完毕，开始编译：
 
 ```sh

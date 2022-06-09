@@ -12,7 +12,7 @@
     <meta itemprop="description" content="构建、运行与调试">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
     
-    <link rel="stylesheet" href="https://cerr.cc/scss/style.min.a0720376e5afaef93db0bffb06929b9812afcbdd2dd422b40e3950899c8f8811.css" >
+    <link rel="stylesheet" href="https://cerr.cc/scss/style.min.b4c0fcfc62fbfeae4d796e4b4d66a7d8620cd3cd45974d8b814046dbc6a0b859.css" >
 </head>
 <body>
     <header>
@@ -237,32 +237,32 @@
 <h4 id="osabi的匹配">OS/ABI的匹配</h4>
 <p>通常情况下，选取编译交叉编译工具链时，指令集、平台之类的内容是不容易弄错的。但 OS/ABI 却是个容易造成故障的点。</p>
 <p>举例来讲，在我一次对libnvram.so的编译时，得到的目标ELF文件为：</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>~$ file libnvram.so
-</span></span><span style="display:flex;"><span>libnvram.so: ELF 32-bit LSB shared object, ARM, version <span style="color:#099">1</span> <span style="color:#000;font-weight:bold">(</span>ARM<span style="color:#000;font-weight:bold">)</span>, dynamically linked, not stripped
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>~$ armv5l-readelf -h libnvram.so                          
-</span></span><span style="display:flex;"><span>ELF Header:
-</span></span><span style="display:flex;"><span>  Magic:   7f <span style="color:#099">45</span> 4c <span style="color:#099">46</span> <span style="color:#099">01</span> <span style="color:#099">01</span> <span style="color:#099">01</span> <span style="color:#099">61</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> 
-</span></span><span style="display:flex;"><span>  Class:                             ELF32
-</span></span><span style="display:flex;"><span>  Data:                              2<span style="color:#a61717;background-color:#e3d2d2">&#39;</span>s complement, little endian
-</span></span><span style="display:flex;"><span>  Version:                           <span style="color:#099">1</span> <span style="color:#000;font-weight:bold">(</span>current<span style="color:#000;font-weight:bold">)</span>
-</span></span><span style="display:flex;"><span>  OS/ABI:                            ARM
-</span></span><span style="display:flex;"><span>  ......
-</span></span></code></pre></div><p>使用该自行编译的libnvram.so导致报错：</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>/sbin/init: error <span style="color:#000;font-weight:bold">while</span> loading shared libraries: /lib/libnvram.so: ELF file OS ABI invalid
-</span></span></code></pre></div><p>而原版无故障的libnvram.so为：</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>~$ file libnvram.so
-</span></span><span style="display:flex;"><span>libnvram.so: ELF 32-bit LSB shared object, ARM, EABI5 version <span style="color:#099">1</span> <span style="color:#000;font-weight:bold">(</span>SYSV<span style="color:#000;font-weight:bold">)</span>, dynamically linked, not stripped
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>~$ armv5l-readelf -h libnvram.so                          
-</span></span><span style="display:flex;"><span>ELF Header:
-</span></span><span style="display:flex;"><span>  Magic:   7f <span style="color:#099">45</span> 4c <span style="color:#099">46</span> <span style="color:#099">01</span> <span style="color:#099">01</span> <span style="color:#099">01</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> 
-</span></span><span style="display:flex;"><span>  Class:                             ELF32
-</span></span><span style="display:flex;"><span>  Data:                              2<span style="color:#a61717;background-color:#e3d2d2">&#39;</span>s complement, little endian
-</span></span><span style="display:flex;"><span>  Version:                           <span style="color:#099">1</span> <span style="color:#000;font-weight:bold">(</span>current<span style="color:#000;font-weight:bold">)</span>
-</span></span><span style="display:flex;"><span>  OS/ABI:                            UNIX - System V
-</span></span><span style="display:flex;"><span>  ......
-</span></span></code></pre></div><p>可以看到，两者的OS/ABI，一个是<code>ARM</code>，一个是<code>UNIX - System V</code></p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">~$ file libnvram.so
+libnvram.so: ELF 32-bit LSB shared object, ARM, version <span style="color:#099">1</span> <span style="color:#000;font-weight:bold">(</span>ARM<span style="color:#000;font-weight:bold">)</span>, dynamically linked, not stripped
+
+~$ armv5l-readelf -h libnvram.so                          
+ELF Header:
+  Magic:   7f <span style="color:#099">45</span> 4c <span style="color:#099">46</span> <span style="color:#099">01</span> <span style="color:#099">01</span> <span style="color:#099">01</span> <span style="color:#099">61</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> 
+  Class:                             ELF32
+  Data:                              2<span style="color:#a61717;background-color:#e3d2d2">&#39;</span>s complement, little endian
+  Version:                           <span style="color:#099">1</span> <span style="color:#000;font-weight:bold">(</span>current<span style="color:#000;font-weight:bold">)</span>
+  OS/ABI:                            ARM
+  ......
+</code></pre></div><p>使用该自行编译的libnvram.so导致报错：</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">/sbin/init: error <span style="color:#000;font-weight:bold">while</span> loading shared libraries: /lib/libnvram.so: ELF file OS ABI invalid
+</code></pre></div><p>而原版无故障的libnvram.so为：</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">~$ file libnvram.so
+libnvram.so: ELF 32-bit LSB shared object, ARM, EABI5 version <span style="color:#099">1</span> <span style="color:#000;font-weight:bold">(</span>SYSV<span style="color:#000;font-weight:bold">)</span>, dynamically linked, not stripped
+
+~$ armv5l-readelf -h libnvram.so                          
+ELF Header:
+  Magic:   7f <span style="color:#099">45</span> 4c <span style="color:#099">46</span> <span style="color:#099">01</span> <span style="color:#099">01</span> <span style="color:#099">01</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> <span style="color:#099">00</span> 
+  Class:                             ELF32
+  Data:                              2<span style="color:#a61717;background-color:#e3d2d2">&#39;</span>s complement, little endian
+  Version:                           <span style="color:#099">1</span> <span style="color:#000;font-weight:bold">(</span>current<span style="color:#000;font-weight:bold">)</span>
+  OS/ABI:                            UNIX - System V
+  ......
+</code></pre></div><p>可以看到，两者的OS/ABI，一个是<code>ARM</code>，一个是<code>UNIX - System V</code></p>
 <blockquote>
 <p>ABI描述应用程序与操作系统、应用程序与库、应用程序的组成部分之间的低层接口。ABI允许编译好的目标代码在使用兼容ABI的系统中无需改动就能运行</p>
 </blockquote>
