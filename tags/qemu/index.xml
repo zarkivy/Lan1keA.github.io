@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>QEMU on Zikey Vi</title>
+    <link>https://cerr.cc/tags/qemu/</link>
+    <description>Recent content in QEMU on Zikey Vi</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>© 2022, Zikey Vi</copyright>
+    <lastBuildDate>Thu, 09 Jun 2022 17:44:21 +0800</lastBuildDate><atom:link href="https://cerr.cc/tags/qemu/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CVE-2015-5165 QEMU信息泄露漏洞分析</title>
+      <link>https://cerr.cc/post/cve-2015-5165/</link>
+      <pubDate>Thu, 09 Jun 2022 17:44:21 +0800</pubDate>
+      
+      <guid>https://cerr.cc/post/cve-2015-5165/</guid>
+      <description>waiting </description>
+    </item>
+    
+  </channel>
+</rss>

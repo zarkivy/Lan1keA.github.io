@@ -6,10 +6,6 @@
     <description>Recent content in Categories on Zikey Vi</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <copyright>© 2022, Zikey Vi</copyright>
-    
-	<atom:link href="https://cerr.cc/categories/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <copyright>© 2022, Zikey Vi</copyright><atom:link href="https://cerr.cc/categories/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

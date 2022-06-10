@@ -7,11 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>© 2022, Zikey Vi</copyright>
-    <lastBuildDate>Thu, 26 May 2022 15:51:22 +0800</lastBuildDate>
-    
-	<atom:link href="https://cerr.cc/tags/%E8%99%9A%E6%8B%9F%E5%8C%96/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Thu, 26 May 2022 15:51:22 +0800</lastBuildDate><atom:link href="https://cerr.cc/tags/%E8%99%9A%E6%8B%9F%E5%8C%96/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>记一次qemu-system-arm仿真的排错</title>
       <link>https://cerr.cc/post/qemu_armv8_dbg/</link>
@@ -57,7 +53,7 @@ output/images/zImage # 内核 output/images/rootfs.ext2 # ext2根文件系统镜
       
       <guid>https://cerr.cc/post/qemu_dbg_kernel/</guid>
       <description>From this post, our goal is tracing the execution procedure from kernel entry to userspace process (busybox init) by using qemu-system and gdb-multiarch.
- Preparation qemu-system-arm Compile it from source code or just use sudo apt install qemu-system-arm.
+Preparation qemu-system-arm Compile it from source code or just use sudo apt install qemu-system-arm.
 kernel Linux kernel v4.1 for armel as an example. Compiling a linux kernel requires a matched version of gcc. For example, the linux kernel v4.1 requires the gcc version between 3 and 5:</description>
     </item>
     

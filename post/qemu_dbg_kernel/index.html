@@ -12,7 +12,7 @@
     <meta itemprop="description" content="compile, emulate and debug">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
     
-    <link rel="stylesheet" href="https://cerr.cc/scss/style.min.b4c0fcfc62fbfeae4d796e4b4d66a7d8620cd3cd45974d8b814046dbc6a0b859.css" >
+    <link rel="stylesheet" href="https://cerr.cc/scss/style.min.a0720376e5afaef93db0bffb06929b9812afcbdd2dd422b40e3950899c8f8811.css" >
 </head>
 <body>
     <header>
@@ -205,117 +205,117 @@
 <p>Linux kernel v4.1 for armel as an example.
 Compiling a linux kernel requires a matched version of gcc.
 For example, the linux kernel v4.1 requires the gcc version between 3 and 5:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">linunx-v4.1 $ find . -name <span style="color:#d14">&#34;compiler-gcc*.h&#34;</span>
-./include/linux/compiler-gcc.h
-./include/linux/compiler-gcc3.h
-./include/linux/compiler-gcc4.h
-./include/linux/compiler-gcc5.h
-</code></pre></div><p>So how can we get the old version gcc?
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>linunx-v4.1 $ find . -name <span style="color:#d14">&#34;compiler-gcc*.h&#34;</span>
+</span></span><span style="display:flex;"><span>./include/linux/compiler-gcc.h
+</span></span><span style="display:flex;"><span>./include/linux/compiler-gcc3.h
+</span></span><span style="display:flex;"><span>./include/linux/compiler-gcc4.h
+</span></span><span style="display:flex;"><span>./include/linux/compiler-gcc5.h
+</span></span></code></pre></div><p>So how can we get the old version gcc?
 You can always rely on buildroot: <a href="https://buildroot.org/download.html">https://buildroot.org/download.html</a></p>
 <p>Just clone it&rsquo;s repository:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">git clone https://git.buildroot.net/buildroot
-</code></pre></div><p>And switch to the specific old release you required.
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>git clone https://git.buildroot.net/buildroot
+</span></span></code></pre></div><p>And switch to the specific old release you required.
 You can check gcc release history from here</p>
 <p>GCC5 is released in 2015, so we switch buildroot&rsquo;s release version to 2015.08.x :</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">git switch 2015.08.x
-</code></pre></div><p>And then,</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">make menuconfig
-<span style="color:#998;font-style:italic"># edit with yourself</span>
-make
-</code></pre></div><p>But an error occured in this step (this because we are using an old version of buildroot) :</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>git switch 2015.08.x
+</span></span></code></pre></div><p>And then,</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>make menuconfig
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># edit with yourself</span>
+</span></span><span style="display:flex;"><span>make
+</span></span></code></pre></div><p>But an error occured in this step (this because we are using an old version of buildroot) :</p>
 <blockquote>
 <p>error &ldquo;Please port gnulib freadahead.c to your platform!</p>
 </blockquote>
 <p>cd to /buildroot/output/build/host-m4-1.4.17 and excute :</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">sed -i <span style="color:#d14">&#39;s/IO_ftrylockfile/IO_EOF_SEEN/&#39;</span> lib/*.c
-<span style="color:#0086b3">echo</span> <span style="color:#d14">&#34;#define _IO_IN_BACKUP 0x100&#34;</span> &gt;&gt; lib/stdio-impl.h
-</code></pre></div><p>Then make again, we will get the old version of GCC we want.
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>sed -i <span style="color:#d14">&#39;s/IO_ftrylockfile/IO_EOF_SEEN/&#39;</span> lib/*.c
+</span></span><span style="display:flex;"><span><span style="color:#0086b3">echo</span> <span style="color:#d14">&#34;#define _IO_IN_BACKUP 0x100&#34;</span> &gt;&gt; lib/stdio-impl.h
+</span></span></code></pre></div><p>Then make again, we will get the old version of GCC we want.
 Ready for compiling the old version linux kernel :)</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">git clone https://github.com/torvalds/linux.git
-git checkout v4.1
-make <span style="color:#008080">ARCH</span><span style="color:#000;font-weight:bold">=</span>arm <span style="color:#008080">O</span><span style="color:#000;font-weight:bold">=</span>./build/armel menuconfig
-</code></pre></div><p>Make sure that CONFIG_DEBUG_INFO is enabled. (You can configure it in the .config file directly, or in kernel-hack item from menuconfig interface.)</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">make <span style="color:#008080">ARCH</span><span style="color:#000;font-weight:bold">=</span>arm <span style="color:#008080">O</span><span style="color:#000;font-weight:bold">=</span>./build/armel <span style="color:#008080">CROSS_COMPILE</span><span style="color:#000;font-weight:bold">=</span>/opt/crossc/armel-uclibc-gcc-4/usr/bin/arm-buildroot-linux-uclibcgnueabi- zImage -j<span style="color:#000;font-weight:bold">$(</span>nproc<span style="color:#000;font-weight:bold">)</span>
-</code></pre></div><p>We got zImage at build/armel/arch/arm/boot/zImage and vmlinux (with debug symbols) at build/armel</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>git clone https://github.com/torvalds/linux.git
+</span></span><span style="display:flex;"><span>git checkout v4.1
+</span></span><span style="display:flex;"><span>make <span style="color:#008080">ARCH</span><span style="color:#000;font-weight:bold">=</span>arm <span style="color:#008080">O</span><span style="color:#000;font-weight:bold">=</span>./build/armel menuconfig
+</span></span></code></pre></div><p>Make sure that CONFIG_DEBUG_INFO is enabled. (You can configure it in the .config file directly, or in kernel-hack item from menuconfig interface.)</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>make <span style="color:#008080">ARCH</span><span style="color:#000;font-weight:bold">=</span>arm <span style="color:#008080">O</span><span style="color:#000;font-weight:bold">=</span>./build/armel <span style="color:#008080">CROSS_COMPILE</span><span style="color:#000;font-weight:bold">=</span>/opt/crossc/armel-uclibc-gcc-4/usr/bin/arm-buildroot-linux-uclibcgnueabi- zImage -j<span style="color:#000;font-weight:bold">$(</span>nproc<span style="color:#000;font-weight:bold">)</span>
+</span></span></code></pre></div><p>We got zImage at build/armel/arch/arm/boot/zImage and vmlinux (with debug symbols) at build/armel</p>
 <h3 id="busybox">busybox</h3>
 <p>Even though we can use the busybox from the filesystem directly, we got no debug symbols from it.
 Thus we should compile busybox manually:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">git clone https://git.busybox.net/busybox/
-make menuconfig
-make <span style="color:#008080">CROSS_COMPILE</span><span style="color:#000;font-weight:bold">=</span>/opt/crossc/armel-uclibc-gcc-4/usr/bin/arm-buildroot-linux-uclibcgnueabi- -j<span style="color:#000;font-weight:bold">$(</span>nproc<span style="color:#000;font-weight:bold">)</span>
-</code></pre></div><p>Then the busybox_unstripped is produced.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>git clone https://git.busybox.net/busybox/
+</span></span><span style="display:flex;"><span>make menuconfig
+</span></span><span style="display:flex;"><span>make <span style="color:#008080">CROSS_COMPILE</span><span style="color:#000;font-weight:bold">=</span>/opt/crossc/armel-uclibc-gcc-4/usr/bin/arm-buildroot-linux-uclibcgnueabi- -j<span style="color:#000;font-weight:bold">$(</span>nproc<span style="color:#000;font-weight:bold">)</span>
+</span></span></code></pre></div><p>Then the busybox_unstripped is produced.</p>
 <h3 id="filesystem">filesystem</h3>
 <p>Hummm maybe obtain it by yourself?</p>
 <p>As for my situation, I just extract the filesystem from a TP-Link firmware.
 And we need do some modification to turn our filesystem directory to a filesystem image.
 Assume we have the rootfs directory made by bin etc sys usr var tmp &hellip;
 First of all, use dd to create a 50MB file filled with \x00</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">dd <span style="color:#000;font-weight:bold">if</span><span style="color:#000;font-weight:bold">=</span>/dev/zero <span style="color:#008080">of</span><span style="color:#000;font-weight:bold">=</span>rootfs.img <span style="color:#008080">bs</span><span style="color:#000;font-weight:bold">=</span>4k <span style="color:#008080">count</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">12800</span>
-</code></pre></div><p>We will regard this rootfs.img as our virtual disk containing root filesystem. So, continue modifing it.
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>dd <span style="color:#000;font-weight:bold">if</span><span style="color:#000;font-weight:bold">=</span>/dev/zero <span style="color:#008080">of</span><span style="color:#000;font-weight:bold">=</span>rootfs.img <span style="color:#008080">bs</span><span style="color:#000;font-weight:bold">=</span>4k <span style="color:#008080">count</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">12800</span>
+</span></span></code></pre></div><p>We will regard this rootfs.img as our virtual disk containing root filesystem. So, continue modifing it.
 The next step is create disk partitions using fdisk on rootfs.img :</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#0086b3">echo</span> -e <span style="color:#d14">&#34;o\nn\np\n1\n\n\nw&#34;</span> | sudo /sbin/fdisk rootfs.img
-</code></pre></div><p>With disk partition be ready, rootfs.img could be mounted to the host filesystem using kpartx :</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">sudo kpartx -a -s -v rootfs.img
-</code></pre></div><p>After that we got the corresponding device located at /dev/mapper/loop0p1</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#0086b3">echo</span> -e <span style="color:#d14">&#34;o\nn\np\n1\n\n\nw&#34;</span> | sudo /sbin/fdisk rootfs.img
+</span></span></code></pre></div><p>With disk partition be ready, rootfs.img could be mounted to the host filesystem using kpartx :</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>sudo kpartx -a -s -v rootfs.img
+</span></span></code></pre></div><p>After that we got the corresponding device located at /dev/mapper/loop0p1</p>
 <p>Format its major partition as ext2 format :</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">mkfs.ext2 /dev/mapper/loop0p1
-sync
-</code></pre></div><p>And then mount it to host filesystem path wherever you like :</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">sudo mount /dev/mapper/loop0p1 ./mount_dir
-</code></pre></div><p>We are done preparing here. All we should do next is copying all the files recursively from the origin root filesystem directory to our mounted directory,
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>mkfs.ext2 /dev/mapper/loop0p1
+</span></span><span style="display:flex;"><span>sync
+</span></span></code></pre></div><p>And then mount it to host filesystem path wherever you like :</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>sudo mount /dev/mapper/loop0p1 ./mount_dir
+</span></span></code></pre></div><p>We are done preparing here. All we should do next is copying all the files recursively from the origin root filesystem directory to our mounted directory,
 so that we got a rootfs.img image file containing the armel filesystem we want.
 Don&rsquo;t forget replace the origin bin/busybox with our manually compiled version.</p>
 <h3 id="tracing-time-">Tracing time !</h3>
 <p>Now we have :</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">workdir $ ls
-mount_dir rootfs.img vmlinux zImage
-</code></pre></div><p>Full system emulation command line :</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">qemu-system-arm -M virt -kernel ./zImage -drive <span style="color:#000;font-weight:bold">if</span><span style="color:#000;font-weight:bold">=</span>none,file<span style="color:#000;font-weight:bold">=</span>rootfs.img,format<span style="color:#000;font-weight:bold">=</span>raw,id<span style="color:#000;font-weight:bold">=</span>rootfs -device virtio-blk-device,drive<span style="color:#000;font-weight:bold">=</span>rootfs -append <span style="color:#d14">&#34;root=/dev/vda1 console=ttyS0 rw&#34;</span> -nographic -s -S
-</code></pre></div><blockquote>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>workdir $ ls
+</span></span><span style="display:flex;"><span>mount_dir rootfs.img vmlinux zImage
+</span></span></code></pre></div><p>Full system emulation command line :</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>qemu-system-arm -M virt -kernel ./zImage -drive <span style="color:#000;font-weight:bold">if</span><span style="color:#000;font-weight:bold">=</span>none,file<span style="color:#000;font-weight:bold">=</span>rootfs.img,format<span style="color:#000;font-weight:bold">=</span>raw,id<span style="color:#000;font-weight:bold">=</span>rootfs -device virtio-blk-device,drive<span style="color:#000;font-weight:bold">=</span>rootfs -append <span style="color:#d14">&#34;root=/dev/vda1 console=ttyS0 rw&#34;</span> -nographic -s -S
+</span></span></code></pre></div><blockquote>
 <p>tips :
 -s              shorthand for -gdb tcp::1234
 -S              freeze CPU at startup (use &lsquo;c&rsquo; to start execution)
 Terminate qemu-system-arm process with Ctrl-A + x</p>
 </blockquote>
 <p>qemu-system-arm process should be paused until we attach to it using gdb-multiarch:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">~$ gdb-multiarch
-<span style="color:#000;font-weight:bold">(</span>gdb<span style="color:#000;font-weight:bold">)</span>$ <span style="color:#0086b3">set</span> architecture arm
-The target architecture is <span style="color:#0086b3">set</span> to <span style="color:#d14">&#34;arm&#34;</span>.
-<span style="color:#000;font-weight:bold">(</span>gdb<span style="color:#000;font-weight:bold">)</span>$ file vmlinux
-Reading symbols from vmlinux...
-<span style="color:#000;font-weight:bold">(</span>gdb<span style="color:#000;font-weight:bold">)</span>$ target remote :1234
-</code></pre></div><p>We can not reach the bootloader&rsquo;s entry address 0x7c00 because we are not using our own bootloader and pass the -bios parameter to qemu.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>~$ gdb-multiarch
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">(</span>gdb<span style="color:#000;font-weight:bold">)</span>$ <span style="color:#0086b3">set</span> architecture arm
+</span></span><span style="display:flex;"><span>The target architecture is <span style="color:#0086b3">set</span> to <span style="color:#d14">&#34;arm&#34;</span>.
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">(</span>gdb<span style="color:#000;font-weight:bold">)</span>$ file vmlinux
+</span></span><span style="display:flex;"><span>Reading symbols from vmlinux...
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">(</span>gdb<span style="color:#000;font-weight:bold">)</span>$ target remote :1234
+</span></span></code></pre></div><p>We can not reach the bootloader&rsquo;s entry address 0x7c00 because we are not using our own bootloader and pass the -bios parameter to qemu.</p>
 <p>If you want to learn how kernel initialize itself, just use :</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#000;font-weight:bold">(</span>gdb<span style="color:#000;font-weight:bold">)</span>$ b kernel_init
-<span style="color:#000;font-weight:bold">(</span>gdb<span style="color:#000;font-weight:bold">)</span>$ c
-</code></pre></div><p>After a bunch of initializing work on memory, paging, hardware and drive, etc being done, the init binary (who has PID 1) is about to be execved.
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">(</span>gdb<span style="color:#000;font-weight:bold">)</span>$ b kernel_init
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">(</span>gdb<span style="color:#000;font-weight:bold">)</span>$ c
+</span></span></code></pre></div><p>After a bunch of initializing work on memory, paging, hardware and drive, etc being done, the init binary (who has PID 1) is about to be execved.
 The problem is, init is a usermode process and running in ring3, which has the different thread with kernel and virtual memory space, how we trace to it?
 The answer is straightforward: the program counter register (PC) is always holding the instruction&rsquo;s virtual address being excuted by CPU.
 So we can just check the entry address of init, and set a breakpoint at this address.
 Because I am using busybox to supply init, and this binary is belong to armel architecture, so I should typing :</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">arm-buildroot-linux-uclibcgnueabi-readelf -h mount_dir/bin/busybox
-</code></pre></div><p>It gave me :</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ini" data-lang="ini"><span style="color:#008080">ELF Header:</span>
-<span style="color:#008080">Magic:   7f 45 4c 46 01 01 01 00 00 00 00 00 00 00 00 00 </span>
-<span style="color:#008080">Class:                             ELF32</span>
-<span style="color:#008080">Data:                              2&#39;s complement, little endian</span>
-<span style="color:#008080">Version:                           1 (current)</span>
-<span style="color:#008080">OS/ABI:                            UNIX - System V</span>
-<span style="color:#008080">ABI Version:                       0</span>
-<span style="color:#008080">Type:                              EXEC (Executable file)</span>
-<span style="color:#008080">Machine:                           ARM</span>
-<span style="color:#008080">Version:                           0x1</span>
-<span style="color:#008080">Entry point address:               0x87a0</span>
-<span style="color:#008080">Start of program headers:          52 (bytes into file)</span>
-<span style="color:#008080">Start of section headers:          4008884 (bytes into file)</span>
-<span style="color:#008080">Flags:                             0x5000202, has entry point, Version5 EABI, soft-float ABI</span>
-<span style="color:#008080">Size of this header:               52 (bytes)</span>
-<span style="color:#008080">Size of program headers:           32 (bytes)</span>
-<span style="color:#008080">Number of program headers:         5</span>
-<span style="color:#008080">Size of section headers:           40 (bytes)</span>
-<span style="color:#008080">Number of section headers:         30</span>
-<span style="color:#008080">Section header string table index: 27</span>
-</code></pre></div><p>We find that the entry point address is 0x87a0.
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>arm-buildroot-linux-uclibcgnueabi-readelf -h mount_dir/bin/busybox
+</span></span></code></pre></div><p>It gave me :</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ini" data-lang="ini"><span style="display:flex;"><span><span style="color:#008080">ELF Header:</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">Magic:   7f 45 4c 46 01 01 01 00 00 00 00 00 00 00 00 00 </span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">Class:                             ELF32</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">Data:                              2&#39;s complement, little endian</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">Version:                           1 (current)</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">OS/ABI:                            UNIX - System V</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">ABI Version:                       0</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">Type:                              EXEC (Executable file)</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">Machine:                           ARM</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">Version:                           0x1</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">Entry point address:               0x87a0</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">Start of program headers:          52 (bytes into file)</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">Start of section headers:          4008884 (bytes into file)</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">Flags:                             0x5000202, has entry point, Version5 EABI, soft-float ABI</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">Size of this header:               52 (bytes)</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">Size of program headers:           32 (bytes)</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">Number of program headers:         5</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">Size of section headers:           40 (bytes)</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">Number of section headers:         30</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">Section header string table index: 27</span>
+</span></span></code></pre></div><p>We find that the entry point address is 0x87a0.
 0x87a0 is such a strange address that seems can not be a breakpoint address.
 The reason is that busybox is not compiled with CFLAG -no-pie. so add this CFLAG and compile busybox again, we will get the avaliable breakpoint address by readelf.
 So set a breakpoint at busybox&rsquo;s entry address and send c to gdb, we will reach to userspace directly.</p>
