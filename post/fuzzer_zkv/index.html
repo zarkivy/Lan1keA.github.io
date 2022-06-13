@@ -193,23 +193,23 @@
     <div id="content">
 <article class="post">
   
-    <div class="post-content"><h2 id="x00-早教教程">\x00 早教教程</h2>
-<h3 id="教程">教程</h3>
+    <div class="post-content"><h1 id="x00-早教教程">\x00 早教教程</h1>
+<h2 id="教程">教程</h2>
 <p><a href="https://github.com/google/fuzzing">谷歌的Fuzzing教程</a></p>
 <p><a href="https://www.fuzzingbook.org/">Fuzzingbook</a></p>
-<h3 id="课程">课程</h3>
+<h2 id="课程">课程</h2>
 <p><a href="https://pascal-group.bitbucket.io/teaching.html">南京大学：软件分析</a></p>
 <p><a href="https://www.bilibili.com/video/BV1b7411K7P4/?spm_id_from=333.788.videocard.1">南京大学：软件分析课程视频</a></p>
-<h3 id="博文">博文</h3>
+<h2 id="博文">博文</h2>
 <p><a href="https://blog.flanker017.me/fuzzing%e6%88%98%e4%ba%89-%e4%bb%8e%e5%88%80%e5%89%91%e5%bc%93%e6%96%a7%e5%88%b0%e6%98%9f%e7%90%83%e5%a4%a7%e6%88%98/">Fuzzing战争: 从刀剑弓斧到星球大战</a></p>
 <p><a href="https://blog.flanker017.me/fuzzing%e6%88%98%e4%ba%89%e7%b3%bb%e5%88%97%e4%b9%8b%e4%ba%8c%ef%bc%9a%e4%b8%8d%e7%95%8f%e6%b5%ae%e4%ba%91%e9%81%ae%e6%9c%9b%e7%9c%bc/">Fuzzing战争系列之二：不畏浮云遮望眼</a></p>
-<h3 id="练兵场">练兵场</h3>
+<h2 id="练兵场">练兵场</h2>
 <p><a href="https://github.com/antonio-morales/Fuzzing101">Fuzzing101</a></p>
-<h3 id="兵器">兵器</h3>
+<h2 id="兵器">兵器</h2>
 <p><a href="https://github.com/google/AFL">AFL</a></p>
 <p><a href="https://github.com/AFLplusplus/AFLplusplus">AFLplusplus</a></p>
-<h2 id="x01-学步车afl">\x01 学步车AFL</h2>
-<h3 id="最简单的-fuzzing-demo">最简单的 fuzzing demo</h3>
+<h1 id="x01-学步车afl">\x01 学步车AFL</h1>
+<h2 id="最简单的-fuzzing-demo">最简单的 fuzzing demo</h2>
 <p>使用AFL，故先安装：</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>git clone https://github.com/google/AFL.git
 </span></span><span style="display:flex;"><span><span style="color:#0086b3">cd</span> AFL
@@ -252,7 +252,7 @@
 </span></span><span style="display:flex;"><span>*** stack smashing detected ***: terminated
 </span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>1<span style="color:#000;font-weight:bold">]</span>    <span style="color:#099">1541204</span> abort      ./vulner &lt; fuzz_out/crashes/id:000000,sig:06,src:000000,op:havoc,rep:32
 </span></span></code></pre></div><p>可以看到发生了栈溢出。</p>
-<h3 id="为学步车装上名为sanitizers的轮子">为学步车装上名为sanitizers的轮子</h3>
+<h2 id="为学步车装上名为sanitizers的轮子">为学步车装上名为sanitizers的轮子</h2>
 <p>借助于<a href="https://github.com/google/sanitizers">sanitizers</a>获得更多崩溃的详细信息：</p>
 <p>开启<a href="https://github.com/google/fuzzing/blob/master/docs/ASan">AddressSanitizer</a>重新编译程序：</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span> afl-clang -fsanitize<span style="color:#000;font-weight:bold">=</span>address vulner.c -o vulner
@@ -309,7 +309,7 @@
 </span></span><span style="display:flex;"><span>  Shadow gap:              <span style="color:#008080">cc</span>
 </span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">==</span><span style="color:#008080">1541245</span><span style="color:#000;font-weight:bold">==</span>ABORTING
 </span></span></code></pre></div><p>由此得到了crash的详细信息输出。</p>
-<h3 id="黑盒测试qemu-mode拆走源码の轮儿">黑盒测试QEMU mode——拆走源码の轮儿</h3>
+<h2 id="黑盒测试qemu-mode拆走源码の轮儿">黑盒测试QEMU mode——拆走源码の轮儿</h2>
 <p>AFL的QEMU mode不会默认安装，而是需要我们手动安装：</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>sudo apt install libtool libtool-bin libcapstone-dev
 </span></span><span style="display:flex;"><span><span style="color:#0086b3">cd</span> AFL/qemu_mode
@@ -321,14 +321,14 @@
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>gcc vulner.c -o vulner
 </span></span></code></pre></div><p>开始QEMU mode黑盒fuzzing</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>afl-fuzz -Q -i fuzz_in -o fuzz_out ./vulner
-</span></span></code></pre></div><h3 id="afl并发学步车的四缸引擎">AFL并发——学步车的四缸引擎</h3>
+</span></span></code></pre></div><h2 id="afl并发学步车的四缸引擎">AFL并发——学步车的四缸引擎</h2>
 <p>通过-M指定master fuzzer进程，-S指定一系列slave fuzzer进程即可。四核机器就：</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>afl-fuzz -i fuzz_in -o fuzz_out -M fuzzer1 ./vulner
 </span></span><span style="display:flex;"><span>afl-fuzz -i fuzz_in -o fuzz_out -S fuzzer2 ./vulner
 </span></span><span style="display:flex;"><span>afl-fuzz -i fuzz_in -o fuzz_out -S fuzzer3 ./vulner
 </span></span><span style="display:flex;"><span>afl-fuzz -i fuzz_in -o fuzz_out -S fuzzer4 ./vulner
-</span></span></code></pre></div><h2 id="x02-四轮单车libfuzzer">\x02 四轮单车libFuzzer</h2>
-<h3 id="环境准备">环境准备</h3>
+</span></span></code></pre></div><h1 id="x02-四轮单车libfuzzer">\x02 四轮单车libFuzzer</h1>
+<h2 id="环境准备">环境准备</h2>
 <blockquote>
 <p>LibFuzzer is an in-process, coverage-guided, evolutionary fuzzing engine.</p>
 </blockquote>
@@ -349,7 +349,7 @@
 </span></span></code></pre></div><p>我得到了：</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">==</span><span style="color:#008080">2118349</span><span style="color:#000;font-weight:bold">==</span>ERROR: AddressSanitizer: heap-buffer-overflow on address 0x60200003d473 at pc 0x000000550453 bp 0x7fff521da530 sp 0x7fff521da528
 </span></span></code></pre></div><p>看来没问题，继续前进。</p>
-<h3 id="火花塞打火demo拆解">火花塞打火——demo拆解</h3>
+<h2 id="火花塞打火demo拆解">火花塞打火——demo拆解</h2>
 <p>样例程序如下：</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#998;font-style:italic">#include &lt;stdint.h&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">#include &lt;stddef.h&gt;</span>
@@ -479,7 +479,7 @@
 </span></span></code></pre></div><p>使用其复现漏洞：</p>
 <pre tabindex="0"><code>./a.out &lt; crash-0eb8e4ed029b774d80f2b66408203801cb982a60
 </code></pre><p>由此便是借助libFuzzer完成的最简单的Fuzzing与找到的漏洞。</p>
-<h3 id="下赛道后的复盘fuzzing输出解析">下赛道后的复盘——fuzzing输出解析</h3>
+<h2 id="下赛道后的复盘fuzzing输出解析">下赛道后的复盘——fuzzing输出解析</h2>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>INFO: Seed: <span style="color:#099">3918206239</span>
 </span></span></code></pre></div><p>The fuzzer has started with this random seed. Rerun it with <code>-seed=3918206239</code> to get the same result.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>INFO: -max_len is not provided; libFuzzer will not generate inputs larger than <span style="color:#099">4096</span> bytes
@@ -499,9 +499,9 @@
 </span></span></code></pre></div><p>On one of the inputs AddressSanitizer has detected a <code>heap-buffer-overflow</code> bug and aborted the execution.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#008080">artifact_prefix</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;./&#39;</span>; Test unit written to ./crash-0eb8e4ed029b774d80f2b66408203801cb982a60
 </span></span></code></pre></div><p>Before exiting the process libFuzzer has created a file on disc with the bytes that triggered the crash.</p>
-<h3 id="驾校实习cve-2014-0160">驾校实习——CVE-2014-0160</h3>
+<h2 id="驾校实习cve-2014-0160">驾校实习——CVE-2014-0160</h2>
 <p><a href="/post/cve-2014-0160/">见CVE-2014-0160分析</a></p>
-<h3 id="种子语料库">种子语料库</h3>
+<h2 id="种子语料库">种子语料库</h2>
 <p>使用谷歌的教程仓库实验：</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>git clone https://github.com/google/fuzzer-test-suite.git
 </span></span><span style="display:flex;"><span>mkdir woff; <span style="color:#0086b3">cd</span> woff;

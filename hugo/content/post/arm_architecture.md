@@ -12,7 +12,7 @@ Imagelink: "https://s2.loli.net/2022/06/01/YZMWEo7K6iF1aOt.jpg"
 
 
 
-## AArch32
+# AArch32
 
 **armel** : arm eabi little-endian, use soft float
 
@@ -20,7 +20,7 @@ Imagelink: "https://s2.loli.net/2022/06/01/YZMWEo7K6iF1aOt.jpg"
 
 
 
-## from AArch32 to AArch64
+# from AArch32 to AArch64
 
 Transitioning rom ARMv7 to ARMv8, all the basics you must know: 
 
@@ -33,7 +33,7 @@ Can legacy 32 bit app. (ARMv7 or earlier) run as is on the ARMv8 OS?
 
 
 
-## reference
+# reference
 
 - https://en.wikipedia.org/wiki/ARM_architecture_family
 

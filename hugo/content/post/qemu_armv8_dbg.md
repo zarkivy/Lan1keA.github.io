@@ -8,7 +8,7 @@ imagelink: "https://s2.loli.net/2022/05/26/RS1JrGW2t4vzD3M.jpg"
 
 
 
-## 🕵️探案
+# 🕵️探案
 
 在一次尝试使用`qemu-system-arm`对于asuswrt的固件进行仿真运行时，出现了十分诡异的问题：整个qemu-system、linux内核、固件文件系统运行完全正常，除了在使用到`openssl`时：
 
@@ -120,7 +120,7 @@ Dump of assembler code for function BIO_new:
 >
 > There is no 16-bit version of this instruction.
 
-`stl`指令只是A32和T32架构下可用，那么这两个架构对应的指令集是什么呢？继续Google：
+`stl`指令只是A32和T32处理器核下可用，那么这两个处理器核对应的指令集架构是什么呢？继续Google：
 
 [https://developer.arm.com/Processors/Cortex-A32](https://developer.arm.com/Processors/Cortex-A32)
 
@@ -332,7 +332,7 @@ Linux RT-AC86U 4.1.27 #2 SMP PREEMPT Thu Nov 11 17:12:59 CST 2021 aarch64
 
 
 
-## 👮收网
+# 👮收网
 
 qemu难道就不包含`Armv8`了吗？
 

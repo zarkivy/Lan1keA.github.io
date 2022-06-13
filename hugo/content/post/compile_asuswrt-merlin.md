@@ -8,7 +8,7 @@ imagelink : "https://www.asuswrt-merlin.net/sites/default/files/inline-images/ma
 
 
 
-## 获取梅林
+# 获取梅林
 
 官网如下：[asuswrt-merlin.net](http://asuswrt-merlin.net)
 
@@ -26,7 +26,7 @@ wget https://github.com/RMerl/asuswrt-merlin.ng/archive/refs/heads/master.zip
 
 
 
-## 环境准备
+# 环境准备
 
 README.txt 给出了编译方式：[https://github.com/RMerl/asuswrt-merlin.ng/blob/master/README.TXT](https://github.com/RMerl/asuswrt-merlin.ng/blob/master/README.TXT)
 
@@ -44,7 +44,7 @@ sudo docker run -it -v /home/zkv/docker_share/:/share ubuntu:16.04
 
 
 
-## 依赖安装
+# 依赖安装
 
 进入docker ubuntu环境后，下载并解压梅林ng：
 
@@ -88,7 +88,7 @@ echo "PATH=\$PATH:/opt/toolchains/crosstools-aarch64-gcc-5.3-linux-4.1-glibc-2.2
 
 
 
-## 开始编译
+# 开始编译
 
 ```sh
 cd ~/release/src-rt-5.02hnd
@@ -97,7 +97,7 @@ make rt-ac86u
 
 
 
-## Easymod
+# Easymod
 
 如上所述手动折腾到一半，发现了有简单模式的自动化方案。README内的信息实在太少，github wiki里有官方的编译构建教程：
 

@@ -8,7 +8,7 @@ imagelink: "https://s2.loli.net/2022/05/08/1vXerd2a3qCgcfQ.jpg"
 
 
 
-## 传参规则
+# 传参规则
 
 | arch   | syscall NR | return | arg0 | arg1 | arg2 | arg3 | arg4 | arg5 |
 | ------ | :--------: | :----: | :--: | :--: | :--: | :--: | :--: | :--: |
@@ -17,7 +17,7 @@ imagelink: "https://s2.loli.net/2022/05/08/1vXerd2a3qCgcfQ.jpg"
 | x86    |    eax     |  eax   | ebx  | ecx  | edx  | esi  | edi  | ebp  |
 | x86_64 |    rax     |  rax   | rdi  | rsi  | rdx  | r10  |  r8  |  r9  |
 
-## x86_64 系统调用表
+# x86_64 系统调用表
 
 > 以下调用表皆基于linux4.14.0
 
@@ -464,7 +464,7 @@ imagelink: "https://s2.loli.net/2022/05/08/1vXerd2a3qCgcfQ.jpg"
 | 438  |   *not implemented*    | 0x1b6 |                                   |                                      |                                               |
 | 439  |       faccessat2       | 0x1b7 |              int dfd              |         const char *filename         |                   int mode                    |
 
-## x86系统调用表
+# x86系统调用表
 
 | NR   |         syscall name         | %eax  |            arg0 (%ebx)            |             arg1 (%ecx)              |                  arg2 (%edx)                  |
 | :--- | :--------------------------: | :---: | :-------------------------------: | :----------------------------------: | :-------------------------------------------: |
@@ -909,7 +909,7 @@ imagelink: "https://s2.loli.net/2022/05/08/1vXerd2a3qCgcfQ.jpg"
 | 438  |      *not implemented*       | 0x1b6 |                                   |                                      |                                               |
 | 439  |          faccessat2          | 0x1b7 |              int dfd              |         const char *filename         |                   int mode                    |
 
-## arm32系统调用表
+# arm32系统调用表
 
 | NR     |         syscall name         |   %r7   |            arg0 (%r0)             |              arg1 (%r1)              |                  arg2 (%r2)                   |
 | ------ | :--------------------------: | :-----: | :-------------------------------: | :----------------------------------: | :-------------------------------------------: |
@@ -1360,7 +1360,7 @@ imagelink: "https://s2.loli.net/2022/05/08/1vXerd2a3qCgcfQ.jpg"
 | 983044 |          ARM_usr32           | 0xf0004 |                 ?                 |                  ?                   |                       ?                       |
 | 983045 |         ARM_set_tls          | 0xf0005 |                 ?                 |                  ?                   |                       ?                       |
 
-## aarch64系统调用表
+# aarch64系统调用表
 
 | NR   |      syscall name      |  %x8  |            arg0 (%x0)             |              arg1 (%x1)              |                  arg2 (%x2)                   |
 | ---- | :--------------------: | :---: | :-------------------------------: | :----------------------------------: | :-------------------------------------------: |

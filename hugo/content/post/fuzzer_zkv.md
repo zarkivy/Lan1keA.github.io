@@ -8,31 +8,31 @@ imagelink: "https://lcamtuf.coredump.cx/afl/afl_screen.png"
 
 
 
-##  \x00 早教教程
+#  \x00 早教教程
 
-### 教程
+## 教程
 
 [谷歌的Fuzzing教程](https://github.com/google/fuzzing)
 
 [Fuzzingbook](https://www.fuzzingbook.org/)
 
-### 课程
+## 课程
 
 [南京大学：软件分析](https://pascal-group.bitbucket.io/teaching.html)
 
 [南京大学：软件分析课程视频](https://www.bilibili.com/video/BV1b7411K7P4/?spm_id_from=333.788.videocard.1)
 
-### 博文
+## 博文
 
 [Fuzzing战争: 从刀剑弓斧到星球大战](https://blog.flanker017.me/fuzzing%e6%88%98%e4%ba%89-%e4%bb%8e%e5%88%80%e5%89%91%e5%bc%93%e6%96%a7%e5%88%b0%e6%98%9f%e7%90%83%e5%a4%a7%e6%88%98/)
 
 [Fuzzing战争系列之二：不畏浮云遮望眼](https://blog.flanker017.me/fuzzing%e6%88%98%e4%ba%89%e7%b3%bb%e5%88%97%e4%b9%8b%e4%ba%8c%ef%bc%9a%e4%b8%8d%e7%95%8f%e6%b5%ae%e4%ba%91%e9%81%ae%e6%9c%9b%e7%9c%bc/)
 
-### 练兵场
+## 练兵场
 
 [Fuzzing101](https://github.com/antonio-morales/Fuzzing101)
 
-### 兵器
+## 兵器
 
 [AFL](https://github.com/google/AFL)
 
@@ -40,9 +40,9 @@ imagelink: "https://lcamtuf.coredump.cx/afl/afl_screen.png"
 
 
 
-## \x01 学步车AFL
+# \x01 学步车AFL
 
-### 最简单的 fuzzing demo
+## 最简单的 fuzzing demo
 
 使用AFL，故先安装：
 
@@ -115,7 +115,7 @@ nothing happened
 
 可以看到发生了栈溢出。
 
-### 为学步车装上名为sanitizers的轮子
+## 为学步车装上名为sanitizers的轮子
 
 借助于[sanitizers](https://github.com/google/sanitizers)获得更多崩溃的详细信息：
 
@@ -183,7 +183,7 @@ Shadow byte legend (one shadow byte represents 8 application bytes):
 
 由此得到了crash的详细信息输出。
 
-### 黑盒测试QEMU mode——拆走源码の轮儿
+## 黑盒测试QEMU mode——拆走源码の轮儿
 
 AFL的QEMU mode不会默认安装，而是需要我们手动安装：
 
@@ -209,7 +209,7 @@ gcc vulner.c -o vulner
 afl-fuzz -Q -i fuzz_in -o fuzz_out ./vulner
 ```
 
-### AFL并发——学步车的四缸引擎
+## AFL并发——学步车的四缸引擎
 
 通过-M指定master fuzzer进程，-S指定一系列slave fuzzer进程即可。四核机器就：
 
@@ -222,9 +222,9 @@ afl-fuzz -i fuzz_in -o fuzz_out -S fuzzer4 ./vulner
 
 
 
-## \x02 四轮单车libFuzzer
+# \x02 四轮单车libFuzzer
 
-### 环境准备
+## 环境准备
 
 > LibFuzzer is an in-process, coverage-guided, evolutionary fuzzing engine.
 
@@ -258,7 +258,7 @@ clang++ -g -fsanitize=address,fuzzer fuzzing/tutorial/libFuzzer/fuzz_me.cc
 
 看来没问题，继续前进。
 
-### 火花塞打火——demo拆解
+## 火花塞打火——demo拆解
 
 样例程序如下：
 
@@ -422,7 +422,7 @@ artifact_prefix='./'; Test unit written to ./crash-0eb8e4ed029b774d80f2b66408203
 
 由此便是借助libFuzzer完成的最简单的Fuzzing与找到的漏洞。
 
-### 下赛道后的复盘——fuzzing输出解析
+## 下赛道后的复盘——fuzzing输出解析
 
 ```sh
 INFO: Seed: 3918206239
@@ -463,11 +463,11 @@ artifact_prefix='./'; Test unit written to ./crash-0eb8e4ed029b774d80f2b66408203
 
 Before exiting the process libFuzzer has created a file on disc with the bytes that triggered the crash. 
 
-### 驾校实习——CVE-2014-0160
+## 驾校实习——CVE-2014-0160
 
 [见CVE-2014-0160分析](/post/cve-2014-0160/)
 
-### 种子语料库
+## 种子语料库
 
 使用谷歌的教程仓库实验：
 

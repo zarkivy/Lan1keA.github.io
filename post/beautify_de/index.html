@@ -194,9 +194,9 @@
 <article class="post">
   
     <div class="post-content"><p>GNU/Linux 的桌面生态，开放虽是好事，但却由此带来了混乱。没有像微软这样的赛博中央政府制定规则，就产生了眼下这般群雄割据的态势。作为用户的我能做的，也只是择巨木而栖 —— 唯二的自由巨头 <strong>KDE</strong> 与 <strong>Gnome</strong>，二选其一。幼年气盛，爱好折腾，留下了些许美化的经验。时至今日，能回忆起的已然不多。尽力而为做些记录，为日后回归赛博左派留些盘缠。</p>
-<h2 id="kde-plasma">KDE plasma</h2>
+<h1 id="kde-plasma">KDE plasma</h1>
 <p>UI的（乡土风）现代感，很大部分要归因与透明化的效果。一年前的我也是透明化爱好者，恰逢那时使用 Archlinux + KDE，故记录如下KDE透明化配置方法。KDE自身本就具有各大DE中最为强大的视觉效果定制功能，所以如下所述只是KDE本身能力之外的美化方法：</p>
-<h3 id="窗口边框透明化">窗口边框透明化</h3>
+<h2 id="窗口边框透明化">窗口边框透明化</h2>
 <p>使用</p>
 <ul>
 <li><a href="https://github.com/ishovkun/SierraBreeze">https://github.com/ishovkun/SierraBreeze</a></li>
@@ -213,24 +213,24 @@
 </ul>
 </li>
 </ul>
-<h3 id="面板透明化">面板透明化</h3>
+<h2 id="面板透明化">面板透明化</h2>
 <p>需要自己魔改，参考如下大佬留下的教程：</p>
 <p><a href="https://www.joxrays.com/kde-panel-transparency/">https://www.joxrays.com/kde-panel-transparency/</a></p>
 <p>原始论坛帖子：</p>
 <p><a href="https://forum.manjaro.org/t/where-can-the-transparency-of-the-kde-panel-be-set/50219">https://forum.manjaro.org/t/where-can-the-transparency-of-the-kde-panel-be-set/50219</a></p>
-<h3 id="组件透明化">组件透明化</h3>
+<h2 id="组件透明化">组件透明化</h2>
 <p>这一需求有现成的工具Kvantum，亦有大佬教程如下：</p>
 <p><a href="https://blog.firerain.me/article/4">https://blog.firerain.me/article/4</a></p>
 <p>此外，便是一些其它的效果组件</p>
-<h3 id="macos风的dock栏">MacOS风的Dock栏</h3>
+<h2 id="macos风的dock栏">MacOS风的Dock栏</h2>
 <p>状态、菜单、任务栏的呈现方式，我个人更倾向与MacOS的方案。比起Windows，牺牲了些许效率，换取美感。</p>
 <p>KDE下使用 <strong>latte-dock</strong> 来获取MacOS风的Dock栏，这样就可以将本身的Panel变为MacOS下的常驻状态栏。</p>
 <p>仓库地址：<a href="https://github.com/KDE/latte-dock">https://github.com/KDE/latte-dock</a></p>
 <p>同时其是可以直接从KDE store一键下载安装的。</p>
-<h3 id="音乐可视化">音乐可视化</h3>
+<h2 id="音乐可视化">音乐可视化</h2>
 <p>Windows下可以使用Wallpaper engine，Linux就没有这个福分了，只能另寻替代方案。</p>
 <p>KDE插件 <strong>panon</strong> 能达到尚且凑活的效果，可以直接从插件商店一键安装。</p>
-<h2 id="gnome">Gnome</h2>
+<h1 id="gnome">Gnome</h1>
 <p>Gnome不像KDE，它没有向用户直接呈现UI定制接口，而是需要用户自行配置。好在Gnome同时也提供了美化总站：<a href="https://www.gnome-look.org/">https://www.gnome-look.org/</a></p>
 <p>网站中基本涵盖了所有美化选项与资源。但在此之前需要有一些预先配置（出于DE稳定性考虑，默认不将定制接口提供给小白用户）：</p>
 <p>安装 <strong>gnome-tweaks</strong></p>
@@ -246,10 +246,10 @@
 <p><a href="https://extensions.gnome.org/extension/19/user-themes/">https://extensions.gnome.org/extension/19/user-themes/</a></p>
 <p>然后在家目录建立名为 <code>.themes</code> 的文件夹，将下载到的各种主题资源解压至此。</p>
 <p>此后，尽情探索<a href="https://www.gnome-look.org/">https://www.gnome-look.org/</a>，将下载到的资源在gnome-tweaks中启用即可。</p>
-<h2 id="openbox">Openbox</h2>
+<h1 id="openbox">Openbox</h1>
 <p><a href="https://www.box-look.org/">https://www.box-look.org/</a></p>
-<h2 id="通用">通用</h2>
-<h3 id="shell美化">shell美化</h3>
+<h1 id="通用">通用</h1>
+<h2 id="shell美化">shell美化</h2>
 <p>shell并不属于DE的一部分，有个字符终端足矣。</p>
 <p>最流行的美化方案还是zsh的一套：</p>
 <ul>
@@ -301,16 +301,16 @@
 <blockquote>
 <p>fish也不错，开箱即用，但惜败于不兼容bash。</p>
 </blockquote>
-<h3 id="grub主题开机时的引导器界面主题">grub主题（开机时的引导器界面主题）</h3>
+<h2 id="grub主题开机时的引导器界面主题">grub主题（开机时的引导器界面主题）</h2>
 <p>来自gnome-look，但啥DE都能用，毕竟定制的是grub：</p>
 <p><a href="https://www.gnome-look.org/browse/cat/109/order/latest/">https://www.gnome-look.org/browse/cat/109/order/latest/</a></p>
-<h3 id="终端配色">终端配色</h3>
+<h2 id="终端配色">终端配色</h2>
 <p>如下仓库，应有尽有：</p>
 <p><a href="https://github.com/mbadolato/iTerm2-Color-Schemes">https://github.com/mbadolato/iTerm2-Color-Schemes</a></p>
-<h3 id="桌面状态监测器">桌面状态监测器</h3>
+<h2 id="桌面状态监测器">桌面状态监测器</h2>
 <p>使用 <strong>conky</strong>，仓库如下：</p>
 <p><a href="https://github.com/brndnmtthws/conky">https://github.com/brndnmtthws/conky</a></p>
-<h3 id="无x11">无X11</h3>
+<h2 id="无x11">无X11</h2>
 <p><strong>fbterm</strong></p>
 </div>
   

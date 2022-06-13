@@ -9,9 +9,6 @@ tags: [ "main" ]
 
 ### 操作系统
 
-- Linux kernel doc
-  - [https://www.kernel.org/doc/html/latest/](https://www.kernel.org/doc/html/latest/)
-
 - Linux kernel lab
   - [https://linux-kernel-labs.github.io/](https://linux-kernel-labs.github.io/)
 - 内核模块编程教程
@@ -19,9 +16,9 @@ tags: [ "main" ]
 - MIT 操作系统课程 2021
   - [https://pdos.csail.mit.edu/6.828/2021/schedule.html](https://pdos.csail.mit.edu/6.828/2021/schedule.html)
 - Linux inside
-  - https://0xax.gitbooks.io/linux-insides/content/Initialization/linux-initialization-1.html
+  - [https://0xax.gitbooks.io/linux-insides/content/Initialization/linux-initialization-1.html](https://0xax.gitbooks.io/linux-insides/content/Initialization/linux-initialization-1.html)
 - 在线浏览 Linux 源码
-  - https://elixir.bootlin.com/linux/latest/source
+  - [https://elixir.bootlin.com/linux/latest/source](https://elixir.bootlin.com/linux/latest/source)
 - Linux内核实践百科
   - [https://github.com/cirosantilli/linux-kernel-module-cheat](https://github.com/cirosantilli/linux-kernel-module-cheat)
 
@@ -47,12 +44,12 @@ tags: [ "main" ]
 - ARMv7 指令集胎教教程
   - [https://simplemachines.it/doc/arm_inst.pdf](https://simplemachines.it/doc/arm_inst.pdf)
 - ARMv7 指令集考试小抄
-  - https://pages.cs.wisc.edu/~markhill/restricted/arm_isa_quick_reference.pdf
+  - [https://pages.cs.wisc.edu/~markhill/restricted/arm_isa_quick_reference.pdf](https://pages.cs.wisc.edu/~markhill/restricted/arm_isa_quick_reference.pdf)
 - ARMv8 指令集考试小抄
-  - https://courses.cs.washington.edu/courses/cse469/19wi/arm64.pdf
+  - [https://courses.cs.washington.edu/courses/cse469/19wi/arm64.pdf](https://courses.cs.washington.edu/courses/cse469/19wi/arm64.pdf)
 
 - ARMv8 指令集宝宝识字挂图
-  - https://s2.loli.net/2022/05/09/UxFIkpBivKWzX6M.png
+  - [https://s2.loli.net/2022/05/09/UxFIkpBivKWzX6M.png](https://s2.loli.net/2022/05/09/UxFIkpBivKWzX6M.png)
 
 - x86与x64指令速查
   - [https://www.felixcloutier.com/x86/](https://www.felixcloutier.com/x86/)
@@ -79,7 +76,7 @@ tags: [ "main" ]
   - [https://libc.rip/](https://libc.rip/)
   - [https://libc.blukat.me/](https://libc.blukat.me/)
 - How to Hunt - 咋挖洞
-  - https://kathan19.gitbook.io/
+  - [https://kathan19.gitbook.io/](https://kathan19.gitbook.io/)
 - 几十年历史的老黑客杂志，里面不少文章具有开创性价值
   - [http://www.phrack.org/](http://www.phrack.org/)
 
@@ -133,9 +130,9 @@ tags: [ "main" ]
 - Git branch 的教程
   - [https://learngitbranching.js.org/?locale=zh_CN](https://learngitbranching.js.org/?locale=zh_CN)
 - CS 自学攻略
-  - https://teachyourselfcs.com/
+  - [https://teachyourselfcs.com/](https://teachyourselfcs.com/)
 - awesome-awesome 为世界上所有awesome而学
-  - https://github.com/sindresorhus/awesome
+  - [https://github.com/sindresorhus/awesome](https://github.com/sindresorhus/awesome)
 
 
 
@@ -144,9 +141,9 @@ tags: [ "main" ]
 - z-library，莫问电子书资源何处下载，此处应有尽有
   - [https://zh.zlibrary.org/](https://zh.zlibrary.org/)
 - web archive 互联网史料馆兼时光机，专治各种404与资源失效
-  - https://web.archive.org/
+  - [https://web.archive.org/](https://web.archive.org/)
 - 一个提供各种 IDA Pro 泄露版的暗网网站
-  - http://fckilfkscwusoopguhi7i6yg3l6tknaz7lrumvlhg5mvtxzxbbxlimid.onion/
+  - [http://fckilfkscwusoopguhi7i6yg3l6tknaz7lrumvlhg5mvtxzxbbxlimid.onion/](http://fckilfkscwusoopguhi7i6yg3l6tknaz7lrumvlhg5mvtxzxbbxlimid.onion/)
 
 
 

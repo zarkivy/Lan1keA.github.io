@@ -197,7 +197,7 @@
 <p>当我老了，回顾一生，就会发觉，我三分之一的生命，都浪费在和GFW作斗争上了。</p>
 <p>呜呼！何等宏伟啊！两千年多前的巨石，砌就秦帝国的坚不可摧；今日那日夜呼啸的服务器集群，彰显共和国非凡的制度自信。</p>
 </blockquote>
-<h2 id="top-level-solution-selection">Top-level solution selection</h2>
+<h1 id="top-level-solution-selection">Top-level solution selection</h1>
 <p>In terms of the ways I have tried myself:</p>
 <ul>
 <li>Use a VPN application</li>
@@ -211,7 +211,7 @@
 <li>High cost in time or money</li>
 <li>Stability is a concern</li>
 </ol>
-<h2 id="个人客户端解决方案">个人客户端解决方案</h2>
+<h1 id="个人客户端解决方案">个人客户端解决方案</h1>
 <blockquote>
 <p>具体使用方面就大白话讲了</p>
 </blockquote>
@@ -244,7 +244,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="代理层次">代理层次</h3>
+<h2 id="代理层次">代理层次</h2>
 <style>img{
     box-shadow: 5px 5px 5px rgba(0,0,0,.5);
     -moz-box-shadow: 5px 5px 5px rgba(0,0,0,.5);
@@ -256,15 +256,15 @@
 <p>再者就是于操作系统层面配置<strong>系统代理</strong>，这样一来所以会遵循系统代理设置的应用都会被代理。但同时也会有其它一些不遵守系统代理的应用。举例来讲，chrome默认是走系统代理的，而firefox则需手动配置选择代理方案。如右图是Windows11的系统代理设置，红框内的文字说明了其与VPN使用虚拟网卡的方案并不重叠。</p>
 <p>故若需要更精细化地控制系统中不同组件的代理行为，则更适合于使用<strong>应用层的代理接口</strong>。这种情况下，代理软件客户端做的仅仅是在本地打开一个端口用来监听和服务上层应用主动发来的代理请求，以此将是否被代理的选择权交由了每个应用本身。举例来说，v2rayN的蓝色图标对应的“清除系统代理”就是这种方案。</p>
 <p><img src="https://s2.loli.net/2022/05/09/HzWigwtaf5L26Sd.jpg" alt="Snipaste_2022-05-09_14-01-32.jpg"></p>
-<h3 id="各种应用的代理配置与镜像">各种应用的代理配置与镜像</h3>
-<h4 id="chrome">chrome</h4>
+<h2 id="各种应用的代理配置与镜像">各种应用的代理配置与镜像</h2>
+<h3 id="chrome">chrome</h3>
 <p>chrome 默认遵从系统代理。可是使用<strong>Proxy SwitchyOmega</strong>插件对chrome代理方式进行手动配置：</p>
 <p><a href="https://chrome.google.com/webstore/detail/proxy-switchyomega/padekgcemlokbadohgkifijomclgjgif">https://chrome.google.com/webstore/detail/proxy-switchyomega/padekgcemlokbadohgkifijomclgjgif</a></p>
-<h4 id="linux软件源">Linux软件源</h4>
+<h3 id="linux软件源">Linux软件源</h3>
 <p>不同Linux发行版具有不同的包管理器。即使是同一个发行版的不同版本（比如Ubuntu18.04与Ubuntu20.04），其上游软件源也是不同的。</p>
 <p>使用国内镜像为软件源换源可以大大加速安装软件源上的软件的过程。以tuna维护的清华源为例，我们来到使用帮助页面：<a href="https://mirrors.tuna.tsinghua.edu.cn/help">https://mirrors.tuna.tsinghua.edu.cn/help</a></p>
 <p>点击任意你想要使用清华源的服务（Linux软件源自然也涵盖在内），即能看到tuna为你提供的相应使用教程。（对于Linux软件源，需选定正确的系统版本）。</p>
-<h4 id="pip">pip</h4>
+<h3 id="pip">pip</h3>
 <p>可使用清华源：<a href="https://mirrors.tuna.tsinghua.edu.cn/help/pypi/">https://mirrors.tuna.tsinghua.edu.cn/help/pypi/</a></p>
 <p>若使用代理方案，在<code>~/.config/pip/pip.conf</code>，中添加：（将<code>http://127.0.0.1:1080</code>替换为你本地的http代理地址）</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ini" data-lang="ini"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[global]</span>
@@ -272,17 +272,17 @@
 </span></span></code></pre></div><blockquote>
 <p>不支持socks5协议</p>
 </blockquote>
-<h4 id="git">git</h4>
+<h3 id="git">git</h3>
 <p>（将<code>http://127.0.0.1:1080</code>替换为你本地的socks5代理地址）</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>git config --global http.proxy socks5://127.0.0.1:1080
-</span></span></code></pre></div><h4 id="apt">apt</h4>
+</span></span></code></pre></div><h3 id="apt">apt</h3>
 <p>在 <code>/etc/apt/apt.conf.d/</code> 目录下新增 <code>proxy.conf</code> 文件，加入：（将<code>http://127.0.0.1:1080</code>替换为你本地的http代理地址）</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ini" data-lang="ini"><span style="display:flex;"><span><span style="color:#008080">Acquire::http::Proxy &#34;http://127.0.0.1:1080/&#34;;</span>
 </span></span><span style="display:flex;"><span><span style="color:#008080">Acquire::https::Proxy &#34;http://127.0.0.1:1080/&#34;;</span>
 </span></span></code></pre></div><blockquote>
 <p>不支持socks5协议</p>
 </blockquote>
-<h4 id="curlwget">curl、wget</h4>
+<h3 id="curlwget">curl、wget</h3>
 <p>许多posix标准的命令行程序会遵从两个环境变量：</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#0086b3">export</span> <span style="color:#008080">http_proxy</span><span style="color:#000;font-weight:bold">=</span>http://proxyserver:port/
 </span></span><span style="display:flex;"><span><span style="color:#0086b3">export</span> <span style="color:#008080">https_proxy</span><span style="color:#000;font-weight:bold">=</span>https://proxyserver:port/

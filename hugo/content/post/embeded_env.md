@@ -8,9 +8,9 @@ imagelink: "https://s2.loli.net/2022/05/08/2DqjsbwNpdUM4XA.jpg"
 
 
 
-## \x01 构建
+# \x01 构建
 
-### 编译工具链
+## 编译工具链
 
 > 命名遵循 arch-vendor-(os-)abi 的格式
 
@@ -29,7 +29,7 @@ imagelink: "https://s2.loli.net/2022/05/08/2DqjsbwNpdUM4XA.jpg"
 
 - https://buildroot.org/
 
-#### OS/ABI的匹配
+### OS/ABI的匹配
 
 通常情况下，选取编译交叉编译工具链时，指令集、平台之类的内容是不容易弄错的。但 OS/ABI 却是个容易造成故障的点。
 
@@ -79,13 +79,13 @@ ELF Header:
 
 故换用标识了eabi的工具链重新编译即解决了该问题。
 
-## \x02 运行
+# \x02 运行
 
 
 
 
 
-## \x03 调试
+# \x03 调试
 
 
 

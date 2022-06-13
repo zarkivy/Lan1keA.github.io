@@ -195,7 +195,7 @@
     <div id="content">
 <article class="post">
   
-    <div class="post-content"><h2 id="探案">🕵️探案</h2>
+    <div class="post-content"><h1 id="探案">🕵️探案</h1>
 <p>在一次尝试使用<code>qemu-system-arm</code>对于asuswrt的固件进行仿真运行时，出现了十分诡异的问题：整个qemu-system、linux内核、固件文件系统运行完全正常，除了在使用到<code>openssl</code>时：</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>admin@<span style="color:#000;font-weight:bold">(</span>none<span style="color:#000;font-weight:bold">)</span>:/tmp/home/root# openssl
 </span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>    9.765639<span style="color:#000;font-weight:bold">]</span> openssl <span style="color:#000;font-weight:bold">(</span>274<span style="color:#000;font-weight:bold">)</span>: undefined instruction: <span style="color:#008080">pc</span><span style="color:#000;font-weight:bold">=</span>b6cf31a8
@@ -282,7 +282,7 @@
 <p>This 32-bit instruction is available in A32 and T32.</p>
 <p>There is no 16-bit version of this instruction.</p>
 </blockquote>
-<p><code>stl</code>指令只是A32和T32架构下可用，那么这两个架构对应的指令集是什么呢？继续Google：</p>
+<p><code>stl</code>指令只是A32和T32处理器核下可用，那么这两个处理器核对应的指令集架构是什么呢？继续Google：</p>
 <p><a href="https://developer.arm.com/Processors/Cortex-A32">https://developer.arm.com/Processors/Cortex-A32</a></p>
 <p>得到：</p>
 <blockquote>
@@ -443,7 +443,7 @@
 </blockquote>
 <p>由此破案了：华硕为这台路由器用了较新的A53 64位CPU和64位内核，内部软件却都是较旧的<code>Armv7</code>指令集下的32位软件。整台机器相当于是跑在一个“向下兼容模式”。</p>
 <p>——直到他们修复OpenSSL CVE-2022-0778时，固件中才首次出现了<code>Armv8</code>的软件OpenSSL。（当然配套依赖也引入了，如<code>ld-linux-aarch64.so.1</code>）</p>
-<h2 id="收网">👮收网</h2>
+<h1 id="收网">👮收网</h1>
 <p>qemu难道就不包含<code>Armv8</code>了吗？</p>
 <p>使用<code>qemu-user</code>试试：</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>~$ chroot asuswrt openssl

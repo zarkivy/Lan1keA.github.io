@@ -7,7 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>© 2022, Zikey Vi</copyright>
-    <lastBuildDate>Thu, 09 Jun 2022 17:44:21 +0800</lastBuildDate><atom:link href="https://cerr.cc/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 13 Jun 2022 17:41:00 +0800</lastBuildDate><atom:link href="https://cerr.cc/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ZKV的Linux Kernel学习之路</title>
+      <link>https://cerr.cc/post/linuxer_zkv/</link>
+      <pubDate>Mon, 13 Jun 2022 17:41:00 +0800</pubDate>
+      
+      <guid>https://cerr.cc/post/linuxer_zkv/</guid>
+      <description>内核文档 文档资源总览：https://www.kernel.org/doc/
+Latest kernel的HTML文档页：https://www.kernel.org/doc/html/latest
+但用浏览器看文档总归是不如在终端内直接man 9 printk来的爽。为啥是man 9？看看man man便知：
+1 Executable programs or shell commands 2 System calls (functions provided by the kernel) 3 Library calls (functions within program libraries) 4 Special files (usually found in /dev) 5 File formats and conventions, e.g. /etc/passwd 6 Games 7 Miscellaneous (including macro packages and conventions), e.g. man(7), groff(7) 8 System administration commands (usually only for root) 9 Kernel routines [Non standard] 但默认情况下会：</description>
+    </item>
+    
     <item>
       <title>CVE-2015-5165 QEMU信息泄露漏洞分析</title>
       <link>https://cerr.cc/post/cve-2015-5165/</link>
@@ -153,7 +165,7 @@ git clone https://github.com/google/AFL.git cd AFL make -j`nproc` sudo make inst
       
       <guid>https://cerr.cc/post/some_installation/</guid>
       <description>作为一个系统重装爱好者和硬件收集拾荒人，为了减少在环境配置上浪费的生命，记录常用环境配置命令用以直接复制粘贴
-个人 apt 源 Linux 初始环境软件安装 sudo apt install zsh git man man-db manpages ssh neovim tmux \ gcc g++ gdb gdb-multiarch gdbserver flex bison \ curl wget netcat net-tools nmap tcpdump \ python3 ipython3 python-is-python3 python3-pip \ build-essential binutils xxd strace libncurses5 \ neofetch zip unzip ncdu htop dosfstools dotfiles 快速就位 git clone https://github.com/dev2ero/dotfiles.git sh -c &amp;#34;$(curl -fsSL https://gitee.com/mirrors/oh-my-zsh/raw/master/tools/install.sh)&amp;#34; git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting sh -c &amp;#39;curl -fLo &amp;#34;${XDG_DATA_HOME:-$HOME/.</description>
+个人 apt 源 Linux 初始环境软件安装 sudo apt install zsh git man man-db manpages ssh neovim tmux \ gcc g++ gdb gdb-multiarch gdbserver flex bison make \ curl wget netcat net-tools nmap tcpdump \ python3 ipython3 python-is-python3 python3-pip \ build-essential binutils xxd strace libncurses5 \ neofetch zip unzip ncdu htop dosfstools nyancat cmatrix dotfiles 快速就位 git clone https://github.com/dev2ero/dotfiles.git sh -c &amp;#34;$(curl -fsSL https://gitee.com/mirrors/oh-my-zsh/raw/master/tools/install.sh)&amp;#34; git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions git clone https://github.</description>
     </item>
     
     <item>
@@ -281,21 +293,15 @@ sudo apt install chrome-gnome-shell Firefox插件地址为：https://addons.mozi
       <pubDate>Sat, 07 May 2022 19:53:05 +0800</pubDate>
       
       <guid>https://cerr.cc/main/utils/</guid>
-      <description>操作系统 Linux kernel doc
-https://www.kernel.org/doc/html/latest/ Linux kernel lab
-https://linux-kernel-labs.github.io/ 内核模块编程教程
-https://sysprog21.github.io/lkmpg/ MIT 操作系统课程 2021
-https://pdos.csail.mit.edu/6.828/2021/schedule.html Linux inside
-https://0xax.gitbooks.io/linux-insides/content/Initialization/linux-initialization-1.html 在线浏览 Linux 源码
-https://elixir.bootlin.com/linux/latest/source Linux内核实践百科
-https://github.com/cirosantilli/linux-kernel-module-cheat 编程 高级语言源代码与汇编结果的实时对照 https://godbolt.org/ 展开编译细节，向你展示C++代码背后的秘密 https://cppinsights.io/ 图形化展示你的正则表达式，学习正则好帮手 https://jex.im/regulex/#!flags=&amp;amp;re=%5E(a%7Cb)*%3F%24 C++ STL 算法库 https://zh.cppreference.com/w/cpp/algorithm 指令集 ARMv7 指令集胎教教程
+      <description>操作系统 Linux kernel lab https://linux-kernel-labs.github.io/ 内核模块编程教程 https://sysprog21.github.io/lkmpg/ MIT 操作系统课程 2021 https://pdos.csail.mit.edu/6.828/2021/schedule.html Linux inside https://0xax.gitbooks.io/linux-insides/content/Initialization/linux-initialization-1.html 在线浏览 Linux 源码 https://elixir.bootlin.com/linux/latest/source Linux内核实践百科 https://github.com/cirosantilli/linux-kernel-module-cheat 编程 高级语言源代码与汇编结果的实时对照 https://godbolt.org/ 展开编译细节，向你展示C++代码背后的秘密 https://cppinsights.io/ 图形化展示你的正则表达式，学习正则好帮手 https://jex.im/regulex/#!flags=&amp;amp;re=%5E(a%7Cb)*%3F%24 C++ STL 算法库 https://zh.cppreference.com/w/cpp/algorithm 指令集 ARMv7 指令集胎教教程
 https://simplemachines.it/doc/arm_inst.pdf ARMv7 指令集考试小抄
 https://pages.cs.wisc.edu/~markhill/restricted/arm_isa_quick_reference.pdf ARMv8 指令集考试小抄
 https://courses.cs.washington.edu/courses/cse469/19wi/arm64.pdf ARMv8 指令集宝宝识字挂图
 https://s2.loli.net/2022/05/09/UxFIkpBivKWzX6M.png x86与x64指令速查
 https://www.felixcloutier.com/x86/ https://cs.brown.edu/courses/cs033/docs/guides/x64_cheatsheet.pdf 虚拟化 空中巴士航空公司信息安全团队的 QEMU 内部机制解析 https://airbus-seclab.github.io/qemu_blog/ 开箱即用的嵌入式 debian rootfs 的 QEMU 镜像 https://people.debian.org/~aurel32/qemu/ 漏洞挖掘与利用 南京大学软件分析课程
 https://pascal-group.bitbucket.io/teaching.html 二进制shellcode database
-http://shell-storm.org/shellcode/ 两个libc在线查询网站</description>
+http://shell-storm.org/shellcode/ 两个libc在线查询网站
+https://libc.rip/ https://libc.blukat.me/ How to Hunt - 咋挖洞</description>
     </item>
     
     <item>

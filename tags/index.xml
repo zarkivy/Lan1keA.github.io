@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>© 2022, Zikey Vi</copyright>
-    <lastBuildDate>Thu, 09 Jun 2022 17:44:21 +0800</lastBuildDate><atom:link href="https://cerr.cc/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 13 Jun 2022 17:41:00 +0800</lastBuildDate><atom:link href="https://cerr.cc/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Linux</title>
+      <link>https://cerr.cc/tags/linux/</link>
+      <pubDate>Mon, 13 Jun 2022 17:41:00 +0800</pubDate>
+      
+      <guid>https://cerr.cc/tags/linux/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>QEMU</title>
       <link>https://cerr.cc/tags/qemu/</link>
@@ -32,15 +41,6 @@
       <pubDate>Wed, 01 Jun 2022 10:55:17 +0800</pubDate>
       
       <guid>https://cerr.cc/tags/arch/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Linux</title>
-      <link>https://cerr.cc/tags/linux/</link>
-      <pubDate>Thu, 26 May 2022 15:51:22 +0800</pubDate>
-      
-      <guid>https://cerr.cc/tags/linux/</guid>
       <description></description>
     </item>
     

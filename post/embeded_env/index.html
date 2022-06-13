@@ -201,8 +201,8 @@
     <div id="content">
 <article class="post">
   
-    <div class="post-content"><h2 id="x01-构建">\x01 构建</h2>
-<h3 id="编译工具链">编译工具链</h3>
+    <div class="post-content"><h1 id="x01-构建">\x01 构建</h1>
+<h2 id="编译工具链">编译工具链</h2>
 <blockquote>
 <p>命名遵循 arch-vendor-(os-)abi 的格式</p>
 </blockquote>
@@ -234,7 +234,7 @@
 <ul>
 <li><a href="https://buildroot.org/">https://buildroot.org/</a></li>
 </ul>
-<h4 id="osabi的匹配">OS/ABI的匹配</h4>
+<h3 id="osabi的匹配">OS/ABI的匹配</h3>
 <p>通常情况下，选取编译交叉编译工具链时，指令集、平台之类的内容是不容易弄错的。但 OS/ABI 却是个容易造成故障的点。</p>
 <p>举例来讲，在我一次对libnvram.so的编译时，得到的目标ELF文件为：</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>~$ file libnvram.so
@@ -268,8 +268,8 @@
 </blockquote>
 <p>导致这一结果的原因是：使用OABI编译工具链编译出的结果为<code>OS/ABI: ARM</code>，而使用EABI编译工具链编译出的结果为<code>OS/ABI: UNIX - System V</code>。关于OABI与EABI的区别，参见：<a href="https://docs.embeddedts.com/EABI_vs_OABI">https://docs.embeddedts.com/EABI_vs_OABI</a></p>
 <p>故换用标识了eabi的工具链重新编译即解决了该问题。</p>
-<h2 id="x02-运行">\x02 运行</h2>
-<h2 id="x03-调试">\x03 调试</h2>
+<h1 id="x02-运行">\x02 运行</h1>
+<h1 id="x03-调试">\x03 调试</h1>
 </div>
   
 </article>

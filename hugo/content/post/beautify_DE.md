@@ -12,11 +12,11 @@ GNU/Linux 的桌面生态，开放虽是好事，但却由此带来了混乱。�
 
 
 
-## KDE plasma
+# KDE plasma
 
 UI的（乡土风）现代感，很大部分要归因与透明化的效果。一年前的我也是透明化爱好者，恰逢那时使用 Archlinux + KDE，故记录如下KDE透明化配置方法。KDE自身本就具有各大DE中最为强大的视觉效果定制功能，所以如下所述只是KDE本身能力之外的美化方法：
 
-### 窗口边框透明化
+## 窗口边框透明化
 
 使用
 
@@ -28,7 +28,7 @@ UI的（乡土风）现代感，很大部分要归因与透明化的效果。一
   - 在Archlinux上若出现编译错误，可以使用这位老哥打包好的安装包
     - [https://github.com/alex47/BreezeBlurred/issues/24](https://github.com/alex47/BreezeBlurred/issues/24)
 
-### 面板透明化
+## 面板透明化
 
 需要自己魔改，参考如下大佬留下的教程：
 
@@ -38,7 +38,7 @@ UI的（乡土风）现代感，很大部分要归因与透明化的效果。一
 
 [https://forum.manjaro.org/t/where-can-the-transparency-of-the-kde-panel-be-set/50219](https://forum.manjaro.org/t/where-can-the-transparency-of-the-kde-panel-be-set/50219)
 
-### 组件透明化
+## 组件透明化
 
 这一需求有现成的工具Kvantum，亦有大佬教程如下：
 
@@ -48,7 +48,7 @@ UI的（乡土风）现代感，很大部分要归因与透明化的效果。一
 
 此外，便是一些其它的效果组件
 
-### MacOS风的Dock栏
+## MacOS风的Dock栏
 
 状态、菜单、任务栏的呈现方式，我个人更倾向与MacOS的方案。比起Windows，牺牲了些许效率，换取美感。
 
@@ -58,7 +58,7 @@ KDE下使用 **latte-dock** 来获取MacOS风的Dock栏，这样就可以将本�
 
 同时其是可以直接从KDE store一键下载安装的。
 
-### 音乐可视化
+## 音乐可视化
 
 Windows下可以使用Wallpaper engine，Linux就没有这个福分了，只能另寻替代方案。
 
@@ -66,7 +66,7 @@ KDE插件 **panon** 能达到尚且凑活的效果，可以直接从插件商店
 
 
 
-## Gnome
+# Gnome
 
 Gnome不像KDE，它没有向用户直接呈现UI定制接口，而是需要用户自行配置。好在Gnome同时也提供了美化总站：[https://www.gnome-look.org/](https://www.gnome-look.org/)
 
@@ -104,15 +104,15 @@ Firefox插件地址为：[https://addons.mozilla.org/en-US/firefox/addon/gnome-s
 
 
 
-## Openbox
+# Openbox
 
 [https://www.box-look.org/](https://www.box-look.org/)
 
 
 
-## 通用
+# 通用
 
-### shell美化
+## shell美化
 
 shell并不属于DE的一部分，有个字符终端足矣。
 
@@ -140,7 +140,7 @@ shell并不属于DE的一部分，有个字符终端足矣。
 
 
 
-### grub主题（开机时的引导器界面主题）
+## grub主题（开机时的引导器界面主题）
 
 来自gnome-look，但啥DE都能用，毕竟定制的是grub：
 
@@ -148,7 +148,7 @@ shell并不属于DE的一部分，有个字符终端足矣。
 
 
 
-### 终端配色
+## 终端配色
 
 如下仓库，应有尽有：
 
@@ -156,7 +156,7 @@ https://github.com/mbadolato/iTerm2-Color-Schemes
 
 
 
-### 桌面状态监测器
+## 桌面状态监测器
 
 使用 **conky**，仓库如下：
 
@@ -164,6 +164,6 @@ https://github.com/mbadolato/iTerm2-Color-Schemes
 
 
 
-### 无X11
+## 无X11
 
 **fbterm**

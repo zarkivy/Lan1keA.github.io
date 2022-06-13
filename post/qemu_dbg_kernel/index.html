@@ -198,10 +198,10 @@
     <div class="post-content"><blockquote>
 <p>From this post, our goal is tracing the execution procedure from kernel entry to userspace process (busybox init) by using qemu-system and gdb-multiarch.</p>
 </blockquote>
-<h2 id="preparation">Preparation</h2>
-<h3 id="qemu-system-arm">qemu-system-arm</h3>
+<h1 id="preparation">Preparation</h1>
+<h2 id="qemu-system-arm">qemu-system-arm</h2>
 <p>Compile it from source code or just use <code>sudo apt install qemu-system-arm</code>.</p>
-<h3 id="kernel">kernel</h3>
+<h2 id="kernel">kernel</h2>
 <p>Linux kernel v4.1 for armel as an example.
 Compiling a linux kernel requires a matched version of gcc.
 For example, the linux kernel v4.1 requires the gcc version between 3 and 5:</p>
@@ -237,14 +237,14 @@ Ready for compiling the old version linux kernel :)</p>
 </span></span></code></pre></div><p>Make sure that CONFIG_DEBUG_INFO is enabled. (You can configure it in the .config file directly, or in kernel-hack item from menuconfig interface.)</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>make <span style="color:#008080">ARCH</span><span style="color:#000;font-weight:bold">=</span>arm <span style="color:#008080">O</span><span style="color:#000;font-weight:bold">=</span>./build/armel <span style="color:#008080">CROSS_COMPILE</span><span style="color:#000;font-weight:bold">=</span>/opt/crossc/armel-uclibc-gcc-4/usr/bin/arm-buildroot-linux-uclibcgnueabi- zImage -j<span style="color:#000;font-weight:bold">$(</span>nproc<span style="color:#000;font-weight:bold">)</span>
 </span></span></code></pre></div><p>We got zImage at build/armel/arch/arm/boot/zImage and vmlinux (with debug symbols) at build/armel</p>
-<h3 id="busybox">busybox</h3>
+<h2 id="busybox">busybox</h2>
 <p>Even though we can use the busybox from the filesystem directly, we got no debug symbols from it.
 Thus we should compile busybox manually:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>git clone https://git.busybox.net/busybox/
 </span></span><span style="display:flex;"><span>make menuconfig
 </span></span><span style="display:flex;"><span>make <span style="color:#008080">CROSS_COMPILE</span><span style="color:#000;font-weight:bold">=</span>/opt/crossc/armel-uclibc-gcc-4/usr/bin/arm-buildroot-linux-uclibcgnueabi- -j<span style="color:#000;font-weight:bold">$(</span>nproc<span style="color:#000;font-weight:bold">)</span>
 </span></span></code></pre></div><p>Then the busybox_unstripped is produced.</p>
-<h3 id="filesystem">filesystem</h3>
+<h2 id="filesystem">filesystem</h2>
 <p>Hummm maybe obtain it by yourself?</p>
 <p>As for my situation, I just extract the filesystem from a TP-Link firmware.
 And we need do some modification to turn our filesystem directory to a filesystem image.
@@ -265,7 +265,7 @@ The next step is create disk partitions using fdisk on rootfs.img :</p>
 </span></span></code></pre></div><p>We are done preparing here. All we should do next is copying all the files recursively from the origin root filesystem directory to our mounted directory,
 so that we got a rootfs.img image file containing the armel filesystem we want.
 Don&rsquo;t forget replace the origin bin/busybox with our manually compiled version.</p>
-<h3 id="tracing-time-">Tracing time !</h3>
+<h2 id="tracing-time-">Tracing time !</h2>
 <p>Now we have :</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>workdir $ ls
 </span></span><span style="display:flex;"><span>mount_dir rootfs.img vmlinux zImage

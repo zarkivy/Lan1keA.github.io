@@ -12,20 +12,20 @@ imagelink: "https://s2.loli.net/2022/05/11/7aWbNEkesXlmYxH.jpg"
 
 
 
-## 个人 apt 源 Linux 初始环境软件安装
+# 个人 apt 源 Linux 初始环境软件安装
 
 ```sh
 sudo apt install zsh git man man-db manpages ssh neovim tmux \
-	gcc g++ gdb gdb-multiarch gdbserver flex bison \
+	gcc g++ gdb gdb-multiarch gdbserver flex bison make \
 	curl wget netcat net-tools nmap tcpdump \
 	python3 ipython3 python-is-python3 python3-pip \
 	build-essential binutils xxd strace libncurses5 \
-	neofetch zip unzip ncdu htop dosfstools
+	neofetch zip unzip ncdu htop dosfstools nyancat cmatrix
 ```
 
 
 
-## dotfiles 快速就位
+# dotfiles 快速就位
 
 ```sh
 git clone https://github.com/dev2ero/dotfiles.git
@@ -41,7 +41,7 @@ source ~/.zshrc
 
 
 
-## docker 安装
+# docker 安装
 
 官方安装脚本：
 
@@ -57,7 +57,7 @@ sudo docker run -it -v /home/zkv/docker_share/:/share ubuntu:16.04
 
 
 
-## pwn 环境简易就位
+# pwn 环境简易就位
 
 ```sh
 apt install gdb gdb-multiarch gdbserver
