@@ -2,7 +2,7 @@
 title: "一些配环境的cheasheet"
 description: "personal"
 date: 2022-05-10T21:13:54+08:00
-tags: [ "Linux" ]
+tags: [ "Linux", "Utils" ]
 imagelink: "https://s2.loli.net/2022/05/11/7aWbNEkesXlmYxH.jpg"
 ---
 

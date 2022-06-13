@@ -2,7 +2,7 @@
 title: "ARM简史"
 description: "劣质史学家的笔记草稿"
 date: 2022-06-01T10:55:17+08:00
-tags: [ "ARCH" ]
+tags: [ "ARCH", "ARM" ]
 Imagelink: "https://s2.loli.net/2022/06/01/YZMWEo7K6iF1aOt.jpg"
 ---
 

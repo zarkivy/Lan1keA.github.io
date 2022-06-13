@@ -2,7 +2,7 @@
 title: "关于Linux桌面的美化工作"
 description : "how to beautify your KDE || gnome"
 date: 2022-05-07T22:50:57+08:00
-tags: [ "Linux" ]
+tags: [ "Linux", "Utils"]
 imagelink: "https://s2.loli.net/2022/05/07/wqH1K7UnExrO4V5.jpg"
 ---
 

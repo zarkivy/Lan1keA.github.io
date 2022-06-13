@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ARM on Zikey Vi</title>
+    <link>https://cerr.cc/tags/arm/</link>
+    <description>Recent content in ARM on Zikey Vi</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>© 2022, Zikey Vi</copyright>
+    <lastBuildDate>Wed, 01 Jun 2022 10:55:17 +0800</lastBuildDate><atom:link href="https://cerr.cc/tags/arm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ARM简史</title>
+      <link>https://cerr.cc/post/arm_architecture/</link>
+      <pubDate>Wed, 01 Jun 2022 10:55:17 +0800</pubDate>
+      
+      <guid>https://cerr.cc/post/arm_architecture/</guid>
+      <description>ARM (stylised in lowercase as arm, formerly an acronym for Advanced RISC Machines and originally Acorn RISC Machine) is a family of reduced instruction set computer (RISC) instruction set architectures for computer processors, configured for various environments.
+AArch32 armel : arm eabi little-endian, use soft float
+armhf : arm hard float, arm with FPU
+from AArch32 to AArch64 Transitioning rom ARMv7 to ARMv8, all the basics you must know:
+https://events.static.linuxfound.org/sites/events/files/slides/KoreaLinuxForum-2014.pdf Can legacy 32 bit app.</description>
+    </item>
+    
+  </channel>
+</rss>

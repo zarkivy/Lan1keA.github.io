@@ -2,7 +2,7 @@
 title: "记一次qemu-system-arm仿真的排错"
 description: "居然是指令集的锅？"
 date: 2022-05-26T15:51:22+08:00
-tags: [ "虚拟化", "Linux" ]
+tags: [ "QEMU", "Linux" ]
 imagelink: "https://s2.loli.net/2022/05/26/RS1JrGW2t4vzD3M.jpg"
 ---
 

@@ -2,7 +2,7 @@
 title: "Cross debug kernel using qemu-system"
 description: "compile, emulate and debug"
 date: 2022-05-08T19:35:11+08:00
-tags: [ "虚拟化", "Linux" ]
+tags: [ "QEMU", "Linux" ]
 imagelink: "https://s2.loli.net/2022/05/08/MGJ3tsAVHSYrThj.jpg"
 ---
 

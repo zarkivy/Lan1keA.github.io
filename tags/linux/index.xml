@@ -49,6 +49,22 @@ admin@(none):/tmp/home/root# openssl [ 9.765639] openssl (274): undefined instru
     </item>
     
     <item>
+      <title>CVE-2021-3156 sudo 提权漏洞分析</title>
+      <link>https://cerr.cc/post/cve-2021-3156/</link>
+      <pubDate>Fri, 13 May 2022 23:02:59 +0800</pubDate>
+      
+      <guid>https://cerr.cc/post/cve-2021-3156/</guid>
+      <description>CVE-2021-3156是sudo中存在一个堆溢出漏洞。影响从1.8.2~1.8.31p2下的所有旧版本sudo，以及1.9.0~1.9.5p1的所有稳定版sudo。可以使得任何没有特权的用户均可使用默认的sudo配置获取root权限
+环境准备 使用apt获取软件源提供的sudo源码：
+sudo apt source sudo 却被告知：
+NOTICE: &amp;#39;sudo&amp;#39; packaging is maintained in the &amp;#39;Git&amp;#39; version control system at: https://salsa.debian.org/sudo-team/sudo.git Please use: git clone https://salsa.debian.org/sudo-team/sudo.git to retrieve the latest (possibly unreleased) updates to the package. 于是听话，从git仓库获取源码：
+git clone https://salsa.debian.org/sudo-team/sudo.git 接下来进行构建：
+# clone configure make git reset --hard 36955b3ef399efeea25824d32e6cfbaa444e9f07 # v1.9.5p1 CFLAGS+=-g ./configure --sysconfdir=`pwd`/examples --with-plugindir=`pwd`/plugins/sudoers/.libs make -j`nproc` 构建完成后在root用户下可以执行测试：
+LD_LIBRARY_PATH=./lib/util/.libs/ src/.libs/sudo 验证编译目标的确存在漏洞，前需事先创建名为 sudoedit 的 sudo 的软链接以绕过后续检查：
+cd src/.libs ln -s sudo sudoedit cd .</description>
+    </item>
+    
+    <item>
       <title>QEMU guest的网络配置</title>
       <link>https://cerr.cc/post/qemu-system_net_config/</link>
       <pubDate>Thu, 12 May 2022 16:35:52 +0800</pubDate>

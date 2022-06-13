@@ -7,7 +7,17 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>© 2022, Zikey Vi</copyright>
-    <lastBuildDate>Sat, 07 May 2022 22:53:05 +0800</lastBuildDate><atom:link href="https://cerr.cc/tags/utils/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 10 May 2022 21:13:54 +0800</lastBuildDate><atom:link href="https://cerr.cc/tags/utils/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>一些配环境的cheasheet</title>
+      <link>https://cerr.cc/post/some_installation/</link>
+      <pubDate>Tue, 10 May 2022 21:13:54 +0800</pubDate>
+      
+      <guid>https://cerr.cc/post/some_installation/</guid>
+      <description>作为一个系统重装爱好者和硬件收集拾荒人，为了减少在环境配置上浪费的生命，记录常用环境配置命令用以直接复制粘贴
+个人 apt 源 Linux 初始环境软件安装 sudo apt install zsh git man man-db manpages ssh neovim tmux \ gcc g++ gdb gdb-multiarch gdbserver flex bison make \ curl wget netcat net-tools nmap tcpdump \ python3 ipython3 python-is-python3 python3-pip \ build-essential binutils xxd strace libncurses5 \ neofetch zip unzip ncdu htop dosfstools nyancat cmatrix dotfiles 快速就位 git clone https://github.com/dev2ero/dotfiles.git sh -c &amp;#34;$(curl -fsSL https://gitee.com/mirrors/oh-my-zsh/raw/master/tools/install.sh)&amp;#34; git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions git clone https://github.</description>
+    </item>
+    
     <item>
       <title>Awesome Colors</title>
       <link>https://cerr.cc/post/awesome_colors/</link>
@@ -15,6 +25,41 @@
       
       <guid>https://cerr.cc/post/awesome_colors/</guid>
       <description>Awesome colors 波尔多红 #4f0009 克莱因蓝 #002FA7 普鲁士蓝 #003153 勃艮第红 #800020 邦迪蓝 #0095b6 木乃伊棕 #8f4b28 卡布里蓝 #1a5599 提香红 #b05923 蒂芙尼蓝 #81d8d0 覆盆子红 #9e2e24 虎皮黄 #e2af42 薄荷绿 #407d52 草黄 #cfb64a 星蓝 #9ab4cd 鸢尾蓝 #418ab4 苋菜紫 #8e2961 钢蓝 #101420 云峰白 #dae3e6 岩石棕 #8c502c 橄榄石绿 #b8ce8e 竹绿 #4fa485 钴蓝 #4692b9 月影白 #c2c4c3 笋皮棕 #6b331a 琉璃蓝 #22406a 黛蓝 #3f4f65 青白 #bee0d0 墨色 #4e606c 黯 #3f545b 玄青 #3b3a4e 漆黑 #141722 玄色 #370708 </description>
+    </item>
+    
+    <item>
+      <title>关于Linux桌面的美化工作</title>
+      <link>https://cerr.cc/post/beautify_de/</link>
+      <pubDate>Sat, 07 May 2022 22:50:57 +0800</pubDate>
+      
+      <guid>https://cerr.cc/post/beautify_de/</guid>
+      <description>GNU/Linux 的桌面生态，开放虽是好事，但却由此带来了混乱。没有像微软这样的赛博中央政府制定规则，就产生了眼下这般群雄割据的态势。作为用户的我能做的，也只是择巨木而栖 —— 唯二的自由巨头 KDE 与 Gnome，二选其一。幼年气盛，爱好折腾，留下了些许美化的经验。时至今日，能回忆起的已然不多。尽力而为做些记录，为日后回归赛博左派留些盘缠。
+KDE plasma UI的（乡土风）现代感，很大部分要归因与透明化的效果。一年前的我也是透明化爱好者，恰逢那时使用 Archlinux + KDE，故记录如下KDE透明化配置方法。KDE自身本就具有各大DE中最为强大的视觉效果定制功能，所以如下所述只是KDE本身能力之外的美化方法：
+窗口边框透明化 使用
+https://github.com/ishovkun/SierraBreeze 或
+https://github.com/alex47/BreezeBlurred 在Archlinux上若出现编译错误，可以使用这位老哥打包好的安装包 https://github.com/alex47/BreezeBlurred/issues/24 面板透明化 需要自己魔改，参考如下大佬留下的教程：
+https://www.joxrays.com/kde-panel-transparency/
+原始论坛帖子：
+https://forum.manjaro.org/t/where-can-the-transparency-of-the-kde-panel-be-set/50219
+组件透明化 这一需求有现成的工具Kvantum，亦有大佬教程如下：
+https://blog.firerain.me/article/4
+此外，便是一些其它的效果组件
+MacOS风的Dock栏 状态、菜单、任务栏的呈现方式，我个人更倾向与MacOS的方案。比起Windows，牺牲了些许效率，换取美感。
+KDE下使用 latte-dock 来获取MacOS风的Dock栏，这样就可以将本身的Panel变为MacOS下的常驻状态栏。
+仓库地址：https://github.com/KDE/latte-dock
+同时其是可以直接从KDE store一键下载安装的。
+音乐可视化 Windows下可以使用Wallpaper engine，Linux就没有这个福分了，只能另寻替代方案。
+KDE插件 panon 能达到尚且凑活的效果，可以直接从插件商店一键安装。
+Gnome Gnome不像KDE，它没有向用户直接呈现UI定制接口，而是需要用户自行配置。好在Gnome同时也提供了美化总站：https://www.gnome-look.org/
+网站中基本涵盖了所有美化选项与资源。但在此之前需要有一些预先配置（出于DE稳定性考虑，默认不将定制接口提供给小白用户）：
+安装 gnome-tweaks
+sudo apt install gnome-tweaks 使用gnome-tweaks就可以做一些此前没有的定制化了，同时作为后续美化的基本依赖。
+接下来安装gnome插件管理器 GNOME Shell Extensions：
+插件管理器的用户接口是基于浏览器提供的，需安装对应的Chrome或Firefox插件即可。
+对于Chrome，除了可以从Chrome商店下载外，也可以直接使用软件源里的包安装：
+sudo apt install chrome-gnome-shell Firefox插件地址为：https://addons.mozilla.org/en-US/firefox/addon/gnome-shell-integration/
+然后就可以访问 https://extensions.gnome.org/ 来管理gnome插件了：
+为了使用用户文件中的主题，需要安装 User Themes 插件并启用：</description>
     </item>
     
   </channel>
