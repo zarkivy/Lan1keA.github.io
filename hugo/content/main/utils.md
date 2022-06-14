@@ -59,6 +59,9 @@ tags: [ "main" ]
 
 ### 虚拟化
 
+- 在线浏览 QEMU 源码
+  - [https://elixir.bootlin.com/qemu/latest/source](https://elixir.bootlin.com/qemu/latest/source)
+
 - 空中巴士航空公司信息安全团队的 QEMU 内部机制解析
   - [https://airbus-seclab.github.io/qemu_blog/](https://airbus-seclab.github.io/qemu_blog/)
 - 开箱即用的嵌入式 debian rootfs 的 QEMU 镜像

@@ -298,10 +298,12 @@ https://simplemachines.it/doc/arm_inst.pdf ARMv7 指令集考试小抄
 https://pages.cs.wisc.edu/~markhill/restricted/arm_isa_quick_reference.pdf ARMv8 指令集考试小抄
 https://courses.cs.washington.edu/courses/cse469/19wi/arm64.pdf ARMv8 指令集宝宝识字挂图
 https://s2.loli.net/2022/05/09/UxFIkpBivKWzX6M.png x86与x64指令速查
-https://www.felixcloutier.com/x86/ https://cs.brown.edu/courses/cs033/docs/guides/x64_cheatsheet.pdf 虚拟化 空中巴士航空公司信息安全团队的 QEMU 内部机制解析 https://airbus-seclab.github.io/qemu_blog/ 开箱即用的嵌入式 debian rootfs 的 QEMU 镜像 https://people.debian.org/~aurel32/qemu/ 漏洞挖掘与利用 南京大学软件分析课程
+https://www.felixcloutier.com/x86/ https://cs.brown.edu/courses/cs033/docs/guides/x64_cheatsheet.pdf 虚拟化 在线浏览 QEMU 源码
+https://elixir.bootlin.com/qemu/latest/source 空中巴士航空公司信息安全团队的 QEMU 内部机制解析
+https://airbus-seclab.github.io/qemu_blog/ 开箱即用的嵌入式 debian rootfs 的 QEMU 镜像
+https://people.debian.org/~aurel32/qemu/ 漏洞挖掘与利用 南京大学软件分析课程
 https://pascal-group.bitbucket.io/teaching.html 二进制shellcode database
-http://shell-storm.org/shellcode/ 两个libc在线查询网站
-https://libc.rip/ https://libc.blukat.me/ How to Hunt - 咋挖洞</description>
+http://shell-storm.org/shellcode/ 两个libc在线查询网站</description>
     </item>
     
     <item>
