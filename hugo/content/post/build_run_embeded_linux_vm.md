@@ -16,7 +16,7 @@ imagelink: "https://s2.loli.net/2022/05/11/nNfYF7Lz4i3hBDT.jpg"
 
 官网：https://buildroot.org/
 
-git：`git clone https://git.busybox.net/buildroot`
+git：`git clone https://git.buildroot.net/buildroot`
 
 进入buildroot根目录，可以看到一个叫configs的文件夹，其中记录了许多硬件平台和部分qemu虚拟平台的默认配置参数。执行 `ls configs | grep qemu`，可以看到：
 

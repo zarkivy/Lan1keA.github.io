@@ -176,7 +176,7 @@ git clone https://github.com/google/AFL.git cd AFL make -j`nproc` sudo make inst
       <guid>https://cerr.cc/post/build_run_embeded_linux_vm/</guid>
       <description>Easymode Default 通过git或http获取buildroot：
 官网：https://buildroot.org/
-git：git clone https://git.busybox.net/buildroot
+git：git clone https://git.buildroot.net/buildroot
 进入buildroot根目录，可以看到一个叫configs的文件夹，其中记录了许多硬件平台和部分qemu虚拟平台的默认配置参数。执行 ls configs | grep qemu，可以看到：
 qemu_aarch64_sbsa_defconfig qemu_aarch64_virt_defconfig qemu_arm_versatile_defconfig qemu_arm_versatile_nommu_defconfig qemu_arm_vexpress_defconfig qemu_arm_vexpress_tz_defconfig qemu_m68k_mcf5208_defconfig qemu_m68k_q800_defconfig qemu_microblazebe_mmu_defconfig qemu_microblazeel_mmu_defconfig qemu_mips32r2el_malta_defconfig qemu_mips32r2_malta_defconfig qemu_mips32r6el_malta_defconfig qemu_mips32r6_malta_defconfig qemu_mips64el_malta_defconfig qemu_mips64_malta_defconfig qemu_mips64r6el_malta_defconfig qemu_mips64r6_malta_defconfig qemu_nios2_10m50_defconfig qemu_or1k_defconfig qemu_ppc64_e5500_defconfig qemu_ppc64le_powernv8_defconfig qemu_ppc64le_pseries_defconfig qemu_ppc64_pseries_defconfig qemu_ppc_bamboo_defconfig qemu_ppc_e500mc_defconfig qemu_ppc_g3beige_defconfig qemu_ppc_mac99_defconfig qemu_ppc_mpc8544ds_defconfig qemu_riscv32_virt_defconfig qemu_riscv64_virt_defconfig qemu_s390x_defconfig qemu_sh4eb_r2d_defconfig qemu_sh4_r2d_defconfig qemu_sparc64_sun4u_defconfig qemu_sparc_ss10_defconfig qemu_x86_64_defconfig qemu_x86_defconfig qemu_xtensa_lx60_defconfig qemu_xtensa_lx60_nommu_defconfig 举例来讲，我们使用 make qemu_arm_vexpress_defconfig，将qemu模拟的vexperss平台设为编译目标：
 make qemu_arm_vexpress_defconfig make 或者使用 make menuconfig 手动配置。
@@ -228,7 +228,7 @@ kernel Linux kernel v4.1 for armel as an example. Compiling a linux kernel requi
       <pubDate>Sun, 08 May 2022 14:08:16 +0800</pubDate>
       
       <guid>https://cerr.cc/post/embeded_env/</guid>
-      <description>\x01 构建 编译工具链 命名遵循 arch-vendor-(os-)abi 的格式
+      <description>\x01 构建 手动选取编译工具链 命名遵循 arch-vendor-(os-)abi 的格式
 获取编译工具链的方式，可以直接从这些地方下载到：
 arm cortex-a:The GNU Toolchain for the Cortex-A Family Downloads
 arm cortex-m:GNU Arm Embedded Toolchain Downloads
@@ -293,17 +293,29 @@ sudo apt install chrome-gnome-shell Firefox插件地址为：https://addons.mozi
       <pubDate>Sat, 07 May 2022 19:53:05 +0800</pubDate>
       
       <guid>https://cerr.cc/main/utils/</guid>
-      <description>操作系统 Linux kernel lab https://linux-kernel-labs.github.io/ 内核模块编程教程 https://sysprog21.github.io/lkmpg/ MIT 操作系统课程 2021 https://pdos.csail.mit.edu/6.828/2021/schedule.html Linux inside https://0xax.gitbooks.io/linux-insides/content/Initialization/linux-initialization-1.html 在线浏览 Linux 源码 https://elixir.bootlin.com/linux/latest/source Linux内核实践百科 https://github.com/cirosantilli/linux-kernel-module-cheat 编程 高级语言源代码与汇编结果的实时对照 https://godbolt.org/ 展开编译细节，向你展示C++代码背后的秘密 https://cppinsights.io/ 图形化展示你的正则表达式，学习正则好帮手 https://jex.im/regulex/#!flags=&amp;amp;re=%5E(a%7Cb)*%3F%24 C++ STL 算法库 https://zh.cppreference.com/w/cpp/algorithm 指令集 ARMv7 指令集胎教教程
+      <description>操作系统 Linux kernel lab
+https://linux-kernel-labs.github.io/ 内核模块编程教程
+https://sysprog21.github.io/lkmpg/ MIT 操作系统课程 2021
+https://pdos.csail.mit.edu/6.828/2021/schedule.html Linux inside
+https://0xax.gitbooks.io/linux-insides/content/Initialization/linux-initialization-1.html 在线浏览 Linux 源码
+https://elixir.bootlin.com/linux/latest/source Linux内核实践百科
+https://github.com/cirosantilli/linux-kernel-module-cheat Linux Kernel Wiki省力版
+https://github.com/0voice/linux_kernel_wiki 在线的操作系统虚拟机，包含许多老系统
+https://copy.sh/v86/ 系统软件博物馆
+https://winworldpc.com/library/operating-systems Windows下载站
+https://msdn.itellyou.cn/ https://hellowindows.cn/ 编程 高级语言源代码与汇编结果的实时对照
+https://godbolt.org/ 展开编译细节，向你展示C++代码背后的秘密
+https://cppinsights.io/ 图形化展示你的正则表达式，学习正则好帮手
+https://jex.im/regulex/#!flags=&amp;amp;re=%5E(a%7Cb)*%3F%24 C++ STL 算法库
+https://zh.cppreference.com/w/cpp/algorithm 数据结构与算法可视化
+https://visualgo.net/zh/ 正则表达式可视化
+https://regex-vis.com/ https://jex.im/regulex/#!flags=&amp;amp;re=%5E(a%7Cb)*%3F%24 指令集 ARMv7 指令集胎教教程
 https://simplemachines.it/doc/arm_inst.pdf ARMv7 指令集考试小抄
 https://pages.cs.wisc.edu/~markhill/restricted/arm_isa_quick_reference.pdf ARMv8 指令集考试小抄
 https://courses.cs.washington.edu/courses/cse469/19wi/arm64.pdf ARMv8 指令集宝宝识字挂图
 https://s2.loli.net/2022/05/09/UxFIkpBivKWzX6M.png x86与x64指令速查
 https://www.felixcloutier.com/x86/ https://cs.brown.edu/courses/cs033/docs/guides/x64_cheatsheet.pdf 虚拟化 在线浏览 QEMU 源码
-https://elixir.bootlin.com/qemu/latest/source 空中巴士航空公司信息安全团队的 QEMU 内部机制解析
-https://airbus-seclab.github.io/qemu_blog/ 开箱即用的嵌入式 debian rootfs 的 QEMU 镜像
-https://people.debian.org/~aurel32/qemu/ 漏洞挖掘与利用 南京大学软件分析课程
-https://pascal-group.bitbucket.io/teaching.html 二进制shellcode database
-http://shell-storm.org/shellcode/ 两个libc在线查询网站</description>
+https://elixir.bootlin.com/qemu/latest/source 空中巴士航空公司信息安全团队的 QEMU 内部机制解析</description>
     </item>
     
     <item>

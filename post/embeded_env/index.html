@@ -202,7 +202,7 @@
 <article class="post">
   
     <div class="post-content"><h1 id="x01-构建">\x01 构建</h1>
-<h2 id="编译工具链">编译工具链</h2>
+<h2 id="手动选取编译工具链">手动选取编译工具链</h2>
 <blockquote>
 <p>命名遵循 arch-vendor-(os-)abi 的格式</p>
 </blockquote>
@@ -268,6 +268,56 @@
 </blockquote>
 <p>导致这一结果的原因是：使用OABI编译工具链编译出的结果为<code>OS/ABI: ARM</code>，而使用EABI编译工具链编译出的结果为<code>OS/ABI: UNIX - System V</code>。关于OABI与EABI的区别，参见：<a href="https://docs.embeddedts.com/EABI_vs_OABI">https://docs.embeddedts.com/EABI_vs_OABI</a></p>
 <p>故换用标识了eabi的工具链重新编译即解决了该问题。</p>
+<h2 id="buildroot一把梭">buildroot一把梭</h2>
+<p>构建这一步，能用好buildroot的话基本就没有多少需要手动配置的步骤了。</p>
+<p>构建特定的目标前，我们要确定好各种参数：指令集架构、工具链、链接库……这当然都是可以经由<code>make menuconfig</code>一点点设定好的。不过更常用更快捷的方式，还是直接指定一个完全满足如上所有参数的特定平台，使用其defconfig即可。</p>
+<p>眼下我需要一个4.9LTS版本的内核，就以此为例了。</p>
+<p>首先由git仓库获取buildroot，而非由http下载特定发行包。这样做带来的方便是“一次下载，终生更新，随时切换”：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>git clone https://git.buildroot.net/buildroot
+</span></span></code></pre></div><p>由于内核版本对于构建环境的依赖，往往容易出现各种环境不匹配导致的编译失败，即是使用buildroot也自动构建也一样。所以我通常有如下三种递增的解决方案：</p>
+<ul>
+<li>最新版本buildroot中直接指定旧版本内核进行构建</li>
+<li>在与目标内核版本匹配的旧版本buildroot中进行构建</li>
+<li>在与 目标版本内核和buildroot版本 都匹配的 旧版发行版的docker容器中 进行构建</li>
+</ul>
+<p>由上到下，麻烦度递增，但构建成功率也递增。</p>
+<p>这里选取方案二继续进行演示。</p>
+<p>来此查询到Linux Kernel 4.9 LTS的发布日期：<a href="https://en.wikipedia.org/wiki/Linux_kernel_version_history">https://en.wikipedia.org/wiki/Linux_kernel_version_history</a></p>
+<p><img src="https://s2.loli.net/2022/06/14/avF3QMcVGLpreN4.png" alt="image.png"></p>
+<p>2016年12月。嗯，看看同时期的buildroot版本有：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>➜  buildroot git:<span style="color:#000;font-weight:bold">(</span>master<span style="color:#000;font-weight:bold">)</span> git switch 
+</span></span><span style="display:flex;"><span>2012.11.x  2016.08.x  2017.08.x  2018.08.x  2019.08.x  2020.08.x  2021.08.x  next
+</span></span><span style="display:flex;"><span>2013.08.x  2016.11.x  2017.11.x  2018.11.x  2019.11.x  2020.11.x  2021.11.x
+</span></span><span style="display:flex;"><span>2015.08.x  2017.02.x  2018.02.x  2019.02.x  2020.02.x  2021.02.x  2022.02.x
+</span></span><span style="display:flex;"><span>2015.11.x  2017.05.x  2018.05.x  2019.05.x  2020.05.x  2021.05.x  master
+</span></span></code></pre></div><p>晚于内核发布且最贴近的是2017.02.x，switch过去：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>➜  buildroot git:<span style="color:#000;font-weight:bold">(</span>master<span style="color:#000;font-weight:bold">)</span> git switch 2017.02.x
+</span></span><span style="display:flex;"><span>Branch <span style="color:#d14">&#39;2017.02.x&#39;</span> <span style="color:#0086b3">set</span> up to track remote branch <span style="color:#d14">&#39;2017.02.x&#39;</span> from <span style="color:#d14">&#39;origin&#39;</span>.
+</span></span><span style="display:flex;"><span>Switched to a new branch <span style="color:#d14">&#39;2017.02.x&#39;</span>
+</span></span></code></pre></div><p>由于我需要的目标平台是aarch64的virt，故搜索buildroot提供的默认配置defconfig并使用。接着<code>make</code>开始构建即可：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>➜  buildroot git:<span style="color:#000;font-weight:bold">(</span>2017.02.x<span style="color:#000;font-weight:bold">)</span> ls configs | grep qemu | grep aarch
+</span></span><span style="display:flex;"><span>qemu_aarch64_virt_defconfig
+</span></span><span style="display:flex;"><span>➜  buildroot git:<span style="color:#000;font-weight:bold">(</span>2017.02.x<span style="color:#000;font-weight:bold">)</span> make qemu_aarch64_virt_defconfig
+</span></span><span style="display:flex;"><span>……
+</span></span><span style="display:flex;"><span>➜  buildroot git:<span style="color:#000;font-weight:bold">(</span>2017.02.x<span style="color:#000;font-weight:bold">)</span> make
+</span></span><span style="display:flex;"><span>……
+</span></span></code></pre></div><p>喝几杯咖啡的时间（具体是几杯取决于你host的配置与网络环境），就能在output中拿到所有的结果：编译工具链、内核、链接库、rootfs、可引导磁盘镜像、qemu虚拟机一键启动脚本……</p>
+<p>☕️☕️☕️……</p>
+<p>好诶！居然又失败了😩👇</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>make: *** <span style="color:#000;font-weight:bold">[</span>package/pkg-generic.mk:219: /buildroot/output/build/host-m4-1.4.18/.stamp_built<span style="color:#000;font-weight:bold">]</span> Error <span style="color:#099">2</span>
+</span></span></code></pre></div><p>所以还得接着写。启动方案三，准备docker container：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>➜  ~ docker pull ubuntu:18.04
+</span></span><span style="display:flex;"><span>18.04: Pulling from library/ubuntu
+</span></span><span style="display:flex;"><span>09db6f815738: Pull <span style="color:#0086b3">complete</span>
+</span></span><span style="display:flex;"><span>Digest: sha256:478caf1bec1afd54a58435ec681c8755883b7eb843a8630091890130b15a79af
+</span></span><span style="display:flex;"><span>Status: Downloaded newer image <span style="color:#000;font-weight:bold">for</span> ubuntu:18.04
+</span></span><span style="display:flex;"><span>docker.io/library/ubuntu:18.04
+</span></span><span style="display:flex;"><span>➜  ~ docker run -it -v /vda/share:/to_host ubuntu:18.04 /bin/bash
+</span></span><span style="display:flex;"><span>root@c1c9ce358373:/# <span style="color:#0086b3">exit</span>
+</span></span><span style="display:flex;"><span>➜  ~ docker start c1; docker <span style="color:#0086b3">exec</span> -it c1 /bin/bash
+</span></span><span style="display:flex;"><span>c1
+</span></span><span style="display:flex;"><span>root@c1c9ce358373:/# 
+</span></span></code></pre></div><p>好了，这下buildroot也在老环境内了，再次重复上述步骤即可。</p>
 <h1 id="x02-运行">\x02 运行</h1>
 <h1 id="x03-调试">\x03 调试</h1>
 </div>

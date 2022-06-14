@@ -36,7 +36,7 @@ apt install libncurses5 libncurses5-dev m4 bison gawk flex libstdc++6-4.7-dev g+
       <pubDate>Sun, 08 May 2022 14:08:16 +0800</pubDate>
       
       <guid>https://cerr.cc/post/embeded_env/</guid>
-      <description>\x01 构建 编译工具链 命名遵循 arch-vendor-(os-)abi 的格式
+      <description>\x01 构建 手动选取编译工具链 命名遵循 arch-vendor-(os-)abi 的格式
 获取编译工具链的方式，可以直接从这些地方下载到：
 arm cortex-a:The GNU Toolchain for the Cortex-A Family Downloads
 arm cortex-m:GNU Arm Embedded Toolchain Downloads

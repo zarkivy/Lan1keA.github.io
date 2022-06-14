@@ -2,7 +2,7 @@
 title: "Board"
 description: "fast clipboard"
 date: 2022-05-07T16:53:05+08:00
-tags: [ "main" ]
+tags: [ "Main" ]
 ---
 
 
@@ -185,8 +185,6 @@ set syntax-highlight-style tango
 
 
 
-
-
 ## Trick
 
 ### 谁在ping我？
@@ -194,6 +192,13 @@ set syntax-highlight-style tango
 ```sh
 tcpdump -i eth0 'icmp and icmp[icmptype]=icmp-echo'
 # root权限执行，eth0 换成你需要抓包的网卡iframe
+```
+
+### 命令行看天气
+
+```sh
+curl wttr.in/Beijing
+curl wttr.in/:help
 ```
 
 
