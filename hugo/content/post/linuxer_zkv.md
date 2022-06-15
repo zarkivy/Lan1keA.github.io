@@ -83,6 +83,8 @@ make epubdocs
 
 嗯，功能十分完善，就决定是你了。
 
+不过HTML doc也是给了Kernel Core API Documentation的：[https://www.kernel.org/doc/html/latest/core-api/index.html](https://www.kernel.org/doc/html/latest/core-api/index.html)
+
 
 
 # 内核构建系统

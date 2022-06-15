@@ -43,8 +43,6 @@ tags: [ "Main" ]
   - [https://godbolt.org/](https://godbolt.org/)
 - 展开编译细节，向你展示C++代码背后的秘密
   - [https://cppinsights.io/](https://cppinsights.io/)
-- 图形化展示你的正则表达式，学习正则好帮手
-  - [https://jex.im/regulex/#!flags=&re=%5E(a%7Cb)*%3F%24](https://jex.im/regulex/#!flags=&re=%5E(a%7Cb)*%3F%24)
 - C++ STL 算法库
   - [https://zh.cppreference.com/w/cpp/algorithm](https://zh.cppreference.com/w/cpp/algorithm)
 - 数据结构与算法可视化
@@ -57,7 +55,7 @@ tags: [ "Main" ]
 
 
 
-## 指令集
+## 指令集架构
 
 - ARMv7 指令集胎教教程
   - [https://simplemachines.it/doc/arm_inst.pdf](https://simplemachines.it/doc/arm_inst.pdf)
@@ -281,6 +279,7 @@ tags: [ "Main" ]
 - [What's the difference between set, export and env and when should I use each?](https://askubuntu.com/questions/205688/whats-the-difference-between-set-export-and-env-and-when-should-i-use-each)
 - [TTY 到底是什么？](https://www.kawabangga.com/posts/4515)
 - [Adding new driver code to linux source code](https://stackoverflow.com/questions/11710022/adding-new-driver-code-to-linux-source-code)
+- [Windows下设定自然滚动](https://blog.csdn.net/CSDN_GXZ/article/details/121025199)
 
 
 

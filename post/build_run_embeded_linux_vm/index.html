@@ -488,7 +488,16 @@
 </span></span><span style="display:flex;"><span>./build/arch/arm64/boot/Image
 </span></span><span style="display:flex;"><span>➜  linux git:<span style="color:#000;font-weight:bold">(</span>219d54332a09<span style="color:#000;font-weight:bold">)</span> find . -name vmlinux
 </span></span><span style="display:flex;"><span>./build/vmlinux
-</span></span></code></pre></div></div>
+</span></span></code></pre></div><h2 id="通过qemu-system运行">通过qemu-system运行</h2>
+<h3 id="网桥的预配置">网桥的预配置</h3>
+<p>后续host于qemu-system中的guest将通过网桥连接，故先于host中配置网桥。</p>
+<p>首先准备网桥与tun/tap虚拟网卡：</p>
+<p>创建网桥br0：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>sudo brctl addbr br0
+</span></span></code></pre></div><p>为当前用户创建tun/tap虚拟网卡tap0：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>tunctl -t tap0 -u <span style="color:#d14">${</span><span style="color:#008080">USER</span><span style="color:#d14">}</span>
+</span></span></code></pre></div><p>若发现brctl与tunctl命令未找到，则需要先安装相应软件包。这里推荐一个网站，可以方便的查询一个命令在不同软件源中对应的包名：<a href="https://command-not-found.com/">https://command-not-found.com/</a>（专治command not found 20 年）</p>
+</div>
   
 </article>
 <button class="floating-button">

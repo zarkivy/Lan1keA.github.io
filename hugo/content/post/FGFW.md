@@ -1,6 +1,6 @@
 ---
 title: "Fuck the Great Fire Wall"
-description: "👆👆👆（这是食指"
+description: "🖕"
 date: 2022-05-09T11:03:28+08:00
 tags: [ "Net" ]
 imagelink: "https://s2.loli.net/2022/05/09/FrNVRw5lSbfusgx.jpg"
@@ -75,6 +75,26 @@ As for the first two option:
 
 ![Snipaste_2022-05-09_14-01-32.jpg](https://s2.loli.net/2022/05/09/HzWigwtaf5L26Sd.jpg)
 
+
+
+## 部分网站的镜像
+
+### Google
+
+- [https://www.ahhhhfs.com/4810/](https://www.ahhhhfs.com/4810/)
+
+### Github
+
+- [https://www.ahhhhfs.com/18927/](https://www.ahhhhfs.com/18927/)
+- [https://www.ahhhhfs.com/18876/](https://www.ahhhhfs.com/18876/)
+- [https://www.ahhhhfs.com/5442/](https://www.ahhhhfs.com/5442/)
+
+### Youtube
+
+- [https://www.ahhhhfs.com/16819/](https://www.ahhhhfs.com/16819/)
+
+
+
 ## 各种应用的代理配置与镜像
 
 ### chrome
@@ -148,3 +168,11 @@ curl也是其中之一。
 export all_proxy=http://proxyserver:port/
 ```
 
+
+
+# 其他攻略
+
+- 2022永久免费白嫖节点方法
+  - [https://www.ahhhhfs.com/19188/](https://www.ahhhhfs.com/19188/)
+- 使用Google搜索找机场（梯子）技巧
+  - [https://www.ahhhhfs.com/10889/](https://www.ahhhhfs.com/10889/)

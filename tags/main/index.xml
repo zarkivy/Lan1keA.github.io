@@ -26,17 +26,17 @@ https://copy.sh/v86/ 系统软件博物馆
 https://winworldpc.com/library/operating-systems Windows下载站
 https://msdn.itellyou.cn/ https://hellowindows.cn/ 编程 高级语言源代码与汇编结果的实时对照
 https://godbolt.org/ 展开编译细节，向你展示C++代码背后的秘密
-https://cppinsights.io/ 图形化展示你的正则表达式，学习正则好帮手
-https://jex.im/regulex/#!flags=&amp;amp;re=%5E(a%7Cb)*%3F%24 C++ STL 算法库
+https://cppinsights.io/ C++ STL 算法库
 https://zh.cppreference.com/w/cpp/algorithm 数据结构与算法可视化
 https://visualgo.net/zh/ 正则表达式可视化
-https://regex-vis.com/ https://jex.im/regulex/#!flags=&amp;amp;re=%5E(a%7Cb)*%3F%24 指令集 ARMv7 指令集胎教教程
+https://regex-vis.com/ https://jex.im/regulex/#!flags=&amp;amp;re=%5E(a%7Cb)*%3F%24 指令集架构 ARMv7 指令集胎教教程
 https://simplemachines.it/doc/arm_inst.pdf ARMv7 指令集考试小抄
 https://pages.cs.wisc.edu/~markhill/restricted/arm_isa_quick_reference.pdf ARMv8 指令集考试小抄
 https://courses.cs.washington.edu/courses/cse469/19wi/arm64.pdf ARMv8 指令集宝宝识字挂图
 https://s2.loli.net/2022/05/09/UxFIkpBivKWzX6M.png x86与x64指令速查
 https://www.felixcloutier.com/x86/ https://cs.brown.edu/courses/cs033/docs/guides/x64_cheatsheet.pdf 虚拟化 在线浏览 QEMU 源码
-https://elixir.bootlin.com/qemu/latest/source 空中巴士航空公司信息安全团队的 QEMU 内部机制解析</description>
+https://elixir.bootlin.com/qemu/latest/source 空中巴士航空公司信息安全团队的 QEMU 内部机制解析
+https://airbus-seclab.github.io/qemu_blog/ 开箱即用的嵌入式 debian rootfs 的 QEMU 镜像</description>
     </item>
     
     <item>

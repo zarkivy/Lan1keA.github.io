@@ -338,3 +338,24 @@ make O=./build CROSS_COMPILE=aarch64-linux-gnu- -j`nproc`
 ./build/vmlinux
 ```
 
+## 通过qemu-system运行
+
+### 网桥的预配置
+
+后续host于qemu-system中的guest将通过网桥连接，故先于host中配置网桥。
+
+首先准备网桥与tun/tap虚拟网卡：
+
+创建网桥br0：
+
+```sh
+sudo brctl addbr br0
+```
+
+为当前用户创建tun/tap虚拟网卡tap0：
+
+```sh
+tunctl -t tap0 -u ${USER}
+```
+
+若发现brctl与tunctl命令未找到，则需要先安装相应软件包。这里推荐一个网站，可以方便的查询一个命令在不同软件源中对应的包名：[https://command-not-found.com/](https://command-not-found.com/)（专治command not found 20 年）

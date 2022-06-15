@@ -318,7 +318,21 @@
 </span></span><span style="display:flex;"><span>c1
 </span></span><span style="display:flex;"><span>root@c1c9ce358373:/# 
 </span></span></code></pre></div><p>好了，这下buildroot也在老环境内了，再次重复上述步骤即可。</p>
+<p>换用ubuntu18.04果然成功了、</p>
+<p>如果你和我一样懒得弄共享文件夹，就直接来<code>/var/lib/docker/overlay2</code>中取货吧。毕竟docker只是在文件系统层做了虚拟化，甚至连虚拟磁盘都不需要，直接在host的文件系统中存放了guest的文件。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>➜  ~ <span style="color:#0086b3">cd</span> /var/lib/docker/overlay2
+</span></span><span style="display:flex;"><span>➜  overlay2 du -h -d <span style="color:#099">1</span>
+</span></span><span style="display:flex;"><span>7.8G    ./d8ef00627999edcb9a6fee28d49bf9312f3bb56ca62101ce8850b3b406c4c498
+</span></span><span style="display:flex;"><span>40K     ./d8ef00627999edcb9a6fee28d49bf9312f3bb56ca62101ce8850b3b406c4c498-init
+</span></span><span style="display:flex;"><span>69M     ./cd42e49af35fa4606d2b1f029e089cc3caca7658ff0b6e2bca950dc7379318ee
+</span></span><span style="display:flex;"><span>16K     ./l
+</span></span><span style="display:flex;"><span>7.9G    .
+</span></span><span style="display:flex;"><span>➜  overlay2 <span style="color:#0086b3">cd</span> d8ef00627999edcb9a6fee28d49bf9312f3bb56ca62101ce8850b3b406c4c498/merged/
+</span></span><span style="display:flex;"><span>➜  merged ls
+</span></span><span style="display:flex;"><span>bin  boot  buildroot  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+</span></span></code></pre></div><p>接着进入<code>buildroot/output</code>取货即可。虽然其中已有4.9.6的内核了，不过我需要的是由此得到的编译工具链，以便编译自行定制的4.9版本内核。（旧版内核需要旧版工具链编译）</p>
 <h1 id="x02-运行">\x02 运行</h1>
+<p>参见：<a href="post/build_run_embeded_linux_vm/">https://cerr.cc/post/build_run_embeded_linux_vm/</a></p>
 <h1 id="x03-调试">\x03 调试</h1>
 </div>
   

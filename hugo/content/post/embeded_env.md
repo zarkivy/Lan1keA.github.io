@@ -164,11 +164,30 @@ root@c1c9ce358373:/#
 
 好了，这下buildroot也在老环境内了，再次重复上述步骤即可。
 
+换用ubuntu18.04果然成功了、
+
+如果你和我一样懒得弄共享文件夹，就直接来`/var/lib/docker/overlay2`中取货吧。毕竟docker只是在文件系统层做了虚拟化，甚至连虚拟磁盘都不需要，直接在host的文件系统中存放了guest的文件。
+
+```sh
+➜  ~ cd /var/lib/docker/overlay2
+➜  overlay2 du -h -d 1
+7.8G    ./d8ef00627999edcb9a6fee28d49bf9312f3bb56ca62101ce8850b3b406c4c498
+40K     ./d8ef00627999edcb9a6fee28d49bf9312f3bb56ca62101ce8850b3b406c4c498-init
+69M     ./cd42e49af35fa4606d2b1f029e089cc3caca7658ff0b6e2bca950dc7379318ee
+16K     ./l
+7.9G    .
+➜  overlay2 cd d8ef00627999edcb9a6fee28d49bf9312f3bb56ca62101ce8850b3b406c4c498/merged/
+➜  merged ls
+bin  boot  buildroot  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+```
+
+接着进入`buildroot/output`取货即可。虽然其中已有4.9.6的内核了，不过我需要的是由此得到的编译工具链，以便编译自行定制的4.9版本内核。（旧版内核需要旧版工具链编译）
+
 
 
 # \x02 运行
 
-
+参见：[https://cerr.cc/post/build_run_embeded_linux_vm/](post/build_run_embeded_linux_vm/)
 
 
 
