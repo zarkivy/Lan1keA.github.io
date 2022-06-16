@@ -291,7 +291,7 @@ make ARCH=arm64 O=./build defconfig
 make O=./build menuconfig
 ```
 
-由于我们的目标平台是QEMU Virtio，故需要于`make menuconfig`中启用相应配置：`VIRTIO_BLK, SCSI_BLK, VIRTIO_NET, HVC_DRIVER, VIRTIO_CONSOLE, VIRTIO, VIRTIO_MMIO`。
+由于我们的目标平台是QEMU Virtio，故需要于`make menuconfig`中启用相应配置：`VIRTIO_BLK, SCSI_BLK, VIRTIO_NET, HVC_DRIVER, VIRTIO_CONSOLE, VIRTIO, VIRTIO_MMIO`。详细的Kernel config参考也可以从`buildroot/board/qemu`中找到。
 
 至于Virtio具体是个啥，参考：
 

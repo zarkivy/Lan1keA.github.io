@@ -41,27 +41,5 @@
   rel="noopener"
 >
   {{partial "svg/bilibili.svg"}}
-</a>&nbsp;&nbsp;
-{{ end }}
-
-{{ with .Site.Params.socials.zhihu}}
-<a
-  href="{{ . }}"
-  target="_blank"
-  class="social-link"
-  rel="noopener"
->
-  {{partial "svg/zhihu.svg"}}
-</a>&nbsp;&nbsp;
-{{ end }}
-
-{{ with .Site.Params.socials.love}}
-<a
-  href="{{ . }}"
-  target="_blank"
-  class="social-link"
-  rel="noopener"
->
-  {{partial "svg/love.svg"}}
 </a>
 {{ end }}

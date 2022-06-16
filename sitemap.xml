@@ -2,16 +2,22 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://cerr.cc/tags/linux/</loc>
-    <lastmod>2022-06-13T17:41:00+08:00</lastmod>
-  </url><url>
     <loc>https://cerr.cc/post/</loc>
-    <lastmod>2022-06-13T17:41:00+08:00</lastmod>
+    <lastmod>2022-06-16T10:11:14+08:00</lastmod>
   </url><url>
     <loc>https://cerr.cc/tags/</loc>
-    <lastmod>2022-06-13T17:41:00+08:00</lastmod>
+    <lastmod>2022-06-16T10:11:14+08:00</lastmod>
+  </url><url>
+    <loc>https://cerr.cc/tags/vulnerability/</loc>
+    <lastmod>2022-06-16T10:11:14+08:00</lastmod>
   </url><url>
     <loc>https://cerr.cc/</loc>
+    <lastmod>2022-06-16T10:11:14+08:00</lastmod>
+  </url><url>
+    <loc>https://cerr.cc/post/cve-2022-30790/</loc>
+    <lastmod>2022-06-16T10:11:14+08:00</lastmod>
+  </url><url>
+    <loc>https://cerr.cc/tags/linux/</loc>
     <lastmod>2022-06-13T17:41:00+08:00</lastmod>
   </url><url>
     <loc>https://cerr.cc/post/linuxer_zkv/</loc>
@@ -21,9 +27,6 @@
     <lastmod>2022-06-09T17:44:21+08:00</lastmod>
   </url><url>
     <loc>https://cerr.cc/tags/qemu/</loc>
-    <lastmod>2022-06-09T17:44:21+08:00</lastmod>
-  </url><url>
-    <loc>https://cerr.cc/tags/vulnerability/</loc>
     <lastmod>2022-06-09T17:44:21+08:00</lastmod>
   </url><url>
     <loc>https://cerr.cc/tags/arch/</loc>
@@ -105,6 +108,9 @@
     <lastmod>2022-05-07T18:53:05+08:00</lastmod>
   </url><url>
     <loc>https://cerr.cc/main/flink/</loc>
+    <lastmod>2022-05-07T17:53:05+08:00</lastmod>
+  </url><url>
+    <loc>https://cerr.cc/main/ilus/</loc>
     <lastmod>2022-05-07T17:53:05+08:00</lastmod>
   </url><url>
     <loc>https://cerr.cc/main/board/</loc>

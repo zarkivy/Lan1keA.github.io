@@ -7,7 +7,22 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>© 2022, Zikey Vi</copyright>
-    <lastBuildDate>Mon, 13 Jun 2022 17:41:00 +0800</lastBuildDate><atom:link href="https://cerr.cc/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 16 Jun 2022 10:11:14 +0800</lastBuildDate><atom:link href="https://cerr.cc/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>对U-Boot CVE-2022-30790的跟踪</title>
+      <link>https://cerr.cc/post/cve-2022-30790/</link>
+      <pubDate>Thu, 16 Jun 2022 10:11:14 +0800</pubDate>
+      
+      <guid>https://cerr.cc/post/cve-2022-30790/</guid>
+      <description>U-Boot速览 Das U-Boot - Wikipedia https://github.com/u-boot/u-boot U-Boot源码在线浏览 村中传言 https://research.nccgroup.com/2022/06/03/technical-advisory-multiple-vulnerabilities-in-u-boot-cve-2022-30790-cve-2022-30552/
+🤔Hmmm&amp;hellip;新鲜漏洞，没有PoC。这次是出了两个漏洞，分别是：
+Hole Descriptor Overwrite in U-Boot IP Packet Defragmentation Leads to Arbitrary Out of Bounds Write Primitive (CVE-2022-30790) Large buffer overflow leads to DoS in U-Boot IP Packet Defragmentation Code (CVE-2022-30552) 先来分析分析出现漏洞的源码。根据：
+May 18th 2022: Initial e-mail from NCC to U-boot maintainers announcing two vulnerabilities were identified.
+那么用U-Boot v2022.04应该是没有问题的。
+漏洞源码分析 CVE-2022-30790 漏洞影响：
+The U-Boot implementation of RFC815 IP DATAGRAM REASSEMBLY ALGORITHMS is susceptible to a Hole Descriptor overwrite attack which ultimately leads to an arbitrary write primitive.</description>
+    </item>
+    
     <item>
       <title>ZKV的Linux Kernel学习之路</title>
       <link>https://cerr.cc/post/linuxer_zkv/</link>
@@ -296,14 +311,12 @@ https://godbolt.org/ 展开编译细节，向你展示C++代码背后的秘密
 https://cppinsights.io/ C++ STL 算法库
 https://zh.cppreference.com/w/cpp/algorithm 数据结构与算法可视化
 https://visualgo.net/zh/ 正则表达式可视化
-https://regex-vis.com/ https://jex.im/regulex/#!flags=&amp;amp;re=%5E(a%7Cb)*%3F%24 指令集架构 ARMv7 指令集胎教教程
+https://regex-vis.com/ https://jex.im/regulex/#!flags=&amp;amp;re=%5E(a%7Cb)*%3F%24 A collection of out-of-tree LLVM passes for teaching and learning
+https://github.com/banach-space/llvm-tutor 指令集架构 ARMv7 指令集胎教教程
 https://simplemachines.it/doc/arm_inst.pdf ARMv7 指令集考试小抄
 https://pages.cs.wisc.edu/~markhill/restricted/arm_isa_quick_reference.pdf ARMv8 指令集考试小抄
 https://courses.cs.washington.edu/courses/cse469/19wi/arm64.pdf ARMv8 指令集宝宝识字挂图
-https://s2.loli.net/2022/05/09/UxFIkpBivKWzX6M.png x86与x64指令速查
-https://www.felixcloutier.com/x86/ https://cs.brown.edu/courses/cs033/docs/guides/x64_cheatsheet.pdf 虚拟化 在线浏览 QEMU 源码
-https://elixir.bootlin.com/qemu/latest/source 空中巴士航空公司信息安全团队的 QEMU 内部机制解析
-https://airbus-seclab.github.io/qemu_blog/ 开箱即用的嵌入式 debian rootfs 的 QEMU 镜像</description>
+https://s2.loli.net/2022/05/09/UxFIkpBivKWzX6M.png x86与x64指令速查</description>
     </item>
     
     <item>
@@ -322,6 +335,15 @@ https://airbus-seclab.github.io/qemu_blog/ 开箱即用的嵌入式 debian rootf
       
       <guid>https://cerr.cc/main/flink/</guid>
       <description> https://foada.github.io/ https://fromhex.cn/ https://blog.xiabee.cn/ https://migraine-sudo.github.io/ https://m4x.fun/ https://ifpop.github.io/ https://blog.fkynjyq.com/ https://eacryo.gitee.io/ https://vang3lis.github.io/ https://emptystack.top/ https://l1b0.github.io/ https://yourbutterfly.github.io/ BigBrothers https://eternalsakura13.com/ https://lancern.xyz/ http://www.aloxaf.com/ https://kiprey.github.io/ https://www.ksroido.art/ https://blog.flanker017.me/ https://thunderjie.github.io/ http://blog.eonew.cn/ https://xuanxuanblingbling.github.io/ https://atum.li/ https://bsauce.github.io/ https://ray-cp.github.io/ https://chenx6.github.io/ https://blog.kyrios.cn/ https://etenal.me/ https://a1ex.online/ http://p4nda.top/ https://o0xmuhe.github.io/ https://evilpan.com/ https://myfzy.top/ https://exexute.github.io/ https://zhou-yuxin.github.io/ https://houjingyi233.com/ https://hhdx.xyz/post/ </description>
+    </item>
+    
+    <item>
+      <title>Ilusions</title>
+      <link>https://cerr.cc/main/ilus/</link>
+      <pubDate>Sat, 07 May 2022 17:53:05 +0800</pubDate>
+      
+      <guid>https://cerr.cc/main/ilus/</guid>
+      <description>dd</description>
     </item>
     
     <item>

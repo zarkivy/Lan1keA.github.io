@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>© 2022, Zikey Vi</copyright>
-    <lastBuildDate>Mon, 13 Jun 2022 17:41:00 +0800</lastBuildDate><atom:link href="https://cerr.cc/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 16 Jun 2022 10:11:14 +0800</lastBuildDate><atom:link href="https://cerr.cc/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Vulnerability</title>
+      <link>https://cerr.cc/tags/vulnerability/</link>
+      <pubDate>Thu, 16 Jun 2022 10:11:14 +0800</pubDate>
+      
+      <guid>https://cerr.cc/tags/vulnerability/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Linux</title>
       <link>https://cerr.cc/tags/linux/</link>
@@ -23,15 +32,6 @@
       <pubDate>Thu, 09 Jun 2022 17:44:21 +0800</pubDate>
       
       <guid>https://cerr.cc/tags/qemu/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Vulnerability</title>
-      <link>https://cerr.cc/tags/vulnerability/</link>
-      <pubDate>Thu, 09 Jun 2022 17:44:21 +0800</pubDate>
-      
-      <guid>https://cerr.cc/tags/vulnerability/</guid>
       <description></description>
     </item>
     
