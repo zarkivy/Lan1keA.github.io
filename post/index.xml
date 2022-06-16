@@ -7,7 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>© 2022, Zikey Vi</copyright>
-    <lastBuildDate>Thu, 16 Jun 2022 10:11:14 +0800</lastBuildDate><atom:link href="https://cerr.cc/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 16 Jun 2022 18:42:34 +0800</lastBuildDate><atom:link href="https://cerr.cc/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ZKV的装机简史</title>
+      <link>https://cerr.cc/post/my_pc/</link>
+      <pubDate>Thu, 16 Jun 2022 18:42:34 +0800</pubDate>
+      
+      <guid>https://cerr.cc/post/my_pc/</guid>
+      <description>前传 不同寻常的是，我是在将各种设备都玩过一轮后，最后才将目光放到了台式机上。想来原因应当在于我是一个无可救药的MINI教信徒——iPhone用mini；iPad用mini（曾经，奈何M1太香了）；Macbook用miniAir；台式机用NUC+电脑棒+单片机……
+好吧，其实我也不算没有台式机，毕竟NUC也算得上。但在把各类小型设备都折腾过一遍后，我陷入了茫然四顾无所寄托的悲惨境地。突然想起自己这几年来竟未尝进入DIY PC的海洋试试水。又瞥了瞥手上这台NUC11PAHi5，估摸着这孩子也是天资平平、前途黯淡，竭尽全力地运行OW1却只是凑活能玩，没有能带起OW2的天赋。恰逢本世代全球大萧条之始，加密货币市场一泻千里，难窥其底。显卡价格也是应声而落，众望所归。天时地利人和——这钱，我不得不花。毕竟天意不可违。
+但对于村儿里长大的我来说，掏出去的钱倘若没能换来足量的快乐，乃至买来的是糟心，实在是大逆不道有违祖训的事情。其负罪感甚至要甚于倒掉没吃完的肉（或许正因如此我才有幸成为闲鱼大V，焉知非福啊）。所以，事前进行全方位的考察与调研是十分必要的事情。
+设备情报 CPU 显卡 主板 内存 硬盘 机箱 电源 </description>
+    </item>
+    
     <item>
       <title>对U-Boot CVE-2022-30790的跟踪</title>
       <link>https://cerr.cc/post/cve-2022-30790/</link>
