@@ -4,11 +4,11 @@
     <title>やれやれ DA✰ZE</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="年轻人的第一台PC" />
-    <meta property="og:title" content="ZKV的装机简史" />
+    <meta property="og:title" content="ZKV的攒机简史" />
     <meta property="og:description" content="年轻人的第一台PC" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://cerr.cc/post/my_pc/" />
-    <meta itemprop="name" content="ZKV的装机简史">
+    <meta itemprop="name" content="ZKV的攒机简史">
     <meta itemprop="description" content="年轻人的第一台PC">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
     
@@ -19,7 +19,7 @@
     <div class="header header-frame">
         <div>
           
-            <h1 class="header__title">ZKV的装机简史</h1>
+            <h1 class="header__title">ZKV的攒机简史</h1>
           
             
                 <div class="header__description">年轻人的第一台PC</div>
@@ -212,16 +212,164 @@
   
     <div class="post-content"><h1 id="前传">前传</h1>
 <p>不同寻常的是，我是在将各种设备都玩过一轮后，最后才将目光放到了台式机上。想来原因应当在于我是一个无可救药的<strong>MINI教</strong>信徒——iPhone用mini；iPad用mini（曾经，奈何M1太香了）；Macbook用<del>mini</del>Air；台式机用NUC+电脑棒+单片机……</p>
-<p>好吧，其实我也不算没有台式机，毕竟NUC也算得上。但在把各类小型设备都折腾过一遍后，我陷入了茫然四顾无所寄托的悲惨境地。突然想起自己这几年来竟未尝进入DIY PC的海洋试试水。又瞥了瞥手上这台NUC11PAHi5，估摸着这孩子也是天资平平、前途黯淡，竭尽全力地运行OW1却只是凑活能玩，没有能带起OW2的天赋。恰逢本世代全球大萧条之始，加密货币市场一泻千里，难窥其底。显卡价格也是应声而落，众望所归。天时地利人和——这钱，我不得不花。毕竟天意不可违。</p>
+<p>好吧，其实我也不能说没有台式机，毕竟NUC也算得上。但在把各类小型设备都折腾过一遍后，我陷入了茫然四顾无所寄托的悲惨境地。突然想起自己这几年来竟未尝进入DIY PC的海洋试试水。又瞥了瞥手上这台NUC11PAHi5，估摸着这孩子也是天资平平、前途黯淡，竭尽全力地运行OW1却只是凑活能玩，没有能带起OW2的天赋。恰逢本世代全球大萧条之始，加密货币市场一泻千里，难窥其底。显卡价格也是应声而落，众望所归。天时地利人和——这钱，我不得不花。毕竟天意不可违。</p>
 <p>但对于村儿里长大的我来说，掏出去的钱倘若没能换来足量的快乐，乃至买来的是糟心，实在是大逆不道有违祖训的事情。其负罪感甚至要甚于倒掉没吃完的肉（或许正因如此我才有幸成为闲鱼大V，焉知非福啊）。所以，事前进行全方位的考察与调研是十分必要的事情。</p>
 <h1 id="设备情报">设备情报</h1>
 <h2 id="cpu">CPU</h2>
+<h3 id="通用资源">通用资源</h3>
+<p>可以于这些网站查询到绝大多数CPU的benchmark：</p>
+<ul>
+<li><a href="https://www.cpubenchmark.net/">https://www.cpubenchmark.net/</a></li>
+<li><a href="https://browser.geekbench.com/processor-benchmarks">https://browser.geekbench.com/processor-benchmarks</a></li>
+</ul>
+<h3 id="intel">Intel</h3>
+<h4 id="core系列处理器后缀">Core系列处理器后缀</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"><strong>后缀</strong></th>
+<th style="text-align:center"><strong>含义</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">G1-G7</td>
+<td style="text-align:center">显卡级别（仅适用于采用全新集成显卡技术的处理器）</td>
+</tr>
+<tr>
+<td style="text-align:center">E</td>
+<td style="text-align:center">嵌入式</td>
+</tr>
+<tr>
+<td style="text-align:center">F</td>
+<td style="text-align:center">需要独立显卡</td>
+</tr>
+<tr>
+<td style="text-align:center">G</td>
+<td style="text-align:center">封装包中包含独立显卡</td>
+</tr>
+<tr>
+<td style="text-align:center">H</td>
+<td style="text-align:center">针对移动设备进行优化的高性能</td>
+</tr>
+<tr>
+<td style="text-align:center">HK</td>
+<td style="text-align:center">针对移动设备进行优化的高性能，未锁频</td>
+</tr>
+<tr>
+<td style="text-align:center">HQ</td>
+<td style="text-align:center">针对移动设备进行优化的高性能，四核</td>
+</tr>
+<tr>
+<td style="text-align:center">K</td>
+<td style="text-align:center">未锁频</td>
+</tr>
+<tr>
+<td style="text-align:center">S</td>
+<td style="text-align:center">特别版</td>
+</tr>
+<tr>
+<td style="text-align:center">T</td>
+<td style="text-align:center">经过功耗优化的生活方式</td>
+</tr>
+<tr>
+<td style="text-align:center">U</td>
+<td style="text-align:center">高能效移动设备</td>
+</tr>
+<tr>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">极低功耗的移动设备</td>
+</tr>
+<tr>
+<td style="text-align:center">X/XE</td>
+<td style="text-align:center">未锁频，高端</td>
+</tr>
+<tr>
+<td style="text-align:center">B</td>
+<td style="text-align:center">球栅阵列 (BGA)</td>
+</tr>
+</tbody>
+</table>
+<p>reference：<a href="https://www.intel.com/content/www/us/en/processors/processor-numbers.html">https://www.intel.com/content/www/us/en/processors/processor-numbers.html</a></p>
 <h2 id="显卡">显卡</h2>
+<h2 id="硬盘">硬盘</h2>
+<h3 id="固态硬盘">固态硬盘</h3>
+<p><strong>固态硬盘</strong>使用<strong>NAND闪存颗粒</strong>作为存储的主体，采用主控+多颗闪存芯片的结构。</p>
+<h4 id="nand闪存颗粒">NAND闪存颗粒</h4>
+<p>主要分为<strong>SLC、MLC、TLC、QLC</strong>四种。寿命和价格都依次递减。</p>
+<p><img src="https://media.kingston.com/kingston/content/ktc-content-solutions-pc-performance-difference-between-slc-mlc-tlc-3d-nand-infographic-cn.jpg" alt="nand"></p>
+<p>reference：<a href="https://www.kingston.com/cn/blog/pc-performance/difference-between-slc-mlc-tlc-3d-nand">https://www.kingston.com/cn/blog/pc-performance/difference-between-slc-mlc-tlc-3d-nand</a></p>
+<h4 id="接口与协议">接口与协议</h4>
+<ul>
+<li>物理接口
+<ul>
+<li>M.2</li>
+<li>U.2</li>
+<li>AIC</li>
+<li>NGFF</li>
+</ul>
+</li>
+<li>高速信号协议
+<ul>
+<li>SATA
+<ul>
+<li>Serial Advanced Technology Attachment</li>
+</ul>
+</li>
+<li>PCIe
+<ul>
+<li>Peripheral Component Interconnect Express</li>
+</ul>
+</li>
+<li>SAS
+<ul>
+<li>Serial Attached SCSI</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>传输层协议
+<ul>
+<li>NVMe
+<ul>
+<li>专为固态硬盘设计的协议，为NAND做了优化</li>
+</ul>
+</li>
+<li>SCSI</li>
+<li>ATA
+<ul>
+<li>仅与SATA配合</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>reference：</p>
+<ul>
+<li>了解 SSD 技术：NVMe、SATA、M.2：<a href="https://www.kingston.com/cn/community/articledetail/articleid/48543">https://www.kingston.com/cn/community/articledetail/articleid/48543</a></li>
+<li>固态硬盘外形尺寸类型：<a href="https://www.kingston.com/cn/blog/pc-performance/ssd-form-factors">https://www.kingston.com/cn/blog/pc-performance/ssd-form-factors</a></li>
+<li>M.2 固态硬盘的两种类型：SATA 和 NVMe：<a href="https://www.kingston.com/cn/blog/pc-performance/two-types-m2-vs-ssd">https://www.kingston.com/cn/blog/pc-performance/two-types-m2-vs-ssd</a></li>
+</ul>
+<h3 id="机械硬盘">机械硬盘</h3>
 <h2 id="主板">主板</h2>
 <h2 id="内存">内存</h2>
-<h2 id="硬盘">硬盘</h2>
+<p>reference：</p>
+<ul>
+<li><a href="https://zhuanlan.zhihu.com/p/26255460">https://zhuanlan.zhihu.com/p/26255460</a></li>
+</ul>
 <h2 id="机箱">机箱</h2>
 <h2 id="电源">电源</h2>
+<h2 id="显示器">显示器</h2>
+<ul>
+<li>亮度：越高越好，300 cd/m² 中等，400 cd/m² 不错， 500 cd/m² 优秀</li>
+<li>对比度：越高越好，700~900:1 及格，900~ 1100 中等，1100~1300不错，1500 以上很好。</li>
+<li>色域：sRGB ＜ P3＜ AdobeRGB, 覆盖越多颜色越艳，覆盖越精准越好，但覆盖越多不一定越好。</li>
+<li>色深，6 bit 底线，有明显层次感， 中端表现不错，10bit 表现很好但需要整套设备支持。</li>
+<li>色准：ΔE＜1.5 就能适用于严谨的工作，ΔE＜3 一般人看不出区别，ΔE 在 5 以上色偏严重。</li>
+<li>刷新率：越高越好，打游戏 120Hz 就能有很大提升，120Hz 之后区别并不大（除非你是职业选手）</li>
+<li>响应时间：越快越好，3ms 以内顶级，5ms 以内优秀，10ms 以内中等，10ms 以上完全不适合游戏</li>
+</ul>
+<p>reference：<a href="https://www.zhihu.com/question/35668312">https://www.zhihu.com/question/35668312</a></p>
 </div>
   
 </article>
