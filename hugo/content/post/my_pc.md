@@ -20,6 +20,10 @@ imagelink: "https://s2.loli.net/2022/06/16/EYHcq8joTrfdiBR.jpg"
 
 # 设备情报
 
+## 通用资源
+
+- [https://www.zhihu.com/special/1436041011885293568?tab=1436061145295228928](https://www.zhihu.com/special/1436041011885293568?tab=1436061145295228928)
+
 ## CPU
 
 ### 通用资源
@@ -107,15 +111,33 @@ reference：
 
 ## 主板
 
+reference：[https://www.zhihu.com/question/351825113/answer/1041320836](https://www.zhihu.com/question/351825113/answer/1041320836)
+
 
 
 ## 内存
 
+### 硬件形态
 
+在80286时代，内存颗粒（Chip）是直接插在主板上的，叫做DIP(Dual In-line Package)。到了80386时代，换成1片焊有内存颗粒的电路板，叫做SIMM（Single-Inline Memory Module）。由阵脚形态变化成电路板带来了很多好处：模块化，安装便利等等，由此DIY市场才有可能产生。当时SIMM的位宽是32bit，即一个周期读取4个字节，到了奔腾时，位宽变为64bit，即8个字节，于是SIMM就顺势变为DIMM（Double-Inline Memory Module）。这种形态一直延续至今，也是内存条的基本形态。现在DIMM分为很多种：
+
+- **RDIMM**: 全称（Registered DIMM），寄存型模组，主要用在服务器上，为了增加内存的容量和稳定性分有ECC和无ECC两种，但市场上几乎都是ECC的。
+- **UDIMM**：全称（Unbuffered DIMM），无缓冲型模组，这是我们平时所用到的标准台式电脑DIMM，分有ECC和无ECC两种，一般是无ECC的。
+- **SO-DIMM**：全称（Small Outline DIMM），小外型DIMM，笔记本电脑中所使用的DIMM，分ECC和无ECC两种。
+- **Mini-DIMM**：DDR2时代新出现的模组类型，它是Registered DIMM的缩小版本，用于刀片式服务器等对体积要求苛刻的高端领域。
+
+![Overals_660.png](https://s2.loli.net/2022/06/17/tzRLTHQ6rAVCdI4.png)
+
+### DDR
+
+**DDR SDRAM**: Double Data Rate Synchronous Dynamic Random Access Memory
+
+![image.png](https://s2.loli.net/2022/06/17/bWU14gfY3HwxLKV.png)
 
 reference：
 
 - https://zhuanlan.zhihu.com/p/26255460
+- [https://en.wikipedia.org/wiki/DDR_SDRAM](https://en.wikipedia.org/wiki/DDR_SDRAM)
 
 
 
