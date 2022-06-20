@@ -8,10 +8,15 @@ tags: [ "Main" ]
 
 
 <div align="center">
-    <br>
-<div class="timer" style="font-size: 32px; color: #3f4f65">
-    【 <b id="d"></b> 天 <b id="h"></b> 时 <b id="m"></b> 分 <b id="s"></b> 秒 】
-</div>
+	<div sytle="font-size: 16px; margin-top: 10%" align="left">
+    	「&nbsp; V I V I A I Q I Q I<br>
+    </div>
+	<div class="timer" style="font-size: 32px; color: #3f4f65; margin-top:11%; margin-bottom:10%">
+    	【 <b id="d"></b> 天 <b id="h"></b> 时 <b id="m"></b> 分 <b id="s"></b> 秒 】
+	</div>
+    <div sytle="font-size: 16px;" align="right">
+    	<br>Q I Q I A I V I V I &nbsp;」
+    </div>
 <script>
     function timer() {
         var start = new Date(2017, 8, 30);

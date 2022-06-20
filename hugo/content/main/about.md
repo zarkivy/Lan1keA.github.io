@@ -62,6 +62,7 @@ tags: [ "Main" ]
 - 索尼Z4
 - 索尼Xperia X
 - 索尼XZ2
+- Essential Phone
 - iQOO1
 - Vivo X5 max
 - 阿尔卡特 hero2

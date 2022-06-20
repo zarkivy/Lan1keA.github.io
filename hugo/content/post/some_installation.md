@@ -17,7 +17,7 @@ imagelink: "https://s2.loli.net/2022/05/11/7aWbNEkesXlmYxH.jpg"
 ```sh
 sudo apt install zsh git man man-db manpages ssh neovim tmux \
 	gcc g++ gdb gdb-multiarch gdbserver flex bison make \
-	curl wget netcat net-tools nmap tcpdump \
+	curl wget netcat net-tools nmap tcpdump figlet \
 	python3 ipython3 python-is-python3 python3-pip \
 	build-essential binutils xxd strace libncurses5 \
 	neofetch zip unzip ncdu htop dosfstools nyancat cmatrix

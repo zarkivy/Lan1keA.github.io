@@ -215,8 +215,12 @@
 <p>好吧，其实我也不能说没有台式机，毕竟NUC也算得上。但在把各类小型设备都折腾过一遍后，我陷入了茫然四顾无所寄托的悲惨境地。突然想起自己这几年来竟未尝进入DIY PC的海洋试试水。又瞥了瞥手上这台NUC11PAHi5，估摸着这孩子也是天资平平、前途黯淡，竭尽全力地运行OW1却只是凑活能玩，没有能带起OW2的天赋。恰逢本世代全球大萧条之始，加密货币市场一泻千里，难窥其底。显卡价格也是应声而落，众望所归。天时地利人和——这钱，我不得不花。毕竟天意不可违。</p>
 <p>但对于村儿里长大的我来说，掏出去的钱倘若没能换来足量的快乐，乃至买来的是糟心，实在是大逆不道有违祖训的事情。其负罪感甚至要甚于倒掉没吃完的肉（或许正因如此我才有幸成为闲鱼大V，焉知非福啊）。所以，事前进行全方位的考察与调研是十分必要的事情。</p>
 <h1 id="设备情报">设备情报</h1>
+<h2 id="通用资源">通用资源</h2>
+<ul>
+<li><a href="https://www.zhihu.com/special/1436041011885293568?tab=1436061145295228928">https://www.zhihu.com/special/1436041011885293568?tab=1436061145295228928</a></li>
+</ul>
 <h2 id="cpu">CPU</h2>
-<h3 id="通用资源">通用资源</h3>
+<h3 id="通用资源-1">通用资源</h3>
 <p>可以于这些网站查询到绝大多数CPU的benchmark：</p>
 <ul>
 <li><a href="https://www.cpubenchmark.net/">https://www.cpubenchmark.net/</a></li>
@@ -291,6 +295,7 @@
 </tbody>
 </table>
 <p>reference：<a href="https://www.intel.com/content/www/us/en/processors/processor-numbers.html">https://www.intel.com/content/www/us/en/processors/processor-numbers.html</a></p>
+<h3 id="amd">AMD</h3>
 <h2 id="显卡">显卡</h2>
 <h2 id="硬盘">硬盘</h2>
 <h3 id="固态硬盘">固态硬盘</h3>
@@ -352,10 +357,24 @@
 </ul>
 <h3 id="机械硬盘">机械硬盘</h3>
 <h2 id="主板">主板</h2>
+<p>reference：<a href="https://www.zhihu.com/question/351825113/answer/1041320836">https://www.zhihu.com/question/351825113/answer/1041320836</a></p>
 <h2 id="内存">内存</h2>
+<h3 id="硬件形态">硬件形态</h3>
+<p>在80286时代，内存颗粒（Chip）是直接插在主板上的，叫做DIP(Dual In-line Package)。到了80386时代，换成1片焊有内存颗粒的电路板，叫做SIMM（Single-Inline Memory Module）。由阵脚形态变化成电路板带来了很多好处：模块化，安装便利等等，由此DIY市场才有可能产生。当时SIMM的位宽是32bit，即一个周期读取4个字节，到了奔腾时，位宽变为64bit，即8个字节，于是SIMM就顺势变为DIMM（Double-Inline Memory Module）。这种形态一直延续至今，也是内存条的基本形态。现在DIMM分为很多种：</p>
+<ul>
+<li><strong>RDIMM</strong>: 全称（Registered DIMM），寄存型模组，主要用在服务器上，为了增加内存的容量和稳定性分有ECC和无ECC两种，但市场上几乎都是ECC的。</li>
+<li><strong>UDIMM</strong>：全称（Unbuffered DIMM），无缓冲型模组，这是我们平时所用到的标准台式电脑DIMM，分有ECC和无ECC两种，一般是无ECC的。</li>
+<li><strong>SO-DIMM</strong>：全称（Small Outline DIMM），小外型DIMM，笔记本电脑中所使用的DIMM，分ECC和无ECC两种。</li>
+<li><strong>Mini-DIMM</strong>：DDR2时代新出现的模组类型，它是Registered DIMM的缩小版本，用于刀片式服务器等对体积要求苛刻的高端领域。</li>
+</ul>
+<p><img src="https://s2.loli.net/2022/06/17/tzRLTHQ6rAVCdI4.png" alt="Overals_660.png"></p>
+<h3 id="ddr">DDR</h3>
+<p><strong>DDR SDRAM</strong>: Double Data Rate Synchronous Dynamic Random Access Memory</p>
+<p><img src="https://s2.loli.net/2022/06/17/bWU14gfY3HwxLKV.png" alt="image.png"></p>
 <p>reference：</p>
 <ul>
 <li><a href="https://zhuanlan.zhihu.com/p/26255460">https://zhuanlan.zhihu.com/p/26255460</a></li>
+<li><a href="https://en.wikipedia.org/wiki/DDR_SDRAM">https://en.wikipedia.org/wiki/DDR_SDRAM</a></li>
 </ul>
 <h2 id="机箱">机箱</h2>
 <h2 id="电源">电源</h2>

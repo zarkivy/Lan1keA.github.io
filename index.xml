@@ -17,9 +17,9 @@
       <description>前传 不同寻常的是，我是在将各种设备都玩过一轮后，最后才将目光放到了台式机上。想来原因应当在于我是一个无可救药的MINI教信徒——iPhone用mini；iPad用mini（曾经，奈何M1太香了）；Macbook用miniAir；台式机用NUC+电脑棒+单片机……
 好吧，其实我也不能说没有台式机，毕竟NUC也算得上。但在把各类小型设备都折腾过一遍后，我陷入了茫然四顾无所寄托的悲惨境地。突然想起自己这几年来竟未尝进入DIY PC的海洋试试水。又瞥了瞥手上这台NUC11PAHi5，估摸着这孩子也是天资平平、前途黯淡，竭尽全力地运行OW1却只是凑活能玩，没有能带起OW2的天赋。恰逢本世代全球大萧条之始，加密货币市场一泻千里，难窥其底。显卡价格也是应声而落，众望所归。天时地利人和——这钱，我不得不花。毕竟天意不可违。
 但对于村儿里长大的我来说，掏出去的钱倘若没能换来足量的快乐，乃至买来的是糟心，实在是大逆不道有违祖训的事情。其负罪感甚至要甚于倒掉没吃完的肉（或许正因如此我才有幸成为闲鱼大V，焉知非福啊）。所以，事前进行全方位的考察与调研是十分必要的事情。
-设备情报 CPU 通用资源 可以于这些网站查询到绝大多数CPU的benchmark：
+设备情报 通用资源 https://www.zhihu.com/special/1436041011885293568?tab=1436061145295228928 CPU 通用资源 可以于这些网站查询到绝大多数CPU的benchmark：
 https://www.cpubenchmark.net/ https://browser.geekbench.com/processor-benchmarks Intel Core系列处理器后缀 后缀 含义 G1-G7 显卡级别（仅适用于采用全新集成显卡技术的处理器） E 嵌入式 F 需要独立显卡 G 封装包中包含独立显卡 H 针对移动设备进行优化的高性能 HK 针对移动设备进行优化的高性能，未锁频 HQ 针对移动设备进行优化的高性能，四核 K 未锁频 S 特别版 T 经过功耗优化的生活方式 U 高能效移动设备 Y 极低功耗的移动设备 X/XE 未锁频，高端 B 球栅阵列 (BGA) reference：https://www.intel.com/content/www/us/en/processors/processor-numbers.html
-显卡 硬盘 固态硬盘 固态硬盘使用NAND闪存颗粒作为存储的主体，采用主控+多颗闪存芯片的结构。
+AMD 显卡 硬盘 固态硬盘 固态硬盘使用NAND闪存颗粒作为存储的主体，采用主控+多颗闪存芯片的结构。
 NAND闪存颗粒 主要分为SLC、MLC、TLC、QLC四种。寿命和价格都依次递减。
 reference：https://www.kingston.com/cn/blog/pc-performance/difference-between-slc-mlc-tlc-3d-nand
 接口与协议 物理接口 M.2 U.2 AIC NGFF 高速信号协议 SATA Serial Advanced Technology Attachment PCIe Peripheral Component Interconnect Express SAS Serial Attached SCSI 传输层协议 NVMe 专为固态硬盘设计的协议，为NAND做了优化 SCSI ATA 仅与SATA配合 reference：</description>
@@ -35,7 +35,7 @@ reference：https://www.kingston.com/cn/blog/pc-performance/difference-between-s
 🤔Hmmm&amp;hellip;新鲜漏洞，没有PoC。这次是出了两个漏洞，分别是：
 Hole Descriptor Overwrite in U-Boot IP Packet Defragmentation Leads to Arbitrary Out of Bounds Write Primitive (CVE-2022-30790) Large buffer overflow leads to DoS in U-Boot IP Packet Defragmentation Code (CVE-2022-30552) 先来分析分析出现漏洞的源码。根据：
 May 18th 2022: Initial e-mail from NCC to U-boot maintainers announcing two vulnerabilities were identified.
-那么用U-Boot v2022.04应该是没有问题的。
+那么用U-Boot v2022.04跟踪漏洞应该是没有问题的。
 漏洞源码分析 CVE-2022-30790 漏洞影响：
 The U-Boot implementation of RFC815 IP DATAGRAM REASSEMBLY ALGORITHMS is susceptible to a Hole Descriptor overwrite attack which ultimately leads to an arbitrary write primitive.</description>
     </item>
@@ -185,7 +185,7 @@ git clone https://github.com/google/AFL.git cd AFL make -j`nproc` sudo make inst
       
       <guid>https://cerr.cc/post/some_installation/</guid>
       <description>作为一个系统重装爱好者和硬件收集拾荒人，为了减少在环境配置上浪费的生命，记录常用环境配置命令用以直接复制粘贴
-个人 apt 源 Linux 初始环境软件安装 sudo apt install zsh git man man-db manpages ssh neovim tmux \ gcc g++ gdb gdb-multiarch gdbserver flex bison make \ curl wget netcat net-tools nmap tcpdump \ python3 ipython3 python-is-python3 python3-pip \ build-essential binutils xxd strace libncurses5 \ neofetch zip unzip ncdu htop dosfstools nyancat cmatrix dotfiles 快速就位 git clone https://github.com/dev2ero/dotfiles.git sh -c &amp;#34;$(curl -fsSL https://gitee.com/mirrors/oh-my-zsh/raw/master/tools/install.sh)&amp;#34; git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions git clone https://github.</description>
+个人 apt 源 Linux 初始环境软件安装 sudo apt install zsh git man man-db manpages ssh neovim tmux \ gcc g++ gdb gdb-multiarch gdbserver flex bison make \ curl wget netcat net-tools nmap tcpdump figlet \ python3 ipython3 python-is-python3 python3-pip \ build-essential binutils xxd strace libncurses5 \ neofetch zip unzip ncdu htop dosfstools nyancat cmatrix dotfiles 快速就位 git clone https://github.com/dev2ero/dotfiles.git sh -c &amp;#34;$(curl -fsSL https://gitee.com/mirrors/oh-my-zsh/raw/master/tools/install.sh)&amp;#34; git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions git clone https://github.</description>
     </item>
     
     <item>
@@ -342,7 +342,8 @@ https://s2.loli.net/2022/05/09/UxFIkpBivKWzX6M.png x86与x64指令速查</descri
       <pubDate>Sat, 07 May 2022 18:53:05 +0800</pubDate>
       
       <guid>https://cerr.cc/main/love/</guid>
-      <description> 【 天 时 分 秒 】 </description>
+      <description> 「&amp;nbsp; V I V I A I Q I Q I
+【 天 时 分 秒 】 Q I Q I A I V I V I &amp;nbsp;」 </description>
     </item>
     
     <item>
@@ -351,7 +352,7 @@ https://s2.loli.net/2022/05/09/UxFIkpBivKWzX6M.png x86与x64指令速查</descri
       <pubDate>Sat, 07 May 2022 17:53:05 +0800</pubDate>
       
       <guid>https://cerr.cc/main/flink/</guid>
-      <description> https://foada.github.io/ https://fromhex.cn/ https://blog.xiabee.cn/ https://migraine-sudo.github.io/ https://m4x.fun/ https://ifpop.github.io/ https://blog.fkynjyq.com/ https://eacryo.gitee.io/ https://vang3lis.github.io/ https://emptystack.top/ https://l1b0.github.io/ https://yourbutterfly.github.io/ BigBrothers https://eternalsakura13.com/ https://lancern.xyz/ http://www.aloxaf.com/ https://kiprey.github.io/ https://www.ksroido.art/ https://blog.flanker017.me/ https://thunderjie.github.io/ http://blog.eonew.cn/ https://xuanxuanblingbling.github.io/ https://atum.li/ https://bsauce.github.io/ https://ray-cp.github.io/ https://chenx6.github.io/ https://blog.kyrios.cn/ https://etenal.me/ https://a1ex.online/ http://p4nda.top/ https://o0xmuhe.github.io/ https://evilpan.com/ https://myfzy.top/ https://exexute.github.io/ https://zhou-yuxin.github.io/ https://houjingyi233.com/ https://hhdx.xyz/post/ </description>
+      <description> https://foada.github.io/ https://fromhex.cn/ https://blog.xiabee.cn/ https://migraine-sudo.github.io/ https://m4x.fun/ https://ifpop.github.io/ https://blog.fkynjyq.com/ https://eacryo.gitee.io/ https://vang3lis.github.io/ https://emptystack.top/ https://l1b0.github.io/ https://yourbutterfly.github.io/ BigBrothers https://eternalsakura13.com/ https://lancern.xyz/ http://www.aloxaf.com/ https://kiprey.github.io/ https://www.ksroido.art/ https://blog.flanker017.me/ https://thunderjie.github.io/ http://blog.eonew.cn/ https://xuanxuanblingbling.github.io/ https://atum.li/ https://bsauce.github.io/ https://ray-cp.github.io/ https://chenx6.github.io/ https://blog.kyrios.cn/ https://etenal.me/ https://a1ex.online/ http://p4nda.top/ https://o0xmuhe.github.io/ https://evilpan.com/ https://myfzy.top/ https://exexute.github.io/ https://zhou-yuxin.github.io/ https://houjingyi233.com/ https://hhdx.xyz/post/ http://tr3e.ee/ </description>
     </item>
     
     <item>
@@ -379,7 +380,7 @@ lsd美化ls：https://github.com/Peltoche/lsd lsd需配合nerdfont：https://www
       <pubDate>Sat, 07 May 2022 15:53:05 +0800</pubDate>
       
       <guid>https://cerr.cc/main/about/</guid>
-      <description> Yet anothor cyber nyandog With this Rolling release blog 那 些 年 我 2017 ~ 💻 玩过的机 联想G510 神舟战神KP7-GT 联想ThinkPad Tablet 联想ThinkPad E431 联想ThinkPad X200 联想小新Air14 联想Yoga 13s Macbook Air 2020 iPhone4 iPhone5s iPhone6 iPhone SE1 iPhone XR iPhone 12mini 小米note1 小米2s 小米3 小米4 小米9SE 小米9 红米1s 红米2a 红米note3 红米K30 Pro 红米K40 游戏增强版 LG G5 LG G7 LG V30 LG V30+ 夏普303SH 夏普305SH 夏普502SH 索尼Z1 索尼Z2mini 索尼Z4 索尼Xperia X 索尼XZ2 iQOO1 Vivo X5 max 阿尔卡特 hero2 iPad mini5 iPad Air5 小米平板1 小米平板4LTE Kindle fire 树莓派3B+ 树莓派4B Friendlyelec NanoPC T3 Plus NUC11PAHi5 📖 读过的书 C++ Primer 深入理解计算机系统 程序员的自我修养 深入理解计算机网络 围城 三体 北京折叠 神的孩子全跳舞 今日简史 激荡三十年 人口大逆转 醉步男 星之彩 计算机网络 刘慈欣科幻短片小说合集 颠覆者 许三观卖血记 狂人日记 马云传 美丽新世界 阿Q正传 钝感力 自控力 为人民服务 腾讯传 贝多芬传 鲁滨逊漂流记 乔布斯传 球状闪电 1984 人类简史 哈姆雷特 方方日记 永久记录 穷爸爸富爸爸 风中的纸屑 我的世界观 人体简史 杰克伦敦小说集 未来简史 操作系统真象还原 现代操作系统 黄金时代 C和C++安全编码 </description>
+      <description> Yet anothor cyber nyandog With this Rolling release blog 那 些 年 我 2017 ~ 💻 玩过的机 联想G510 神舟战神KP7-GT 联想ThinkPad Tablet 联想ThinkPad E431 联想ThinkPad X200 联想小新Air14 联想Yoga 13s Macbook Air 2020 iPhone4 iPhone5s iPhone6 iPhone SE1 iPhone XR iPhone 12mini 小米note1 小米2s 小米3 小米4 小米9SE 小米9 红米1s 红米2a 红米note3 红米K30 Pro 红米K40 游戏增强版 LG G5 LG G7 LG V30 LG V30+ 夏普303SH 夏普305SH 夏普502SH 索尼Z1 索尼Z2mini 索尼Z4 索尼Xperia X 索尼XZ2 Essential Phone iQOO1 Vivo X5 max 阿尔卡特 hero2 iPad mini5 iPad Air5 小米平板1 小米平板4LTE Kindle fire 树莓派3B+ 树莓派4B Friendlyelec NanoPC T3 Plus NUC11PAHi5 📖 读过的书 C++ Primer 深入理解计算机系统 程序员的自我修养 深入理解计算机网络 围城 三体 北京折叠 神的孩子全跳舞 今日简史 激荡三十年 人口大逆转 醉步男 星之彩 计算机网络 刘慈欣科幻短片小说合集 颠覆者 许三观卖血记 狂人日记 马云传 美丽新世界 阿Q正传 钝感力 自控力 为人民服务 腾讯传 贝多芬传 鲁滨逊漂流记 乔布斯传 球状闪电 1984 人类简史 哈姆雷特 方方日记 永久记录 穷爸爸富爸爸 风中的纸屑 我的世界观 人体简史 杰克伦敦小说集 未来简史 操作系统真象还原 现代操作系统 黄金时代 C和C++安全编码 </description>
     </item>
     
   </channel>

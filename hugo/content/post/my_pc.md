@@ -56,7 +56,7 @@ imagelink: "https://s2.loli.net/2022/06/16/EYHcq8joTrfdiBR.jpg"
 
 reference：[https://www.intel.com/content/www/us/en/processors/processor-numbers.html](https://www.intel.com/content/www/us/en/processors/processor-numbers.html)
 
-
+### AMD
 
 
 
