@@ -110,8 +110,6 @@ tags: [ "Main" ]
 
 
 
-
-
 ## 体系结构
 
 - CS:APP 的实验课
@@ -275,6 +273,10 @@ tags: [ "Main" ]
 - 听写记事本
 
     - [https://speechnotes.co/zh/](https://speechnotes.co/zh/)
+
+- 在线mrp模拟器
+
+    - [https://vmrp.github.io/](https://vmrp.github.io/)
 
     
 

@@ -39,6 +39,7 @@ tags: [ "Main" ]
 - [https://chenx6.github.io/](https://chenx6.github.io/)
 - [https://blog.kyrios.cn/](https://blog.kyrios.cn/)
 - [https://etenal.me/](https://etenal.me/)
+- [http://www.ruanyifeng.com/blog/](http://www.ruanyifeng.com/blog/)
 - [https://a1ex.online/](https://a1ex.online/)
 - [http://p4nda.top/](http://p4nda.top/)
 - [https://o0xmuhe.github.io/](https://o0xmuhe.github.io/)

@@ -23,6 +23,7 @@ imagelink: "https://s2.loli.net/2022/06/16/EYHcq8joTrfdiBR.jpg"
 ## 通用资源
 
 - [https://www.zhihu.com/special/1436041011885293568?tab=1436061145295228928](https://www.zhihu.com/special/1436041011885293568?tab=1436061145295228928)
+- 一些排行榜和天梯图：[https://rank.kkj.cn/dgpu3.shtml](https://rank.kkj.cn/dgpu3.shtml)
 
 ## CPU
 
@@ -33,9 +34,15 @@ imagelink: "https://s2.loli.net/2022/06/16/EYHcq8joTrfdiBR.jpg"
 - [https://www.cpubenchmark.net/](https://www.cpubenchmark.net/)
 - [https://browser.geekbench.com/processor-benchmarks](https://browser.geekbench.com/processor-benchmarks)
 
+天梯图：[https://www.mydrivers.com/zhuanti/tianti/cpu/index.html](https://www.mydrivers.com/zhuanti/tianti/cpu/index.html)
+
 ### Intel
 
-#### Core系列处理器后缀
+#### 命名规则
+
+![image.png](https://s2.loli.net/2022/06/20/9ITSVKgfYQq1lje.png)
+
+#### 酷睿后缀名
 
 | **后缀** |                     **含义**                     |
 | :------: | :----------------------------------------------: |
@@ -58,11 +65,30 @@ reference：[https://www.intel.com/content/www/us/en/processors/processor-number
 
 ### AMD
 
+#### 命名规则
+
+![image.png](https://s2.loli.net/2022/06/20/bUcNP7BJ9GCdrD4.png)
+
+#### 锐龙后缀名
+
+- X后缀
+    - AMD Ryzen X系列跟Intel的K系列类似，都是强化了超频特性。
+
+- K后缀
+    - K代表解锁倍频，可以超频，如AMD Athlon X4 860K和AMD A10-7870K。
+- G
+- E后缀
+    - E后缀特指FX系列CPU的节能版，如FX 8370E的频率降低到3.3-4.3GHz，功耗降低到95W（FX8370的规格为4.0-4.3GHz，125W）。
+- B后缀
+    - B后缀特指APU的低功耗商务版本，比如A10 PRO-7850B，下限能耗少10W，GPU频率降低。
+- M后缀
+    - M系列特指APU的移动版。 
+
 
 
 ## 显卡
 
-
+天梯图：[https://www.mydrivers.com/zhuanti/tianti/gpu/index.html](https://www.mydrivers.com/zhuanti/tianti/gpu/index.html)
 
 ## 硬盘
 
@@ -111,7 +137,29 @@ reference：
 
 ## 主板
 
-reference：[https://www.zhihu.com/question/351825113/answer/1041320836](https://www.zhihu.com/question/351825113/answer/1041320836)
+先来了解下PCIe。知乎老狼的文章都写的很好哇，推荐他的UEFI与BIOS探秘。
+
+- 深入PCI与PCIe之一：硬件篇：[https://zhuanlan.zhihu.com/p/26172972](https://zhuanlan.zhihu.com/p/26172972)
+- 深入PCI与PCIe之二：软件篇：[https://zhuanlan.zhihu.com/p/26244141](https://zhuanlan.zhihu.com/p/26244141)
+- PCIe中断机制(1):演变历史：[https://zhuanlan.zhihu.com/p/399239928](https://zhuanlan.zhihu.com/p/399239928)
+
+### 大小分类
+
+- 大板：ATX、Mini ATX、XL-ATX、非标准E-ATX
+- 小板：MATX、μATX、FlexATX
+- 迷你板：ITX（包括Thin-ITX）
+- 超大板：标准E-ATX、EE-ATX、HPTX、WTX
+
+华硕主板产品线：
+
+- 頂尖旗艦 ROG
+- 遊戲主流 STRIX
+- 入門電競 TUF GAMING 與 PRIME 系列
+
+reference：
+
+- [https://www.zhihu.com/question/351825113/answer/1041320836](https://www.zhihu.com/question/351825113/answer/1041320836)
+- [https://zhuanlan.zhihu.com/p/53379889](https://zhuanlan.zhihu.com/p/53379889)
 
 
 
@@ -143,7 +191,18 @@ reference：
 
 ## 机箱
 
+- MINI机箱
+    - 安装ITX和M-ATX的机箱
+- 中塔机箱
+    - ATX主板的机箱
+- 全塔机箱
+    - 为了E-ATX板而设计的
 
+reference：
+
+- [https://zhuanlan.zhihu.com/p/25592446](https://zhuanlan.zhihu.com/p/25592446)
+- [https://www.zhihu.com/question/432376475](https://www.zhihu.com/question/432376475)
+- [https://zhuanlan.zhihu.com/p/373132410](https://zhuanlan.zhihu.com/p/373132410)
 
 ## 电源
 
@@ -160,3 +219,51 @@ reference：
 - 响应时间：越快越好，3ms 以内顶级，5ms 以内优秀，10ms 以内中等，10ms 以上完全不适合游戏
 
 reference：[https://www.zhihu.com/question/35668312](https://www.zhihu.com/question/35668312)
+
+
+
+
+
+# 终局
+
+- 总价
+    - ¥ 4269
+- CPU
+    - AMD 锐龙 R5-5600X 盒装
+    - ¥ 940（全新）
+    - [https://www.amd.com/en/products/cpu/amd-ryzen-5-5600x](https://www.amd.com/en/products/cpu/amd-ryzen-5-5600x)
+- 主板
+    - 华硕 TUF GAMING B550M-PLUS WIFI
+    - ¥ 600（全新）
+    - [https://www.asus.com.cn/Motherboards-Components/Motherboards/TUF-Gaming/TUF-GAMING-B550M-PLUS-WI-FI/](https://www.asus.com.cn/Motherboards-Components/Motherboards/TUF-Gaming/TUF-GAMING-B550M-PLUS-WI-FI/)
+- 机箱
+    - 酷冷至尊 Q300L
+    - ¥ 229（全新）
+    - [https://item.jd.com/100000105376.html](https://item.jd.com/100000105376.html)
+- 显卡
+    - 迪兰 RX5500XT 8G X战将
+    - ¥ 925（来自同事的二手）
+    - [http://www.dataland.com.cn/prod_view.aspx?nid=3&typeid=129&id=928](http://www.dataland.com.cn/prod_view.aspx?nid=3&typeid=129&id=928)
+- SSD
+    - 英睿达 镁光 P5 1TB
+    - ¥ 500（NUC替换下来的）
+    - [https://www.crucial.com/products/ssd/crucial-p5-ssd](https://www.crucial.com/products/ssd/crucial-p5-ssd)
+- HDD
+    - 日立 5400转 2.5英寸 7mm 32MB PMR 1TB
+    - ¥ 275（全新）
+    - [https://m.tb.cn/h.fwlHZFV?tk=4Fdi2MtXCRw](https://m.tb.cn/h.fwlHZFV?tk=4Fdi2MtXCRw)
+- 电源
+    - 振华 冰山金蝶 550W
+    - ¥ 262（闲鱼二手在保）
+- 散热
+    - 利民 AS120PLUS
+    - ¥ 139（全新）
+    - [https://item.jd.com/100006880794.html](https://item.jd.com/100006880794.html)
+- 内存
+    - 金士顿 FURY Beast 8GB×2 DDR4 3200MHz
+    - ¥ 399（全新）
+    - [https://www.kingston.com/cn/memory/gaming/kingston-fury-beast-ddr4-rgb-memory](https://www.kingston.com/cn/memory/gaming/kingston-fury-beast-ddr4-rgb-memory)
+
+
+
+reference：[https://zhuanlan.zhihu.com/p/282821640](https://zhuanlan.zhihu.com/p/282821640)

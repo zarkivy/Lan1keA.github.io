@@ -7,9 +7,9 @@ tags: [ "Main" ]
 
 
 
-## 自用 dotfiles
+# 自用 dotfiles
 
-### .zshrc
+## .zshrc
 
 ```sh
 export LS_COLORS="di=34:ln=35:so=32:pi=33:ex=31:bd=34:cd=34:su=30:sg=30:tw=30:ow=30"
@@ -51,7 +51,7 @@ alias v='nvim'
 
 
 
-### init.vim
+## init.vim
 
 ```ini
 set number
@@ -105,7 +105,7 @@ let g:rainbow_active = 1
 
 
 
-### .tmux.conf
+## .tmux.conf
 
 ```sh
 set-option -g prefix C-x
@@ -144,7 +144,7 @@ setw -g window-status-current-format '#[fg=white,bg=white,nobold,nounderscore,no
 
 
 
-### ~/.config/lsd/themes/light.yaml
+## ~/.config/lsd/themes/light.yaml
 
 ```yaml
 user: 241
@@ -177,7 +177,7 @@ lsd亮色主题，解决终端在亮色背景下lsd输出看不清的问题
 
 
 
-### .gdbinit
+## .gdbinit
 
 ```sh
 set syntax-highlight-style tango
@@ -185,16 +185,16 @@ set syntax-highlight-style tango
 
 
 
-## Trick
+# Trick
 
-### 谁在ping我？
+## 谁在ping我？
 
 ```sh
 tcpdump -i eth0 'icmp and icmp[icmptype]=icmp-echo'
 # root权限执行，eth0 换成你需要抓包的网卡iframe
 ```
 
-### 命令行看天气
+## 命令行看天气
 
 ```sh
 curl wttr.in/Beijing
@@ -203,9 +203,9 @@ curl wttr.in/:help
 
 
 
-## Key-Value
+# Key-Value
 
-### ANSI 颜色
+## ANSI 颜色
 
 | 重置     | \x1b[0m    |
 | -------- | ---------- |
@@ -226,4 +226,22 @@ curl wttr.in/:help
 | 闪烁红色 | \x1b[5;31m |
 
 > 在bash中使用时需稍加变换，例：echo $'\x1b[31mTEST\x1b[0m'
+
+## Windows小鹤双拼注册表
+
+```ini
+Windows Registry Editor Version 5.00
+
+[HKEY_CURRENT_USER\Software\Microsoft\InputMethod\Settings\CHS]
+"Enable Cloud Candidate"=dword:00000000
+"Enable Dynamic Candidate Ranking"=dword:00000001
+"EnableExtraDomainType"=dword:00000001
+"Enable self-learning"=dword:00000001
+"EnableSmartSelfLearning"=dword:00000001
+"EnableLiveSticker"=dword:00000000
+"Enable EUDP"=dword:00000001
+"Enable Double Pinyin"=dword:00000001
+"UserDefinedDoublePinyinScheme0"="小鹤双拼*2*^*iuvdjhcwfg^xmlnpbksqszxkrltvyovt"
+"DoublePinyinScheme"=dword:0000000a
+```
 
