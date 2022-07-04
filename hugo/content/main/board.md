@@ -201,6 +201,14 @@ curl wttr.in/Beijing
 curl wttr.in/:help
 ```
 
+## 修复VMware共享文件夹
+
+```sh
+sudo vmhgfs-fuse .host:/ /mnt/hgfs -o allow_other -o uid=1000 -o gid=1000 -o umask=022
+```
+
+
+
 
 
 # Key-Value

@@ -19,6 +19,13 @@ tags: [ "Main" ]
 
 <br><br><br>
 
+<h1 align="center">T O D O</h1>
+
+- 分析CVE-2017-0143永恒之蓝漏洞
+- 阅读源码：Mirai malware
+
+
+
 <h1 align="center">那 些 年 我</h1>
 
 <h4 align="center">2017 ~</h6>

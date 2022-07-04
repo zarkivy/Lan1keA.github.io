@@ -227,7 +227,7 @@ reference：[https://www.zhihu.com/question/35668312](https://www.zhihu.com/ques
 # 终局
 
 - 总价
-    - ¥ 4269
+    - ¥ 4499
 - CPU
     - AMD 锐龙 R5-5600X 盒装
     - ¥ 940（全新）
@@ -237,9 +237,9 @@ reference：[https://www.zhihu.com/question/35668312](https://www.zhihu.com/ques
     - ¥ 600（全新）
     - [https://www.asus.com.cn/Motherboards-Components/Motherboards/TUF-Gaming/TUF-GAMING-B550M-PLUS-WI-FI/](https://www.asus.com.cn/Motherboards-Components/Motherboards/TUF-Gaming/TUF-GAMING-B550M-PLUS-WI-FI/)
 - 机箱
-    - 酷冷至尊 Q300L
-    - ¥ 229（全新）
-    - [https://item.jd.com/100000105376.html](https://item.jd.com/100000105376.html)
+    - 乔思伯 D30 M-ATX 银色
+    - ¥ 399（全新）
+    - [https://www.jonsbo.com/products/D30.html](https://www.jonsbo.com/products/D30.html)
 - 显卡
     - 迪兰 RX5500XT 8G X战将
     - ¥ 925（来自同事的二手）
@@ -259,6 +259,9 @@ reference：[https://www.zhihu.com/question/35668312](https://www.zhihu.com/ques
     - 利民 AS120PLUS
     - ¥ 139（全新）
     - [https://item.jd.com/100006880794.html](https://item.jd.com/100006880794.html)
+    - ID-COLLING XF-12025-SD-K ×3
+    - ¥ 60（全新）
+    - [https://item.jd.com/100005667115.html](https://item.jd.com/100005667115.html)
 - 内存
     - 金士顿 FURY Beast 8GB×2 DDR4 3200MHz
     - ¥ 399（全新）

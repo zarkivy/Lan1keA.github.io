@@ -80,11 +80,13 @@ tags: [ "Main" ]
 
 - 在线浏览 QEMU 源码
   - [https://elixir.bootlin.com/qemu/latest/source](https://elixir.bootlin.com/qemu/latest/source)
-
 - 空中巴士航空公司信息安全团队的 QEMU 内部机制解析
   - [https://airbus-seclab.github.io/qemu_blog/](https://airbus-seclab.github.io/qemu_blog/)
 - 开箱即用的嵌入式 debian rootfs 的 QEMU 镜像
   - [https://people.debian.org/~aurel32/qemu/](https://people.debian.org/~aurel32/qemu/)
+- Learn KVM & QEMU 省力版
+    - [https://yifengyou.github.io/learn-kvm/](https://yifengyou.github.io/learn-kvm/)
+
 
 
 
