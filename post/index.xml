@@ -7,7 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>© 2022, Zikey Vi</copyright>
-    <lastBuildDate>Thu, 16 Jun 2022 18:42:34 +0800</lastBuildDate><atom:link href="https://cerr.cc/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 04 Jul 2022 17:47:35 +0800</lastBuildDate><atom:link href="https://cerr.cc/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ZKV对后端的浅尝辄止</title>
+      <link>https://cerr.cc/post/backend/</link>
+      <pubDate>Mon, 04 Jul 2022 17:47:35 +0800</pubDate>
+      
+      <guid>https://cerr.cc/post/backend/</guid>
+      <description>TODO：
+docker swarm 计算 产品 存储 产品 Amazon S3 官网：https://aws.amazon.com/cn/s3/
+Amazon Simple Storage Service (Amazon S3) 是一种对象存储服务
+Reference:
+https://zhuanlan.zhihu.com/p/269794747 </description>
+    </item>
+    
     <item>
       <title>ZKV的攒机简史</title>
       <link>https://cerr.cc/post/my_pc/</link>
