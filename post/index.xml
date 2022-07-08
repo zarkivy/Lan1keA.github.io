@@ -15,10 +15,11 @@
       
       <guid>https://cerr.cc/post/backend/</guid>
       <description>TODO：
-docker swarm 计算 产品 存储 产品 Amazon S3 官网：https://aws.amazon.com/cn/s3/
-Amazon Simple Storage Service (Amazon S3) 是一种对象存储服务
-Reference:
-https://zhuanlan.zhihu.com/p/269794747 </description>
+oauth https://oauth.net/ s3-pika restful https://restfulapi.net/ 概念 总览 https://www.redhat.com/zh/topics 云原生 https://www.redhat.com/zh/topics/cloud-native-apps 分布式 CAP理论 在计算机科学中, CAP定理（CAP theorem）, 又被称作 布鲁尔定理（Brewer&amp;rsquo;s theorem）, 它指出对于一个分布式计算系统来说，不可能同时满足以下三点:
+一致性(Consistency) (所有节点在同一时间具有相同的数据) 可用性(Availability) (保证每个请求不管成功或者失败都有响应) 分隔容忍(Partition tolerance) (系统中任意信息的丢失或失败不会影响系统的继续运作) CAP理论的核心是：一个分布式系统不可能同时很好的满足一致性，可用性和分区容错性这三个需求，最多只能同时较好的满足两个。
+因此，根据 CAP 原理将 NoSQL 数据库分成了满足 CA 原则、满足 CP 原则和满足 AP 原则三 大类：
+CA - 单点集群，满足一致性，可用性的系统，通常在可扩展性上不太强大。 CP - 满足一致性，分区容忍性的系统，通常性能不是特别高。 AP - 满足可用性，分区容忍性的系统，通常可能对一致性要求低一些。 计算 技术 LVS https://cloud.tencent.com/developer/article/1657962 https://my.oschina.net/leeypp1/blog/294807?fromerr=xfCehUJY 产品 CentOS reference：
+https://en.wikipedia.org/wiki/CentOS https://zhuanlan.zhihu.com/p/337075432 Docker dockerfile https://docs.docker.com/engine/reference/builder/ https://www.runoob.com/docker/docker-dockerfile.html compose https://docs.docker.com/compose/ https://www.runoob.com/docker/docker-compose.html swarm https://docs.docker.com/engine/swarm/ https://www.runoob.com/docker/docker-swarm.html K8s Kubernetes, also known as K8s, is an open-source system for automating deployment, scaling, and management of containerized applications.</description>
     </item>
     
     <item>
@@ -286,7 +287,7 @@ https://buildroot.org/ OS/ABI的匹配 通常情况下，选取编译交叉编�
       <pubDate>Sat, 07 May 2022 22:53:05 +0800</pubDate>
       
       <guid>https://cerr.cc/post/awesome_colors/</guid>
-      <description>Awesome colors 波尔多红 #4f0009 克莱因蓝 #002FA7 普鲁士蓝 #003153 勃艮第红 #800020 邦迪蓝 #0095b6 木乃伊棕 #8f4b28 卡布里蓝 #1a5599 提香红 #b05923 蒂芙尼蓝 #81d8d0 覆盆子红 #9e2e24 虎皮黄 #e2af42 薄荷绿 #407d52 草黄 #cfb64a 星蓝 #9ab4cd 鸢尾蓝 #418ab4 苋菜紫 #8e2961 钢蓝 #101420 云峰白 #dae3e6 岩石棕 #8c502c 橄榄石绿 #b8ce8e 竹绿 #4fa485 钴蓝 #4692b9 月影白 #c2c4c3 笋皮棕 #6b331a 琉璃蓝 #22406a 黛蓝 #3f4f65 青白 #bee0d0 墨色 #4e606c 黯 #3f545b 玄青 #3b3a4e 漆黑 #141722 玄色 #370708 </description>
+      <description>Awesome colors 波尔多红#4f0009克莱因蓝#002FA7普鲁士蓝#003153勃艮第红#800020邦迪蓝#0095b6木乃伊棕#8f4b28卡布里蓝#1a5599提香红#b05923蒂芙尼蓝#81d8d0覆盆子红#9e2e24虎皮黄#e2af42薄荷绿#407d52草黄#cfb64a星蓝#9ab4cd鸢尾蓝#418ab4苋菜紫#8e2961钢蓝#101420云峰白#dae3e6岩石棕#8c502c橄榄石绿#b8ce8e竹绿#4fa485钴蓝#4692b9月影白#c2c4c3笋皮棕#6b331a琉璃蓝#22406a黛蓝#3f4f65青白#bee0d0墨色#4e606c黯#3f545b玄青#3b3a4e漆黑#141722玄色#370708</description>
     </item>
     
     <item>

@@ -212,11 +212,96 @@
   
     <div class="post-content"><p>TODO：</p>
 <ul>
-<li>docker swarm</li>
+<li>oauth
+<ul>
+<li><a href="https://oauth.net/">https://oauth.net/</a></li>
 </ul>
+</li>
+<li>s3-pika</li>
+<li>restful
+<ul>
+<li><a href="https://restfulapi.net/">https://restfulapi.net/</a></li>
+</ul>
+</li>
+</ul>
+<h1 id="概念">概念</h1>
+<h2 id="总览">总览</h2>
+<ul>
+<li><a href="https://www.redhat.com/zh/topics">https://www.redhat.com/zh/topics</a></li>
+</ul>
+<h2 id="云原生">云原生</h2>
+<ul>
+<li><a href="https://www.redhat.com/zh/topics/cloud-native-apps">https://www.redhat.com/zh/topics/cloud-native-apps</a></li>
+</ul>
+<h2 id="分布式">分布式</h2>
+<h3 id="cap理论">CAP理论</h3>
+<p>在计算机科学中, CAP定理（CAP theorem）, 又被称作 布鲁尔定理（Brewer&rsquo;s theorem）, 它指出对于一个分布式计算系统来说，不可能同时满足以下三点:</p>
+<ul>
+<li><strong>一致性(Consistency)</strong> (所有节点在同一时间具有相同的数据)</li>
+<li><strong>可用性(Availability)</strong> (保证每个请求不管成功或者失败都有响应)</li>
+<li><strong>分隔容忍(Partition tolerance)</strong> (系统中任意信息的丢失或失败不会影响系统的继续运作)</li>
+</ul>
+<p>CAP理论的核心是：一个分布式系统不可能同时很好的满足一致性，可用性和分区容错性这三个需求，最多只能同时较好的满足两个。</p>
+<p>因此，根据 CAP 原理将 NoSQL 数据库分成了满足 CA 原则、满足 CP 原则和满足 AP 原则三 大类：</p>
+<ul>
+<li>CA - 单点集群，满足一致性，可用性的系统，通常在可扩展性上不太强大。</li>
+<li>CP - 满足一致性，分区容忍性的系统，通常性能不是特别高。</li>
+<li>AP - 满足可用性，分区容忍性的系统，通常可能对一致性要求低一些。</li>
+</ul>
+<p><img src="https://www.runoob.com/wp-content/uploads/2013/10/cap-theoram-image.png" alt="img"></p>
 <h1 id="计算">计算</h1>
+<h2 id="技术">技术</h2>
+<h3 id="lvs">LVS</h3>
+<ul>
+<li><a href="https://cloud.tencent.com/developer/article/1657962">https://cloud.tencent.com/developer/article/1657962</a></li>
+<li><a href="https://my.oschina.net/leeypp1/blog/294807?fromerr=xfCehUJY">https://my.oschina.net/leeypp1/blog/294807?fromerr=xfCehUJY</a></li>
+</ul>
 <h2 id="产品">产品</h2>
+<h3 id="centos">CentOS</h3>
+<p>reference：</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/CentOS">https://en.wikipedia.org/wiki/CentOS</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/337075432">https://zhuanlan.zhihu.com/p/337075432</a></li>
+</ul>
+<h3 id="docker">Docker</h3>
+<h4 id="dockerfile">dockerfile</h4>
+<ul>
+<li><a href="https://docs.docker.com/engine/reference/builder/">https://docs.docker.com/engine/reference/builder/</a></li>
+<li><a href="https://www.runoob.com/docker/docker-dockerfile.html">https://www.runoob.com/docker/docker-dockerfile.html</a></li>
+</ul>
+<h4 id="compose">compose</h4>
+<ul>
+<li><a href="https://docs.docker.com/compose/">https://docs.docker.com/compose/</a></li>
+<li><a href="https://www.runoob.com/docker/docker-compose.html">https://www.runoob.com/docker/docker-compose.html</a></li>
+</ul>
+<h4 id="swarm">swarm</h4>
+<ul>
+<li><a href="https://docs.docker.com/engine/swarm/">https://docs.docker.com/engine/swarm/</a></li>
+<li><a href="https://www.runoob.com/docker/docker-swarm.html">https://www.runoob.com/docker/docker-swarm.html</a></li>
+</ul>
+<h3 id="k8s">K8s</h3>
+<p><a href="https://kubernetes.io/docs/concepts/overview/what-is-kubernetes/">Kubernetes</a>, also known as K8s, is an open-source system for automating deployment, scaling, and management of containerized applications.</p>
+<ul>
+<li><a href="https://kubernetes.io/">https://kubernetes.io/</a></li>
+<li><a href="https://kubernetes.io/docs/concepts/overview/what-is-kubernetes/">https://kubernetes.io/docs/concepts/overview/what-is-kubernetes/</a></li>
+<li><a href="https://www.redhat.com/zh/topics/containers/what-is-kubernetes">https://www.redhat.com/zh/topics/containers/what-is-kubernetes</a></li>
+</ul>
 <h1 id="存储">存储</h1>
+<h2 id="技术-1">技术</h2>
+<h3 id="raid">RAID</h3>
+<p>reference：</p>
+<ul>
+<li><a href="https://zh.wikipedia.org/zh-tw/RAID">https://zh.wikipedia.org/zh-tw/RAID</a></li>
+</ul>
+<h3 id="xfs">XFS</h3>
+<p>reference：</p>
+<ul>
+<li><a href="https://zh.wikipedia.org/zh-tw/XFS">https://zh.wikipedia.org/zh-tw/XFS</a></li>
+</ul>
+<h3 id="nosql">NoSQL</h3>
+<ul>
+<li><a href="https://www.runoob.com/mongodb/nosql.html">https://www.runoob.com/mongodb/nosql.html</a></li>
+</ul>
 <h2 id="产品-1">产品</h2>
 <h3 id="amazon-s3">Amazon S3</h3>
 <p>官网：<a href="https://aws.amazon.com/cn/s3/">https://aws.amazon.com/cn/s3/</a></p>
@@ -225,6 +310,43 @@
 <p>Reference:</p>
 <ul>
 <li><a href="https://zhuanlan.zhihu.com/p/269794747">https://zhuanlan.zhihu.com/p/269794747</a></li>
+</ul>
+<h3 id="mongodb">MongoDB</h3>
+<ul>
+<li><a href="https://www.runoob.com/mongodb/mongodb-tutorial.html">https://www.runoob.com/mongodb/mongodb-tutorial.html</a></li>
+</ul>
+<h3 id="elasticsearch">elasticsearch</h3>
+<p><a href="https://www.elastic.co/cn/">https://www.elastic.co/cn/</a></p>
+<ul>
+<li><a href="https://github.com/elastic/elasticsearch">https://github.com/elastic/elasticsearch</a></li>
+<li><a href="https://www.elastic.co/cn/elasticsearch/">https://www.elastic.co/cn/elasticsearch/</a></li>
+</ul>
+<h4 id="kibana">Kibana</h4>
+<p><a href="https://www.elastic.co/cn/kibana/">https://www.elastic.co/cn/kibana/</a></p>
+<h3 id="redis">Redis</h3>
+<ul>
+<li><a href="https://redis.io/docs/about/">https://redis.io/docs/about/</a></li>
+<li><a href="https://www.runoob.com/redis/redis-tutorial.html">https://www.runoob.com/redis/redis-tutorial.html</a></li>
+</ul>
+<h1 id="管理">管理</h1>
+<h2 id="产品-2">产品</h2>
+<h3 id="apache-hadoop">Apache Hadoop</h3>
+<ul>
+<li><a href="https://hadoop.apache.org/">https://hadoop.apache.org/</a></li>
+<li><a href="https://www.runoob.com/w3cnote/hadoop-tutorial.html">https://www.runoob.com/w3cnote/hadoop-tutorial.html</a></li>
+</ul>
+<h3 id="apache-zookeeper">Apache Zookeeper</h3>
+<ul>
+<li><a href="https://www.runoob.com/w3cnote/zookeeper-tutorial.html">https://www.runoob.com/w3cnote/zookeeper-tutorial.html</a></li>
+</ul>
+<h3 id="apache-kafka">Apache Kafka</h3>
+<ul>
+<li><a href="https://www.redhat.com/zh/topics/integration/what-is-apache-kafka">https://www.redhat.com/zh/topics/integration/what-is-apache-kafka</a></li>
+</ul>
+<h3 id="jenkins">Jenkins</h3>
+<ul>
+<li><a href="https://www.jenkins.io/">https://www.jenkins.io/</a></li>
+<li><a href="https://www.liaoxuefeng.com/article/1083282007018592">https://www.liaoxuefeng.com/article/1083282007018592</a></li>
 </ul>
 </div>
   

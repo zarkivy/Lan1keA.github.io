@@ -82,6 +82,7 @@ tags: [ "Main" ]
 - 树莓派4B
 - Friendlyelec NanoPC T3 Plus
 - NUC11PAHi5
+- HP PROBOOK 440 G8
 
 ## 📖 读过的书
 

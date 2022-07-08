@@ -219,6 +219,9 @@ tags: [ "Main" ]
         - [https://research.swtch.com/qr/draw/](https://research.swtch.com/qr/draw/)
     - 摸头生成器
         - [https://benisland.neocities.org/petpet/](https://benisland.neocities.org/petpet/)
+    - 福音战士标题生成器
+        - [https://mojimo.jp/eva/](https://mojimo.jp/eva/)
+        - [https://github.com/itorr/eva-title](https://github.com/itorr/eva-title)
 
 - ASCII art
 
