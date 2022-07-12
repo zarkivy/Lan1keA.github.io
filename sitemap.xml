@@ -2,16 +2,22 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://cerr.cc/tags/develop/</loc>
-    <lastmod>2022-07-04T17:47:35+08:00</lastmod>
+    <loc>https://cerr.cc/tags/embeded/</loc>
+    <lastmod>2022-07-08T14:11:35+08:00</lastmod>
   </url><url>
     <loc>https://cerr.cc/post/</loc>
-    <lastmod>2022-07-04T17:47:35+08:00</lastmod>
+    <lastmod>2022-07-08T14:11:35+08:00</lastmod>
   </url><url>
     <loc>https://cerr.cc/tags/</loc>
-    <lastmod>2022-07-04T17:47:35+08:00</lastmod>
+    <lastmod>2022-07-08T14:11:35+08:00</lastmod>
   </url><url>
     <loc>https://cerr.cc/</loc>
+    <lastmod>2022-07-08T14:11:35+08:00</lastmod>
+  </url><url>
+    <loc>https://cerr.cc/post/embeded_hardware/</loc>
+    <lastmod>2022-07-08T14:11:35+08:00</lastmod>
+  </url><url>
+    <loc>https://cerr.cc/tags/develop/</loc>
     <lastmod>2022-07-04T17:47:35+08:00</lastmod>
   </url><url>
     <loc>https://cerr.cc/post/backend/</loc>
@@ -70,9 +76,6 @@
   </url><url>
     <loc>https://cerr.cc/post/cve-2021-3156/</loc>
     <lastmod>2022-05-13T23:02:59+08:00</lastmod>
-  </url><url>
-    <loc>https://cerr.cc/tags/embeded/</loc>
-    <lastmod>2022-05-11T16:27:10+08:00</lastmod>
   </url><url>
     <loc>https://cerr.cc/post/compile_asuswrt-merlin/</loc>
     <lastmod>2022-05-11T16:27:10+08:00</lastmod>

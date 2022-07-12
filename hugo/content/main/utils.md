@@ -164,6 +164,9 @@ tags: [ "Main" ]
 
 ## 资源库
 
+- 海盗湾，最大的BT站
+  - [https://thepiratebay.org/](https://thepiratebay.org/)
+
 - z-library，莫问电子书资源何处下载，此处应有尽有
   - [https://1lib.domains/](https://1lib.domains/)（自动跳转到最新有效域名
   - 2022.6月后的有效地址

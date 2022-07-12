@@ -7,7 +7,21 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>© 2022, Zikey Vi</copyright>
-    <lastBuildDate>Mon, 04 Jul 2022 17:47:35 +0800</lastBuildDate><atom:link href="https://cerr.cc/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 08 Jul 2022 14:11:35 +0800</lastBuildDate><atom:link href="https://cerr.cc/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ZKV对嵌入式硬件的浅尝不止</title>
+      <link>https://cerr.cc/post/embeded_hardware/</link>
+      <pubDate>Fri, 08 Jul 2022 14:11:35 +0800</pubDate>
+      
+      <guid>https://cerr.cc/post/embeded_hardware/</guid>
+      <description>PCB 处理器 MCU https://en.wikipedia.org/wiki/Microcontroller STM32 https://en.wikipedia.org/wiki/STM32 Flash 芯片封装 https://www.sohu.com/a/158654863_609521
+https://www.youtube.com/watch?v=2ua8PeP9ql4&amp;amp;t=153s
+https://zhuanlan.zhihu.com/p/509647754
+https://semiwiki.com/semiconductor-services/308968-semiconductor-packaging-history-primer/
+协议 UART https://zh.wikipedia.org/zh-cn/UART RS232 https://zh.wikipedia.org/zh-cn/RS-232 I2C https://zh.wikipedia.org/wiki/I%C2%B2C JTAG SPI 工具 逻辑分析仪 https://en.wikipedia.org/wiki/Logic_analyzer https://zhuanlan.zhihu.com/p/94386957 一款逻辑分析仪的样本：
+http://www.qdkingst.com/cn http://res.kingst.site/kfs/doc/Kingst%e9%87%91%e6%80%9d%e7%89%b9%e8%99%9a%e6%8b%9f%e4%bb%aa%e5%99%a8%e4%bd%bf%e7%94%a8%e6%89%8b%e5%86%8c.pdf 姿势 固件提取 https://www.anquanke.com/post/id/227285 </description>
+    </item>
+    
     <item>
       <title>ZKV对后端的浅尝辄止</title>
       <link>https://cerr.cc/post/backend/</link>

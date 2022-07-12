@@ -1,0 +1,87 @@
+---
+title: "ZKV对嵌入式硬件的浅尝不止"
+description: "接着学，不得停"
+date: 2022-07-08T14:11:35+08:00
+tags: [ "Embeded" ]
+imagelink: "https://pic1.zhimg.com/v2-983af8971091bf560af2e2299d801cd1_1440w.jpg"
+---
+
+
+
+# PCB
+
+
+
+# 处理器
+
+## MCU
+
+- [https://en.wikipedia.org/wiki/Microcontroller](https://en.wikipedia.org/wiki/Microcontroller)
+
+### STM32
+
+- [https://en.wikipedia.org/wiki/STM32](https://en.wikipedia.org/wiki/STM32)
+
+
+
+# Flash
+
+
+
+# 芯片封装
+
+![Semiconductor Packaging](https://semiwiki.com/wp-content/uploads/2022/03/https3A2F2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com2Fpublic2Fimages2F220c1577-6253-45ec-9e2d-fc0f8430db8e_594x496.png)
+
+- [https://www.sohu.com/a/158654863_609521](https://www.sohu.com/a/158654863_609521)
+- [https://www.youtube.com/watch?v=2ua8PeP9ql4&t=153s](https://www.youtube.com/watch?v=2ua8PeP9ql4&t=153s)
+
+
+
+- [https://zhuanlan.zhihu.com/p/509647754](https://zhuanlan.zhihu.com/p/509647754)
+- [https://semiwiki.com/semiconductor-services/308968-semiconductor-packaging-history-primer/](https://semiwiki.com/semiconductor-services/308968-semiconductor-packaging-history-primer/)
+
+
+
+# 协议
+
+## UART
+
+- [https://zh.wikipedia.org/zh-cn/UART](https://zh.wikipedia.org/zh-cn/UART)
+
+### RS232
+
+- [https://zh.wikipedia.org/zh-cn/RS-232](https://zh.wikipedia.org/zh-cn/RS-232)
+
+## I2C
+
+- [https://zh.wikipedia.org/wiki/I%C2%B2C](https://zh.wikipedia.org/wiki/I%C2%B2C)
+
+## JTAG
+
+## SPI
+
+
+
+
+
+# 工具
+
+## 逻辑分析仪
+
+- [https://en.wikipedia.org/wiki/Logic_analyzer](https://en.wikipedia.org/wiki/Logic_analyzer)
+- [https://zhuanlan.zhihu.com/p/94386957](https://zhuanlan.zhihu.com/p/94386957)
+
+一款逻辑分析仪的样本：
+
+- [http://www.qdkingst.com/cn](http://www.qdkingst.com/cn)
+- [http://res.kingst.site/kfs/doc/Kingst%e9%87%91%e6%80%9d%e7%89%b9%e8%99%9a%e6%8b%9f%e4%bb%aa%e5%99%a8%e4%bd%bf%e7%94%a8%e6%89%8b%e5%86%8c.pdf](http://res.kingst.site/kfs/doc/Kingst%e9%87%91%e6%80%9d%e7%89%b9%e8%99%9a%e6%8b%9f%e4%bb%aa%e5%99%a8%e4%bd%bf%e7%94%a8%e6%89%8b%e5%86%8c.pdf)
+
+
+
+
+
+# 姿势
+
+## 固件提取
+
+- [https://www.anquanke.com/post/id/227285](https://www.anquanke.com/post/id/227285)
