@@ -102,14 +102,6 @@ Firefox插件地址为：[https://addons.mozilla.org/en-US/firefox/addon/gnome-s
 
 此后，尽情探索[https://www.gnome-look.org/](https://www.gnome-look.org/)，将下载到的资源在gnome-tweaks中启用即可。
 
-
-
-# Openbox
-
-[https://www.box-look.org/](https://www.box-look.org/)
-
-
-
 # 通用
 
 ## shell美化
@@ -150,9 +142,21 @@ shell并不属于DE的一部分，有个字符终端足矣。
 
 ## 终端配色
 
+### 终端模拟器层
+
 如下仓库，应有尽有：
 
 https://github.com/mbadolato/iTerm2-Color-Schemes
+
+### shell层
+
+shell层的配色只是用色号指定颜色，但相应颜色具体长什么样还得看上述终端模拟器层中定义的RGB值。
+
+参考：
+
+- [https://askubuntu.com/questions/466198/how-do-i-change-the-color-for-directories-with-ls-in-the-console](https://askubuntu.com/questions/466198/how-do-i-change-the-color-for-directories-with-ls-in-the-console)
+- [http://www.bigsoft.co.uk/blog/2008/04/11/configuring-ls_colors](http://www.bigsoft.co.uk/blog/2008/04/11/configuring-ls_colors)
+- [https://geoff.greer.fm/lscolors/](https://geoff.greer.fm/lscolors/)
 
 
 

@@ -36,4 +36,5 @@ Can legacy 32 bit app. (ARMv7 or earlier) run as is on the ARMv8 OS?
 # reference
 
 - https://en.wikipedia.org/wiki/ARM_architecture_family
+- [https://www.ruanyifeng.com/blog/2011/01/brief_history_of_arm.html](https://www.ruanyifeng.com/blog/2011/01/brief_history_of_arm.html)
 

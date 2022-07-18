@@ -14,12 +14,12 @@
       <pubDate>Fri, 08 Jul 2022 14:11:35 +0800</pubDate>
       
       <guid>https://cerr.cc/post/embeded_hardware/</guid>
-      <description>PCB 处理器 MCU https://en.wikipedia.org/wiki/Microcontroller STM32 https://en.wikipedia.org/wiki/STM32 Flash 芯片封装 https://www.sohu.com/a/158654863_609521
+      <description>PCB 处理器 MCU https://en.wikipedia.org/wiki/Microcontroller STM32 https://en.wikipedia.org/wiki/STM32 Flash https://nieyong.github.io/wiki_ny/Flash.html 芯片封装 https://www.sohu.com/a/158654863_609521
 https://www.youtube.com/watch?v=2ua8PeP9ql4&amp;amp;t=153s
 https://zhuanlan.zhihu.com/p/509647754
 https://semiwiki.com/semiconductor-services/308968-semiconductor-packaging-history-primer/
-协议 UART https://zh.wikipedia.org/zh-cn/UART RS232 https://zh.wikipedia.org/zh-cn/RS-232 I2C https://zh.wikipedia.org/wiki/I%C2%B2C JTAG SPI 工具 逻辑分析仪 https://en.wikipedia.org/wiki/Logic_analyzer https://zhuanlan.zhihu.com/p/94386957 一款逻辑分析仪的样本：
-http://www.qdkingst.com/cn http://res.kingst.site/kfs/doc/Kingst%e9%87%91%e6%80%9d%e7%89%b9%e8%99%9a%e6%8b%9f%e4%bb%aa%e5%99%a8%e4%bd%bf%e7%94%a8%e6%89%8b%e5%86%8c.pdf 姿势 固件提取 https://www.anquanke.com/post/id/227285 </description>
+协议 UART https://zh.wikipedia.org/zh-cn/UART RS232 https://zh.wikipedia.org/zh-cn/RS-232 I2C https://zh.wikipedia.org/wiki/I%C2%B2C JTAG SPI 工具 逻辑分析仪 https://en.wikipedia.org/wiki/Logic_analyzer https://zhuanlan.zhihu.com/p/94386957 https://www.anquanke.com/post/id/276280 一款逻辑分析仪的样本：
+http://www.qdkingst.com/cn http://res.kingst.site/kfs/doc/Kingst%e9%87%91%e6%80%9d%e7%89%b9%e8%99%9a%e6%8b%9f%e4%bb%aa%e5%99%a8%e4%bd%bf%e7%94%a8%e6%89%8b%e5%86%8c.pdf 姿势 固件提取 https://www.anquanke.com/post/id/227285 硬件调试 https://www.riverloopsecurity.com/blog/2020/01/hw-101-uart/ </description>
     </item>
     
     <item>
@@ -301,7 +301,7 @@ https://buildroot.org/ OS/ABI的匹配 通常情况下，选取编译交叉编�
       <pubDate>Sat, 07 May 2022 22:53:05 +0800</pubDate>
       
       <guid>https://cerr.cc/post/awesome_colors/</guid>
-      <description>Awesome colors 波尔多红#4f0009克莱因蓝#002FA7普鲁士蓝#003153勃艮第红#800020邦迪蓝#0095b6木乃伊棕#8f4b28卡布里蓝#1a5599提香红#b05923蒂芙尼蓝#81d8d0覆盆子红#9e2e24虎皮黄#e2af42薄荷绿#407d52草黄#cfb64a星蓝#9ab4cd鸢尾蓝#418ab4苋菜紫#8e2961钢蓝#101420云峰白#dae3e6岩石棕#8c502c橄榄石绿#b8ce8e竹绿#4fa485钴蓝#4692b9月影白#c2c4c3笋皮棕#6b331a琉璃蓝#22406a黛蓝#3f4f65青白#bee0d0墨色#4e606c黯#3f545b玄青#3b3a4e漆黑#141722玄色#370708</description>
+      <description>Awesome colors 波尔多红 #4f0009 克莱因蓝 #002FA7 普鲁士蓝 #003153 勃艮第红 #800020 邦迪蓝 #0095b6 木乃伊棕 #8f4b28 卡布里蓝 #1a5599 提香红 #b05923 蒂芙尼蓝 #81d8d0 覆盆子红 #9e2e24 虎皮黄 #e2af42 薄荷绿 #407d52 草黄 #cfb64a 星蓝 #9ab4cd 鸢尾蓝 #418ab4 苋菜紫 #8e2961 钢蓝 #101420 云峰白 #dae3e6 岩石棕 #8c502c 橄榄石绿 #b8ce8e 竹绿 #4fa485 钴蓝 #4692b9 月影白 #c2c4c3 笋皮棕 #6b331a 琉璃蓝 #22406a 黛蓝 #3f4f65 青白 #bee0d0 墨色 #4e606c 黯 #3f545b 玄青 #3b3a4e 漆黑 #141722 玄色 #370708 </description>
     </item>
     
     <item>
@@ -374,8 +374,8 @@ https://s2.loli.net/2022/05/09/UxFIkpBivKWzX6M.png x86与x64指令速查</descri
       <pubDate>Sat, 07 May 2022 18:53:05 +0800</pubDate>
       
       <guid>https://cerr.cc/main/love/</guid>
-      <description>「&amp;nbsp; V I V I A I Q I Q I
-【 天 时 分 秒 】Q I Q I A I V I V I &amp;nbsp;」</description>
+      <description> 「&amp;nbsp; V I V I A I Q I Q I
+【 天 时 分 秒 】 Q I Q I A I V I V I &amp;nbsp;」 </description>
     </item>
     
     <item>
@@ -384,7 +384,7 @@ https://s2.loli.net/2022/05/09/UxFIkpBivKWzX6M.png x86与x64指令速查</descri
       <pubDate>Sat, 07 May 2022 17:53:05 +0800</pubDate>
       
       <guid>https://cerr.cc/main/flink/</guid>
-      <description> https://foada.github.io/ https://fromhex.cn/ https://blog.xiabee.cn/ https://migraine-sudo.github.io/ https://m4x.fun/ https://ifpop.github.io/ https://blog.fkynjyq.com/ https://eacryo.gitee.io/ https://vang3lis.github.io/ https://emptystack.top/ https://l1b0.github.io/ https://yourbutterfly.github.io/ BigBrothers https://eternalsakura13.com/ https://lancern.xyz/ http://www.aloxaf.com/ https://kiprey.github.io/ https://www.ksroido.art/ https://blog.flanker017.me/ https://thunderjie.github.io/ http://blog.eonew.cn/ https://xuanxuanblingbling.github.io/ https://atum.li/ https://mem2019.github.io/ https://bsauce.github.io/ https://ray-cp.github.io/ https://chenx6.github.io/ https://blog.kyrios.cn/ https://etenal.me/ http://www.ruanyifeng.com/blog/ https://a1ex.online/ http://p4nda.top/ https://o0xmuhe.github.io/ https://evilpan.com/ https://myfzy.top/ https://exexute.github.io/ https://zhou-yuxin.github.io/ https://houjingyi233.com/ https://hhdx.xyz/post/ http://tr3e.ee/ </description>
+      <description> https://foada.github.io/ https://fromhex.cn/ https://blog.xiabee.cn/ https://migraine-sudo.github.io/ https://m4x.fun/ https://ifpop.github.io/ https://blog.fkynjyq.com/ https://eacryo.gitee.io/ https://vang3lis.github.io/ https://emptystack.top/ https://l1b0.github.io/ https://yourbutterfly.github.io/ BigBrothers https://eternalsakura13.com/ https://lancern.xyz/ http://www.aloxaf.com/ https://kiprey.github.io/ https://www.ksroido.art/ https://blog.flanker017.me/ https://thunderjie.github.io/ http://blog.eonew.cn/ https://xuanxuanblingbling.github.io/ https://atum.li/ https://mem2019.github.io/ https://bsauce.github.io/ https://ray-cp.github.io/ https://chenx6.github.io/ https://blog.kyrios.cn/ https://etenal.me/ http://www.ruanyifeng.com/blog/ https://a1ex.online/ http://p4nda.top/ https://o0xmuhe.github.io/ https://evilpan.com/ https://myfzy.top/ https://exexute.github.io/ https://zhou-yuxin.github.io/ https://houjingyi233.com/ https://hhdx.xyz/post/ http://tr3e.ee/ https://martins3.github.io/ </description>
     </item>
     
     <item>
@@ -413,7 +413,7 @@ lsd美化ls：https://github.com/Peltoche/lsd lsd需配合nerdfont：https://www
       <pubDate>Sat, 07 May 2022 15:53:05 +0800</pubDate>
       
       <guid>https://cerr.cc/main/about/</guid>
-      <description>Yet anothor cyber nyandogWith this Rolling release blogT O D O分析CVE-2017-0143永恒之蓝漏洞 阅读源码：Mirai malware 那 些 年 我2017 ~💻 玩过的机 联想G510 神舟战神KP7-GT 联想ThinkPad Tablet 联想ThinkPad E431 联想ThinkPad X200 联想小新Air14 联想Yoga 13s Macbook Air 2020 iPhone4 iPhone5s iPhone6 iPhone SE1 iPhone XR iPhone 12mini 小米note1 小米2s 小米3 小米4 小米9SE 小米9 红米1s 红米2a 红米note3 红米K30 Pro 红米K40 游戏增强版 LG G5 LG G7 LG V30 LG V30+ 夏普303SH 夏普305SH 夏普502SH 索尼Z1 索尼Z2mini 索尼Z4 索尼Xperia X 索尼XZ2 Essential Phone iQOO1 Vivo X5 max 阿尔卡特 hero2 iPad mini5 iPad Air5 小米平板1 小米平板4LTE Kindle fire 树莓派3B+ 树莓派4B Friendlyelec NanoPC T3 Plus NUC11PAHi5 HP PROBOOK 440 G8 📖 读过的书 C++ Primer 深入理解计算机系统 程序员的自我修养 深入理解计算机网络 围城 三体 北京折叠 神的孩子全跳舞 今日简史 激荡三十年 人口大逆转 醉步男 星之彩 计算机网络 刘慈欣科幻短片小说合集 颠覆者 许三观卖血记 狂人日记 马云传 美丽新世界 阿Q正传 钝感力 自控力 为人民服务 腾讯传 贝多芬传 鲁滨逊漂流记 乔布斯传 球状闪电 1984 人类简史 哈姆雷特 方方日记 永久记录 穷爸爸富爸爸 风中的纸屑 我的世界观 人体简史 杰克伦敦小说集 未来简史 操作系统真象还原 现代操作系统 黄金时代 C和C++安全编码 </description>
+      <description> Yet anothor cyber nyandog With this Rolling release blog T O D O 分析CVE-2017-0143永恒之蓝漏洞 阅读源码：Mirai malware 那 些 年 我 2017 ~ 💻 玩过的机 联想G510 神舟战神KP7-GT 联想ThinkPad Tablet 联想ThinkPad E431 联想ThinkPad X200 联想小新Air14 联想Yoga 13s Macbook Air 2020 iPhone4 iPhone5s iPhone6 iPhone SE1 iPhone XR iPhone 12mini 小米note1 小米2s 小米3 小米4 小米9SE 小米9 红米1s 红米2a 红米note3 红米K30 Pro 红米K40 游戏增强版 LG G5 LG G7 LG V30 LG V30+ 夏普303SH 夏普305SH 夏普502SH 索尼Z1 索尼Z2mini 索尼Z4 索尼Xperia X 索尼XZ2 Essential Phone iQOO1 Vivo X5 max 阿尔卡特 hero2 iPad mini5 iPad Air5 小米平板1 小米平板4LTE Kindle fire 树莓派3B+ 树莓派4B Friendlyelec NanoPC T3 Plus NUC11PAHi5 HP PROBOOK 440 G8 📖 读过的书 C++ Primer 深入理解计算机系统 程序员的自我修养 深入理解计算机网络 围城 三体 北京折叠 神的孩子全跳舞 今日简史 激荡三十年 人口大逆转 醉步男 星之彩 计算机网络 刘慈欣科幻短片小说合集 颠覆者 许三观卖血记 狂人日记 马云传 美丽新世界 阿Q正传 钝感力 自控力 为人民服务 腾讯传 贝多芬传 鲁滨逊漂流记 乔布斯传 球状闪电 1984 人类简史 哈姆雷特 方方日记 永久记录 穷爸爸富爸爸 风中的纸屑 我的世界观 人体简史 杰克伦敦小说集 未来简史 操作系统真象还原 现代操作系统 黄金时代 C和C++安全编码 </description>
     </item>
     
   </channel>

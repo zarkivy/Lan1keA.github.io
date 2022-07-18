@@ -286,16 +286,23 @@ tags: [ "Main" ]
 
     - [https://vmrp.github.io/](https://vmrp.github.io/)
 
+- 定制你的终端配色——实时在线查看
+
+    - [https://geoff.greer.fm/lscolors/](https://geoff.greer.fm/lscolors/)
+
     
 
 ## Q&A
 
 - [What's the difference between set, export and env and when should I use each?](https://askubuntu.com/questions/205688/whats-the-difference-between-set-export-and-env-and-when-should-i-use-each)
 - [TTY 到底是什么？](https://www.kawabangga.com/posts/4515)
+- [TTY 到底是什么！](https://martins3.github.io/kernel/tty.html)
 - [Adding new driver code to linux source code](https://stackoverflow.com/questions/11710022/adding-new-driver-code-to-linux-source-code)
 - [Windows下设定自然滚动](https://blog.csdn.net/CSDN_GXZ/article/details/121025199)
+- [How do I change the color for directories with ls in the console?](https://askubuntu.com/questions/466198/how-do-i-change-the-color-for-directories-with-ls-in-the-console)
 
 
 
 ## Wiki
 - [Terminal devices: tty ttyS pts etc.](https://docs.kernel.org/admin-guide/devices.html#terminal-devices)
+- [Building a tiny linux kernel](https://weeraman.com/building-a-tiny-linux-kernel-8c07579ae79d)

@@ -26,7 +26,7 @@ imagelink: "https://pic1.zhimg.com/v2-983af8971091bf560af2e2299d801cd1_1440w.jpg
 
 # Flash
 
-
+- [https://nieyong.github.io/wiki_ny/Flash.html](https://nieyong.github.io/wiki_ny/Flash.html)
 
 # 芯片封装
 
@@ -70,6 +70,7 @@ imagelink: "https://pic1.zhimg.com/v2-983af8971091bf560af2e2299d801cd1_1440w.jpg
 
 - [https://en.wikipedia.org/wiki/Logic_analyzer](https://en.wikipedia.org/wiki/Logic_analyzer)
 - [https://zhuanlan.zhihu.com/p/94386957](https://zhuanlan.zhihu.com/p/94386957)
+- [https://www.anquanke.com/post/id/276280](https://www.anquanke.com/post/id/276280)
 
 一款逻辑分析仪的样本：
 
@@ -85,3 +86,7 @@ imagelink: "https://pic1.zhimg.com/v2-983af8971091bf560af2e2299d801cd1_1440w.jpg
 ## 固件提取
 
 - [https://www.anquanke.com/post/id/227285](https://www.anquanke.com/post/id/227285)
+
+## 硬件调试
+
+- [https://www.riverloopsecurity.com/blog/2020/01/hw-101-uart/](https://www.riverloopsecurity.com/blog/2020/01/hw-101-uart/)
