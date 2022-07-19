@@ -45,8 +45,9 @@ tags: [ "Main" ]
 - iPhone6
 - iPhone SE1
 - iPhone XR
-- iPhone 12mini
+- iPhone 12 mini
 - 小米note1
+- 小米note2（postmarketOS）
 - 小米2s
 - 小米3
 - 小米4
@@ -54,6 +55,7 @@ tags: [ "Main" ]
 - 小米9
 - 红米1s
 - 红米2a
+- 红米2（postmarketOS）
 - 红米note3
 - 红米K30 Pro
 - 红米K40 游戏增强版

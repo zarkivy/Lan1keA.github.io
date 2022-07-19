@@ -2,16 +2,25 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://cerr.cc/tags/embeded/</loc>
-    <lastmod>2022-07-08T14:11:35+08:00</lastmod>
+    <loc>https://cerr.cc/tags/life/</loc>
+    <lastmod>2022-07-19T10:50:06+08:00</lastmod>
+  </url><url>
+    <loc>https://cerr.cc/tags/linux/</loc>
+    <lastmod>2022-07-19T10:50:06+08:00</lastmod>
   </url><url>
     <loc>https://cerr.cc/post/</loc>
-    <lastmod>2022-07-08T14:11:35+08:00</lastmod>
+    <lastmod>2022-07-19T10:50:06+08:00</lastmod>
   </url><url>
     <loc>https://cerr.cc/tags/</loc>
-    <lastmod>2022-07-08T14:11:35+08:00</lastmod>
+    <lastmod>2022-07-19T10:50:06+08:00</lastmod>
   </url><url>
     <loc>https://cerr.cc/</loc>
+    <lastmod>2022-07-19T10:50:06+08:00</lastmod>
+  </url><url>
+    <loc>https://cerr.cc/post/mobile_linux/</loc>
+    <lastmod>2022-07-19T10:50:06+08:00</lastmod>
+  </url><url>
+    <loc>https://cerr.cc/tags/embeded/</loc>
     <lastmod>2022-07-08T14:11:35+08:00</lastmod>
   </url><url>
     <loc>https://cerr.cc/post/embeded_hardware/</loc>
@@ -23,9 +32,6 @@
     <loc>https://cerr.cc/post/backend/</loc>
     <lastmod>2022-07-04T17:47:35+08:00</lastmod>
   </url><url>
-    <loc>https://cerr.cc/tags/life/</loc>
-    <lastmod>2022-06-16T18:42:34+08:00</lastmod>
-  </url><url>
     <loc>https://cerr.cc/post/my_pc/</loc>
     <lastmod>2022-06-16T18:42:34+08:00</lastmod>
   </url><url>
@@ -34,9 +40,6 @@
   </url><url>
     <loc>https://cerr.cc/post/cve-2022-30790/</loc>
     <lastmod>2022-06-16T10:11:14+08:00</lastmod>
-  </url><url>
-    <loc>https://cerr.cc/tags/linux/</loc>
-    <lastmod>2022-06-13T17:41:00+08:00</lastmod>
   </url><url>
     <loc>https://cerr.cc/post/linuxer_zkv/</loc>
     <lastmod>2022-06-13T17:41:00+08:00</lastmod>

@@ -3,13 +3,13 @@
     <meta charset="UTF-8">
     <title>やれやれ DA✰ZE</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="how to beautify your KDE || gnome" />
+    <meta name="description" content="how to beautify your Linux" />
     <meta property="og:title" content="关于Linux桌面的美化工作" />
-    <meta property="og:description" content="how to beautify your KDE || gnome" />
+    <meta property="og:description" content="how to beautify your Linux" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://cerr.cc/post/beautify_de/" />
     <meta itemprop="name" content="关于Linux桌面的美化工作">
-    <meta itemprop="description" content="how to beautify your KDE || gnome">
+    <meta itemprop="description" content="how to beautify your Linux">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
     
     <link rel="stylesheet" href="https://cerr.cc/scss/style.min.8cf7a5758f9d406f171a1184f6b6ec0a6175c7d809e6dd601dd4878d8acf96b1.css" >
@@ -22,7 +22,7 @@
             <h1 class="header__title">关于Linux桌面的美化工作</h1>
           
             
-                <div class="header__description">how to beautify your KDE || gnome</div>
+                <div class="header__description">how to beautify your Linux</div>
             
         </div>
         <nav class="header-nav">
@@ -218,10 +218,91 @@
     <div id="content">
 <article class="post">
   
-    <div class="post-content"><p>GNU/Linux 的桌面生态，开放虽是好事，但却由此带来了混乱。没有像微软这样的赛博中央政府制定规则，就产生了眼下这般群雄割据的态势。作为用户的我能做的，也只是择巨木而栖 —— 唯二的自由巨头 <strong>KDE</strong> 与 <strong>Gnome</strong>，二选其一。幼年气盛，爱好折腾，留下了些许美化的经验。时至今日，能回忆起的已然不多。尽力而为做些记录，为日后回归赛博左派留些盘缠。</p>
-<h1 id="kde-plasma">KDE plasma</h1>
+    <div class="post-content"><blockquote>
+<p>GNU/Linux 的桌面生态，开放虽是好事，但却由此带来了混乱。没有像微软这样的赛博中央政府制定规则，就产生了眼下这般群雄割据的态势。作为用户的我能做的，也只是择巨木而栖 —— 唯二的自由巨头 <strong>KDE</strong> 与 <strong>Gnome</strong>，<del>二选其一</del>~~（LXQt大法好）~~（当年煮酒论DE，今日叛逃用WM）（i3大法好）。幼年气盛，爱好折腾，留下了些许美化的经验。时至今日，能回忆起的已然不多。尽力而为做些记录，为日后回归赛博左派留些盘缠。</p>
+</blockquote>
+<h1 id="概念拆解">概念拆解</h1>
+<p>被Windows驯化得温顺从良的我，当年对显示屏上花花绿绿的GUI组件并无概念。商业操作系统将一切整合，成为一个整体，迷惑我说：“这便是操作系统图形化用户接口”。今日慢慢爬出泥沼，留攻略如下：</p>
+<p>🎵我有一台树莓派<del>我从来不开机</del>。接通电源、引导器醒来、启动内核、唤醒<code>pid 1</code>，此时来到Virtual Terminal下的<code>/dev/tty1</code>。在自动登录GUI的设定下，有如下朋友先后会来迎接我：</p>
+<ul>
+<li><strong>WS</strong>：Window System
+<ul>
+<li>图形化的基本环境</li>
+<li>举例：
+<ul>
+<li>X11</li>
+<li>Wayland</li>
+</ul>
+</li>
+<li>ref：
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Windowing_system">https://en.wikipedia.org/wiki/Windowing_system</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>DM</strong>：Display manager
+<ul>
+<li>图形化的登陆管理器，作用类似于login程序</li>
+<li>可以在此选择登录后想要启动的WM或DE</li>
+<li>举例：
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/GNOME_Display_Manager">GDM</a>, GNOME implementation</li>
+<li><a href="https://en.wikipedia.org/wiki/Simple_Desktop_Display_Manager">SDDM</a>, recommended display manager for KDE Plasma 5 and LXQt. Successor to KDM.</li>
+<li><a href="https://en.wikipedia.org/wiki/LightDM">LightDM</a>, a lightweight, modular, cross-desktop, fully themeable desktop display manager by Canonical Ltd.</li>
+</ul>
+</li>
+<li>ref：
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/X_display_manager">https://en.wikipedia.org/wiki/X_display_manager</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>WM</strong>：Window manager
+<ul>
+<li>控制窗口行为的图形化子系统</li>
+<li>举例：
+<ul>
+<li>i3（for X11）</li>
+<li>Sway（i3 clone for Wayland）</li>
+<li>KWin</li>
+<li>Openbox</li>
+</ul>
+</li>
+<li>ref：
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Window_manager">https://en.wikipedia.org/wiki/Window_manager</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Comparison_of_X_window_managers">https://en.wikipedia.org/wiki/Comparison_of_X_window_managers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>DE</strong>：Desktop environment
+<ul>
+<li>传统意义上的“桌面环境”，登录后直接显示到屏幕上的图形大都是DE画的（icons, windows, toolbars, folders, wallpapers and desktop widgets）</li>
+<li>举例：
+<ul>
+<li>Gnome</li>
+<li>KDE</li>
+<li>XFCE</li>
+<li>LXDE（GTK）</li>
+<li>LXQt（Qt）</li>
+<li>DDE（国产）</li>
+</ul>
+</li>
+<li>ref：
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Desktop_environment">https://en.wikipedia.org/wiki/Desktop_environment</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="de">DE</h1>
+<h2 id="kde-plasma">KDE plasma</h2>
 <p>UI的（乡土风）现代感，很大部分要归因与透明化的效果。一年前的我也是透明化爱好者，恰逢那时使用 Archlinux + KDE，故记录如下KDE透明化配置方法。KDE自身本就具有各大DE中最为强大的视觉效果定制功能，所以如下所述只是KDE本身能力之外的美化方法：</p>
-<h2 id="窗口边框透明化">窗口边框透明化</h2>
+<h3 id="窗口边框透明化">窗口边框透明化</h3>
 <p>使用</p>
 <ul>
 <li><a href="https://github.com/ishovkun/SierraBreeze">https://github.com/ishovkun/SierraBreeze</a></li>
@@ -238,26 +319,26 @@
 </ul>
 </li>
 </ul>
-<h2 id="面板透明化">面板透明化</h2>
+<h3 id="面板透明化">面板透明化</h3>
 <p>需要自己魔改，参考如下大佬留下的教程：</p>
 <p><a href="https://www.joxrays.com/kde-panel-transparency/">https://www.joxrays.com/kde-panel-transparency/</a></p>
 <p>原始论坛帖子：</p>
 <p><a href="https://forum.manjaro.org/t/where-can-the-transparency-of-the-kde-panel-be-set/50219">https://forum.manjaro.org/t/where-can-the-transparency-of-the-kde-panel-be-set/50219</a></p>
-<h2 id="组件透明化">组件透明化</h2>
+<h3 id="组件透明化">组件透明化</h3>
 <p>这一需求有现成的工具Kvantum，亦有大佬教程如下：</p>
 <p><a href="https://blog.firerain.me/article/4">https://blog.firerain.me/article/4</a></p>
 <p>此外，便是一些其它的效果组件</p>
-<h2 id="macos风的dock栏">MacOS风的Dock栏</h2>
+<h3 id="macos风的dock栏">MacOS风的Dock栏</h3>
 <p>状态、菜单、任务栏的呈现方式，我个人更倾向与MacOS的方案。比起Windows，牺牲了些许效率，换取美感。</p>
 <p>KDE下使用 <strong>latte-dock</strong> 来获取MacOS风的Dock栏，这样就可以将本身的Panel变为MacOS下的常驻状态栏。</p>
 <p>仓库地址：<a href="https://github.com/KDE/latte-dock">https://github.com/KDE/latte-dock</a></p>
 <p>同时其是可以直接从KDE store一键下载安装的。</p>
-<h2 id="音乐可视化">音乐可视化</h2>
+<h3 id="音乐可视化">音乐可视化</h3>
 <p>Windows下可以使用Wallpaper engine，Linux就没有这个福分了，只能另寻替代方案。</p>
 <p>KDE插件 <strong>panon</strong> 能达到尚且凑活的效果，可以直接从插件商店一键安装。</p>
-<h1 id="gnome">Gnome</h1>
-<p>Gnome不像KDE，它没有向用户直接呈现UI定制接口，而是需要用户自行配置。好在Gnome同时也提供了美化总站：<a href="https://www.gnome-look.org/">https://www.gnome-look.org/</a></p>
-<p>网站中基本涵盖了所有美化选项与资源。但在此之前需要有一些预先配置（出于DE稳定性考虑，默认不将定制接口提供给小白用户）：</p>
+<h2 id="gnome">Gnome</h2>
+<p>Gnome不像KDE，它没有向用户直接呈现DE UI定制接口，而是需要用户自行配置。好在Gnome同时也提供了美化总站：<a href="https://www.gnome-look.org/">https://www.gnome-look.org/</a></p>
+<p>网站中基本涵盖了所有美化选项与资源。且对于采用GTK的其它DE来说，大量资源都是通用的。但在此之前需要有一些预先配置（出于DE稳定性考虑，默认不将定制接口提供给小白用户）：</p>
 <p>安装 <strong>gnome-tweaks</strong></p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>sudo apt install gnome-tweaks
 </span></span></code></pre></div><p>使用gnome-tweaks就可以做一些此前没有的定制化了，同时作为后续美化的基本依赖。</p>
@@ -267,12 +348,24 @@
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>sudo apt install chrome-gnome-shell
 </span></span></code></pre></div><p>Firefox插件地址为：<a href="https://addons.mozilla.org/en-US/firefox/addon/gnome-shell-integration/">https://addons.mozilla.org/en-US/firefox/addon/gnome-shell-integration/</a></p>
 <p>然后就可以访问 <a href="https://extensions.gnome.org/">https://extensions.gnome.org/</a> 来管理gnome插件了：</p>
-<p>为了使用用户文件中的主题，需要安装 <strong>User Themes</strong> 插件并启用：</p>
+<p>为了使用用户目录中的主题，需要安装 <strong>User Themes</strong> 插件并启用：</p>
 <p><a href="https://extensions.gnome.org/extension/19/user-themes/">https://extensions.gnome.org/extension/19/user-themes/</a></p>
 <p>然后在家目录建立名为 <code>.themes</code> 的文件夹，将下载到的各种主题资源解压至此。</p>
+<p>若不想进行用户级安装，而是追求系统级安装，则资源路径为：</p>
+<ul>
+<li>主题：<code>/usr/share/themes/</code></li>
+<li>图标：<code>/usr/share/icons/</code></li>
+<li>字体：<code>/usr/share/fonts/</code></li>
+</ul>
 <p>此后，尽情探索<a href="https://www.gnome-look.org/">https://www.gnome-look.org/</a>，将下载到的资源在gnome-tweaks中启用即可。</p>
-<h1 id="通用">通用</h1>
-<h2 id="shell美化">shell美化</h2>
+<h1 id="wm">WM</h1>
+<h2 id="i3">i3</h2>
+<p>讨厌鼠标的键盘信徒？俺也一样！（即使我是老FPS玩家了，使用鼠标有天然的速度优势）</p>
+<p>话说图形化诞生的初衷就带有“坐标交互”的动机，想在图形化下扔掉鼠标，不是抛弃原教旨了嘛？</p>
+<p>但有需求就有造物，玩DE的后路是玩WM。i3目前是该领域的当红炸子鸡。</p>
+<p>不喜欢X11？面向Wayland的i3 clone：Sway，供你选择。</p>
+<p>快捷键并不多，比tmux简单。一天学会，受用终生。👍</p>
+<h1 id="shell">Shell</h1>
 <p>shell并不属于DE的一部分，有个字符终端足矣。</p>
 <p>最流行的美化方案还是zsh的一套：</p>
 <ul>
@@ -322,28 +415,33 @@
 </li>
 </ul>
 <blockquote>
-<p>fish也不错，开箱即用，但惜败于不兼容bash。</p>
+<p>fish也不错，开箱即用，但惜败于不兼容bash</p>
 </blockquote>
-<h2 id="grub主题开机时的引导器界面主题">grub主题（开机时的引导器界面主题）</h2>
-<p>来自gnome-look，但啥DE都能用，毕竟定制的是grub：</p>
-<p><a href="https://www.gnome-look.org/browse/cat/109/order/latest/">https://www.gnome-look.org/browse/cat/109/order/latest/</a></p>
+<h1 id="其它">其它</h1>
+<p>程序太小以至于一句话就说完了……</p>
 <h2 id="终端配色">终端配色</h2>
 <h3 id="终端模拟器层">终端模拟器层</h3>
 <p>如下仓库，应有尽有：</p>
 <p><a href="https://github.com/mbadolato/iTerm2-Color-Schemes">https://github.com/mbadolato/iTerm2-Color-Schemes</a></p>
 <h3 id="shell层">shell层</h3>
 <p>shell层的配色只是用色号指定颜色，但相应颜色具体长什么样还得看上述终端模拟器层中定义的RGB值。</p>
-<p>参考：</p>
+<p>我自己比较喜欢<code>ZSH_THEME=&quot;robbyrussell&quot;</code>的配色：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#0086b3">export</span> <span style="color:#008080">LS_COLORS</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:&#34;</span>
+</span></span></code></pre></div><p>ref：</p>
 <ul>
 <li><a href="https://askubuntu.com/questions/466198/how-do-i-change-the-color-for-directories-with-ls-in-the-console">https://askubuntu.com/questions/466198/how-do-i-change-the-color-for-directories-with-ls-in-the-console</a></li>
 <li><a href="http://www.bigsoft.co.uk/blog/2008/04/11/configuring-ls_colors">http://www.bigsoft.co.uk/blog/2008/04/11/configuring-ls_colors</a></li>
 <li><a href="https://geoff.greer.fm/lscolors/">https://geoff.greer.fm/lscolors/</a></li>
 </ul>
+<h2 id="grub">grub</h2>
+<p>来自gnome-look，但啥都能用，毕竟定制的是grub这个引导器：</p>
+<p><a href="https://www.gnome-look.org/browse/cat/109/order/latest/">https://www.gnome-look.org/browse/cat/109/order/latest/</a></p>
 <h2 id="桌面状态监测器">桌面状态监测器</h2>
 <p>使用 <strong>conky</strong>，仓库如下：</p>
 <p><a href="https://github.com/brndnmtthws/conky">https://github.com/brndnmtthws/conky</a></p>
-<h2 id="无x11">无X11</h2>
-<p><strong>fbterm</strong></p>
+<h2 id="裸体终端模拟器">裸体终端模拟器</h2>
+<p><strong>fbterm</strong>好东西，仓库如下：</p>
+<p><a href="https://github.com/sfzhi/fbterm">https://github.com/sfzhi/fbterm</a></p>
 </div>
   
 </article>
