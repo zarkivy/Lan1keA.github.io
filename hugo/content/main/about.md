@@ -46,6 +46,7 @@ tags: [ "Main" ]
 - iPhone SE1
 - iPhone XR
 - iPhone 12 mini
+- iPhone 13
 - 小米note1
 - 小米note2（postmarketOS）
 - 小米2s
@@ -132,3 +133,7 @@ tags: [ "Main" ]
 - 现代操作系统
 - 黄金时代
 - C和C++安全编码
+
+
+
+> 另：本博客为**滚动更新**，写了一半的文章草稿见怪不怪，一篇已完成的文章半年后大改也理直气壮 😎

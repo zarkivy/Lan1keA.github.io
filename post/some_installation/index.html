@@ -222,12 +222,14 @@
 <p>作为一个系统重装爱好者和硬件收集拾荒人，为了减少在环境配置上浪费的生命，记录常用环境配置命令用以直接复制粘贴</p>
 </blockquote>
 <h1 id="个人-apt-源-linux-初始环境软件安装">个人 apt 源 Linux 初始环境软件安装</h1>
+<h2 id="基本组件">基本组件</h2>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>sudo apt install zsh git man man-db manpages ssh neovim tmux <span style="color:#d14">\
-</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>	gcc g++ gdb gdb-multiarch gdbserver flex bison make <span style="color:#d14">\
 </span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>	curl wget netcat net-tools nmap tcpdump figlet <span style="color:#d14">\
-</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>	python3 ipython3 python-is-python3 python3-pip <span style="color:#d14">\
-</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>	build-essential binutils xxd strace libncurses5 <span style="color:#d14">\
+</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>	binutils xxd strace libncurses5 <span style="color:#d14">\
 </span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>	neofetch zip unzip ncdu htop dosfstools nyancat cmatrix
+</span></span></code></pre></div><h2 id="开发与调试组件">开发与调试组件</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>sudo apt install gcc g++ gdb gdb-multiarch gdbserver flex bison make clangd <span style="color:#d14">\
+</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>	python3 ipython3 python-is-python3 python3-pip build-essential 
 </span></span></code></pre></div><h1 id="dotfiles-快速就位">dotfiles 快速就位</h1>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>git clone https://github.com/dev2ero/dotfiles.git
 </span></span><span style="display:flex;"><span>sh -c <span style="color:#d14">&#34;</span><span style="color:#000;font-weight:bold">$(</span>curl -fsSL https://gitee.com/mirrors/oh-my-zsh/raw/master/tools/install.sh<span style="color:#000;font-weight:bold">)</span><span style="color:#d14">&#34;</span>

@@ -14,27 +14,25 @@
       <pubDate>Sat, 07 May 2022 19:53:05 +0800</pubDate>
       
       <guid>https://cerr.cc/main/utils/</guid>
-      <description>操作系统 Linux kernel lab
-https://linux-kernel-labs.github.io/ 内核模块编程教程
-https://sysprog21.github.io/lkmpg/ MIT 操作系统课程 2021
-https://pdos.csail.mit.edu/6.828/2021/schedule.html Linux inside
-https://0xax.gitbooks.io/linux-insides/content/Initialization/linux-initialization-1.html 在线浏览 Linux 源码
-https://elixir.bootlin.com/linux/latest/source Linux内核实践百科
-https://github.com/cirosantilli/linux-kernel-module-cheat Linux Kernel Wiki省力版
-https://github.com/0voice/linux_kernel_wiki 在线的操作系统虚拟机，包含许多老系统
-https://copy.sh/v86/ 系统软件博物馆
-https://winworldpc.com/library/operating-systems Windows下载站
-https://msdn.itellyou.cn/ https://hellowindows.cn/ 编程 高级语言源代码与汇编结果的实时对照
-https://godbolt.org/ 展开编译细节，向你展示C++代码背后的秘密
-https://cppinsights.io/ C++ STL 算法库
-https://zh.cppreference.com/w/cpp/algorithm 数据结构与算法可视化
-https://visualgo.net/zh/ 正则表达式可视化
-https://regex-vis.com/ https://jex.im/regulex/#!flags=&amp;amp;re=%5E(a%7Cb)*%3F%24 A collection of out-of-tree LLVM passes for teaching and learning
-https://github.com/banach-space/llvm-tutor 指令集架构 ARMv7 指令集胎教教程
-https://simplemachines.it/doc/arm_inst.pdf ARMv7 指令集考试小抄
-https://pages.cs.wisc.edu/~markhill/restricted/arm_isa_quick_reference.pdf ARMv8 指令集考试小抄
-https://courses.cs.washington.edu/courses/cse469/19wi/arm64.pdf ARMv8 指令集宝宝识字挂图
-https://s2.loli.net/2022/05/09/UxFIkpBivKWzX6M.png x86与x64指令速查</description>
+      <description>工具站 图标库
+https://tablericons.com/ https://svgsilh.com/zh/ https://www.logo.wine/ https://fontawesome.com/icons?d=gallery https://simpleicons.org/ 图片库
+https://dotown.maeda-design-room.net/ 壁纸库
+https://wallroom.io/ http://simpledesktops.com/ 图片转换器
+在线Photoshop https://www.photopea.com/ 像素风格 https://pixel-me.tokyo/ 失真风格 https://photomosh.com/ 图片压缩 https://www.photofun.cn/compress/ 去除背景 https://express.adobe.com/zh-Hans-CN/tools/remove-background 图片+URL = 图片二维码 https://research.swtch.com/qr/draw/ 摸头生成器 https://benisland.neocities.org/petpet/ 福音战士标题生成器 https://mojimo.jp/eva/ https://github.com/itorr/eva-title ASCII art
+http://www.network-science.de/ascii/ https://cowsay-svelte.vercel.app/ http://patorjk.com/software/taag/#p=display&amp;amp;f=Block&amp;amp;t=ZKV https://asciiflow.com/ 创建自己的LOGO
+正常 https://ailogo.qq.com/guide/brandname 不正常 https://www.logoly.pro/ 特殊字体Unicode
+https://www.wakatool.com/fancy/text 狗屁不通文章生成器
+https://suulnnka.github.io/BullshitGenerator/index.html 在线视频下载器 支持900+网站
+https://youtube4kdownloader.com/ 全球网络威胁实时地图
+https://cybermap.kaspersky.com/cn 反向词典
+https://wantwords.net/ 网速在线测速
+https://www.speedtest.net/zh-Hans 多种多媒体文件格式互相转换
+https://tinywow.com/ https://anyconv.com/ 在线作图工具
+https://app.diagrams.net/ 在线文件传输
+https://app.tmp.link/ https://cowtransfer.com/ 听写记事本
+https://speechnotes.co/zh/ 在线mrp模拟器
+https://vmrp.github.io/ 定制你的终端配色——实时在线查看
+https://geoff.greer.fm/lscolors/ 万物皆可对比</description>
     </item>
     
     <item>
@@ -82,7 +80,7 @@ lsd美化ls：https://github.com/Peltoche/lsd lsd需配合nerdfont：https://www
       <pubDate>Sat, 07 May 2022 15:53:05 +0800</pubDate>
       
       <guid>https://cerr.cc/main/about/</guid>
-      <description>Yet anothor cyber nyandogWith this Rolling release blogT O D O分析CVE-2017-0143永恒之蓝漏洞 阅读源码：Mirai malware 那 些 年 我2017 ~💻 玩过的机 联想G510 神舟战神KP7-GT 联想ThinkPad Tablet 联想ThinkPad E431 联想ThinkPad X200 联想小新Air14 联想Yoga 13s Macbook Air 2020 iPhone4 iPhone5s iPhone6 iPhone SE1 iPhone XR iPhone 12 mini 小米note1 小米note2（postmarketOS） 小米2s 小米3 小米4 小米9SE 小米9 红米1s 红米2a 红米2（postmarketOS） 红米note3 红米K30 Pro 红米K40 游戏增强版 LG G5 LG G7 LG V30 LG V30+ 夏普303SH 夏普305SH 夏普502SH 索尼Z1 索尼Z2mini 索尼Z4 索尼Xperia X 索尼XZ2 Essential Phone iQOO1 Vivo X5 max 阿尔卡特 hero2 iPad mini5 iPad Air5 小米平板1 小米平板4LTE Kindle fire 树莓派3B+ 树莓派4B Friendlyelec NanoPC T3 Plus NUC11PAHi5 HP PROBOOK 440 G8 📖 读过的书 C++ Primer 深入理解计算机系统 程序员的自我修养 深入理解计算机网络 围城 三体 北京折叠 神的孩子全跳舞 今日简史 激荡三十年 人口大逆转 醉步男 星之彩 计算机网络 刘慈欣科幻短片小说合集 颠覆者 许三观卖血记 狂人日记 马云传 美丽新世界 阿Q正传 钝感力 自控力 为人民服务 腾讯传 贝多芬传 鲁滨逊漂流记 乔布斯传 球状闪电 1984 人类简史 哈姆雷特 方方日记 永久记录 穷爸爸富爸爸 风中的纸屑 我的世界观 人体简史 杰克伦敦小说集 未来简史 操作系统真象还原 现代操作系统 黄金时代 C和C++安全编码 </description>
+      <description>Yet anothor cyber nyandogWith this Rolling release blogT O D O分析CVE-2017-0143永恒之蓝漏洞 阅读源码：Mirai malware 那 些 年 我2017 ~💻 玩过的机 联想G510 神舟战神KP7-GT 联想ThinkPad Tablet 联想ThinkPad E431 联想ThinkPad X200 联想小新Air14 联想Yoga 13s Macbook Air 2020 iPhone4 iPhone5s iPhone6 iPhone SE1 iPhone XR iPhone 12 mini iPhone 13 小米note1 小米note2（postmarketOS） 小米2s 小米3 小米4 小米9SE 小米9 红米1s 红米2a 红米2（postmarketOS） 红米note3 红米K30 Pro 红米K40 游戏增强版 LG G5 LG G7 LG V30 LG V30+ 夏普303SH 夏普305SH 夏普502SH 索尼Z1 索尼Z2mini 索尼Z4 索尼Xperia X 索尼XZ2 Essential Phone iQOO1 Vivo X5 max 阿尔卡特 hero2 iPad mini5 iPad Air5 小米平板1 小米平板4LTE Kindle fire 树莓派3B+ 树莓派4B Friendlyelec NanoPC T3 Plus NUC11PAHi5 HP PROBOOK 440 G8 📖 读过的书 C++ Primer 深入理解计算机系统 程序员的自我修养 深入理解计算机网络 围城 三体 北京折叠 神的孩子全跳舞 今日简史 激荡三十年 人口大逆转 醉步男 星之彩 计算机网络 刘慈欣科幻短片小说合集 颠覆者 许三观卖血记 狂人日记 马云传 美丽新世界 阿Q正传 钝感力 自控力 为人民服务 腾讯传 贝多芬传 鲁滨逊漂流记 乔布斯传 球状闪电 1984 人类简史 哈姆雷特 方方日记 永久记录 穷爸爸富爸爸 风中的纸屑 我的世界观 人体简史 杰克伦敦小说集 未来简史 操作系统真象还原 现代操作系统 黄金时代 C和C++安全编码 另：本博客为滚动更新，写了一半的文章草稿见怪不怪，一篇已完成的文章半年后大改也理直气壮 😎</description>
     </item>
     
   </channel>

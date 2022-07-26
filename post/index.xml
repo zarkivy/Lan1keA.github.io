@@ -14,7 +14,11 @@
       <pubDate>Tue, 19 Jul 2022 10:50:06 +0800</pubDate>
       
       <guid>https://cerr.cc/post/mobile_linux/</guid>
-      <description>快递还在路上…… </description>
+      <description>快递还在路上…… 背景知识 ref：
+https://www.jianshu.com/p/d960a6f517d8 Fastboot 一个通信协议，用于直接向安卓手机Flash的不同分区中写入数据。
+https://android.googlesource.com/platform/system/core/+/refs/heads/master/fastboot/
+Recovery 一个单独的分区，内可包含一个恢复用的迷你系统，如TWRP。
+安卓设备分区 https://source.android.com/devices/bootloader/partitions	</description>
     </item>
     
     <item>
@@ -23,11 +27,16 @@
       <pubDate>Fri, 08 Jul 2022 14:11:35 +0800</pubDate>
       
       <guid>https://cerr.cc/post/embeded_hardware/</guid>
-      <description>PCB 处理器 MCU https://en.wikipedia.org/wiki/Microcontroller STM32 https://en.wikipedia.org/wiki/STM32 Flash https://nieyong.github.io/wiki_ny/Flash.html 芯片封装 https://www.sohu.com/a/158654863_609521
+      <description> 物联网安全是离不开硬件领域的。而计算机科学与技术专业出身的我，嵌入式知识实属匮乏。公司组内有大量免费玩具却不会玩，这口气实在难以下咽。接下来是对自己嵌入式硬件知识的早教记录。
+PCB https://en.wikipedia.org/wiki/Printed_circuit_board
+处理器 MCU https://en.wikipedia.org/wiki/Microcontroller STM32 https://en.wikipedia.org/wiki/STM32 Flash https://en.wikipedia.org/wiki/Flash_memory https://nieyong.github.io/wiki_ny/Flash.html NOR NAND MMC MultiMediaCard
+https://en.wikipedia.org/wiki/MultiMediaCard
+eMMC https://en.wikipedia.org/wiki/MultiMediaCard#eMMC
+UFS https://en.wikipedia.org/wiki/Universal_Flash_Storage 芯片封装 https://www.sohu.com/a/158654863_609521
 https://www.youtube.com/watch?v=2ua8PeP9ql4&amp;amp;t=153s
 https://zhuanlan.zhihu.com/p/509647754
 https://semiwiki.com/semiconductor-services/308968-semiconductor-packaging-history-primer/
-协议 UART https://zh.wikipedia.org/zh-cn/UART RS232 https://zh.wikipedia.org/zh-cn/RS-232 I2C https://zh.wikipedia.org/wiki/I%C2%B2C JTAG SPI 工具 逻辑分析仪 https://en.wikipedia.org/wiki/Logic_analyzer https://zhuanlan.zhihu.com/p/94386957 https://www.anquanke.com/post/id/276280 一款逻辑分析仪的样本：
+协议 UART https://zh.wikipedia.org/zh-cn/UART RS232 https://zh.wikipedia.org/zh-cn/RS-232 I2C https://zh.wikipedia.org/wiki/I%C2%B2C JTAG https://en.wikipedia.org/wiki/JTAG https://www.xjtag.com/zh-hans/about-jtag/what-is-jtag/ https://iot-security.wiki/hardware-security/debug/jtag.html SPI 工具 逻辑分析仪 https://en.wikipedia.org/wiki/Logic_analyzer https://zhuanlan.zhihu.com/p/94386957 https://www.anquanke.com/post/id/276280 一款逻辑分析仪的样本：
 http://www.qdkingst.com/cn http://res.kingst.site/kfs/doc/Kingst%e9%87%91%e6%80%9d%e7%89%b9%e8%99%9a%e6%8b%9f%e4%bb%aa%e5%99%a8%e4%bd%bf%e7%94%a8%e6%89%8b%e5%86%8c.pdf 姿势 固件提取 https://www.anquanke.com/post/id/227285 硬件调试 https://www.riverloopsecurity.com/blog/2020/01/hw-101-uart/ </description>
     </item>
     
@@ -226,7 +235,7 @@ git clone https://github.com/google/AFL.git cd AFL make -j`nproc` sudo make inst
       
       <guid>https://cerr.cc/post/some_installation/</guid>
       <description>作为一个系统重装爱好者和硬件收集拾荒人，为了减少在环境配置上浪费的生命，记录常用环境配置命令用以直接复制粘贴
-个人 apt 源 Linux 初始环境软件安装 sudo apt install zsh git man man-db manpages ssh neovim tmux \ gcc g++ gdb gdb-multiarch gdbserver flex bison make \ curl wget netcat net-tools nmap tcpdump figlet \ python3 ipython3 python-is-python3 python3-pip \ build-essential binutils xxd strace libncurses5 \ neofetch zip unzip ncdu htop dosfstools nyancat cmatrix dotfiles 快速就位 git clone https://github.com/dev2ero/dotfiles.git sh -c &amp;#34;$(curl -fsSL https://gitee.com/mirrors/oh-my-zsh/raw/master/tools/install.sh)&amp;#34; git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions git clone https://github.</description>
+个人 apt 源 Linux 初始环境软件安装 基本组件 sudo apt install zsh git man man-db manpages ssh neovim tmux \ curl wget netcat net-tools nmap tcpdump figlet \ binutils xxd strace libncurses5 \ neofetch zip unzip ncdu htop dosfstools nyancat cmatrix 开发与调试组件 sudo apt install gcc g++ gdb gdb-multiarch gdbserver flex bison make clangd \ python3 ipython3 python-is-python3 python3-pip build-essential dotfiles 快速就位 git clone https://github.com/dev2ero/dotfiles.git sh -c &amp;#34;$(curl -fsSL https://gitee.com/mirrors/oh-my-zsh/raw/master/tools/install.sh)&amp;#34; git clone https://github.</description>
     </item>
     
     <item>

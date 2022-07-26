@@ -14,7 +14,11 @@
       <pubDate>Tue, 19 Jul 2022 10:50:06 +0800</pubDate>
       
       <guid>https://cerr.cc/post/mobile_linux/</guid>
-      <description>快递还在路上…… </description>
+      <description>快递还在路上…… 背景知识 ref：
+https://www.jianshu.com/p/d960a6f517d8 Fastboot 一个通信协议，用于直接向安卓手机Flash的不同分区中写入数据。
+https://android.googlesource.com/platform/system/core/+/refs/heads/master/fastboot/
+Recovery 一个单独的分区，内可包含一个恢复用的迷你系统，如TWRP。
+安卓设备分区 https://source.android.com/devices/bootloader/partitions	</description>
     </item>
     
     <item>
@@ -103,7 +107,7 @@ apt install libncurses5 libncurses5-dev m4 bison gawk flex libstdc++6-4.7-dev g+
       
       <guid>https://cerr.cc/post/some_installation/</guid>
       <description>作为一个系统重装爱好者和硬件收集拾荒人，为了减少在环境配置上浪费的生命，记录常用环境配置命令用以直接复制粘贴
-个人 apt 源 Linux 初始环境软件安装 sudo apt install zsh git man man-db manpages ssh neovim tmux \ gcc g++ gdb gdb-multiarch gdbserver flex bison make \ curl wget netcat net-tools nmap tcpdump figlet \ python3 ipython3 python-is-python3 python3-pip \ build-essential binutils xxd strace libncurses5 \ neofetch zip unzip ncdu htop dosfstools nyancat cmatrix dotfiles 快速就位 git clone https://github.com/dev2ero/dotfiles.git sh -c &amp;#34;$(curl -fsSL https://gitee.com/mirrors/oh-my-zsh/raw/master/tools/install.sh)&amp;#34; git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions git clone https://github.</description>
+个人 apt 源 Linux 初始环境软件安装 基本组件 sudo apt install zsh git man man-db manpages ssh neovim tmux \ curl wget netcat net-tools nmap tcpdump figlet \ binutils xxd strace libncurses5 \ neofetch zip unzip ncdu htop dosfstools nyancat cmatrix 开发与调试组件 sudo apt install gcc g++ gdb gdb-multiarch gdbserver flex bison make clangd \ python3 ipython3 python-is-python3 python3-pip build-essential dotfiles 快速就位 git clone https://github.com/dev2ero/dotfiles.git sh -c &amp;#34;$(curl -fsSL https://gitee.com/mirrors/oh-my-zsh/raw/master/tools/install.sh)&amp;#34; git clone https://github.</description>
     </item>
     
     <item>

@@ -98,6 +98,10 @@ reference：
 
 ## 技术
 
+### SQL
+
+[https://en.wikipedia.org/wiki/SQL](https://en.wikipedia.org/wiki/SQL)
+
 ### RAID
 
 reference：

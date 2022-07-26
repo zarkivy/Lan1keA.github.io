@@ -8,9 +8,11 @@ imagelink: "https://pic1.zhimg.com/v2-983af8971091bf560af2e2299d801cd1_1440w.jpg
 
 
 
+> 物联网安全是离不开硬件领域的。而计算机科学与技术专业出身的我，嵌入式知识实属匮乏。公司组内有大量免费玩具却不会玩，这口气实在难以下咽。接下来是对自己嵌入式硬件知识的早教记录。
+
 # PCB
 
-
+[https://en.wikipedia.org/wiki/Printed_circuit_board](https://en.wikipedia.org/wiki/Printed_circuit_board)
 
 # 处理器
 
@@ -26,7 +28,28 @@ imagelink: "https://pic1.zhimg.com/v2-983af8971091bf560af2e2299d801cd1_1440w.jpg
 
 # Flash
 
+- [https://en.wikipedia.org/wiki/Flash_memory](https://en.wikipedia.org/wiki/Flash_memory)
 - [https://nieyong.github.io/wiki_ny/Flash.html](https://nieyong.github.io/wiki_ny/Flash.html)
+
+## NOR
+
+## NAND
+
+### MMC
+
+MultiMediaCard
+
+[https://en.wikipedia.org/wiki/MultiMediaCard](https://en.wikipedia.org/wiki/MultiMediaCard)
+
+#### eMMC
+
+[https://en.wikipedia.org/wiki/MultiMediaCard#eMMC](https://en.wikipedia.org/wiki/MultiMediaCard#eMMC)
+
+### UFS
+
+- [https://en.wikipedia.org/wiki/Universal_Flash_Storage](https://en.wikipedia.org/wiki/Universal_Flash_Storage)
+
+
 
 # 芯片封装
 
@@ -57,6 +80,10 @@ imagelink: "https://pic1.zhimg.com/v2-983af8971091bf560af2e2299d801cd1_1440w.jpg
 - [https://zh.wikipedia.org/wiki/I%C2%B2C](https://zh.wikipedia.org/wiki/I%C2%B2C)
 
 ## JTAG
+
+- [https://en.wikipedia.org/wiki/JTAG](https://en.wikipedia.org/wiki/JTAG)
+- [https://www.xjtag.com/zh-hans/about-jtag/what-is-jtag/](https://www.xjtag.com/zh-hans/about-jtag/what-is-jtag/)
+- [https://iot-security.wiki/hardware-security/debug/jtag.html](https://iot-security.wiki/hardware-security/debug/jtag.html)
 
 ## SPI
 

@@ -14,7 +14,11 @@
       <pubDate>Tue, 19 Jul 2022 10:50:06 +0800</pubDate>
       
       <guid>https://cerr.cc/post/mobile_linux/</guid>
-      <description>快递还在路上…… </description>
+      <description>快递还在路上…… 背景知识 ref：
+https://www.jianshu.com/p/d960a6f517d8 Fastboot 一个通信协议，用于直接向安卓手机Flash的不同分区中写入数据。
+https://android.googlesource.com/platform/system/core/+/refs/heads/master/fastboot/
+Recovery 一个单独的分区，内可包含一个恢复用的迷你系统，如TWRP。
+安卓设备分区 https://source.android.com/devices/bootloader/partitions	</description>
     </item>
     
     <item>
@@ -23,11 +27,16 @@
       <pubDate>Fri, 08 Jul 2022 14:11:35 +0800</pubDate>
       
       <guid>https://cerr.cc/post/embeded_hardware/</guid>
-      <description>PCB 处理器 MCU https://en.wikipedia.org/wiki/Microcontroller STM32 https://en.wikipedia.org/wiki/STM32 Flash https://nieyong.github.io/wiki_ny/Flash.html 芯片封装 https://www.sohu.com/a/158654863_609521
+      <description> 物联网安全是离不开硬件领域的。而计算机科学与技术专业出身的我，嵌入式知识实属匮乏。公司组内有大量免费玩具却不会玩，这口气实在难以下咽。接下来是对自己嵌入式硬件知识的早教记录。
+PCB https://en.wikipedia.org/wiki/Printed_circuit_board
+处理器 MCU https://en.wikipedia.org/wiki/Microcontroller STM32 https://en.wikipedia.org/wiki/STM32 Flash https://en.wikipedia.org/wiki/Flash_memory https://nieyong.github.io/wiki_ny/Flash.html NOR NAND MMC MultiMediaCard
+https://en.wikipedia.org/wiki/MultiMediaCard
+eMMC https://en.wikipedia.org/wiki/MultiMediaCard#eMMC
+UFS https://en.wikipedia.org/wiki/Universal_Flash_Storage 芯片封装 https://www.sohu.com/a/158654863_609521
 https://www.youtube.com/watch?v=2ua8PeP9ql4&amp;amp;t=153s
 https://zhuanlan.zhihu.com/p/509647754
 https://semiwiki.com/semiconductor-services/308968-semiconductor-packaging-history-primer/
-协议 UART https://zh.wikipedia.org/zh-cn/UART RS232 https://zh.wikipedia.org/zh-cn/RS-232 I2C https://zh.wikipedia.org/wiki/I%C2%B2C JTAG SPI 工具 逻辑分析仪 https://en.wikipedia.org/wiki/Logic_analyzer https://zhuanlan.zhihu.com/p/94386957 https://www.anquanke.com/post/id/276280 一款逻辑分析仪的样本：
+协议 UART https://zh.wikipedia.org/zh-cn/UART RS232 https://zh.wikipedia.org/zh-cn/RS-232 I2C https://zh.wikipedia.org/wiki/I%C2%B2C JTAG https://en.wikipedia.org/wiki/JTAG https://www.xjtag.com/zh-hans/about-jtag/what-is-jtag/ https://iot-security.wiki/hardware-security/debug/jtag.html SPI 工具 逻辑分析仪 https://en.wikipedia.org/wiki/Logic_analyzer https://zhuanlan.zhihu.com/p/94386957 https://www.anquanke.com/post/id/276280 一款逻辑分析仪的样本：
 http://www.qdkingst.com/cn http://res.kingst.site/kfs/doc/Kingst%e9%87%91%e6%80%9d%e7%89%b9%e8%99%9a%e6%8b%9f%e4%bb%aa%e5%99%a8%e4%bd%bf%e7%94%a8%e6%89%8b%e5%86%8c.pdf 姿势 固件提取 https://www.anquanke.com/post/id/227285 硬件调试 https://www.riverloopsecurity.com/blog/2020/01/hw-101-uart/ </description>
     </item>
     
@@ -226,7 +235,7 @@ git clone https://github.com/google/AFL.git cd AFL make -j`nproc` sudo make inst
       
       <guid>https://cerr.cc/post/some_installation/</guid>
       <description>作为一个系统重装爱好者和硬件收集拾荒人，为了减少在环境配置上浪费的生命，记录常用环境配置命令用以直接复制粘贴
-个人 apt 源 Linux 初始环境软件安装 sudo apt install zsh git man man-db manpages ssh neovim tmux \ gcc g++ gdb gdb-multiarch gdbserver flex bison make \ curl wget netcat net-tools nmap tcpdump figlet \ python3 ipython3 python-is-python3 python3-pip \ build-essential binutils xxd strace libncurses5 \ neofetch zip unzip ncdu htop dosfstools nyancat cmatrix dotfiles 快速就位 git clone https://github.com/dev2ero/dotfiles.git sh -c &amp;#34;$(curl -fsSL https://gitee.com/mirrors/oh-my-zsh/raw/master/tools/install.sh)&amp;#34; git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions git clone https://github.</description>
+个人 apt 源 Linux 初始环境软件安装 基本组件 sudo apt install zsh git man man-db manpages ssh neovim tmux \ curl wget netcat net-tools nmap tcpdump figlet \ binutils xxd strace libncurses5 \ neofetch zip unzip ncdu htop dosfstools nyancat cmatrix 开发与调试组件 sudo apt install gcc g++ gdb gdb-multiarch gdbserver flex bison make clangd \ python3 ipython3 python-is-python3 python3-pip build-essential dotfiles 快速就位 git clone https://github.com/dev2ero/dotfiles.git sh -c &amp;#34;$(curl -fsSL https://gitee.com/mirrors/oh-my-zsh/raw/master/tools/install.sh)&amp;#34; git clone https://github.</description>
     </item>
     
     <item>
@@ -331,27 +340,25 @@ WS：Window System 图形化的基本环境 举例： X11 Wayland ref： https:/
       <pubDate>Sat, 07 May 2022 19:53:05 +0800</pubDate>
       
       <guid>https://cerr.cc/main/utils/</guid>
-      <description>操作系统 Linux kernel lab
-https://linux-kernel-labs.github.io/ 内核模块编程教程
-https://sysprog21.github.io/lkmpg/ MIT 操作系统课程 2021
-https://pdos.csail.mit.edu/6.828/2021/schedule.html Linux inside
-https://0xax.gitbooks.io/linux-insides/content/Initialization/linux-initialization-1.html 在线浏览 Linux 源码
-https://elixir.bootlin.com/linux/latest/source Linux内核实践百科
-https://github.com/cirosantilli/linux-kernel-module-cheat Linux Kernel Wiki省力版
-https://github.com/0voice/linux_kernel_wiki 在线的操作系统虚拟机，包含许多老系统
-https://copy.sh/v86/ 系统软件博物馆
-https://winworldpc.com/library/operating-systems Windows下载站
-https://msdn.itellyou.cn/ https://hellowindows.cn/ 编程 高级语言源代码与汇编结果的实时对照
-https://godbolt.org/ 展开编译细节，向你展示C++代码背后的秘密
-https://cppinsights.io/ C++ STL 算法库
-https://zh.cppreference.com/w/cpp/algorithm 数据结构与算法可视化
-https://visualgo.net/zh/ 正则表达式可视化
-https://regex-vis.com/ https://jex.im/regulex/#!flags=&amp;amp;re=%5E(a%7Cb)*%3F%24 A collection of out-of-tree LLVM passes for teaching and learning
-https://github.com/banach-space/llvm-tutor 指令集架构 ARMv7 指令集胎教教程
-https://simplemachines.it/doc/arm_inst.pdf ARMv7 指令集考试小抄
-https://pages.cs.wisc.edu/~markhill/restricted/arm_isa_quick_reference.pdf ARMv8 指令集考试小抄
-https://courses.cs.washington.edu/courses/cse469/19wi/arm64.pdf ARMv8 指令集宝宝识字挂图
-https://s2.loli.net/2022/05/09/UxFIkpBivKWzX6M.png x86与x64指令速查</description>
+      <description>工具站 图标库
+https://tablericons.com/ https://svgsilh.com/zh/ https://www.logo.wine/ https://fontawesome.com/icons?d=gallery https://simpleicons.org/ 图片库
+https://dotown.maeda-design-room.net/ 壁纸库
+https://wallroom.io/ http://simpledesktops.com/ 图片转换器
+在线Photoshop https://www.photopea.com/ 像素风格 https://pixel-me.tokyo/ 失真风格 https://photomosh.com/ 图片压缩 https://www.photofun.cn/compress/ 去除背景 https://express.adobe.com/zh-Hans-CN/tools/remove-background 图片+URL = 图片二维码 https://research.swtch.com/qr/draw/ 摸头生成器 https://benisland.neocities.org/petpet/ 福音战士标题生成器 https://mojimo.jp/eva/ https://github.com/itorr/eva-title ASCII art
+http://www.network-science.de/ascii/ https://cowsay-svelte.vercel.app/ http://patorjk.com/software/taag/#p=display&amp;amp;f=Block&amp;amp;t=ZKV https://asciiflow.com/ 创建自己的LOGO
+正常 https://ailogo.qq.com/guide/brandname 不正常 https://www.logoly.pro/ 特殊字体Unicode
+https://www.wakatool.com/fancy/text 狗屁不通文章生成器
+https://suulnnka.github.io/BullshitGenerator/index.html 在线视频下载器 支持900+网站
+https://youtube4kdownloader.com/ 全球网络威胁实时地图
+https://cybermap.kaspersky.com/cn 反向词典
+https://wantwords.net/ 网速在线测速
+https://www.speedtest.net/zh-Hans 多种多媒体文件格式互相转换
+https://tinywow.com/ https://anyconv.com/ 在线作图工具
+https://app.diagrams.net/ 在线文件传输
+https://app.tmp.link/ https://cowtransfer.com/ 听写记事本
+https://speechnotes.co/zh/ 在线mrp模拟器
+https://vmrp.github.io/ 定制你的终端配色——实时在线查看
+https://geoff.greer.fm/lscolors/ 万物皆可对比</description>
     </item>
     
     <item>
@@ -399,7 +406,7 @@ lsd美化ls：https://github.com/Peltoche/lsd lsd需配合nerdfont：https://www
       <pubDate>Sat, 07 May 2022 15:53:05 +0800</pubDate>
       
       <guid>https://cerr.cc/main/about/</guid>
-      <description>Yet anothor cyber nyandogWith this Rolling release blogT O D O分析CVE-2017-0143永恒之蓝漏洞 阅读源码：Mirai malware 那 些 年 我2017 ~💻 玩过的机 联想G510 神舟战神KP7-GT 联想ThinkPad Tablet 联想ThinkPad E431 联想ThinkPad X200 联想小新Air14 联想Yoga 13s Macbook Air 2020 iPhone4 iPhone5s iPhone6 iPhone SE1 iPhone XR iPhone 12 mini 小米note1 小米note2（postmarketOS） 小米2s 小米3 小米4 小米9SE 小米9 红米1s 红米2a 红米2（postmarketOS） 红米note3 红米K30 Pro 红米K40 游戏增强版 LG G5 LG G7 LG V30 LG V30+ 夏普303SH 夏普305SH 夏普502SH 索尼Z1 索尼Z2mini 索尼Z4 索尼Xperia X 索尼XZ2 Essential Phone iQOO1 Vivo X5 max 阿尔卡特 hero2 iPad mini5 iPad Air5 小米平板1 小米平板4LTE Kindle fire 树莓派3B+ 树莓派4B Friendlyelec NanoPC T3 Plus NUC11PAHi5 HP PROBOOK 440 G8 📖 读过的书 C++ Primer 深入理解计算机系统 程序员的自我修养 深入理解计算机网络 围城 三体 北京折叠 神的孩子全跳舞 今日简史 激荡三十年 人口大逆转 醉步男 星之彩 计算机网络 刘慈欣科幻短片小说合集 颠覆者 许三观卖血记 狂人日记 马云传 美丽新世界 阿Q正传 钝感力 自控力 为人民服务 腾讯传 贝多芬传 鲁滨逊漂流记 乔布斯传 球状闪电 1984 人类简史 哈姆雷特 方方日记 永久记录 穷爸爸富爸爸 风中的纸屑 我的世界观 人体简史 杰克伦敦小说集 未来简史 操作系统真象还原 现代操作系统 黄金时代 C和C++安全编码 </description>
+      <description>Yet anothor cyber nyandogWith this Rolling release blogT O D O分析CVE-2017-0143永恒之蓝漏洞 阅读源码：Mirai malware 那 些 年 我2017 ~💻 玩过的机 联想G510 神舟战神KP7-GT 联想ThinkPad Tablet 联想ThinkPad E431 联想ThinkPad X200 联想小新Air14 联想Yoga 13s Macbook Air 2020 iPhone4 iPhone5s iPhone6 iPhone SE1 iPhone XR iPhone 12 mini iPhone 13 小米note1 小米note2（postmarketOS） 小米2s 小米3 小米4 小米9SE 小米9 红米1s 红米2a 红米2（postmarketOS） 红米note3 红米K30 Pro 红米K40 游戏增强版 LG G5 LG G7 LG V30 LG V30+ 夏普303SH 夏普305SH 夏普502SH 索尼Z1 索尼Z2mini 索尼Z4 索尼Xperia X 索尼XZ2 Essential Phone iQOO1 Vivo X5 max 阿尔卡特 hero2 iPad mini5 iPad Air5 小米平板1 小米平板4LTE Kindle fire 树莓派3B+ 树莓派4B Friendlyelec NanoPC T3 Plus NUC11PAHi5 HP PROBOOK 440 G8 📖 读过的书 C++ Primer 深入理解计算机系统 程序员的自我修养 深入理解计算机网络 围城 三体 北京折叠 神的孩子全跳舞 今日简史 激荡三十年 人口大逆转 醉步男 星之彩 计算机网络 刘慈欣科幻短片小说合集 颠覆者 许三观卖血记 狂人日记 马云传 美丽新世界 阿Q正传 钝感力 自控力 为人民服务 腾讯传 贝多芬传 鲁滨逊漂流记 乔布斯传 球状闪电 1984 人类简史 哈姆雷特 方方日记 永久记录 穷爸爸富爸爸 风中的纸屑 我的世界观 人体简史 杰克伦敦小说集 未来简史 操作系统真象还原 现代操作系统 黄金时代 C和C++安全编码 另：本博客为滚动更新，写了一半的文章草稿见怪不怪，一篇已完成的文章半年后大改也理直气壮 😎</description>
     </item>
     
   </channel>
