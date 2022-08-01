@@ -19,15 +19,15 @@ imagelink: "https://s2.loli.net/2022/05/11/7aWbNEkesXlmYxH.jpg"
 ```sh
 sudo apt install zsh git man man-db manpages ssh neovim tmux \
 	curl wget netcat net-tools nmap tcpdump figlet \
-	binutils xxd strace libncurses5 \
+	binutils xxd strace libncurses5-dev traceroute \
 	neofetch zip unzip ncdu htop dosfstools nyancat cmatrix
 ```
 
 ## 开发与调试组件
 
 ```sh
-sudo apt install gcc g++ gdb gdb-multiarch gdbserver flex bison make clangd \
-	python3 ipython3 python-is-python3 python3-pip build-essential 
+sudo apt install gcc g++ gdb gdb-multiarch gdbserver flex bison make cmake clangd \
+	python3 ipython3 python-is-python3 python3-pip build-essential ninja-buildw
 ```
 
 

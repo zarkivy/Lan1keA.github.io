@@ -235,7 +235,7 @@ git clone https://github.com/google/AFL.git cd AFL make -j`nproc` sudo make inst
       
       <guid>https://cerr.cc/post/some_installation/</guid>
       <description>作为一个系统重装爱好者和硬件收集拾荒人，为了减少在环境配置上浪费的生命，记录常用环境配置命令用以直接复制粘贴
-个人 apt 源 Linux 初始环境软件安装 基本组件 sudo apt install zsh git man man-db manpages ssh neovim tmux \ curl wget netcat net-tools nmap tcpdump figlet \ binutils xxd strace libncurses5 \ neofetch zip unzip ncdu htop dosfstools nyancat cmatrix 开发与调试组件 sudo apt install gcc g++ gdb gdb-multiarch gdbserver flex bison make clangd \ python3 ipython3 python-is-python3 python3-pip build-essential dotfiles 快速就位 git clone https://github.com/dev2ero/dotfiles.git sh -c &amp;#34;$(curl -fsSL https://gitee.com/mirrors/oh-my-zsh/raw/master/tools/install.sh)&amp;#34; git clone https://github.</description>
+个人 apt 源 Linux 初始环境软件安装 基本组件 sudo apt install zsh git man man-db manpages ssh neovim tmux \ curl wget netcat net-tools nmap tcpdump figlet \ binutils xxd strace libncurses5-dev traceroute \ neofetch zip unzip ncdu htop dosfstools nyancat cmatrix 开发与调试组件 sudo apt install gcc g++ gdb gdb-multiarch gdbserver flex bison make cmake clangd \ python3 ipython3 python-is-python3 python3-pip build-essential ninja-buildw dotfiles 快速就位 git clone https://github.com/dev2ero/dotfiles.git sh -c &amp;#34;$(curl -fsSL https://gitee.</description>
     </item>
     
     <item>
@@ -319,7 +319,7 @@ https://buildroot.org/ OS/ABI的匹配 通常情况下，选取编译交叉编�
       <pubDate>Sat, 07 May 2022 22:53:05 +0800</pubDate>
       
       <guid>https://cerr.cc/post/awesome_colors/</guid>
-      <description>Awesome colors 波尔多红#4f0009克莱因蓝#002FA7普鲁士蓝#003153勃艮第红#800020邦迪蓝#0095b6木乃伊棕#8f4b28卡布里蓝#1a5599提香红#b05923蒂芙尼蓝#81d8d0覆盆子红#9e2e24虎皮黄#e2af42薄荷绿#407d52草黄#cfb64a星蓝#9ab4cd鸢尾蓝#418ab4苋菜紫#8e2961钢蓝#101420云峰白#dae3e6岩石棕#8c502c橄榄石绿#b8ce8e竹绿#4fa485钴蓝#4692b9月影白#c2c4c3笋皮棕#6b331a琉璃蓝#22406a黛蓝#3f4f65青白#bee0d0墨色#4e606c黯#3f545b玄青#3b3a4e漆黑#141722玄色#370708</description>
+      <description>Awesome colors 波尔多红 #4f0009 克莱因蓝 #002FA7 普鲁士蓝 #003153 勃艮第红 #800020 邦迪蓝 #0095b6 木乃伊棕 #8f4b28 卡布里蓝 #1a5599 提香红 #b05923 蒂芙尼蓝 #81d8d0 覆盆子红 #9e2e24 虎皮黄 #e2af42 薄荷绿 #407d52 草黄 #cfb64a 星蓝 #9ab4cd 鸢尾蓝 #418ab4 苋菜紫 #8e2961 钢蓝 #101420 云峰白 #dae3e6 岩石棕 #8c502c 橄榄石绿 #b8ce8e 竹绿 #4fa485 钴蓝 #4692b9 月影白 #c2c4c3 笋皮棕 #6b331a 琉璃蓝 #22406a 黛蓝 #3f4f65 青白 #bee0d0 墨色 #4e606c 黯 #3f545b 玄青 #3b3a4e 漆黑 #141722 玄色 #370708 </description>
     </item>
     
     <item>

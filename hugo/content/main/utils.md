@@ -45,6 +45,8 @@ tags: [ "Main" ]
   - 福音战士标题生成器
     - [https://mojimo.jp/eva/](https://mojimo.jp/eva/)
     - [https://github.com/itorr/eva-title](https://github.com/itorr/eva-title)
+  - emoji加法生成器
+      - [https://emoji.supply/kitchen/](https://emoji.supply/kitchen/)
 
 - ASCII art
 
@@ -109,6 +111,9 @@ tags: [ "Main" ]
 - 定制你的终端配色——实时在线查看
 
   - [https://geoff.greer.fm/lscolors/](https://geoff.greer.fm/lscolors/)
+- 来挑选你的vim主题吧
+    - [https://vimcolorschemes.com/](https://vimcolorschemes.com/)
+
 - 万物皆可对比
   - [https://versus.com/cn](https://versus.com/cn)
 - 你的Web Terminal

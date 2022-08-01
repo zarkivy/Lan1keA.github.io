@@ -235,7 +235,7 @@ git clone https://github.com/google/AFL.git cd AFL make -j`nproc` sudo make inst
       
       <guid>https://cerr.cc/post/some_installation/</guid>
       <description>作为一个系统重装爱好者和硬件收集拾荒人，为了减少在环境配置上浪费的生命，记录常用环境配置命令用以直接复制粘贴
-个人 apt 源 Linux 初始环境软件安装 基本组件 sudo apt install zsh git man man-db manpages ssh neovim tmux \ curl wget netcat net-tools nmap tcpdump figlet \ binutils xxd strace libncurses5 \ neofetch zip unzip ncdu htop dosfstools nyancat cmatrix 开发与调试组件 sudo apt install gcc g++ gdb gdb-multiarch gdbserver flex bison make clangd \ python3 ipython3 python-is-python3 python3-pip build-essential dotfiles 快速就位 git clone https://github.com/dev2ero/dotfiles.git sh -c &amp;#34;$(curl -fsSL https://gitee.com/mirrors/oh-my-zsh/raw/master/tools/install.sh)&amp;#34; git clone https://github.</description>
+个人 apt 源 Linux 初始环境软件安装 基本组件 sudo apt install zsh git man man-db manpages ssh neovim tmux \ curl wget netcat net-tools nmap tcpdump figlet \ binutils xxd strace libncurses5-dev traceroute \ neofetch zip unzip ncdu htop dosfstools nyancat cmatrix 开发与调试组件 sudo apt install gcc g++ gdb gdb-multiarch gdbserver flex bison make cmake clangd \ python3 ipython3 python-is-python3 python3-pip build-essential ninja-buildw dotfiles 快速就位 git clone https://github.com/dev2ero/dotfiles.git sh -c &amp;#34;$(curl -fsSL https://gitee.</description>
     </item>
     
     <item>
@@ -319,7 +319,7 @@ https://buildroot.org/ OS/ABI的匹配 通常情况下，选取编译交叉编�
       <pubDate>Sat, 07 May 2022 22:53:05 +0800</pubDate>
       
       <guid>https://cerr.cc/post/awesome_colors/</guid>
-      <description>Awesome colors 波尔多红#4f0009克莱因蓝#002FA7普鲁士蓝#003153勃艮第红#800020邦迪蓝#0095b6木乃伊棕#8f4b28卡布里蓝#1a5599提香红#b05923蒂芙尼蓝#81d8d0覆盆子红#9e2e24虎皮黄#e2af42薄荷绿#407d52草黄#cfb64a星蓝#9ab4cd鸢尾蓝#418ab4苋菜紫#8e2961钢蓝#101420云峰白#dae3e6岩石棕#8c502c橄榄石绿#b8ce8e竹绿#4fa485钴蓝#4692b9月影白#c2c4c3笋皮棕#6b331a琉璃蓝#22406a黛蓝#3f4f65青白#bee0d0墨色#4e606c黯#3f545b玄青#3b3a4e漆黑#141722玄色#370708</description>
+      <description>Awesome colors 波尔多红 #4f0009 克莱因蓝 #002FA7 普鲁士蓝 #003153 勃艮第红 #800020 邦迪蓝 #0095b6 木乃伊棕 #8f4b28 卡布里蓝 #1a5599 提香红 #b05923 蒂芙尼蓝 #81d8d0 覆盆子红 #9e2e24 虎皮黄 #e2af42 薄荷绿 #407d52 草黄 #cfb64a 星蓝 #9ab4cd 鸢尾蓝 #418ab4 苋菜紫 #8e2961 钢蓝 #101420 云峰白 #dae3e6 岩石棕 #8c502c 橄榄石绿 #b8ce8e 竹绿 #4fa485 钴蓝 #4692b9 月影白 #c2c4c3 笋皮棕 #6b331a 琉璃蓝 #22406a 黛蓝 #3f4f65 青白 #bee0d0 墨色 #4e606c 黯 #3f545b 玄青 #3b3a4e 漆黑 #141722 玄色 #370708 </description>
     </item>
     
     <item>
@@ -344,7 +344,7 @@ WS：Window System 图形化的基本环境 举例： X11 Wayland ref： https:/
 https://tablericons.com/ https://svgsilh.com/zh/ https://www.logo.wine/ https://fontawesome.com/icons?d=gallery https://simpleicons.org/ 图片库
 https://dotown.maeda-design-room.net/ 壁纸库
 https://wallroom.io/ http://simpledesktops.com/ 图片转换器
-在线Photoshop https://www.photopea.com/ 像素风格 https://pixel-me.tokyo/ 失真风格 https://photomosh.com/ 图片压缩 https://www.photofun.cn/compress/ 去除背景 https://express.adobe.com/zh-Hans-CN/tools/remove-background 图片+URL = 图片二维码 https://research.swtch.com/qr/draw/ 摸头生成器 https://benisland.neocities.org/petpet/ 福音战士标题生成器 https://mojimo.jp/eva/ https://github.com/itorr/eva-title ASCII art
+在线Photoshop https://www.photopea.com/ 像素风格 https://pixel-me.tokyo/ 失真风格 https://photomosh.com/ 图片压缩 https://www.photofun.cn/compress/ 去除背景 https://express.adobe.com/zh-Hans-CN/tools/remove-background 图片+URL = 图片二维码 https://research.swtch.com/qr/draw/ 摸头生成器 https://benisland.neocities.org/petpet/ 福音战士标题生成器 https://mojimo.jp/eva/ https://github.com/itorr/eva-title emoji加法生成器 https://emoji.supply/kitchen/ ASCII art
 http://www.network-science.de/ascii/ https://cowsay-svelte.vercel.app/ http://patorjk.com/software/taag/#p=display&amp;amp;f=Block&amp;amp;t=ZKV https://asciiflow.com/ 创建自己的LOGO
 正常 https://ailogo.qq.com/guide/brandname 不正常 https://www.logoly.pro/ 特殊字体Unicode
 https://www.wakatool.com/fancy/text 狗屁不通文章生成器
@@ -357,8 +357,7 @@ https://tinywow.com/ https://anyconv.com/ 在线作图工具
 https://app.diagrams.net/ 在线文件传输
 https://app.tmp.link/ https://cowtransfer.com/ 听写记事本
 https://speechnotes.co/zh/ 在线mrp模拟器
-https://vmrp.github.io/ 定制你的终端配色——实时在线查看
-https://geoff.greer.fm/lscolors/ 万物皆可对比</description>
+https://vmrp.github.io/ 定制你的终端配色——实时在线查看</description>
     </item>
     
     <item>
@@ -367,8 +366,8 @@ https://geoff.greer.fm/lscolors/ 万物皆可对比</description>
       <pubDate>Sat, 07 May 2022 18:53:05 +0800</pubDate>
       
       <guid>https://cerr.cc/main/love/</guid>
-      <description>「&amp;nbsp; V I V I A I Q I Q I
-【 天 时 分 秒 】Q I Q I A I V I V I &amp;nbsp;」</description>
+      <description> 「&amp;nbsp; V I V I A I Q I Q I
+【 天 时 分 秒 】 Q I Q I A I V I V I &amp;nbsp;」 </description>
     </item>
     
     <item>
@@ -377,7 +376,7 @@ https://geoff.greer.fm/lscolors/ 万物皆可对比</description>
       <pubDate>Sat, 07 May 2022 17:53:05 +0800</pubDate>
       
       <guid>https://cerr.cc/main/flink/</guid>
-      <description> https://foada.github.io/ https://fromhex.cn/ https://blog.xiabee.cn/ https://migraine-sudo.github.io/ https://m4x.fun/ https://ifpop.github.io/ https://blog.fkynjyq.com/ https://eacryo.gitee.io/ https://vang3lis.github.io/ https://emptystack.top/ https://l1b0.github.io/ https://yourbutterfly.github.io/ BigBrothers https://eternalsakura13.com/ https://lancern.xyz/ http://www.aloxaf.com/ https://kiprey.github.io/ https://www.ksroido.art/ https://blog.flanker017.me/ https://thunderjie.github.io/ http://blog.eonew.cn/ https://xuanxuanblingbling.github.io/ https://atum.li/ https://mem2019.github.io/ https://bsauce.github.io/ https://ray-cp.github.io/ https://chenx6.github.io/ https://blog.kyrios.cn/ https://etenal.me/ http://www.ruanyifeng.com/blog/ https://a1ex.online/ http://p4nda.top/ https://o0xmuhe.github.io/ https://evilpan.com/ https://myfzy.top/ https://exexute.github.io/ https://zhou-yuxin.github.io/ https://houjingyi233.com/ https://hhdx.xyz/post/ http://tr3e.ee/ https://martins3.github.io/ </description>
+      <description> https://foada.github.io/ https://fromhex.cn/ https://blog.xiabee.cn/ https://migraine-sudo.github.io/ https://m4x.fun/ https://ifpop.github.io/ https://blog.fkynjyq.com/ https://eacryo.gitee.io/ https://vang3lis.github.io/ https://emptystack.top/ https://l1b0.github.io/ https://yourbutterfly.github.io/ BigBrothers https://eternalsakura13.com/ https://lancern.xyz/ http://www.aloxaf.com/ https://kiprey.github.io/ https://www.ksroido.art/ https://blog.flanker017.me/ https://thunderjie.github.io/ http://blog.eonew.cn/ https://xuanxuanblingbling.github.io/ https://atum.li/ https://mem2019.github.io/ https://bsauce.github.io/ https://ray-cp.github.io/ https://chenx6.github.io/ https://blog.kyrios.cn/ https://etenal.me/ http://www.ruanyifeng.com/blog/ https://a1ex.online/ http://p4nda.top/ https://o0xmuhe.github.io/ https://evilpan.com/ https://myfzy.top/ https://exexute.github.io/ https://zhou-yuxin.github.io/ https://houjingyi233.com/ https://hhdx.xyz/post/ http://tr3e.ee/ https://martins3.github.io/ https://qiuhao.org/ </description>
     </item>
     
     <item>
@@ -406,7 +405,7 @@ lsd美化ls：https://github.com/Peltoche/lsd lsd需配合nerdfont：https://www
       <pubDate>Sat, 07 May 2022 15:53:05 +0800</pubDate>
       
       <guid>https://cerr.cc/main/about/</guid>
-      <description>Yet anothor cyber nyandogWith this Rolling release blogT O D O分析CVE-2017-0143永恒之蓝漏洞 阅读源码：Mirai malware 那 些 年 我2017 ~💻 玩过的机 联想G510 神舟战神KP7-GT 联想ThinkPad Tablet 联想ThinkPad E431 联想ThinkPad X200 联想小新Air14 联想Yoga 13s Macbook Air 2020 iPhone4 iPhone5s iPhone6 iPhone SE1 iPhone XR iPhone 12 mini iPhone 13 小米note1 小米note2（postmarketOS） 小米2s 小米3 小米4 小米9SE 小米9 红米1s 红米2a 红米2（postmarketOS） 红米note3 红米K30 Pro 红米K40 游戏增强版 LG G5 LG G7 LG V30 LG V30+ 夏普303SH 夏普305SH 夏普502SH 索尼Z1 索尼Z2mini 索尼Z4 索尼Xperia X 索尼XZ2 Essential Phone iQOO1 Vivo X5 max 阿尔卡特 hero2 iPad mini5 iPad Air5 小米平板1 小米平板4LTE Kindle fire 树莓派3B+ 树莓派4B Friendlyelec NanoPC T3 Plus NUC11PAHi5 HP PROBOOK 440 G8 📖 读过的书 C++ Primer 深入理解计算机系统 程序员的自我修养 深入理解计算机网络 围城 三体 北京折叠 神的孩子全跳舞 今日简史 激荡三十年 人口大逆转 醉步男 星之彩 计算机网络 刘慈欣科幻短片小说合集 颠覆者 许三观卖血记 狂人日记 马云传 美丽新世界 阿Q正传 钝感力 自控力 为人民服务 腾讯传 贝多芬传 鲁滨逊漂流记 乔布斯传 球状闪电 1984 人类简史 哈姆雷特 方方日记 永久记录 穷爸爸富爸爸 风中的纸屑 我的世界观 人体简史 杰克伦敦小说集 未来简史 操作系统真象还原 现代操作系统 黄金时代 C和C++安全编码 另：本博客为滚动更新，写了一半的文章草稿见怪不怪，一篇已完成的文章半年后大改也理直气壮 😎</description>
+      <description>Yet anothor cyber nyandog With this Rolling release blog 那 些 年 我 2017 ~ 💻 玩过的机 联想G510 神舟战神KP7-GT 联想ThinkPad Tablet 联想ThinkPad E431 联想ThinkPad X200 联想小新Air14 联想Yoga 13s Macbook Air 2020 iPhone4 iPhone5s iPhone6 iPhone SE1 iPhone XR iPhone 12 mini iPhone 13 小米note1 小米note2（postmarketOS） 小米2s 小米3 小米4 小米9SE 小米9 红米1s 红米2a 红米2（postmarketOS） 红米note3 红米K30 Pro 红米K40 游戏增强版 LG G5 LG G7 LG V30 LG V30+ 夏普303SH 夏普305SH 夏普502SH 索尼Z1 索尼Z2mini 索尼Z4 索尼Xperia X 索尼XZ2 Essential Phone iQOO1 Vivo X5 max 阿尔卡特 hero2 iPad mini5 iPad Air5 小米平板1 小米平板4LTE Kindle fire 树莓派3B+ 树莓派4B Friendlyelec NanoPC T3 Plus NUC11PAHi5 HP PROBOOK 440 G8 📖 读过的书 C++ Primer 深入理解计算机系统 程序员的自我修养 深入理解计算机网络 围城 三体 北京折叠 神的孩子全跳舞 今日简史 激荡三十年 人口大逆转 醉步男 星之彩 计算机网络 刘慈欣科幻短片小说合集 颠覆者 许三观卖血记 狂人日记 马云传 美丽新世界 阿Q正传 钝感力 自控力 为人民服务 腾讯传 贝多芬传 鲁滨逊漂流记 乔布斯传 球状闪电 1984 人类简史 哈姆雷特 方方日记 永久记录 穷爸爸富爸爸 风中的纸屑 我的世界观 人体简史 杰克伦敦小说集 未来简史 操作系统真象还原 现代操作系统 黄金时代 C和C++安全编码 另：本博客为滚动更新，写了一半的文章草稿见怪不怪，一篇已完成的文章半年后大改也理直气壮 😎</description>
     </item>
     
   </channel>
