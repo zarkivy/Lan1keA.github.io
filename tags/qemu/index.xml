@@ -33,7 +33,7 @@ admin@(none):/tmp/home/root# openssl [ 9.765639] openssl (274): undefined instru
       <pubDate>Tue, 10 May 2022 20:59:43 +0800</pubDate>
       
       <guid>https://cerr.cc/post/build_run_embeded_linux_vm/</guid>
-      <description>Easymode Default 通过git或http获取buildroot：
+      <description>自动挡 一路默认 通过git或http获取buildroot：
 官网：https://buildroot.org/
 git：git clone https://git.buildroot.net/buildroot
 进入buildroot根目录，可以看到一个叫configs的文件夹，其中记录了许多硬件平台和部分qemu虚拟平台的默认配置参数。执行 ls configs | grep qemu，可以看到：

@@ -95,7 +95,7 @@ The U-Boot implementation of RFC815 IP DATAGRAM REASSEMBLY ALGORITHMS is suscept
       <pubDate>Mon, 13 Jun 2022 17:41:00 +0800</pubDate>
       
       <guid>https://cerr.cc/post/linuxer_zkv/</guid>
-      <description>内核文档 文档资源总览：https://www.kernel.org/doc/
+      <description>学习资料 教程 Linux Inside 实验 Linux Kernel Lab 其他人汇总的资源 Martins3大佬的收集 内核文档 文档资源总览：https://www.kernel.org/doc/
 Latest kernel的HTML文档页：https://www.kernel.org/doc/html/latest
 但用浏览器看文档总归是不如在终端内直接man 9 printk来的爽。为啥是man 9？看看man man便知：
 1 Executable programs or shell commands 2 System calls (functions provided by the kernel) 3 Library calls (functions within program libraries) 4 Special files (usually found in /dev) 5 File formats and conventions, e.g. /etc/passwd 6 Games 7 Miscellaneous (including macro packages and conventions), e.g. man(7), groff(7) 8 System administration commands (usually only for root) 9 Kernel routines [Non standard] 但默认情况下会：</description>
@@ -244,7 +244,7 @@ git clone https://github.com/google/AFL.git cd AFL make -j`nproc` sudo make inst
       <pubDate>Tue, 10 May 2022 20:59:43 +0800</pubDate>
       
       <guid>https://cerr.cc/post/build_run_embeded_linux_vm/</guid>
-      <description>Easymode Default 通过git或http获取buildroot：
+      <description>自动挡 一路默认 通过git或http获取buildroot：
 官网：https://buildroot.org/
 git：git clone https://git.buildroot.net/buildroot
 进入buildroot根目录，可以看到一个叫configs的文件夹，其中记录了许多硬件平台和部分qemu虚拟平台的默认配置参数。执行 ls configs | grep qemu，可以看到：
@@ -290,27 +290,6 @@ NR syscall name %rax arg0 (%rdi) arg1 (%rsi) arg2 (%rdx) 0 read 0x00 unsigned in
       <description>From this post, our goal is tracing the execution procedure from kernel entry to userspace process (busybox init) by using qemu-system and gdb-multiarch.
 Preparation qemu-system-arm Compile it from source code or just use sudo apt install qemu-system-arm.
 kernel Linux kernel v4.1 for armel as an example. Compiling a linux kernel requires a matched version of gcc. For example, the linux kernel v4.1 requires the gcc version between 3 and 5:</description>
-    </item>
-    
-    <item>
-      <title>嵌入式软件环境搭建一把梭</title>
-      <link>https://cerr.cc/post/embeded_env/</link>
-      <pubDate>Sun, 08 May 2022 14:08:16 +0800</pubDate>
-      
-      <guid>https://cerr.cc/post/embeded_env/</guid>
-      <description>\x01 构建 手动选取编译工具链 命名遵循 arch-vendor-(os-)abi 的格式
-获取编译工具链的方式，可以直接从这些地方下载到：
-arm cortex-a:The GNU Toolchain for the Cortex-A Family Downloads
-arm cortex-m:GNU Arm Embedded Toolchain Downloads
-Linaro:arm:https://www.linaro.org/downloads/
-risc-v:https://github.com/riscv/riscv-gnu-toolchain/releases
-mips:https://www.mips.com/develop/tools/compilers/linux-toolchain/
-uclibc:https://www.uclibc.org/downloads/binaries/
-http://download.ronetix.info/toolchains/
-也可以使用buildroot手动构建：
-https://buildroot.org/ OS/ABI的匹配 通常情况下，选取编译交叉编译工具链时，指令集、平台之类的内容是不容易弄错的。但 OS/ABI 却是个容易造成故障的点。
-举例来讲，在我一次对libnvram.so的编译时，得到的目标ELF文件为：
-~$ file libnvram.so libnvram.so: ELF 32-bit LSB shared object, ARM, version 1 (ARM), dynamically linked, not stripped ~$ armv5l-readelf -h libnvram.so ELF Header: Magic: 7f 45 4c 46 01 01 01 61 00 00 00 00 00 00 00 00 Class: ELF32 Data: 2&amp;#39;s complement, little endian Version: 1 (current) OS/ABI: ARM .</description>
     </item>
     
     <item>

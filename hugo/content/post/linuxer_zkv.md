@@ -8,6 +8,22 @@ Imagelink: "https://s2.loli.net/2022/06/13/9o2jpBPbfcLRMFT.jpg"
 
 
 
+# 学习资料
+
+## 教程
+
+- [Linux Inside](https://0xax.gitbooks.io/linux-insides/content/)
+
+## 实验
+
+- [Linux Kernel Lab](https://linux-kernel-labs.github.io/refs/heads/master/labs/infrastructure.html#)
+
+## 其他人汇总的资源
+
+- [Martins3大佬的收集](https://github.com/Martins3/Martins3.github.io/blob/master/os/os-route.md)
+
+
+
 # 内核文档
 
 文档资源总览：[https://www.kernel.org/doc/](https://www.kernel.org/doc/)

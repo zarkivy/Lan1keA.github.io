@@ -210,161 +210,7 @@
     <div id="content">
 <article class="post">
   
-    <div class="post-content"><h1 id="自用-dotfiles">自用 dotfiles</h1>
-<h2 id="zshrc">.zshrc</h2>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#0086b3">export</span> <span style="color:#008080">LS_COLORS</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;di=34:ln=35:so=32:pi=33:ex=31:bd=34:cd=34:su=30:sg=30:tw=30:ow=30&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#0086b3">export</span> <span style="color:#008080">PROMPT_EOL_MARK</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;↵&#39;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#008080">ZSH_THEME</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;avit&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># ZSH_THEME=&#34;robbyrussell&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># ZSH_THEME=&#34;refined&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># ZSH_THEME=&#34;agnoster&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#008080">plugins</span><span style="color:#000;font-weight:bold">=(</span>
-</span></span><span style="display:flex;"><span>    git
-</span></span><span style="display:flex;"><span>    sudo
-</span></span><span style="display:flex;"><span>    zsh-autosuggestions
-</span></span><span style="display:flex;"><span>    zsh-syntax-highlighting
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">)</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#0086b3">source</span> <span style="color:#008080">$ZSH</span>/oh-my-zsh.sh
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#0086b3">alias</span> <span style="color:#008080">l</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;/bin/ls&#39;</span>
-</span></span><span style="display:flex;"><span><span style="color:#0086b3">alias</span> <span style="color:#008080">ls</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;lsd&#39;</span>
-</span></span><span style="display:flex;"><span><span style="color:#0086b3">alias</span> <span style="color:#008080">ll</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;ls -l&#39;</span>
-</span></span><span style="display:flex;"><span><span style="color:#0086b3">alias</span> <span style="color:#008080">la</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;ls -a&#39;</span>
-</span></span><span style="display:flex;"><span><span style="color:#0086b3">alias</span> <span style="color:#008080">lla</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;ls -la&#39;</span>
-</span></span><span style="display:flex;"><span><span style="color:#0086b3">alias</span> <span style="color:#008080">lt</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;ls --tree&#39;</span>
-</span></span><span style="display:flex;"><span><span style="color:#0086b3">alias</span> <span style="color:#008080">ipy</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;ipython3&#39;</span>
-</span></span><span style="display:flex;"><span><span style="color:#0086b3">alias</span> <span style="color:#008080">py</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;python3 -q&#39;</span>
-</span></span><span style="display:flex;"><span><span style="color:#0086b3">alias</span> f.n<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;find . -name&#39;</span>
-</span></span><span style="display:flex;"><span><span style="color:#0086b3">alias</span> <span style="color:#008080">pms</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;python -m http.server&#39;</span>
-</span></span><span style="display:flex;"><span><span style="color:#0086b3">alias</span> <span style="color:#008080">v</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;nvim&#39;</span>
-</span></span></code></pre></div><p>配合使用：</p>
-<ul>
-<li>lsd美化ls：<a href="https://github.com/Peltoche/lsd">https://github.com/Peltoche/lsd</a>
-<ul>
-<li>lsd需配合nerdfont：<a href="https://www.nerdfonts.com/">https://www.nerdfonts.com/</a></li>
-</ul>
-</li>
-<li>插件zsh-syntax-highlighting：<a href="https://github.com/zsh-users/zsh-syntax-highlighting">https://github.com/zsh-users/zsh-syntax-highlighting</a></li>
-<li>插件zsh-autosuggestions：<a href="https://github.com/zsh-users/zsh-autosuggestions">https://github.com/zsh-users/zsh-autosuggestions</a></li>
-</ul>
-<h2 id="initvim">init.vim</h2>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ini" data-lang="ini"><span style="display:flex;"><span><span style="color:#008080">set number</span>
-</span></span><span style="display:flex;"><span><span style="color:#008080">set noshowmode</span>
-</span></span><span style="display:flex;"><span><span style="color:#008080">set expandtab</span>
-</span></span><span style="display:flex;"><span><span style="color:#008080">set tabstop</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">4</span>
-</span></span><span style="display:flex;"><span><span style="color:#008080">set shiftwidth</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">4</span>
-</span></span><span style="display:flex;"><span><span style="color:#008080">set encoding</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">utf-8</span>
-</span></span><span style="display:flex;"><span><span style="color:#008080">set fileencodings</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">utf-8,gbk,gb2312</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#008080">inoremap jj &lt;Esc&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#008080">nnoremap &lt;Esc&gt; ZZ</span>
-</span></span><span style="display:flex;"><span><span style="color:#008080">nnoremap &lt;C-t&gt; &lt;C-w&gt;s&lt;C-w&gt;j:terminal&lt;CR&gt;i</span>
-</span></span><span style="display:flex;"><span><span style="color:#008080">tnoremap &lt;Esc&gt; &lt;C-\&gt;&lt;C-n&gt;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#008080">call plug#begin()</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#008080">Plug &#39;neoclide/coc.nvim&#39;, {&#39;branch&#39;: &#39;release&#39;}</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#008080">Plug &#39;preservim/nerdtree&#39;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#008080">&#34; Plug &#39;junegunn/seoul256.vim&#39;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#008080">Plug &#39;sonph/onehalf&#39;, { &#39;rtp&#39;: &#39;vim&#39;  }</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#008080">Plug &#39;mhinz/vim-startify&#39;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#008080">Plug &#39;jiangmiao/auto-pairs&#39;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#008080">Plug &#39;vim-airline/vim-airline&#39;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#008080">Plug &#39;vim-airline/vim-airline-themes&#39;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#008080">Plug &#39;octol/vim-cpp-enhanced-highlight&#39;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#008080">&#34; Plug &#39;luochen1990/rainbow&#39;</span>
-</span></span><span style="display:flex;"><span><span style="color:#008080">call plug#end()</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#008080">&#34; let g:seoul256_background</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">233</span>
-</span></span><span style="display:flex;"><span><span style="color:#008080">&#34; colorscheme seoul256</span>
-</span></span><span style="display:flex;"><span><span style="color:#008080">colorscheme onehalflight</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#008080">nnoremap &lt;C-n&gt; :NERDTreeToggle&lt;CR&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#008080">nnoremap &lt;C-f&gt; :NERDTreeFind&lt;CR&gt;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#008080">inoremap &lt;expr&gt; &lt;Tab&gt; pumvisible() ? &#34;\&lt;C-n&gt;&#34; : &#34;\&lt;Tab&gt;&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#008080">inoremap &lt;expr&gt; &lt;S-Tab&gt; pumvisible() ? &#34;\&lt;C-p&gt;&#34; : &#34;\&lt;S-Tab&gt;&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#008080">let g:startify_custom_header</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">startify#pad(split(system(&#39;figlet -w 100 ZKVIM&#39;), &#39;\n&#39;))</span>
-</span></span><span style="display:flex;"><span><span style="color:#008080">let g:airline_theme</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;seoul256&#39;</span>
-</span></span><span style="display:flex;"><span><span style="color:#008080">let g:rainbow_active</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">1</span>
-</span></span></code></pre></div><p>配合使用：</p>
-<ul>
-<li>vim-plug插件管理器：https://github.com/junegunn/vim-plug</li>
-<li>coc.nvim自动补全：https://github.com/neoclide/coc.nvim
-<ul>
-<li>coc插件市场：<code>CocInstall coc-marketplace</code></li>
-<li>C与C++自动补全：<code>CocInstall coc-clangd</code>
-<ul>
-<li>apt install clangd</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="tmuxconf">.tmux.conf</h2>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>set-option -g prefix C-x
-</span></span><span style="display:flex;"><span>unbind-key C-x
-</span></span><span style="display:flex;"><span>bind-key C-x send-prefix
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#0086b3">bind</span> -n M-Left <span style="color:#000;font-weight:bold">select</span>-pane -L
-</span></span><span style="display:flex;"><span><span style="color:#0086b3">bind</span> -n M-Right <span style="color:#000;font-weight:bold">select</span>-pane -R
-</span></span><span style="display:flex;"><span><span style="color:#0086b3">bind</span> -n M-Up <span style="color:#000;font-weight:bold">select</span>-pane -U
-</span></span><span style="display:flex;"><span><span style="color:#0086b3">bind</span> -n M-Down <span style="color:#000;font-weight:bold">select</span>-pane -D
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#0086b3">bind</span> -n S-Left previous-window
-</span></span><span style="display:flex;"><span><span style="color:#0086b3">bind</span> -n S-Right next-window
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#0086b3">set</span> -g mouse on
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>bind-key v split-window -h
-</span></span><span style="display:flex;"><span>bind-key s split-window -v
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>bind-key r source-file ~/.tmux.conf <span style="color:#d14">\;</span> display-message <span style="color:#d14">&#34;[+] tmux.conf reloading&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#0086b3">set</span> -g status on
-</span></span><span style="display:flex;"><span><span style="color:#0086b3">set</span> -g status-style <span style="color:#008080">fg</span><span style="color:#000;font-weight:bold">=</span>black,bg<span style="color:#000;font-weight:bold">=</span>white
-</span></span><span style="display:flex;"><span><span style="color:#0086b3">set</span> -g status-justify <span style="color:#d14">&#39;centre&#39;</span>
-</span></span><span style="display:flex;"><span><span style="color:#0086b3">set</span> -g status-left-length <span style="color:#d14">&#39;100&#39;</span>
-</span></span><span style="display:flex;"><span><span style="color:#0086b3">set</span> -g status-right-length <span style="color:#d14">&#39;100&#39;</span>
-</span></span><span style="display:flex;"><span><span style="color:#0086b3">set</span> -g pane-border-style <span style="color:#008080">fg</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;#000000&#39;</span>
-</span></span><span style="display:flex;"><span><span style="color:#0086b3">set</span> -g pane-active-border-style <span style="color:#008080">fg</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;#8BC24A&#39;</span>
-</span></span><span style="display:flex;"><span><span style="color:#0086b3">set</span> -g status-left <span style="color:#d14">&#39;#[fg=colour232,bg=white] #S #[fg=green,bg=white] #W &#39;</span>
-</span></span><span style="display:flex;"><span><span style="color:#0086b3">set</span> -g status-right <span style="color:#d14">&#39;#[fg=colour222,bg=white] #(whoami) #[fg=blue,bg=white] #H &#39;</span>
-</span></span><span style="display:flex;"><span>setw -g window-status-format <span style="color:#d14">&#39;#[fg=white,bg=white,nobold,nounderscore,noitalics]⌈#[default] #I ‣ #W #[fg=white,bg=white,nobold,nounderscore,noitalics]⌋&#39;</span>
-</span></span><span style="display:flex;"><span>setw -g window-status-current-format <span style="color:#d14">&#39;#[fg=white,bg=white,nobold,nounderscore,noitalics]⎡#[fg=cyan,bg=white] #I ▶︎ #W #[fg=white,bg=white,nobold,nounderscore,noitalics]⎦&#39;</span>
-</span></span></code></pre></div><p>就此扔掉鼠标和本地计算，all-in 云</p>
-<h2 id="configlsdthemeslightyaml">~/.config/lsd/themes/light.yaml</h2>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#000080">user</span>:<span style="color:#bbb"> </span><span style="color:#099">241</span><span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#000080">group</span>:<span style="color:#bbb"> </span><span style="color:#099">246</span><span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#000080">permission</span>:<span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000080">read</span>:<span style="color:#bbb"> </span>dark_green<span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000080">write</span>:<span style="color:#bbb"> </span>dark_yellow<span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000080">exec</span>:<span style="color:#bbb"> </span>dark_red<span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000080">exec-sticky</span>:<span style="color:#bbb"> </span><span style="color:#099">5</span><span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000080">no-access</span>:<span style="color:#bbb"> </span><span style="color:#099">245</span><span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#000080">date</span>:<span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000080">hour-old</span>:<span style="color:#bbb"> </span><span style="color:#099">40</span><span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000080">day-old</span>:<span style="color:#bbb"> </span><span style="color:#099">42</span><span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000080">older</span>:<span style="color:#bbb"> </span><span style="color:#099">36</span><span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#000080">size</span>:<span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000080">none</span>:<span style="color:#bbb"> </span><span style="color:#099">244</span><span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000080">small</span>:<span style="color:#bbb"> </span><span style="color:#099">221</span><span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000080">medium</span>:<span style="color:#bbb"> </span><span style="color:#099">130</span><span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000080">large</span>:<span style="color:#bbb"> </span><span style="color:#099">125</span><span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#000080">inode</span>:<span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000080">valid</span>:<span style="color:#bbb"> </span><span style="color:#099">13</span><span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000080">invalid</span>:<span style="color:#bbb"> </span><span style="color:#099">245</span><span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#000080">links</span>:<span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000080">valid</span>:<span style="color:#bbb"> </span><span style="color:#099">13</span><span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000080">invalid</span>:<span style="color:#bbb"> </span><span style="color:#099">245</span><span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#000080">tree-edge</span>:<span style="color:#bbb"> </span><span style="color:#099">245</span><span style="color:#bbb">   
-</span></span></span></code></pre></div><p>lsd亮色主题，解决终端在亮色背景下lsd输出看不清的问题</p>
-<h2 id="gdbinit">.gdbinit</h2>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#0086b3">set</span> syntax-highlight-style tango
-</span></span></code></pre></div><h1 id="trick">Trick</h1>
+    <div class="post-content"><h1 id="trick">Trick</h1>
 <h2 id="谁在ping我">谁在ping我？</h2>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>tcpdump -i eth0 <span style="color:#d14">&#39;icmp and icmp[icmptype]=icmp-echo&#39;</span>
 </span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># root权限执行，eth0 换成你需要抓包的网卡iframe</span>
@@ -373,6 +219,12 @@
 </span></span><span style="display:flex;"><span>curl wttr.in/:help
 </span></span></code></pre></div><h2 id="修复vmware共享文件夹">修复VMware共享文件夹</h2>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>sudo vmhgfs-fuse .host:/ /mnt/hgfs -o allow_other -o <span style="color:#008080">uid</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">1000</span> -o <span style="color:#008080">gid</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">1000</span> -o <span style="color:#008080">umask</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">022</span>
+</span></span></code></pre></div><h2 id="命令行多行重定向写入">命令行多行重定向写入</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>cat &gt; blank.txt <span style="color:#d14">&lt;&lt; EOF
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">1
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">22
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">333
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">EOF</span>
 </span></span></code></pre></div><h1 id="key-value">Key-Value</h1>
 <h2 id="ansi-颜色">ANSI 颜色</h2>
 <table>

@@ -95,7 +95,7 @@ The U-Boot implementation of RFC815 IP DATAGRAM REASSEMBLY ALGORITHMS is suscept
       <pubDate>Mon, 13 Jun 2022 17:41:00 +0800</pubDate>
       
       <guid>https://cerr.cc/post/linuxer_zkv/</guid>
-      <description>内核文档 文档资源总览：https://www.kernel.org/doc/
+      <description>学习资料 教程 Linux Inside 实验 Linux Kernel Lab 其他人汇总的资源 Martins3大佬的收集 内核文档 文档资源总览：https://www.kernel.org/doc/
 Latest kernel的HTML文档页：https://www.kernel.org/doc/html/latest
 但用浏览器看文档总归是不如在终端内直接man 9 printk来的爽。为啥是man 9？看看man man便知：
 1 Executable programs or shell commands 2 System calls (functions provided by the kernel) 3 Library calls (functions within program libraries) 4 Special files (usually found in /dev) 5 File formats and conventions, e.g. /etc/passwd 6 Games 7 Miscellaneous (including macro packages and conventions), e.g. man(7), groff(7) 8 System administration commands (usually only for root) 9 Kernel routines [Non standard] 但默认情况下会：</description>
@@ -244,7 +244,7 @@ git clone https://github.com/google/AFL.git cd AFL make -j`nproc` sudo make inst
       <pubDate>Tue, 10 May 2022 20:59:43 +0800</pubDate>
       
       <guid>https://cerr.cc/post/build_run_embeded_linux_vm/</guid>
-      <description>Easymode Default 通过git或http获取buildroot：
+      <description>自动挡 一路默认 通过git或http获取buildroot：
 官网：https://buildroot.org/
 git：git clone https://git.buildroot.net/buildroot
 进入buildroot根目录，可以看到一个叫configs的文件夹，其中记录了许多硬件平台和部分qemu虚拟平台的默认配置参数。执行 ls configs | grep qemu，可以看到：
@@ -290,27 +290,6 @@ NR syscall name %rax arg0 (%rdi) arg1 (%rsi) arg2 (%rdx) 0 read 0x00 unsigned in
       <description>From this post, our goal is tracing the execution procedure from kernel entry to userspace process (busybox init) by using qemu-system and gdb-multiarch.
 Preparation qemu-system-arm Compile it from source code or just use sudo apt install qemu-system-arm.
 kernel Linux kernel v4.1 for armel as an example. Compiling a linux kernel requires a matched version of gcc. For example, the linux kernel v4.1 requires the gcc version between 3 and 5:</description>
-    </item>
-    
-    <item>
-      <title>嵌入式软件环境搭建一把梭</title>
-      <link>https://cerr.cc/post/embeded_env/</link>
-      <pubDate>Sun, 08 May 2022 14:08:16 +0800</pubDate>
-      
-      <guid>https://cerr.cc/post/embeded_env/</guid>
-      <description>\x01 构建 手动选取编译工具链 命名遵循 arch-vendor-(os-)abi 的格式
-获取编译工具链的方式，可以直接从这些地方下载到：
-arm cortex-a:The GNU Toolchain for the Cortex-A Family Downloads
-arm cortex-m:GNU Arm Embedded Toolchain Downloads
-Linaro:arm:https://www.linaro.org/downloads/
-risc-v:https://github.com/riscv/riscv-gnu-toolchain/releases
-mips:https://www.mips.com/develop/tools/compilers/linux-toolchain/
-uclibc:https://www.uclibc.org/downloads/binaries/
-http://download.ronetix.info/toolchains/
-也可以使用buildroot手动构建：
-https://buildroot.org/ OS/ABI的匹配 通常情况下，选取编译交叉编译工具链时，指令集、平台之类的内容是不容易弄错的。但 OS/ABI 却是个容易造成故障的点。
-举例来讲，在我一次对libnvram.so的编译时，得到的目标ELF文件为：
-~$ file libnvram.so libnvram.so: ELF 32-bit LSB shared object, ARM, version 1 (ARM), dynamically linked, not stripped ~$ armv5l-readelf -h libnvram.so ELF Header: Magic: 7f 45 4c 46 01 01 01 61 00 00 00 00 00 00 00 00 Class: ELF32 Data: 2&amp;#39;s complement, little endian Version: 1 (current) OS/ABI: ARM .</description>
     </item>
     
     <item>
@@ -376,7 +355,7 @@ https://vmrp.github.io/ 定制你的终端配色——实时在线查看</descri
       <pubDate>Sat, 07 May 2022 17:53:05 +0800</pubDate>
       
       <guid>https://cerr.cc/main/flink/</guid>
-      <description> https://foada.github.io/ https://fromhex.cn/ https://blog.xiabee.cn/ https://migraine-sudo.github.io/ https://m4x.fun/ https://ifpop.github.io/ https://blog.fkynjyq.com/ https://eacryo.gitee.io/ https://vang3lis.github.io/ https://emptystack.top/ https://l1b0.github.io/ https://yourbutterfly.github.io/ BigBrothers https://eternalsakura13.com/ https://lancern.xyz/ http://www.aloxaf.com/ https://kiprey.github.io/ https://www.ksroido.art/ https://blog.flanker017.me/ https://thunderjie.github.io/ http://blog.eonew.cn/ https://xuanxuanblingbling.github.io/ https://atum.li/ https://mem2019.github.io/ https://bsauce.github.io/ https://ray-cp.github.io/ https://chenx6.github.io/ https://blog.kyrios.cn/ https://etenal.me/ http://www.ruanyifeng.com/blog/ https://a1ex.online/ http://p4nda.top/ https://o0xmuhe.github.io/ https://evilpan.com/ https://myfzy.top/ https://exexute.github.io/ https://zhou-yuxin.github.io/ https://houjingyi233.com/ https://hhdx.xyz/post/ http://tr3e.ee/ https://martins3.github.io/ https://qiuhao.org/ </description>
+      <description> https://foada.github.io/ https://fromhex.cn/ https://blog.xiabee.cn/ https://migraine-sudo.github.io/ https://m4x.fun/ https://ifpop.github.io/ https://blog.fkynjyq.com/ https://eacryo.gitee.io/ https://vang3lis.github.io/ https://emptystack.top/ https://l1b0.github.io/ https://yourbutterfly.github.io/ BigBrothers https://eternalsakura13.com/ https://lancern.xyz/ http://www.aloxaf.com/ https://kiprey.github.io/ https://www.ksroido.art/ https://blog.flanker017.me/ https://thunderjie.github.io/ http://blog.eonew.cn/ https://xuanxuanblingbling.github.io/ https://atum.li/ https://mem2019.github.io/ https://bsauce.github.io/ https://ray-cp.github.io/ https://chenx6.github.io/ https://blog.kyrios.cn/ https://etenal.me/ http://www.ruanyifeng.com/blog/ https://a1ex.online/ http://p4nda.top/ https://o0xmuhe.github.io/ https://evilpan.com/ https://myfzy.top/ https://exexute.github.io/ https://zhou-yuxin.github.io/ https://houjingyi233.com/ https://hhdx.xyz/post/ http://tr3e.ee/ https://martins3.github.io/ https://qiuhao.org/ https://www.cnblogs.com/LoyenWang/ </description>
     </item>
     
     <item>
@@ -395,8 +374,7 @@ https://vmrp.github.io/ 定制你的终端配色——实时在线查看</descri
       <pubDate>Sat, 07 May 2022 16:53:05 +0800</pubDate>
       
       <guid>https://cerr.cc/main/board/</guid>
-      <description>自用 dotfiles .zshrc export LS_COLORS=&amp;#34;di=34:ln=35:so=32:pi=33:ex=31:bd=34:cd=34:su=30:sg=30:tw=30:ow=30&amp;#34; export PROMPT_EOL_MARK=&amp;#39;↵&amp;#39; ZSH_THEME=&amp;#34;avit&amp;#34; # ZSH_THEME=&amp;#34;robbyrussell&amp;#34; # ZSH_THEME=&amp;#34;refined&amp;#34; # ZSH_THEME=&amp;#34;agnoster&amp;#34; plugins=( git sudo zsh-autosuggestions zsh-syntax-highlighting ) source $ZSH/oh-my-zsh.sh alias l=&amp;#39;/bin/ls&amp;#39; alias ls=&amp;#39;lsd&amp;#39; alias ll=&amp;#39;ls -l&amp;#39; alias la=&amp;#39;ls -a&amp;#39; alias lla=&amp;#39;ls -la&amp;#39; alias lt=&amp;#39;ls --tree&amp;#39; alias ipy=&amp;#39;ipython3&amp;#39; alias py=&amp;#39;python3 -q&amp;#39; alias f.n=&amp;#39;find . -name&amp;#39; alias pms=&amp;#39;python -m http.server&amp;#39; alias v=&amp;#39;nvim&amp;#39; 配合使用：
-lsd美化ls：https://github.com/Peltoche/lsd lsd需配合nerdfont：https://www.nerdfonts.com/ 插件zsh-syntax-highlighting：https://github.com/zsh-users/zsh-syntax-highlighting 插件zsh-autosuggestions：https://github.com/zsh-users/zsh-autosuggestions init.vim set number set noshowmode set expandtab set tabstop=4 set shiftwidth=4 set encoding=utf-8 set fileencodings=utf-8,gbk,gb2312 inoremap jj &amp;lt;Esc&amp;gt; nnoremap &amp;lt;Esc&amp;gt; ZZ nnoremap &amp;lt;C-t&amp;gt; &amp;lt;C-w&amp;gt;s&amp;lt;C-w&amp;gt;j:terminal&amp;lt;CR&amp;gt;i tnoremap &amp;lt;Esc&amp;gt; &amp;lt;C-\&amp;gt;&amp;lt;C-n&amp;gt; call plug#begin() Plug &amp;#39;neoclide/coc.</description>
+      <description>Trick 谁在ping我？ tcpdump -i eth0 &amp;#39;icmp and icmp[icmptype]=icmp-echo&amp;#39; # root权限执行，eth0 换成你需要抓包的网卡iframe 命令行看天气 curl wttr.in/Beijing curl wttr.in/:help 修复VMware共享文件夹 sudo vmhgfs-fuse .host:/ /mnt/hgfs -o allow_other -o uid=1000 -o gid=1000 -o umask=022 命令行多行重定向写入 cat &amp;gt; blank.txt &amp;lt;&amp;lt; EOF 1 22 333 EOF Key-Value ANSI 颜色 重置 \x1b[0m 红色 \x1b[31m 绿色 \x1b[32m 橙色 \x1b[33m 蓝色 \x1b[34m 紫色 \x1b[35m 青色 \x1b[36m 白色 \x1b[37m 灰色 \x1b[1;30m 深红色 \x1b[1;31m 浅绿色 \x1b[1;32m 黄色 \x1b[1;33m 天蓝色 \x1b[1;34m 深紫色 \x1b[1;35m 深青色 \x1b[1;36m 闪烁红色 \x1b[5;31m 在bash中使用时需稍加变换，例：echo $&amp;rsquo;\x1b[31mTEST\x1b[0m&#39;</description>
     </item>
     
     <item>
