@@ -3,7 +3,7 @@ title: "使用QEMU+GDB调试Linux内核"
 description: "学好Kernel的基操？"
 date: 2022-08-08T14:17:44+08:00
 tags: [ "QEMU", "Linux" ]
-Imagelink: "https://s2.loli.net/2022/08/09/PKcwjiVBTg6ApEv.png"
+imagelink: "https://s2.loli.net/2022/08/09/PKcwjiVBTg6ApEv.png"
 ---
 
 
