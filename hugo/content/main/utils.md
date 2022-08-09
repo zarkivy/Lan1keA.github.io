@@ -118,6 +118,9 @@ tags: [ "Main" ]
   - [https://versus.com/cn](https://versus.com/cn)
 - 你的Web Terminal
   - [https://github.com/tsl0922/ttyd](https://github.com/tsl0922/ttyd)
+- 微软的文字转语音系统
+    - [https://azure.microsoft.com/en-us/services/cognitive-services/text-to-speech](https://azure.microsoft.com/en-us/services/cognitive-services/text-to-speech)
+
 
 
 
@@ -309,6 +312,7 @@ tags: [ "Main" ]
 - [Adding new driver code to linux source code](https://stackoverflow.com/questions/11710022/adding-new-driver-code-to-linux-source-code)
 - [Windows下设定自然滚动](https://blog.csdn.net/CSDN_GXZ/article/details/121025199)
 - [How do I change the color for directories with ls in the console?](https://askubuntu.com/questions/466198/how-do-i-change-the-color-for-directories-with-ls-in-the-console)
+- [Difference between single and double quotes in Bash](https://stackoverflow.com/questions/6697753/difference-between-single-and-double-quotes-in-bash)
 
 
 

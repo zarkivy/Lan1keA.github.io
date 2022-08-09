@@ -495,6 +495,9 @@
 </ul>
 </li>
 </ul>
+<blockquote>
+<p><a href="https://0xax.gitbooks.io/linux-insides/content/SysCall/linux-syscall-4.html">https://0xax.gitbooks.io/linux-insides/content/SysCall/linux-syscall-4.html</a></p>
+</blockquote>
 <p>那同样的道理，在一台安装了qemu-user的机器上，直接<code>./</code>执行一个其它指令集的可执行文件时。由于<code>qemu-user</code>已经将这种文件的文件头信息在系统中注册了，即表明：“遇到这些其它指令集对应的文件头的文件时，请交由我<code>qemu-user</code>来解释执行。”</p>
 <p>那么，静态链接的异构程序，在安装了<code>qemu-user</code>的系统中，就可以直接<code>./</code>执行了。而动态链接的异构程序，由于需要载入其它异构的链接库文件，故需要先<code>chroot</code>到异构的根文件系统中。</p>
 <p><code>qemu-system-arm</code>是32位时代的arm实现（aarch32），从<code>Armv7</code>到<code>Armv8</code>的升级，才引入了64位支持（aarch64）。所以我们应该换用<code>qemu-system-aarch64</code>：</p>

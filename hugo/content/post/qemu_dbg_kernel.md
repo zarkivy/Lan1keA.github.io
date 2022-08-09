@@ -1,5 +1,5 @@
 ---
-title: "Cross debug kernel using qemu-system"
+title: "Cross debug old version kernel using qemu-system"
 description: "compile, emulate and debug"
 date: 2022-05-08T19:35:11+08:00
 tags: [ "QEMU", "Linux" ]

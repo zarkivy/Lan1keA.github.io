@@ -7,7 +7,28 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>© 2022, Zikey Vi</copyright>
-    <lastBuildDate>Tue, 19 Jul 2022 10:50:06 +0800</lastBuildDate><atom:link href="https://cerr.cc/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 08 Aug 2022 14:34:10 +0800</lastBuildDate><atom:link href="https://cerr.cc/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ZKV的C、C&#43;&#43;构建系统学习之路</title>
+      <link>https://cerr.cc/post/ccer_zkv/</link>
+      <pubDate>Mon, 08 Aug 2022 14:34:10 +0800</pubDate>
+      
+      <guid>https://cerr.cc/post/ccer_zkv/</guid>
+      <description>🐦 </description>
+    </item>
+    
+    <item>
+      <title>使用QEMU&#43;GDB调试Linux内核</title>
+      <link>https://cerr.cc/post/qemu_gdb_vmlinux/</link>
+      <pubDate>Mon, 08 Aug 2022 14:17:44 +0800</pubDate>
+      
+      <guid>https://cerr.cc/post/qemu_gdb_vmlinux/</guid>
+      <description>使用buildroot一键搭建环境 buildroot自动构建过程若出现网络不畅，自备梯子，并设定shell变量all_proxy、http_proxy、https_proxy用于代理wget、curl等工具即可。参见：https://cerr.cc/post/fgfw/
+git clone https://git.buildroot.net/buildroot cd buildroot make qemu_x86_64_defconfig make linux-menuconfig 使用 / 搜索 DEBUG_INFO 符号（即配置文件中的CONFIG_DEBUG_INFO符号） 设定路径与依赖，将其打开。
+此后即可直接make构建。
+make -j`nproc` # 编译构建中…… # ☕️、☕️、☕️…… # 编译构建完成 output/images/start-qemu.sh 先来确认一切正常 cd output/images qemu-system-x86_64 -M pc -kernel bzImage \ -drive file=rootfs.ext2,if=virtio,format=raw \ -append &amp;#34;rootwait root=/dev/vda console=tty1 console=ttyS0&amp;#34; \ -net nic,model=virtio -net user \ -nographic -s -S -nographic 全部信息输出至host stdio 若否，而是使用-serial stdio，则只会将guest的串口数据输出至host stdio，其余则会输出至启动的vncserver -s shorthand for -gdb tcp::1234 -S freeze CPU at startup (use &amp;lsquo;c&amp;rsquo; to start execution) 此时于另一个tty、pts：</description>
+    </item>
+    
     <item>
       <title>手机变身小主机？！</title>
       <link>https://cerr.cc/post/mobile_linux/</link>
@@ -119,7 +140,7 @@ Latest kernel的HTML文档页：https://www.kernel.org/doc/html/latest
       <description>ARM (stylised in lowercase as arm, formerly an acronym for Advanced RISC Machines and originally Acorn RISC Machine) is a family of reduced instruction set computer (RISC) instruction set architectures for computer processors, configured for various environments.
 AArch32 armel : arm eabi little-endian, use soft float
 armhf : arm hard float, arm with FPU
-from AArch32 to AArch64 Transitioning rom ARMv7 to ARMv8, all the basics you must know:
+From AArch32 to AArch64 Transitioning rom ARMv7 to ARMv8, all the basics you must know:
 https://events.static.linuxfound.org/sites/events/files/slides/KoreaLinuxForum-2014.pdf Can legacy 32 bit app.</description>
     </item>
     
@@ -282,7 +303,7 @@ NR syscall name %rax arg0 (%rdi) arg1 (%rsi) arg2 (%rdx) 0 read 0x00 unsigned in
     </item>
     
     <item>
-      <title>Cross debug kernel using qemu-system</title>
+      <title>Cross debug old version kernel using qemu-system</title>
       <link>https://cerr.cc/post/qemu_dbg_kernel/</link>
       <pubDate>Sun, 08 May 2022 19:35:11 +0800</pubDate>
       

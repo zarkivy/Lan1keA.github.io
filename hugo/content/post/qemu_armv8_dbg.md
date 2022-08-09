@@ -366,6 +366,8 @@ OpenSSL>
     ./test: 1: deadbeef: not found
     ```
 
+> [https://0xax.gitbooks.io/linux-insides/content/SysCall/linux-syscall-4.html](https://0xax.gitbooks.io/linux-insides/content/SysCall/linux-syscall-4.html)
+
 那同样的道理，在一台安装了qemu-user的机器上，直接`./`执行一个其它指令集的可执行文件时。由于`qemu-user`已经将这种文件的文件头信息在系统中注册了，即表明：“遇到这些其它指令集对应的文件头的文件时，请交由我`qemu-user`来解释执行。”
 
 那么，静态链接的异构程序，在安装了`qemu-user`的系统中，就可以直接`./`执行了。而动态链接的异构程序，由于需要载入其它异构的链接库文件，故需要先`chroot`到异构的根文件系统中。
