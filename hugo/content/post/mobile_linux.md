@@ -8,7 +8,7 @@ imagelink: "https://postmarketos.org/static/img/nexus5-bg-dark.jpg"
 
 # ~~快递还在路上……~~
 
-话说我大学专业之所以选了计算机，除去高二于学霸本*联想G510*上玩过《看门狗》的原因外，就是因为有着折腾二手安卓机的爱好了。这一兴趣一直延续到了大学，以至于我童叟无欺的闲鱼账号被人怀疑为是机贩子账号~~（😤是可忍，孰不可忍）~~。直至大三开始搞到了外快，可以不再为一台多次易主的设备在经济上精打细算，便渐渐失去了往日的激情。果然太容易得到的东西，就会失宠。
+话说我大学专业之所以选了计算机，除去高二于学霸本*联想G510*上玩过《看门狗》的原因外，就是因为有着折腾二手安卓机的爱好了。这一兴趣一直延续到了大学，以至于我童叟无欺的闲鱼账号被人怀疑为是机贩子账号 ~~（😤是可忍，孰不可忍）~~ 。直至大三开始搞到了外快，可以不再为一台多次易主的设备在经济上精打细算，便渐渐失去了往日的激情。果然太容易得到的东西，就会失宠。
 
 还记得大二那次Essential Phone换LG V30的交易，在我和那位小米前员工约定的地铁站内，他说，从我身上仿佛看见了当年的他，为一台心心念念的破旧设备奔波几十里却满心欢喜。两名垃机佬相视一笑，心照不宣，你东我西，从此再无交集……（😭
 
@@ -101,3 +101,11 @@ postmarketOS集成了几乎所有为mobile生态做出努力的上层桌面环�
 ## 安卓设备分区
 
 [https://source.android.com/devices/bootloader/partitions](https://source.android.com/devices/bootloader/partitions)
+
+
+
+# Xiaomi Mi Note2
+
+![D898E6B3-2F60-408B-95B7-C45228283B3F_1_105_c.jpeg](https://s2.loli.net/2022/08/11/LDPaqzpkYbAgtOE.jpg)
+
+![F1475841-7033-42B8-BF09-2F4C980A9DCA_1_105_c.jpeg](https://s2.loli.net/2022/08/11/qTRoSm39YZvIABV.jpg)![1225CEBC-D6DD-4D11-9BA5-952BD1633CFA_1_105_c.jpeg](https://s2.loli.net/2022/08/11/aFuvVG8DqTpSUsg.jpg)

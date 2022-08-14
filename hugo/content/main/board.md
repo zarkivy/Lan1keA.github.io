@@ -83,3 +83,8 @@ Windows Registry Editor Version 5.00
 "DoublePinyinScheme"=dword:0000000a
 ```
 
+
+
+# Vim教程
+
+![img](http://michael.peopleofhonoronly.com/vim/vim_cheat_sheet_for_programmers_print.png)

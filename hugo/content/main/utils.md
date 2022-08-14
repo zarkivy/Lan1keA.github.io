@@ -114,12 +114,18 @@ tags: [ "Main" ]
 - 来挑选你的vim主题吧
     - [https://vimcolorschemes.com/](https://vimcolorschemes.com/)
 
+- 在线挑选你的编程字体
+    - [https://www.programmingfonts.org/](https://www.programmingfonts.org/)
+
 - 万物皆可对比
   - [https://versus.com/cn](https://versus.com/cn)
 - 你的Web Terminal
   - [https://github.com/tsl0922/ttyd](https://github.com/tsl0922/ttyd)
 - 微软的文字转语音系统
     - [https://azure.microsoft.com/en-us/services/cognitive-services/text-to-speech](https://azure.microsoft.com/en-us/services/cognitive-services/text-to-speech)
+
+- Vim教程，一图搞定
+    - [http://michael.peopleofhonoronly.com/vim/](http://michael.peopleofhonoronly.com/vim/)
 
 
 

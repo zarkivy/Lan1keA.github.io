@@ -14,7 +14,7 @@
       <pubDate>Tue, 19 Jul 2022 10:50:06 +0800</pubDate>
       
       <guid>https://cerr.cc/post/mobile_linux/</guid>
-      <description>快递还在路上…… 话说我大学专业之所以选了计算机，除去高二于学霸本联想G510上玩过《看门狗》的原因外，就是因为有着折腾二手安卓机的爱好了。这一兴趣一直延续到了大学，以至于我童叟无欺的闲鱼账号被人怀疑为是机贩子账号~~（😤是可忍，孰不可忍）~~。直至大三开始搞到了外快，可以不再为一台多次易主的设备在经济上精打细算，便渐渐失去了往日的激情。果然太容易得到的东西，就会失宠。
+      <description>快递还在路上…… 话说我大学专业之所以选了计算机，除去高二于学霸本联想G510上玩过《看门狗》的原因外，就是因为有着折腾二手安卓机的爱好了。这一兴趣一直延续到了大学，以至于我童叟无欺的闲鱼账号被人怀疑为是机贩子账号 （😤是可忍，孰不可忍） 。直至大三开始搞到了外快，可以不再为一台多次易主的设备在经济上精打细算，便渐渐失去了往日的激情。果然太容易得到的东西，就会失宠。
 还记得大二那次Essential Phone换LG V30的交易，在我和那位小米前员工约定的地铁站内，他说，从我身上仿佛看见了当年的他，为一台心心念念的破旧设备奔波几十里却满心欢喜。两名垃机佬相视一笑，心照不宣，你东我西，从此再无交集……（😭
 Linux On a Phone 啥说是手机上的Linux？安卓的内核本来就是Linux呀？！
 但那是Android/Linux，而我们本次的目标是GNU/Linux，将mainline kernel与GNU utils运行与手机之上。可以比喻成将手机刷成了一台运行了桌面级系统的小主机？
@@ -35,9 +35,7 @@ postmarketOS集成了几乎所有为mobile生态做出努力的上层桌面环�
 其亦有国内软件源镜像的支持：https://mirrors.tuna.tsinghua.edu.cn/postmarketOS/
 换源说明：https://mirrors.tuna.tsinghua.edu.cn/help/postmarketOS/
 将软件源由特定发行版切换到master分支后，即相当于将系统转化为滚动更新模式。这样做的好处是，昨天上报的bug可能今天就被修复了，下游设备立即执行apk update; apk upgrade即可立即获取修复的更新。缺点则是是master分支的不稳定。但考虑到mobile发行版的可用性与稳定性本身就堪忧，切换至滚动更新，或许是牺牲1份稳定性，换取5分可用性。在我看来是很划算的生意。
-其余暂未进一步了解的Mobile Distros Sailfish OS https://sailfishos.org/
-体量貌似也很大，但其官网首页就是标价，预感不妙，逃……
-LuneOS http://www.</description>
+其余暂未进一步了解的Mobile Distros Sailfish OS https://sailfishos.org/</description>
     </item>
     
     <item>

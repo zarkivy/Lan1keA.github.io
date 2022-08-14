@@ -39,11 +39,33 @@ git clone https://github.com/dev2ero/dotfiles.git
 sh -c "$(curl -fsSL https://gitee.com/mirrors/oh-my-zsh/raw/master/tools/install.sh)"
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 mkdir -p ~/.config/nvim/
-cp `pwd`/dotfiles/init.vim ~/.config/nvim/init.vim
+cp `pwd`/dotfiles/init.lua ~/.config/nvim/init.lua
 cp `pwd`/dotfiles/zshrc ~/.zshrc
 source ~/.zshrc
+```
+
+# Neovim 配置
+
+## 插件管理器
+
+```sh
+# vim-plug
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+# packer.vim
+git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+mkdir -p ~/.config/nvim/lua/
+cat >> ~/.config/nvim/lua/plugins.lua << EOF
+return require('packer').startup(function()
+  use 'wbthomason/packer.nvim'
+end)
+EOF
+```
+
+## Coc.nvim
+
+```sh
+CocInstall coc-marketplace | CocInstall coc-clangd | CocInstall coc-pyright | CocInstall coc-highlight | CocInstall coc-cmake
 ```
 
 

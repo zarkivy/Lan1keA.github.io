@@ -133,7 +133,9 @@ reference：
 
 ### 机械硬盘
 
+PMR 与 SMR：
 
+[https://www.itpwd.com/378.html](https://www.itpwd.com/378.html)
 
 ## 主板
 

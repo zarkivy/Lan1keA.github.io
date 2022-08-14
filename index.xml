@@ -35,7 +35,7 @@ make -j`nproc` # 编译构建中…… # ☕️、☕️、☕️…… # 编译
       <pubDate>Tue, 19 Jul 2022 10:50:06 +0800</pubDate>
       
       <guid>https://cerr.cc/post/mobile_linux/</guid>
-      <description>快递还在路上…… 话说我大学专业之所以选了计算机，除去高二于学霸本联想G510上玩过《看门狗》的原因外，就是因为有着折腾二手安卓机的爱好了。这一兴趣一直延续到了大学，以至于我童叟无欺的闲鱼账号被人怀疑为是机贩子账号~~（😤是可忍，孰不可忍）~~。直至大三开始搞到了外快，可以不再为一台多次易主的设备在经济上精打细算，便渐渐失去了往日的激情。果然太容易得到的东西，就会失宠。
+      <description>快递还在路上…… 话说我大学专业之所以选了计算机，除去高二于学霸本联想G510上玩过《看门狗》的原因外，就是因为有着折腾二手安卓机的爱好了。这一兴趣一直延续到了大学，以至于我童叟无欺的闲鱼账号被人怀疑为是机贩子账号 （😤是可忍，孰不可忍） 。直至大三开始搞到了外快，可以不再为一台多次易主的设备在经济上精打细算，便渐渐失去了往日的激情。果然太容易得到的东西，就会失宠。
 还记得大二那次Essential Phone换LG V30的交易，在我和那位小米前员工约定的地铁站内，他说，从我身上仿佛看见了当年的他，为一台心心念念的破旧设备奔波几十里却满心欢喜。两名垃机佬相视一笑，心照不宣，你东我西，从此再无交集……（😭
 Linux On a Phone 啥说是手机上的Linux？安卓的内核本来就是Linux呀？！
 但那是Android/Linux，而我们本次的目标是GNU/Linux，将mainline kernel与GNU utils运行与手机之上。可以比喻成将手机刷成了一台运行了桌面级系统的小主机？
@@ -56,9 +56,7 @@ postmarketOS集成了几乎所有为mobile生态做出努力的上层桌面环�
 其亦有国内软件源镜像的支持：https://mirrors.tuna.tsinghua.edu.cn/postmarketOS/
 换源说明：https://mirrors.tuna.tsinghua.edu.cn/help/postmarketOS/
 将软件源由特定发行版切换到master分支后，即相当于将系统转化为滚动更新模式。这样做的好处是，昨天上报的bug可能今天就被修复了，下游设备立即执行apk update; apk upgrade即可立即获取修复的更新。缺点则是是master分支的不稳定。但考虑到mobile发行版的可用性与稳定性本身就堪忧，切换至滚动更新，或许是牺牲1份稳定性，换取5分可用性。在我看来是很划算的生意。
-其余暂未进一步了解的Mobile Distros Sailfish OS https://sailfishos.org/
-体量貌似也很大，但其官网首页就是标价，预感不妙，逃……
-LuneOS http://www.</description>
+其余暂未进一步了解的Mobile Distros Sailfish OS https://sailfishos.org/</description>
     </item>
     
     <item>
@@ -423,7 +421,7 @@ https://vmrp.github.io/ 定制你的终端配色——实时在线查看</descri
       <pubDate>Sat, 07 May 2022 15:53:05 +0800</pubDate>
       
       <guid>https://cerr.cc/main/about/</guid>
-      <description>Yet anothor cyber nyandog With this Rolling release blog 那 些 年 我 2017 ~ 💻 玩过的机 联想G510 神舟战神KP7-GT 联想ThinkPad Tablet 联想ThinkPad E431 联想ThinkPad X200 联想小新Air14 联想Yoga 13s Macbook Air 2020 iPhone4 iPhone5s iPhone6 iPhone SE1 iPhone XR iPhone 12 mini iPhone 13 小米note1 小米note2（postmarketOS） 小米2s 小米3 小米4 小米9SE 小米9 红米1s 红米2a 红米2（postmarketOS） 红米note3 红米K30 Pro 红米K40 游戏增强版 LG G5 LG G7 LG V30 LG V30+ 夏普303SH 夏普305SH 夏普502SH 索尼Z1 索尼Z2mini 索尼Z4 索尼Xperia X 索尼XZ2 Essential Phone iQOO1 Vivo X5 max 阿尔卡特 hero2 iPad mini5 iPad Air5 小米平板1 小米平板4LTE Kindle fire 树莓派3B+ 树莓派4B Friendlyelec NanoPC T3 Plus NUC11PAHi5 HP PROBOOK 440 G8 📖 读过的书 C++ Primer 深入理解计算机系统 程序员的自我修养 深入理解计算机网络 围城 三体 北京折叠 神的孩子全跳舞 今日简史 激荡三十年 人口大逆转 醉步男 星之彩 计算机网络 刘慈欣科幻短片小说合集 颠覆者 许三观卖血记 狂人日记 马云传 美丽新世界 阿Q正传 钝感力 自控力 为人民服务 腾讯传 贝多芬传 鲁滨逊漂流记 乔布斯传 球状闪电 1984 人类简史 哈姆雷特 方方日记 永久记录 穷爸爸富爸爸 风中的纸屑 我的世界观 人体简史 杰克伦敦小说集 未来简史 操作系统真象还原 现代操作系统 黄金时代 C和C++安全编码 骆驼祥子 另：本博客为滚动更新，写了一半的文章草稿见怪不怪，一篇已完成的文章半年后大改也理直气壮 😎</description>
+      <description>Yet anothor cyber nyandog With this Rolling release blog 那 些 年 我 2017 ~ 💻 玩过的机 联想G510 神舟战神KP7-GT 联想ThinkPad Tablet 联想ThinkPad E431 联想ThinkPad X200 联想小新Air14 联想Yoga 13s Macbook Air 2020 iPhone4 iPhone5s iPhone6 iPhone SE1 iPhone XR iPhone 12 mini iPhone 13 小米note1 小米note2（postmarketOS） 小米2s 小米3 小米4 小米9SE 小米9 红米1s 红米2a 红米2（postmarketOS） 红米note3 红米K30 Pro 红米K40 游戏增强版 LG G5 LG G7 LG V30 LG V30+ 夏普303SH 夏普305SH 夏普502SH 索尼Z1 索尼Z2mini 索尼Z4 索尼Xperia X 索尼XZ2 Essential Phone iQOO1 Vivo X5 max 阿尔卡特 hero2 iPad mini5 iPad Air5 小米平板1 小米平板4LTE Kindle fire 树莓派3B+ 树莓派4B Friendlyelec NanoPC T3 Plus NUC11PAHi5 HP PROBOOK 440 G8 📖 读过的书 C++ Primer 深入理解计算机系统 程序员的自我修养 深入理解计算机网络 围城 三体 北京折叠 神的孩子全跳舞 今日简史 激荡三十年 人口大逆转 醉步男 星之彩 计算机网络 刘慈欣科幻短片小说合集 颠覆者 许三观卖血记 狂人日记 马云传 美丽新世界 阿Q正传 钝感力 自控力 为人民服务 腾讯传 贝多芬传 鲁滨逊漂流记 乔布斯传 球状闪电 1984 人类简史 哈姆雷特 方方日记 永久记录 穷爸爸富爸爸 风中的纸屑 我的世界观 人体简史 杰克伦敦小说集 未来简史 操作系统真象还原 现代操作系统 黄金时代 C和C++安全编码 骆驼祥子 另：本博客为滚动更新，写了一半的文章草稿见怪不怪，定稿文章半年大改也有理有据 😎</description>
     </item>
     
   </channel>

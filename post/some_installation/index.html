@@ -235,11 +235,24 @@
 </span></span><span style="display:flex;"><span>sh -c <span style="color:#d14">&#34;</span><span style="color:#000;font-weight:bold">$(</span>curl -fsSL https://gitee.com/mirrors/oh-my-zsh/raw/master/tools/install.sh<span style="color:#000;font-weight:bold">)</span><span style="color:#d14">&#34;</span>
 </span></span><span style="display:flex;"><span>git clone https://github.com/zsh-users/zsh-autosuggestions <span style="color:#d14">${</span><span style="color:#008080">ZSH_CUSTOM</span><span style="color:#000;font-weight:bold">:-</span>~/.oh-my-zsh/custom<span style="color:#d14">}</span>/plugins/zsh-autosuggestions
 </span></span><span style="display:flex;"><span>git clone https://github.com/zsh-users/zsh-syntax-highlighting.git <span style="color:#d14">${</span><span style="color:#008080">ZSH_CUSTOM</span><span style="color:#000;font-weight:bold">:-</span>~/.oh-my-zsh/custom<span style="color:#d14">}</span>/plugins/zsh-syntax-highlighting
-</span></span><span style="display:flex;"><span>sh -c <span style="color:#d14">&#39;curl -fLo &#34;${XDG_DATA_HOME:-$HOME/.local/share}&#34;/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim&#39;</span>
 </span></span><span style="display:flex;"><span>mkdir -p ~/.config/nvim/
-</span></span><span style="display:flex;"><span>cp <span style="color:#d14">`</span><span style="color:#0086b3">pwd</span><span style="color:#d14">`</span>/dotfiles/init.vim ~/.config/nvim/init.vim
+</span></span><span style="display:flex;"><span>cp <span style="color:#d14">`</span><span style="color:#0086b3">pwd</span><span style="color:#d14">`</span>/dotfiles/init.lua ~/.config/nvim/init.lua
 </span></span><span style="display:flex;"><span>cp <span style="color:#d14">`</span><span style="color:#0086b3">pwd</span><span style="color:#d14">`</span>/dotfiles/zshrc ~/.zshrc
 </span></span><span style="display:flex;"><span><span style="color:#0086b3">source</span> ~/.zshrc
+</span></span></code></pre></div><h1 id="neovim-配置">Neovim 配置</h1>
+<h2 id="插件管理器">插件管理器</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#998;font-style:italic"># vim-plug</span>
+</span></span><span style="display:flex;"><span>sh -c <span style="color:#d14">&#39;curl -fLo &#34;${XDG_DATA_HOME:-$HOME/.local/share}&#34;/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># packer.vim</span>
+</span></span><span style="display:flex;"><span>git clone --depth <span style="color:#099">1</span> https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+</span></span><span style="display:flex;"><span>mkdir -p ~/.config/nvim/lua/
+</span></span><span style="display:flex;"><span>cat &gt;&gt; ~/.config/nvim/lua/plugins.lua <span style="color:#d14">&lt;&lt; EOF
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">return require(&#39;packer&#39;).startup(function()
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">  use &#39;wbthomason/packer.nvim&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">end)
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">EOF</span>
+</span></span></code></pre></div><h2 id="cocnvim">Coc.nvim</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>CocInstall coc-marketplace | CocInstall coc-clangd | CocInstall coc-pyright | CocInstall coc-highlight | CocInstall coc-cmake
 </span></span></code></pre></div><h1 id="docker-安装">docker 安装</h1>
 <p>官方安装脚本：</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
