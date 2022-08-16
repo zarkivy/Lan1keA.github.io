@@ -24,6 +24,34 @@ Imagelink: "https://s2.loli.net/2022/06/13/9o2jpBPbfcLRMFT.jpg"
 
 
 
+# 获取
+
+官方网站：
+
+[https://www.kernel.org/](https://www.kernel.org/)
+
+直接下载到的是特定版本的压缩包，而非git仓库。网站也提供了git仓库，但clone速度感人。
+
+官方GitHub仓库：
+
+[https://github.com/torvalds/linux](https://github.com/torvalds/linux)
+
+无需解释。Linus用着自己写的天下第一版本管理器开发着天下第一开源软件。
+
+TUNA的Linux镜像：
+
+[https://mirrors.tuna.tsinghua.edu.cn/help/linux.git/](https://mirrors.tuna.tsinghua.edu.cn/help/linux.git/)
+
+教育网的带宽、THU的经费、大佬们的维护。国内镜像站之翘楚。
+
+Gitee镜像仓库：
+
+[https://gitee.com/mirrors/linux_old1](https://gitee.com/mirrors/linux_old1)
+
+落后主仓库一天，用来加速clone的选择之一。
+
+
+
 # 内核文档
 
 文档资源总览：[https://www.kernel.org/doc/](https://www.kernel.org/doc/)

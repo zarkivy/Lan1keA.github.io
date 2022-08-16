@@ -14,10 +14,17 @@
       <pubDate>Mon, 08 Aug 2022 14:17:44 +0800</pubDate>
       
       <guid>https://cerr.cc/post/qemu_gdb_vmlinux/</guid>
-      <description>使用buildroot一键搭建环境 buildroot自动构建过程若出现网络不畅，自备梯子，并设定shell变量all_proxy、http_proxy、https_proxy用于代理wget、curl等工具即可。参见：https://cerr.cc/post/fgfw/
+      <description>环境准备 kernel对于gdb调试所提供的文档如下：
+https://www.kernel.org/doc/html/latest/dev-tools/gdb-kernel-debugging.html
+QEMU 的手动构建 获取QEMU源码：
+git clone https://gitlab.com/qemu-project/qemu.git cd qemu git submodule init git submodule update --recursive 本次使用x86_64内核的情况下，configure配置如下：
+./configure --target-list=x86_64-softmmu --enable-debug 编译并安装：
+make -j`nproc` sudo make install 使用buildroot一键构建rootfs+kernel buildroot自动构建过程若出现网络不畅，自备梯子，并设定shell变量all_proxy、http_proxy、https_proxy用于代理wget、curl等工具即可。参见：https://cerr.cc/post/fgfw/
 git clone https://git.buildroot.net/buildroot cd buildroot make qemu_x86_64_defconfig make linux-menuconfig 使用 / 搜索 DEBUG_INFO 符号（即配置文件中的CONFIG_DEBUG_INFO符号） 设定路径与依赖，将其打开。
+以同样的方式再将 GDB_SCRIPT 打开、RANDOMIZE_BASE 关闭。
 此后即可直接make构建。
-make -j`nproc` # 编译构建中…… # ☕️、☕️、☕️…… # 编译构建完成 output/images/start-qemu.sh 先来确认一切正常 cd output/images qemu-system-x86_64 -M pc -kernel bzImage \ -drive file=rootfs.ext2,if=virtio,format=raw \ -append &amp;#34;rootwait root=/dev/vda console=tty1 console=ttyS0&amp;#34; \ -net nic,model=virtio -net user \ -nographic -s -S -nographic 全部信息输出至host stdio 若否，而是使用-serial stdio，则只会将guest的串口数据输出至host stdio，其余则会输出至启动的vncserver -s shorthand for -gdb tcp::1234 -S freeze CPU at startup (use &amp;lsquo;c&amp;rsquo; to start execution) 此时于另一个tty、pts：</description>
+make # 编译构建中…… # ☕️、☕️、☕️…… # 编译构建完成 output/images/start-qemu.sh 测试是否正常启动：（上一步若关闭了RANDOMIZE_BASE，则无需向kernel传递nokaslr参数）
+cd output/images qemu-system-x86_64 -M pc -kernel bzImage \ -drive file=rootfs.ext2,if=virtio,format=raw \ -append &amp;#34;rootwait root=/dev/vda console=tty1 console=ttyS0 nokaslr&amp;#34; \ -net nic,model=virtio -net user \ -nographic -s -S -nographic 全部信息输出至host stdio 若否，而是使用-serial stdio，则只会将guest的串口数据输出至host stdio，其余则会输出至启动的vncserver -s shorthand for -gdb tcp::1234 -S freeze CPU at startup (use &amp;lsquo;c&amp;rsquo; to start execution) 此时于另一个tty、pts：</description>
     </item>
     
     <item>
@@ -56,10 +63,22 @@ postmarketOS集成了几乎所有为mobile生态做出努力的上层桌面环�
       <pubDate>Mon, 13 Jun 2022 17:41:00 +0800</pubDate>
       
       <guid>https://cerr.cc/post/linuxer_zkv/</guid>
-      <description>学习资料 教程 Linux Inside 实验 Linux Kernel Lab 其他人汇总的资源 Martins3大佬的收集 内核文档 文档资源总览：https://www.kernel.org/doc/
+      <description>学习资料 教程 Linux Inside 实验 Linux Kernel Lab 其他人汇总的资源 Martins3大佬的收集 获取 官方网站：
+https://www.kernel.org/
+直接下载到的是特定版本的压缩包，而非git仓库。网站也提供了git仓库，但clone速度感人。
+官方GitHub仓库：
+https://github.com/torvalds/linux
+无需解释。Linus用着自己写的天下第一版本管理器开发着天下第一开源软件。
+TUNA的Linux镜像：
+https://mirrors.tuna.tsinghua.edu.cn/help/linux.git/
+教育网的带宽、THU的经费、大佬们的维护。国内镜像站之翘楚。
+Gitee镜像仓库：
+https://gitee.com/mirrors/linux_old1
+落后主仓库一天，用来加速clone的选择之一。
+内核文档 文档资源总览：https://www.kernel.org/doc/
 Latest kernel的HTML文档页：https://www.kernel.org/doc/html/latest
 但用浏览器看文档总归是不如在终端内直接man 9 printk来的爽。为啥是man 9？看看man man便知：
-1 Executable programs or shell commands 2 System calls (functions provided by the kernel) 3 Library calls (functions within program libraries) 4 Special files (usually found in /dev) 5 File formats and conventions, e.g. /etc/passwd 6 Games 7 Miscellaneous (including macro packages and conventions), e.g. man(7), groff(7) 8 System administration commands (usually only for root) 9 Kernel routines [Non standard] 但默认情况下会：</description>
+1 Executable programs or shell commands 2 System calls (functions provided by the kernel) 3 Library calls (functions within program libraries) 4 Special files (usually found in /dev) 5 File formats and conventions, e.g. /etc/passwd 6 Games 7 Miscellaneous (including macro packages and conventions), e.</description>
     </item>
     
     <item>

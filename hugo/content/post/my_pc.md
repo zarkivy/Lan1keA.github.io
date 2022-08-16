@@ -24,6 +24,7 @@ imagelink: "https://s2.loli.net/2022/06/16/EYHcq8joTrfdiBR.jpg"
 
 - [https://www.zhihu.com/special/1436041011885293568?tab=1436061145295228928](https://www.zhihu.com/special/1436041011885293568?tab=1436061145295228928)
 - 一些排行榜和天梯图：[https://rank.kkj.cn/dgpu3.shtml](https://rank.kkj.cn/dgpu3.shtml)
+- 万物皆可对比：[https://versus.com/cn](https://versus.com/cn)
 
 ## CPU
 
@@ -90,6 +91,12 @@ reference：[https://www.intel.com/content/www/us/en/processors/processor-number
 
 天梯图：[https://www.mydrivers.com/zhuanti/tianti/gpu/index.html](https://www.mydrivers.com/zhuanti/tianti/gpu/index.html)
 
+时时刻刻，当心矿卡！写于装机完毕后：
+
+出于对买到矿卡的担忧，我最终于同事手中购入了他的RX5500XT——一款口碑并不算佳的中低端显卡。想来大不了等下一代显卡发售后，或是真有更高的浮点运算需求后，再升级也不迟。
+
+然而经过实际游戏测试，我发现这款显卡为我的渣渣75Hz 1080P显示器输出视频信号，简直应付自如。神优化的地平线4满帧率满画质下，显卡占用只有70%出头；荒野大镖客2默认高画质显卡虽满载，但也是满帧流畅；至于显卡杀手Cyberpunk2077，高画质也能流畅。果然只要需求是1080P下玩3A，三位数的中低端显卡即可胜任。
+
 ## 硬盘
 
 ### 固态硬盘
@@ -133,9 +140,21 @@ reference：
 
 ### 机械硬盘
 
-PMR 与 SMR：
+存储技术分为 PMR(CMR) 与 SMR，参考如下：
 
-[https://www.itpwd.com/378.html](https://www.itpwd.com/378.html)
+- [https://kb.synology.cn/zh-cn/DSM/tutorial/PMR_SMR_hard_disk_drives](https://kb.synology.cn/zh-cn/DSM/tutorial/PMR_SMR_hard_disk_drives)
+- [https://zhuanlan.zhihu.com/p/353963603](https://zhuanlan.zhihu.com/p/353963603)
+
+尺寸分为3.5英寸与2.5英寸。数字虽相差不大，实际体积却相去甚远。
+
+### 个人方案
+
+我的方案是：
+
+- 单个插到主板M.2口的NVMe 1TB SSD做系统盘，单独分区为C盘。读速在2.8GB/s左右。
+- 一个SMR 6TB 3.5寸 SATA HDD做冷数据存储。读速在150MB/s左右。
+- 一个PMR 1TB 2.5寸 SATA HDD做热数据、FTP、BT数据存储。读速在150MB/s左右。
+- 一个MLC USB SCSI 128GB固态U盘做移动数据存储。读速在450MB/s左右。
 
 ## 主板
 
@@ -154,9 +173,9 @@ PMR 与 SMR：
 
 华硕主板产品线：
 
-- 頂尖旗艦 ROG
-- 遊戲主流 STRIX
-- 入門電競 TUF GAMING 與 PRIME 系列
+- 顶尖旗舰 ROG
+- 游戏主流 STRIX
+- 入门电竞 TUF GAMING 与 PRIME
 
 reference：
 
@@ -189,7 +208,17 @@ reference：
 - https://zhuanlan.zhihu.com/p/26255460
 - [https://en.wikipedia.org/wiki/DDR_SDRAM](https://en.wikipedia.org/wiki/DDR_SDRAM)
 
+## 显示器
 
+- 亮度：越高越好，300 cd/m² 中等，400 cd/m² 不错， 500 cd/m² 优秀
+- 对比度：越高越好，700~900:1 及格，900~ 1100 中等，1100~1300不错，1500 以上很好。
+- 色域：sRGB ＜ P3＜ AdobeRGB, 覆盖越多颜色越艳，覆盖越精准越好，但覆盖越多不一定越好。
+- 色深，6 bit 底线，有明显层次感， 中端表现不错，10bit 表现很好但需要整套设备支持。
+- 色准：ΔE＜1.5 就能适用于严谨的工作，ΔE＜3 一般人看不出区别，ΔE 在 5 以上色偏严重。
+- 刷新率：越高越好，打游戏 120Hz 就能有很大提升，120Hz 之后区别并不大（除非你是职业选手）
+- 响应时间：越快越好，3ms 以内顶级，5ms 以内优秀，10ms 以内中等，10ms 以上完全不适合游戏
+
+reference：[https://www.zhihu.com/question/35668312](https://www.zhihu.com/question/35668312)
 
 ## 机箱
 
@@ -208,67 +237,60 @@ reference：
 
 ## 电源
 
+主要参数为最大供电功率，计算得到机箱中所有部件满载功率需小于电源最大功率。主要耗电大户为显卡与CPU，计算得大致总功率值即可。
 
+## 散热
 
-## 显示器
-
-- 亮度：越高越好，300 cd/m² 中等，400 cd/m² 不错， 500 cd/m² 优秀
-- 对比度：越高越好，700~900:1 及格，900~ 1100 中等，1100~1300不错，1500 以上很好。
-- 色域：sRGB ＜ P3＜ AdobeRGB, 覆盖越多颜色越艳，覆盖越精准越好，但覆盖越多不一定越好。
-- 色深，6 bit 底线，有明显层次感， 中端表现不错，10bit 表现很好但需要整套设备支持。
-- 色准：ΔE＜1.5 就能适用于严谨的工作，ΔE＜3 一般人看不出区别，ΔE 在 5 以上色偏严重。
-- 刷新率：越高越好，打游戏 120Hz 就能有很大提升，120Hz 之后区别并不大（除非你是职业选手）
-- 响应时间：越快越好，3ms 以内顶级，5ms 以内优秀，10ms 以内中等，10ms 以上完全不适合游戏
-
-reference：[https://www.zhihu.com/question/35668312](https://www.zhihu.com/question/35668312)
-
-
-
-
+水冷 VS 风冷，老生常谈。但我的这套配置实在凉意十足，廉价风冷完全足矣。在如下风冷配置下构建一个并不算很畅通的直角风道，日常负载下静音模式CPU稳定50°C左右，风扇散热模式下能来到30°C。但散热不仅仅是散热器的责任，通风良好的机箱外加恰当的风道设计同样不容忽视。所以挑选机箱和风扇时，也要注意最后不能组成了一台闷罐。
 
 # 终局
 
 - 总价
-    - ¥ 4499
+    - ¥ 5663
 - CPU
     - AMD 锐龙 R5-5600X 盒装
-    - ¥ 940（全新）
-    - [https://www.amd.com/en/products/cpu/amd-ryzen-5-5600x](https://www.amd.com/en/products/cpu/amd-ryzen-5-5600x)
+        - ¥ 940（全新）
+        - [https://www.amd.com/en/products/cpu/amd-ryzen-5-5600x](https://www.amd.com/en/products/cpu/amd-ryzen-5-5600x)
 - 主板
     - 华硕 TUF GAMING B550M-PLUS WIFI
-    - ¥ 600（全新）
-    - [https://www.asus.com.cn/Motherboards-Components/Motherboards/TUF-Gaming/TUF-GAMING-B550M-PLUS-WI-FI/](https://www.asus.com.cn/Motherboards-Components/Motherboards/TUF-Gaming/TUF-GAMING-B550M-PLUS-WI-FI/)
+        - ¥ 600（全新）
+        - [https://www.asus.com.cn/Motherboards-Components/Motherboards/TUF-Gaming/TUF-GAMING-B550M-PLUS-WI-FI/](https://www.asus.com.cn/Motherboards-Components/Motherboards/TUF-Gaming/TUF-GAMING-B550M-PLUS-WI-FI/)
 - 机箱
     - 乔思伯 D30 M-ATX 银色
-    - ¥ 399（全新）
-    - [https://www.jonsbo.com/products/D30.html](https://www.jonsbo.com/products/D30.html)
+        - ¥ 399（全新）
+        - [https://www.jonsbo.com/products/D30.html](https://www.jonsbo.com/products/D30.html)
 - 显卡
     - 迪兰 RX5500XT 8G X战将
-    - ¥ 925（来自同事的二手）
-    - [http://www.dataland.com.cn/prod_view.aspx?nid=3&typeid=129&id=928](http://www.dataland.com.cn/prod_view.aspx?nid=3&typeid=129&id=928)
+        - ¥ 925（来自同事的二手）
+        - [http://www.dataland.com.cn/prod_view.aspx?nid=3&typeid=129&id=928](http://www.dataland.com.cn/prod_view.aspx?nid=3&typeid=129&id=928)
 - SSD
     - 英睿达 镁光 P5 1TB
-    - ¥ 500（NUC替换下来的）
-    - [https://www.crucial.com/products/ssd/crucial-p5-ssd](https://www.crucial.com/products/ssd/crucial-p5-ssd)
+        - ¥ 500（NUC替换下来的）
+        - [https://www.crucial.com/products/ssd/crucial-p5-ssd](https://www.crucial.com/products/ssd/crucial-p5-ssd)
 - HDD
-    - 日立 5400转 2.5英寸 7mm 32MB PMR 1TB
-    - ¥ 275（全新）
-    - [https://m.tb.cn/h.fwlHZFV?tk=4Fdi2MtXCRw](https://m.tb.cn/h.fwlHZFV?tk=4Fdi2MtXCRw)
+    - 希捷酷鱼ST6000DM003 3.5英寸 256MB缓存 SMR 6TB
+        - ¥ 765（全新）
+        - [https://www.seagate.com/www-content/datasheets/pdfs/3-5-barracudaDS1900-11-1806US-en_US.pdf](https://www.seagate.com/www-content/datasheets/pdfs/3-5-barracudaDS1900-11-1806US-en_US.pdf)
+    - 日立 5400转 2.5英寸 7mm 32MB缓存 PMR 1TB
+        - ¥ 275（全新）
+        - [https://m.tb.cn/h.fwlHZFV?tk=4Fdi2MtXCRw](https://m.tb.cn/h.fwlHZFV?tk=4Fdi2MtXCRw)
 - 电源
     - 振华 冰山金蝶 550W
-    - ¥ 262（闲鱼二手在保）
+        - ¥ 262（闲鱼二手在保）
 - 散热
     - 利民 AS120PLUS
-    - ¥ 139（全新）
-    - [https://item.jd.com/100006880794.html](https://item.jd.com/100006880794.html)
+        - ¥ 139（全新）
+        - [https://item.jd.com/100006880794.html](https://item.jd.com/100006880794.html)
     - ID-COLLING XF-12025-SD-K ×3
-    - ¥ 60（全新）
-    - [https://item.jd.com/100005667115.html](https://item.jd.com/100005667115.html)
+        - ¥ 60（全新）
+        - [https://item.jd.com/100005667115.html](https://item.jd.com/100005667115.html)
 - 内存
-    - 金士顿 FURY Beast 8GB×2 DDR4 3200MHz
-    - ¥ 399（全新）
-    - [https://www.kingston.com/cn/memory/gaming/kingston-fury-beast-ddr4-rgb-memory](https://www.kingston.com/cn/memory/gaming/kingston-fury-beast-ddr4-rgb-memory)
+    - 金士顿 FURY Beast 8GB×4 DDR4 3200MHz
+        - ¥ 798（全新）
+        - [https://www.kingston.com/cn/memory/gaming/kingston-fury-beast-ddr4-rgb-memory](https://www.kingston.com/cn/memory/gaming/kingston-fury-beast-ddr4-rgb-memory)
 
+![5AD0C9F2-D39F-4630-B27F-3CF23F3CB719_1_105_c.jpeg](https://s2.loli.net/2022/08/16/4losrD8fQhBkem9.jpg)
 
+第一次走线，杂乱如麻🤮。
 
 reference：[https://zhuanlan.zhihu.com/p/282821640](https://zhuanlan.zhihu.com/p/282821640)

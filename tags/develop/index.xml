@@ -14,7 +14,9 @@
       <pubDate>Mon, 08 Aug 2022 14:34:10 +0800</pubDate>
       
       <guid>https://cerr.cc/post/ccer_zkv/</guid>
-      <description>🐦 </description>
+      <description>编译工具链 此前疑惑的一个问题是，一套编译工具链究竟包含了些什么东西？当我们使用包管理器一键安装编译工具链时，所安装的程序、数据、文档被分散在了根文件系统的各个位置，难以让我们直接一窥究竟。好在老生常谈的buildroot又为我们解决了这个问题，（当然，从网上下载一份编译工具链也能达到相同的效果）。取一份buildroot构建完成的编译工具链瞅瞅，路径位于buildroot/output/host：
+▶ ls host bin etc include lib lib64 libexec man sbin share usr var x86_64-buildroot-linux-uclibc 其中的直接编译工具部分：
+▶ ls bin | grep &amp;#34;x86_64-linux&amp;#34; | grep -v &amp;#34;br_real&amp;#34; x86_64-linux-addr2line	# convert addresses into line number/file name pairs x86_64-linux-ar	# create, modify, and extract from archives x86_64-linux-as	# the portable GNU assembler x86_64-linux-c++filt	# demangle C++ and Java symbols x86_64-linux-cc x86_64-linux-cpp x86_64-linux-elfedit	# update the ELF header of ELF files x86_64-linux-gcc x86_64-linux-gcc-11.</description>
     </item>
     
     <item>

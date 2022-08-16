@@ -47,7 +47,7 @@ postmarketOS集成了几乎所有为mobile生态做出努力的上层桌面环�
       <description>前传 不同寻常的是，我是在将各种设备都玩过一轮后，最后才将目光放到了台式机上。想来原因应当在于我是一个无可救药的MINI教信徒——iPhone用mini；iPad用mini（曾经，奈何M1太香了）；Macbook用miniAir；台式机用NUC+电脑棒+单片机……
 好吧，其实我也不能说没有台式机，毕竟NUC也算得上。但在把各类小型设备都折腾过一遍后，我陷入了茫然四顾无所寄托的悲惨境地。突然想起自己这几年来竟未尝进入DIY PC的海洋试试水。又瞥了瞥手上这台NUC11PAHi5，估摸着这孩子也是天资平平、前途黯淡，竭尽全力地运行OW1却只是凑活能玩，没有能带起OW2的天赋。恰逢本世代全球大萧条之始，加密货币市场一泻千里，难窥其底。显卡价格也是应声而落，众望所归。天时地利人和——这钱，我不得不花。毕竟天意不可违。
 但对于村儿里长大的我来说，掏出去的钱倘若没能换来足量的快乐，乃至买来的是糟心，实在是大逆不道有违祖训的事情。其负罪感甚至要甚于倒掉没吃完的肉（或许正因如此我才有幸成为闲鱼大V，焉知非福啊）。所以，事前进行全方位的考察与调研是十分必要的事情。
-设备情报 通用资源 https://www.zhihu.com/special/1436041011885293568?tab=1436061145295228928 一些排行榜和天梯图：https://rank.kkj.cn/dgpu3.shtml CPU 通用资源 可以于这些网站查询到绝大多数CPU的benchmark：
+设备情报 通用资源 https://www.zhihu.com/special/1436041011885293568?tab=1436061145295228928 一些排行榜和天梯图：https://rank.kkj.cn/dgpu3.shtml 万物皆可对比：https://versus.com/cn CPU 通用资源 可以于这些网站查询到绝大多数CPU的benchmark：
 https://www.cpubenchmark.net/ https://browser.geekbench.com/processor-benchmarks 天梯图：https://www.mydrivers.com/zhuanti/tianti/cpu/index.html
 Intel 命名规则 酷睿后缀名 后缀 含义 G1-G7 显卡级别（仅适用于采用全新集成显卡技术的处理器） E 嵌入式 F 需要独立显卡 G 封装包中包含独立显卡 H 针对移动设备进行优化的高性能 HK 针对移动设备进行优化的高性能，未锁频 HQ 针对移动设备进行优化的高性能，四核 K 未锁频 S 特别版 T 经过功耗优化的生活方式 U 高能效移动设备 Y 极低功耗的移动设备 X/XE 未锁频，高端 B 球栅阵列 (BGA) reference：https://www.intel.com/content/www/us/en/processors/processor-numbers.html
 AMD 命名规则 锐龙后缀名 X后缀

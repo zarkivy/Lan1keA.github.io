@@ -9,7 +9,7 @@ tags: [ "Main" ]
 
 - [https://foada.github.io/](https://foada.github.io/)
 - [https://fromhex.cn/](https://fromhex.cn/)
-- [https://blog.xiabee.cn/](https://blog.xiabee.cn/)
+- [https://xiabee.cn/](https://xiabee.cn/)
 - [https://migraine-sudo.github.io/](https://migraine-sudo.github.io/)
 - [https://m4x.fun/](https://m4x.fun/)
 - [https://ifpop.github.io/](https://ifpop.github.io/)

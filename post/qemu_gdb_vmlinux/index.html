@@ -218,7 +218,21 @@
     <div id="content">
 <article class="post">
   
-    <div class="post-content"><h1 id="使用buildroot一键搭建环境">使用buildroot一键搭建环境</h1>
+    <div class="post-content"><h1 id="环境准备">环境准备</h1>
+<p>kernel对于gdb调试所提供的文档如下：</p>
+<p><a href="https://www.kernel.org/doc/html/latest/dev-tools/gdb-kernel-debugging.html">https://www.kernel.org/doc/html/latest/dev-tools/gdb-kernel-debugging.html</a></p>
+<h2 id="qemu-的手动构建">QEMU 的手动构建</h2>
+<p>获取QEMU源码：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>git clone https://gitlab.com/qemu-project/qemu.git
+</span></span><span style="display:flex;"><span><span style="color:#0086b3">cd</span> qemu
+</span></span><span style="display:flex;"><span>git submodule init
+</span></span><span style="display:flex;"><span>git submodule update --recursive
+</span></span></code></pre></div><p>本次使用x86_64内核的情况下，configure配置如下：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>./configure --target-list<span style="color:#000;font-weight:bold">=</span>x86_64-softmmu --enable-debug
+</span></span></code></pre></div><p>编译并安装：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>make -j<span style="color:#d14">`</span>nproc<span style="color:#d14">`</span>
+</span></span><span style="display:flex;"><span>sudo make install
+</span></span></code></pre></div><h2 id="使用buildroot一键构建rootfskernel">使用buildroot一键构建rootfs+kernel</h2>
 <blockquote>
 <p>buildroot自动构建过程若出现网络不畅，自备梯子，并设定shell变量all_proxy、http_proxy、https_proxy用于代理wget、curl等工具即可。参见：<a href="/post/fgfw/">https://cerr.cc/post/fgfw/</a></p>
 </blockquote>
@@ -228,17 +242,18 @@
 </span></span><span style="display:flex;"><span>make linux-menuconfig
 </span></span></code></pre></div><p>使用 / 搜索 DEBUG_INFO 符号（即配置文件中的CONFIG_DEBUG_INFO符号） 设定路径与依赖，将其打开。</p>
 <p><img src="https://s2.loli.net/2022/08/09/PKcwjiVBTg6ApEv.png" alt="image.png"></p>
+<p>以同样的方式再将 GDB_SCRIPT 打开、RANDOMIZE_BASE 关闭。</p>
 <p>此后即可直接make构建。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>make -j<span style="color:#d14">`</span>nproc<span style="color:#d14">`</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>make
 </span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># 编译构建中……</span>
 </span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># ☕️、☕️、☕️……</span>
 </span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># 编译构建完成</span>
 </span></span><span style="display:flex;"><span>output/images/start-qemu.sh
-</span></span></code></pre></div><h1 id="先来确认一切正常">先来确认一切正常</h1>
+</span></span></code></pre></div><p>测试是否正常启动：（上一步若关闭了RANDOMIZE_BASE，则无需向kernel传递nokaslr参数）</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#0086b3">cd</span> output/images
 </span></span><span style="display:flex;"><span>qemu-system-x86_64 -M pc -kernel bzImage <span style="color:#d14">\
 </span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>	-drive <span style="color:#008080">file</span><span style="color:#000;font-weight:bold">=</span>rootfs.ext2,if<span style="color:#000;font-weight:bold">=</span>virtio,format<span style="color:#000;font-weight:bold">=</span>raw <span style="color:#d14">\
-</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>	-append <span style="color:#d14">&#34;rootwait root=/dev/vda console=tty1 console=ttyS0&#34;</span> <span style="color:#d14">\
+</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>	-append <span style="color:#d14">&#34;rootwait root=/dev/vda console=tty1 console=ttyS0 nokaslr&#34;</span> <span style="color:#d14">\
 </span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>	-net nic,model<span style="color:#000;font-weight:bold">=</span>virtio -net user <span style="color:#d14">\
 </span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>	-nographic -s -S
 </span></span></code></pre></div><ul>
@@ -251,9 +266,52 @@
 <li>-S              freeze CPU at startup (use &lsquo;c&rsquo; to start execution)</li>
 </ul>
 <p>此时于另一个tty、pts：</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>gdb -ex <span style="color:#d14">&#34;file ../build/linux-5.15.18/vmlinux&#34;</span> <span style="color:#d14">\
-</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>	-ex <span style="color:#d14">&#34;target remote :1234&#34;</span>
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>sudo gdb -ex <span style="color:#d14">&#34;file ../build/linux-5.15.18/vmlinux&#34;</span> <span style="color:#d14">\
+</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>		 -ex <span style="color:#d14">&#34;target remote :1234&#34;</span>
+</span></span><span style="display:flex;"><span>pwndbg&gt; b start_kernel
+</span></span><span style="display:flex;"><span>pwndbg&gt; c
+</span></span></code></pre></div><p>确认成功断下执行流即可。</p>
+<h2 id="手动构建kernelinitramfs">手动构建kernel+initramfs</h2>
+<p>若不想借助自动化工具buildroot传达旨意，而是要亲自指挥亲自部署，记录如下：</p>
+<p>载入x86_64默认config：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>make x86_64_defconfig
+</span></span></code></pre></div><p>使用Linux提供的脚本一键启用DEBUG_INFO、GDB_SCRIPTS</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>./scripts/config -e DEBUG_INFO -e GDB_SCRIPTS
+</span></span></code></pre></div><blockquote>
+<p>此脚本未生效，原因未知……</p>
+</blockquote>
+<p>开始编译：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>make -j<span style="color:#d14">`</span>nproc<span style="color:#d14">`</span>
+</span></span></code></pre></div><p>得到：Kernel: arch/x86/boot/bzImage is ready</p>
+<p>先来看看单kernel直接传递给qemu启动会怎样：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>qemu-system-x86_64 -kernel arch/x86_64/boot/bzImage -nographic -append <span style="color:#d14">&#34;console=ttyS0&#34;</span>
+</span></span></code></pre></div><p>得到：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>---<span style="color:#000;font-weight:bold">[</span> end Kernel panic - not syncing: VFS: Unable to mount root fs on unknown-block<span style="color:#000;font-weight:bold">(</span>0,0<span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">]</span>---
+</span></span></code></pre></div><p>没有rootfs的情况下kernel初始化完成后会直接panic。</p>
+<p>那么接下来制作initramfs即可：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>mkinitramfs -o ramdisk.img
+</span></span></code></pre></div><p>提供足够内存后启动：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>qemu-system-x86_64 -m <span style="color:#099">512</span> -kernel arch/x86_64/boot/bzImage -nographic -append <span style="color:#d14">&#34;console=ttyS0&#34;</span> -initrd ramdisk.img 
+</span></span></code></pre></div><p>得到shell即成功。</p>
+<blockquote>
+<p>巧合的是，就在我执行完如上命令进入shell后，惊觉Linux居然已经6.0.0了😱。经查正是今天的新闻。</p>
+</blockquote>
+<h2 id="试图调试">试图调试</h2>
+<p>沿用上述手动挡的构建方案，qemu启动时关闭kaslr：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>qemu-system-x86_64 -m <span style="color:#099">512</span> -cpu host <span style="color:#d14">\
+</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>				   -kernel arch/x86_64/boot/bzImage <span style="color:#d14">\
+</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>				   -append <span style="color:#d14">&#34;console=ttyS0 nokaslr&#34;</span> <span style="color:#d14">\
+</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>				   -initrd ramdisk.img <span style="color:#d14">\
+</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>				   --enable-kvm -nographic <span style="color:#d14">\
+</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>				   -s -S
+</span></span></code></pre></div><p>此时于另一个tty、pts：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#0086b3">echo</span> <span style="color:#d14">&#34;add-auto-load-safe-path /home/zkv/Laboratory/linux/scripts/gdb/vmlinux-gdb.py&#34;</span> &gt;&gt; ~/.gdbinit
+</span></span><span style="display:flex;"><span>gdb vmlinux -ex <span style="color:#d14">&#34;target remote :1234&#34;</span>
+</span></span></code></pre></div><h1 id="内核启动">内核启动</h1>
+<h1 id="内存管理">内存管理</h1>
+<h1 id="文件系统">文件系统</h1>
+<h1 id="网络栈">网络栈</h1>
+</div>
   
 </article>
 <button class="floating-button">

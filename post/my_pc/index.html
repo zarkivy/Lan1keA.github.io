@@ -219,6 +219,7 @@
 <ul>
 <li><a href="https://www.zhihu.com/special/1436041011885293568?tab=1436061145295228928">https://www.zhihu.com/special/1436041011885293568?tab=1436061145295228928</a></li>
 <li>一些排行榜和天梯图：<a href="https://rank.kkj.cn/dgpu3.shtml">https://rank.kkj.cn/dgpu3.shtml</a></li>
+<li>万物皆可对比：<a href="https://versus.com/cn">https://versus.com/cn</a></li>
 </ul>
 <h2 id="cpu">CPU</h2>
 <h3 id="通用资源-1">通用资源</h3>
@@ -340,6 +341,9 @@
 </ul>
 <h2 id="显卡">显卡</h2>
 <p>天梯图：<a href="https://www.mydrivers.com/zhuanti/tianti/gpu/index.html">https://www.mydrivers.com/zhuanti/tianti/gpu/index.html</a></p>
+<p>时时刻刻，当心矿卡！写于装机完毕后：</p>
+<p>出于对买到矿卡的担忧，我最终于同事手中购入了他的RX5500XT——一款口碑并不算佳的中低端显卡。想来大不了等下一代显卡发售后，或是真有更高的浮点运算需求后，再升级也不迟。</p>
+<p>然而经过实际游戏测试，我发现这款显卡为我的渣渣75Hz 1080P显示器输出视频信号，简直应付自如。神优化的地平线4满帧率满画质下，显卡占用只有70%出头；荒野大镖客2默认高画质显卡虽满载，但也是满帧流畅；至于显卡杀手Cyberpunk2077，高画质也能流畅。果然只要需求是1080P下玩3A，三位数的中低端显卡即可胜任。</p>
 <h2 id="硬盘">硬盘</h2>
 <h3 id="固态硬盘">固态硬盘</h3>
 <p><strong>固态硬盘</strong>使用<strong>NAND闪存颗粒</strong>作为存储的主体，采用主控+多颗闪存芯片的结构。</p>
@@ -399,8 +403,20 @@
 <li>M.2 固态硬盘的两种类型：SATA 和 NVMe：<a href="https://www.kingston.com/cn/blog/pc-performance/two-types-m2-vs-ssd">https://www.kingston.com/cn/blog/pc-performance/two-types-m2-vs-ssd</a></li>
 </ul>
 <h3 id="机械硬盘">机械硬盘</h3>
-<p>PMR 与 SMR：</p>
-<p><a href="https://www.itpwd.com/378.html">https://www.itpwd.com/378.html</a></p>
+<p>存储技术分为 PMR(CMR) 与 SMR，参考如下：</p>
+<ul>
+<li><a href="https://kb.synology.cn/zh-cn/DSM/tutorial/PMR_SMR_hard_disk_drives">https://kb.synology.cn/zh-cn/DSM/tutorial/PMR_SMR_hard_disk_drives</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/353963603">https://zhuanlan.zhihu.com/p/353963603</a></li>
+</ul>
+<p>尺寸分为3.5英寸与2.5英寸。数字虽相差不大，实际体积却相去甚远。</p>
+<h3 id="个人方案">个人方案</h3>
+<p>我的方案是：</p>
+<ul>
+<li>单个插到主板M.2口的NVMe 1TB SSD做系统盘，单独分区为C盘。读速在2.8GB/s左右。</li>
+<li>一个SMR 6TB 3.5寸 SATA HDD做冷数据存储。读速在150MB/s左右。</li>
+<li>一个PMR 1TB 2.5寸 SATA HDD做热数据、FTP、BT数据存储。读速在150MB/s左右。</li>
+<li>一个MLC USB SCSI 128GB固态U盘做移动数据存储。读速在450MB/s左右。</li>
+</ul>
 <h2 id="主板">主板</h2>
 <p>先来了解下PCIe。知乎老狼的文章都写的很好哇，推荐他的UEFI与BIOS探秘。</p>
 <ul>
@@ -417,9 +433,9 @@
 </ul>
 <p>华硕主板产品线：</p>
 <ul>
-<li>頂尖旗艦 ROG</li>
-<li>遊戲主流 STRIX</li>
-<li>入門電競 TUF GAMING 與 PRIME 系列</li>
+<li>顶尖旗舰 ROG</li>
+<li>游戏主流 STRIX</li>
+<li>入门电竞 TUF GAMING 与 PRIME</li>
 </ul>
 <p>reference：</p>
 <ul>
@@ -444,6 +460,17 @@
 <li><a href="https://zhuanlan.zhihu.com/p/26255460">https://zhuanlan.zhihu.com/p/26255460</a></li>
 <li><a href="https://en.wikipedia.org/wiki/DDR_SDRAM">https://en.wikipedia.org/wiki/DDR_SDRAM</a></li>
 </ul>
+<h2 id="显示器">显示器</h2>
+<ul>
+<li>亮度：越高越好，300 cd/m² 中等，400 cd/m² 不错， 500 cd/m² 优秀</li>
+<li>对比度：越高越好，700~900:1 及格，900~ 1100 中等，1100~1300不错，1500 以上很好。</li>
+<li>色域：sRGB ＜ P3＜ AdobeRGB, 覆盖越多颜色越艳，覆盖越精准越好，但覆盖越多不一定越好。</li>
+<li>色深，6 bit 底线，有明显层次感， 中端表现不错，10bit 表现很好但需要整套设备支持。</li>
+<li>色准：ΔE＜1.5 就能适用于严谨的工作，ΔE＜3 一般人看不出区别，ΔE 在 5 以上色偏严重。</li>
+<li>刷新率：越高越好，打游戏 120Hz 就能有很大提升，120Hz 之后区别并不大（除非你是职业选手）</li>
+<li>响应时间：越快越好，3ms 以内顶级，5ms 以内优秀，10ms 以内中等，10ms 以上完全不适合游戏</li>
+</ul>
+<p>reference：<a href="https://www.zhihu.com/question/35668312">https://www.zhihu.com/question/35668312</a></p>
 <h2 id="机箱">机箱</h2>
 <ul>
 <li>MINI机箱
@@ -469,90 +496,120 @@
 <li><a href="https://zhuanlan.zhihu.com/p/373132410">https://zhuanlan.zhihu.com/p/373132410</a></li>
 </ul>
 <h2 id="电源">电源</h2>
-<h2 id="显示器">显示器</h2>
-<ul>
-<li>亮度：越高越好，300 cd/m² 中等，400 cd/m² 不错， 500 cd/m² 优秀</li>
-<li>对比度：越高越好，700~900:1 及格，900~ 1100 中等，1100~1300不错，1500 以上很好。</li>
-<li>色域：sRGB ＜ P3＜ AdobeRGB, 覆盖越多颜色越艳，覆盖越精准越好，但覆盖越多不一定越好。</li>
-<li>色深，6 bit 底线，有明显层次感， 中端表现不错，10bit 表现很好但需要整套设备支持。</li>
-<li>色准：ΔE＜1.5 就能适用于严谨的工作，ΔE＜3 一般人看不出区别，ΔE 在 5 以上色偏严重。</li>
-<li>刷新率：越高越好，打游戏 120Hz 就能有很大提升，120Hz 之后区别并不大（除非你是职业选手）</li>
-<li>响应时间：越快越好，3ms 以内顶级，5ms 以内优秀，10ms 以内中等，10ms 以上完全不适合游戏</li>
-</ul>
-<p>reference：<a href="https://www.zhihu.com/question/35668312">https://www.zhihu.com/question/35668312</a></p>
+<p>主要参数为最大供电功率，计算得到机箱中所有部件满载功率需小于电源最大功率。主要耗电大户为显卡与CPU，计算得大致总功率值即可。</p>
+<h2 id="散热">散热</h2>
+<p>水冷 VS 风冷，老生常谈。但我的这套配置实在凉意十足，廉价风冷完全足矣。在如下风冷配置下构建一个并不算很畅通的直角风道，日常负载下静音模式CPU稳定50°C左右，风扇散热模式下能来到30°C。但散热不仅仅是散热器的责任，通风良好的机箱外加恰当的风道设计同样不容忽视。所以挑选机箱和风扇时，也要注意最后不能组成了一台闷罐。</p>
 <h1 id="终局">终局</h1>
 <ul>
 <li>总价
 <ul>
-<li>¥ 4499</li>
+<li>¥ 5663</li>
 </ul>
 </li>
 <li>CPU
 <ul>
-<li>AMD 锐龙 R5-5600X 盒装</li>
+<li>AMD 锐龙 R5-5600X 盒装
+<ul>
 <li>¥ 940（全新）</li>
 <li><a href="https://www.amd.com/en/products/cpu/amd-ryzen-5-5600x">https://www.amd.com/en/products/cpu/amd-ryzen-5-5600x</a></li>
 </ul>
 </li>
+</ul>
+</li>
 <li>主板
 <ul>
-<li>华硕 TUF GAMING B550M-PLUS WIFI</li>
+<li>华硕 TUF GAMING B550M-PLUS WIFI
+<ul>
 <li>¥ 600（全新）</li>
 <li><a href="https://www.asus.com.cn/Motherboards-Components/Motherboards/TUF-Gaming/TUF-GAMING-B550M-PLUS-WI-FI/">https://www.asus.com.cn/Motherboards-Components/Motherboards/TUF-Gaming/TUF-GAMING-B550M-PLUS-WI-FI/</a></li>
 </ul>
 </li>
+</ul>
+</li>
 <li>机箱
 <ul>
-<li>乔思伯 D30 M-ATX 银色</li>
+<li>乔思伯 D30 M-ATX 银色
+<ul>
 <li>¥ 399（全新）</li>
 <li><a href="https://www.jonsbo.com/products/D30.html">https://www.jonsbo.com/products/D30.html</a></li>
 </ul>
 </li>
+</ul>
+</li>
 <li>显卡
 <ul>
-<li>迪兰 RX5500XT 8G X战将</li>
+<li>迪兰 RX5500XT 8G X战将
+<ul>
 <li>¥ 925（来自同事的二手）</li>
 <li><a href="http://www.dataland.com.cn/prod_view.aspx?nid=3&amp;typeid=129&amp;id=928">http://www.dataland.com.cn/prod_view.aspx?nid=3&amp;typeid=129&amp;id=928</a></li>
 </ul>
 </li>
+</ul>
+</li>
 <li>SSD
 <ul>
-<li>英睿达 镁光 P5 1TB</li>
+<li>英睿达 镁光 P5 1TB
+<ul>
 <li>¥ 500（NUC替换下来的）</li>
 <li><a href="https://www.crucial.com/products/ssd/crucial-p5-ssd">https://www.crucial.com/products/ssd/crucial-p5-ssd</a></li>
 </ul>
 </li>
+</ul>
+</li>
 <li>HDD
 <ul>
-<li>日立 5400转 2.5英寸 7mm 32MB PMR 1TB</li>
+<li>希捷酷鱼ST6000DM003 3.5英寸 256MB缓存 SMR 6TB
+<ul>
+<li>¥ 765（全新）</li>
+<li><a href="https://www.seagate.com/www-content/datasheets/pdfs/3-5-barracudaDS1900-11-1806US-en_US.pdf">https://www.seagate.com/www-content/datasheets/pdfs/3-5-barracudaDS1900-11-1806US-en_US.pdf</a></li>
+</ul>
+</li>
+<li>日立 5400转 2.5英寸 7mm 32MB缓存 PMR 1TB
+<ul>
 <li>¥ 275（全新）</li>
 <li><a href="https://m.tb.cn/h.fwlHZFV?tk=4Fdi2MtXCRw">https://m.tb.cn/h.fwlHZFV?tk=4Fdi2MtXCRw</a></li>
 </ul>
 </li>
+</ul>
+</li>
 <li>电源
 <ul>
-<li>振华 冰山金蝶 550W</li>
+<li>振华 冰山金蝶 550W
+<ul>
 <li>¥ 262（闲鱼二手在保）</li>
+</ul>
+</li>
 </ul>
 </li>
 <li>散热
 <ul>
-<li>利民 AS120PLUS</li>
+<li>利民 AS120PLUS
+<ul>
 <li>¥ 139（全新）</li>
 <li><a href="https://item.jd.com/100006880794.html">https://item.jd.com/100006880794.html</a></li>
-<li>ID-COLLING XF-12025-SD-K ×3</li>
+</ul>
+</li>
+<li>ID-COLLING XF-12025-SD-K ×3
+<ul>
 <li>¥ 60（全新）</li>
 <li><a href="https://item.jd.com/100005667115.html">https://item.jd.com/100005667115.html</a></li>
 </ul>
 </li>
+</ul>
+</li>
 <li>内存
 <ul>
-<li>金士顿 FURY Beast 8GB×2 DDR4 3200MHz</li>
-<li>¥ 399（全新）</li>
+<li>金士顿 FURY Beast 8GB×4 DDR4 3200MHz
+<ul>
+<li>¥ 798（全新）</li>
 <li><a href="https://www.kingston.com/cn/memory/gaming/kingston-fury-beast-ddr4-rgb-memory">https://www.kingston.com/cn/memory/gaming/kingston-fury-beast-ddr4-rgb-memory</a></li>
 </ul>
 </li>
 </ul>
+</li>
+</ul>
+<p><img src="https://s2.loli.net/2022/08/16/4losrD8fQhBkem9.jpg" alt="5AD0C9F2-D39F-4630-B27F-3CF23F3CB719_1_105_c.jpeg"></p>
+<p>第一次走线，杂乱如麻🤮。</p>
 <p>reference：<a href="https://zhuanlan.zhihu.com/p/282821640">https://zhuanlan.zhihu.com/p/282821640</a></p>
 </div>
   

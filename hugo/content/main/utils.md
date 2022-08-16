@@ -126,6 +126,9 @@ tags: [ "Main" ]
 
 - Vim教程，一图搞定
     - [http://michael.peopleofhonoronly.com/vim/](http://michael.peopleofhonoronly.com/vim/)
+- 最难的俄罗斯方块
+    - [https://qntm.org/files/hatetris/hatetris.html](https://qntm.org/files/hatetris/hatetris.html)
+
 
 
 

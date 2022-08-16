@@ -14,7 +14,9 @@
       <pubDate>Mon, 08 Aug 2022 14:34:10 +0800</pubDate>
       
       <guid>https://cerr.cc/post/ccer_zkv/</guid>
-      <description>🐦 </description>
+      <description>编译工具链 此前疑惑的一个问题是，一套编译工具链究竟包含了些什么东西？当我们使用包管理器一键安装编译工具链时，所安装的程序、数据、文档被分散在了根文件系统的各个位置，难以让我们直接一窥究竟。好在老生常谈的buildroot又为我们解决了这个问题，（当然，从网上下载一份编译工具链也能达到相同的效果）。取一份buildroot构建完成的编译工具链瞅瞅，路径位于buildroot/output/host：
+▶ ls host bin etc include lib lib64 libexec man sbin share usr var x86_64-buildroot-linux-uclibc 其中的直接编译工具部分：
+▶ ls bin | grep &amp;#34;x86_64-linux&amp;#34; | grep -v &amp;#34;br_real&amp;#34; x86_64-linux-addr2line	# convert addresses into line number/file name pairs x86_64-linux-ar	# create, modify, and extract from archives x86_64-linux-as	# the portable GNU assembler x86_64-linux-c++filt	# demangle C++ and Java symbols x86_64-linux-cc x86_64-linux-cpp x86_64-linux-elfedit	# update the ELF header of ELF files x86_64-linux-gcc x86_64-linux-gcc-11.</description>
     </item>
     
     <item>
@@ -23,10 +25,17 @@
       <pubDate>Mon, 08 Aug 2022 14:17:44 +0800</pubDate>
       
       <guid>https://cerr.cc/post/qemu_gdb_vmlinux/</guid>
-      <description>使用buildroot一键搭建环境 buildroot自动构建过程若出现网络不畅，自备梯子，并设定shell变量all_proxy、http_proxy、https_proxy用于代理wget、curl等工具即可。参见：https://cerr.cc/post/fgfw/
+      <description>环境准备 kernel对于gdb调试所提供的文档如下：
+https://www.kernel.org/doc/html/latest/dev-tools/gdb-kernel-debugging.html
+QEMU 的手动构建 获取QEMU源码：
+git clone https://gitlab.com/qemu-project/qemu.git cd qemu git submodule init git submodule update --recursive 本次使用x86_64内核的情况下，configure配置如下：
+./configure --target-list=x86_64-softmmu --enable-debug 编译并安装：
+make -j`nproc` sudo make install 使用buildroot一键构建rootfs+kernel buildroot自动构建过程若出现网络不畅，自备梯子，并设定shell变量all_proxy、http_proxy、https_proxy用于代理wget、curl等工具即可。参见：https://cerr.cc/post/fgfw/
 git clone https://git.buildroot.net/buildroot cd buildroot make qemu_x86_64_defconfig make linux-menuconfig 使用 / 搜索 DEBUG_INFO 符号（即配置文件中的CONFIG_DEBUG_INFO符号） 设定路径与依赖，将其打开。
+以同样的方式再将 GDB_SCRIPT 打开、RANDOMIZE_BASE 关闭。
 此后即可直接make构建。
-make -j`nproc` # 编译构建中…… # ☕️、☕️、☕️…… # 编译构建完成 output/images/start-qemu.sh 先来确认一切正常 cd output/images qemu-system-x86_64 -M pc -kernel bzImage \ -drive file=rootfs.ext2,if=virtio,format=raw \ -append &amp;#34;rootwait root=/dev/vda console=tty1 console=ttyS0&amp;#34; \ -net nic,model=virtio -net user \ -nographic -s -S -nographic 全部信息输出至host stdio 若否，而是使用-serial stdio，则只会将guest的串口数据输出至host stdio，其余则会输出至启动的vncserver -s shorthand for -gdb tcp::1234 -S freeze CPU at startup (use &amp;lsquo;c&amp;rsquo; to start execution) 此时于另一个tty、pts：</description>
+make # 编译构建中…… # ☕️、☕️、☕️…… # 编译构建完成 output/images/start-qemu.sh 测试是否正常启动：（上一步若关闭了RANDOMIZE_BASE，则无需向kernel传递nokaslr参数）
+cd output/images qemu-system-x86_64 -M pc -kernel bzImage \ -drive file=rootfs.ext2,if=virtio,format=raw \ -append &amp;#34;rootwait root=/dev/vda console=tty1 console=ttyS0 nokaslr&amp;#34; \ -net nic,model=virtio -net user \ -nographic -s -S -nographic 全部信息输出至host stdio 若否，而是使用-serial stdio，则只会将guest的串口数据输出至host stdio，其余则会输出至启动的vncserver -s shorthand for -gdb tcp::1234 -S freeze CPU at startup (use &amp;lsquo;c&amp;rsquo; to start execution) 此时于另一个tty、pts：</description>
     </item>
     
     <item>
@@ -101,7 +110,7 @@ https://en.wikipedia.org/wiki/CentOS https://zhuanlan.zhihu.com/p/337075432 Dock
       <description>前传 不同寻常的是，我是在将各种设备都玩过一轮后，最后才将目光放到了台式机上。想来原因应当在于我是一个无可救药的MINI教信徒——iPhone用mini；iPad用mini（曾经，奈何M1太香了）；Macbook用miniAir；台式机用NUC+电脑棒+单片机……
 好吧，其实我也不能说没有台式机，毕竟NUC也算得上。但在把各类小型设备都折腾过一遍后，我陷入了茫然四顾无所寄托的悲惨境地。突然想起自己这几年来竟未尝进入DIY PC的海洋试试水。又瞥了瞥手上这台NUC11PAHi5，估摸着这孩子也是天资平平、前途黯淡，竭尽全力地运行OW1却只是凑活能玩，没有能带起OW2的天赋。恰逢本世代全球大萧条之始，加密货币市场一泻千里，难窥其底。显卡价格也是应声而落，众望所归。天时地利人和——这钱，我不得不花。毕竟天意不可违。
 但对于村儿里长大的我来说，掏出去的钱倘若没能换来足量的快乐，乃至买来的是糟心，实在是大逆不道有违祖训的事情。其负罪感甚至要甚于倒掉没吃完的肉（或许正因如此我才有幸成为闲鱼大V，焉知非福啊）。所以，事前进行全方位的考察与调研是十分必要的事情。
-设备情报 通用资源 https://www.zhihu.com/special/1436041011885293568?tab=1436061145295228928 一些排行榜和天梯图：https://rank.kkj.cn/dgpu3.shtml CPU 通用资源 可以于这些网站查询到绝大多数CPU的benchmark：
+设备情报 通用资源 https://www.zhihu.com/special/1436041011885293568?tab=1436061145295228928 一些排行榜和天梯图：https://rank.kkj.cn/dgpu3.shtml 万物皆可对比：https://versus.com/cn CPU 通用资源 可以于这些网站查询到绝大多数CPU的benchmark：
 https://www.cpubenchmark.net/ https://browser.geekbench.com/processor-benchmarks 天梯图：https://www.mydrivers.com/zhuanti/tianti/cpu/index.html
 Intel 命名规则 酷睿后缀名 后缀 含义 G1-G7 显卡级别（仅适用于采用全新集成显卡技术的处理器） E 嵌入式 F 需要独立显卡 G 封装包中包含独立显卡 H 针对移动设备进行优化的高性能 HK 针对移动设备进行优化的高性能，未锁频 HQ 针对移动设备进行优化的高性能，四核 K 未锁频 S 特别版 T 经过功耗优化的生活方式 U 高能效移动设备 Y 极低功耗的移动设备 X/XE 未锁频，高端 B 球栅阵列 (BGA) reference：https://www.intel.com/content/www/us/en/processors/processor-numbers.html
 AMD 命名规则 锐龙后缀名 X后缀
@@ -133,10 +142,22 @@ The U-Boot implementation of RFC815 IP DATAGRAM REASSEMBLY ALGORITHMS is suscept
       <pubDate>Mon, 13 Jun 2022 17:41:00 +0800</pubDate>
       
       <guid>https://cerr.cc/post/linuxer_zkv/</guid>
-      <description>学习资料 教程 Linux Inside 实验 Linux Kernel Lab 其他人汇总的资源 Martins3大佬的收集 内核文档 文档资源总览：https://www.kernel.org/doc/
+      <description>学习资料 教程 Linux Inside 实验 Linux Kernel Lab 其他人汇总的资源 Martins3大佬的收集 获取 官方网站：
+https://www.kernel.org/
+直接下载到的是特定版本的压缩包，而非git仓库。网站也提供了git仓库，但clone速度感人。
+官方GitHub仓库：
+https://github.com/torvalds/linux
+无需解释。Linus用着自己写的天下第一版本管理器开发着天下第一开源软件。
+TUNA的Linux镜像：
+https://mirrors.tuna.tsinghua.edu.cn/help/linux.git/
+教育网的带宽、THU的经费、大佬们的维护。国内镜像站之翘楚。
+Gitee镜像仓库：
+https://gitee.com/mirrors/linux_old1
+落后主仓库一天，用来加速clone的选择之一。
+内核文档 文档资源总览：https://www.kernel.org/doc/
 Latest kernel的HTML文档页：https://www.kernel.org/doc/html/latest
 但用浏览器看文档总归是不如在终端内直接man 9 printk来的爽。为啥是man 9？看看man man便知：
-1 Executable programs or shell commands 2 System calls (functions provided by the kernel) 3 Library calls (functions within program libraries) 4 Special files (usually found in /dev) 5 File formats and conventions, e.g. /etc/passwd 6 Games 7 Miscellaneous (including macro packages and conventions), e.g. man(7), groff(7) 8 System administration commands (usually only for root) 9 Kernel routines [Non standard] 但默认情况下会：</description>
+1 Executable programs or shell commands 2 System calls (functions provided by the kernel) 3 Library calls (functions within program libraries) 4 Special files (usually found in /dev) 5 File formats and conventions, e.g. /etc/passwd 6 Games 7 Miscellaneous (including macro packages and conventions), e.</description>
     </item>
     
     <item>
@@ -393,7 +414,7 @@ https://vmrp.github.io/ 定制你的终端配色——实时在线查看</descri
       <pubDate>Sat, 07 May 2022 17:53:05 +0800</pubDate>
       
       <guid>https://cerr.cc/main/flink/</guid>
-      <description> https://foada.github.io/ https://fromhex.cn/ https://blog.xiabee.cn/ https://migraine-sudo.github.io/ https://m4x.fun/ https://ifpop.github.io/ https://blog.fkynjyq.com/ https://eacryo.gitee.io/ https://vang3lis.github.io/ https://emptystack.top/ https://l1b0.github.io/ https://yourbutterfly.github.io/ BigBrothers https://eternalsakura13.com/ https://lancern.xyz/ http://www.aloxaf.com/ https://kiprey.github.io/ https://www.ksroido.art/ https://blog.flanker017.me/ https://thunderjie.github.io/ http://blog.eonew.cn/ https://xuanxuanblingbling.github.io/ https://atum.li/ https://mem2019.github.io/ https://bsauce.github.io/ https://ray-cp.github.io/ https://chenx6.github.io/ https://blog.kyrios.cn/ https://etenal.me/ http://www.ruanyifeng.com/blog/ https://a1ex.online/ http://p4nda.top/ https://o0xmuhe.github.io/ https://evilpan.com/ https://myfzy.top/ https://exexute.github.io/ https://zhou-yuxin.github.io/ https://houjingyi233.com/ https://hhdx.xyz/post/ http://tr3e.ee/ https://martins3.github.io/ https://qiuhao.org/ https://www.cnblogs.com/LoyenWang/ </description>
+      <description> https://foada.github.io/ https://fromhex.cn/ https://xiabee.cn/ https://migraine-sudo.github.io/ https://m4x.fun/ https://ifpop.github.io/ https://blog.fkynjyq.com/ https://eacryo.gitee.io/ https://vang3lis.github.io/ https://emptystack.top/ https://l1b0.github.io/ https://yourbutterfly.github.io/ BigBrothers https://eternalsakura13.com/ https://lancern.xyz/ http://www.aloxaf.com/ https://kiprey.github.io/ https://www.ksroido.art/ https://blog.flanker017.me/ https://thunderjie.github.io/ http://blog.eonew.cn/ https://xuanxuanblingbling.github.io/ https://atum.li/ https://mem2019.github.io/ https://bsauce.github.io/ https://ray-cp.github.io/ https://chenx6.github.io/ https://blog.kyrios.cn/ https://etenal.me/ http://www.ruanyifeng.com/blog/ https://a1ex.online/ http://p4nda.top/ https://o0xmuhe.github.io/ https://evilpan.com/ https://myfzy.top/ https://exexute.github.io/ https://zhou-yuxin.github.io/ https://houjingyi233.com/ https://hhdx.xyz/post/ http://tr3e.ee/ https://martins3.github.io/ https://qiuhao.org/ https://www.cnblogs.com/LoyenWang/ </description>
     </item>
     
     <item>

@@ -210,7 +210,74 @@
     <div id="content">
 <article class="post">
   
-    <div class="post-content"><h1 id="heading">🐦</h1>
+    <div class="post-content"><h1 id="编译工具链">编译工具链</h1>
+<p>此前疑惑的一个问题是，一套编译工具链究竟包含了些什么东西？当我们使用包管理器一键安装编译工具链时，所安装的程序、数据、文档被分散在了根文件系统的各个位置，难以让我们直接一窥究竟。好在老生常谈的buildroot又为我们解决了这个问题，（当然，从网上下载一份编译工具链也能达到相同的效果）。取一份buildroot构建完成的编译工具链瞅瞅，路径位于<code>buildroot/output/host</code>：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>▶ ls host
+</span></span><span style="display:flex;"><span>bin  etc  include  lib  lib64  libexec  man  sbin  share  usr  var  x86_64-buildroot-linux-uclibc
+</span></span></code></pre></div><p>其中的直接编译工具部分：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>▶ ls bin | grep <span style="color:#d14">&#34;x86_64-linux&#34;</span> | grep -v <span style="color:#d14">&#34;br_real&#34;</span>
+</span></span><span style="display:flex;"><span>x86_64-linux-addr2line			<span style="color:#998;font-style:italic"># convert addresses into line number/file name pairs</span>
+</span></span><span style="display:flex;"><span>x86_64-linux-ar					<span style="color:#998;font-style:italic"># create, modify, and extract from archives</span>
+</span></span><span style="display:flex;"><span>x86_64-linux-as					<span style="color:#998;font-style:italic"># the portable GNU assembler</span>
+</span></span><span style="display:flex;"><span>x86_64-linux-c++filt			<span style="color:#998;font-style:italic"># demangle C++ and Java symbols</span>
+</span></span><span style="display:flex;"><span>x86_64-linux-cc
+</span></span><span style="display:flex;"><span>x86_64-linux-cpp
+</span></span><span style="display:flex;"><span>x86_64-linux-elfedit			<span style="color:#998;font-style:italic"># update the ELF header of ELF files</span>
+</span></span><span style="display:flex;"><span>x86_64-linux-gcc
+</span></span><span style="display:flex;"><span>x86_64-linux-gcc-11.3.0
+</span></span><span style="display:flex;"><span>x86_64-linux-gcc-ar
+</span></span><span style="display:flex;"><span>x86_64-linux-gcc-nm				<span style="color:#998;font-style:italic"># list symbols from object files</span>
+</span></span><span style="display:flex;"><span>x86_64-linux-gcc-ranlib			<span style="color:#998;font-style:italic"># generate an index to an archive</span>
+</span></span><span style="display:flex;"><span>x86_64-linux-gcov				<span style="color:#998;font-style:italic"># print code coverage information</span>
+</span></span><span style="display:flex;"><span>x86_64-linux-gcov-dump			<span style="color:#998;font-style:italic"># print coverage file contents</span>
+</span></span><span style="display:flex;"><span>x86_64-linux-gcov-tool			<span style="color:#998;font-style:italic"># offline tool to handle gcda counts</span>
+</span></span><span style="display:flex;"><span>x86_64-linux-gprof				<span style="color:#998;font-style:italic"># display call graph profile data</span>
+</span></span><span style="display:flex;"><span>x86_64-linux-ld
+</span></span><span style="display:flex;"><span>x86_64-linux-ld.bfd
+</span></span><span style="display:flex;"><span>x86_64-linux-ldconfig			<span style="color:#998;font-style:italic"># configure Dynamic Linker Run Time Bindings</span>
+</span></span><span style="display:flex;"><span>x86_64-linux-ldd				<span style="color:#998;font-style:italic"># print shared object dependencies</span>
+</span></span><span style="display:flex;"><span>x86_64-linux-lto-dump			<span style="color:#998;font-style:italic"># tool for dumping LTO object files</span>
+</span></span><span style="display:flex;"><span>x86_64-linux-nm
+</span></span><span style="display:flex;"><span>x86_64-linux-objcopy			<span style="color:#998;font-style:italic"># copies a binary file, possibly transforming it in the process</span>
+</span></span><span style="display:flex;"><span>x86_64-linux-objdump			<span style="color:#998;font-style:italic"># display information from object files</span>
+</span></span><span style="display:flex;"><span>x86_64-linux-ranlib
+</span></span><span style="display:flex;"><span>x86_64-linux-readelf			<span style="color:#998;font-style:italic"># display information about ELF files</span>
+</span></span><span style="display:flex;"><span>x86_64-linux-size				<span style="color:#998;font-style:italic"># list section sizes and total size of binary files</span>
+</span></span><span style="display:flex;"><span>x86_64-linux-strings			<span style="color:#998;font-style:italic"># print the sequences of printable characters in files</span>
+</span></span><span style="display:flex;"><span>x86_64-linux-strip				<span style="color:#998;font-style:italic"># discard symbols and other data from object files</span>
+</span></span></code></pre></div><h1 id="binutils">binutils</h1>
+<p>GNU assembler, linker and binary utilities. The programs in this package are used to assemble, link and manipulate binary and object files. They may be used in conjunction with a compiler and various libraries to build programs.</p>
+<p>那么binutils包中包含了哪些路径下的哪些内容呢？</p>
+<p>使用apt-file工具查看下：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>▶ sudo apt install apt-file
+</span></span><span style="display:flex;"><span>▶ apt-file list binutils
+</span></span><span style="display:flex;"><span>binutils: /usr/bin/addr2line
+</span></span><span style="display:flex;"><span>binutils: /usr/bin/ar
+</span></span><span style="display:flex;"><span>binutils: /usr/bin/as
+</span></span><span style="display:flex;"><span>binutils: /usr/bin/c++filt
+</span></span><span style="display:flex;"><span>binutils: /usr/bin/dwp
+</span></span><span style="display:flex;"><span>binutils: /usr/bin/elfedit
+</span></span><span style="display:flex;"><span>binutils: /usr/bin/gold
+</span></span><span style="display:flex;"><span>binutils: /usr/bin/gprof
+</span></span><span style="display:flex;"><span>binutils: /usr/bin/ld
+</span></span><span style="display:flex;"><span>binutils: /usr/bin/ld.bfd
+</span></span><span style="display:flex;"><span>binutils: /usr/bin/ld.gold
+</span></span><span style="display:flex;"><span>binutils: /usr/bin/nm
+</span></span><span style="display:flex;"><span>binutils: /usr/bin/objcopy
+</span></span><span style="display:flex;"><span>binutils: /usr/bin/objdump
+</span></span><span style="display:flex;"><span>binutils: /usr/bin/ranlib
+</span></span><span style="display:flex;"><span>binutils: /usr/bin/readelf
+</span></span><span style="display:flex;"><span>binutils: /usr/bin/size
+</span></span><span style="display:flex;"><span>binutils: /usr/bin/strings
+</span></span><span style="display:flex;"><span>binutils: /usr/bin/strip
+</span></span><span style="display:flex;"><span>binutils: /usr/lib/compat-ld/ld
+</span></span><span style="display:flex;"><span>binutils: /usr/lib/gold-ld/ld
+</span></span><span style="display:flex;"><span>binutils: /usr/share/bug/binutils/presubj
+</span></span><span style="display:flex;"><span>binutils: /usr/share/doc/binutils/changelog.Debian.gz
+</span></span><span style="display:flex;"><span>binutils: /usr/share/doc/binutils/copyright
+</span></span><span style="display:flex;"><span>binutils: /usr/share/lintian/overrides/binutils
+</span></span></code></pre></div><h1 id="makefile">makefile</h1>
+<h1 id="cmake">cmake</h1>
 </div>
   
 </article>
