@@ -263,6 +263,10 @@ reference：
     - 迪兰 RX5500XT 8G X战将
         - ¥ 925（来自同事的二手）
         - [http://www.dataland.com.cn/prod_view.aspx?nid=3&typeid=129&id=928](http://www.dataland.com.cn/prod_view.aspx?nid=3&typeid=129&id=928)
+- 内存
+    - 金士顿 FURY Beast 8GB DDR4 3200MHz × 4
+        - ¥ 798（全新）
+        - [https://www.kingston.com/cn/memory/gaming/kingston-fury-beast-ddr4-rgb-memory](https://www.kingston.com/cn/memory/gaming/kingston-fury-beast-ddr4-rgb-memory)
 - SSD
     - 英睿达 镁光 P5 1TB
         - ¥ 500（NUC替换下来的）
@@ -284,10 +288,6 @@ reference：
     - ID-COLLING XF-12025-SD-K ×3
         - ¥ 60（全新）
         - [https://item.jd.com/100005667115.html](https://item.jd.com/100005667115.html)
-- 内存
-    - 金士顿 FURY Beast 8GB×4 DDR4 3200MHz
-        - ¥ 798（全新）
-        - [https://www.kingston.com/cn/memory/gaming/kingston-fury-beast-ddr4-rgb-memory](https://www.kingston.com/cn/memory/gaming/kingston-fury-beast-ddr4-rgb-memory)
 
 ![5AD0C9F2-D39F-4630-B27F-3CF23F3CB719_1_105_c.jpeg](https://s2.loli.net/2022/08/16/4losrD8fQhBkem9.jpg)
 

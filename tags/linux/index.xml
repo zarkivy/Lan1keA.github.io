@@ -14,9 +14,7 @@
       <pubDate>Mon, 08 Aug 2022 14:17:44 +0800</pubDate>
       
       <guid>https://cerr.cc/post/qemu_gdb_vmlinux/</guid>
-      <description>环境准备 kernel对于gdb调试所提供的文档如下：
-https://www.kernel.org/doc/html/latest/dev-tools/gdb-kernel-debugging.html
-QEMU 的手动构建 获取QEMU源码：
+      <description>环境准备 QEMU 的手动构建 获取QEMU源码：
 git clone https://gitlab.com/qemu-project/qemu.git cd qemu git submodule init git submodule update --recursive 本次使用x86_64内核的情况下，configure配置如下：
 ./configure --target-list=x86_64-softmmu --enable-debug 编译并安装：
 make -j`nproc` sudo make install 使用buildroot一键构建rootfs+kernel buildroot自动构建过程若出现网络不畅，自备梯子，并设定shell变量all_proxy、http_proxy、https_proxy用于代理wget、curl等工具即可。参见：https://cerr.cc/post/fgfw/

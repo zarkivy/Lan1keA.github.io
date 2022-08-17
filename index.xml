@@ -25,9 +25,7 @@
       <pubDate>Mon, 08 Aug 2022 14:17:44 +0800</pubDate>
       
       <guid>https://cerr.cc/post/qemu_gdb_vmlinux/</guid>
-      <description>环境准备 kernel对于gdb调试所提供的文档如下：
-https://www.kernel.org/doc/html/latest/dev-tools/gdb-kernel-debugging.html
-QEMU 的手动构建 获取QEMU源码：
+      <description>环境准备 QEMU 的手动构建 获取QEMU源码：
 git clone https://gitlab.com/qemu-project/qemu.git cd qemu git submodule init git submodule update --recursive 本次使用x86_64内核的情况下，configure配置如下：
 ./configure --target-list=x86_64-softmmu --enable-debug 编译并安装：
 make -j`nproc` sudo make install 使用buildroot一键构建rootfs+kernel buildroot自动构建过程若出现网络不畅，自备梯子，并设定shell变量all_proxy、http_proxy、https_proxy用于代理wget、curl等工具即可。参见：https://cerr.cc/post/fgfw/
@@ -277,12 +275,16 @@ apt install libncurses5 libncurses5-dev m4 bison gawk flex libstdc++6-4.7-dev g+
 Fuzzingbook
 课程 南京大学：软件分析
 南京大学：软件分析课程视频
-博文 Fuzzing战争: 从刀剑弓斧到星球大战
+博文 Fuzzing技术发展的这30年
+一些值得学习的Fuzzer开源项目
+Fuzzing战争: 从刀剑弓斧到星球大战
 Fuzzing战争系列之二：不畏浮云遮望眼
 练兵场 Fuzzing101
 兵器 AFL
 AFLplusplus
-\x01 学步车AFL 最简单的 fuzzing demo 使用AFL，故先安装：
+论文 开山 1988年，在威斯康星大学Barton Miller教授的计算机实验课上，首次提出Fuzz生成器(Fuzz Generator)的概念，用于测试Unix程序的健壮性，即用随机数据来测试程序直至崩溃。因此，Barton Miller教授也被多数人尊称为”模糊测试之父”。
+http://pages.cs.wisc.edu/~bart/fuzz/CS736-Projects-f1988.pdf
+代码覆盖引导Fuzzing之AFL \x01 学步车AFL 最简单的 fuzzing demo 使用AFL，故先安装：
 git clone https://github.com/google/AFL.git cd AFL make -j`nproc` sudo make install 接着准备被测程序源码：
 #include &amp;lt;stdio.h&amp;gt; #include &amp;lt;string.h&amp;gt; #include &amp;lt;signal.h&amp;gt; int vuln(char *str) { int len = strlen(str); if(str[0] == &amp;#39;A&amp;#39; &amp;amp;&amp;amp; len == 66) raise(SIGSEGV); else if(str[0] == &amp;#39;F&amp;#39; &amp;amp;&amp;amp; len == 6) raise(SIGSEGV); else puts(&amp;#34;\nnothing happened&amp;#34;); return 0; } int main(int argc, char *argv[]) { char buf[100]={0}; gets(buf); printf(buf); vuln(buf); return 0; } 使用afl-gcc插装编译：</description>
     </item>
@@ -414,7 +416,7 @@ https://vmrp.github.io/ 定制你的终端配色——实时在线查看</descri
       <pubDate>Sat, 07 May 2022 17:53:05 +0800</pubDate>
       
       <guid>https://cerr.cc/main/flink/</guid>
-      <description> https://foada.github.io/ https://fromhex.cn/ https://xiabee.cn/ https://migraine-sudo.github.io/ https://m4x.fun/ https://ifpop.github.io/ https://blog.fkynjyq.com/ https://eacryo.gitee.io/ https://vang3lis.github.io/ https://emptystack.top/ https://l1b0.github.io/ https://yourbutterfly.github.io/ BigBrothers https://eternalsakura13.com/ https://lancern.xyz/ http://www.aloxaf.com/ https://kiprey.github.io/ https://www.ksroido.art/ https://blog.flanker017.me/ https://thunderjie.github.io/ http://blog.eonew.cn/ https://xuanxuanblingbling.github.io/ https://atum.li/ https://mem2019.github.io/ https://bsauce.github.io/ https://ray-cp.github.io/ https://chenx6.github.io/ https://blog.kyrios.cn/ https://etenal.me/ http://www.ruanyifeng.com/blog/ https://a1ex.online/ http://p4nda.top/ https://o0xmuhe.github.io/ https://evilpan.com/ https://myfzy.top/ https://exexute.github.io/ https://zhou-yuxin.github.io/ https://houjingyi233.com/ https://hhdx.xyz/post/ http://tr3e.ee/ https://martins3.github.io/ https://qiuhao.org/ https://www.cnblogs.com/LoyenWang/ </description>
+      <description> https://foada.github.io/ https://fromhex.cn/ https://xiabee.cn/ https://migraine-sudo.github.io/ https://m4x.fun/ https://ifpop.github.io/ https://blog.fkynjyq.com/ https://eacryo.gitee.io/ https://vang3lis.github.io/ https://emptystack.top/ https://l1b0.github.io/ https://yourbutterfly.github.io/ BigBrothers https://eternalsakura13.com/ https://lancern.xyz/ http://www.aloxaf.com/ https://kiprey.github.io/ https://www.ksroido.art/ https://blog.flanker017.me/ https://thunderjie.github.io/ http://blog.eonew.cn/ https://xuanxuanblingbling.github.io/ https://atum.li/ https://mem2019.github.io/ https://bsauce.github.io/ https://ray-cp.github.io/ https://chenx6.github.io/ https://blog.kyrios.cn/ https://etenal.me/ http://www.ruanyifeng.com/blog/ https://a1ex.online/ http://p4nda.top/ https://o0xmuhe.github.io/ https://evilpan.com/ https://myfzy.top/ https://exexute.github.io/ https://zhou-yuxin.github.io/ https://houjingyi233.com/ https://hhdx.xyz/post/ http://tr3e.ee/ https://martins3.github.io/ https://qiuhao.org/ https://www.cnblogs.com/LoyenWang/ https://riusksk.me/ </description>
     </item>
     
     <item>
@@ -442,7 +444,7 @@ https://vmrp.github.io/ 定制你的终端配色——实时在线查看</descri
       <pubDate>Sat, 07 May 2022 15:53:05 +0800</pubDate>
       
       <guid>https://cerr.cc/main/about/</guid>
-      <description>Yet anothor cyber nyandog With this Rolling release blog 那 些 年 我 2017 ~ 💻 玩过的机 联想G510 神舟战神KP7-GT 联想ThinkPad Tablet 联想ThinkPad E431 联想ThinkPad X200 联想小新Air14 联想Yoga 13s Macbook Air 2020 iPhone4 iPhone5s iPhone6 iPhone SE1 iPhone XR iPhone 12 mini iPhone 13 小米note1 小米note2（postmarketOS） 小米2s 小米3 小米4 小米9SE 小米9 红米1s 红米2a 红米2（postmarketOS） 红米note3 红米K30 Pro 红米K40 游戏增强版 LG G5 LG G7 LG V30 LG V30+ 夏普303SH 夏普305SH 夏普502SH 索尼Z1 索尼Z2mini 索尼Z4 索尼Xperia X 索尼XZ2 Essential Phone iQOO1 Vivo X5 max 阿尔卡特 hero2 iPad mini5 iPad Air5 小米平板1 小米平板4LTE Kindle fire 树莓派3B+ 树莓派4B Friendlyelec NanoPC T3 Plus NUC11PAHi5 HP PROBOOK 440 G8 📖 读过的书 C++ Primer 深入理解计算机系统 程序员的自我修养 深入理解计算机网络 围城 三体 北京折叠 神的孩子全跳舞 今日简史 激荡三十年 人口大逆转 醉步男 星之彩 计算机网络 刘慈欣科幻短片小说合集 颠覆者 许三观卖血记 狂人日记 马云传 美丽新世界 阿Q正传 钝感力 自控力 为人民服务 腾讯传 贝多芬传 鲁滨逊漂流记 乔布斯传 球状闪电 1984 人类简史 哈姆雷特 方方日记 永久记录 穷爸爸富爸爸 风中的纸屑 我的世界观 人体简史 杰克伦敦小说集 未来简史 操作系统真象还原 现代操作系统 黄金时代 C和C++安全编码 骆驼祥子 另：本博客为滚动更新，写了一半的文章草稿见怪不怪，定稿文章半年大改也有理有据 😎</description>
+      <description>Yet anothor cyber nyandog With this Rolling release blog 那 些 年 我 2017 ~ 💻 玩过的机 联想G510 神舟战神KP7-GT 联想ThinkPad Tablet 联想ThinkPad E431 联想ThinkPad X200 联想小新Air14 联想Yoga 13s Macbook Air 2020 iPhone4 iPhone5s iPhone6 iPhone SE1 iPhone XR iPhone 12 mini iPhone 13 小米note1 小米note2（postmarketOS） 小米2s 小米3 小米4 小米9SE 小米9 红米1s 红米2a 红米2（postmarketOS） 红米note3 红米K30 Pro 红米K40 游戏增强版 LG G5 LG G7 LG V30 LG V30+ 夏普303SH 夏普305SH 夏普502SH 索尼Z1 索尼Z2mini 索尼Z4 索尼Xperia X 索尼XZ2 Essential Phone iQOO1 Vivo X5 max 阿尔卡特 hero2 iPad mini5 iPad Air5 小米平板1 小米平板4LTE Kindle fire 树莓派3B+ 树莓派4B Friendlyelec NanoPC T3 Plus NUC11PAHi5 HP PROBOOK 440 G8 📖 读过的书 C++ Primer 深入理解计算机系统 程序员的自我修养 深入理解计算机网络 围城 三体 北京折叠 神的孩子全跳舞 今日简史 激荡三十年 人口大逆转 醉步男 星之彩 计算机网络 刘慈欣科幻短片小说合集 颠覆者 许三观卖血记 狂人日记 马云传 美丽新世界 阿Q正传 钝感力 自控力 为人民服务 腾讯传 贝多芬传 鲁滨逊漂流记 乔布斯传 球状闪电 1984 人类简史 哈姆雷特 方方日记 永久记录 穷爸爸富爸爸 风中的纸屑 我的世界观 人体简史 杰克伦敦小说集 未来简史 操作系统真象还原 现代操作系统 黄金时代 C和C++安全编码 中县干部 骆驼祥子 沧浪之水 另：本博客为滚动更新，写了一半的文章草稿见怪不怪，定稿文章半年大改也有理有据 😎</description>
     </item>
     
   </channel>

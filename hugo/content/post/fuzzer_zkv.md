@@ -24,6 +24,10 @@ imagelink: "https://lcamtuf.coredump.cx/afl/afl_screen.png"
 
 ## 博文
 
+[Fuzzing技术发展的这30年](https://riusksk.me/2020/01/22/Fuzzing%E6%8A%80%E6%9C%AF%E5%8F%91%E5%B1%95%E7%9A%84%E8%BF%9930%E5%B9%B4/)
+
+[一些值得学习的Fuzzer开源项目](https://riusksk.me/2019/07/14/一些值得学习的Fuzzer开源项目/)
+
 [Fuzzing战争: 从刀剑弓斧到星球大战](https://blog.flanker017.me/fuzzing%e6%88%98%e4%ba%89-%e4%bb%8e%e5%88%80%e5%89%91%e5%bc%93%e6%96%a7%e5%88%b0%e6%98%9f%e7%90%83%e5%a4%a7%e6%88%98/)
 
 [Fuzzing战争系列之二：不畏浮云遮望眼](https://blog.flanker017.me/fuzzing%e6%88%98%e4%ba%89%e7%b3%bb%e5%88%97%e4%b9%8b%e4%ba%8c%ef%bc%9a%e4%b8%8d%e7%95%8f%e6%b5%ae%e4%ba%91%e9%81%ae%e6%9c%9b%e7%9c%bc/)
@@ -37,6 +41,16 @@ imagelink: "https://lcamtuf.coredump.cx/afl/afl_screen.png"
 [AFL](https://github.com/google/AFL)
 
 [AFLplusplus](https://github.com/AFLplusplus/AFLplusplus)
+
+## 论文
+
+### 开山
+
+1988年，在威斯康星大学Barton Miller教授的计算机实验课上，首次提出`Fuzz生成器`(Fuzz Generator)的概念，用于测试Unix程序的健壮性，即用随机数据来测试程序直至崩溃。因此，Barton Miller教授也被多数人尊称为”模糊测试之父”。
+
+[http://pages.cs.wisc.edu/~bart/fuzz/CS736-Projects-f1988.pdf](http://pages.cs.wisc.edu/~bart/fuzz/CS736-Projects-f1988.pdf)
+
+### 代码覆盖引导Fuzzing之AFL
 
 
 

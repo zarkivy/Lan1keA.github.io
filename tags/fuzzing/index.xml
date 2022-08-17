@@ -36,12 +36,16 @@ SSL Heartbeat Heartbleed was introduced by the Heartbeat Extension in the OpenSS
 Fuzzingbook
 课程 南京大学：软件分析
 南京大学：软件分析课程视频
-博文 Fuzzing战争: 从刀剑弓斧到星球大战
+博文 Fuzzing技术发展的这30年
+一些值得学习的Fuzzer开源项目
+Fuzzing战争: 从刀剑弓斧到星球大战
 Fuzzing战争系列之二：不畏浮云遮望眼
 练兵场 Fuzzing101
 兵器 AFL
 AFLplusplus
-\x01 学步车AFL 最简单的 fuzzing demo 使用AFL，故先安装：
+论文 开山 1988年，在威斯康星大学Barton Miller教授的计算机实验课上，首次提出Fuzz生成器(Fuzz Generator)的概念，用于测试Unix程序的健壮性，即用随机数据来测试程序直至崩溃。因此，Barton Miller教授也被多数人尊称为”模糊测试之父”。
+http://pages.cs.wisc.edu/~bart/fuzz/CS736-Projects-f1988.pdf
+代码覆盖引导Fuzzing之AFL \x01 学步车AFL 最简单的 fuzzing demo 使用AFL，故先安装：
 git clone https://github.com/google/AFL.git cd AFL make -j`nproc` sudo make install 接着准备被测程序源码：
 #include &amp;lt;stdio.h&amp;gt; #include &amp;lt;string.h&amp;gt; #include &amp;lt;signal.h&amp;gt; int vuln(char *str) { int len = strlen(str); if(str[0] == &amp;#39;A&amp;#39; &amp;amp;&amp;amp; len == 66) raise(SIGSEGV); else if(str[0] == &amp;#39;F&amp;#39; &amp;amp;&amp;amp; len == 6) raise(SIGSEGV); else puts(&amp;#34;\nnothing happened&amp;#34;); return 0; } int main(int argc, char *argv[]) { char buf[100]={0}; gets(buf); printf(buf); vuln(buf); return 0; } 使用afl-gcc插装编译：</description>
     </item>
