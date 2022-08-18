@@ -273,12 +273,9 @@
 <p>若不想借助自动化工具buildroot传达旨意，而是要亲自指挥亲自部署，记录如下：</p>
 <p>载入x86_64默认config：</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>make x86_64_defconfig
-</span></span></code></pre></div><p>使用Linux提供的脚本一键启用DEBUG_INFO、GDB_SCRIPTS</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>./scripts/config -e DEBUG_INFO -e GDB_SCRIPTS
-</span></span></code></pre></div><blockquote>
-<p>此脚本未生效，原因未知……</p>
-</blockquote>
-<p>开始编译：</p>
+</span></span></code></pre></div><p>使用Linux提供的脚本一键启用DEBUG_KERNEL、DEBUG_INFO、GDB_SCRIPTS，关闭RANDOMIZE_BASE</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>./scripts/config --file .config -e DEBUG_KERNEL -e DEBUG_INFO -e GDB_SCRIPTS -d RANDOMIZE_BASE
+</span></span></code></pre></div><p>开始编译：</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>make -j<span style="color:#d14">`</span>nproc<span style="color:#d14">`</span>
 </span></span></code></pre></div><p>得到：Kernel: arch/x86/boot/bzImage is ready</p>
 <p>先来看看单kernel直接传递给qemu启动会怎样：</p>

@@ -98,13 +98,11 @@ pwndbg> c
 make x86_64_defconfig
 ```
 
-使用Linux提供的脚本一键启用DEBUG_INFO、GDB_SCRIPTS
+使用Linux提供的脚本一键启用DEBUG_KERNEL、DEBUG_INFO、GDB_SCRIPTS，关闭RANDOMIZE_BASE
 
 ```sh
-./scripts/config -e DEBUG_INFO -e GDB_SCRIPTS
+./scripts/config --file .config -e DEBUG_KERNEL -e DEBUG_INFO -e GDB_SCRIPTS -d RANDOMIZE_BASE
 ```
-
-> 此脚本未生效，原因未知……
 
 开始编译：
 
@@ -377,6 +375,10 @@ gdb vmlinux -ex "target remote :1234"
 
 # 内存管理
 
+
+
 # 文件系统
+
+
 
 # 网络栈

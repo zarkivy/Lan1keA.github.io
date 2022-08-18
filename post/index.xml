@@ -196,8 +196,13 @@ admin@(none):/tmp/home/root# openssl [ 9.765639] openssl (274): undefined instru
       <pubDate>Tue, 24 May 2022 17:43:25 +0800</pubDate>
       
       <guid>https://cerr.cc/post/cve-2016-5195/</guid>
-      <description>背景知识 DirtyCOW https://dirtycow.ninja/ https://github.com/dirtycow/dirtycow.github.io/wiki/PoCs https://github.com/dirtycow/dirtycow.github.io/wiki/VulnerabilityDetails Copy on Write https://www.cnblogs.com/biyeymyhjob/archive/2012/07/20/2601655.html https://blog.csdn.net/puliao4167/article/details/87894191 Page Cache https://en.wikipedia.org/wiki/Page_cache mmap https://www.cnblogs.com/huxiao-tee/p/4660352.html 内核文件系统 https://www.cnblogs.com/huxiao-tee/p/4657851.html 漏洞复现 环境准备 Linux Kernel 选取一个有漏洞的版本4.4.0，下载ubuntu对应的deb包。解压得到./boot/vmlinuz-4.4.0-31-generic
-wget http://security.ubuntu.com/ubuntu/pool/main/l/linux/linux-image-4.4.0-31-generic_4.4.0-31.50_amd64.deb ar xv linux-image-4.4.0-31-generic_4.4.0-31.50_amd64.deb tar jxvf data.tar.bz2 漏洞分析 </description>
+      <description>背景知识 DirtyCOW https://dirtycow.ninja/ https://github.com/dirtycow/dirtycow.github.io/wiki/PoCs https://github.com/dirtycow/dirtycow.github.io/wiki/VulnerabilityDetails Copy on Write https://www.cnblogs.com/biyeymyhjob/archive/2012/07/20/2601655.html https://blog.csdn.net/puliao4167/article/details/87894191 Page Cache https://en.wikipedia.org/wiki/Page_cache mmap https://www.cnblogs.com/huxiao-tee/p/4660352.html 内核文件系统 https://www.cnblogs.com/huxiao-tee/p/4657851.html 条件竞争 https://ctf-wiki.github.io/ctf-wiki/pwn/linux/race-condition/introduction-zh/ 环境准备 Linux Kernel 直接下载 选取一个有漏洞的版本4.4.0，下载ubuntu对应的deb包。解压得到./boot/vmlinuz-4.4.0-31-generic
+wget http://security.ubuntu.com/ubuntu/pool/main/l/linux/linux-image-4.4.0-31-generic_4.4.0-31.50_amd64.deb ar xv linux-image-4.4.0-31-generic_4.4.0-31.50_amd64.deb tar jxvf data.tar.bz2 缺点是由此得到的bootable kernel 中不包含调试信息。
+自行编译 获取Linux Kernel源码仓库并切换到一个有漏洞的版本4.4：
+git clone https://mirrors.tuna.tsinghua.edu.cn/git/linux.git cd linux git checkout v4.4 载入x86_64的默认配置：
+make x86_64_defconfig 使用Linux提供的脚本一键启用DEBUG_KERNEL、DEBUG_INFO、KGDB、GDB_SCRIPTS，关闭RANDOMIZE_BASE
+./scripts/config --file .config -e DEBUG_KERNEL -e DEBUG_INFO -e GDB_SCRIPTS -e KGDB -d RANDOMIZE_BASE 由于是旧版kernel，需在老环境中编译。采用docker创建ubuntu16.04的编译环境：
+sudo docker run -it --rm -v /home/zkv/Laboratory/dirtycow/linux:/linux ubuntu:16.</description>
     </item>
     
     <item>
