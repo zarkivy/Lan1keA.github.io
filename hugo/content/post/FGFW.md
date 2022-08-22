@@ -1,6 +1,6 @@
 ---
 title: "Fuck the Great Fire Wall"
-description: "🖕"
+description: "🖕🖕🖕"
 date: 2022-05-09T11:03:28+08:00
 tags: [ "Net" ]
 imagelink: "https://s2.loli.net/2022/05/09/FrNVRw5lSbfusgx.jpg"
@@ -167,6 +167,16 @@ curl也是其中之一。
 ```sh
 export all_proxy=http://proxyserver:port/
 ```
+
+
+
+# 合法翻墙
+
+## 澳门流量卡
+
+就是这货👇，淘宝上就可以买到。
+
+![9E9E47AD-ACAC-4401-81EB-2A3D29D89EAF_1_201_a.jpeg](https://s2.loli.net/2022/08/18/ScbgXVYpdRmrnyQ.jpg)
 
 
 

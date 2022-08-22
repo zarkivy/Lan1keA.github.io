@@ -382,3 +382,16 @@ gdb vmlinux -ex "target remote :1234"
 
 
 # 网络栈
+
+
+
+# 实战漏洞调试
+
+参见：[https://cerr.cc/post/cve-2016-5195/](post/cve-2016-5195/)
+
+
+
+# 参考
+
+- [http://nickdesaulniers.github.io/blog/2018/10/24/booting-a-custom-linux-kernel-in-qemu-and-debugging-it-with-gdb/](http://nickdesaulniers.github.io/blog/2018/10/24/booting-a-custom-linux-kernel-in-qemu-and-debugging-it-with-gdb/)
+- [https://kiprey.github.io/2021/10/kernel_pwn_introduction/](https://kiprey.github.io/2021/10/kernel_pwn_introduction/)

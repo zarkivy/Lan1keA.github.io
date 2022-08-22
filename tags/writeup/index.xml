@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Writeup on Zikey Vi</title>
+    <link>https://cerr.cc/tags/writeup/</link>
+    <description>Recent content in Writeup on Zikey Vi</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>© 2022, Zikey Vi</copyright>
+    <lastBuildDate>Fri, 19 Aug 2022 17:06:58 +0800</lastBuildDate><atom:link href="https://cerr.cc/tags/writeup/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CSAPP Lab WriteUp</title>
+      <link>https://cerr.cc/post/csapp_lab_writeup/</link>
+      <pubDate>Fri, 19 Aug 2022 17:06:58 +0800</pubDate>
+      
+      <guid>https://cerr.cc/post/csapp_lab_writeup/</guid>
+      <description>0x0 实验源：http://csapp.cs.cmu.edu/3e/labs.html
+直接点击实验名视作是图以教师身份下载教学资源。题目文件应于Self-Study Handout下载
+Data Lab 下载解压题目文件：
+wget http://csapp.cs.cmu.edu/3e/datalab-handout.tar tar xvf datalab-handout.tar 题目说明：
+http://csapp.cs.cmu.edu/3e/README-datalab</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -52,7 +52,22 @@ x86_64-linux-strings			# print the sequences of printable characters in files
 x86_64-linux-strip				# discard symbols and other data from object files
 ```
 
+## 使用buildroot构建任意编译工具链
 
+buildroot对那些平台有默认配置呢：
+
+![image.png](https://s2.loli.net/2022/08/19/yHZsCwEfNFQ2v7I.png)
+
+这个数量的输出项怎么看覆盖都很全面呀。
+
+那么两行命令即可得到特定平台的编译工具链了（以qemu_aarch64_virt为例）：
+
+```sh
+make qemu_aarch64_virt_defconfig
+make toolchain
+```
+
+来到`buildroot/output/host`中取货即可。
 
 # binutils
 
@@ -94,7 +109,11 @@ binutils: /usr/share/lintian/overrides/binutils
 
 
 
-# makefile
+# configure
+
+# make
+
+官方文档：[https://www.gnu.org/software/make/manual/html_node/index.html](https://www.gnu.org/software/make/manual/html_node/index.html)
 
 
 
