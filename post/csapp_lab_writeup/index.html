@@ -221,6 +221,155 @@
 </span></span><span style="display:flex;"><span>tar xvf datalab-handout.tar
 </span></span></code></pre></div><p>题目说明：</p>
 <p><a href="http://csapp.cs.cmu.edu/3e/README-datalab">http://csapp.cs.cmu.edu/3e/README-datalab</a></p>
+<p>我们的任务是在受限使用运算符与控制流的前提下，实现bit.c中的每个函数的功能。</p>
+<h2 id="实现异或运算">实现异或运算</h2>
+<p>异或，即 “不同时为0” 且 “不同时为1”</p>
+<p>^，即 “<code>~(~x&amp;~y)</code>“ 且 ”<code>~(x&amp;y)</code>“</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#998;font-style:italic">//1
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span><span style="color:#998;font-style:italic">/* 
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"> * bitXor - x^y using only ~ and &amp; 
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"> *   Example: bitXor(4, 5) = 1
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"> *   Legal ops: ~ &amp;
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"> *   Max ops: 14
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"> *   Rating: 1
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"> */</span>
+</span></span><span style="display:flex;"><span><span style="color:#458;font-weight:bold">int</span> <span style="color:#900;font-weight:bold">bitXor</span>(<span style="color:#458;font-weight:bold">int</span> x, <span style="color:#458;font-weight:bold">int</span> y) {
+</span></span><span style="display:flex;"><span>	<span style="color:#000;font-weight:bold">return</span> <span style="color:#000;font-weight:bold">~</span>(<span style="color:#000;font-weight:bold">~</span>x<span style="color:#000;font-weight:bold">&amp;~</span>y)<span style="color:#000;font-weight:bold">&amp;~</span>(x<span style="color:#000;font-weight:bold">&amp;</span>y);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="求32位下最小的补码数值">求32位下最小的补码数值</h2>
+<p>补码，二补数，2&rsquo;s complement，参见：</p>
+<p><a href="https://zh.wikipedia.org/zh-cn/%E4%BA%8C%E8%A3%9C%E6%95%B8">https://zh.wikipedia.org/zh-cn/%E4%BA%8C%E8%A3%9C%E6%95%B8</a></p>
+<p>32位下，最小的补码数值为<code>1000000000000000000000000000000</code></p>
+<p>补码<code>10000000</code>为什么可以表示-128？而非0、128？参见：</p>
+<p><a href="https://www.zhihu.com/question/28685048">https://www.zhihu.com/question/28685048</a></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#998;font-style:italic">/* 
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"> * tmin - return minimum two&#39;s complement integer 
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"> *   Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"> *   Max ops: 4
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"> *   Rating: 1
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"> */</span>
+</span></span><span style="display:flex;"><span><span style="color:#458;font-weight:bold">int</span> <span style="color:#900;font-weight:bold">tmin</span>(<span style="color:#458;font-weight:bold">void</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#000;font-weight:bold">return</span> <span style="color:#099">1</span> <span style="color:#000;font-weight:bold">&lt;&lt;</span> <span style="color:#099">31</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="判断输入是否是补码中的最大整数">判断输入是否是补码中的最大整数</h2>
+<p>32位下，补码中的最大整数是<code>0x7fffffff</code>，接下来省略一些，只写8bits，下文同理。</p>
+<p>核心手段是造出<code>00000000</code>，利用0与非0值返回true与false：</p>
+<p>若 <code>x = 0111111</code></p>
+<p><code>x + 1 + x = 11111111</code></p>
+<p><code>~(x + 1 + x) = 00000000 = 0</code></p>
+<p>但同时需要排除 <code>x = 11111111</code> 的情况，因为此时 <code>x + 1 + x</code> 溢出后也得到 <code>11111111</code></p>
+<p>故借助：</p>
+<p><code>x = 11111111</code> 时 <code>x + !(x + 1) = 0</code></p>
+<p><code>x = 01111111</code> 时 <code>x + !(x + 1) = 01111111 = !0</code></p>
+<p>来排除：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#998;font-style:italic">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"> * isTmax - returns 1 if x is the maximum, two&#39;s complement number,
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"> *     and 0 otherwise 
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"> *   Legal ops: ! ~ &amp; ^ | +
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"> *   Max ops: 10
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"> *   Rating: 1
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"> */</span>
+</span></span><span style="display:flex;"><span><span style="color:#458;font-weight:bold">int</span> <span style="color:#900;font-weight:bold">isTmax</span>(<span style="color:#458;font-weight:bold">int</span> x) {
+</span></span><span style="display:flex;"><span>  <span style="color:#000;font-weight:bold">return</span> <span style="color:#000;font-weight:bold">!</span>(<span style="color:#000;font-weight:bold">~</span>(x <span style="color:#000;font-weight:bold">+</span> <span style="color:#099">1</span> <span style="color:#000;font-weight:bold">+</span> x)) <span style="color:#000;font-weight:bold">&amp;</span> (x <span style="color:#000;font-weight:bold">+</span> <span style="color:#000;font-weight:bold">!</span>(x <span style="color:#000;font-weight:bold">+</span> <span style="color:#099">1</span>));
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="判断所有奇数位是否都为1">判断所有奇数位是否都为1</h2>
+<p>位的编号从0（最低有效）到31（最高有效）</p>
+<p>采用掩码，即当 <code>x | 0x55555555 == 0xffffffff</code> 时则返回1</p>
+<p><code>0x55 == 0b 0101 0101</code></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#998;font-style:italic">/* 
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"> * allOddBits - return 1 if all odd-numbered bits in word set to 1
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"> *   where bits are numbered from 0 (least significant) to 31 (most significant)
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"> *   Examples allOddBits(0xFFFFFFFD) = 0, allOddBits(0xAAAAAAAA) = 1
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"> *   Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"> *   Max ops: 12
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"> *   Rating: 2
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"> */</span>
+</span></span><span style="display:flex;"><span><span style="color:#458;font-weight:bold">int</span> <span style="color:#900;font-weight:bold">allOddBits</span>(<span style="color:#458;font-weight:bold">int</span> x) {
+</span></span><span style="display:flex;"><span>  <span style="color:#458;font-weight:bold">int</span> a <span style="color:#000;font-weight:bold">=</span> (<span style="color:#099">0x55</span> <span style="color:#000;font-weight:bold">&lt;&lt;</span> <span style="color:#099">0</span>) <span style="color:#000;font-weight:bold">|</span> (<span style="color:#099">0x55</span> <span style="color:#000;font-weight:bold">&lt;&lt;</span> <span style="color:#099">8</span>) <span style="color:#000;font-weight:bold">|</span> (<span style="color:#099">0x55</span> <span style="color:#000;font-weight:bold">&lt;&lt;</span> <span style="color:#099">16</span>) <span style="color:#000;font-weight:bold">|</span> (<span style="color:#099">0x55</span> <span style="color:#000;font-weight:bold">&lt;&lt;</span> <span style="color:#099">24</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#000;font-weight:bold">return</span> <span style="color:#000;font-weight:bold">!~</span>(x <span style="color:#000;font-weight:bold">|</span> a);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="求--x">求 -x</h2>
+<p>按位取反加一即得负数</p>
+<p>补码实际上是一个<code>阿贝尔群</code>，对于 <code>x</code>，<code>-x</code> 是其补码，所以 <code>-x</code> 可以通过对 <code>x</code> 取反加1得到</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#998;font-style:italic">/* 
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"> * negate - return -x 
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"> *   Example: negate(1) = -1.
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"> *   Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"> *   Max ops: 5
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"> *   Rating: 2
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"> */</span>
+</span></span><span style="display:flex;"><span><span style="color:#458;font-weight:bold">int</span> <span style="color:#900;font-weight:bold">negate</span>(<span style="color:#458;font-weight:bold">int</span> x) {
+</span></span><span style="display:flex;"><span>  <span style="color:#000;font-weight:bold">return</span> <span style="color:#000;font-weight:bold">~</span>x <span style="color:#000;font-weight:bold">+</span> <span style="color:#099">1</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="判断是否为数字字符ascii码">判断是否为数字字符ASCII码</h2>
+<p>用减法，判断 <code>x-0x30 &gt;= 0 &amp;&amp; 0x39 - x &gt;= 0</code></p>
+<p>但题干要求不能用减号，那么可以根据补码原理用加号实现减法</p>
+<p>最后判断两个中间值的符号位全为0即可返回true</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#998;font-style:italic">/* 
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"> * isAsciiDigit - return 1 if 0x30 &lt;= x &lt;= 0x39 (ASCII codes for characters &#39;0&#39; to &#39;9&#39;)
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"> *   Example: isAsciiDigit(0x35) = 1.
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"> *            isAsciiDigit(0x3a) = 0.
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"> *            isAsciiDigit(0x05) = 0.
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"> *   Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"> *   Max ops: 15
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"> *   Rating: 3
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"> */</span>
+</span></span><span style="display:flex;"><span><span style="color:#458;font-weight:bold">int</span> <span style="color:#900;font-weight:bold">isAsciiDigit</span>(<span style="color:#458;font-weight:bold">int</span> x) {
+</span></span><span style="display:flex;"><span>  <span style="color:#458;font-weight:bold">int</span> a <span style="color:#000;font-weight:bold">=</span> x <span style="color:#000;font-weight:bold">+</span> (<span style="color:#000;font-weight:bold">~</span><span style="color:#099">0x30</span> <span style="color:#000;font-weight:bold">+</span> <span style="color:#099">1</span>); <span style="color:#998;font-style:italic">// x - 0x30
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>  <span style="color:#458;font-weight:bold">int</span> b <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">0x39</span> <span style="color:#000;font-weight:bold">+</span> (<span style="color:#000;font-weight:bold">~</span>x <span style="color:#000;font-weight:bold">+</span> <span style="color:#099">1</span>); <span style="color:#998;font-style:italic">// 0x39 - x
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>  <span style="color:#000;font-weight:bold">return</span> <span style="color:#000;font-weight:bold">!</span>(a <span style="color:#000;font-weight:bold">&gt;&gt;</span> <span style="color:#099">31</span> <span style="color:#000;font-weight:bold">|</span> b <span style="color:#000;font-weight:bold">&gt;&gt;</span> <span style="color:#099">31</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="实现c语言---运算符">实现C语言 ? : 运算符</h2>
+<p>将x转化为 <code>00000000</code> 或 <code>11111111</code> 用于计算</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#998;font-style:italic">/* 
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"> * conditional - same as x ? y : z 
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"> *   Example: conditional(2,4,5) = 4
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"> *   Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"> *   Max ops: 16
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"> *   Rating: 3
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"> */</span>
+</span></span><span style="display:flex;"><span><span style="color:#458;font-weight:bold">int</span> <span style="color:#900;font-weight:bold">conditional</span>(<span style="color:#458;font-weight:bold">int</span> x, <span style="color:#458;font-weight:bold">int</span> y, <span style="color:#458;font-weight:bold">int</span> z) {
+</span></span><span style="display:flex;"><span>  x <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">!!</span>x;
+</span></span><span style="display:flex;"><span>  x <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">~</span>x<span style="color:#000;font-weight:bold">+</span><span style="color:#099">1</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#000;font-weight:bold">return</span> (x<span style="color:#000;font-weight:bold">&amp;</span>y)<span style="color:#000;font-weight:bold">|</span>(<span style="color:#000;font-weight:bold">~</span>x<span style="color:#000;font-weight:bold">&amp;</span>z);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="实现--运算符">实现 &lt;= 运算符</h2>
+<blockquote>
+<p>&laquo;左移一律补0。&raquo;右移可能补0也可能补符号位，视机器而定，通常是补符号位。</p>
+</blockquote>
+<p>通过位运算实现比较两个数的大小，两种情况：一是符号不同正数为大，二是符号相同看差值符号</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#998;font-style:italic">/* 
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"> * isLessOrEqual - if x &lt;= y  then return 1, else return 0 
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"> *   Example: isLessOrEqual(4,5) = 1.
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"> *   Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"> *   Max ops: 24
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"> *   Rating: 3
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"> */</span>
+</span></span><span style="display:flex;"><span><span style="color:#458;font-weight:bold">int</span> <span style="color:#900;font-weight:bold">isLessOrEqual</span>(<span style="color:#458;font-weight:bold">int</span> x, <span style="color:#458;font-weight:bold">int</span> y) {
+</span></span><span style="display:flex;"><span>	<span style="color:#458;font-weight:bold">int</span> v <span style="color:#000;font-weight:bold">=</span> y <span style="color:#000;font-weight:bold">+</span> (<span style="color:#000;font-weight:bold">~</span>x<span style="color:#000;font-weight:bold">+</span><span style="color:#099">1</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#458;font-weight:bold">int</span> vSignBit <span style="color:#000;font-weight:bold">=</span> (v <span style="color:#000;font-weight:bold">&gt;&gt;</span> <span style="color:#099">31</span>) <span style="color:#000;font-weight:bold">&amp;</span> <span style="color:#099">1</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#458;font-weight:bold">int</span> xSign <span style="color:#000;font-weight:bold">=</span> x <span style="color:#000;font-weight:bold">&amp;</span> (<span style="color:#099">1</span><span style="color:#000;font-weight:bold">&lt;&lt;</span><span style="color:#099">31</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#458;font-weight:bold">int</span> ySign <span style="color:#000;font-weight:bold">=</span> y <span style="color:#000;font-weight:bold">&amp;</span> (<span style="color:#099">1</span><span style="color:#000;font-weight:bold">&lt;&lt;</span><span style="color:#099">31</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#458;font-weight:bold">int</span> signXor <span style="color:#000;font-weight:bold">=</span> (xSign <span style="color:#000;font-weight:bold">^</span> ySing) <span style="color:#000;font-weight:bold">&gt;&gt;</span> <span style="color:#099">31</span> <span style="color:#000;font-weight:bold">&amp;</span> <span style="color:#099">1</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">return</span> ((<span style="color:#000;font-weight:bold">!</span>signXor) <span style="color:#000;font-weight:bold">&amp;</span> (<span style="color:#000;font-weight:bold">!</span>vSignBit)) <span style="color:#000;font-weight:bold">|</span> ((signXor) <span style="color:#000;font-weight:bold">&amp;</span> (xSign<span style="color:#000;font-weight:bold">&gt;&gt;</span><span style="color:#099">31</span>));
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="实现逻辑非">实现逻辑非!</h2>
+<p><code>00000000 ｜ (~00000000 + 1)</code> 得 0，其余数做此运算都得非0，且符号位为1</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#998;font-style:italic">/* 
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"> * logicalNeg - implement the ! operator, using all of 
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"> *              the legal operators except !
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"> *   Examples: logicalNeg(3) = 0, logicalNeg(0) = 1
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"> *   Legal ops: ~ &amp; ^ | + &lt;&lt; &gt;&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"> *   Max ops: 12
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"> *   Rating: 4 
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"> */</span>
+</span></span><span style="display:flex;"><span><span style="color:#458;font-weight:bold">int</span> <span style="color:#900;font-weight:bold">logicalNeg</span>(<span style="color:#458;font-weight:bold">int</span> x) {
+</span></span><span style="display:flex;"><span>	<span style="color:#000;font-weight:bold">return</span> ((x <span style="color:#000;font-weight:bold">|</span> (<span style="color:#000;font-weight:bold">~</span>x <span style="color:#000;font-weight:bold">+</span> <span style="color:#099">1</span>)) <span style="color:#000;font-weight:bold">&gt;&gt;</span> <span style="color:#099">31</span>) <span style="color:#000;font-weight:bold">+</span> <span style="color:#099">1</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="求一个数用补码表示所需的最少位数">求一个数用补码表示所需的最少位数</h2>
+<h2 id="求浮点数与2相乘的值">求浮点数与2相乘的值</h2>
+<h2 id="浮点数转整数">浮点数转整数</h2>
+<h2 id="判断指数是否上溢或者下溢">判断指数是否上溢或者下溢</h2>
 </div>
   
 </article>

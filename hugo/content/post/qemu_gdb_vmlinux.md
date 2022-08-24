@@ -387,7 +387,7 @@ gdb vmlinux -ex "target remote :1234"
 
 # 实战漏洞调试
 
-参见：[https://cerr.cc/post/cve-2016-5195/](post/cve-2016-5195/)
+参见：[https://cerr.cc/post/cve-2016-5195/](/post/cve-2016-5195/)
 
 
 
