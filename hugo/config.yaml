@@ -1,13 +1,14 @@
 baseurl: https://cerr.cc
 theme: stack
 title: やれやれ DA✰ZE
-languageCode: en-us
 publishDir: ..
 paginate: 10
+
 
 permalinks:
     post: /post/:slug/
     page: /:slug/
+
 
 params:
     mainSections:
@@ -35,9 +36,9 @@ params:
     article:
         math: false
         toc: true
-        readingTime: true
+        readingTime: false
         license:
-            enabled: true
+            enabled: false
             default: Licensed under CC BY-NC-SA 4.0
 
     widgets:
@@ -55,14 +56,6 @@ params:
         page:
             - type: toc
 
-    opengraph:
-        twitter:
-            # Your Twitter username
-            site: dev2ero
-
-            # Available values: summary, summary_large_image
-            card: summary_large_image
-
     defaultImage:
         opengraph:
             enabled: false
@@ -70,11 +63,8 @@ params:
             src:
 
     colorScheme:
-        # Display toggle
         toggle: true
-
-        # Available values: auto, light, dark
-        default: auto
+        default: auto # Available values: auto, light, dark
 
     imageProcessing:
         cover:
@@ -82,12 +72,10 @@ params:
         content:
             enabled: true
 
-### Custom menu
-### See https://docs.stack.jimmycai.com/configuration/custom-menu.html
-### To remove about, archive and search page menu item, remove `menu` field from their FrontMatter
+
+# See https://docs.stack.jimmycai.com/configuration/custom-menu.html
 menu:
     main: []
-
     social:
         - identifier: github
           name: GitHub
@@ -115,9 +103,9 @@ related:
     indices:
         - name: tags
           weight: 100
-
         - name: categories
           weight: 200
+
 
 markup:
     goldmark:
@@ -134,4 +122,4 @@ markup:
         lineNos: true
         lineNoStart: 1
         lineNumbersInTable: true
-        tabWidth: 2
+        tabWidth: 4

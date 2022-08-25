@@ -5,7 +5,6 @@
         <link>https://cerr.cc/</link>
         <description>Recent content on やれやれ DA✰ZE</description>
         <generator>Hugo -- gohugo.io</generator>
-        <language>en-us</language>
         <lastBuildDate>Fri, 19 Aug 2022 17:06:58 +0800</lastBuildDate><atom:link href="https://cerr.cc/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>CSAPP Lab WriteUp</title>
         <link>https://cerr.cc/post/csapp-lab-writeup/</link>
@@ -23404,6 +23403,62 @@ So set a breakpoint at busybox&amp;rsquo;s entry address and send c to gdb, we w
     &gt;Building a tiny linux kernel&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
+        </item>
+        <item>
+        <title>家庭作业</title>
+        <link>https://cerr.cc/categories/%E5%AE%B6%E5%BA%AD%E4%BD%9C%E4%B8%9A/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://cerr.cc/categories/%E5%AE%B6%E5%BA%AD%E4%BD%9C%E4%B8%9A/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>工地日记</title>
+        <link>https://cerr.cc/categories/%E5%B7%A5%E5%9C%B0%E6%97%A5%E8%AE%B0/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://cerr.cc/categories/%E5%B7%A5%E5%9C%B0%E6%97%A5%E8%AE%B0/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>漏洞分析</title>
+        <link>https://cerr.cc/categories/%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://cerr.cc/categories/%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>盗版简史</title>
+        <link>https://cerr.cc/categories/%E7%9B%97%E7%89%88%E7%AE%80%E5%8F%B2/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://cerr.cc/categories/%E7%9B%97%E7%89%88%E7%AE%80%E5%8F%B2/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>考试小抄</title>
+        <link>https://cerr.cc/categories/%E8%80%83%E8%AF%95%E5%B0%8F%E6%8A%84/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://cerr.cc/categories/%E8%80%83%E8%AF%95%E5%B0%8F%E6%8A%84/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>课堂笔记</title>
+        <link>https://cerr.cc/categories/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://cerr.cc/categories/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>赛博人生</title>
+        <link>https://cerr.cc/categories/%E8%B5%9B%E5%8D%9A%E4%BA%BA%E7%94%9F/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://cerr.cc/categories/%E8%B5%9B%E5%8D%9A%E4%BA%BA%E7%94%9F/</guid>
+        <description></description>
         </item>
         
     </channel>
