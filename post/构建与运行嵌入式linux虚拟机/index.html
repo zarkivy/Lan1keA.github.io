@@ -1,0 +1,1522 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='with buildroot and qemu-system'><title>构建与运行嵌入式linux虚拟机</title>
+
+<link rel='canonical' href='https://cerr.cc/post/%E6%9E%84%E5%BB%BA%E4%B8%8E%E8%BF%90%E8%A1%8C%E5%B5%8C%E5%85%A5%E5%BC%8Flinux%E8%99%9A%E6%8B%9F%E6%9C%BA/'>
+
+<link rel="stylesheet" href="/scss/style.min.ac77dcf8b111b51da39a92990f431923f210f3876d85798a2125667f96dc33a4.css"><meta property='og:title' content='构建与运行嵌入式linux虚拟机'>
+<meta property='og:description' content='with buildroot and qemu-system'>
+<meta property='og:url' content='https://cerr.cc/post/%E6%9E%84%E5%BB%BA%E4%B8%8E%E8%BF%90%E8%A1%8C%E5%B5%8C%E5%85%A5%E5%BC%8Flinux%E8%99%9A%E6%8B%9F%E6%9C%BA/'>
+<meta property='og:site_name' content='Zikey Vi'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='QEMU' /><meta property='article:tag' content='Linux' /><meta property='article:tag' content='Compile' /><meta property='article:published_time' content='2022-05-10T20:59:43&#43;08:00'/><meta property='article:modified_time' content='2022-05-10T20:59:43&#43;08:00'/><meta property='og:image' content='https://s2.loli.net/2022/05/08/2DqjsbwNpdUM4XA.jpg' />
+<meta name="twitter:site" content="@dev2ero">
+    <meta name="twitter:creator" content="@dev2ero"><meta name="twitter:title" content="构建与运行嵌入式linux虚拟机">
+<meta name="twitter:description" content="with buildroot and qemu-system"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://s2.loli.net/2022/05/08/2DqjsbwNpdUM4XA.jpg' />
+    <link rel="shortcut icon" href="img/favicon.png" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu83ce41192ed66b608a10477eb7108e0c_128714_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Zikey Vi</a></h1>
+            <h2 class="site-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/dev2ero'
+                        target="_blank"
+                        title="GitHub"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com/dev2ero'
+                        target="_blank"
+                        title="Twitter"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archive</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/love/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-heart" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M19.5 13.572l-7.5 7.428l-7.5 -7.428m0 0a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
+</svg>
+
+                
+                <span>Love</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/friends/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-friends" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <circle cx="7" cy="5" r="2" />
+  <path d="M5 22v-5l-1 -1v-4a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4l-1 1v5" />
+  <circle cx="17" cy="5" r="2" />
+  <path d="M15 22v-4h-2l2 -6a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1l2 6h-2v4" />
+</svg>
+
+                
+                <span>Friends</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/utils/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Utils</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/board/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copy" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <rect x="8" y="8" width="12" height="12" rx="2" />
+  <path d="M16 8v-2a2 2 0 0 0 -2 -2h-8a2 2 0 0 0 -2 2v8a2 2 0 0 0 2 2h2" />
+</svg>
+
+                
+                <span>Board</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+<main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/post/%E6%9E%84%E5%BB%BA%E4%B8%8E%E8%BF%90%E8%A1%8C%E5%B5%8C%E5%85%A5%E5%BC%8Flinux%E8%99%9A%E6%8B%9F%E6%9C%BA/">
+                
+                    <img src="https://s2.loli.net/2022/05/08/2DqjsbwNpdUM4XA.jpg" loading="lazy" alt="Featured image of post 构建与运行嵌入式linux虚拟机" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E5%B7%A5%E5%9C%B0%E6%97%A5%E8%AE%B0/" >
+                工地日记
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/post/%E6%9E%84%E5%BB%BA%E4%B8%8E%E8%BF%90%E8%A1%8C%E5%B5%8C%E5%85%A5%E5%BC%8Flinux%E8%99%9A%E6%8B%9F%E6%9C%BA/">构建与运行嵌入式linux虚拟机</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            with buildroot and qemu-system
+        </h3>
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">May 10, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    8 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="自动挡">自动挡</h2>
+<h3 id="一路默认">一路默认</h3>
+<p>通过git或http获取buildroot：</p>
+<p>官网：https://buildroot.org/</p>
+<p>git：<code>git clone https://git.buildroot.net/buildroot</code></p>
+<p>进入buildroot根目录，可以看到一个叫configs的文件夹，其中记录了许多硬件平台和部分qemu虚拟平台的默认配置参数。执行 <code>ls configs | grep qemu</code>，可以看到：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ini" data-lang="ini"><span class="line"><span class="cl"><span class="na">qemu_aarch64_sbsa_defconfig</span>
+</span></span><span class="line"><span class="cl"><span class="na">qemu_aarch64_virt_defconfig</span>
+</span></span><span class="line"><span class="cl"><span class="na">qemu_arm_versatile_defconfig</span>
+</span></span><span class="line"><span class="cl"><span class="na">qemu_arm_versatile_nommu_defconfig</span>
+</span></span><span class="line"><span class="cl"><span class="na">qemu_arm_vexpress_defconfig</span>
+</span></span><span class="line"><span class="cl"><span class="na">qemu_arm_vexpress_tz_defconfig</span>
+</span></span><span class="line"><span class="cl"><span class="na">qemu_m68k_mcf5208_defconfig</span>
+</span></span><span class="line"><span class="cl"><span class="na">qemu_m68k_q800_defconfig</span>
+</span></span><span class="line"><span class="cl"><span class="na">qemu_microblazebe_mmu_defconfig</span>
+</span></span><span class="line"><span class="cl"><span class="na">qemu_microblazeel_mmu_defconfig</span>
+</span></span><span class="line"><span class="cl"><span class="na">qemu_mips32r2el_malta_defconfig</span>
+</span></span><span class="line"><span class="cl"><span class="na">qemu_mips32r2_malta_defconfig</span>
+</span></span><span class="line"><span class="cl"><span class="na">qemu_mips32r6el_malta_defconfig</span>
+</span></span><span class="line"><span class="cl"><span class="na">qemu_mips32r6_malta_defconfig</span>
+</span></span><span class="line"><span class="cl"><span class="na">qemu_mips64el_malta_defconfig</span>
+</span></span><span class="line"><span class="cl"><span class="na">qemu_mips64_malta_defconfig</span>
+</span></span><span class="line"><span class="cl"><span class="na">qemu_mips64r6el_malta_defconfig</span>
+</span></span><span class="line"><span class="cl"><span class="na">qemu_mips64r6_malta_defconfig</span>
+</span></span><span class="line"><span class="cl"><span class="na">qemu_nios2_10m50_defconfig</span>
+</span></span><span class="line"><span class="cl"><span class="na">qemu_or1k_defconfig</span>
+</span></span><span class="line"><span class="cl"><span class="na">qemu_ppc64_e5500_defconfig</span>
+</span></span><span class="line"><span class="cl"><span class="na">qemu_ppc64le_powernv8_defconfig</span>
+</span></span><span class="line"><span class="cl"><span class="na">qemu_ppc64le_pseries_defconfig</span>
+</span></span><span class="line"><span class="cl"><span class="na">qemu_ppc64_pseries_defconfig</span>
+</span></span><span class="line"><span class="cl"><span class="na">qemu_ppc_bamboo_defconfig</span>
+</span></span><span class="line"><span class="cl"><span class="na">qemu_ppc_e500mc_defconfig</span>
+</span></span><span class="line"><span class="cl"><span class="na">qemu_ppc_g3beige_defconfig</span>
+</span></span><span class="line"><span class="cl"><span class="na">qemu_ppc_mac99_defconfig</span>
+</span></span><span class="line"><span class="cl"><span class="na">qemu_ppc_mpc8544ds_defconfig</span>
+</span></span><span class="line"><span class="cl"><span class="na">qemu_riscv32_virt_defconfig</span>
+</span></span><span class="line"><span class="cl"><span class="na">qemu_riscv64_virt_defconfig</span>
+</span></span><span class="line"><span class="cl"><span class="na">qemu_s390x_defconfig</span>
+</span></span><span class="line"><span class="cl"><span class="na">qemu_sh4eb_r2d_defconfig</span>
+</span></span><span class="line"><span class="cl"><span class="na">qemu_sh4_r2d_defconfig</span>
+</span></span><span class="line"><span class="cl"><span class="na">qemu_sparc64_sun4u_defconfig</span>
+</span></span><span class="line"><span class="cl"><span class="na">qemu_sparc_ss10_defconfig</span>
+</span></span><span class="line"><span class="cl"><span class="na">qemu_x86_64_defconfig</span>
+</span></span><span class="line"><span class="cl"><span class="na">qemu_x86_defconfig</span>
+</span></span><span class="line"><span class="cl"><span class="na">qemu_xtensa_lx60_defconfig</span>
+</span></span><span class="line"><span class="cl"><span class="na">qemu_xtensa_lx60_nommu_defconfig</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>举例来讲，我们使用 <code>make qemu_arm_vexpress_defconfig</code>，将qemu模拟的vexperss平台设为编译目标：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">make qemu_arm_vexpress_defconfig
+</span></span><span class="line"><span class="cl">make
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>或者使用 make menuconfig 手动配置。</p>
+<p>等待编译完成，即可在output文件夹中拿到相应目标文件：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">output/images/zImage               <span class="c1"># 内核</span>
+</span></span><span class="line"><span class="cl">output/images/rootfs.ext2          <span class="c1"># ext2根文件系统镜像</span>
+</span></span><span class="line"><span class="cl">output/images/vexpress-v2p-ca9.dtb <span class="c1"># arm设备树</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>使用qemu-system-arm运行得到的linux：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">qemu-system-arm <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>	-M vexpress-a9 <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>	-smp <span class="m">1</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>	-m <span class="m">256</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>	-kernel output/images/zImage <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>	-dtb output/images/vexpress-v2p-ca9.dtb <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>	-drive <span class="nv">file</span><span class="o">=</span>output/images/rootfs.ext2,if<span class="o">=</span>sd,format<span class="o">=</span>raw <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>	-append <span class="s2">&#34;console=ttyAMA0,115200 root=/dev/mmcblk0&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>	-serial stdio <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>	-nographic
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>弄完发现过程竟如此简单，buildroot把所有活都干了……</p>
+<h3 id="全自动方案中的定制">全自动方案中的定制</h3>
+<p>即使需要定制部分组件，也是能借力buildroot的全自动化方案的。</p>
+<p>先导入自己需要的全自动方案的默认配置，再使用<code>make menuconfig</code>对其生成的<code>.config</code>进行定制：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">make qemu_aarch64_virt_defconfig
+</span></span><span class="line"><span class="cl">make menuconfig
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>举例来说，如果我的需求是使用第三方内核，则修改：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"> Kernel  ---&gt;
+</span></span><span class="line"><span class="cl">         Kernel version <span class="o">(</span>Custom Git repository<span class="o">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="记一次旧版本工具链的自动挡构建">记一次旧版本工具链的自动挡构建</h3>
+<blockquote>
+<p>这一节实际上由另一篇文章合并而来，故与上下文不衔接，内容独立。</p>
+</blockquote>
+<p>构建这一步，能用好buildroot的话基本就没有多少需要手动配置的步骤了。</p>
+<p>构建特定的目标前，我们要确定好各种参数：指令集架构、工具链、链接库……这当然都是可以经由<code>make menuconfig</code>一点点设定好的。不过更常用更快捷的方式，还是直接指定一个完全满足如上所有参数的特定平台，使用其defconfig即可。</p>
+<p>眼下我需要一个4.9LTS版本的内核，就以此为例了。</p>
+<p>首先由git仓库获取buildroot，而非由http下载特定发行包。这样做带来的方便是“一次下载，终生更新，随时切换”：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">git clone https://git.buildroot.net/buildroot
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>由于内核版本对于构建环境的依赖，往往容易出现各种环境不匹配导致的编译失败，即是使用buildroot也自动构建也一样。所以我通常有如下三种递增的解决方案：</p>
+<ul>
+<li>最新版本buildroot中直接指定旧版本内核进行构建</li>
+<li>在与目标内核版本匹配的旧版本buildroot中进行构建</li>
+<li>在与 目标版本内核和buildroot版本 都匹配的 旧版发行版的docker容器中 进行构建</li>
+</ul>
+<p>由上到下，麻烦度递增，但构建成功率也递增。</p>
+<p>这里选取方案二继续进行演示。</p>
+<p>来此查询到Linux Kernel 4.9 LTS的发布日期：<a class="link" href="https://en.wikipedia.org/wiki/Linux_kernel_version_history"  target="_blank" rel="noopener"
+    >https://en.wikipedia.org/wiki/Linux_kernel_version_history</a></p>
+<p><img src="https://s2.loli.net/2022/06/14/avF3QMcVGLpreN4.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image.png"
+	
+	
+></p>
+<p>2016年12月。嗯，看看同时期的buildroot版本有：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">➜  buildroot git:<span class="o">(</span>master<span class="o">)</span> git switch 
+</span></span><span class="line"><span class="cl">2012.11.x  2016.08.x  2017.08.x  2018.08.x  2019.08.x  2020.08.x  2021.08.x  next
+</span></span><span class="line"><span class="cl">2013.08.x  2016.11.x  2017.11.x  2018.11.x  2019.11.x  2020.11.x  2021.11.x
+</span></span><span class="line"><span class="cl">2015.08.x  2017.02.x  2018.02.x  2019.02.x  2020.02.x  2021.02.x  2022.02.x
+</span></span><span class="line"><span class="cl">2015.11.x  2017.05.x  2018.05.x  2019.05.x  2020.05.x  2021.05.x  master
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>晚于内核发布且最贴近的是2017.02.x，switch过去：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">➜  buildroot git:<span class="o">(</span>master<span class="o">)</span> git switch 2017.02.x
+</span></span><span class="line"><span class="cl">Branch <span class="s1">&#39;2017.02.x&#39;</span> <span class="nb">set</span> up to track remote branch <span class="s1">&#39;2017.02.x&#39;</span> from <span class="s1">&#39;origin&#39;</span>.
+</span></span><span class="line"><span class="cl">Switched to a new branch <span class="s1">&#39;2017.02.x&#39;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>由于我需要的目标平台是aarch64的virt，故搜索buildroot提供的默认配置defconfig并使用。接着<code>make</code>开始构建即可：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">➜  buildroot git:<span class="o">(</span>2017.02.x<span class="o">)</span> ls configs <span class="p">|</span> grep qemu <span class="p">|</span> grep aarch
+</span></span><span class="line"><span class="cl">qemu_aarch64_virt_defconfig
+</span></span><span class="line"><span class="cl">➜  buildroot git:<span class="o">(</span>2017.02.x<span class="o">)</span> make qemu_aarch64_virt_defconfig
+</span></span><span class="line"><span class="cl">……
+</span></span><span class="line"><span class="cl">➜  buildroot git:<span class="o">(</span>2017.02.x<span class="o">)</span> make
+</span></span><span class="line"><span class="cl">……
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>喝几杯咖啡的时间（具体是几杯取决于你host的配置与网络环境），就能在output中拿到所有的结果：编译工具链、内核、链接库、rootfs、可引导磁盘镜像、qemu虚拟机一键启动脚本……</p>
+<p>☕️☕️☕️……</p>
+<p>好诶！居然又失败了😩👇</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">make: *** <span class="o">[</span>package/pkg-generic.mk:219: /buildroot/output/build/host-m4-1.4.18/.stamp_built<span class="o">]</span> Error <span class="m">2</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>所以还得接着写。启动方案三，准备docker container：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">➜  ~ docker pull ubuntu:18.04
+</span></span><span class="line"><span class="cl">18.04: Pulling from library/ubuntu
+</span></span><span class="line"><span class="cl">09db6f815738: Pull <span class="nb">complete</span>
+</span></span><span class="line"><span class="cl">Digest: sha256:478caf1bec1afd54a58435ec681c8755883b7eb843a8630091890130b15a79af
+</span></span><span class="line"><span class="cl">Status: Downloaded newer image <span class="k">for</span> ubuntu:18.04
+</span></span><span class="line"><span class="cl">docker.io/library/ubuntu:18.04
+</span></span><span class="line"><span class="cl">➜  ~ docker run -it -v /host_path:/guest_path ubuntu:18.04 /bin/bash
+</span></span><span class="line"><span class="cl">root@c1c9ce358373:/# <span class="nb">exit</span>
+</span></span><span class="line"><span class="cl">➜  ~ docker start c1<span class="p">;</span> docker <span class="nb">exec</span> -it c1 /bin/bash
+</span></span><span class="line"><span class="cl">c1
+</span></span><span class="line"><span class="cl">root@c1c9ce358373:/# 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>好了，这下buildroot也在老环境内了，再次重复上述步骤即可。</p>
+<p>换用ubuntu18.04果然成功了、</p>
+<p>如果你和我一样懒得弄共享文件夹，就直接来<code>/var/lib/docker/overlay2</code>中取货吧。毕竟docker只是在文件系统层做了虚拟化，甚至连虚拟磁盘都不需要，直接在host的文件系统中存放了guest的文件。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">➜  ~ <span class="nb">cd</span> /var/lib/docker/overlay2
+</span></span><span class="line"><span class="cl">➜  overlay2 du -h -d <span class="m">1</span>
+</span></span><span class="line"><span class="cl">7.8G    ./d8ef00627999edcb9a6fee28d49bf9312f3bb56ca62101ce8850b3b406c4c498
+</span></span><span class="line"><span class="cl">40K     ./d8ef00627999edcb9a6fee28d49bf9312f3bb56ca62101ce8850b3b406c4c498-init
+</span></span><span class="line"><span class="cl">69M     ./cd42e49af35fa4606d2b1f029e089cc3caca7658ff0b6e2bca950dc7379318ee
+</span></span><span class="line"><span class="cl">16K     ./l
+</span></span><span class="line"><span class="cl">7.9G    .
+</span></span><span class="line"><span class="cl">➜  overlay2 <span class="nb">cd</span> d8ef00627999edcb9a6fee28d49bf9312f3bb56ca62101ce8850b3b406c4c498/merged/
+</span></span><span class="line"><span class="cl">➜  merged ls
+</span></span><span class="line"><span class="cl">bin  boot  buildroot  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>接着进入<code>buildroot/output</code>取货即可。虽然其中已有4.9.6的内核了，不过我需要的是由此得到的编译工具链，以便编译自行定制的4.9版本内核。（旧版内核需要旧版工具链编译）</p>
+<h2 id="手动档">手动档</h2>
+<p>另一篇使用qemu-system调试内核的文章中已有部分描述：</p>
+<p><a class="link" href="/post/qemu_dbg_kernel/" >http://cerr.cc/post/qemu_dbg_kernel/</a></p>
+<p>不过接下来还是记录下另一次实践。目标设定为aarch64 linux 5.4</p>
+<h3 id="编译工具链">编译工具链</h3>
+<p>这个好说，方才Easymode里不是刚好做了一个嘛。buildroot构建好了所有target目标，自然也为此生成了完整的host构建工具链。</p>
+<blockquote>
+<p>若目标为旧版本内核，则需要旧版本工具链，构建方式在另一篇文章中有记录：<a class="link" href="post/qemu_dbg_kernel/" >https://cerr.cc/post/qemu_dbg_kernel/</a></p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">➜  buildroot git:<span class="o">(</span>master<span class="o">)</span> ls
+</span></span><span class="line"><span class="cl">arch   CHANGES           configs     dl    linux            output   support    utils
+</span></span><span class="line"><span class="cl">board  Config.in         COPYING     docs  Makefile         package  system
+</span></span><span class="line"><span class="cl">boot   Config.in.legacy  DEVELOPERS  fs    Makefile.legacy  README   toolchain
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">➜  buildroot git:<span class="o">(</span>master<span class="o">)</span> ls output
+</span></span><span class="line"><span class="cl">build  host  images  staging  target
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">➜  buildroot git:<span class="o">(</span>master<span class="o">)</span> ls output/build
+</span></span><span class="line"><span class="cl">buildroot-config                  host-meson-0.62.1
+</span></span><span class="line"><span class="cl">buildroot-fs                      host-mpc-1.2.1
+</span></span><span class="line"><span class="cl">build-time.log                    host-mpfr-4.1.0
+</span></span><span class="line"><span class="cl">busybox-1.35.0                    host-ninja-1.10.2.g51db2.kitware.jobserver-1
+</span></span><span class="line"><span class="cl">host-acl-2.3.1                    host-openssl
+</span></span><span class="line"><span class="cl">host-attr-2.5.1                   host-patchelf-0.9
+</span></span><span class="line"><span class="cl">host-autoconf-2.71                host-pcre-8.45
+</span></span><span class="line"><span class="cl">host-autoconf-archive-2021.02.19  host-pixman-0.40.0
+</span></span><span class="line"><span class="cl">host-automake-1.16.5              host-pkgconf-1.6.3
+</span></span><span class="line"><span class="cl">host-binutils-2.37                host-python3-3.10.4
+</span></span><span class="line"><span class="cl">host-bison-3.8.2                  host-python-setuptools-62.1.0
+</span></span><span class="line"><span class="cl">host-cmake-3.18.6                 host-qemu-7.0.0
+</span></span><span class="line"><span class="cl">host-dtc-1.6.1                    host-skeleton
+</span></span><span class="line"><span class="cl">host-e2fsprogs-1.46.5             host-util-linux-2.38
+</span></span><span class="line"><span class="cl">host-expat-2.4.7                  host-zlib
+</span></span><span class="line"><span class="cl">host-fakeroot-1.26                ifupdown-scripts
+</span></span><span class="line"><span class="cl">host-flex-2.6.4                   initscripts
+</span></span><span class="line"><span class="cl">host-gcc-final-10.3.0             linux-5.15.18
+</span></span><span class="line"><span class="cl">host-gcc-initial-10.3.0           linux-headers-5.15.18
+</span></span><span class="line"><span class="cl">host-gettext                      locales.nopurge
+</span></span><span class="line"><span class="cl">host-gettext-tiny-0.3.2           packages-file-list-host.txt
+</span></span><span class="line"><span class="cl">host-gmp-6.2.1                    packages-file-list-staging.txt
+</span></span><span class="line"><span class="cl">host-kmod-29                      packages-file-list.txt
+</span></span><span class="line"><span class="cl">host-libffi-3.4.2                 skeleton
+</span></span><span class="line"><span class="cl">host-libglib2-2.70.4              skeleton-init-common
+</span></span><span class="line"><span class="cl">host-libopenssl-1.1.1o            skeleton-init-sysv
+</span></span><span class="line"><span class="cl">host-libtool-2.4.6                toolchain
+</span></span><span class="line"><span class="cl">host-libzlib-1.2.12               toolchain-buildroot
+</span></span><span class="line"><span class="cl">host-m4-1.4.19                    uclibc-1.0.40
+</span></span><span class="line"><span class="cl">host-makedevs                     urandom-scripts
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">➜  buildroot git:<span class="o">(</span>master<span class="o">)</span> ls output/host
+</span></span><span class="line"><span class="cl">aarch64-buildroot-linux-uclibc  bin  doc  etc  include  lib  lib64  libexec  sbin  share  usr  var
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">➜  buildroot git:<span class="o">(</span>master<span class="o">)</span> ls output/target
+</span></span><span class="line"><span class="cl">bin  etc  lib64    media  opt   root  sbin  THIS_IS_NOT_YOUR_ROOT_FILESYSTEM  usr
+</span></span><span class="line"><span class="cl">dev  lib  linuxrc  mnt    proc  run   sys   tmp                               var
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">➜  buildroot git:<span class="o">(</span>master<span class="o">)</span> ls output/images
+</span></span><span class="line"><span class="cl">Image  rootfs.ext2  rootfs.ext4  start-qemu.sh
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">➜  buildroot git:<span class="o">(</span>master<span class="o">)</span> ls output/staging
+</span></span><span class="line"><span class="cl">bin  dev  etc  lib  lib64  media  mnt  opt  proc  root  run  sbin  sys  tmp  usr
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">➜  buildroot git:<span class="o">(</span>master<span class="o">)</span> file output/staging
+</span></span><span class="line"><span class="cl">output/staging: symbolic link to /f/software/buildroot/output/host/aarch64-buildroot-linux-uclibc/sysroot
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>output/host</code>下即是面向buildroot构建前设定的目标平台的编译工具链。</p>
+<blockquote>
+<p>编译工具链的命名遵循 arch-vendor-(os-)abi 的格式</p>
+</blockquote>
+<p>同时也可以直接从这些地方下载到：</p>
+<ul>
+<li>
+<p>arm cortex-a:<a class="link" href="https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-a/downloads"  target="_blank" rel="noopener"
+    >The GNU Toolchain for the Cortex-A Family Downloads</a></p>
+</li>
+<li>
+<p>arm cortex-m:<a class="link" href="https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm/downloads"  target="_blank" rel="noopener"
+    >GNU Arm Embedded Toolchain Downloads</a></p>
+</li>
+<li>
+<p>Linaro:arm:https://www.linaro.org/downloads/</p>
+</li>
+<li>
+<p>risc-v:https://github.com/riscv/riscv-gnu-toolchain/releases</p>
+</li>
+<li>
+<p>mips:https://www.mips.com/develop/tools/compilers/linux-toolchain/</p>
+</li>
+<li>
+<p>uclibc:https://www.uclibc.org/downloads/binaries/</p>
+</li>
+<li>
+<p><a class="link" href="http://download.ronetix.info/toolchains/"  target="_blank" rel="noopener"
+    >http://download.ronetix.info/toolchains/</a></p>
+</li>
+</ul>
+<p>若实在没有啥特殊需求， <code>apt install gcc-aarch64-linux-gnu</code>大部分情况下也能直接解决问题。</p>
+<h4 id="osabi的匹配">OS/ABI的匹配</h4>
+<p>通常情况下，选取编译交叉编译工具链时，指令集、平台之类的内容是不容易弄错的。但 OS/ABI 却是个容易造成故障的点。</p>
+<p>举例来讲，在我一次对libnvram.so的编译时，得到的目标ELF文件为：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">~$ file libnvram.so
+</span></span><span class="line"><span class="cl">libnvram.so: ELF 32-bit LSB shared object, ARM, version <span class="m">1</span> <span class="o">(</span>ARM<span class="o">)</span>, dynamically linked, not stripped
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">~$ armv5l-readelf -h libnvram.so                          
+</span></span><span class="line"><span class="cl">ELF Header:
+</span></span><span class="line"><span class="cl">  Magic:   7f <span class="m">45</span> 4c <span class="m">46</span> <span class="m">01</span> <span class="m">01</span> <span class="m">01</span> <span class="m">61</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> 
+</span></span><span class="line"><span class="cl">  Class:                             ELF32
+</span></span><span class="line"><span class="cl">  Data:                              2<span class="err">&#39;</span>s complement, little endian
+</span></span><span class="line"><span class="cl">  Version:                           <span class="m">1</span> <span class="o">(</span>current<span class="o">)</span>
+</span></span><span class="line"><span class="cl">  OS/ABI:                            ARM
+</span></span><span class="line"><span class="cl">  ......
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>使用该自行编译的libnvram.so导致报错：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">/sbin/init: error <span class="k">while</span> loading shared libraries: /lib/libnvram.so: ELF file OS ABI invalid
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>而原版无故障的libnvram.so为：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">~$ file libnvram.so
+</span></span><span class="line"><span class="cl">libnvram.so: ELF 32-bit LSB shared object, ARM, EABI5 version <span class="m">1</span> <span class="o">(</span>SYSV<span class="o">)</span>, dynamically linked, not stripped
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">~$ armv5l-readelf -h libnvram.so                          
+</span></span><span class="line"><span class="cl">ELF Header:
+</span></span><span class="line"><span class="cl">  Magic:   7f <span class="m">45</span> 4c <span class="m">46</span> <span class="m">01</span> <span class="m">01</span> <span class="m">01</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> 
+</span></span><span class="line"><span class="cl">  Class:                             ELF32
+</span></span><span class="line"><span class="cl">  Data:                              2<span class="err">&#39;</span>s complement, little endian
+</span></span><span class="line"><span class="cl">  Version:                           <span class="m">1</span> <span class="o">(</span>current<span class="o">)</span>
+</span></span><span class="line"><span class="cl">  OS/ABI:                            UNIX - System V
+</span></span><span class="line"><span class="cl">  ......
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>可以看到，两者的OS/ABI，一个是<code>ARM</code>，一个是<code>UNIX - System V</code></p>
+<blockquote>
+<p>ABI描述应用程序与操作系统、应用程序与库、应用程序的组成部分之间的低层接口。ABI允许编译好的目标代码在使用兼容ABI的系统中无需改动就能运行</p>
+</blockquote>
+<p>导致这一结果的原因是：使用OABI编译工具链编译出的结果为<code>OS/ABI: ARM</code>，而使用EABI编译工具链编译出的结果为<code>OS/ABI: UNIX - System V</code>。关于OABI与EABI的区别，参见：<a class="link" href="https://docs.embeddedts.com/EABI_vs_OABI"  target="_blank" rel="noopener"
+    >https://docs.embeddedts.com/EABI_vs_OABI</a></p>
+<p>故换用标识了eabi的工具链重新编译即解决了该问题。</p>
+<h3 id="kernel">Kernel</h3>
+<h4 id="linux源码结构">Linux源码结构</h4>
+<p>手动构建内核前，先了解下内核源码的文件树结构。以2022/6/1的linux源码为例：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">➜  linux git:<span class="o">(</span>master<span class="o">)</span> ls
+</span></span><span class="line"><span class="cl">arch   COPYING  Documentation  include  Kbuild   lib          Makefile  README   security  usr
+</span></span><span class="line"><span class="cl">block  CREDITS  drivers        init     Kconfig  LICENSES     mm        samples  sound     virt
+</span></span><span class="line"><span class="cl">certs  crypto   fs             ipc      kernel   MAINTAINERS  net       scripts  tools
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li><strong>arch</strong>
+<ul>
+<li>The <code>arch</code> subdirectory contains all of the architecture specific kernel code. It has further subdirectories, one per supported architecture, for example <code>i386</code> and <code>alpha</code>.</li>
+</ul>
+</li>
+<li><strong>include</strong>
+<ul>
+<li>The <code>include</code> subdirectory contains most of the include files needed to build the kernel code. It too has further subdirectories including one for every architecture supported. The <code>/include/asm</code> subdirectory is a soft link to the real include directory needed for this architecture, for example <code>/include/asm-i386</code>. To change architectures you need to edit the kernel makefile and rerun the Linux kernel configuration program.</li>
+</ul>
+</li>
+<li><strong>init</strong>
+<ul>
+<li>This directory contains the initialization code for the kernel and it is a very good place to start looking at how the kernel works.</li>
+</ul>
+</li>
+<li><strong>mm</strong>
+<ul>
+<li>This directory contains all of the memory management code. The architecture specific memory management code lives down in <code>/arch/*/mm/</code>, for example <code>/arch/i386/mm/fault.c</code>.</li>
+</ul>
+</li>
+<li><strong>drivers</strong>
+<ul>
+<li>All of the system&rsquo;s device drivers live in this directory. They are further sub-divided into classes of device driver, for example <code>block</code>.</li>
+</ul>
+</li>
+<li><strong>ipc</strong>
+<ul>
+<li>This directory contains the kernels inter-process communications code.</li>
+</ul>
+</li>
+<li><strong>modules</strong>
+<ul>
+<li>This is simply a directory used to hold built modules.</li>
+</ul>
+</li>
+<li><strong>fs</strong>
+<ul>
+<li>All of the file system code. This is further sub-divided into directories, one per supported file system, for example <code>vfat</code> and <code>ext2</code>.</li>
+</ul>
+</li>
+<li><strong>kernel</strong>
+<ul>
+<li>The main kernel code. Again, the architecture specific kernel code is in <code>/arch/*/kernel</code>.</li>
+</ul>
+</li>
+<li><strong>net</strong>
+<ul>
+<li>The kernel&rsquo;s networking code.</li>
+</ul>
+</li>
+<li><strong>lib</strong>
+<ul>
+<li>This directory contains the kernel&rsquo;s library code. The architecture specific library code can be found in <code>/arch/*/lib/</code>.</li>
+</ul>
+</li>
+<li><strong>scripts</strong>
+<ul>
+<li>This directory contains the scripts (for example <em>awk</em> and <em>tk</em> scripts) that are used when the kernel is configured.</li>
+</ul>
+</li>
+</ul>
+<h4 id="linux构建系统">Linux构建系统</h4>
+<p>同时需要先了解下 <code>.config</code>、<code>defconfig</code>、<code>Kconfig</code></p>
+<ul>
+<li><a class="link" href="https://stackoverflow.com/questions/41885015/what-exactly-does-linux-kernels-make-defconfig-do"  target="_blank" rel="noopener"
+    >https://stackoverflow.com/questions/41885015/what-exactly-does-linux-kernels-make-defconfig-do</a></li>
+<li><a class="link" href="https://www.linuxjournal.com/content/kbuild-linux-kernel-build-system"  target="_blank" rel="noopener"
+    >https://www.linuxjournal.com/content/kbuild-linux-kernel-build-system</a></li>
+</ul>
+<p>总的来说，the Linux Kernel Build System has four main components:</p>
+<ul>
+<li>Config symbols: compilation options that can be used to compile code conditionally in source files and to decide which objects to include in a kernel image or its modules.</li>
+<li>Kconfig files: define each config symbol and its attributes, such as its type, description and dependencies. Programs that generate an option menu tree (for example, <code>make menuconfig</code>) read the menu entries from these files.</li>
+<li>.config file: stores each config symbol&rsquo;s selected value. You can edit this file manually or use one of the many <code>make</code> configuration targets, such as menuconfig and xconfig, that call specialized programs to build a tree-like menu and automatically update (and create) the .config file for you.</li>
+<li>Makefiles: normal GNU makefiles that describe the relationship between source files and the commands needed to generate each make target, such as kernel images and modules.</li>
+</ul>
+<p>至于<code>defconfig</code>，则一般由平台厂商提供，里面含有了目标平台相关的一些默认参数，内核编译用做.config的参考。同时遵守如下规则：</p>
+<ul>
+<li>if option is mentioned in <code>defconfig</code>, build system puts that option into <code>.config</code> with value chosen in <code>defconfig</code></li>
+<li>if option isn&rsquo;t mentioned in <code>defconfig</code>, build system puts that option into <code>.config</code> using its default value, specified in corresponding <code>Kconfig</code></li>
+</ul>
+<p>由此确保构建出的内核与特定平台匹配。</p>
+<p><code>defconfig</code>文件存放于<code>arch/*/configs/</code>路径下，如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">➜  linux git:<span class="o">(</span>master<span class="o">)</span> ls arch/arm/configs/
+</span></span><span class="line"><span class="cl">am200epdkit_defconfig     gemini_defconfig         multi_v5_defconfig    s5pv210_defconfig
+</span></span><span class="line"><span class="cl">aspeed_g4_defconfig       h3600_defconfig          multi_v7_defconfig    sama5_defconfig
+</span></span><span class="line"><span class="cl">aspeed_g5_defconfig       h5000_defconfig          mv78xx0_defconfig     sama7_defconfig
+</span></span><span class="line"><span class="cl">......
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>至于<code>make defconfig</code>究竟干了啥，可以使用<code>V=1</code>参数查看：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">make <span class="nv">V</span><span class="o">=</span><span class="m">1</span> defconfig
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="开始构建">开始构建</h4>
+<p>现来此挑选中意的内核版本：<a class="link" href="https://en.wikipedia.org/wiki/Linux_kernel_version_history"  target="_blank" rel="noopener"
+    >https://en.wikipedia.org/wiki/Linux_kernel_version_history</a></p>
+<p>我这边以5.4版本内核为例继续实验：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">git clone https://github.com/torvalds/linux.git
+</span></span><span class="line"><span class="cl"><span class="c1"># 1day mirror</span>
+</span></span><span class="line"><span class="cl">git clone https://gitee.com/mirrors/linux_old1.git
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> linux
+</span></span><span class="line"><span class="cl"><span class="c1"># 切换到特定版本</span>
+</span></span><span class="line"><span class="cl">git checkout v5.4
+</span></span><span class="line"><span class="cl"><span class="c1"># 创建目标文件夹</span>
+</span></span><span class="line"><span class="cl">mkdir build
+</span></span><span class="line"><span class="cl"><span class="c1"># 导入aarch64的defconfig</span>
+</span></span><span class="line"><span class="cl">make <span class="nv">ARCH</span><span class="o">=</span>arm64 <span class="nv">O</span><span class="o">=</span>./build defconfig
+</span></span><span class="line"><span class="cl"><span class="c1"># 自定义配置</span>
+</span></span><span class="line"><span class="cl">make <span class="nv">O</span><span class="o">=</span>./build menuconfig
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>由于我们的目标平台是QEMU Virtio，故需要于<code>make menuconfig</code>中启用相应配置：<code>VIRTIO_BLK, SCSI_BLK, VIRTIO_NET, HVC_DRIVER, VIRTIO_CONSOLE, VIRTIO, VIRTIO_MMIO</code>。详细的Kernel config参考也可以从<code>buildroot/board/qemu</code>中找到。</p>
+<p>至于Virtio具体是个啥，参考：</p>
+<ul>
+<li><a class="link" href="https://wiki.libvirt.org/page/Virtio"  target="_blank" rel="noopener"
+    >https://wiki.libvirt.org/page/Virtio</a></li>
+<li><a class="link" href="https://wiki.osdev.org/Virtio"  target="_blank" rel="noopener"
+    >https://wiki.osdev.org/Virtio</a></li>
+<li><a class="link" href="https://www.linux-kvm.org/page/Virtio"  target="_blank" rel="noopener"
+    >https://www.linux-kvm.org/page/Virtio</a></li>
+<li><a class="link" href="https://zhuanlan.zhihu.com/p/68154666"  target="_blank" rel="noopener"
+    >https://zhuanlan.zhihu.com/p/68154666</a></li>
+<li><a class="link" href="https://www.anquanke.com/post/id/224001"  target="_blank" rel="noopener"
+    >https://www.anquanke.com/post/id/224001</a></li>
+<li><a class="link" href="https://developer.ibm.com/articles/l-virtio/"  target="_blank" rel="noopener"
+    >https://developer.ibm.com/articles/l-virtio/</a></li>
+</ul>
+<p>在<code>make menuconfig</code>中启用路径如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">Device Drivers  ---&gt;
+</span></span><span class="line"><span class="cl">        <span class="o">[</span>*<span class="o">]</span> Virtio drivers
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Device Drivers  ---&gt;
+</span></span><span class="line"><span class="cl">        <span class="o">[</span>*<span class="o">]</span> Network device support  ---&gt;
+</span></span><span class="line"><span class="cl">                &lt;*&gt;   Virtio network driver
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Device Drivers  ---&gt;
+</span></span><span class="line"><span class="cl">        <span class="o">[</span>*<span class="o">]</span> Block devices  ---&gt;
+</span></span><span class="line"><span class="cl">                &lt;*&gt;   Virtio block driver
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>如想要手动添加内核驱动，参考：<a class="link" href="https://stackoverflow.com/questions/11710022/adding-new-driver-code-to-linux-source-code"  target="_blank" rel="noopener"
+    >https://stackoverflow.com/questions/11710022/adding-new-driver-code-to-linux-source-code</a></p>
+<blockquote>
+<p>Tip: If you want a sample of linux.config for a specific platform, take a look at <code>buildroot/board</code></p>
+</blockquote>
+<p>配置完毕，开始编译：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">make <span class="nv">O</span><span class="o">=</span>./build <span class="nv">CROSS_COMPILE</span><span class="o">=</span>aarch64-linux-gnu- -j<span class="sb">`</span>nproc<span class="sb">`</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>注意将 <code>aarch64-linux-gnu-</code> 换成你当前的编译工具链路径</p>
+</blockquote>
+<p>得到的Image和vmlinux路径为：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">➜  linux git:<span class="o">(</span>219d54332a09<span class="o">)</span> find . -name Image
+</span></span><span class="line"><span class="cl">./build/arch/arm64/boot/Image
+</span></span><span class="line"><span class="cl">➜  linux git:<span class="o">(</span>219d54332a09<span class="o">)</span> find . -name vmlinux
+</span></span><span class="line"><span class="cl">./build/vmlinux
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="通过qemu-system运行">通过qemu-system运行</h3>
+<h4 id="网桥的预配置">网桥的预配置</h4>
+<p>后续host于qemu-system中的guest将通过网桥连接，故先于host中配置网桥。</p>
+<p>首先准备网桥与tun/tap虚拟网卡：</p>
+<p>创建网桥br0：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">sudo brctl addbr br0
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>为当前用户创建tun/tap虚拟网卡tap0：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">tunctl -t tap0 -u <span class="si">${</span><span class="nv">USER</span><span class="si">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>若发现brctl与tunctl命令未找到，则需要先安装相应软件包。这里推荐一个网站，可以方便的查询一个命令在不同软件源中对应的包名：<a class="link" href="https://command-not-found.com/"  target="_blank" rel="noopener"
+    >https://command-not-found.com/</a>（专治command not found 20 年）</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/qemu/">QEMU</a>
+        
+            <a href="/tags/linux/">Linux</a>
+        
+            <a href="/tags/compile/">Compile</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/post/%E8%AE%B0%E4%B8%80%E6%AC%A1qemu-system-arm%E4%BB%BF%E7%9C%9F%E7%9A%84%E6%8E%92%E9%94%99/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://s2.loli.net/2022/05/26/RS1JrGW2t4vzD3M.jpg" loading="lazy" data-key="" data-hash="https://s2.loli.net/2022/05/26/RS1JrGW2t4vzD3M.jpg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">记一次qemu-system-arm仿真的排错</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/post/%E4%BD%BF%E7%94%A8qemu-gdb%E8%B0%83%E8%AF%95linux%E5%86%85%E6%A0%B8/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://s2.loli.net/2022/08/09/PKcwjiVBTg6ApEv.png" loading="lazy" data-key="" data-hash="https://s2.loli.net/2022/08/09/PKcwjiVBTg6ApEv.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">使用QEMU&#43;GDB调试Linux内核</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/post/%E5%8D%8E%E7%A1%95%E6%A2%85%E6%9E%97%E5%9B%BA%E4%BB%B6%E7%9A%84%E7%BC%96%E8%AF%91/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://www.asuswrt-merlin.net/sites/default/files/inline-images/main_page_sm_2.png" loading="lazy" data-key="" data-hash="https://www.asuswrt-merlin.net/sites/default/files/inline-images/main_page_sm_2.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">华硕梅林固件的编译</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/post/cross-debug-old-version-kernel-using-qemu-system/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://s2.loli.net/2022/05/08/MGJ3tsAVHSYrThj.jpg" loading="lazy" data-key="" data-hash="https://s2.loli.net/2022/05/08/MGJ3tsAVHSYrThj.jpg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Cross debug old version kernel using qemu-system</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2022 Zikey Vi
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.13.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#自动挡">自动挡</a>
+      <ol>
+        <li><a href="#一路默认">一路默认</a></li>
+        <li><a href="#全自动方案中的定制">全自动方案中的定制</a></li>
+        <li><a href="#记一次旧版本工具链的自动挡构建">记一次旧版本工具链的自动挡构建</a></li>
+      </ol>
+    </li>
+    <li><a href="#手动档">手动档</a>
+      <ol>
+        <li><a href="#编译工具链">编译工具链</a>
+          <ol>
+            <li><a href="#osabi的匹配">OS/ABI的匹配</a></li>
+          </ol>
+        </li>
+        <li><a href="#kernel">Kernel</a>
+          <ol>
+            <li><a href="#linux源码结构">Linux源码结构</a></li>
+            <li><a href="#linux构建系统">Linux构建系统</a></li>
+            <li><a href="#开始构建">开始构建</a></li>
+          </ol>
+        </li>
+        <li><a href="#通过qemu-system运行">通过qemu-system运行</a>
+          <ol>
+            <li><a href="#网桥的预配置">网桥的预配置</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

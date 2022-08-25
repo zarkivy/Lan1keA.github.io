@@ -2,147 +2,173 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://cerr.cc/post/csapp_lab_writeup/</loc>
+    <loc>https://cerr.cc/</loc>
+    <lastmod>2022-08-19T17:06:58+08:00</lastmod>
+  </url><url>
+    <loc>https://cerr.cc/categories/</loc>
+    <lastmod>2022-08-19T17:06:58+08:00</lastmod>
+  </url><url>
+    <loc>https://cerr.cc/post/csapp-lab-writeup/</loc>
     <lastmod>2022-08-19T17:06:58+08:00</lastmod>
   </url><url>
     <loc>https://cerr.cc/post/</loc>
     <lastmod>2022-08-19T17:06:58+08:00</lastmod>
   </url><url>
+    <loc>https://cerr.cc/tags/system/</loc>
+    <lastmod>2022-08-19T17:06:58+08:00</lastmod>
+  </url><url>
     <loc>https://cerr.cc/tags/</loc>
     <lastmod>2022-08-19T17:06:58+08:00</lastmod>
   </url><url>
-    <loc>https://cerr.cc/tags/writeup/</loc>
-    <lastmod>2022-08-19T17:06:58+08:00</lastmod>
-  </url><url>
-    <loc>https://cerr.cc/</loc>
+    <loc>https://cerr.cc/categories/%E5%AE%B6%E5%BA%AD%E4%BD%9C%E4%B8%9A/</loc>
     <lastmod>2022-08-19T17:06:58+08:00</lastmod>
   </url><url>
     <loc>https://cerr.cc/tags/develop/</loc>
     <lastmod>2022-08-08T14:34:10+08:00</lastmod>
   </url><url>
-    <loc>https://cerr.cc/post/ccer_zkv/</loc>
+    <loc>https://cerr.cc/post/zkv%E7%9A%84cc-%E6%9E%84%E5%BB%BA%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/</loc>
     <lastmod>2022-08-08T14:34:10+08:00</lastmod>
   </url><url>
-    <loc>https://cerr.cc/tags/linux/</loc>
+    <loc>https://cerr.cc/categories/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2022-08-08T14:34:10+08:00</lastmod>
+  </url><url>
+    <loc>https://cerr.cc/tags/dbg/</loc>
+    <lastmod>2022-08-08T14:17:44+08:00</lastmod>
+  </url><url>
+    <loc>https://cerr.cc/tags/kernel/</loc>
     <lastmod>2022-08-08T14:17:44+08:00</lastmod>
   </url><url>
     <loc>https://cerr.cc/tags/qemu/</loc>
     <lastmod>2022-08-08T14:17:44+08:00</lastmod>
   </url><url>
-    <loc>https://cerr.cc/post/qemu_gdb_vmlinux/</loc>
+    <loc>https://cerr.cc/post/%E4%BD%BF%E7%94%A8qemu-gdb%E8%B0%83%E8%AF%95linux%E5%86%85%E6%A0%B8/</loc>
     <lastmod>2022-08-08T14:17:44+08:00</lastmod>
   </url><url>
-    <loc>https://cerr.cc/tags/life/</loc>
+    <loc>https://cerr.cc/categories/%E5%B7%A5%E5%9C%B0%E6%97%A5%E8%AE%B0/</loc>
+    <lastmod>2022-08-08T14:17:44+08:00</lastmod>
+  </url><url>
+    <loc>https://cerr.cc/tags/hardware/</loc>
     <lastmod>2022-07-19T10:50:06+08:00</lastmod>
   </url><url>
-    <loc>https://cerr.cc/post/mobile_linux/</loc>
+    <loc>https://cerr.cc/tags/mobile/</loc>
+    <lastmod>2022-07-19T10:50:06+08:00</lastmod>
+  </url><url>
+    <loc>https://cerr.cc/post/%E6%89%8B%E6%9C%BA%E5%8F%98%E8%BA%AB%E5%B0%8F%E4%B8%BB%E6%9C%BA/</loc>
+    <lastmod>2022-07-19T10:50:06+08:00</lastmod>
+  </url><url>
+    <loc>https://cerr.cc/categories/%E8%B5%9B%E5%8D%9A%E4%BA%BA%E7%94%9F/</loc>
     <lastmod>2022-07-19T10:50:06+08:00</lastmod>
   </url><url>
     <loc>https://cerr.cc/tags/embeded/</loc>
     <lastmod>2022-07-08T14:11:35+08:00</lastmod>
   </url><url>
-    <loc>https://cerr.cc/post/embeded_hardware/</loc>
+    <loc>https://cerr.cc/post/zkv%E5%AF%B9%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%A1%AC%E4%BB%B6%E7%9A%84%E6%B5%85%E5%B0%9D%E4%B8%8D%E6%AD%A2/</loc>
     <lastmod>2022-07-08T14:11:35+08:00</lastmod>
   </url><url>
-    <loc>https://cerr.cc/post/backend/</loc>
+    <loc>https://cerr.cc/post/zkv%E5%AF%B9%E5%90%8E%E7%AB%AF%E7%9A%84%E6%B5%85%E5%B0%9D%E8%BE%84%E6%AD%A2/</loc>
     <lastmod>2022-07-04T17:47:35+08:00</lastmod>
   </url><url>
-    <loc>https://cerr.cc/post/my_pc/</loc>
+    <loc>https://cerr.cc/post/zkv%E7%9A%84%E6%94%92%E6%9C%BA%E7%AE%80%E5%8F%B2/</loc>
     <lastmod>2022-06-16T18:42:34+08:00</lastmod>
   </url><url>
-    <loc>https://cerr.cc/tags/vulnerability/</loc>
+    <loc>https://cerr.cc/tags/coreutils/</loc>
     <lastmod>2022-06-16T10:11:14+08:00</lastmod>
   </url><url>
-    <loc>https://cerr.cc/post/cve-2022-30790/</loc>
+    <loc>https://cerr.cc/post/%E5%AF%B9u-boot-cve-2022-30790%E7%9A%84%E8%B7%9F%E8%B8%AA/</loc>
     <lastmod>2022-06-16T10:11:14+08:00</lastmod>
   </url><url>
-    <loc>https://cerr.cc/post/linuxer_zkv/</loc>
+    <loc>https://cerr.cc/categories/%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/</loc>
+    <lastmod>2022-06-16T10:11:14+08:00</lastmod>
+  </url><url>
+    <loc>https://cerr.cc/post/zkv%E7%9A%84linux-kernel%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/</loc>
     <lastmod>2022-06-13T17:41:00+08:00</lastmod>
   </url><url>
-    <loc>https://cerr.cc/post/cve-2015-5165/</loc>
+    <loc>https://cerr.cc/post/cve-2015-5165-qemu%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/</loc>
     <lastmod>2022-06-09T17:44:21+08:00</lastmod>
   </url><url>
-    <loc>https://cerr.cc/tags/arch/</loc>
+    <loc>https://cerr.cc/tags/architecture/</loc>
     <lastmod>2022-06-01T10:55:17+08:00</lastmod>
   </url><url>
-    <loc>https://cerr.cc/post/arm_architecture/</loc>
+    <loc>https://cerr.cc/post/arm%E7%AE%80%E5%8F%B2/</loc>
     <lastmod>2022-06-01T10:55:17+08:00</lastmod>
   </url><url>
-    <loc>https://cerr.cc/post/qemu_armv8_dbg/</loc>
+    <loc>https://cerr.cc/categories/%E7%9B%97%E7%89%88%E7%AE%80%E5%8F%B2/</loc>
+    <lastmod>2022-06-01T10:55:17+08:00</lastmod>
+  </url><url>
+    <loc>https://cerr.cc/tags/linux/</loc>
     <lastmod>2022-05-26T15:51:22+08:00</lastmod>
   </url><url>
-    <loc>https://cerr.cc/post/cve-2016-5195/</loc>
+    <loc>https://cerr.cc/post/%E8%AE%B0%E4%B8%80%E6%AC%A1qemu-system-arm%E4%BB%BF%E7%9C%9F%E7%9A%84%E6%8E%92%E9%94%99/</loc>
+    <lastmod>2022-05-26T15:51:22+08:00</lastmod>
+  </url><url>
+    <loc>https://cerr.cc/post/cve-2016-5195-linux-dirtycow%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/</loc>
     <lastmod>2022-05-24T17:43:25+08:00</lastmod>
   </url><url>
     <loc>https://cerr.cc/tags/net/</loc>
     <lastmod>2022-05-23T23:21:12+08:00</lastmod>
   </url><url>
-    <loc>https://cerr.cc/post/nic/</loc>
+    <loc>https://cerr.cc/post/%E5%85%B3%E4%BA%8Elinux%E4%B8%8B%E7%9A%84%E7%BD%91%E5%8D%A1%E4%B8%8E%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87/</loc>
     <lastmod>2022-05-23T23:21:12+08:00</lastmod>
   </url><url>
-    <loc>https://cerr.cc/post/cve-2014-0160/</loc>
+    <loc>https://cerr.cc/post/cve-2014-0160-%E5%BF%83%E8%84%8F%E6%BB%B4%E8%A1%80%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98%E4%B8%8E%E5%88%86%E6%9E%90/</loc>
     <lastmod>2022-05-20T17:57:07+08:00</lastmod>
   </url><url>
     <loc>https://cerr.cc/tags/fuzzing/</loc>
     <lastmod>2022-05-20T17:57:07+08:00</lastmod>
   </url><url>
-    <loc>https://cerr.cc/post/cve-2021-3156/</loc>
+    <loc>https://cerr.cc/post/cve-2021-3156-sudo-%E6%8F%90%E6%9D%83%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/</loc>
     <lastmod>2022-05-13T23:02:59+08:00</lastmod>
   </url><url>
-    <loc>https://cerr.cc/post/compile_asuswrt-merlin/</loc>
+    <loc>https://cerr.cc/tags/compile/</loc>
     <lastmod>2022-05-11T16:27:10+08:00</lastmod>
   </url><url>
-    <loc>https://cerr.cc/post/fuzzer_zkv/</loc>
+    <loc>https://cerr.cc/post/%E5%8D%8E%E7%A1%95%E6%A2%85%E6%9E%97%E5%9B%BA%E4%BB%B6%E7%9A%84%E7%BC%96%E8%AF%91/</loc>
+    <lastmod>2022-05-11T16:27:10+08:00</lastmod>
+  </url><url>
+    <loc>https://cerr.cc/post/zkv%E7%9A%84fuzzing%E6%97%A9%E6%95%99/</loc>
     <lastmod>2022-05-11T13:57:01+08:00</lastmod>
   </url><url>
-    <loc>https://cerr.cc/tags/utils/</loc>
+    <loc>https://cerr.cc/post/%E4%B8%80%E4%BA%9B%E9%85%8D%E7%8E%AF%E5%A2%83%E7%9A%84cheasheet/</loc>
     <lastmod>2022-05-10T21:13:54+08:00</lastmod>
   </url><url>
-    <loc>https://cerr.cc/post/some_installation/</loc>
+    <loc>https://cerr.cc/categories/%E8%80%83%E8%AF%95%E5%B0%8F%E6%8A%84/</loc>
     <lastmod>2022-05-10T21:13:54+08:00</lastmod>
   </url><url>
-    <loc>https://cerr.cc/post/build_run_embeded_linux_vm/</loc>
+    <loc>https://cerr.cc/post/%E6%9E%84%E5%BB%BA%E4%B8%8E%E8%BF%90%E8%A1%8C%E5%B5%8C%E5%85%A5%E5%BC%8Flinux%E8%99%9A%E6%8B%9F%E6%9C%BA/</loc>
     <lastmod>2022-05-10T20:59:43+08:00</lastmod>
   </url><url>
-    <loc>https://cerr.cc/post/fgfw/</loc>
+    <loc>https://cerr.cc/post/fuck-the-great-fire-wall/</loc>
     <lastmod>2022-05-09T11:03:28+08:00</lastmod>
   </url><url>
-    <loc>https://cerr.cc/post/linux_syscalls/</loc>
+    <loc>https://cerr.cc/post/linux%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E5%A4%A7%E5%85%A8/</loc>
     <lastmod>2022-05-08T21:45:00+08:00</lastmod>
   </url><url>
-    <loc>https://cerr.cc/post/qemu_dbg_kernel/</loc>
+    <loc>https://cerr.cc/post/cross-debug-old-version-kernel-using-qemu-system/</loc>
     <lastmod>2022-05-08T19:35:11+08:00</lastmod>
   </url><url>
-    <loc>https://cerr.cc/post/awesome_colors/</loc>
+    <loc>https://cerr.cc/post/awesome-colors/</loc>
     <lastmod>2022-05-07T22:53:05+08:00</lastmod>
   </url><url>
-    <loc>https://cerr.cc/post/beautify_de/</loc>
+    <loc>https://cerr.cc/tags/ui/</loc>
+    <lastmod>2022-05-07T22:53:05+08:00</lastmod>
+  </url><url>
+    <loc>https://cerr.cc/post/%E5%85%B3%E4%BA%8Elinux-ui%E7%9A%84%E7%BE%8E%E5%8C%96%E5%B7%A5%E4%BD%9C/</loc>
     <lastmod>2022-05-07T22:50:57+08:00</lastmod>
   </url><url>
-    <loc>https://cerr.cc/tags/main/</loc>
-    <lastmod>2022-05-07T19:53:05+08:00</lastmod>
+    <loc>https://cerr.cc/about/</loc>
   </url><url>
-    <loc>https://cerr.cc/main/</loc>
-    <lastmod>2022-05-07T19:53:05+08:00</lastmod>
+    <loc>https://cerr.cc/archives/</loc>
   </url><url>
-    <loc>https://cerr.cc/main/utils/</loc>
-    <lastmod>2022-05-07T19:53:05+08:00</lastmod>
+    <loc>https://cerr.cc/board/</loc>
   </url><url>
-    <loc>https://cerr.cc/main/love/</loc>
-    <lastmod>2022-05-07T18:53:05+08:00</lastmod>
+    <loc>https://cerr.cc/friends/</loc>
   </url><url>
-    <loc>https://cerr.cc/main/flink/</loc>
-    <lastmod>2022-05-07T17:53:05+08:00</lastmod>
+    <loc>https://cerr.cc/love/</loc>
   </url><url>
-    <loc>https://cerr.cc/main/ilus/</loc>
-    <lastmod>2022-05-07T17:53:05+08:00</lastmod>
+    <loc>https://cerr.cc/page/</loc>
   </url><url>
-    <loc>https://cerr.cc/main/board/</loc>
-    <lastmod>2022-05-07T16:53:05+08:00</lastmod>
+    <loc>https://cerr.cc/search/</loc>
   </url><url>
-    <loc>https://cerr.cc/main/about/</loc>
-    <lastmod>2022-05-07T15:53:05+08:00</lastmod>
-  </url><url>
-    <loc>https://cerr.cc/categories/</loc>
+    <loc>https://cerr.cc/utils/</loc>
   </url>
 </urlset>

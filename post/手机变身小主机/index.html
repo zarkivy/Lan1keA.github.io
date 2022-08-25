@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='GNU/Linux on a phone'><title>手机变身小主机？！</title>
+
+<link rel='canonical' href='https://cerr.cc/post/%E6%89%8B%E6%9C%BA%E5%8F%98%E8%BA%AB%E5%B0%8F%E4%B8%BB%E6%9C%BA/'>
+
+<link rel="stylesheet" href="/scss/style.min.ac77dcf8b111b51da39a92990f431923f210f3876d85798a2125667f96dc33a4.css"><meta property='og:title' content='手机变身小主机？！'>
+<meta property='og:description' content='GNU/Linux on a phone'>
+<meta property='og:url' content='https://cerr.cc/post/%E6%89%8B%E6%9C%BA%E5%8F%98%E8%BA%AB%E5%B0%8F%E4%B8%BB%E6%9C%BA/'>
+<meta property='og:site_name' content='Zikey Vi'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Hardware' /><meta property='article:tag' content='Mobile' /><meta property='article:published_time' content='2022-07-19T10:50:06&#43;08:00'/><meta property='article:modified_time' content='2022-07-19T10:50:06&#43;08:00'/><meta property='og:image' content='https://postmarketos.org/static/img/nexus5-bg-dark.jpg' />
+<meta name="twitter:site" content="@dev2ero">
+    <meta name="twitter:creator" content="@dev2ero"><meta name="twitter:title" content="手机变身小主机？！">
+<meta name="twitter:description" content="GNU/Linux on a phone"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://postmarketos.org/static/img/nexus5-bg-dark.jpg' />
+    <link rel="shortcut icon" href="img/favicon.png" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu83ce41192ed66b608a10477eb7108e0c_128714_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Zikey Vi</a></h1>
+            <h2 class="site-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/dev2ero'
+                        target="_blank"
+                        title="GitHub"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com/dev2ero'
+                        target="_blank"
+                        title="Twitter"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archive</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/love/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-heart" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M19.5 13.572l-7.5 7.428l-7.5 -7.428m0 0a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
+</svg>
+
+                
+                <span>Love</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/friends/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-friends" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <circle cx="7" cy="5" r="2" />
+  <path d="M5 22v-5l-1 -1v-4a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4l-1 1v5" />
+  <circle cx="17" cy="5" r="2" />
+  <path d="M15 22v-4h-2l2 -6a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1l2 6h-2v4" />
+</svg>
+
+                
+                <span>Friends</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/utils/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Utils</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/board/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copy" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <rect x="8" y="8" width="12" height="12" rx="2" />
+  <path d="M16 8v-2a2 2 0 0 0 -2 -2h-8a2 2 0 0 0 -2 2v8a2 2 0 0 0 2 2h2" />
+</svg>
+
+                
+                <span>Board</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+<main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/post/%E6%89%8B%E6%9C%BA%E5%8F%98%E8%BA%AB%E5%B0%8F%E4%B8%BB%E6%9C%BA/">
+                
+                    <img src="https://postmarketos.org/static/img/nexus5-bg-dark.jpg" loading="lazy" alt="Featured image of post 手机变身小主机？！" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E8%B5%9B%E5%8D%9A%E4%BA%BA%E7%94%9F/" >
+                赛博人生
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/post/%E6%89%8B%E6%9C%BA%E5%8F%98%E8%BA%AB%E5%B0%8F%E4%B8%BB%E6%9C%BA/">手机变身小主机？！</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            GNU/Linux on a phone
+        </h3>
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jul 19, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="快递还在路上"><del>快递还在路上……</del></h2>
+<p>话说我大学专业之所以选了计算机，除去高二于学霸本<em>联想G510</em>上玩过《看门狗》的原因外，就是因为有着折腾二手安卓机的爱好了。这一兴趣一直延续到了大学，以至于我童叟无欺的闲鱼账号被人怀疑为是机贩子账号 <del>（😤是可忍，孰不可忍）</del> 。直至大三开始搞到了外快，可以不再为一台多次易主的设备在经济上精打细算，便渐渐失去了往日的激情。果然太容易得到的东西，就会失宠。</p>
+<p>还记得大二那次Essential Phone换LG V30的交易，在我和那位小米前员工约定的地铁站内，他说，从我身上仿佛看见了当年的他，为一台心心念念的破旧设备奔波几十里却满心欢喜。两名垃机佬相视一笑，心照不宣，你东我西，从此再无交集……（😭</p>
+<h2 id="linux-on-a-phone">Linux On a Phone</h2>
+<p>啥说是手机上的Linux？安卓的内核本来就是Linux呀？！</p>
+<p>但那是Android/Linux，而我们本次的目标是GNU/Linux，将mainline kernel与GNU utils运行与手机之上。可以比喻成将手机刷成了一台运行了桌面级系统的小主机？</p>
+<p>关于Android的Linux内核与mainline Linux内核的关系，参见Google的说明：<a class="link" href="https://source.android.com/devices/architecture/kernel?hl=zh-cn"  target="_blank" rel="noopener"
+    >https://source.android.com/devices/architecture/kernel?hl=zh-cn</a></p>
+<p>有若干项目试图接近这个目标，其中最有名的应该还是Ubuntu Touch了。但经过一些调研后，我发现Ubuntu Touch并不是我满意的选择……</p>
+<h3 id="ubuntu-touch">Ubuntu Touch</h3>
+<p><a class="link" href="https://ubuntu-touch.io/"  target="_blank" rel="noopener"
+    >https://ubuntu-touch.io/</a></p>
+<p>Ubuntu Touch借助了<a class="link" href="https://halium.org/"  target="_blank" rel="noopener"
+    >Haium</a>以解决纷繁复杂的硬件驱动支持问题，虽然由此达成了将GNU utils无缝运行于移动设备的目的，但却也因此被迫舍弃了mainline kernel。具体技术架构参见<a class="link" href="https://halium.org/"  target="_blank" rel="noopener"
+    >https://halium.org/</a>即可。</p>
+<p><img src="https://halium.org/img/architecture.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="architecture"
+	
+	
+></p>
+<p>似乎Ubuntu Touch的定位主要瞄准了Android，而非作为一个完全可定制的极客OS，所以在包管理、分区读写等方面并不能做到如同Ubuntu desktop一样的体验。再加上其没有使用mainline kernel不符合我的需求，故而弃之。</p>
+<h3 id="mobian">Mobian</h3>
+<p><a class="link" href="https://mobian.org/"  target="_blank" rel="noopener"
+    >https://mobian.org/</a></p>
+<p><a class="link" href="https://wiki.mobian.org/"  target="_blank" rel="noopener"
+    >https://wiki.mobian.org/</a></p>
+<p>Mobian，即mobile debian，好的地方在于其已为大家广泛熟悉的apt+dpkg包管理工具和软件源，且其使用了mainline内核。但缺乏对于大量设备的支持。Mobian的设备支持列表在这里：<a class="link" href="https://wiki.mobian.org/doku.php?id=devices"  target="_blank" rel="noopener"
+    >https://wiki.mobian.org/doku.php?id=devices</a>。可以看到除去几款国内难以购买、价格高昂、配置低下的开源手机外，就只有一加6和小米Pocophone F1两款骁龙845机型了。</p>
+<h3 id="droidian">Droidian</h3>
+<p><a class="link" href="https://droidian.org/"  target="_blank" rel="noopener"
+    >https://droidian.org/</a></p>
+<p>Mobian的Haium版本，借由和Ubuntu Touch类似的方案，达成支持更多设备的目的。但也因此放弃了mainline kernel。</p>
+<h3 id="postmarketos">postmarketOS</h3>
+<p><a class="link" href="https://postmarketos.org/"  target="_blank" rel="noopener"
+    >https://postmarketos.org/</a></p>
+<p>postmarketOS基于Alpine Linux，为busybox + musl libc的解决方案。在采用mainline kernel的mobile发行版中社区最大，维护最活跃。其支持的设备列表与支持情况可以于此查到：<a class="link" href="https://wiki.postmarketos.org/wiki/Devices"  target="_blank" rel="noopener"
+    >https://wiki.postmarketos.org/wiki/Devices</a></p>
+<p>以我手上的Xiaomi Mi Note2为例，对其的许多驱动支持是postmarketOS独一份的，比如此前修复的Wi-Fi模块：<a class="link" href="https://gitlab.com/postmarketOS/pmaports/-/merge_requests/3271"  target="_blank" rel="noopener"
+    >https://gitlab.com/postmarketOS/pmaports/-/merge_requests/3271</a></p>
+<p>postmarketOS集成了几乎所有为mobile生态做出努力的上层桌面环境：<a class="link" href="https://wiki.postmarketos.org/wiki/Category:Interface"  target="_blank" rel="noopener"
+    >https://wiki.postmarketos.org/wiki/Category:Interface</a>。且与软件源中提供了一键安装与切换。不同设备所适合的DE并不同，我此前的Xiaomi Redmi2使用KDE Plasma mobile最舒适，而现在手上这台Xiaomi Mi Note2运行Phosh才最稳定。</p>
+<p>其亦有国内软件源镜像的支持：<a class="link" href="https://mirrors.tuna.tsinghua.edu.cn/postmarketOS/"  target="_blank" rel="noopener"
+    >https://mirrors.tuna.tsinghua.edu.cn/postmarketOS/</a></p>
+<p>换源说明：<a class="link" href="https://mirrors.tuna.tsinghua.edu.cn/help/postmarketOS/"  target="_blank" rel="noopener"
+    >https://mirrors.tuna.tsinghua.edu.cn/help/postmarketOS/</a></p>
+<p>将软件源由特定发行版切换到master分支后，即相当于将系统转化为滚动更新模式。这样做的好处是，昨天上报的bug可能今天就被修复了，下游设备立即执行<code>apk update; apk upgrade</code>即可立即获取修复的更新。缺点则是是master分支的不稳定。但考虑到mobile发行版的可用性与稳定性本身就堪忧，切换至滚动更新，或许是牺牲1份稳定性，换取5分可用性。在我看来是很划算的生意。</p>
+<h3 id="其余暂未进一步了解的mobile-distros">其余暂未进一步了解的Mobile Distros</h3>
+<h4 id="sailfish-os">Sailfish OS</h4>
+<p><a class="link" href="https://sailfishos.org/"  target="_blank" rel="noopener"
+    >https://sailfishos.org/</a></p>
+<p>体量貌似也很大，但其官网首页就是标价，预感不妙，逃……</p>
+<h4 id="luneos">LuneOS</h4>
+<p><a class="link" href="http://www.webos-ports.org/wiki/Main_Page"  target="_blank" rel="noopener"
+    >http://www.webos-ports.org/wiki/Main_Page</a></p>
+<p>也是Haium方案。</p>
+<h4 id="pureosmanjaro-arm等">PureOS、Manjaro ARM等</h4>
+<p><a class="link" href="https://pureos.net/"  target="_blank" rel="noopener"
+    >https://pureos.net/</a></p>
+<p><a class="link" href="https://manjaro.org/"  target="_blank" rel="noopener"
+    >https://manjaro.org/</a></p>
+<p>其定位并非为移动端努力。只能说是支持了Pine Phone等开源手机而已。</p>
+<h2 id="关于刷机">关于刷机</h2>
+<p>参考<a class="link" href="https://www.jianshu.com/p/d960a6f517d8"  target="_blank" rel="noopener"
+    >https://www.jianshu.com/p/d960a6f517d8</a></p>
+<h3 id="fastboot">Fastboot</h3>
+<p>一个通信协议，用于直接向安卓手机Flash的不同分区中写入数据。</p>
+<p><a class="link" href="https://android.googlesource.com/platform/system/core/&#43;/refs/heads/master/fastboot/"  target="_blank" rel="noopener"
+    >https://android.googlesource.com/platform/system/core/+/refs/heads/master/fastboot/</a></p>
+<h3 id="recovery">Recovery</h3>
+<p>一个单独的分区，内可包含一个恢复用的迷你系统，如TWRP。</p>
+<h3 id="安卓设备分区">安卓设备分区</h3>
+<p><a class="link" href="https://source.android.com/devices/bootloader/partitions"  target="_blank" rel="noopener"
+    >https://source.android.com/devices/bootloader/partitions</a></p>
+<h2 id="xiaomi-mi-note2">Xiaomi Mi Note2</h2>
+<p><img src="https://s2.loli.net/2022/08/11/LDPaqzpkYbAgtOE.jpg"
+	
+	
+	
+	loading="lazy"
+	
+		alt="1"
+	
+	
+><img src="https://s2.loli.net/2022/08/11/qTRoSm39YZvIABV.jpg"
+	
+	
+	
+	loading="lazy"
+	
+		alt="2"
+	
+	
+> <img src="https://s2.loli.net/2022/08/11/aFuvVG8DqTpSUsg.jpg"
+	
+	
+	
+	loading="lazy"
+	
+		alt="3"
+	
+	
+></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/hardware/">Hardware</a>
+        
+            <a href="/tags/mobile/">Mobile</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/post/zkv%E7%9A%84%E6%94%92%E6%9C%BA%E7%AE%80%E5%8F%B2/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://s2.loli.net/2022/06/16/EYHcq8joTrfdiBR.jpg" loading="lazy" data-key="" data-hash="https://s2.loli.net/2022/06/16/EYHcq8joTrfdiBR.jpg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">ZKV的攒机简史</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/post/fuck-the-great-fire-wall/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://s2.loli.net/2022/05/09/FrNVRw5lSbfusgx.jpg" loading="lazy" data-key="" data-hash="https://s2.loli.net/2022/05/09/FrNVRw5lSbfusgx.jpg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Fuck the Great Fire Wall</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/post/%E5%85%B3%E4%BA%8Elinux-ui%E7%9A%84%E7%BE%8E%E5%8C%96%E5%B7%A5%E4%BD%9C/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://s2.loli.net/2022/05/07/wqH1K7UnExrO4V5.jpg" loading="lazy" data-key="" data-hash="https://s2.loli.net/2022/05/07/wqH1K7UnExrO4V5.jpg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">关于Linux UI的美化工作</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2022 Zikey Vi
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.13.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#快递还在路上">快递还在路上……</a></li>
+    <li><a href="#linux-on-a-phone">Linux On a Phone</a>
+      <ol>
+        <li><a href="#ubuntu-touch">Ubuntu Touch</a></li>
+        <li><a href="#mobian">Mobian</a></li>
+        <li><a href="#droidian">Droidian</a></li>
+        <li><a href="#postmarketos">postmarketOS</a></li>
+        <li><a href="#其余暂未进一步了解的mobile-distros">其余暂未进一步了解的Mobile Distros</a>
+          <ol>
+            <li><a href="#sailfish-os">Sailfish OS</a></li>
+            <li><a href="#luneos">LuneOS</a></li>
+            <li><a href="#pureosmanjaro-arm等">PureOS、Manjaro ARM等</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#关于刷机">关于刷机</a>
+      <ol>
+        <li><a href="#fastboot">Fastboot</a></li>
+        <li><a href="#recovery">Recovery</a></li>
+        <li><a href="#安卓设备分区">安卓设备分区</a></li>
+      </ol>
+    </li>
+    <li><a href="#xiaomi-mi-note2">Xiaomi Mi Note2</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

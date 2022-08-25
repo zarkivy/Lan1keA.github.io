@@ -1,0 +1,1440 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='居然是指令集的锅？'><title>记一次qemu-system-arm仿真的排错</title>
+
+<link rel='canonical' href='https://cerr.cc/post/%E8%AE%B0%E4%B8%80%E6%AC%A1qemu-system-arm%E4%BB%BF%E7%9C%9F%E7%9A%84%E6%8E%92%E9%94%99/'>
+
+<link rel="stylesheet" href="/scss/style.min.ac77dcf8b111b51da39a92990f431923f210f3876d85798a2125667f96dc33a4.css"><meta property='og:title' content='记一次qemu-system-arm仿真的排错'>
+<meta property='og:description' content='居然是指令集的锅？'>
+<meta property='og:url' content='https://cerr.cc/post/%E8%AE%B0%E4%B8%80%E6%AC%A1qemu-system-arm%E4%BB%BF%E7%9C%9F%E7%9A%84%E6%8E%92%E9%94%99/'>
+<meta property='og:site_name' content='Zikey Vi'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='QEMU' /><meta property='article:tag' content='Linux' /><meta property='article:tag' content='DBG' /><meta property='article:published_time' content='2022-05-26T15:51:22&#43;08:00'/><meta property='article:modified_time' content='2022-05-26T15:51:22&#43;08:00'/><meta property='og:image' content='https://s2.loli.net/2022/05/26/RS1JrGW2t4vzD3M.jpg' />
+<meta name="twitter:site" content="@dev2ero">
+    <meta name="twitter:creator" content="@dev2ero"><meta name="twitter:title" content="记一次qemu-system-arm仿真的排错">
+<meta name="twitter:description" content="居然是指令集的锅？"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://s2.loli.net/2022/05/26/RS1JrGW2t4vzD3M.jpg' />
+    <link rel="shortcut icon" href="img/favicon.png" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu83ce41192ed66b608a10477eb7108e0c_128714_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Zikey Vi</a></h1>
+            <h2 class="site-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/dev2ero'
+                        target="_blank"
+                        title="GitHub"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com/dev2ero'
+                        target="_blank"
+                        title="Twitter"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archive</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/love/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-heart" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M19.5 13.572l-7.5 7.428l-7.5 -7.428m0 0a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
+</svg>
+
+                
+                <span>Love</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/friends/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-friends" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <circle cx="7" cy="5" r="2" />
+  <path d="M5 22v-5l-1 -1v-4a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4l-1 1v5" />
+  <circle cx="17" cy="5" r="2" />
+  <path d="M15 22v-4h-2l2 -6a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1l2 6h-2v4" />
+</svg>
+
+                
+                <span>Friends</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/utils/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Utils</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/board/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copy" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <rect x="8" y="8" width="12" height="12" rx="2" />
+  <path d="M16 8v-2a2 2 0 0 0 -2 -2h-8a2 2 0 0 0 -2 2v8a2 2 0 0 0 2 2h2" />
+</svg>
+
+                
+                <span>Board</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+<main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/post/%E8%AE%B0%E4%B8%80%E6%AC%A1qemu-system-arm%E4%BB%BF%E7%9C%9F%E7%9A%84%E6%8E%92%E9%94%99/">
+                
+                    <img src="https://s2.loli.net/2022/05/26/RS1JrGW2t4vzD3M.jpg" loading="lazy" alt="Featured image of post 记一次qemu-system-arm仿真的排错" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E5%B7%A5%E5%9C%B0%E6%97%A5%E8%AE%B0/" >
+                工地日记
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/post/%E8%AE%B0%E4%B8%80%E6%AC%A1qemu-system-arm%E4%BB%BF%E7%9C%9F%E7%9A%84%E6%8E%92%E9%94%99/">记一次qemu-system-arm仿真的排错</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            居然是指令集的锅？
+        </h3>
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">May 26, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    7 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="探案">🕵️探案</h2>
+<p>在一次尝试使用<code>qemu-system-arm</code>对于asuswrt的固件进行仿真运行时，出现了十分诡异的问题：整个qemu-system、linux内核、固件文件系统运行完全正常，除了在使用到<code>openssl</code>时：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">admin@<span class="o">(</span>none<span class="o">)</span>:/tmp/home/root# openssl
+</span></span><span class="line"><span class="cl"><span class="o">[</span>    9.765639<span class="o">]</span> openssl <span class="o">(</span>274<span class="o">)</span>: undefined instruction: <span class="nv">pc</span><span class="o">=</span>b6cf31a8
+</span></span><span class="line"><span class="cl"><span class="o">[</span>    9.765770<span class="o">]</span> CPU: <span class="m">0</span> PID: <span class="m">274</span> Comm: openssl Tainted: G        W       4.1.17+ <span class="c1">#10</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>    9.766031<span class="o">]</span> Hardware name: Generic DT based system
+</span></span><span class="line"><span class="cl"><span class="o">[</span>    9.766149<span class="o">]</span> task: cef58b40 ti: cef80000 task.ti: cef80000
+</span></span><span class="line"><span class="cl"><span class="o">[</span>    9.766367<span class="o">]</span> PC is at 0xb6cf31a8
+</span></span><span class="line"><span class="cl"><span class="o">[</span>    9.766423<span class="o">]</span> LR is at 0xb6dcedb0
+</span></span><span class="line"><span class="cl"><span class="o">[</span>    9.766475<span class="o">]</span> pc : <span class="o">[</span>&lt;b6cf31a8&gt;<span class="o">]</span>    lr : <span class="o">[</span>&lt;b6dcedb0&gt;<span class="o">]</span>    psr: 200b0010
+</span></span><span class="line"><span class="cl"><span class="o">[</span>    9.766475<span class="o">]</span> sp : bee2c7c8  ip : <span class="m">00000000</span>  fp : <span class="m">00000000</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>    9.766741<span class="o">]</span> r10: <span class="m">00000001</span>  r9 : bee2cdc4  r8 : <span class="m">00000000</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>    9.766903<span class="o">]</span> r7 : 000a5848  r6 : b6f6ace0  r5 : b6eb7adc  r4 : 00a43020
+</span></span><span class="line"><span class="cl"><span class="o">[</span>    9.766989<span class="o">]</span> r3 : 00a43050  r2 : <span class="m">00000001</span>  r1 : <span class="m">00000000</span>  r0 : 00a43020
+</span></span><span class="line"><span class="cl"><span class="o">[</span>    9.767253<span class="o">]</span> Flags: nzCv  IRQs on  FIQs on  Mode USER_32  ISA ARM  Segment user
+</span></span><span class="line"><span class="cl"><span class="o">[</span>    9.767372<span class="o">]</span> Control: 10c5387d  Table: 4ef78059  DAC: <span class="m">00000015</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>    9.767547<span class="o">]</span> Code: e5845000 e5843014 e3a02001 e2843030 <span class="o">(</span>e183fc92<span class="o">)</span> 
+</span></span><span class="line"><span class="cl"><span class="o">[</span>    9.767878<span class="o">]</span> potentially unexpected fatal signal 4.
+</span></span><span class="line"><span class="cl"><span class="o">[</span>    9.767978<span class="o">]</span> CPU: <span class="m">0</span> PID: <span class="m">274</span> Comm: openssl Tainted: G        W       4.1.17+ <span class="c1">#10</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>    9.768206<span class="o">]</span> Hardware name: Generic DT based system
+</span></span><span class="line"><span class="cl"><span class="o">[</span>    9.768282<span class="o">]</span> task: cef58b40 ti: cef80000 task.ti: cef80000
+</span></span><span class="line"><span class="cl"><span class="o">[</span>    9.768395<span class="o">]</span> PC is at 0xb6cf31a8
+</span></span><span class="line"><span class="cl"><span class="o">[</span>    9.768504<span class="o">]</span> LR is at 0xb6dcedb0
+</span></span><span class="line"><span class="cl"><span class="o">[</span>    9.768639<span class="o">]</span> pc : <span class="o">[</span>&lt;b6cf31a8&gt;<span class="o">]</span>    lr : <span class="o">[</span>&lt;b6dcedb0&gt;<span class="o">]</span>    psr: 200b0010
+</span></span><span class="line"><span class="cl"><span class="o">[</span>    9.768639<span class="o">]</span> sp : bee2c7c8  ip : <span class="m">00000000</span>  fp : <span class="m">00000000</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>    9.768908<span class="o">]</span> r10: <span class="m">00000001</span>  r9 : bee2cdc4  r8 : <span class="m">00000000</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>    9.768980<span class="o">]</span> r7 : 000a5848  r6 : b6f6ace0  r5 : b6eb7adc  r4 : 00a43020
+</span></span><span class="line"><span class="cl"><span class="o">[</span>    9.769094<span class="o">]</span> r3 : 00a43050  r2 : <span class="m">00000001</span>  r1 : <span class="m">00000000</span>  r0 : 00a43020
+</span></span><span class="line"><span class="cl"><span class="o">[</span>    9.769279<span class="o">]</span> Flags: nzCv  IRQs on  FIQs on  Mode USER_32  ISA ARM  Segment user
+</span></span><span class="line"><span class="cl"><span class="o">[</span>    9.769437<span class="o">]</span> Control: 10c5387d  Table: 4ef78059  DAC: <span class="m">00000015</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>    9.769517<span class="o">]</span> CPU: <span class="m">0</span> PID: <span class="m">274</span> Comm: openssl Tainted: G        W       4.1.17+ <span class="c1">#10</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>    9.769739<span class="o">]</span> Hardware name: Generic DT based system
+</span></span><span class="line"><span class="cl"><span class="o">[</span>    9.769898<span class="o">]</span> <span class="o">[</span>&lt;c001c8dc&gt;<span class="o">]</span> <span class="o">(</span>unwind_backtrace<span class="o">)</span> from <span class="o">[</span>&lt;c0019c70&gt;<span class="o">]</span> <span class="o">(</span>show_stack+0x10/0x14<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>    9.770003<span class="o">]</span> <span class="o">[</span>&lt;c0019c70&gt;<span class="o">]</span> <span class="o">(</span>show_stack<span class="o">)</span> from <span class="o">[</span>&lt;c002e6cc&gt;<span class="o">]</span> <span class="o">(</span>get_signal+0x41c/0x47c<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>    9.770168<span class="o">]</span> <span class="o">[</span>&lt;c002e6cc&gt;<span class="o">]</span> <span class="o">(</span>get_signal<span class="o">)</span> from <span class="o">[</span>&lt;c00194a8&gt;<span class="o">]</span> <span class="o">(</span>do_signal+0x8c/0x35c<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>    9.770312<span class="o">]</span> <span class="o">[</span>&lt;c00194a8&gt;<span class="o">]</span> <span class="o">(</span>do_signal<span class="o">)</span> from <span class="o">[</span>&lt;c00198d8&gt;<span class="o">]</span> <span class="o">(</span>do_work_pending+0x54/0xac<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>    9.770408<span class="o">]</span> <span class="o">[</span>&lt;c00198d8&gt;<span class="o">]</span> <span class="o">(</span>do_work_pending<span class="o">)</span> from <span class="o">[</span>&lt;c0016c8c&gt;<span class="o">]</span> <span class="o">(</span>work_pending+0xc/0x20<span class="o">)</span>
+</span></span><span class="line"><span class="cl">Illegal instruction <span class="o">(</span>core dumped<span class="o">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>当然，用到了<code>openssl</code>的各个组件，如<code>httpd</code>，也是由此无法正常工作的。</p>
+<p>动态调试看看。在<code>qemu-system-arm</code>环境中启动<code>gdbserver</code>：（gdbserver可以来这里获取：<a class="link" href="https://github.com/dev2ero/embins"  target="_blank" rel="noopener"
+    >https://github.com/dev2ero/embins</a>）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">gdbserver :1234 /usr/sbin/openssl
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在宿主机使用gdb-multiarch作为gdb client调试：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">~$ gdb-multiarch
+</span></span><span class="line"><span class="cl">pwndbg&gt; <span class="nb">set</span> architecture armv7
+</span></span><span class="line"><span class="cl">The target architecture is <span class="nb">set</span> to <span class="s2">&#34;armv7&#34;</span>.
+</span></span><span class="line"><span class="cl">pwndbg&gt; target remote 192.168.50.1:1234
+</span></span><span class="line"><span class="cl">Remote debugging using 192.168.50.1:1234
+</span></span><span class="line"><span class="cl">pwndbg&gt; file asuswrt/usr/sbin/openssl 
+</span></span><span class="line"><span class="cl">Reading symbols from asuswrt/usr/sbin/openssl...
+</span></span><span class="line"><span class="cl">pwndbg&gt; c
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>触发<code>SIGILL</code>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">Program received signal SIGILL, Illegal instruction.
+</span></span><span class="line"><span class="cl">0xb6d871a8 in BIO_new <span class="o">()</span> from target:/usr/lib/libcrypto.so.1.1
+</span></span><span class="line"><span class="cl">LEGEND: STACK <span class="p">|</span> HEAP <span class="p">|</span> CODE <span class="p">|</span> DATA <span class="p">|</span> RWX <span class="p">|</span> RODATA
+</span></span><span class="line"><span class="cl">───────────────────────────────────────────────────<span class="o">[</span> REGISTERS <span class="o">]</span>────────────────────────────────────────────────────
+</span></span><span class="line"><span class="cl">*R0   0xaf020 —▸ 0xb6f4badc ◂— 0x402
+</span></span><span class="line"><span class="cl"> R1   0x0
+</span></span><span class="line"><span class="cl">*R2   0x1
+</span></span><span class="line"><span class="cl">*R3   0xaf050 ◂— 0x0
+</span></span><span class="line"><span class="cl">*R4   0xaf020 —▸ 0xb6f4badc ◂— 0x402
+</span></span><span class="line"><span class="cl">*R5   0xb6f4badc ◂— 0x402
+</span></span><span class="line"><span class="cl">*R6   0xb6ffece0 <span class="o">(</span>__stack_chk_guard<span class="o">)</span> ◂— 0x10072e00
+</span></span><span class="line"><span class="cl">*R7   0xa5848 —▸ 0xa5738 ◂— 0x1
+</span></span><span class="line"><span class="cl"> R8   0x0
+</span></span><span class="line"><span class="cl">*R9   0xbefffdb4 —▸ 0xbefffea8 ◂— <span class="s1">&#39;/usr/sbin/openssl&#39;</span>
+</span></span><span class="line"><span class="cl">*R10  0x1
+</span></span><span class="line"><span class="cl"> R11  0x0
+</span></span><span class="line"><span class="cl"> R12  0x0
+</span></span><span class="line"><span class="cl">*SP   0xbefff7b8 —▸ 0xb6ff9648 —▸ 0x1e6a9 ◂— cdpmi  p0, <span class="c1">#4, c5, c5, c15, #2 /* &#39;OPENSSL_1_1_0&#39; */</span>
+</span></span><span class="line"><span class="cl">*PC   0xb6d871a8 <span class="o">(</span>BIO_new+84<span class="o">)</span> ◂— 0xe183fc92
+</span></span><span class="line"><span class="cl">─────────────────────────────────────────────────────<span class="o">[</span> DISASM <span class="o">]</span>─────────────────────────────────────────────────────
+</span></span><span class="line"><span class="cl">Invalid instructions at 0xb6d871a8
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>看来是<code>libcrypto.so.1.1</code>中的<code>BIO_new()</code>函数包含了非法指令。反汇编看看是哪条指令出了问题：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">pwndbg&gt; disassemble BIO_new
+</span></span><span class="line"><span class="cl">Dump of assembler code <span class="k">for</span> <span class="k">function</span> BIO_new:
+</span></span><span class="line"><span class="cl">   ......
+</span></span><span class="line"><span class="cl">   0xb6d871a4 &lt;+80&gt;:    add     r3, r4, <span class="c1">#48     ; 0x30</span>
+</span></span><span class="line"><span class="cl"><span class="o">=</span>&gt; 0xb6d871a8 &lt;+84&gt;:    stl     r2, <span class="o">[</span>r3<span class="o">]</span>
+</span></span><span class="line"><span class="cl">   0xb6d871ac &lt;+88&gt;:    add     r7, r4, <span class="c1">#72     ; 0x48</span>
+</span></span><span class="line"><span class="cl">   ......
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>stl</code>指令是非法指令？为什么呢？Google一下得到：</p>
+<p><a class="link" href="https://developer.arm.com/documentation/100076/0200/a32-t32-instruction-set-reference/a32-and-t32-instructions/stl?lang=en"  target="_blank" rel="noopener"
+    >https://developer.arm.com/documentation/100076/0200/a32-t32-instruction-set-reference/a32-and-t32-instructions/stl?lang=en</a></p>
+<p>其中注明了：</p>
+<blockquote>
+<p>This 32-bit instruction is available in A32 and T32.</p>
+<p>There is no 16-bit version of this instruction.</p>
+</blockquote>
+<p><code>stl</code>指令只是A32和T32处理器核下可用，那么这两个处理器核对应的指令集架构是什么呢？继续Google：</p>
+<p><a class="link" href="https://developer.arm.com/Processors/Cortex-A32"  target="_blank" rel="noopener"
+    >https://developer.arm.com/Processors/Cortex-A32</a></p>
+<p>得到：</p>
+<blockquote>
+<p>Architecture: 32-bit Armv8-A</p>
+</blockquote>
+<p>这是一条<code>Armv8</code>的指令。那我们此时的<code>qemu-system-arm</code>用的是什么环境呢？</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">qemu-system-arm -M <span class="nb">help</span>
+</span></span><span class="line"><span class="cl">......
+</span></span><span class="line"><span class="cl">virt-6.1             QEMU 6.1 ARM Virtual Machine
+</span></span><span class="line"><span class="cl">virt-6.2             QEMU 6.2 ARM Virtual Machine
+</span></span><span class="line"><span class="cl">virt                 QEMU 7.0 ARM Virtual Machine <span class="o">(</span><span class="nb">alias</span> of virt-7.0<span class="o">)</span>
+</span></span><span class="line"><span class="cl">virt-7.0             QEMU 7.0 ARM Virtual Machine
+</span></span><span class="line"><span class="cl">......
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>machine的说明中只说明了我所用的<code>virt</code>是指<code>QEMU 7.0 ARM Virtual Machine</code>，并未介绍更多信息</p>
+<p>那么去虚拟环境中直接看看：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">admin@<span class="o">(</span>none<span class="o">)</span>:/# cat /proc/cpuinfo 
+</span></span><span class="line"><span class="cl">processor       : <span class="m">0</span>
+</span></span><span class="line"><span class="cl">model name      : ARMv7 Processor rev <span class="m">1</span> <span class="o">(</span>v7l<span class="o">)</span>
+</span></span><span class="line"><span class="cl">BogoMIPS        : 125.00
+</span></span><span class="line"><span class="cl">Features        : half thumb fastmult vfp edsp neon vfpv3 tls vfpv4 idiva idivt vfpd32 lpae evtstrm 
+</span></span><span class="line"><span class="cl">CPU implementer : 0x41
+</span></span><span class="line"><span class="cl">CPU architecture: <span class="m">7</span>
+</span></span><span class="line"><span class="cl">CPU variant     : 0x2
+</span></span><span class="line"><span class="cl">CPU part        : 0xc0f
+</span></span><span class="line"><span class="cl">CPU revision    : <span class="m">1</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Hardware        : Generic DT based system
+</span></span><span class="line"><span class="cl">Revision        : <span class="m">0000</span>
+</span></span><span class="line"><span class="cl">Serial          : <span class="m">0000000000000000</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>问题原因找到了，此时我们虚拟环境的CPU所用指令集为<code>Armv7</code>，并未包含<code>Armv8</code>下的<code>stl</code>指令。</p>
+<p>做个实验验证下猜想：</p>
+<p>准备一份arm下的hello world源码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="na">.section</span> <span class="no">.data</span>
+</span></span><span class="line"><span class="cl"><span class="nl">hello:</span>
+</span></span><span class="line"><span class="cl">    <span class="na">.ascii</span> <span class="s">&#34;hello world\n&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">.equ</span> <span class="no">len</span><span class="p">,</span> <span class="p">.</span> <span class="p">-</span> <span class="no">hello</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="na">.section</span> <span class="no">.text</span>
+</span></span><span class="line"><span class="cl"><span class="na">.global</span> <span class="no">_start</span>
+</span></span><span class="line"><span class="cl"><span class="nl">_start:</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">mov</span> <span class="no">r0</span><span class="p">,</span> <span class="c">#1
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>    <span class="no">ldr</span> <span class="no">r1</span><span class="p">,</span> <span class="err">=</span><span class="no">hello</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">mov</span> <span class="no">r2</span><span class="p">,</span> <span class="c">#len
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>    <span class="no">mov</span> <span class="no">r7</span><span class="p">,</span> <span class="c">#4
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>    <span class="no">swi</span> <span class="c">#0
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>
+</span></span><span class="line"><span class="cl"><span class="nl">exit:</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">mov</span> <span class="no">r0</span><span class="p">,</span> <span class="c">#0
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>    <span class="no">mov</span> <span class="no">r7</span><span class="p">,</span> <span class="c">#1
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>    <span class="no">swi</span> <span class="c">#0
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>使用旧版<code>arm-linux-gnueabi-gcc</code>，可以正常汇编链接运行：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">~$ /opt/cross/gcc-linaro-arm-linux-gnueabihf/bin/arm-linux-gnueabihf-as hello.s -o hello.o
+</span></span><span class="line"><span class="cl">~$ /opt/cross/gcc-linaro-arm-linux-gnueabihf/bin/arm-linux-gnueabihf-ld hello.o -o hello.out
+</span></span><span class="line"><span class="cl">~$ qemu-arm hello.out 
+</span></span><span class="line"><span class="cl">hello world
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>而为其添加上一行stl指令后则汇编失败：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">~$ /opt/cross/gcc-linaro-arm-linux-gnueabihf/bin/arm-linux-gnueabihf-as hello.s -o hello.o
+</span></span><span class="line"><span class="cl">hello.s: Assembler messages:
+</span></span><span class="line"><span class="cl">hello.s:11: Error: bad instruction <span class="sb">`</span>stl r0,<span class="o">[</span>r1<span class="o">]</span><span class="err">&#39;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>由此验证了上面的原因推断。</p>
+<p>继续来看看固件中的ELF指令集版本：</p>
+<p>首先我们刚刚的<code>hello.out</code>是<code>Armv4</code>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">~$ /opt/cross/gcc-linaro-arm-linux-gnueabihf/bin/arm-linux-gnueabihf-readelf -A hello.out                    
+</span></span><span class="line"><span class="cl">Attribute Section: aeabi
+</span></span><span class="line"><span class="cl">File Attributes
+</span></span><span class="line"><span class="cl">  Tag_CPU_arch: v4
+</span></span><span class="line"><span class="cl">  Tag_ARM_ISA_use: Yes
+</span></span><span class="line"><span class="cl">  Tag_DIV_use: Not allowed
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>固件中的<code>busybox</code>、<code>openssl</code>，和出问题的<code>libcrypto.so.1.1</code>则是：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">~$ /opt/cross/gcc-linaro-arm-linux-gnueabihf/bin/arm-linux-gnueabihf-readelf -A asuswrt/busybox                    
+</span></span><span class="line"><span class="cl">Attribute Section: aeabi
+</span></span><span class="line"><span class="cl">File Attributes
+</span></span><span class="line"><span class="cl">  Tag_CPU_name: <span class="s2">&#34;Cortex-A9&#34;</span>
+</span></span><span class="line"><span class="cl">  Tag_CPU_arch: v7
+</span></span><span class="line"><span class="cl">  Tag_CPU_arch_profile: Application
+</span></span><span class="line"><span class="cl">  Tag_ARM_ISA_use: Yes
+</span></span><span class="line"><span class="cl">  Tag_THUMB_ISA_use: Thumb-2
+</span></span><span class="line"><span class="cl">  Tag_ABI_PCS_wchar_t: <span class="m">4</span>
+</span></span><span class="line"><span class="cl">  Tag_ABI_FP_rounding: Needed
+</span></span><span class="line"><span class="cl">  Tag_ABI_FP_denormal: Needed
+</span></span><span class="line"><span class="cl">  Tag_ABI_FP_exceptions: Needed
+</span></span><span class="line"><span class="cl">  Tag_ABI_FP_number_model: IEEE <span class="m">754</span>
+</span></span><span class="line"><span class="cl">  Tag_ABI_align_needed: 8-byte
+</span></span><span class="line"><span class="cl">  Tag_ABI_align_preserved: 8-byte, except leaf SP
+</span></span><span class="line"><span class="cl">  Tag_ABI_enum_size: int
+</span></span><span class="line"><span class="cl">  Tag_CPU_unaligned_access: v6
+</span></span><span class="line"><span class="cl">  Tag_MPextension_use: Allowed
+</span></span><span class="line"><span class="cl">  Tag_Virtualization_use: TrustZone
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">~$ /opt/cross/gcc-linaro-arm-linux-gnueabihf/bin/arm-linux-gnueabihf-readelf -A ../usr/sbin/openssl 
+</span></span><span class="line"><span class="cl">Attribute Section: aeabi
+</span></span><span class="line"><span class="cl">File Attributes
+</span></span><span class="line"><span class="cl">  Tag_CPU_name: <span class="s2">&#34;8-A&#34;</span>
+</span></span><span class="line"><span class="cl">  Tag_CPU_arch: ??? <span class="o">(</span>14<span class="o">)</span>
+</span></span><span class="line"><span class="cl">  Tag_CPU_arch_profile: Application
+</span></span><span class="line"><span class="cl">  Tag_ARM_ISA_use: Yes
+</span></span><span class="line"><span class="cl">  Tag_THUMB_ISA_use: Thumb-2
+</span></span><span class="line"><span class="cl">  Tag_ABI_PCS_wchar_t: <span class="m">4</span>
+</span></span><span class="line"><span class="cl">  Tag_ABI_FP_rounding: Needed
+</span></span><span class="line"><span class="cl">  Tag_ABI_FP_denormal: Needed
+</span></span><span class="line"><span class="cl">  Tag_ABI_FP_exceptions: Needed
+</span></span><span class="line"><span class="cl">  Tag_ABI_FP_number_model: IEEE <span class="m">754</span>
+</span></span><span class="line"><span class="cl">  Tag_ABI_align_needed: 8-byte
+</span></span><span class="line"><span class="cl">  Tag_ABI_align_preserved: 8-byte, except leaf SP
+</span></span><span class="line"><span class="cl">  Tag_ABI_enum_size: int
+</span></span><span class="line"><span class="cl">  Tag_CPU_unaligned_access: v6
+</span></span><span class="line"><span class="cl">  Tag_MPextension_use: Allowed
+</span></span><span class="line"><span class="cl">  Tag_Virtualization_use: TrustZone and Virtualization Extensions
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">~$ /opt/cross/gcc-linaro-arm-linux-gnueabihf/bin/arm-linux-gnueabihf-readelf -A asuswrt/usr/lib/libcrypto.so.1.1
+</span></span><span class="line"><span class="cl">Attribute Section: aeabi
+</span></span><span class="line"><span class="cl">File Attributes
+</span></span><span class="line"><span class="cl">  Tag_CPU_name: <span class="s2">&#34;8-A&#34;</span>
+</span></span><span class="line"><span class="cl">  Tag_CPU_arch: ??? <span class="o">(</span>14<span class="o">)</span>
+</span></span><span class="line"><span class="cl">  Tag_CPU_arch_profile: Application
+</span></span><span class="line"><span class="cl">  Tag_ARM_ISA_use: Yes
+</span></span><span class="line"><span class="cl">  Tag_THUMB_ISA_use: Thumb-2
+</span></span><span class="line"><span class="cl">  Tag_FP_arch: VFPv3
+</span></span><span class="line"><span class="cl">  Tag_Advanced_SIMD_arch: NEONv1
+</span></span><span class="line"><span class="cl">  Tag_ABI_PCS_wchar_t: <span class="m">4</span>
+</span></span><span class="line"><span class="cl">  Tag_ABI_FP_rounding: Needed
+</span></span><span class="line"><span class="cl">  Tag_ABI_FP_denormal: Needed
+</span></span><span class="line"><span class="cl">  Tag_ABI_FP_exceptions: Needed
+</span></span><span class="line"><span class="cl">  Tag_ABI_FP_number_model: IEEE <span class="m">754</span>
+</span></span><span class="line"><span class="cl">  Tag_ABI_align_needed: 8-byte
+</span></span><span class="line"><span class="cl">  Tag_ABI_enum_size: int
+</span></span><span class="line"><span class="cl">  Tag_CPU_unaligned_access: v6
+</span></span><span class="line"><span class="cl">  Tag_MPextension_use: Allowed
+</span></span><span class="line"><span class="cl">  Tag_Virtualization_use: TrustZone and Virtualization Extensions
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>一个固件中的不同组件还用了不同的编译工具链？！</p>
+<p><code>busybox</code>是<code>Armv7</code>，而<code>openssl</code>和<code>libcrypto.so.1.1</code>则是<code>Armv8-A</code>。</p>
+<p>这也解释了为什么我在仿真旧版本固件时是没有该故障存在的。旧版本固件中的是<code>Armv7</code>的<code>libcrypto.so.1.0.0</code>。</p>
+<p>我们来到固件的下载页面：<a class="link" href="https://www.asus.com.cn/Networking-IoT-Servers/WiFi-Routers/ASUS-WiFi-Routers/RT-AC86U/HelpDesk_BIOS/"  target="_blank" rel="noopener"
+    >https://www.asus.com.cn/Networking-IoT-Servers/WiFi-Routers/ASUS-WiFi-Routers/RT-AC86U/HelpDesk_BIOS/</a></p>
+<p>可以看到新版本固件中华硕对于OpenSSL的漏洞进行了修复：</p>
+<blockquote>
+<p>版本 3.0.0.4.386.48260</p>
+<p>2022/03/25 62.81 MBytes</p>
+<p>ASUS RT-AC86U 固件版本 3.0.0.4.386.48260</p>
+<ol>
+<li>修正 OpenSSL CVE-2022-0778</li>
+</ol>
+<p>​    &hellip;&hellip;</p>
+</blockquote>
+<p>原来他们修复时并没有将固件全量编译，而是只换用了新编译工具链将出问题的<code>openssl</code>重新编译了。</p>
+<p>恰好我手头有华硕的路由器真机，来看看真机环境是什么：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">zkv@RT-AC86U:/tmp/home/root# uname -a
+</span></span><span class="line"><span class="cl">Linux RT-AC86U 4.1.27 <span class="c1">#2 SMP PREEMPT Thu Nov 11 17:12:59 CST 2021 aarch64</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>好家伙，直接是<code>aarch64</code>的linux内核。至于CPU，型号是<code>Boardcom BCM4906</code>：<a class="link" href="https://www.broadcom.com/products/wireless/wireless-lan-infrastructure/bcm49408"  target="_blank" rel="noopener"
+    >https://www.broadcom.com/products/wireless/wireless-lan-infrastructure/bcm49408</a></p>
+<p>原来是<code>Armv8-A</code>的<code>A53</code>：<a class="link" href="https://developer.arm.com/Processors/Cortex-A53"  target="_blank" rel="noopener"
+    >https://developer.arm.com/Processors/Cortex-A53</a></p>
+<p>其中注明了：</p>
+<blockquote>
+<p>ISA Support</p>
+<ul>
+<li>AArch32 for full backward compatibility with Armv7</li>
+<li>AArch64 for 64-bit support and new architectural features</li>
+<li>&hellip;&hellip;</li>
+</ul>
+</blockquote>
+<p>由此破案了：华硕为这台路由器用了较新的A53 64位CPU和64位内核，内部软件却都是较旧的<code>Armv7</code>指令集下的32位软件。整台机器相当于是跑在一个“向下兼容模式”。</p>
+<p>——直到他们修复OpenSSL CVE-2022-0778时，固件中才首次出现了<code>Armv8</code>的软件OpenSSL。（当然配套依赖也引入了，如<code>ld-linux-aarch64.so.1</code>）</p>
+<h2 id="收网">👮收网</h2>
+<p>qemu难道就不包含<code>Armv8</code>了吗？</p>
+<p>使用<code>qemu-user</code>试试：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">~$ chroot asuswrt openssl
+</span></span><span class="line"><span class="cl">OpenSSL&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>是可以正常执行的。说明qemu是有写过<code>Armv8</code>的代码的。</p>
+<p>这里要说明下为什么可以直接使用<code>chroot guest_rootfs_dir target_elf</code>的形式直接执行其它指令集的ELF。</p>
+<p>我们都知道的是，Linux下的<strong>可执行文件</strong>，是一个广义词。文件系统中inode标记了x位，即可执行位的文件，都算作可执行文件。</p>
+<p>那么，.sh、.py、ELF等等，都算是可执行文件了。但他们的执行方式却又多种多样，这又是怎么区分的呢？</p>
+<p>实际上是借助于不同可执行文件的文件头，来调用不同的“解释器”，完成对于可执行文件的不同方式执行：</p>
+<ul>
+<li>
+<p>ELF，二进制文件，有狭义文件头，魔数为<code>\x7fELF</code>，“解释器”为<code>ld.so</code>，即标明：“本可执行文件请交由<code>ld.so</code>来执行”</p>
+</li>
+<li>
+<p>.sh，文本文件，无狭义文件头，<code>#!/bin/sh</code>作为文件起始内容，即标明：“本可执行文件请交由<code>/bin/sh</code>来执行”</p>
+<ul>
+<li>
+<p>没有显式注明解释器的可执行文件默认当作sh脚本文件处理：</p>
+</li>
+<li>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">~$ <span class="nb">echo</span> deadbeef &gt; <span class="nb">test</span>
+</span></span><span class="line"><span class="cl">~$ chmod +x <span class="nb">test</span>
+</span></span><span class="line"><span class="cl">~$ ./test    
+</span></span><span class="line"><span class="cl">./test: 1: deadbeef: not found
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><a class="link" href="https://0xax.gitbooks.io/linux-insides/content/SysCall/linux-syscall-4.html"  target="_blank" rel="noopener"
+    >https://0xax.gitbooks.io/linux-insides/content/SysCall/linux-syscall-4.html</a></p>
+</blockquote>
+<p>那同样的道理，在一台安装了qemu-user的机器上，直接<code>./</code>执行一个其它指令集的可执行文件时。由于<code>qemu-user</code>已经将这种文件的文件头信息在系统中注册了，即表明：“遇到这些其它指令集对应的文件头的文件时，请交由我<code>qemu-user</code>来解释执行。”</p>
+<p>那么，静态链接的异构程序，在安装了<code>qemu-user</code>的系统中，就可以直接<code>./</code>执行了。而动态链接的异构程序，由于需要载入其它异构的链接库文件，故需要先<code>chroot</code>到异构的根文件系统中。</p>
+<p><code>qemu-system-arm</code>是32位时代的arm实现（aarch32），从<code>Armv7</code>到<code>Armv8</code>的升级，才引入了64位支持（aarch64）。所以我们应该换用<code>qemu-system-aarch64</code>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">~$ qemu-system-arm -cpu <span class="nb">help</span>
+</span></span><span class="line"><span class="cl">Available CPUs:
+</span></span><span class="line"><span class="cl">  arm1026
+</span></span><span class="line"><span class="cl">  arm1136
+</span></span><span class="line"><span class="cl">  arm1136-r2
+</span></span><span class="line"><span class="cl">  arm1176
+</span></span><span class="line"><span class="cl">  arm11mpcore
+</span></span><span class="line"><span class="cl">  arm926
+</span></span><span class="line"><span class="cl">  arm946
+</span></span><span class="line"><span class="cl">  cortex-a15
+</span></span><span class="line"><span class="cl">  cortex-a7
+</span></span><span class="line"><span class="cl">  cortex-a8
+</span></span><span class="line"><span class="cl">  cortex-a9
+</span></span><span class="line"><span class="cl">  cortex-m0
+</span></span><span class="line"><span class="cl">  cortex-m3
+</span></span><span class="line"><span class="cl">  cortex-m33
+</span></span><span class="line"><span class="cl">  cortex-m4
+</span></span><span class="line"><span class="cl">  cortex-m55
+</span></span><span class="line"><span class="cl">  cortex-m7
+</span></span><span class="line"><span class="cl">  cortex-r5
+</span></span><span class="line"><span class="cl">  cortex-r5f
+</span></span><span class="line"><span class="cl">  max
+</span></span><span class="line"><span class="cl">  pxa250
+</span></span><span class="line"><span class="cl">  pxa255
+</span></span><span class="line"><span class="cl">  pxa260
+</span></span><span class="line"><span class="cl">  pxa261
+</span></span><span class="line"><span class="cl">  pxa262
+</span></span><span class="line"><span class="cl">  pxa270-a0
+</span></span><span class="line"><span class="cl">  pxa270-a1
+</span></span><span class="line"><span class="cl">  pxa270
+</span></span><span class="line"><span class="cl">  pxa270-b0
+</span></span><span class="line"><span class="cl">  pxa270-b1
+</span></span><span class="line"><span class="cl">  pxa270-c0
+</span></span><span class="line"><span class="cl">  pxa270-c5
+</span></span><span class="line"><span class="cl">  sa1100
+</span></span><span class="line"><span class="cl">  sa1110
+</span></span><span class="line"><span class="cl">  ti925t
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">~$ qemu-system-aarch64 -cpu <span class="nb">help</span>
+</span></span><span class="line"><span class="cl">Available CPUs:
+</span></span><span class="line"><span class="cl">  a64fx
+</span></span><span class="line"><span class="cl">  arm1026
+</span></span><span class="line"><span class="cl">  arm1136
+</span></span><span class="line"><span class="cl">  arm1136-r2
+</span></span><span class="line"><span class="cl">  arm1176
+</span></span><span class="line"><span class="cl">  arm11mpcore
+</span></span><span class="line"><span class="cl">  arm926
+</span></span><span class="line"><span class="cl">  arm946
+</span></span><span class="line"><span class="cl">  cortex-a15
+</span></span><span class="line"><span class="cl">  cortex-a53
+</span></span><span class="line"><span class="cl">  cortex-a57
+</span></span><span class="line"><span class="cl">  cortex-a7
+</span></span><span class="line"><span class="cl">  cortex-a72
+</span></span><span class="line"><span class="cl">  cortex-a8
+</span></span><span class="line"><span class="cl">  cortex-a9
+</span></span><span class="line"><span class="cl">  cortex-m0
+</span></span><span class="line"><span class="cl">  cortex-m3
+</span></span><span class="line"><span class="cl">  cortex-m33
+</span></span><span class="line"><span class="cl">  cortex-m4
+</span></span><span class="line"><span class="cl">  cortex-m55
+</span></span><span class="line"><span class="cl">  cortex-m7
+</span></span><span class="line"><span class="cl">  cortex-r5
+</span></span><span class="line"><span class="cl">  cortex-r5f
+</span></span><span class="line"><span class="cl">  max
+</span></span><span class="line"><span class="cl">  pxa250
+</span></span><span class="line"><span class="cl">  pxa255
+</span></span><span class="line"><span class="cl">  pxa260
+</span></span><span class="line"><span class="cl">  pxa261
+</span></span><span class="line"><span class="cl">  pxa262
+</span></span><span class="line"><span class="cl">  pxa270-a0
+</span></span><span class="line"><span class="cl">  pxa270-a1
+</span></span><span class="line"><span class="cl">  pxa270
+</span></span><span class="line"><span class="cl">  pxa270-b0
+</span></span><span class="line"><span class="cl">  pxa270-b1
+</span></span><span class="line"><span class="cl">  pxa270-c0
+</span></span><span class="line"><span class="cl">  pxa270-c5
+</span></span><span class="line"><span class="cl">  sa1100
+</span></span><span class="line"><span class="cl">  sa1110
+</span></span><span class="line"><span class="cl">  ti925t
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>同时手动指定CPU为<code>cortex-a53</code>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">qemu-system-aarch64 
+</span></span><span class="line"><span class="cl">	-M virt -cpu cortex-a53 <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>	-m <span class="m">256</span> -kernel zImage.aarch64 <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>	-append <span class="s2">&#34;rootwait root=/dev/vda1 console=ttyAMA0&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -drive <span class="k">if</span><span class="o">=</span>none,file<span class="o">=</span>rootfs.img,format<span class="o">=</span>raw,id<span class="o">=</span>rootfs <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -device virtio-blk-device,drive<span class="o">=</span>rootfs <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -netdev <span class="nv">type</span><span class="o">=</span>tap,id<span class="o">=</span>net0,ifname<span class="o">=</span>tap0,script<span class="o">=</span>no,downscript<span class="o">=</span>no -device virtio-net-device,netdev<span class="o">=</span>net0 <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -nographic 
+</span></span></code></pre></td></tr></table>
+</div>
+</div>
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/qemu/">QEMU</a>
+        
+            <a href="/tags/linux/">Linux</a>
+        
+            <a href="/tags/dbg/">DBG</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/post/%E4%BD%BF%E7%94%A8qemu-gdb%E8%B0%83%E8%AF%95linux%E5%86%85%E6%A0%B8/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://s2.loli.net/2022/08/09/PKcwjiVBTg6ApEv.png" loading="lazy" data-key="" data-hash="https://s2.loli.net/2022/08/09/PKcwjiVBTg6ApEv.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">使用QEMU&#43;GDB调试Linux内核</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/post/%E6%9E%84%E5%BB%BA%E4%B8%8E%E8%BF%90%E8%A1%8C%E5%B5%8C%E5%85%A5%E5%BC%8Flinux%E8%99%9A%E6%8B%9F%E6%9C%BA/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://s2.loli.net/2022/05/08/2DqjsbwNpdUM4XA.jpg" loading="lazy" data-key="" data-hash="https://s2.loli.net/2022/05/08/2DqjsbwNpdUM4XA.jpg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">构建与运行嵌入式linux虚拟机</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/post/cross-debug-old-version-kernel-using-qemu-system/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://s2.loli.net/2022/05/08/MGJ3tsAVHSYrThj.jpg" loading="lazy" data-key="" data-hash="https://s2.loli.net/2022/05/08/MGJ3tsAVHSYrThj.jpg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Cross debug old version kernel using qemu-system</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/post/%E5%8D%8E%E7%A1%95%E6%A2%85%E6%9E%97%E5%9B%BA%E4%BB%B6%E7%9A%84%E7%BC%96%E8%AF%91/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://www.asuswrt-merlin.net/sites/default/files/inline-images/main_page_sm_2.png" loading="lazy" data-key="" data-hash="https://www.asuswrt-merlin.net/sites/default/files/inline-images/main_page_sm_2.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">华硕梅林固件的编译</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2022 Zikey Vi
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.13.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#探案">🕵️探案</a></li>
+    <li><a href="#收网">👮收网</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

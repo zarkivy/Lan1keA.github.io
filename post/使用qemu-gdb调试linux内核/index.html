@@ -1,0 +1,1292 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='学好Kernel的基操？'><title>使用QEMU&#43;GDB调试Linux内核</title>
+
+<link rel='canonical' href='https://cerr.cc/post/%E4%BD%BF%E7%94%A8qemu-gdb%E8%B0%83%E8%AF%95linux%E5%86%85%E6%A0%B8/'>
+
+<link rel="stylesheet" href="/scss/style.min.ac77dcf8b111b51da39a92990f431923f210f3876d85798a2125667f96dc33a4.css"><meta property='og:title' content='使用QEMU&#43;GDB调试Linux内核'>
+<meta property='og:description' content='学好Kernel的基操？'>
+<meta property='og:url' content='https://cerr.cc/post/%E4%BD%BF%E7%94%A8qemu-gdb%E8%B0%83%E8%AF%95linux%E5%86%85%E6%A0%B8/'>
+<meta property='og:site_name' content='Zikey Vi'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='QEMU' /><meta property='article:tag' content='Kernel' /><meta property='article:tag' content='DBG' /><meta property='article:published_time' content='2022-08-08T14:17:44&#43;08:00'/><meta property='article:modified_time' content='2022-08-08T14:17:44&#43;08:00'/><meta property='og:image' content='https://s2.loli.net/2022/08/09/PKcwjiVBTg6ApEv.png' />
+<meta name="twitter:site" content="@dev2ero">
+    <meta name="twitter:creator" content="@dev2ero"><meta name="twitter:title" content="使用QEMU&#43;GDB调试Linux内核">
+<meta name="twitter:description" content="学好Kernel的基操？"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://s2.loli.net/2022/08/09/PKcwjiVBTg6ApEv.png' />
+    <link rel="shortcut icon" href="img/favicon.png" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu83ce41192ed66b608a10477eb7108e0c_128714_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Zikey Vi</a></h1>
+            <h2 class="site-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/dev2ero'
+                        target="_blank"
+                        title="GitHub"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com/dev2ero'
+                        target="_blank"
+                        title="Twitter"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archive</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/love/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-heart" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M19.5 13.572l-7.5 7.428l-7.5 -7.428m0 0a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
+</svg>
+
+                
+                <span>Love</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/friends/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-friends" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <circle cx="7" cy="5" r="2" />
+  <path d="M5 22v-5l-1 -1v-4a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4l-1 1v5" />
+  <circle cx="17" cy="5" r="2" />
+  <path d="M15 22v-4h-2l2 -6a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1l2 6h-2v4" />
+</svg>
+
+                
+                <span>Friends</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/utils/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Utils</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/board/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copy" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <rect x="8" y="8" width="12" height="12" rx="2" />
+  <path d="M16 8v-2a2 2 0 0 0 -2 -2h-8a2 2 0 0 0 -2 2v8a2 2 0 0 0 2 2h2" />
+</svg>
+
+                
+                <span>Board</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+<main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/post/%E4%BD%BF%E7%94%A8qemu-gdb%E8%B0%83%E8%AF%95linux%E5%86%85%E6%A0%B8/">
+                
+                    <img src="https://s2.loli.net/2022/08/09/PKcwjiVBTg6ApEv.png" loading="lazy" alt="Featured image of post 使用QEMU&#43;GDB调试Linux内核" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E5%B7%A5%E5%9C%B0%E6%97%A5%E8%AE%B0/" >
+                工地日记
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/post/%E4%BD%BF%E7%94%A8qemu-gdb%E8%B0%83%E8%AF%95linux%E5%86%85%E6%A0%B8/">使用QEMU&#43;GDB调试Linux内核</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            学好Kernel的基操？
+        </h3>
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Aug 08, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    5 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="环境准备">环境准备</h2>
+<h3 id="qemu-的手动构建">QEMU 的手动构建</h3>
+<p>获取QEMU源码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">git clone https://gitlab.com/qemu-project/qemu.git
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> qemu
+</span></span><span class="line"><span class="cl">git submodule init
+</span></span><span class="line"><span class="cl">git submodule update --recursive
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>本次使用x86_64内核的情况下，configure配置如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">./configure --target-list<span class="o">=</span>x86_64-softmmu --enable-debug
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>编译并安装：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">make -j<span class="sb">`</span>nproc<span class="sb">`</span>
+</span></span><span class="line"><span class="cl">sudo make install
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="使用buildroot一键构建rootfskernel">使用buildroot一键构建rootfs+kernel</h3>
+<blockquote>
+<p>buildroot自动构建过程若出现网络不畅，自备梯子，并设定shell变量all_proxy、http_proxy、https_proxy用于代理wget、curl等工具即可。参见：<a class="link" href="/post/fgfw/" >https://cerr.cc/post/fgfw/</a></p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">git clone https://git.buildroot.net/buildroot
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> buildroot
+</span></span><span class="line"><span class="cl">make qemu_x86_64_defconfig
+</span></span><span class="line"><span class="cl">make linux-menuconfig
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>使用 / 搜索 DEBUG_INFO 符号（即配置文件中的CONFIG_DEBUG_INFO符号） 设定路径与依赖，将其打开。</p>
+<p><img src="https://s2.loli.net/2022/08/09/PKcwjiVBTg6ApEv.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image.png"
+	
+	
+></p>
+<p>以同样的方式再将 GDB_SCRIPT 打开、RANDOMIZE_BASE 关闭。</p>
+<p>此后即可直接make构建。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">make
+</span></span><span class="line"><span class="cl"><span class="c1"># 编译构建中……</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># ☕️、☕️、☕️……</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 编译构建完成</span>
+</span></span><span class="line"><span class="cl">output/images/start-qemu.sh
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>测试是否正常启动：（上一步若关闭了RANDOMIZE_BASE，则无需向kernel传递nokaslr参数）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="nb">cd</span> output/images
+</span></span><span class="line"><span class="cl">qemu-system-x86_64 -M pc -kernel bzImage <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>	-drive <span class="nv">file</span><span class="o">=</span>rootfs.ext2,if<span class="o">=</span>virtio,format<span class="o">=</span>raw <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>	-append <span class="s2">&#34;rootwait root=/dev/vda console=tty1 console=ttyS0 nokaslr&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>	-net nic,model<span class="o">=</span>virtio -net user <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>	-nographic -s -S
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>-nographic 全部信息输出至host stdio
+<ul>
+<li>若否，而是使用-serial stdio，则只会将guest的串口数据输出至host stdio，其余则会输出至启动的vncserver</li>
+</ul>
+</li>
+<li>-s              shorthand for -gdb tcp::1234</li>
+<li>-S              freeze CPU at startup (use &lsquo;c&rsquo; to start execution)</li>
+</ul>
+<p>此时于另一个tty、pts：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">sudo gdb -ex <span class="s2">&#34;file ../build/linux-5.15.18/vmlinux&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>		 -ex <span class="s2">&#34;target remote :1234&#34;</span>
+</span></span><span class="line"><span class="cl">pwndbg&gt; b start_kernel
+</span></span><span class="line"><span class="cl">pwndbg&gt; c
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>确认成功断下执行流即可。</p>
+<h3 id="手动构建kernelinitramfs">手动构建kernel+initramfs</h3>
+<p>若不想借助自动化工具buildroot传达旨意，而是要亲自指挥亲自部署，记录如下：</p>
+<p>载入x86_64默认config：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">make x86_64_defconfig
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>使用Linux提供的脚本一键启用DEBUG_KERNEL、DEBUG_INFO、GDB_SCRIPTS，关闭RANDOMIZE_BASE</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">./scripts/config --file .config -e DEBUG_KERNEL -e DEBUG_INFO -e GDB_SCRIPTS -d RANDOMIZE_BASE
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>开始编译：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">make -j<span class="sb">`</span>nproc<span class="sb">`</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>得到：Kernel: arch/x86/boot/bzImage is ready</p>
+<p>先来看看单kernel直接传递给qemu启动会怎样：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">qemu-system-x86_64 -kernel arch/x86_64/boot/bzImage -nographic -append <span class="s2">&#34;console=ttyS0&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>得到：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">---<span class="o">[</span> end Kernel panic - not syncing: VFS: Unable to mount root fs on unknown-block<span class="o">(</span>0,0<span class="o">)</span> <span class="o">]</span>---
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>没有rootfs的情况下kernel初始化完成后会直接panic。</p>
+<p>那么接下来制作initramfs即可：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">mkinitramfs -o ramdisk.img
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>提供足够内存后启动：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">qemu-system-x86_64 -m <span class="m">512</span> -kernel arch/x86_64/boot/bzImage -nographic -append <span class="s2">&#34;console=ttyS0&#34;</span> -initrd ramdisk.img 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>得到shell即成功。</p>
+<blockquote>
+<p>巧合的是，就在我执行完如上命令进入shell后，惊觉Linux居然已经6.0.0了😱。经查正是今天的新闻。</p>
+</blockquote>
+<h3 id="试图调试">试图调试</h3>
+<p>沿用上述手动挡的构建方案，qemu启动时关闭kaslr（编译时若关闭了RANDOMIZE_BASE，则无需向kernel传递nokaslr参数）：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">qemu-system-x86_64 -m <span class="m">512</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>				   -kernel arch/x86_64/boot/bzImage <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>				   -append <span class="s2">&#34;console=ttyS0 nokaslr&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>				   -initrd ramdisk.img <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>				   -nographic <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>				   -s -S
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>此时于另一个tty、pts：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;add-auto-load-safe-path /home/zkv/Laboratory/linux/scripts/gdb/vmlinux-gdb.py&#34;</span> &gt;&gt; ~/.gdbinit
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;set auto-load safe-path /&#34;</span> &gt;&gt; ~/.gdbinit 
+</span></span><span class="line"><span class="cl">gdb vmlinux -ex <span class="s2">&#34;target remote :1234&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>关于对gdb调试的支持，内核所提供的文档如下：</p>
+<p><a class="link" href="https://www.kernel.org/doc/html/latest/dev-tools/gdb-kernel-debugging.html"  target="_blank" rel="noopener"
+    >https://www.kernel.org/doc/html/latest/dev-tools/gdb-kernel-debugging.html</a></p>
+<h2 id="内核启动">内核启动</h2>
+<p>内核初始化主函数：<code>init/main.c:start_kernel</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">pwndbg&gt; hb start_kernel
+</span></span><span class="line"><span class="cl">pwndbg&gt; c
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>第一次向console打印内容：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">pwndbg&gt; hb console_init
+</span></span><span class="line"><span class="cl">pwndbg&gt; c
+</span></span><span class="line"><span class="cl">pwndbg&gt; <span class="k">until</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>可得：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="o">[</span>    0.000000<span class="o">]</span> Console: colour VGA+ 80x25
+</span></span><span class="line"><span class="cl"><span class="o">[</span>    0.000000<span class="o">]</span> printk: console <span class="o">[</span>ttyS0<span class="o">]</span> enabled
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>内核主线程的终点：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">In</span> <span class="nl">file</span><span class="p">:</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">zkv</span><span class="o">/</span><span class="n">Laboratory</span><span class="o">/</span><span class="n">linux</span><span class="o">/</span><span class="n">kernel</span><span class="o">/</span><span class="n">sched</span><span class="o">/</span><span class="n">idle</span><span class="p">.</span><span class="n">c</span>
+</span></span><span class="line"><span class="cl">   <span class="mi">395</span> <span class="kt">void</span> <span class="n">cpu_startup_entry</span><span class="p">(</span><span class="k">enum</span> <span class="n">cpuhp_state</span> <span class="n">state</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">   <span class="mi">396</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">   <span class="mi">397</span>  <span class="n">arch_cpu_idle_prepare</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">   <span class="mi">398</span>  <span class="nf">cpuhp_online_idle</span><span class="p">(</span><span class="n">state</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">   <span class="mi">399</span>  <span class="nf">while</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"> <span class="err">►</span> <span class="mi">400</span>          <span class="n">do_idle</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">   <span class="mi">401</span> <span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>进入do_idle让出CPU，没有任务时将CPU交给用户态程序使用，否则将CPU重新调度给内核线程自己。<code>while(1)</code>无限循环该操作。</p>
+<p><code>kernel/sched/idle.c</code>的内容：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span><span class="lnt">80
+</span><span class="lnt">81
+</span><span class="lnt">82
+</span><span class="lnt">83
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cm">/*
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * Generic idle loop implementation
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * Called with polling cleared.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
+</span></span><span class="line"><span class="cl"><span class="k">static</span> <span class="kt">void</span> <span class="nf">do_idle</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">cpu</span> <span class="o">=</span> <span class="n">smp_processor_id</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="cm">/*
+</span></span></span><span class="line"><span class="cl"><span class="cm">         * Check if we need to update blocked load
+</span></span></span><span class="line"><span class="cl"><span class="cm">         */</span>
+</span></span><span class="line"><span class="cl">        <span class="n">nohz_run_idle_balance</span><span class="p">(</span><span class="n">cpu</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="cm">/*
+</span></span></span><span class="line"><span class="cl"><span class="cm">         * If the arch has a polling bit, we maintain an invariant:
+</span></span></span><span class="line"><span class="cl"><span class="cm">         *
+</span></span></span><span class="line"><span class="cl"><span class="cm">         * Our polling bit is clear if we&#39;re not scheduled (i.e. if rq-&gt;curr !=
+</span></span></span><span class="line"><span class="cl"><span class="cm">         * rq-&gt;idle). This means that, if rq-&gt;idle has the polling bit set,
+</span></span></span><span class="line"><span class="cl"><span class="cm">         * then setting need_resched is guaranteed to cause the CPU to
+</span></span></span><span class="line"><span class="cl"><span class="cm">         * reschedule.
+</span></span></span><span class="line"><span class="cl"><span class="cm">         */</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">__current_set_polling</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">tick_nohz_idle_enter</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">need_resched</span><span class="p">())</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">rmb</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">                <span class="n">local_irq_disable</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">                <span class="k">if</span> <span class="p">(</span><span class="n">cpu_is_offline</span><span class="p">(</span><span class="n">cpu</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">tick_nohz_idle_stop_tick</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">cpuhp_report_idle_dead</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">arch_cpu_idle_dead</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">                <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">                <span class="n">arch_cpu_idle_enter</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">                <span class="n">rcu_nocb_flush_deferred_wakeup</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">                <span class="cm">/*
+</span></span></span><span class="line"><span class="cl"><span class="cm">                 * In poll mode we reenable interrupts and spin. Also if we
+</span></span></span><span class="line"><span class="cl"><span class="cm">                 * detected in the wakeup from idle path that the tick
+</span></span></span><span class="line"><span class="cl"><span class="cm">                 * broadcast device expired for us, we don&#39;t want to go deep
+</span></span></span><span class="line"><span class="cl"><span class="cm">                 * idle as we know that the IPI is going to arrive right away.
+</span></span></span><span class="line"><span class="cl"><span class="cm">                 */</span>
+</span></span><span class="line"><span class="cl">                <span class="k">if</span> <span class="p">(</span><span class="n">cpu_idle_force_poll</span> <span class="o">||</span> <span class="n">tick_check_broadcast_expired</span><span class="p">())</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">tick_nohz_idle_restart_tick</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">cpu_idle_poll</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">cpuidle_idle_call</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">                <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                <span class="n">arch_cpu_idle_exit</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="cm">/*
+</span></span></span><span class="line"><span class="cl"><span class="cm">         * Since we fell out of the loop above, we know TIF_NEED_RESCHED must
+</span></span></span><span class="line"><span class="cl"><span class="cm">         * be set, propagate it into PREEMPT_NEED_RESCHED.
+</span></span></span><span class="line"><span class="cl"><span class="cm">         *
+</span></span></span><span class="line"><span class="cl"><span class="cm">         * This is required because for polling idle loops we will not have had
+</span></span></span><span class="line"><span class="cl"><span class="cm">         * an IPI to fold the state for us.
+</span></span></span><span class="line"><span class="cl"><span class="cm">         */</span>
+</span></span><span class="line"><span class="cl">        <span class="n">preempt_set_need_resched</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">tick_nohz_idle_exit</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">__current_clr_polling</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="cm">/*
+</span></span></span><span class="line"><span class="cl"><span class="cm">         * We promise to call sched_ttwu_pending() and reschedule if
+</span></span></span><span class="line"><span class="cl"><span class="cm">         * need_resched() is set while polling is set. That means that clearing
+</span></span></span><span class="line"><span class="cl"><span class="cm">         * polling needs to be visible before doing these things.
+</span></span></span><span class="line"><span class="cl"><span class="cm">         */</span>
+</span></span><span class="line"><span class="cl">        <span class="n">smp_mb__after_atomic</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="cm">/*
+</span></span></span><span class="line"><span class="cl"><span class="cm">         * RCU relies on this call to be done outside of an RCU read-side
+</span></span></span><span class="line"><span class="cl"><span class="cm">         * critical section.
+</span></span></span><span class="line"><span class="cl"><span class="cm">         */</span>
+</span></span><span class="line"><span class="cl">        <span class="n">flush_smp_call_function_queue</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">schedule_idle</span><span class="p">();</span> <span class="c1">// 这里会将CPU交由用户态程序使用
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">unlikely</span><span class="p">(</span><span class="n">klp_patch_pending</span><span class="p">(</span><span class="n">current</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">                <span class="n">klp_update_patch_state</span><span class="p">(</span><span class="n">current</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="系统调用">系统调用</h2>
+<h3 id="静态搜寻">静态搜寻</h3>
+<p>动态调试系统调用代码之前，不妨先来找到内核系统调用的静态代码位置。Linux Kernel使用<code>SYSCALL_DEFINE[N]</code>宏来定义系统调用入口，其原型位于<a class="link" href="https://github.com/torvalds/linux/blob/16f73eb02d7e1765ccab3d2018e0bd98eb93d973/include/linux/syscalls.h"  target="_blank" rel="noopener"
+    >include/linux/syscalls.h</a>，其中会调用特定系统调用的实现函数。所以，我们使用如下命令可以帮助快速筛选想要动态调试的系统调用入口所在位置：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">grep -rn <span class="s2">&#34;SYSCALL_DEFINE&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>举例来讲，接下来我想要对与open这一系统调用的具体实现一探究竟，就应当：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">▶ grep -rn <span class="s2">&#34;SYSCALL_DEFINE&#34;</span> <span class="p">|</span> grep open
+</span></span><span class="line"><span class="cl">......
+</span></span><span class="line"><span class="cl">fs/open.c:1331:SYSCALL_DEFINE3<span class="o">(</span>open, const char __user *, filename, int, flags, umode_t, mode<span class="o">)</span>
+</span></span><span class="line"><span class="cl">......
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>可知，open系统调用的入口位于fs/open.c的第1331行：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">SYSCALL_DEFINE3<span class="o">(</span>open, const char __user *, filename, int, flags, umode_t, mode<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="o">(</span>force_o_largefile<span class="o">())</span>
+</span></span><span class="line"><span class="cl">                flags <span class="p">|</span><span class="o">=</span> O_LARGEFILE<span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> do_sys_open<span class="o">(</span>AT_FDCWD, filename, flags, mode<span class="o">)</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>由此进一步可知，open系统调用的实现函数为<code>do_sys_open</code>。</p>
+<blockquote>
+<p>Linux Kernel 系统调用流程参见：<a class="link" href="https://0xax.gitbooks.io/linux-insides/content/SysCall/linux-syscall-2.html"  target="_blank" rel="noopener"
+    >https://0xax.gitbooks.io/linux-insides/content/SysCall/linux-syscall-2.html</a></p>
+</blockquote>
+<h3 id="动态调试">动态调试</h3>
+<p>继续以open系统调用为例，开始动态调试跟踪。</p>
+<blockquote>
+<p>qemu monitor，你的好帮手，Ctrl+A C进入与退出monitor模式：</p>
+<ul>
+<li><a class="link" href="https://www.qemu.org/docs/master/system/monitor.html"  target="_blank" rel="noopener"
+    >https://www.qemu.org/docs/master/system/monitor.html</a></li>
+<li><a class="link" href="https://en.wikibooks.org/wiki/QEMU/Monitor"  target="_blank" rel="noopener"
+    >https://en.wikibooks.org/wiki/QEMU/Monitor</a></li>
+</ul>
+</blockquote>
+<p>这里使用qemu monitor模式开启调试。使用qemu启动内核：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">qemu-system-x86_64 -m <span class="m">512</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>				   -kernel arch/x86_64/boot/bzImage <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>				   -append <span class="s2">&#34;console=ttyS0 nokaslr&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>				   -initrd ramdisk.img <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>				   -nographic
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>启动完成得到shell后，Ctrl+A C进入与退出monitor模式：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="o">(</span>initramfs<span class="o">)</span> ls
+</span></span><span class="line"><span class="cl">dev      bin      init     lib64    sbin     var      tmp
+</span></span><span class="line"><span class="cl">root     conf     lib      libx32   scripts  sys
+</span></span><span class="line"><span class="cl">kernel   etc      lib32    run      usr      proc
+</span></span><span class="line"><span class="cl"><span class="c1"># Ctrl+A C</span>
+</span></span><span class="line"><span class="cl"><span class="o">(</span>qemu<span class="o">)</span> gdbserver
+</span></span><span class="line"><span class="cl">Waiting <span class="k">for</span> gdb connection on device <span class="s1">&#39;tcp::1234&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Ctrl+A C</span>
+</span></span><span class="line"><span class="cl"><span class="o">(</span>initramfs<span class="o">)</span> 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>使用gdb连接:1234即可开始调试：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">gdb vmlinux -ex <span class="s2">&#34;target remote :1234&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>此前已经知道open系统调用的实现函数为<code>do_sys_open</code>，故于此函数下断点即可。</p>
+<h2 id="内存管理">内存管理</h2>
+<h2 id="文件系统">文件系统</h2>
+<h2 id="网络栈">网络栈</h2>
+<h2 id="实战漏洞调试">实战漏洞调试</h2>
+<p>参见：<a class="link" href="/post/cve-2016-5195/" >https://cerr.cc/post/cve-2016-5195/</a></p>
+<h2 id="参考">参考</h2>
+<ul>
+<li><a class="link" href="http://nickdesaulniers.github.io/blog/2018/10/24/booting-a-custom-linux-kernel-in-qemu-and-debugging-it-with-gdb/"  target="_blank" rel="noopener"
+    >http://nickdesaulniers.github.io/blog/2018/10/24/booting-a-custom-linux-kernel-in-qemu-and-debugging-it-with-gdb/</a></li>
+<li><a class="link" href="https://kiprey.github.io/2021/10/kernel_pwn_introduction/"  target="_blank" rel="noopener"
+    >https://kiprey.github.io/2021/10/kernel_pwn_introduction/</a></li>
+</ul>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/qemu/">QEMU</a>
+        
+            <a href="/tags/kernel/">Kernel</a>
+        
+            <a href="/tags/dbg/">DBG</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/post/cross-debug-old-version-kernel-using-qemu-system/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://s2.loli.net/2022/05/08/MGJ3tsAVHSYrThj.jpg" loading="lazy" data-key="" data-hash="https://s2.loli.net/2022/05/08/MGJ3tsAVHSYrThj.jpg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Cross debug old version kernel using qemu-system</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/post/%E8%AE%B0%E4%B8%80%E6%AC%A1qemu-system-arm%E4%BB%BF%E7%9C%9F%E7%9A%84%E6%8E%92%E9%94%99/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://s2.loli.net/2022/05/26/RS1JrGW2t4vzD3M.jpg" loading="lazy" data-key="" data-hash="https://s2.loli.net/2022/05/26/RS1JrGW2t4vzD3M.jpg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">记一次qemu-system-arm仿真的排错</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/post/%E6%9E%84%E5%BB%BA%E4%B8%8E%E8%BF%90%E8%A1%8C%E5%B5%8C%E5%85%A5%E5%BC%8Flinux%E8%99%9A%E6%8B%9F%E6%9C%BA/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://s2.loli.net/2022/05/08/2DqjsbwNpdUM4XA.jpg" loading="lazy" data-key="" data-hash="https://s2.loli.net/2022/05/08/2DqjsbwNpdUM4XA.jpg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">构建与运行嵌入式linux虚拟机</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/post/%E5%8D%8E%E7%A1%95%E6%A2%85%E6%9E%97%E5%9B%BA%E4%BB%B6%E7%9A%84%E7%BC%96%E8%AF%91/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://www.asuswrt-merlin.net/sites/default/files/inline-images/main_page_sm_2.png" loading="lazy" data-key="" data-hash="https://www.asuswrt-merlin.net/sites/default/files/inline-images/main_page_sm_2.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">华硕梅林固件的编译</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2022 Zikey Vi
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.13.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#环境准备">环境准备</a>
+      <ol>
+        <li><a href="#qemu-的手动构建">QEMU 的手动构建</a></li>
+        <li><a href="#使用buildroot一键构建rootfskernel">使用buildroot一键构建rootfs+kernel</a></li>
+        <li><a href="#手动构建kernelinitramfs">手动构建kernel+initramfs</a></li>
+        <li><a href="#试图调试">试图调试</a></li>
+      </ol>
+    </li>
+    <li><a href="#内核启动">内核启动</a></li>
+    <li><a href="#系统调用">系统调用</a>
+      <ol>
+        <li><a href="#静态搜寻">静态搜寻</a></li>
+        <li><a href="#动态调试">动态调试</a></li>
+      </ol>
+    </li>
+    <li><a href="#内存管理">内存管理</a></li>
+    <li><a href="#文件系统">文件系统</a></li>
+    <li><a href="#网络栈">网络栈</a></li>
+    <li><a href="#实战漏洞调试">实战漏洞调试</a></li>
+    <li><a href="#参考">参考</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

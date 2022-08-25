@@ -1,0 +1,1125 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>赛博人生 on Zikey Vi</title>
+        <link>https://cerr.cc/categories/%E8%B5%9B%E5%8D%9A%E4%BA%BA%E7%94%9F/</link>
+        <description>Recent content in 赛博人生 on Zikey Vi</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Tue, 19 Jul 2022 10:50:06 +0800</lastBuildDate><atom:link href="https://cerr.cc/categories/%E8%B5%9B%E5%8D%9A%E4%BA%BA%E7%94%9F/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>手机变身小主机？！</title>
+        <link>https://cerr.cc/post/%E6%89%8B%E6%9C%BA%E5%8F%98%E8%BA%AB%E5%B0%8F%E4%B8%BB%E6%9C%BA/</link>
+        <pubDate>Tue, 19 Jul 2022 10:50:06 +0800</pubDate>
+        
+        <guid>https://cerr.cc/post/%E6%89%8B%E6%9C%BA%E5%8F%98%E8%BA%AB%E5%B0%8F%E4%B8%BB%E6%9C%BA/</guid>
+        <description>&lt;img src="https://postmarketos.org/static/img/nexus5-bg-dark.jpg" alt="Featured image of post 手机变身小主机？！" /&gt;&lt;h2 id=&#34;快递还在路上&#34;&gt;&lt;del&gt;快递还在路上……&lt;/del&gt;&lt;/h2&gt;
+&lt;p&gt;话说我大学专业之所以选了计算机，除去高二于学霸本&lt;em&gt;联想G510&lt;/em&gt;上玩过《看门狗》的原因外，就是因为有着折腾二手安卓机的爱好了。这一兴趣一直延续到了大学，以至于我童叟无欺的闲鱼账号被人怀疑为是机贩子账号 &lt;del&gt;（😤是可忍，孰不可忍）&lt;/del&gt; 。直至大三开始搞到了外快，可以不再为一台多次易主的设备在经济上精打细算，便渐渐失去了往日的激情。果然太容易得到的东西，就会失宠。&lt;/p&gt;
+&lt;p&gt;还记得大二那次Essential Phone换LG V30的交易，在我和那位小米前员工约定的地铁站内，他说，从我身上仿佛看见了当年的他，为一台心心念念的破旧设备奔波几十里却满心欢喜。两名垃机佬相视一笑，心照不宣，你东我西，从此再无交集……（😭&lt;/p&gt;
+&lt;h2 id=&#34;linux-on-a-phone&#34;&gt;Linux On a Phone&lt;/h2&gt;
+&lt;p&gt;啥说是手机上的Linux？安卓的内核本来就是Linux呀？！&lt;/p&gt;
+&lt;p&gt;但那是Android/Linux，而我们本次的目标是GNU/Linux，将mainline kernel与GNU utils运行与手机之上。可以比喻成将手机刷成了一台运行了桌面级系统的小主机？&lt;/p&gt;
+&lt;p&gt;关于Android的Linux内核与mainline Linux内核的关系，参见Google的说明：&lt;a class=&#34;link&#34; href=&#34;https://source.android.com/devices/architecture/kernel?hl=zh-cn&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://source.android.com/devices/architecture/kernel?hl=zh-cn&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;有若干项目试图接近这个目标，其中最有名的应该还是Ubuntu Touch了。但经过一些调研后，我发现Ubuntu Touch并不是我满意的选择……&lt;/p&gt;
+&lt;h3 id=&#34;ubuntu-touch&#34;&gt;Ubuntu Touch&lt;/h3&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://ubuntu-touch.io/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://ubuntu-touch.io/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Ubuntu Touch借助了&lt;a class=&#34;link&#34; href=&#34;https://halium.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Haium&lt;/a&gt;以解决纷繁复杂的硬件驱动支持问题，虽然由此达成了将GNU utils无缝运行于移动设备的目的，但却也因此被迫舍弃了mainline kernel。具体技术架构参见&lt;a class=&#34;link&#34; href=&#34;https://halium.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://halium.org/&lt;/a&gt;即可。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://halium.org/img/architecture.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;architecture&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;似乎Ubuntu Touch的定位主要瞄准了Android，而非作为一个完全可定制的极客OS，所以在包管理、分区读写等方面并不能做到如同Ubuntu desktop一样的体验。再加上其没有使用mainline kernel不符合我的需求，故而弃之。&lt;/p&gt;
+&lt;h3 id=&#34;mobian&#34;&gt;Mobian&lt;/h3&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mobian.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://mobian.org/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://wiki.mobian.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://wiki.mobian.org/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Mobian，即mobile debian，好的地方在于其已为大家广泛熟悉的apt+dpkg包管理工具和软件源，且其使用了mainline内核。但缺乏对于大量设备的支持。Mobian的设备支持列表在这里：&lt;a class=&#34;link&#34; href=&#34;https://wiki.mobian.org/doku.php?id=devices&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://wiki.mobian.org/doku.php?id=devices&lt;/a&gt;。可以看到除去几款国内难以购买、价格高昂、配置低下的开源手机外，就只有一加6和小米Pocophone F1两款骁龙845机型了。&lt;/p&gt;
+&lt;h3 id=&#34;droidian&#34;&gt;Droidian&lt;/h3&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://droidian.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://droidian.org/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Mobian的Haium版本，借由和Ubuntu Touch类似的方案，达成支持更多设备的目的。但也因此放弃了mainline kernel。&lt;/p&gt;
+&lt;h3 id=&#34;postmarketos&#34;&gt;postmarketOS&lt;/h3&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://postmarketos.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://postmarketos.org/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;postmarketOS基于Alpine Linux，为busybox + musl libc的解决方案。在采用mainline kernel的mobile发行版中社区最大，维护最活跃。其支持的设备列表与支持情况可以于此查到：&lt;a class=&#34;link&#34; href=&#34;https://wiki.postmarketos.org/wiki/Devices&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://wiki.postmarketos.org/wiki/Devices&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;以我手上的Xiaomi Mi Note2为例，对其的许多驱动支持是postmarketOS独一份的，比如此前修复的Wi-Fi模块：&lt;a class=&#34;link&#34; href=&#34;https://gitlab.com/postmarketOS/pmaports/-/merge_requests/3271&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://gitlab.com/postmarketOS/pmaports/-/merge_requests/3271&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;postmarketOS集成了几乎所有为mobile生态做出努力的上层桌面环境：&lt;a class=&#34;link&#34; href=&#34;https://wiki.postmarketos.org/wiki/Category:Interface&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://wiki.postmarketos.org/wiki/Category:Interface&lt;/a&gt;。且与软件源中提供了一键安装与切换。不同设备所适合的DE并不同，我此前的Xiaomi Redmi2使用KDE Plasma mobile最舒适，而现在手上这台Xiaomi Mi Note2运行Phosh才最稳定。&lt;/p&gt;
+&lt;p&gt;其亦有国内软件源镜像的支持：&lt;a class=&#34;link&#34; href=&#34;https://mirrors.tuna.tsinghua.edu.cn/postmarketOS/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://mirrors.tuna.tsinghua.edu.cn/postmarketOS/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;换源说明：&lt;a class=&#34;link&#34; href=&#34;https://mirrors.tuna.tsinghua.edu.cn/help/postmarketOS/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://mirrors.tuna.tsinghua.edu.cn/help/postmarketOS/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;将软件源由特定发行版切换到master分支后，即相当于将系统转化为滚动更新模式。这样做的好处是，昨天上报的bug可能今天就被修复了，下游设备立即执行&lt;code&gt;apk update; apk upgrade&lt;/code&gt;即可立即获取修复的更新。缺点则是是master分支的不稳定。但考虑到mobile发行版的可用性与稳定性本身就堪忧，切换至滚动更新，或许是牺牲1份稳定性，换取5分可用性。在我看来是很划算的生意。&lt;/p&gt;
+&lt;h3 id=&#34;其余暂未进一步了解的mobile-distros&#34;&gt;其余暂未进一步了解的Mobile Distros&lt;/h3&gt;
+&lt;h4 id=&#34;sailfish-os&#34;&gt;Sailfish OS&lt;/h4&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://sailfishos.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://sailfishos.org/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;体量貌似也很大，但其官网首页就是标价，预感不妙，逃……&lt;/p&gt;
+&lt;h4 id=&#34;luneos&#34;&gt;LuneOS&lt;/h4&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://www.webos-ports.org/wiki/Main_Page&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://www.webos-ports.org/wiki/Main_Page&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;也是Haium方案。&lt;/p&gt;
+&lt;h4 id=&#34;pureosmanjaro-arm等&#34;&gt;PureOS、Manjaro ARM等&lt;/h4&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://pureos.net/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://pureos.net/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://manjaro.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://manjaro.org/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;其定位并非为移动端努力。只能说是支持了Pine Phone等开源手机而已。&lt;/p&gt;
+&lt;h2 id=&#34;关于刷机&#34;&gt;关于刷机&lt;/h2&gt;
+&lt;p&gt;参考&lt;a class=&#34;link&#34; href=&#34;https://www.jianshu.com/p/d960a6f517d8&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.jianshu.com/p/d960a6f517d8&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;fastboot&#34;&gt;Fastboot&lt;/h3&gt;
+&lt;p&gt;一个通信协议，用于直接向安卓手机Flash的不同分区中写入数据。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://android.googlesource.com/platform/system/core/&amp;#43;/refs/heads/master/fastboot/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://android.googlesource.com/platform/system/core/+/refs/heads/master/fastboot/&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;recovery&#34;&gt;Recovery&lt;/h3&gt;
+&lt;p&gt;一个单独的分区，内可包含一个恢复用的迷你系统，如TWRP。&lt;/p&gt;
+&lt;h3 id=&#34;安卓设备分区&#34;&gt;安卓设备分区&lt;/h3&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://source.android.com/devices/bootloader/partitions&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://source.android.com/devices/bootloader/partitions&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;xiaomi-mi-note2&#34;&gt;Xiaomi Mi Note2&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://s2.loli.net/2022/08/11/LDPaqzpkYbAgtOE.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;1&#34;
+	
+	
+&gt;&lt;img src=&#34;https://s2.loli.net/2022/08/11/qTRoSm39YZvIABV.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;2&#34;
+	
+	
+&gt; &lt;img src=&#34;https://s2.loli.net/2022/08/11/aFuvVG8DqTpSUsg.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;3&#34;
+	
+	
+&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>ZKV的攒机简史</title>
+        <link>https://cerr.cc/post/zkv%E7%9A%84%E6%94%92%E6%9C%BA%E7%AE%80%E5%8F%B2/</link>
+        <pubDate>Thu, 16 Jun 2022 18:42:34 +0800</pubDate>
+        
+        <guid>https://cerr.cc/post/zkv%E7%9A%84%E6%94%92%E6%9C%BA%E7%AE%80%E5%8F%B2/</guid>
+        <description>&lt;img src="https://s2.loli.net/2022/06/16/EYHcq8joTrfdiBR.jpg" alt="Featured image of post ZKV的攒机简史" /&gt;&lt;h2 id=&#34;前传&#34;&gt;前传&lt;/h2&gt;
+&lt;p&gt;不同寻常的是，我是在将各种设备都玩过一轮后，最后才将目光放到了台式机上。想来原因应当在于我是一个无可救药的&lt;strong&gt;MINI教&lt;/strong&gt;信徒——iPhone用mini；iPad用mini（曾经，奈何M1太香了）；Macbook用&lt;del&gt;mini&lt;/del&gt;Air；台式机用NUC+电脑棒+单片机……&lt;/p&gt;
+&lt;p&gt;好吧，其实我也不能说没有台式机，毕竟NUC也算得上。但在把各类小型设备都折腾过一遍后，我陷入了茫然四顾无所寄托的悲惨境地。突然想起自己这几年来竟未尝进入DIY PC的海洋试试水。又瞥了瞥手上这台NUC11PAHi5，估摸着这孩子也是天资平平、前途黯淡，竭尽全力地运行OW1却只是凑活能玩，没有能带起OW2的天赋。恰逢本世代全球大萧条之始，加密货币市场一泻千里，难窥其底。显卡价格也是应声而落，众望所归。天时地利人和——这钱，我不得不花。毕竟天意不可违。&lt;/p&gt;
+&lt;p&gt;但对于村儿里长大的我来说，掏出去的钱倘若没能换来足量的快乐，乃至买来的是糟心，实在是大逆不道有违祖训的事情。其负罪感甚至要甚于倒掉没吃完的肉（或许正因如此我才有幸成为闲鱼大V，焉知非福啊）。所以，事前进行全方位的考察与调研是十分必要的事情。&lt;/p&gt;
+&lt;h2 id=&#34;通用资源&#34;&gt;通用资源&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.zhihu.com/special/1436041011885293568?tab=1436061145295228928&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.zhihu.com/special/1436041011885293568?tab=1436061145295228928&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;一些排行榜和天梯图：&lt;a class=&#34;link&#34; href=&#34;https://rank.kkj.cn/dgpu3.shtml&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://rank.kkj.cn/dgpu3.shtml&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;万物皆可对比：&lt;a class=&#34;link&#34; href=&#34;https://versus.com/cn&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://versus.com/cn&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;cpu&#34;&gt;CPU&lt;/h2&gt;
+&lt;h3 id=&#34;通用资源-1&#34;&gt;通用资源&lt;/h3&gt;
+&lt;p&gt;可以于这些网站查询到绝大多数CPU的benchmark：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.cpubenchmark.net/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.cpubenchmark.net/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://browser.geekbench.com/processor-benchmarks&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://browser.geekbench.com/processor-benchmarks&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;天梯图：&lt;a class=&#34;link&#34; href=&#34;https://www.mydrivers.com/zhuanti/tianti/cpu/index.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.mydrivers.com/zhuanti/tianti/cpu/index.html&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;intel&#34;&gt;Intel&lt;/h3&gt;
+&lt;h4 id=&#34;命名规则&#34;&gt;命名规则&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&#34;https://s2.loli.net/2022/06/20/9ITSVKgfYQq1lje.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image.png&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;酷睿后缀名&#34;&gt;酷睿后缀名&lt;/h4&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;&lt;strong&gt;后缀&lt;/strong&gt;&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;&lt;strong&gt;含义&lt;/strong&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;G1-G7&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;显卡级别（仅适用于采用全新集成显卡技术的处理器）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;E&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;嵌入式&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;F&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;需要独立显卡&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;G&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;封装包中包含独立显卡&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;H&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;针对移动设备进行优化的高性能&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;HK&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;针对移动设备进行优化的高性能，未锁频&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;HQ&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;针对移动设备进行优化的高性能，四核&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;K&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;未锁频&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;S&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;特别版&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;T&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;经过功耗优化的生活方式&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;U&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;高能效移动设备&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;Y&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;极低功耗的移动设备&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;X/XE&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;未锁频，高端&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;B&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;球栅阵列 (BGA)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;reference：&lt;a class=&#34;link&#34; href=&#34;https://www.intel.com/content/www/us/en/processors/processor-numbers.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.intel.com/content/www/us/en/processors/processor-numbers.html&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;amd&#34;&gt;AMD&lt;/h3&gt;
+&lt;h4 id=&#34;命名规则-1&#34;&gt;命名规则&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&#34;https://s2.loli.net/2022/06/20/bUcNP7BJ9GCdrD4.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image.png&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;锐龙后缀名&#34;&gt;锐龙后缀名&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;X后缀&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;AMD Ryzen X系列跟Intel的K系列类似，都是强化了超频特性。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;K后缀&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;K代表解锁倍频，可以超频，如AMD Athlon X4 860K和AMD A10-7870K。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;G&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;E后缀&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;E后缀特指FX系列CPU的节能版，如FX 8370E的频率降低到3.3-4.3GHz，功耗降低到95W（FX8370的规格为4.0-4.3GHz，125W）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;B后缀&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;B后缀特指APU的低功耗商务版本，比如A10 PRO-7850B，下限能耗少10W，GPU频率降低。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;M后缀&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;M系列特指APU的移动版。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;显卡&#34;&gt;显卡&lt;/h2&gt;
+&lt;p&gt;天梯图：&lt;a class=&#34;link&#34; href=&#34;https://www.mydrivers.com/zhuanti/tianti/gpu/index.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.mydrivers.com/zhuanti/tianti/gpu/index.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;时时刻刻，当心矿卡！写于装机完毕后：&lt;/p&gt;
+&lt;p&gt;出于对买到矿卡的担忧，我最终于同事手中购入了他的RX5500XT——一款口碑并不算佳的中低端显卡。想来大不了等下一代显卡发售后，或是真有更高的浮点运算需求后，再升级也不迟。&lt;/p&gt;
+&lt;p&gt;然而经过实际游戏测试，我发现这款显卡为我的渣渣75Hz 1080P显示器输出视频信号，简直应付自如。神优化的地平线4满帧率满画质下，显卡占用只有70%出头；荒野大镖客2默认高画质显卡虽满载，但也是满帧流畅；至于显卡杀手Cyberpunk2077，高画质也能流畅。果然只要需求是1080P下玩3A，三位数的中低端显卡即可胜任。&lt;/p&gt;
+&lt;h2 id=&#34;硬盘&#34;&gt;硬盘&lt;/h2&gt;
+&lt;h3 id=&#34;固态硬盘&#34;&gt;固态硬盘&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;固态硬盘&lt;/strong&gt;使用&lt;strong&gt;NAND闪存颗粒&lt;/strong&gt;作为存储的主体，采用主控+多颗闪存芯片的结构。&lt;/p&gt;
+&lt;h4 id=&#34;nand闪存颗粒&#34;&gt;NAND闪存颗粒&lt;/h4&gt;
+&lt;p&gt;主要分为&lt;strong&gt;SLC、MLC、TLC、QLC&lt;/strong&gt;四种。寿命和价格都依次递减。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://media.kingston.com/kingston/content/ktc-content-solutions-pc-performance-difference-between-slc-mlc-tlc-3d-nand-infographic-cn.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;nand&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;reference：&lt;a class=&#34;link&#34; href=&#34;https://www.kingston.com/cn/blog/pc-performance/difference-between-slc-mlc-tlc-3d-nand&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.kingston.com/cn/blog/pc-performance/difference-between-slc-mlc-tlc-3d-nand&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&#34;接口与协议&#34;&gt;接口与协议&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;物理接口
+&lt;ul&gt;
+&lt;li&gt;M.2&lt;/li&gt;
+&lt;li&gt;U.2&lt;/li&gt;
+&lt;li&gt;AIC&lt;/li&gt;
+&lt;li&gt;NGFF&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;高速信号协议
+&lt;ul&gt;
+&lt;li&gt;SATA
+&lt;ul&gt;
+&lt;li&gt;Serial Advanced Technology Attachment&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;PCIe
+&lt;ul&gt;
+&lt;li&gt;Peripheral Component Interconnect Express&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;SAS
+&lt;ul&gt;
+&lt;li&gt;Serial Attached SCSI&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;传输层协议
+&lt;ul&gt;
+&lt;li&gt;NVMe
+&lt;ul&gt;
+&lt;li&gt;专为固态硬盘设计的协议，为NAND做了优化&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;SCSI&lt;/li&gt;
+&lt;li&gt;ATA
+&lt;ul&gt;
+&lt;li&gt;仅与SATA配合&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;reference：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;了解 SSD 技术：NVMe、SATA、M.2：&lt;a class=&#34;link&#34; href=&#34;https://www.kingston.com/cn/community/articledetail/articleid/48543&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.kingston.com/cn/community/articledetail/articleid/48543&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;固态硬盘外形尺寸类型：&lt;a class=&#34;link&#34; href=&#34;https://www.kingston.com/cn/blog/pc-performance/ssd-form-factors&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.kingston.com/cn/blog/pc-performance/ssd-form-factors&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;M.2 固态硬盘的两种类型：SATA 和 NVMe：&lt;a class=&#34;link&#34; href=&#34;https://www.kingston.com/cn/blog/pc-performance/two-types-m2-vs-ssd&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.kingston.com/cn/blog/pc-performance/two-types-m2-vs-ssd&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;机械硬盘&#34;&gt;机械硬盘&lt;/h3&gt;
+&lt;p&gt;存储技术分为 PMR(CMR) 与 SMR，参考如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://kb.synology.cn/zh-cn/DSM/tutorial/PMR_SMR_hard_disk_drives&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://kb.synology.cn/zh-cn/DSM/tutorial/PMR_SMR_hard_disk_drives&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://zhuanlan.zhihu.com/p/353963603&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://zhuanlan.zhihu.com/p/353963603&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;尺寸分为3.5英寸与2.5英寸。数字虽相差不大，实际体积却相去甚远。&lt;/p&gt;
+&lt;h3 id=&#34;个人方案&#34;&gt;个人方案&lt;/h3&gt;
+&lt;p&gt;我的方案是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;单个插到主板M.2口的NVMe 1TB SSD做系统盘，单独分区为C盘。读速在2.8GB/s左右。&lt;/li&gt;
+&lt;li&gt;一个SMR 6TB 3.5寸 SATA HDD做冷数据存储。读速在150MB/s左右。&lt;/li&gt;
+&lt;li&gt;一个PMR 1TB 2.5寸 SATA HDD做热数据、FTP、BT数据存储。读速在150MB/s左右。&lt;/li&gt;
+&lt;li&gt;一个MLC USB SCSI 128GB固态U盘做移动数据存储。读速在450MB/s左右。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;主板&#34;&gt;主板&lt;/h2&gt;
+&lt;p&gt;先来了解下PCIe。知乎老狼的文章都写的很好哇，推荐他的UEFI与BIOS探秘。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;深入PCI与PCIe之一：硬件篇：&lt;a class=&#34;link&#34; href=&#34;https://zhuanlan.zhihu.com/p/26172972&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://zhuanlan.zhihu.com/p/26172972&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;深入PCI与PCIe之二：软件篇：&lt;a class=&#34;link&#34; href=&#34;https://zhuanlan.zhihu.com/p/26244141&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://zhuanlan.zhihu.com/p/26244141&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;PCIe中断机制(1):演变历史：&lt;a class=&#34;link&#34; href=&#34;https://zhuanlan.zhihu.com/p/399239928&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://zhuanlan.zhihu.com/p/399239928&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;大小分类&#34;&gt;大小分类&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;大板：ATX、Mini ATX、XL-ATX、非标准E-ATX&lt;/li&gt;
+&lt;li&gt;小板：MATX、μATX、FlexATX&lt;/li&gt;
+&lt;li&gt;迷你板：ITX（包括Thin-ITX）&lt;/li&gt;
+&lt;li&gt;超大板：标准E-ATX、EE-ATX、HPTX、WTX&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;华硕主板产品线：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;顶尖旗舰 ROG&lt;/li&gt;
+&lt;li&gt;游戏主流 STRIX&lt;/li&gt;
+&lt;li&gt;入门电竞 TUF GAMING 与 PRIME&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;reference：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.zhihu.com/question/351825113/answer/1041320836&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.zhihu.com/question/351825113/answer/1041320836&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://zhuanlan.zhihu.com/p/53379889&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://zhuanlan.zhihu.com/p/53379889&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;内存&#34;&gt;内存&lt;/h2&gt;
+&lt;h3 id=&#34;硬件形态&#34;&gt;硬件形态&lt;/h3&gt;
+&lt;p&gt;在80286时代，内存颗粒（Chip）是直接插在主板上的，叫做DIP(Dual In-line Package)。到了80386时代，换成1片焊有内存颗粒的电路板，叫做SIMM（Single-Inline Memory Module）。由阵脚形态变化成电路板带来了很多好处：模块化，安装便利等等，由此DIY市场才有可能产生。当时SIMM的位宽是32bit，即一个周期读取4个字节，到了奔腾时，位宽变为64bit，即8个字节，于是SIMM就顺势变为DIMM（Double-Inline Memory Module）。这种形态一直延续至今，也是内存条的基本形态。现在DIMM分为很多种：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;RDIMM&lt;/strong&gt;: 全称（Registered DIMM），寄存型模组，主要用在服务器上，为了增加内存的容量和稳定性分有ECC和无ECC两种，但市场上几乎都是ECC的。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;UDIMM&lt;/strong&gt;：全称（Unbuffered DIMM），无缓冲型模组，这是我们平时所用到的标准台式电脑DIMM，分有ECC和无ECC两种，一般是无ECC的。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;SO-DIMM&lt;/strong&gt;：全称（Small Outline DIMM），小外型DIMM，笔记本电脑中所使用的DIMM，分ECC和无ECC两种。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Mini-DIMM&lt;/strong&gt;：DDR2时代新出现的模组类型，它是Registered DIMM的缩小版本，用于刀片式服务器等对体积要求苛刻的高端领域。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://s2.loli.net/2022/06/17/tzRLTHQ6rAVCdI4.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Overals_660.png&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;ddr&#34;&gt;DDR&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;DDR SDRAM&lt;/strong&gt;: Double Data Rate Synchronous Dynamic Random Access Memory&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://s2.loli.net/2022/06/17/bWU14gfY3HwxLKV.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image.png&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;reference：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://zhuanlan.zhihu.com/p/26255460&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://zhuanlan.zhihu.com/p/26255460&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/DDR_SDRAM&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://en.wikipedia.org/wiki/DDR_SDRAM&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;显示器&#34;&gt;显示器&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;亮度：越高越好，300 cd/m² 中等，400 cd/m² 不错， 500 cd/m² 优秀&lt;/li&gt;
+&lt;li&gt;对比度：越高越好，700~900:1 及格，900~ 1100 中等，1100~1300不错，1500 以上很好。&lt;/li&gt;
+&lt;li&gt;色域：sRGB ＜ P3＜ AdobeRGB, 覆盖越多颜色越艳，覆盖越精准越好，但覆盖越多不一定越好。&lt;/li&gt;
+&lt;li&gt;色深，6 bit 底线，有明显层次感， 中端表现不错，10bit 表现很好但需要整套设备支持。&lt;/li&gt;
+&lt;li&gt;色准：ΔE＜1.5 就能适用于严谨的工作，ΔE＜3 一般人看不出区别，ΔE 在 5 以上色偏严重。&lt;/li&gt;
+&lt;li&gt;刷新率：越高越好，打游戏 120Hz 就能有很大提升，120Hz 之后区别并不大（除非你是职业选手）&lt;/li&gt;
+&lt;li&gt;响应时间：越快越好，3ms 以内顶级，5ms 以内优秀，10ms 以内中等，10ms 以上完全不适合游戏&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;reference：&lt;a class=&#34;link&#34; href=&#34;https://www.zhihu.com/question/35668312&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.zhihu.com/question/35668312&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;机箱&#34;&gt;机箱&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;MINI机箱
+&lt;ul&gt;
+&lt;li&gt;安装ITX和M-ATX的机箱&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;中塔机箱
+&lt;ul&gt;
+&lt;li&gt;ATX主板的机箱&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;全塔机箱
+&lt;ul&gt;
+&lt;li&gt;为了E-ATX板而设计的&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;reference：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://zhuanlan.zhihu.com/p/25592446&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://zhuanlan.zhihu.com/p/25592446&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.zhihu.com/question/432376475&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.zhihu.com/question/432376475&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://zhuanlan.zhihu.com/p/373132410&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://zhuanlan.zhihu.com/p/373132410&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;电源&#34;&gt;电源&lt;/h2&gt;
+&lt;p&gt;主要参数为最大供电功率，计算得到机箱中所有部件满载功率需小于电源最大功率。主要耗电大户为显卡与CPU，计算得大致总功率值即可。&lt;/p&gt;
+&lt;h2 id=&#34;散热&#34;&gt;散热&lt;/h2&gt;
+&lt;p&gt;水冷 VS 风冷，老生常谈。但我的这套配置实在凉意十足，廉价风冷完全足矣。在如下风冷配置下构建一个并不算很畅通的直角风道，日常负载下静音模式CPU稳定50°C左右，风扇散热模式下能来到30°C。但散热不仅仅是散热器的责任，通风良好的机箱外加恰当的风道设计同样不容忽视。所以挑选机箱和风扇时，也要注意最后不能组成了一台闷罐。&lt;/p&gt;
+&lt;h2 id=&#34;终局&#34;&gt;终局&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;总价
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;¥ 5663&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;CPU
+&lt;ul&gt;
+&lt;li&gt;AMD 锐龙 R5-5600X 盒装
+&lt;ul&gt;
+&lt;li&gt;¥ 940（全新）&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.amd.com/en/products/cpu/amd-ryzen-5-5600x&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.amd.com/en/products/cpu/amd-ryzen-5-5600x&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;主板
+&lt;ul&gt;
+&lt;li&gt;华硕 TUF GAMING B550M-PLUS WIFI
+&lt;ul&gt;
+&lt;li&gt;¥ 600（全新）&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.asus.com.cn/Motherboards-Components/Motherboards/TUF-Gaming/TUF-GAMING-B550M-PLUS-WI-FI/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.asus.com.cn/Motherboards-Components/Motherboards/TUF-Gaming/TUF-GAMING-B550M-PLUS-WI-FI/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;机箱
+&lt;ul&gt;
+&lt;li&gt;乔思伯 D30 M-ATX 银色
+&lt;ul&gt;
+&lt;li&gt;¥ 399（全新）&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.jonsbo.com/products/D30.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.jonsbo.com/products/D30.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;显卡
+&lt;ul&gt;
+&lt;li&gt;迪兰 RX5500XT 8G X战将
+&lt;ul&gt;
+&lt;li&gt;¥ 925（来自同事的二手）&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;http://www.dataland.com.cn/prod_view.aspx?nid=3&amp;amp;typeid=129&amp;amp;id=928&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://www.dataland.com.cn/prod_view.aspx?nid=3&amp;amp;typeid=129&amp;amp;id=928&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;内存
+&lt;ul&gt;
+&lt;li&gt;金士顿 FURY Beast 8GB DDR4 3200MHz × 4
+&lt;ul&gt;
+&lt;li&gt;¥ 798（全新）&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.kingston.com/cn/memory/gaming/kingston-fury-beast-ddr4-rgb-memory&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.kingston.com/cn/memory/gaming/kingston-fury-beast-ddr4-rgb-memory&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;SSD
+&lt;ul&gt;
+&lt;li&gt;英睿达 镁光 P5 1TB
+&lt;ul&gt;
+&lt;li&gt;¥ 500（NUC替换下来的）&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.crucial.com/products/ssd/crucial-p5-ssd&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.crucial.com/products/ssd/crucial-p5-ssd&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;HDD
+&lt;ul&gt;
+&lt;li&gt;希捷酷鱼ST6000DM003 3.5英寸 256MB缓存 SMR 6TB
+&lt;ul&gt;
+&lt;li&gt;¥ 765（全新）&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.seagate.com/www-content/datasheets/pdfs/3-5-barracudaDS1900-11-1806US-en_US.pdf&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.seagate.com/www-content/datasheets/pdfs/3-5-barracudaDS1900-11-1806US-en_US.pdf&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;日立 5400转 2.5英寸 7mm 32MB缓存 PMR 1TB
+&lt;ul&gt;
+&lt;li&gt;¥ 275（全新）&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://m.tb.cn/h.fwlHZFV?tk=4Fdi2MtXCRw&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://m.tb.cn/h.fwlHZFV?tk=4Fdi2MtXCRw&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;电源
+&lt;ul&gt;
+&lt;li&gt;振华 冰山金蝶 550W
+&lt;ul&gt;
+&lt;li&gt;¥ 262（闲鱼二手在保）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;散热
+&lt;ul&gt;
+&lt;li&gt;利民 AS120PLUS
+&lt;ul&gt;
+&lt;li&gt;¥ 139（全新）&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://item.jd.com/100006880794.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://item.jd.com/100006880794.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;ID-COLLING XF-12025-SD-K ×3
+&lt;ul&gt;
+&lt;li&gt;¥ 60（全新）&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://item.jd.com/100005667115.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://item.jd.com/100005667115.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://s2.loli.net/2022/08/16/4losrD8fQhBkem9.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;5AD0C9F2-D39F-4630-B27F-3CF23F3CB719_1_105_c.jpeg&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;第一次走线，杂乱如麻🤮。&lt;/p&gt;
+&lt;p&gt;reference：&lt;a class=&#34;link&#34; href=&#34;https://zhuanlan.zhihu.com/p/282821640&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://zhuanlan.zhihu.com/p/282821640&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Fuck the Great Fire Wall</title>
+        <link>https://cerr.cc/post/fuck-the-great-fire-wall/</link>
+        <pubDate>Mon, 09 May 2022 11:03:28 +0800</pubDate>
+        
+        <guid>https://cerr.cc/post/fuck-the-great-fire-wall/</guid>
+        <description>&lt;img src="https://s2.loli.net/2022/05/09/FrNVRw5lSbfusgx.jpg" alt="Featured image of post Fuck the Great Fire Wall" /&gt;&lt;blockquote&gt;
+&lt;p&gt;当我老了，回顾一生，就会发觉，我三分之一的生命，都浪费在和GFW作斗争上了。&lt;/p&gt;
+&lt;p&gt;呜呼！何等宏伟啊！两千年多前的巨石，砌就秦帝国的坚不可摧；今日那日夜呼啸的服务器集群，彰显共和国非凡的制度自信。😫&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;top-level-solution-selection&#34;&gt;Top-level solution selection&lt;/h2&gt;
+&lt;p&gt;In terms of the ways I have tried myself:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Use a VPN application&lt;/li&gt;
+&lt;li&gt;Rent an overseas server&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Subscribe to an airport service&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The last option strikes the best balance between price and convenience.&lt;/p&gt;
+&lt;p&gt;As for the first two option:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Beware of phishing&lt;/li&gt;
+&lt;li&gt;High cost in time or money&lt;/li&gt;
+&lt;li&gt;Stability is a concern&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;个人客户端解决方案&#34;&gt;个人客户端解决方案&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;具体使用方面就大白话讲了&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;垃机佬出身的我，手里硬件设备的数量经常令得旁人惊异。即使到了渐渐退烧的今天，我手中也是保有了各个主流操作系统平台的物理机。&lt;/p&gt;
+&lt;p&gt;顶层协议方面，v2ray和ssr都有使用，未尝试过自行编写或改进加密协议。服务端一年200左右的机场全够用了。客户端目前使用方案如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Windows
+&lt;ul&gt;
+&lt;li&gt;v2rayNG：&lt;a class=&#34;link&#34; href=&#34;https://github.com/2dust/v2rayN&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/2dust/v2rayN&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Linux
+&lt;ul&gt;
+&lt;li&gt;v2rayA：&lt;a class=&#34;link&#34; href=&#34;https://github.com/v2rayA/v2rayA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/v2rayA/v2rayA&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;MacOS
+&lt;ul&gt;
+&lt;li&gt;ClashX：&lt;a class=&#34;link&#34; href=&#34;https://github.com/yichengchen/clashX&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/yichengchen/clashX&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;iOS
+&lt;ul&gt;
+&lt;li&gt;shadowrocket：外区APP Store下载&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Android
+&lt;ul&gt;
+&lt;li&gt;v2rayNG：&lt;a class=&#34;link&#34; href=&#34;https://github.com/2dust/v2rayNG&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/2dust/v2rayNG&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;代理层次&#34;&gt;代理层次&lt;/h3&gt;
+&lt;style&gt;img{
+    box-shadow: 5px 5px 5px rgba(0,0,0,.5);
+    -moz-box-shadow: 5px 5px 5px rgba(0,0,0,.5);
+    -webkit-box-shadow: 5px 5px 5px rgba(0,0,0,.5);
+}&lt;/style&gt;
+&lt;p&gt;在TCP/IP协议栈的不同层设定的代理，会对系统与应用产生不同影响。&lt;/p&gt;
+&lt;img src=&#34;https://s2.loli.net/2022/05/09/v8gZmb1xjBEO9KC.jpg&#34; alt=&#34;Snipaste_2022-05-09_13-55-58.jpg &#34; style=&#34;zoom:80%;float:right;margin-left:50px&#34; /&gt;
+&lt;p&gt;许多VPN软件都是利用了tun/tap创建了&lt;strong&gt;虚拟网卡&lt;/strong&gt;，将系统中所有流量直接通过虚拟网卡转发至代理服务器。这种方案代理于链接层，全局代理效果好。但同时由此带来的缺点是，一些我们不想被代理的流量也会经由代理服务器转发了。部分SSR、v2ray客户端有tun模式，也是同样的道理。&lt;/p&gt;
+&lt;p&gt;再者就是于操作系统层面配置&lt;strong&gt;系统代理&lt;/strong&gt;，这样一来所以会遵循系统代理设置的应用都会被代理。但同时也会有其它一些不遵守系统代理的应用。举例来讲，chrome默认是走系统代理的，而firefox则需手动配置选择代理方案。如右图是Windows11的系统代理设置，红框内的文字说明了其与VPN使用虚拟网卡的方案并不重叠。&lt;/p&gt;
+&lt;p&gt;故若需要更精细化地控制系统中不同组件的代理行为，则更适合于使用&lt;strong&gt;应用层的代理接口&lt;/strong&gt;。这种情况下，代理软件客户端做的仅仅是在本地打开一个端口用来监听和服务上层应用主动发来的代理请求，以此将是否被代理的选择权交由了每个应用本身。举例来说，v2rayN的蓝色图标对应的“清除系统代理”就是这种方案。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://s2.loli.net/2022/05/09/HzWigwtaf5L26Sd.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Snipaste_2022-05-09_14-01-32.jpg&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;部分网站的镜像&#34;&gt;部分网站的镜像&lt;/h3&gt;
+&lt;h4 id=&#34;google&#34;&gt;Google&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.ahhhhfs.com/4810/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.ahhhhfs.com/4810/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;github&#34;&gt;Github&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.ahhhhfs.com/18927/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.ahhhhfs.com/18927/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.ahhhhfs.com/18876/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.ahhhhfs.com/18876/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.ahhhhfs.com/5442/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.ahhhhfs.com/5442/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;youtube&#34;&gt;Youtube&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.ahhhhfs.com/16819/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.ahhhhfs.com/16819/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;各种应用的代理配置与镜像&#34;&gt;各种应用的代理配置与镜像&lt;/h3&gt;
+&lt;h4 id=&#34;chrome&#34;&gt;chrome&lt;/h4&gt;
+&lt;p&gt;chrome 默认遵从系统代理。可是使用&lt;strong&gt;Proxy SwitchyOmega&lt;/strong&gt;插件对chrome代理方式进行手动配置：&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://chrome.google.com/webstore/detail/proxy-switchyomega/padekgcemlokbadohgkifijomclgjgif&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://chrome.google.com/webstore/detail/proxy-switchyomega/padekgcemlokbadohgkifijomclgjgif&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&#34;linux软件源&#34;&gt;Linux软件源&lt;/h4&gt;
+&lt;p&gt;不同Linux发行版具有不同的包管理器。即使是同一个发行版的不同版本（比如Ubuntu18.04与Ubuntu20.04），其上游软件源也是不同的。&lt;/p&gt;
+&lt;p&gt;使用国内镜像为软件源换源可以大大加速安装软件源上的软件的过程。以tuna维护的清华源为例，我们来到使用帮助页面：&lt;a class=&#34;link&#34; href=&#34;https://mirrors.tuna.tsinghua.edu.cn/help&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://mirrors.tuna.tsinghua.edu.cn/help&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;点击任意你想要使用清华源的服务（Linux软件源自然也涵盖在内），即能看到tuna为你提供的相应使用教程。（对于Linux软件源，需选定正确的系统版本）。&lt;/p&gt;
+&lt;h4 id=&#34;pip&#34;&gt;pip&lt;/h4&gt;
+&lt;p&gt;可使用清华源：&lt;a class=&#34;link&#34; href=&#34;https://mirrors.tuna.tsinghua.edu.cn/help/pypi/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://mirrors.tuna.tsinghua.edu.cn/help/pypi/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;若使用代理方案，在&lt;code&gt;~/.config/pip/pip.conf&lt;/code&gt;，中添加：（将&lt;code&gt;http://127.0.0.1:1080&lt;/code&gt;替换为你本地的http代理地址）&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-ini&#34; data-lang=&#34;ini&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;[global]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;na&#34;&gt;proxy&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;http://127.0.0.1:1080&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;不支持socks5协议&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;git&#34;&gt;git&lt;/h4&gt;
+&lt;p&gt;（将&lt;code&gt;http://127.0.0.1:1080&lt;/code&gt;替换为你本地的socks5代理地址）&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git config --global http.proxy socks5://127.0.0.1:1080
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;apt&#34;&gt;apt&lt;/h4&gt;
+&lt;p&gt;在 &lt;code&gt;/etc/apt/apt.conf.d/&lt;/code&gt; 目录下新增 &lt;code&gt;proxy.conf&lt;/code&gt; 文件，加入：（将&lt;code&gt;http://127.0.0.1:1080&lt;/code&gt;替换为你本地的http代理地址）&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-ini&#34; data-lang=&#34;ini&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;na&#34;&gt;Acquire::http::Proxy &amp;#34;http://127.0.0.1:1080/&amp;#34;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;na&#34;&gt;Acquire::https::Proxy &amp;#34;http://127.0.0.1:1080/&amp;#34;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;不支持socks5协议&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;curlwget&#34;&gt;curl、wget&lt;/h4&gt;
+&lt;p&gt;许多posix标准的命令行程序会遵从两个环境变量：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;http_proxy&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;http://proxyserver:port/
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;https_proxy&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;https://proxyserver:port/
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;curl也是其中之一。&lt;/p&gt;
+&lt;p&gt;同时，也可以使用curl的&lt;code&gt;-x&lt;/code&gt;、&lt;code&gt;--proxy&lt;/code&gt;参数达到同样效果：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;-x, --proxy &amp;lt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;protocol://&lt;span class=&#34;o&#34;&gt;][&lt;/span&gt;user:password@&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;proxyhost&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;:port&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;若想要curl的代理配置永久生效，向&lt;code&gt;~/.curlrc&lt;/code&gt;写入：&lt;code&gt;socks5 = &amp;quot;127.0.0.1:1080&amp;quot;&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;同时，curl遵循但wget不遵循的环境变量为：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;all_proxy&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;http://proxyserver:port/
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;合法翻墙&#34;&gt;合法翻墙&lt;/h2&gt;
+&lt;h3 id=&#34;澳门流量卡&#34;&gt;澳门流量卡&lt;/h3&gt;
+&lt;p&gt;就是这货👇，淘宝上就可以买到。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://s2.loli.net/2022/08/18/ScbgXVYpdRmrnyQ.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;9E9E47AD-ACAC-4401-81EB-2A3D29D89EAF_1_201_a.jpeg&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;其他攻略&#34;&gt;其他攻略&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;2022永久免费白嫖节点方法
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.ahhhhfs.com/19188/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.ahhhhfs.com/19188/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;使用Google搜索找机场（梯子）技巧
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.ahhhhfs.com/10889/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.ahhhhfs.com/10889/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
+        <title>关于Linux UI的美化工作</title>
+        <link>https://cerr.cc/post/%E5%85%B3%E4%BA%8Elinux-ui%E7%9A%84%E7%BE%8E%E5%8C%96%E5%B7%A5%E4%BD%9C/</link>
+        <pubDate>Sat, 07 May 2022 22:50:57 +0800</pubDate>
+        
+        <guid>https://cerr.cc/post/%E5%85%B3%E4%BA%8Elinux-ui%E7%9A%84%E7%BE%8E%E5%8C%96%E5%B7%A5%E4%BD%9C/</guid>
+        <description>&lt;img src="https://s2.loli.net/2022/05/07/wqH1K7UnExrO4V5.jpg" alt="Featured image of post 关于Linux UI的美化工作" /&gt;&lt;blockquote&gt;
+&lt;p&gt;GNU/Linux 的桌面生态，开放虽是好事，但却由此带来了混乱。没有像微软这样的赛博中央政府制定规则，就产生了眼下这般群雄割据的态势。作为用户的我能做的，也只是择巨木而栖 —— 唯二的自由巨头 &lt;strong&gt;KDE&lt;/strong&gt; 与 &lt;strong&gt;Gnome&lt;/strong&gt;，&lt;del&gt;二选其一&lt;/del&gt;~~（LXQt大法好）~~（当年煮酒论DE，今日叛逃用WM）（i3大法好）。幼年气盛，爱好折腾，留下了些许美化的经验。时至今日，能回忆起的已然不多。尽力而为做些记录，为日后回归赛博左派留些盘缠。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;概念拆解&#34;&gt;概念拆解&lt;/h2&gt;
+&lt;p&gt;被Windows驯化得温顺从良的我，当年对显示屏上花花绿绿的GUI组件并无概念。商业操作系统将一切整合，成为一个整体，迷惑我说：“这便是操作系统图形化用户接口”。今日慢慢爬出泥沼，留攻略如下：&lt;/p&gt;
+&lt;p&gt;🎵我有一台树莓派&lt;del&gt;我从来不开机&lt;/del&gt;。接通电源、引导器醒来、启动内核、唤醒&lt;code&gt;pid 1&lt;/code&gt;，此时来到Virtual Terminal下的&lt;code&gt;/dev/tty1&lt;/code&gt;。在自动登录GUI的设定下，有如下朋友先后会来迎接我：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;WS&lt;/strong&gt;：Window System
+&lt;ul&gt;
+&lt;li&gt;图形化的基本环境&lt;/li&gt;
+&lt;li&gt;举例：
+&lt;ul&gt;
+&lt;li&gt;X11&lt;/li&gt;
+&lt;li&gt;Wayland&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;ref：
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/Windowing_system&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://en.wikipedia.org/wiki/Windowing_system&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;DM&lt;/strong&gt;：Display manager
+&lt;ul&gt;
+&lt;li&gt;图形化的登陆管理器，作用类似于login程序&lt;/li&gt;
+&lt;li&gt;可以在此选择登录后想要启动的WM或DE&lt;/li&gt;
+&lt;li&gt;举例：
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/GNOME_Display_Manager&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;GDM&lt;/a&gt;, GNOME implementation&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/Simple_Desktop_Display_Manager&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;SDDM&lt;/a&gt;, recommended display manager for KDE Plasma 5 and LXQt. Successor to KDM.&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/LightDM&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;LightDM&lt;/a&gt;, a lightweight, modular, cross-desktop, fully themeable desktop display manager by Canonical Ltd.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;ref：
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/X_display_manager&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://en.wikipedia.org/wiki/X_display_manager&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;WM&lt;/strong&gt;：Window manager
+&lt;ul&gt;
+&lt;li&gt;控制窗口行为的图形化子系统&lt;/li&gt;
+&lt;li&gt;举例：
+&lt;ul&gt;
+&lt;li&gt;i3（for X11）&lt;/li&gt;
+&lt;li&gt;Sway（i3 clone for Wayland）&lt;/li&gt;
+&lt;li&gt;KWin&lt;/li&gt;
+&lt;li&gt;Openbox&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;ref：
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/Window_manager&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://en.wikipedia.org/wiki/Window_manager&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/Comparison_of_X_window_managers&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://en.wikipedia.org/wiki/Comparison_of_X_window_managers&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;DE&lt;/strong&gt;：Desktop environment
+&lt;ul&gt;
+&lt;li&gt;传统意义上的“桌面环境”，登录后直接显示到屏幕上的图形大都是DE画的（icons, windows, toolbars, folders, wallpapers and desktop widgets）&lt;/li&gt;
+&lt;li&gt;举例：
+&lt;ul&gt;
+&lt;li&gt;Gnome&lt;/li&gt;
+&lt;li&gt;KDE&lt;/li&gt;
+&lt;li&gt;XFCE&lt;/li&gt;
+&lt;li&gt;LXDE（GTK）&lt;/li&gt;
+&lt;li&gt;LXQt（Qt）&lt;/li&gt;
+&lt;li&gt;DDE（国产）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;ref：
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/Desktop_environment&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://en.wikipedia.org/wiki/Desktop_environment&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;de&#34;&gt;DE&lt;/h2&gt;
+&lt;h3 id=&#34;kde-plasma&#34;&gt;KDE plasma&lt;/h3&gt;
+&lt;p&gt;UI的（乡土风）现代感，很大部分要归因与透明化的效果。一年前的我也是透明化爱好者，恰逢那时使用 Archlinux + KDE，故记录如下KDE透明化配置方法。KDE自身本就具有各大DE中最为强大的视觉效果定制功能，所以如下所述只是KDE本身能力之外的美化方法：&lt;/p&gt;
+&lt;h4 id=&#34;窗口边框透明化&#34;&gt;窗口边框透明化&lt;/h4&gt;
+&lt;p&gt;使用&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/ishovkun/SierraBreeze&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/ishovkun/SierraBreeze&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;或&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/alex47/BreezeBlurred&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/alex47/BreezeBlurred&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;在Archlinux上若出现编译错误，可以使用这位老哥打包好的安装包
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/alex47/BreezeBlurred/issues/24&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/alex47/BreezeBlurred/issues/24&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;面板透明化&#34;&gt;面板透明化&lt;/h4&gt;
+&lt;p&gt;需要自己魔改，参考如下大佬留下的教程：&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.joxrays.com/kde-panel-transparency/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.joxrays.com/kde-panel-transparency/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;原始论坛帖子：&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://forum.manjaro.org/t/where-can-the-transparency-of-the-kde-panel-be-set/50219&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://forum.manjaro.org/t/where-can-the-transparency-of-the-kde-panel-be-set/50219&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&#34;组件透明化&#34;&gt;组件透明化&lt;/h4&gt;
+&lt;p&gt;这一需求有现成的工具Kvantum，亦有大佬教程如下：&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://blog.firerain.me/article/4&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://blog.firerain.me/article/4&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;此外，便是一些其它的效果组件&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;macos风的dock栏&#34;&gt;MacOS风的Dock栏&lt;/h4&gt;
+&lt;p&gt;状态、菜单、任务栏的呈现方式，我个人更倾向与MacOS的方案。比起Windows，牺牲了些许效率，换取美感。&lt;/p&gt;
+&lt;p&gt;KDE下使用 &lt;strong&gt;latte-dock&lt;/strong&gt; 来获取MacOS风的Dock栏，这样就可以将本身的Panel变为MacOS下的常驻状态栏。&lt;/p&gt;
+&lt;p&gt;仓库地址：&lt;a class=&#34;link&#34; href=&#34;https://github.com/KDE/latte-dock&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/KDE/latte-dock&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;同时其是可以直接从KDE store一键下载安装的。&lt;/p&gt;
+&lt;h4 id=&#34;音乐可视化&#34;&gt;音乐可视化&lt;/h4&gt;
+&lt;p&gt;Windows下可以使用Wallpaper engine，Linux就没有这个福分了，只能另寻替代方案。&lt;/p&gt;
+&lt;p&gt;KDE插件 &lt;strong&gt;panon&lt;/strong&gt; 能达到尚且凑活的效果，可以直接从插件商店一键安装。&lt;/p&gt;
+&lt;h3 id=&#34;gnome&#34;&gt;Gnome&lt;/h3&gt;
+&lt;p&gt;Gnome不像KDE，它没有向用户直接呈现DE UI定制接口，而是需要用户自行配置。好在Gnome同时也提供了美化总站：&lt;a class=&#34;link&#34; href=&#34;https://www.gnome-look.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.gnome-look.org/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;网站中基本涵盖了所有美化选项与资源。且对于采用GTK的其它DE来说，大量资源都是通用的。但在此之前需要有一些预先配置（出于DE稳定性考虑，默认不将定制接口提供给小白用户）：&lt;/p&gt;
+&lt;p&gt;安装 &lt;strong&gt;gnome-tweaks&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt install gnome-tweaks
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;使用gnome-tweaks就可以做一些此前没有的定制化了，同时作为后续美化的基本依赖。&lt;/p&gt;
+&lt;p&gt;接下来安装gnome插件管理器 &lt;strong&gt;GNOME Shell Extensions&lt;/strong&gt;：&lt;/p&gt;
+&lt;p&gt;插件管理器的用户接口是基于浏览器提供的，需安装对应的Chrome或Firefox插件即可。&lt;/p&gt;
+&lt;p&gt;对于Chrome，除了可以从Chrome商店下载外，也可以直接使用软件源里的包安装：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt install chrome-gnome-shell
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Firefox插件地址为：&lt;a class=&#34;link&#34; href=&#34;https://addons.mozilla.org/en-US/firefox/addon/gnome-shell-integration/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://addons.mozilla.org/en-US/firefox/addon/gnome-shell-integration/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;然后就可以访问 &lt;a class=&#34;link&#34; href=&#34;https://extensions.gnome.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://extensions.gnome.org/&lt;/a&gt; 来管理gnome插件了：&lt;/p&gt;
+&lt;p&gt;为了使用用户目录中的主题，需要安装 &lt;strong&gt;User Themes&lt;/strong&gt; 插件并启用：&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://extensions.gnome.org/extension/19/user-themes/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://extensions.gnome.org/extension/19/user-themes/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;然后在家目录建立名为 &lt;code&gt;.themes&lt;/code&gt; 的文件夹，将下载到的各种主题资源解压至此。&lt;/p&gt;
+&lt;p&gt;若不想进行用户级安装，而是追求系统级安装，则资源路径为：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;主题：&lt;code&gt;/usr/share/themes/&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;图标：&lt;code&gt;/usr/share/icons/&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;字体：&lt;code&gt;/usr/share/fonts/&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;此后，尽情探索&lt;a class=&#34;link&#34; href=&#34;https://www.gnome-look.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.gnome-look.org/&lt;/a&gt;，将下载到的资源在gnome-tweaks中启用即可。&lt;/p&gt;
+&lt;h2 id=&#34;wm&#34;&gt;WM&lt;/h2&gt;
+&lt;h3 id=&#34;i3&#34;&gt;i3&lt;/h3&gt;
+&lt;p&gt;讨厌鼠标的键盘信徒？俺也一样！（即使我是老FPS玩家了，使用鼠标有天然的速度优势）&lt;/p&gt;
+&lt;p&gt;话说图形化诞生的初衷就带有“坐标交互”的动机，想在图形化下扔掉鼠标，不是抛弃原教旨了嘛？&lt;/p&gt;
+&lt;p&gt;但有需求就有造物，玩DE的后路是玩WM。i3目前是该领域的当红炸子鸡。&lt;/p&gt;
+&lt;p&gt;不喜欢X11？面向Wayland的i3 clone：Sway，供你选择。&lt;/p&gt;
+&lt;p&gt;快捷键并不多，比tmux简单。一天学会，受用终生。👍&lt;/p&gt;
+&lt;h2 id=&#34;shell&#34;&gt;Shell&lt;/h2&gt;
+&lt;p&gt;shell并不属于DE的一部分，有个字符终端足矣。&lt;/p&gt;
+&lt;p&gt;最流行的美化方案还是zsh的一套：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;zsh
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;sudo apt install zsh&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;oh-my-zsh：
+&lt;ul&gt;
+&lt;li&gt;官网：&lt;a class=&#34;link&#34; href=&#34;https://ohmyz.sh/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://ohmyz.sh/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;官方一键安装（基于raw.githubusercontent.com，需科学上网）：
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;sh -c &amp;quot;$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)&amp;quot;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;基于国内gitee镜像一键安装：
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;sh -c &amp;quot;$(curl -fsSL https://gitee.com/mirrors/oh-my-zsh/raw/master/tools/install.sh)&amp;quot;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;lsd
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/Peltoche/lsd&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/Peltoche/lsd&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;需要Nerd Fonts支持
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.nerdfonts.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.nerdfonts.com/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;zsh插件
+&lt;ul&gt;
+&lt;li&gt;输入建议插件：zsh-autosuggestions
+&lt;ul&gt;
+&lt;li&gt;基于oh-my-zsh安装：&lt;code&gt;git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;shell语法高亮插件：zsh-syntax-highlighting
+&lt;ul&gt;
+&lt;li&gt;基于oh-my-zsh安装：&lt;code&gt;git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;fish也不错，开箱即用，但惜败于不兼容bash&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;其它&#34;&gt;其它&lt;/h2&gt;
+&lt;p&gt;程序太小以至于一句话就说完了……&lt;/p&gt;
+&lt;h3 id=&#34;终端配色&#34;&gt;终端配色&lt;/h3&gt;
+&lt;h4 id=&#34;终端模拟器层&#34;&gt;终端模拟器层&lt;/h4&gt;
+&lt;p&gt;如下仓库，应有尽有：&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/mbadolato/iTerm2-Color-Schemes&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/mbadolato/iTerm2-Color-Schemes&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&#34;shell层&#34;&gt;shell层&lt;/h4&gt;
+&lt;p&gt;shell层的配色只是用色号指定颜色，但相应颜色具体长什么样还得看上述终端模拟器层中定义的RGB值。&lt;/p&gt;
+&lt;p&gt;我自己比较喜欢&lt;code&gt;ZSH_THEME=&amp;quot;robbyrussell&amp;quot;&lt;/code&gt;的配色：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;LS_COLORS&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;ref：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://askubuntu.com/questions/466198/how-do-i-change-the-color-for-directories-with-ls-in-the-console&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://askubuntu.com/questions/466198/how-do-i-change-the-color-for-directories-with-ls-in-the-console&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;http://www.bigsoft.co.uk/blog/2008/04/11/configuring-ls_colors&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://www.bigsoft.co.uk/blog/2008/04/11/configuring-ls_colors&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://geoff.greer.fm/lscolors/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://geoff.greer.fm/lscolors/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;grub&#34;&gt;grub&lt;/h3&gt;
+&lt;p&gt;来自gnome-look，但啥都能用，毕竟定制的是grub这个引导器：&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.gnome-look.org/browse/cat/109/order/latest/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.gnome-look.org/browse/cat/109/order/latest/&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;桌面状态监测器&#34;&gt;桌面状态监测器&lt;/h3&gt;
+&lt;p&gt;使用 &lt;strong&gt;conky&lt;/strong&gt;，仓库如下：&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/brndnmtthws/conky&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/brndnmtthws/conky&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;裸体终端模拟器&#34;&gt;裸体终端模拟器&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;fbterm&lt;/strong&gt;好东西，仓库如下：&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/sfzhi/fbterm&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/sfzhi/fbterm&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

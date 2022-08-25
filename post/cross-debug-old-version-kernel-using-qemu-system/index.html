@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='compile, emulate and debug'><title>Cross debug old version kernel using qemu-system</title>
+
+<link rel='canonical' href='https://cerr.cc/post/cross-debug-old-version-kernel-using-qemu-system/'>
+
+<link rel="stylesheet" href="/scss/style.min.ac77dcf8b111b51da39a92990f431923f210f3876d85798a2125667f96dc33a4.css"><meta property='og:title' content='Cross debug old version kernel using qemu-system'>
+<meta property='og:description' content='compile, emulate and debug'>
+<meta property='og:url' content='https://cerr.cc/post/cross-debug-old-version-kernel-using-qemu-system/'>
+<meta property='og:site_name' content='Zikey Vi'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='QEMU' /><meta property='article:tag' content='Kernel' /><meta property='article:tag' content='DBG' /><meta property='article:published_time' content='2022-05-08T19:35:11&#43;08:00'/><meta property='article:modified_time' content='2022-05-08T19:35:11&#43;08:00'/><meta property='og:image' content='https://s2.loli.net/2022/05/08/MGJ3tsAVHSYrThj.jpg' />
+<meta name="twitter:site" content="@dev2ero">
+    <meta name="twitter:creator" content="@dev2ero"><meta name="twitter:title" content="Cross debug old version kernel using qemu-system">
+<meta name="twitter:description" content="compile, emulate and debug"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://s2.loli.net/2022/05/08/MGJ3tsAVHSYrThj.jpg' />
+    <link rel="shortcut icon" href="img/favicon.png" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu83ce41192ed66b608a10477eb7108e0c_128714_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Zikey Vi</a></h1>
+            <h2 class="site-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/dev2ero'
+                        target="_blank"
+                        title="GitHub"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com/dev2ero'
+                        target="_blank"
+                        title="Twitter"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archive</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/love/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-heart" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M19.5 13.572l-7.5 7.428l-7.5 -7.428m0 0a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
+</svg>
+
+                
+                <span>Love</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/friends/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-friends" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <circle cx="7" cy="5" r="2" />
+  <path d="M5 22v-5l-1 -1v-4a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4l-1 1v5" />
+  <circle cx="17" cy="5" r="2" />
+  <path d="M15 22v-4h-2l2 -6a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1l2 6h-2v4" />
+</svg>
+
+                
+                <span>Friends</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/utils/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Utils</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/board/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copy" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <rect x="8" y="8" width="12" height="12" rx="2" />
+  <path d="M16 8v-2a2 2 0 0 0 -2 -2h-8a2 2 0 0 0 -2 2v8a2 2 0 0 0 2 2h2" />
+</svg>
+
+                
+                <span>Board</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+<main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/post/cross-debug-old-version-kernel-using-qemu-system/">
+                
+                    <img src="https://s2.loli.net/2022/05/08/MGJ3tsAVHSYrThj.jpg" loading="lazy" alt="Featured image of post Cross debug old version kernel using qemu-system" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E5%B7%A5%E5%9C%B0%E6%97%A5%E8%AE%B0/" >
+                工地日记
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/post/cross-debug-old-version-kernel-using-qemu-system/">Cross debug old version kernel using qemu-system</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            compile, emulate and debug
+        </h3>
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">May 08, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    5 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <blockquote>
+<p>From this post, our goal is tracing the execution procedure from kernel entry to userspace process (busybox init) by using qemu-system and gdb-multiarch.</p>
+</blockquote>
+<h2 id="preparation">Preparation</h2>
+<h3 id="qemu-system-arm">qemu-system-arm</h3>
+<p>Compile it from source code or just use <code>sudo apt install qemu-system-arm</code>.</p>
+<h3 id="kernel">kernel</h3>
+<p>Linux kernel v4.1 for armel as an example.
+Compiling a linux kernel requires a matched version of gcc.
+For example, the linux kernel v4.1 requires the gcc version between 3 and 5:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">linunx-v4.1 $ find . -name <span class="s2">&#34;compiler-gcc*.h&#34;</span>
+</span></span><span class="line"><span class="cl">./include/linux/compiler-gcc.h
+</span></span><span class="line"><span class="cl">./include/linux/compiler-gcc3.h
+</span></span><span class="line"><span class="cl">./include/linux/compiler-gcc4.h
+</span></span><span class="line"><span class="cl">./include/linux/compiler-gcc5.h
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>So how can we get the old version gcc?
+You can always rely on buildroot: <a class="link" href="https://buildroot.org/download.html"  target="_blank" rel="noopener"
+    >https://buildroot.org/download.html</a></p>
+<p>Just clone it&rsquo;s repository:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">git clone https://git.buildroot.net/buildroot
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>And switch to the specific old release you required.
+You can check gcc release history from here</p>
+<p>GCC5 is released in 2015, so we switch buildroot&rsquo;s release version to 2015.08.x :</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">git switch 2015.08.x
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>And then,</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">make menuconfig
+</span></span><span class="line"><span class="cl"><span class="c1"># edit with yourself</span>
+</span></span><span class="line"><span class="cl">make
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>But an error occured in this step (this because we are using an old version of buildroot) :</p>
+<blockquote>
+<p>error &ldquo;Please port gnulib freadahead.c to your platform!</p>
+</blockquote>
+<p>cd to /buildroot/output/build/host-m4-1.4.17 and excute :</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">sed -i <span class="s1">&#39;s/IO_ftrylockfile/IO_EOF_SEEN/&#39;</span> lib/*.c
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;#define _IO_IN_BACKUP 0x100&#34;</span> &gt;&gt; lib/stdio-impl.h
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Then make again, we will get the old version of GCC we want.
+Ready for compiling the old version linux kernel :)</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">git clone https://github.com/torvalds/linux.git
+</span></span><span class="line"><span class="cl">git checkout v4.1
+</span></span><span class="line"><span class="cl">make <span class="nv">ARCH</span><span class="o">=</span>arm <span class="nv">O</span><span class="o">=</span>./build/armel menuconfig
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Make sure that CONFIG_DEBUG_INFO is enabled. (You can configure it in the .config file directly, or in kernel-hack item from menuconfig interface.)</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">make <span class="nv">ARCH</span><span class="o">=</span>arm <span class="nv">O</span><span class="o">=</span>./build/armel <span class="nv">CROSS_COMPILE</span><span class="o">=</span>/opt/crossc/armel-uclibc-gcc-4/usr/bin/arm-buildroot-linux-uclibcgnueabi- zImage -j<span class="k">$(</span>nproc<span class="k">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>We got zImage at build/armel/arch/arm/boot/zImage and vmlinux (with debug symbols) at build/armel</p>
+<h3 id="busybox">busybox</h3>
+<p>Even though we can use the busybox from the filesystem directly, we got no debug symbols from it.
+Thus we should compile busybox manually:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">git clone https://git.busybox.net/busybox/
+</span></span><span class="line"><span class="cl">make menuconfig
+</span></span><span class="line"><span class="cl">make <span class="nv">CROSS_COMPILE</span><span class="o">=</span>/opt/crossc/armel-uclibc-gcc-4/usr/bin/arm-buildroot-linux-uclibcgnueabi- -j<span class="k">$(</span>nproc<span class="k">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Then the busybox_unstripped is produced.</p>
+<h3 id="filesystem">filesystem</h3>
+<p>Hummm maybe obtain it by yourself?</p>
+<p>As for my situation, I just extract the filesystem from a TP-Link firmware.
+And we need do some modification to turn our filesystem directory to a filesystem image.
+Assume we have the rootfs directory made by bin etc sys usr var tmp &hellip;
+First of all, use dd to create a 50MB file filled with \x00</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">dd <span class="k">if</span><span class="o">=</span>/dev/zero <span class="nv">of</span><span class="o">=</span>rootfs.img <span class="nv">bs</span><span class="o">=</span>4k <span class="nv">count</span><span class="o">=</span><span class="m">12800</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>We will regard this rootfs.img as our virtual disk containing root filesystem. So, continue modifing it.
+The next step is create disk partitions using fdisk on rootfs.img :</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="nb">echo</span> -e <span class="s2">&#34;o\nn\np\n1\n\n\nw&#34;</span> <span class="p">|</span> sudo /sbin/fdisk rootfs.img
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>With disk partition be ready, rootfs.img could be mounted to the host filesystem using kpartx :</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">sudo kpartx -a -s -v rootfs.img
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>After that we got the corresponding device located at /dev/mapper/loop0p1</p>
+<p>Format its major partition as ext2 format :</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">mkfs.ext2 /dev/mapper/loop0p1
+</span></span><span class="line"><span class="cl">sync
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>And then mount it to host filesystem path wherever you like :</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">sudo mount /dev/mapper/loop0p1 ./mount_dir
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>We are done preparing here. All we should do next is copying all the files recursively from the origin root filesystem directory to our mounted directory,
+so that we got a rootfs.img image file containing the armel filesystem we want.
+Don&rsquo;t forget replace the origin bin/busybox with our manually compiled version.</p>
+<h2 id="tracing-time-">Tracing time !</h2>
+<p>Now we have :</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">workdir $ ls
+</span></span><span class="line"><span class="cl">mount_dir rootfs.img vmlinux zImage
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Full system emulation command line :</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">qemu-system-arm -M virt -kernel ./zImage -drive <span class="k">if</span><span class="o">=</span>none,file<span class="o">=</span>rootfs.img,format<span class="o">=</span>raw,id<span class="o">=</span>rootfs -device virtio-blk-device,drive<span class="o">=</span>rootfs -append <span class="s2">&#34;root=/dev/vda1 console=ttyS0 rw&#34;</span> -nographic -s -S
+</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>tips :
+-s              shorthand for -gdb tcp::1234
+-S              freeze CPU at startup (use &lsquo;c&rsquo; to start execution)
+Terminate qemu-system-arm process with Ctrl-A + x</p>
+</blockquote>
+<p>qemu-system-arm process should be paused until we attach to it using gdb-multiarch:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">~$ gdb-multiarch
+</span></span><span class="line"><span class="cl"><span class="o">(</span>gdb<span class="o">)</span>$ <span class="nb">set</span> architecture arm
+</span></span><span class="line"><span class="cl">The target architecture is <span class="nb">set</span> to <span class="s2">&#34;arm&#34;</span>.
+</span></span><span class="line"><span class="cl"><span class="o">(</span>gdb<span class="o">)</span>$ file vmlinux
+</span></span><span class="line"><span class="cl">Reading symbols from vmlinux...
+</span></span><span class="line"><span class="cl"><span class="o">(</span>gdb<span class="o">)</span>$ target remote :1234
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>We can not reach the bootloader&rsquo;s entry address 0x7c00 because we are not using our own bootloader and pass the -bios parameter to qemu.</p>
+<p>If you want to learn how kernel initialize itself, just use :</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="o">(</span>gdb<span class="o">)</span>$ b kernel_init
+</span></span><span class="line"><span class="cl"><span class="o">(</span>gdb<span class="o">)</span>$ c
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>After a bunch of initializing work on memory, paging, hardware and drive, etc being done, the init binary (who has PID 1) is about to be execved.
+The problem is, init is a usermode process and running in ring3, which has the different thread with kernel and virtual memory space, how we trace to it?
+The answer is straightforward: the program counter register (PC) is always holding the instruction&rsquo;s virtual address being excuted by CPU.
+So we can just check the entry address of init, and set a breakpoint at this address.
+Because I am using busybox to supply init, and this binary is belong to armel architecture, so I should typing :</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">arm-buildroot-linux-uclibcgnueabi-readelf -h mount_dir/bin/busybox
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>It gave me :</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ini" data-lang="ini"><span class="line"><span class="cl"><span class="na">ELF Header:</span>
+</span></span><span class="line"><span class="cl"><span class="na">Magic:   7f 45 4c 46 01 01 01 00 00 00 00 00 00 00 00 00 </span>
+</span></span><span class="line"><span class="cl"><span class="na">Class:                             ELF32</span>
+</span></span><span class="line"><span class="cl"><span class="na">Data:                              2&#39;s complement, little endian</span>
+</span></span><span class="line"><span class="cl"><span class="na">Version:                           1 (current)</span>
+</span></span><span class="line"><span class="cl"><span class="na">OS/ABI:                            UNIX - System V</span>
+</span></span><span class="line"><span class="cl"><span class="na">ABI Version:                       0</span>
+</span></span><span class="line"><span class="cl"><span class="na">Type:                              EXEC (Executable file)</span>
+</span></span><span class="line"><span class="cl"><span class="na">Machine:                           ARM</span>
+</span></span><span class="line"><span class="cl"><span class="na">Version:                           0x1</span>
+</span></span><span class="line"><span class="cl"><span class="na">Entry point address:               0x87a0</span>
+</span></span><span class="line"><span class="cl"><span class="na">Start of program headers:          52 (bytes into file)</span>
+</span></span><span class="line"><span class="cl"><span class="na">Start of section headers:          4008884 (bytes into file)</span>
+</span></span><span class="line"><span class="cl"><span class="na">Flags:                             0x5000202, has entry point, Version5 EABI, soft-float ABI</span>
+</span></span><span class="line"><span class="cl"><span class="na">Size of this header:               52 (bytes)</span>
+</span></span><span class="line"><span class="cl"><span class="na">Size of program headers:           32 (bytes)</span>
+</span></span><span class="line"><span class="cl"><span class="na">Number of program headers:         5</span>
+</span></span><span class="line"><span class="cl"><span class="na">Size of section headers:           40 (bytes)</span>
+</span></span><span class="line"><span class="cl"><span class="na">Number of section headers:         30</span>
+</span></span><span class="line"><span class="cl"><span class="na">Section header string table index: 27</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>We find that the entry point address is 0x87a0.
+0x87a0 is such a strange address that seems can not be a breakpoint address.
+The reason is that busybox is not compiled with CFLAG -no-pie. so add this CFLAG and compile busybox again, we will get the avaliable breakpoint address by readelf.
+So set a breakpoint at busybox&rsquo;s entry address and send c to gdb, we will reach to userspace directly.</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/qemu/">QEMU</a>
+        
+            <a href="/tags/kernel/">Kernel</a>
+        
+            <a href="/tags/dbg/">DBG</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/post/%E4%BD%BF%E7%94%A8qemu-gdb%E8%B0%83%E8%AF%95linux%E5%86%85%E6%A0%B8/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://s2.loli.net/2022/08/09/PKcwjiVBTg6ApEv.png" loading="lazy" data-key="" data-hash="https://s2.loli.net/2022/08/09/PKcwjiVBTg6ApEv.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">使用QEMU&#43;GDB调试Linux内核</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/post/%E8%AE%B0%E4%B8%80%E6%AC%A1qemu-system-arm%E4%BB%BF%E7%9C%9F%E7%9A%84%E6%8E%92%E9%94%99/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://s2.loli.net/2022/05/26/RS1JrGW2t4vzD3M.jpg" loading="lazy" data-key="" data-hash="https://s2.loli.net/2022/05/26/RS1JrGW2t4vzD3M.jpg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">记一次qemu-system-arm仿真的排错</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/post/%E6%9E%84%E5%BB%BA%E4%B8%8E%E8%BF%90%E8%A1%8C%E5%B5%8C%E5%85%A5%E5%BC%8Flinux%E8%99%9A%E6%8B%9F%E6%9C%BA/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://s2.loli.net/2022/05/08/2DqjsbwNpdUM4XA.jpg" loading="lazy" data-key="" data-hash="https://s2.loli.net/2022/05/08/2DqjsbwNpdUM4XA.jpg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">构建与运行嵌入式linux虚拟机</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/post/%E5%8D%8E%E7%A1%95%E6%A2%85%E6%9E%97%E5%9B%BA%E4%BB%B6%E7%9A%84%E7%BC%96%E8%AF%91/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://www.asuswrt-merlin.net/sites/default/files/inline-images/main_page_sm_2.png" loading="lazy" data-key="" data-hash="https://www.asuswrt-merlin.net/sites/default/files/inline-images/main_page_sm_2.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">华硕梅林固件的编译</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2022 Zikey Vi
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.13.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#preparation">Preparation</a>
+      <ol>
+        <li><a href="#qemu-system-arm">qemu-system-arm</a></li>
+        <li><a href="#kernel">kernel</a></li>
+        <li><a href="#busybox">busybox</a></li>
+        <li><a href="#filesystem">filesystem</a></li>
+      </ol>
+    </li>
+    <li><a href="#tracing-time-">Tracing time !</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

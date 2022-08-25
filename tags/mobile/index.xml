@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Mobile on Zikey Vi</title>
+        <link>https://cerr.cc/tags/mobile/</link>
+        <description>Recent content in Mobile on Zikey Vi</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Tue, 19 Jul 2022 10:50:06 +0800</lastBuildDate><atom:link href="https://cerr.cc/tags/mobile/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>手机变身小主机？！</title>
+        <link>https://cerr.cc/post/%E6%89%8B%E6%9C%BA%E5%8F%98%E8%BA%AB%E5%B0%8F%E4%B8%BB%E6%9C%BA/</link>
+        <pubDate>Tue, 19 Jul 2022 10:50:06 +0800</pubDate>
+        
+        <guid>https://cerr.cc/post/%E6%89%8B%E6%9C%BA%E5%8F%98%E8%BA%AB%E5%B0%8F%E4%B8%BB%E6%9C%BA/</guid>
+        <description>&lt;img src="https://postmarketos.org/static/img/nexus5-bg-dark.jpg" alt="Featured image of post 手机变身小主机？！" /&gt;&lt;h2 id=&#34;快递还在路上&#34;&gt;&lt;del&gt;快递还在路上……&lt;/del&gt;&lt;/h2&gt;
+&lt;p&gt;话说我大学专业之所以选了计算机，除去高二于学霸本&lt;em&gt;联想G510&lt;/em&gt;上玩过《看门狗》的原因外，就是因为有着折腾二手安卓机的爱好了。这一兴趣一直延续到了大学，以至于我童叟无欺的闲鱼账号被人怀疑为是机贩子账号 &lt;del&gt;（😤是可忍，孰不可忍）&lt;/del&gt; 。直至大三开始搞到了外快，可以不再为一台多次易主的设备在经济上精打细算，便渐渐失去了往日的激情。果然太容易得到的东西，就会失宠。&lt;/p&gt;
+&lt;p&gt;还记得大二那次Essential Phone换LG V30的交易，在我和那位小米前员工约定的地铁站内，他说，从我身上仿佛看见了当年的他，为一台心心念念的破旧设备奔波几十里却满心欢喜。两名垃机佬相视一笑，心照不宣，你东我西，从此再无交集……（😭&lt;/p&gt;
+&lt;h2 id=&#34;linux-on-a-phone&#34;&gt;Linux On a Phone&lt;/h2&gt;
+&lt;p&gt;啥说是手机上的Linux？安卓的内核本来就是Linux呀？！&lt;/p&gt;
+&lt;p&gt;但那是Android/Linux，而我们本次的目标是GNU/Linux，将mainline kernel与GNU utils运行与手机之上。可以比喻成将手机刷成了一台运行了桌面级系统的小主机？&lt;/p&gt;
+&lt;p&gt;关于Android的Linux内核与mainline Linux内核的关系，参见Google的说明：&lt;a class=&#34;link&#34; href=&#34;https://source.android.com/devices/architecture/kernel?hl=zh-cn&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://source.android.com/devices/architecture/kernel?hl=zh-cn&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;有若干项目试图接近这个目标，其中最有名的应该还是Ubuntu Touch了。但经过一些调研后，我发现Ubuntu Touch并不是我满意的选择……&lt;/p&gt;
+&lt;h3 id=&#34;ubuntu-touch&#34;&gt;Ubuntu Touch&lt;/h3&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://ubuntu-touch.io/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://ubuntu-touch.io/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Ubuntu Touch借助了&lt;a class=&#34;link&#34; href=&#34;https://halium.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Haium&lt;/a&gt;以解决纷繁复杂的硬件驱动支持问题，虽然由此达成了将GNU utils无缝运行于移动设备的目的，但却也因此被迫舍弃了mainline kernel。具体技术架构参见&lt;a class=&#34;link&#34; href=&#34;https://halium.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://halium.org/&lt;/a&gt;即可。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://halium.org/img/architecture.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;architecture&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;似乎Ubuntu Touch的定位主要瞄准了Android，而非作为一个完全可定制的极客OS，所以在包管理、分区读写等方面并不能做到如同Ubuntu desktop一样的体验。再加上其没有使用mainline kernel不符合我的需求，故而弃之。&lt;/p&gt;
+&lt;h3 id=&#34;mobian&#34;&gt;Mobian&lt;/h3&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mobian.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://mobian.org/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://wiki.mobian.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://wiki.mobian.org/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Mobian，即mobile debian，好的地方在于其已为大家广泛熟悉的apt+dpkg包管理工具和软件源，且其使用了mainline内核。但缺乏对于大量设备的支持。Mobian的设备支持列表在这里：&lt;a class=&#34;link&#34; href=&#34;https://wiki.mobian.org/doku.php?id=devices&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://wiki.mobian.org/doku.php?id=devices&lt;/a&gt;。可以看到除去几款国内难以购买、价格高昂、配置低下的开源手机外，就只有一加6和小米Pocophone F1两款骁龙845机型了。&lt;/p&gt;
+&lt;h3 id=&#34;droidian&#34;&gt;Droidian&lt;/h3&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://droidian.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://droidian.org/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Mobian的Haium版本，借由和Ubuntu Touch类似的方案，达成支持更多设备的目的。但也因此放弃了mainline kernel。&lt;/p&gt;
+&lt;h3 id=&#34;postmarketos&#34;&gt;postmarketOS&lt;/h3&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://postmarketos.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://postmarketos.org/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;postmarketOS基于Alpine Linux，为busybox + musl libc的解决方案。在采用mainline kernel的mobile发行版中社区最大，维护最活跃。其支持的设备列表与支持情况可以于此查到：&lt;a class=&#34;link&#34; href=&#34;https://wiki.postmarketos.org/wiki/Devices&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://wiki.postmarketos.org/wiki/Devices&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;以我手上的Xiaomi Mi Note2为例，对其的许多驱动支持是postmarketOS独一份的，比如此前修复的Wi-Fi模块：&lt;a class=&#34;link&#34; href=&#34;https://gitlab.com/postmarketOS/pmaports/-/merge_requests/3271&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://gitlab.com/postmarketOS/pmaports/-/merge_requests/3271&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;postmarketOS集成了几乎所有为mobile生态做出努力的上层桌面环境：&lt;a class=&#34;link&#34; href=&#34;https://wiki.postmarketos.org/wiki/Category:Interface&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://wiki.postmarketos.org/wiki/Category:Interface&lt;/a&gt;。且与软件源中提供了一键安装与切换。不同设备所适合的DE并不同，我此前的Xiaomi Redmi2使用KDE Plasma mobile最舒适，而现在手上这台Xiaomi Mi Note2运行Phosh才最稳定。&lt;/p&gt;
+&lt;p&gt;其亦有国内软件源镜像的支持：&lt;a class=&#34;link&#34; href=&#34;https://mirrors.tuna.tsinghua.edu.cn/postmarketOS/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://mirrors.tuna.tsinghua.edu.cn/postmarketOS/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;换源说明：&lt;a class=&#34;link&#34; href=&#34;https://mirrors.tuna.tsinghua.edu.cn/help/postmarketOS/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://mirrors.tuna.tsinghua.edu.cn/help/postmarketOS/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;将软件源由特定发行版切换到master分支后，即相当于将系统转化为滚动更新模式。这样做的好处是，昨天上报的bug可能今天就被修复了，下游设备立即执行&lt;code&gt;apk update; apk upgrade&lt;/code&gt;即可立即获取修复的更新。缺点则是是master分支的不稳定。但考虑到mobile发行版的可用性与稳定性本身就堪忧，切换至滚动更新，或许是牺牲1份稳定性，换取5分可用性。在我看来是很划算的生意。&lt;/p&gt;
+&lt;h3 id=&#34;其余暂未进一步了解的mobile-distros&#34;&gt;其余暂未进一步了解的Mobile Distros&lt;/h3&gt;
+&lt;h4 id=&#34;sailfish-os&#34;&gt;Sailfish OS&lt;/h4&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://sailfishos.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://sailfishos.org/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;体量貌似也很大，但其官网首页就是标价，预感不妙，逃……&lt;/p&gt;
+&lt;h4 id=&#34;luneos&#34;&gt;LuneOS&lt;/h4&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://www.webos-ports.org/wiki/Main_Page&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://www.webos-ports.org/wiki/Main_Page&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;也是Haium方案。&lt;/p&gt;
+&lt;h4 id=&#34;pureosmanjaro-arm等&#34;&gt;PureOS、Manjaro ARM等&lt;/h4&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://pureos.net/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://pureos.net/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://manjaro.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://manjaro.org/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;其定位并非为移动端努力。只能说是支持了Pine Phone等开源手机而已。&lt;/p&gt;
+&lt;h2 id=&#34;关于刷机&#34;&gt;关于刷机&lt;/h2&gt;
+&lt;p&gt;参考&lt;a class=&#34;link&#34; href=&#34;https://www.jianshu.com/p/d960a6f517d8&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.jianshu.com/p/d960a6f517d8&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;fastboot&#34;&gt;Fastboot&lt;/h3&gt;
+&lt;p&gt;一个通信协议，用于直接向安卓手机Flash的不同分区中写入数据。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://android.googlesource.com/platform/system/core/&amp;#43;/refs/heads/master/fastboot/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://android.googlesource.com/platform/system/core/+/refs/heads/master/fastboot/&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;recovery&#34;&gt;Recovery&lt;/h3&gt;
+&lt;p&gt;一个单独的分区，内可包含一个恢复用的迷你系统，如TWRP。&lt;/p&gt;
+&lt;h3 id=&#34;安卓设备分区&#34;&gt;安卓设备分区&lt;/h3&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://source.android.com/devices/bootloader/partitions&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://source.android.com/devices/bootloader/partitions&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;xiaomi-mi-note2&#34;&gt;Xiaomi Mi Note2&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://s2.loli.net/2022/08/11/LDPaqzpkYbAgtOE.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;1&#34;
+	
+	
+&gt;&lt;img src=&#34;https://s2.loli.net/2022/08/11/qTRoSm39YZvIABV.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;2&#34;
+	
+	
+&gt; &lt;img src=&#34;https://s2.loli.net/2022/08/11/aFuvVG8DqTpSUsg.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;3&#34;
+	
+	
+&gt;&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

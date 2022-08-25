@@ -1,38 +1,362 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Net on Zikey Vi</title>
-    <link>https://cerr.cc/tags/net/</link>
-    <description>Recent content in Net on Zikey Vi</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh</language>
-    <copyright>© 2022, Zikey Vi</copyright>
-    <lastBuildDate>Mon, 23 May 2022 23:21:12 +0800</lastBuildDate><atom:link href="https://cerr.cc/tags/net/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>关于Linux下的网卡与网络设备</title>
-      <link>https://cerr.cc/post/nic/</link>
-      <pubDate>Mon, 23 May 2022 23:21:12 +0800</pubDate>
-      
-      <guid>https://cerr.cc/post/nic/</guid>
-      <description>ip与ifconfig命令输出 ~$ ip a eth0: &amp;lt;BROADCAST,MULTICAST,UP,LOWER_UP&amp;gt; mtu 1500 qdisc fq_codel state UP group default qlen 1000 link/ether 00:0c:29:02:e4:a7 brd ff:ff:ff:ff:ff:ff inet 192.168.188.129/24 brd 192.168.188.255 scope global dynamic noprefixroute eth0 valid_lft 1126sec preferred_lft 1126sec inet6 fe80::20c:29ff:fe02:e4a7/64 scope link noprefixroute valid_lft forever preferred_lft forever ~$ ifconfig eth0: flags=4163&amp;lt;UP,BROADCAST,RUNNING,MULTICAST&amp;gt; mtu 1500 inet 192.168.188.129 netmask 255.255.255.0 broadcast 192.168.188.255 inet6 fe80::20c:29ff:fe02:e4a7 prefixlen 64 scopeid 0x20&amp;lt;link&amp;gt; ether 00:0c:29:02:e4:a7 txqueuelen 1000 (Ethernet) RX packets 959 bytes 62153 (60.</description>
-    </item>
-    
-    <item>
-      <title>Fuck the Great Fire Wall</title>
-      <link>https://cerr.cc/post/fgfw/</link>
-      <pubDate>Mon, 09 May 2022 11:03:28 +0800</pubDate>
-      
-      <guid>https://cerr.cc/post/fgfw/</guid>
-      <description>当我老了，回顾一生，就会发觉，我三分之一的生命，都浪费在和GFW作斗争上了。
-呜呼！何等宏伟啊！两千年多前的巨石，砌就秦帝国的坚不可摧；今日那日夜呼啸的服务器集群，彰显共和国非凡的制度自信。
-Top-level solution selection In terms of the ways I have tried myself:
-Use a VPN application Rent an overseas server Subscribe to an airport service The last option strikes the best balance between price and convenience.
-As for the first two option:
-Beware of phishing High cost in time or money Stability is a concern 个人客户端解决方案 具体使用方面就大白话讲了
-垃机佬出身的我，手里硬件设备的数量经常令得旁人惊异。即使到了渐渐退烧的今天，我手中也是保有了各个主流操作系统平台的物理机。
-顶层协议方面，v2ray和ssr都有使用，未尝试过自行编写或改进加密协议。服务端一年200左右的机场全够用了。客户端目前使用方案如下：
-Windows v2rayNG：https://github.com/2dust/v2rayN Linux v2rayA：https://github.com/v2rayA/v2rayA MacOS ClashX：https://github.com/yichengchen/clashX iOS shadowrocket：外区APP Store下载 Android v2rayNG：https://github.</description>
-    </item>
-    
-  </channel>
+    <channel>
+        <title>Net on Zikey Vi</title>
+        <link>https://cerr.cc/tags/net/</link>
+        <description>Recent content in Net on Zikey Vi</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Mon, 23 May 2022 23:21:12 +0800</lastBuildDate><atom:link href="https://cerr.cc/tags/net/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>关于Linux下的网卡与网络设备</title>
+        <link>https://cerr.cc/post/%E5%85%B3%E4%BA%8Elinux%E4%B8%8B%E7%9A%84%E7%BD%91%E5%8D%A1%E4%B8%8E%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87/</link>
+        <pubDate>Mon, 23 May 2022 23:21:12 +0800</pubDate>
+        
+        <guid>https://cerr.cc/post/%E5%85%B3%E4%BA%8Elinux%E4%B8%8B%E7%9A%84%E7%BD%91%E5%8D%A1%E4%B8%8E%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87/</guid>
+        <description>&lt;img src="https://s2.loli.net/2022/05/23/nEj1icSvZsA479q.jpg" alt="Featured image of post 关于Linux下的网卡与网络设备" /&gt;&lt;h2 id=&#34;ip与ifconfig命令输出&#34;&gt;ip与ifconfig命令输出&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;~$ ip a
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;eth0: &amp;lt;BROADCAST,MULTICAST,UP,LOWER_UP&amp;gt; mtu &lt;span class=&#34;m&#34;&gt;1500&lt;/span&gt; qdisc fq_codel state UP group default qlen &lt;span class=&#34;m&#34;&gt;1000&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    link/ether 00:0c:29:02:e4:a7 brd ff:ff:ff:ff:ff:ff
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    inet 192.168.188.129/24 brd 192.168.188.255 scope global dynamic noprefixroute eth0
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;       valid_lft 1126sec preferred_lft 1126sec
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    inet6 fe80::20c:29ff:fe02:e4a7/64 scope link noprefixroute 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;       valid_lft forever preferred_lft forever
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;~$ ifconfig
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;eth0: &lt;span class=&#34;nv&#34;&gt;flags&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;4163&amp;lt;UP,BROADCAST,RUNNING,MULTICAST&amp;gt;  mtu &lt;span class=&#34;m&#34;&gt;1500&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        inet 192.168.188.129  netmask 255.255.255.0  broadcast 192.168.188.255
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        inet6 fe80::20c:29ff:fe02:e4a7  prefixlen &lt;span class=&#34;m&#34;&gt;64&lt;/span&gt;  scopeid 0x20&amp;lt;link&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        ether 00:0c:29:02:e4:a7  txqueuelen &lt;span class=&#34;m&#34;&gt;1000&lt;/span&gt;  &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;Ethernet&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        RX packets &lt;span class=&#34;m&#34;&gt;959&lt;/span&gt;  bytes &lt;span class=&#34;m&#34;&gt;62153&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;60.6 KiB&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        RX errors &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;  dropped &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;  overruns &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;  frame &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        TX packets &lt;span class=&#34;m&#34;&gt;66&lt;/span&gt;  bytes &lt;span class=&#34;m&#34;&gt;7598&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;7.4 KiB&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        TX errors &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;  dropped &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt; overruns &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;  carrier &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;  collisions &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;网卡的工作模式&#34;&gt;网卡的工作模式&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;广播模式（Broad Cast Model）：它的物理地址（MAC）地址是 0xffffff 的帧为广播帧，工作在广播模式的网卡接收广播帧；&lt;/li&gt;
+&lt;li&gt;多播传送（MultiCast Model）：多播传送地址作为目的物理地址的帧可以被组内的其它主机同时接收，而组外主机却接收不到。但是，如果将网卡设置为多播传送模式，它可以接收所有的多播传送帧，而不论它是不是组内成员；&lt;/li&gt;
+&lt;li&gt;直接模式（Direct Model）：工作在直接模式下的网卡只接收目地址是自己 Mac地址的帧；&lt;/li&gt;
+&lt;li&gt;混杂模式（Promiscuous Model）：工作在混杂模式下的网卡接收所有的流过网卡的帧，信包捕获程序就是在这种模式下运行的。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;网卡的缺省工作模式包含广播模式和直接模式，即它只接收广播帧和发给自己的帧。如果采用混杂模式，一个站点的网卡将接受同一网络内所有站点所发送的数据包这样就可以到达对于网络信息监视捕获的目的。&lt;/p&gt;
+&lt;h2 id=&#34;linux下的虚拟网络设备&#34;&gt;Linux下的虚拟网络设备&lt;/h2&gt;
+&lt;p&gt;通过&lt;code&gt;ip link add&lt;/code&gt;可以创建多种类型的虚拟网络设备，在&lt;code&gt;man ip link&lt;/code&gt;中可以得知有以下类型的device:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;bridge - Ethernet Bridge device&lt;/li&gt;
+&lt;li&gt;bond - Bonding device&lt;/li&gt;
+&lt;li&gt;dummy - Dummy network interface&lt;/li&gt;
+&lt;li&gt;hsr - High-availability Seamless Redundancy device&lt;/li&gt;
+&lt;li&gt;ifb - Intermediate Functional Block device&lt;/li&gt;
+&lt;li&gt;ipoib - IP over Infiniband device&lt;/li&gt;
+&lt;li&gt;macvlan - Virtual interface base on link layer address (MAC)&lt;/li&gt;
+&lt;li&gt;macvtap - Virtual interface based on link layer address (MAC) and TAP.&lt;/li&gt;
+&lt;li&gt;vcan - Virtual Controller Area Network interface&lt;/li&gt;
+&lt;li&gt;vxcan - Virtual Controller Area Network tunnel interface&lt;/li&gt;
+&lt;li&gt;veth - Virtual ethernet interface&lt;/li&gt;
+&lt;li&gt;vlan - 802.1q tagged virtual LAN interface&lt;/li&gt;
+&lt;li&gt;vxlan - Virtual eXtended LAN&lt;/li&gt;
+&lt;li&gt;ip6tnl - Virtual tunnel interface IPv4|IPv6 over IPv6&lt;/li&gt;
+&lt;li&gt;ipip - Virtual tunnel interface IPv4 over IPv4&lt;/li&gt;
+&lt;li&gt;sit - Virtual tunnel interface IPv6 over IPv4&lt;/li&gt;
+&lt;li&gt;gre - Virtual tunnel interface GRE over IPv4&lt;/li&gt;
+&lt;li&gt;gretap - Virtual L2 tunnel interface GRE over IPv4&lt;/li&gt;
+&lt;li&gt;erspan - Encapsulated Remote SPAN over GRE and IPv4&lt;/li&gt;
+&lt;li&gt;ip6gre - Virtual tunnel interface GRE over IPv6&lt;/li&gt;
+&lt;li&gt;ip6gretap - Virtual L2 tunnel interface GRE over IPv6&lt;/li&gt;
+&lt;li&gt;ip6erspan - Encapsulated Remote SPAN over GRE and IPv6&lt;/li&gt;
+&lt;li&gt;vti - Virtual tunnel interface&lt;/li&gt;
+&lt;li&gt;nlmon - Netlink monitoring device&lt;/li&gt;
+&lt;li&gt;ipvlan - Interface for L3 (IPv6/IPv4) based VLANs&lt;/li&gt;
+&lt;li&gt;ipvtap - Interface for L3 (IPv6/IPv4) based VLANs and TAP&lt;/li&gt;
+&lt;li&gt;lowpan - Interface for 6LoWPAN (IPv6) over IEEE 802.15.4 / Bluetooth&lt;/li&gt;
+&lt;li&gt;geneve - GEneric NEtwork Virtualization Encapsulation&lt;/li&gt;
+&lt;li&gt;bareudp - Bare UDP L3 encapsulation support&lt;/li&gt;
+&lt;li&gt;amt - Automatic Multicast Tunneling (AMT)&lt;/li&gt;
+&lt;li&gt;macsec - Interface for IEEE 802.1AE MAC Security (MACsec)&lt;/li&gt;
+&lt;li&gt;vrf - Interface for L3 VRF domains&lt;/li&gt;
+&lt;li&gt;netdevsim - Interface for netdev API tests&lt;/li&gt;
+&lt;li&gt;rmnet - Qualcomm rmnet device&lt;/li&gt;
+&lt;li&gt;xfrm - Virtual xfrm interface&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;tuntap&#34;&gt;TUN/TAP&lt;/h2&gt;
+&lt;p&gt;TUN是Linux系统里的虚拟网络设备，它的原理和使用在&lt;a class=&#34;link&#34; href=&#34;https://www.kernel.org/doc/Documentation/networking/tuntap.txt&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Kernel Doc&lt;/a&gt;和&lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/TUN/TAP&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Wiki&lt;/a&gt;做了比较清楚的说明。&lt;/p&gt;
+&lt;p&gt;TUN设备模拟网络层设备(network layer)，处理三层报文，IP报文等，用于将报文注入到网络协议栈。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.lijiaocn.com/img/net-devices/tun-work.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;TUN设备工作原理&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;应用程序(app)可以从物理网卡上读写报文，经过处理后通过TUN回送，或者从TUN读取报文处理后经物理网卡送出。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.lijiaocn.com/img/net-devices/tun-app-work.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;利用TUN实现VPN&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;TAP是Linux系统里的虚拟网络设备，它的原理和使用在&lt;a class=&#34;link&#34; href=&#34;https://www.kernel.org/doc/Documentation/networking/tuntap.txt&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Kernel Doc&lt;/a&gt;和&lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/TUN/TAP&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Wiki&lt;/a&gt;做了比较清楚的说明。&lt;/p&gt;
+&lt;p&gt;不同于TUN的是，TAP设备模拟链路层设备(link layer)，处理二层报文，以太网帧等。&lt;/p&gt;
+&lt;p&gt;TAP设备与TUN设备的区别在于:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;TAP虚拟的是一个二层设备，具有MAC地址，接收、发送的是二层包。&lt;/li&gt;
+&lt;li&gt;TUN虚拟的是一个三层设备，没有MAC地址，接收、发送的是三层包。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;最小的虚拟网卡&#34;&gt;最小的虚拟网卡&lt;/h2&gt;
+&lt;p&gt;参见：&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://zhou-yuxin.github.io/articles/2017/%E7%AC%AC%E4%B8%80%E4%B8%AALinux%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87%E9%A9%B1%E5%8A%A8%E2%80%94%E2%80%94%E6%9C%80%E7%AE%80%E8%99%9A%E6%8B%9F%E7%BD%91%E5%8D%A1virnet/index.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://zhou-yuxin.github.io/articles/2017/%E7%AC%AC%E4%B8%80%E4%B8%AALinux%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87%E9%A9%B1%E5%8A%A8%E2%80%94%E2%80%94%E6%9C%80%E7%AE%80%E8%99%9A%E6%8B%9F%E7%BD%91%E5%8D%A1virnet/index.html&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Fuck the Great Fire Wall</title>
+        <link>https://cerr.cc/post/fuck-the-great-fire-wall/</link>
+        <pubDate>Mon, 09 May 2022 11:03:28 +0800</pubDate>
+        
+        <guid>https://cerr.cc/post/fuck-the-great-fire-wall/</guid>
+        <description>&lt;img src="https://s2.loli.net/2022/05/09/FrNVRw5lSbfusgx.jpg" alt="Featured image of post Fuck the Great Fire Wall" /&gt;&lt;blockquote&gt;
+&lt;p&gt;当我老了，回顾一生，就会发觉，我三分之一的生命，都浪费在和GFW作斗争上了。&lt;/p&gt;
+&lt;p&gt;呜呼！何等宏伟啊！两千年多前的巨石，砌就秦帝国的坚不可摧；今日那日夜呼啸的服务器集群，彰显共和国非凡的制度自信。😫&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;top-level-solution-selection&#34;&gt;Top-level solution selection&lt;/h2&gt;
+&lt;p&gt;In terms of the ways I have tried myself:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Use a VPN application&lt;/li&gt;
+&lt;li&gt;Rent an overseas server&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Subscribe to an airport service&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The last option strikes the best balance between price and convenience.&lt;/p&gt;
+&lt;p&gt;As for the first two option:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Beware of phishing&lt;/li&gt;
+&lt;li&gt;High cost in time or money&lt;/li&gt;
+&lt;li&gt;Stability is a concern&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;个人客户端解决方案&#34;&gt;个人客户端解决方案&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;具体使用方面就大白话讲了&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;垃机佬出身的我，手里硬件设备的数量经常令得旁人惊异。即使到了渐渐退烧的今天，我手中也是保有了各个主流操作系统平台的物理机。&lt;/p&gt;
+&lt;p&gt;顶层协议方面，v2ray和ssr都有使用，未尝试过自行编写或改进加密协议。服务端一年200左右的机场全够用了。客户端目前使用方案如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Windows
+&lt;ul&gt;
+&lt;li&gt;v2rayNG：&lt;a class=&#34;link&#34; href=&#34;https://github.com/2dust/v2rayN&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/2dust/v2rayN&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Linux
+&lt;ul&gt;
+&lt;li&gt;v2rayA：&lt;a class=&#34;link&#34; href=&#34;https://github.com/v2rayA/v2rayA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/v2rayA/v2rayA&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;MacOS
+&lt;ul&gt;
+&lt;li&gt;ClashX：&lt;a class=&#34;link&#34; href=&#34;https://github.com/yichengchen/clashX&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/yichengchen/clashX&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;iOS
+&lt;ul&gt;
+&lt;li&gt;shadowrocket：外区APP Store下载&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Android
+&lt;ul&gt;
+&lt;li&gt;v2rayNG：&lt;a class=&#34;link&#34; href=&#34;https://github.com/2dust/v2rayNG&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/2dust/v2rayNG&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;代理层次&#34;&gt;代理层次&lt;/h3&gt;
+&lt;style&gt;img{
+    box-shadow: 5px 5px 5px rgba(0,0,0,.5);
+    -moz-box-shadow: 5px 5px 5px rgba(0,0,0,.5);
+    -webkit-box-shadow: 5px 5px 5px rgba(0,0,0,.5);
+}&lt;/style&gt;
+&lt;p&gt;在TCP/IP协议栈的不同层设定的代理，会对系统与应用产生不同影响。&lt;/p&gt;
+&lt;img src=&#34;https://s2.loli.net/2022/05/09/v8gZmb1xjBEO9KC.jpg&#34; alt=&#34;Snipaste_2022-05-09_13-55-58.jpg &#34; style=&#34;zoom:80%;float:right;margin-left:50px&#34; /&gt;
+&lt;p&gt;许多VPN软件都是利用了tun/tap创建了&lt;strong&gt;虚拟网卡&lt;/strong&gt;，将系统中所有流量直接通过虚拟网卡转发至代理服务器。这种方案代理于链接层，全局代理效果好。但同时由此带来的缺点是，一些我们不想被代理的流量也会经由代理服务器转发了。部分SSR、v2ray客户端有tun模式，也是同样的道理。&lt;/p&gt;
+&lt;p&gt;再者就是于操作系统层面配置&lt;strong&gt;系统代理&lt;/strong&gt;，这样一来所以会遵循系统代理设置的应用都会被代理。但同时也会有其它一些不遵守系统代理的应用。举例来讲，chrome默认是走系统代理的，而firefox则需手动配置选择代理方案。如右图是Windows11的系统代理设置，红框内的文字说明了其与VPN使用虚拟网卡的方案并不重叠。&lt;/p&gt;
+&lt;p&gt;故若需要更精细化地控制系统中不同组件的代理行为，则更适合于使用&lt;strong&gt;应用层的代理接口&lt;/strong&gt;。这种情况下，代理软件客户端做的仅仅是在本地打开一个端口用来监听和服务上层应用主动发来的代理请求，以此将是否被代理的选择权交由了每个应用本身。举例来说，v2rayN的蓝色图标对应的“清除系统代理”就是这种方案。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://s2.loli.net/2022/05/09/HzWigwtaf5L26Sd.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Snipaste_2022-05-09_14-01-32.jpg&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;部分网站的镜像&#34;&gt;部分网站的镜像&lt;/h3&gt;
+&lt;h4 id=&#34;google&#34;&gt;Google&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.ahhhhfs.com/4810/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.ahhhhfs.com/4810/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;github&#34;&gt;Github&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.ahhhhfs.com/18927/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.ahhhhfs.com/18927/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.ahhhhfs.com/18876/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.ahhhhfs.com/18876/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.ahhhhfs.com/5442/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.ahhhhfs.com/5442/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;youtube&#34;&gt;Youtube&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.ahhhhfs.com/16819/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.ahhhhfs.com/16819/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;各种应用的代理配置与镜像&#34;&gt;各种应用的代理配置与镜像&lt;/h3&gt;
+&lt;h4 id=&#34;chrome&#34;&gt;chrome&lt;/h4&gt;
+&lt;p&gt;chrome 默认遵从系统代理。可是使用&lt;strong&gt;Proxy SwitchyOmega&lt;/strong&gt;插件对chrome代理方式进行手动配置：&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://chrome.google.com/webstore/detail/proxy-switchyomega/padekgcemlokbadohgkifijomclgjgif&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://chrome.google.com/webstore/detail/proxy-switchyomega/padekgcemlokbadohgkifijomclgjgif&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&#34;linux软件源&#34;&gt;Linux软件源&lt;/h4&gt;
+&lt;p&gt;不同Linux发行版具有不同的包管理器。即使是同一个发行版的不同版本（比如Ubuntu18.04与Ubuntu20.04），其上游软件源也是不同的。&lt;/p&gt;
+&lt;p&gt;使用国内镜像为软件源换源可以大大加速安装软件源上的软件的过程。以tuna维护的清华源为例，我们来到使用帮助页面：&lt;a class=&#34;link&#34; href=&#34;https://mirrors.tuna.tsinghua.edu.cn/help&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://mirrors.tuna.tsinghua.edu.cn/help&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;点击任意你想要使用清华源的服务（Linux软件源自然也涵盖在内），即能看到tuna为你提供的相应使用教程。（对于Linux软件源，需选定正确的系统版本）。&lt;/p&gt;
+&lt;h4 id=&#34;pip&#34;&gt;pip&lt;/h4&gt;
+&lt;p&gt;可使用清华源：&lt;a class=&#34;link&#34; href=&#34;https://mirrors.tuna.tsinghua.edu.cn/help/pypi/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://mirrors.tuna.tsinghua.edu.cn/help/pypi/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;若使用代理方案，在&lt;code&gt;~/.config/pip/pip.conf&lt;/code&gt;，中添加：（将&lt;code&gt;http://127.0.0.1:1080&lt;/code&gt;替换为你本地的http代理地址）&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-ini&#34; data-lang=&#34;ini&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;[global]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;na&#34;&gt;proxy&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;http://127.0.0.1:1080&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;不支持socks5协议&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;git&#34;&gt;git&lt;/h4&gt;
+&lt;p&gt;（将&lt;code&gt;http://127.0.0.1:1080&lt;/code&gt;替换为你本地的socks5代理地址）&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git config --global http.proxy socks5://127.0.0.1:1080
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;apt&#34;&gt;apt&lt;/h4&gt;
+&lt;p&gt;在 &lt;code&gt;/etc/apt/apt.conf.d/&lt;/code&gt; 目录下新增 &lt;code&gt;proxy.conf&lt;/code&gt; 文件，加入：（将&lt;code&gt;http://127.0.0.1:1080&lt;/code&gt;替换为你本地的http代理地址）&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-ini&#34; data-lang=&#34;ini&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;na&#34;&gt;Acquire::http::Proxy &amp;#34;http://127.0.0.1:1080/&amp;#34;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;na&#34;&gt;Acquire::https::Proxy &amp;#34;http://127.0.0.1:1080/&amp;#34;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;不支持socks5协议&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;curlwget&#34;&gt;curl、wget&lt;/h4&gt;
+&lt;p&gt;许多posix标准的命令行程序会遵从两个环境变量：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;http_proxy&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;http://proxyserver:port/
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;https_proxy&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;https://proxyserver:port/
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;curl也是其中之一。&lt;/p&gt;
+&lt;p&gt;同时，也可以使用curl的&lt;code&gt;-x&lt;/code&gt;、&lt;code&gt;--proxy&lt;/code&gt;参数达到同样效果：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;-x, --proxy &amp;lt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;protocol://&lt;span class=&#34;o&#34;&gt;][&lt;/span&gt;user:password@&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;proxyhost&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;:port&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;若想要curl的代理配置永久生效，向&lt;code&gt;~/.curlrc&lt;/code&gt;写入：&lt;code&gt;socks5 = &amp;quot;127.0.0.1:1080&amp;quot;&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;同时，curl遵循但wget不遵循的环境变量为：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;all_proxy&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;http://proxyserver:port/
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;合法翻墙&#34;&gt;合法翻墙&lt;/h2&gt;
+&lt;h3 id=&#34;澳门流量卡&#34;&gt;澳门流量卡&lt;/h3&gt;
+&lt;p&gt;就是这货👇，淘宝上就可以买到。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://s2.loli.net/2022/08/18/ScbgXVYpdRmrnyQ.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;9E9E47AD-ACAC-4401-81EB-2A3D29D89EAF_1_201_a.jpeg&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;其他攻略&#34;&gt;其他攻略&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;2022永久免费白嫖节点方法
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.ahhhhfs.com/19188/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.ahhhhfs.com/19188/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;使用Google搜索找机场（梯子）技巧
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.ahhhhfs.com/10889/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.ahhhhfs.com/10889/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

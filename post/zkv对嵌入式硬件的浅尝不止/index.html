@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='接着学，不得停'><title>ZKV对嵌入式硬件的浅尝不止</title>
+
+<link rel='canonical' href='https://cerr.cc/post/zkv%E5%AF%B9%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%A1%AC%E4%BB%B6%E7%9A%84%E6%B5%85%E5%B0%9D%E4%B8%8D%E6%AD%A2/'>
+
+<link rel="stylesheet" href="/scss/style.min.ac77dcf8b111b51da39a92990f431923f210f3876d85798a2125667f96dc33a4.css"><meta property='og:title' content='ZKV对嵌入式硬件的浅尝不止'>
+<meta property='og:description' content='接着学，不得停'>
+<meta property='og:url' content='https://cerr.cc/post/zkv%E5%AF%B9%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%A1%AC%E4%BB%B6%E7%9A%84%E6%B5%85%E5%B0%9D%E4%B8%8D%E6%AD%A2/'>
+<meta property='og:site_name' content='Zikey Vi'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Embeded' /><meta property='article:published_time' content='2022-07-08T14:11:35&#43;08:00'/><meta property='article:modified_time' content='2022-07-08T14:11:35&#43;08:00'/><meta property='og:image' content='https://pic1.zhimg.com/v2-983af8971091bf560af2e2299d801cd1_1440w.jpg' />
+<meta name="twitter:site" content="@dev2ero">
+    <meta name="twitter:creator" content="@dev2ero"><meta name="twitter:title" content="ZKV对嵌入式硬件的浅尝不止">
+<meta name="twitter:description" content="接着学，不得停"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://pic1.zhimg.com/v2-983af8971091bf560af2e2299d801cd1_1440w.jpg' />
+    <link rel="shortcut icon" href="img/favicon.png" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu83ce41192ed66b608a10477eb7108e0c_128714_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Zikey Vi</a></h1>
+            <h2 class="site-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/dev2ero'
+                        target="_blank"
+                        title="GitHub"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com/dev2ero'
+                        target="_blank"
+                        title="Twitter"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archive</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/love/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-heart" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M19.5 13.572l-7.5 7.428l-7.5 -7.428m0 0a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
+</svg>
+
+                
+                <span>Love</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/friends/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-friends" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <circle cx="7" cy="5" r="2" />
+  <path d="M5 22v-5l-1 -1v-4a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4l-1 1v5" />
+  <circle cx="17" cy="5" r="2" />
+  <path d="M15 22v-4h-2l2 -6a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1l2 6h-2v4" />
+</svg>
+
+                
+                <span>Friends</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/utils/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Utils</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/board/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copy" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <rect x="8" y="8" width="12" height="12" rx="2" />
+  <path d="M16 8v-2a2 2 0 0 0 -2 -2h-8a2 2 0 0 0 -2 2v8a2 2 0 0 0 2 2h2" />
+</svg>
+
+                
+                <span>Board</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+<main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/post/zkv%E5%AF%B9%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%A1%AC%E4%BB%B6%E7%9A%84%E6%B5%85%E5%B0%9D%E4%B8%8D%E6%AD%A2/">
+                
+                    <img src="https://pic1.zhimg.com/v2-983af8971091bf560af2e2299d801cd1_1440w.jpg" loading="lazy" alt="Featured image of post ZKV对嵌入式硬件的浅尝不止" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0/" >
+                课堂笔记
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/post/zkv%E5%AF%B9%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%A1%AC%E4%BB%B6%E7%9A%84%E6%B5%85%E5%B0%9D%E4%B8%8D%E6%AD%A2/">ZKV对嵌入式硬件的浅尝不止</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            接着学，不得停
+        </h3>
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jul 08, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <blockquote>
+<p>物联网安全是离不开硬件领域的。而计算机科学与技术专业出身的我，嵌入式知识实属匮乏。公司组内有大量免费玩具却不会玩，这口气实在难以下咽。接下来是对自己嵌入式硬件知识的早教记录。</p>
+</blockquote>
+<h2 id="pcb">PCB</h2>
+<p><a class="link" href="https://en.wikipedia.org/wiki/Printed_circuit_board"  target="_blank" rel="noopener"
+    >https://en.wikipedia.org/wiki/Printed_circuit_board</a></p>
+<h2 id="处理器">处理器</h2>
+<h3 id="mcu">MCU</h3>
+<ul>
+<li><a class="link" href="https://en.wikipedia.org/wiki/Microcontroller"  target="_blank" rel="noopener"
+    >https://en.wikipedia.org/wiki/Microcontroller</a></li>
+</ul>
+<h4 id="stm32">STM32</h4>
+<ul>
+<li><a class="link" href="https://en.wikipedia.org/wiki/STM32"  target="_blank" rel="noopener"
+    >https://en.wikipedia.org/wiki/STM32</a></li>
+</ul>
+<h2 id="flash">Flash</h2>
+<ul>
+<li><a class="link" href="https://en.wikipedia.org/wiki/Flash_memory"  target="_blank" rel="noopener"
+    >https://en.wikipedia.org/wiki/Flash_memory</a></li>
+<li><a class="link" href="https://nieyong.github.io/wiki_ny/Flash.html"  target="_blank" rel="noopener"
+    >https://nieyong.github.io/wiki_ny/Flash.html</a></li>
+</ul>
+<h3 id="nor">NOR</h3>
+<h3 id="nand">NAND</h3>
+<h4 id="mmc">MMC</h4>
+<p>MultiMediaCard</p>
+<p><a class="link" href="https://en.wikipedia.org/wiki/MultiMediaCard"  target="_blank" rel="noopener"
+    >https://en.wikipedia.org/wiki/MultiMediaCard</a></p>
+<h5 id="emmc">eMMC</h5>
+<p><a class="link" href="https://en.wikipedia.org/wiki/MultiMediaCard#eMMC"  target="_blank" rel="noopener"
+    >https://en.wikipedia.org/wiki/MultiMediaCard#eMMC</a></p>
+<h4 id="ufs">UFS</h4>
+<ul>
+<li><a class="link" href="https://en.wikipedia.org/wiki/Universal_Flash_Storage"  target="_blank" rel="noopener"
+    >https://en.wikipedia.org/wiki/Universal_Flash_Storage</a></li>
+</ul>
+<h2 id="芯片封装">芯片封装</h2>
+<p><img src="https://semiwiki.com/wp-content/uploads/2022/03/https3A2F2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com2Fpublic2Fimages2F220c1577-6253-45ec-9e2d-fc0f8430db8e_594x496.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Semiconductor Packaging"
+	
+	
+></p>
+<ul>
+<li>
+<p><a class="link" href="https://www.sohu.com/a/158654863_609521"  target="_blank" rel="noopener"
+    >https://www.sohu.com/a/158654863_609521</a></p>
+</li>
+<li>
+<p><a class="link" href="https://www.youtube.com/watch?v=2ua8PeP9ql4&amp;t=153s"  target="_blank" rel="noopener"
+    >https://www.youtube.com/watch?v=2ua8PeP9ql4&amp;t=153s</a></p>
+</li>
+<li>
+<p><a class="link" href="https://zhuanlan.zhihu.com/p/509647754"  target="_blank" rel="noopener"
+    >https://zhuanlan.zhihu.com/p/509647754</a></p>
+</li>
+<li>
+<p><a class="link" href="https://semiwiki.com/semiconductor-services/308968-semiconductor-packaging-history-primer/"  target="_blank" rel="noopener"
+    >https://semiwiki.com/semiconductor-services/308968-semiconductor-packaging-history-primer/</a></p>
+</li>
+</ul>
+<h2 id="协议">协议</h2>
+<h3 id="uart">UART</h3>
+<ul>
+<li><a class="link" href="https://zh.wikipedia.org/zh-cn/UART"  target="_blank" rel="noopener"
+    >https://zh.wikipedia.org/zh-cn/UART</a></li>
+</ul>
+<h4 id="rs232">RS232</h4>
+<ul>
+<li><a class="link" href="https://zh.wikipedia.org/zh-cn/RS-232"  target="_blank" rel="noopener"
+    >https://zh.wikipedia.org/zh-cn/RS-232</a></li>
+</ul>
+<h3 id="i2c">I2C</h3>
+<ul>
+<li><a class="link" href="https://zh.wikipedia.org/wiki/I%C2%B2C"  target="_blank" rel="noopener"
+    >https://zh.wikipedia.org/wiki/I%C2%B2C</a></li>
+</ul>
+<h3 id="jtag">JTAG</h3>
+<ul>
+<li><a class="link" href="https://en.wikipedia.org/wiki/JTAG"  target="_blank" rel="noopener"
+    >https://en.wikipedia.org/wiki/JTAG</a></li>
+<li><a class="link" href="https://www.xjtag.com/zh-hans/about-jtag/what-is-jtag/"  target="_blank" rel="noopener"
+    >https://www.xjtag.com/zh-hans/about-jtag/what-is-jtag/</a></li>
+<li><a class="link" href="https://iot-security.wiki/hardware-security/debug/jtag.html"  target="_blank" rel="noopener"
+    >https://iot-security.wiki/hardware-security/debug/jtag.html</a></li>
+</ul>
+<h3 id="spi">SPI</h3>
+<h2 id="工具">工具</h2>
+<h3 id="逻辑分析仪">逻辑分析仪</h3>
+<ul>
+<li><a class="link" href="https://en.wikipedia.org/wiki/Logic_analyzer"  target="_blank" rel="noopener"
+    >https://en.wikipedia.org/wiki/Logic_analyzer</a></li>
+<li><a class="link" href="https://zhuanlan.zhihu.com/p/94386957"  target="_blank" rel="noopener"
+    >https://zhuanlan.zhihu.com/p/94386957</a></li>
+<li><a class="link" href="https://www.anquanke.com/post/id/276280"  target="_blank" rel="noopener"
+    >https://www.anquanke.com/post/id/276280</a></li>
+</ul>
+<p>一款逻辑分析仪的样本：</p>
+<ul>
+<li><a class="link" href="http://www.qdkingst.com/cn"  target="_blank" rel="noopener"
+    >http://www.qdkingst.com/cn</a></li>
+<li><a class="link" href="http://res.kingst.site/kfs/doc/Kingst%e9%87%91%e6%80%9d%e7%89%b9%e8%99%9a%e6%8b%9f%e4%bb%aa%e5%99%a8%e4%bd%bf%e7%94%a8%e6%89%8b%e5%86%8c.pdf"  target="_blank" rel="noopener"
+    >http://res.kingst.site/kfs/doc/Kingst%e9%87%91%e6%80%9d%e7%89%b9%e8%99%9a%e6%8b%9f%e4%bb%aa%e5%99%a8%e4%bd%bf%e7%94%a8%e6%89%8b%e5%86%8c.pdf</a></li>
+</ul>
+<h2 id="姿势">姿势</h2>
+<h3 id="固件提取">固件提取</h3>
+<ul>
+<li><a class="link" href="https://www.anquanke.com/post/id/227285"  target="_blank" rel="noopener"
+    >https://www.anquanke.com/post/id/227285</a></li>
+</ul>
+<h3 id="硬件调试">硬件调试</h3>
+<ul>
+<li><a class="link" href="https://www.riverloopsecurity.com/blog/2020/01/hw-101-uart/"  target="_blank" rel="noopener"
+    >https://www.riverloopsecurity.com/blog/2020/01/hw-101-uart/</a></li>
+</ul>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/embeded/">Embeded</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/post/zkv%E7%9A%84cc-%E6%9E%84%E5%BB%BA%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://s2.loli.net/2022/08/09/FTvgEfriYsZ2a9L.png" loading="lazy" data-key="" data-hash="https://s2.loli.net/2022/08/09/FTvgEfriYsZ2a9L.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">ZKV的C、C&#43;&#43;构建系统学习之路</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/post/zkv%E5%AF%B9%E5%90%8E%E7%AB%AF%E7%9A%84%E6%B5%85%E5%B0%9D%E8%BE%84%E6%AD%A2/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://pic4.zhimg.com/v2-3ec9f9b98b4c3596e09b40d143410f0e_1440w.jpg?source=172ae18b" loading="lazy" data-key="" data-hash="https://pic4.zhimg.com/v2-3ec9f9b98b4c3596e09b40d143410f0e_1440w.jpg?source=172ae18b"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">ZKV对后端的浅尝辄止</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/post/zkv%E7%9A%84linux-kernel%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://s2.loli.net/2022/06/13/9o2jpBPbfcLRMFT.jpg" loading="lazy" data-key="" data-hash="https://s2.loli.net/2022/06/13/9o2jpBPbfcLRMFT.jpg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">ZKV的Linux Kernel学习之路</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/post/zkv%E7%9A%84fuzzing%E6%97%A9%E6%95%99/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://lcamtuf.coredump.cx/afl/afl_screen.png" loading="lazy" data-key="" data-hash="https://lcamtuf.coredump.cx/afl/afl_screen.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">ZKV的Fuzzing早教</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2022 Zikey Vi
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.13.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#pcb">PCB</a></li>
+    <li><a href="#处理器">处理器</a>
+      <ol>
+        <li><a href="#mcu">MCU</a>
+          <ol>
+            <li><a href="#stm32">STM32</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#flash">Flash</a>
+      <ol>
+        <li><a href="#nor">NOR</a></li>
+        <li><a href="#nand">NAND</a>
+          <ol>
+            <li><a href="#mmc">MMC</a></li>
+            <li><a href="#ufs">UFS</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#芯片封装">芯片封装</a></li>
+    <li><a href="#协议">协议</a>
+      <ol>
+        <li><a href="#uart">UART</a>
+          <ol>
+            <li><a href="#rs232">RS232</a></li>
+          </ol>
+        </li>
+        <li><a href="#i2c">I2C</a></li>
+        <li><a href="#jtag">JTAG</a></li>
+        <li><a href="#spi">SPI</a></li>
+      </ol>
+    </li>
+    <li><a href="#工具">工具</a>
+      <ol>
+        <li><a href="#逻辑分析仪">逻辑分析仪</a></li>
+      </ol>
+    </li>
+    <li><a href="#姿势">姿势</a>
+      <ol>
+        <li><a href="#固件提取">固件提取</a></li>
+        <li><a href="#硬件调试">硬件调试</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

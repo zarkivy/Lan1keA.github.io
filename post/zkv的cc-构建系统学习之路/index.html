@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='门外汉试图跨步入门'><title>ZKV的C、C&#43;&#43;构建系统学习之路</title>
+
+<link rel='canonical' href='https://cerr.cc/post/zkv%E7%9A%84cc-%E6%9E%84%E5%BB%BA%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/'>
+
+<link rel="stylesheet" href="/scss/style.min.ac77dcf8b111b51da39a92990f431923f210f3876d85798a2125667f96dc33a4.css"><meta property='og:title' content='ZKV的C、C&#43;&#43;构建系统学习之路'>
+<meta property='og:description' content='门外汉试图跨步入门'>
+<meta property='og:url' content='https://cerr.cc/post/zkv%E7%9A%84cc-%E6%9E%84%E5%BB%BA%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/'>
+<meta property='og:site_name' content='Zikey Vi'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Develop' /><meta property='article:published_time' content='2022-08-08T14:34:10&#43;08:00'/><meta property='article:modified_time' content='2022-08-08T14:34:10&#43;08:00'/><meta property='og:image' content='https://s2.loli.net/2022/08/09/FTvgEfriYsZ2a9L.png' />
+<meta name="twitter:site" content="@dev2ero">
+    <meta name="twitter:creator" content="@dev2ero"><meta name="twitter:title" content="ZKV的C、C&#43;&#43;构建系统学习之路">
+<meta name="twitter:description" content="门外汉试图跨步入门"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://s2.loli.net/2022/08/09/FTvgEfriYsZ2a9L.png' />
+    <link rel="shortcut icon" href="img/favicon.png" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu83ce41192ed66b608a10477eb7108e0c_128714_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Zikey Vi</a></h1>
+            <h2 class="site-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/dev2ero'
+                        target="_blank"
+                        title="GitHub"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com/dev2ero'
+                        target="_blank"
+                        title="Twitter"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archive</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/love/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-heart" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M19.5 13.572l-7.5 7.428l-7.5 -7.428m0 0a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
+</svg>
+
+                
+                <span>Love</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/friends/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-friends" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <circle cx="7" cy="5" r="2" />
+  <path d="M5 22v-5l-1 -1v-4a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4l-1 1v5" />
+  <circle cx="17" cy="5" r="2" />
+  <path d="M15 22v-4h-2l2 -6a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1l2 6h-2v4" />
+</svg>
+
+                
+                <span>Friends</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/utils/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Utils</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/board/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copy" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <rect x="8" y="8" width="12" height="12" rx="2" />
+  <path d="M16 8v-2a2 2 0 0 0 -2 -2h-8a2 2 0 0 0 -2 2v8a2 2 0 0 0 2 2h2" />
+</svg>
+
+                
+                <span>Board</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+<main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/post/zkv%E7%9A%84cc-%E6%9E%84%E5%BB%BA%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/">
+                
+                    <img src="https://s2.loli.net/2022/08/09/FTvgEfriYsZ2a9L.png" loading="lazy" alt="Featured image of post ZKV的C、C&#43;&#43;构建系统学习之路" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0/" >
+                课堂笔记
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/post/zkv%E7%9A%84cc-%E6%9E%84%E5%BB%BA%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/">ZKV的C、C&#43;&#43;构建系统学习之路</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            门外汉试图跨步入门
+        </h3>
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Aug 08, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    2 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="编译工具链">编译工具链</h2>
+<p>此前疑惑的一个问题是，一套编译工具链究竟包含了些什么东西？当我们使用包管理器一键安装编译工具链时，所安装的程序、数据、文档被分散在了根文件系统的各个位置，难以让我们直接一窥究竟。好在老生常谈的buildroot又为我们解决了这个问题，（当然，从网上下载一份编译工具链也能达到相同的效果）。取一份buildroot构建完成的编译工具链瞅瞅，路径位于<code>buildroot/output/host</code>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">▶ ls host
+</span></span><span class="line"><span class="cl">bin  etc  include  lib  lib64  libexec  man  sbin  share  usr  var  x86_64-buildroot-linux-uclibc
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>其中的直接编译工具部分：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">▶ ls bin <span class="p">|</span> grep <span class="s2">&#34;x86_64-linux&#34;</span> <span class="p">|</span> grep -v <span class="s2">&#34;br_real&#34;</span>
+</span></span><span class="line"><span class="cl">x86_64-linux-addr2line			<span class="c1"># convert addresses into line number/file name pairs</span>
+</span></span><span class="line"><span class="cl">x86_64-linux-ar					<span class="c1"># create, modify, and extract from archives</span>
+</span></span><span class="line"><span class="cl">x86_64-linux-as					<span class="c1"># the portable GNU assembler</span>
+</span></span><span class="line"><span class="cl">x86_64-linux-c++filt			<span class="c1"># demangle C++ and Java symbols</span>
+</span></span><span class="line"><span class="cl">x86_64-linux-cc
+</span></span><span class="line"><span class="cl">x86_64-linux-cpp
+</span></span><span class="line"><span class="cl">x86_64-linux-elfedit			<span class="c1"># update the ELF header of ELF files</span>
+</span></span><span class="line"><span class="cl">x86_64-linux-gcc
+</span></span><span class="line"><span class="cl">x86_64-linux-gcc-11.3.0
+</span></span><span class="line"><span class="cl">x86_64-linux-gcc-ar
+</span></span><span class="line"><span class="cl">x86_64-linux-gcc-nm				<span class="c1"># list symbols from object files</span>
+</span></span><span class="line"><span class="cl">x86_64-linux-gcc-ranlib			<span class="c1"># generate an index to an archive</span>
+</span></span><span class="line"><span class="cl">x86_64-linux-gcov				<span class="c1"># print code coverage information</span>
+</span></span><span class="line"><span class="cl">x86_64-linux-gcov-dump			<span class="c1"># print coverage file contents</span>
+</span></span><span class="line"><span class="cl">x86_64-linux-gcov-tool			<span class="c1"># offline tool to handle gcda counts</span>
+</span></span><span class="line"><span class="cl">x86_64-linux-gprof				<span class="c1"># display call graph profile data</span>
+</span></span><span class="line"><span class="cl">x86_64-linux-ld
+</span></span><span class="line"><span class="cl">x86_64-linux-ld.bfd
+</span></span><span class="line"><span class="cl">x86_64-linux-ldconfig			<span class="c1"># configure Dynamic Linker Run Time Bindings</span>
+</span></span><span class="line"><span class="cl">x86_64-linux-ldd				<span class="c1"># print shared object dependencies</span>
+</span></span><span class="line"><span class="cl">x86_64-linux-lto-dump			<span class="c1"># tool for dumping LTO object files</span>
+</span></span><span class="line"><span class="cl">x86_64-linux-nm
+</span></span><span class="line"><span class="cl">x86_64-linux-objcopy			<span class="c1"># copies a binary file, possibly transforming it in the process</span>
+</span></span><span class="line"><span class="cl">x86_64-linux-objdump			<span class="c1"># display information from object files</span>
+</span></span><span class="line"><span class="cl">x86_64-linux-ranlib
+</span></span><span class="line"><span class="cl">x86_64-linux-readelf			<span class="c1"># display information about ELF files</span>
+</span></span><span class="line"><span class="cl">x86_64-linux-size				<span class="c1"># list section sizes and total size of binary files</span>
+</span></span><span class="line"><span class="cl">x86_64-linux-strings			<span class="c1"># print the sequences of printable characters in files</span>
+</span></span><span class="line"><span class="cl">x86_64-linux-strip				<span class="c1"># discard symbols and other data from object files</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="使用buildroot构建任意编译工具链">使用buildroot构建任意编译工具链</h3>
+<p>buildroot对那些平台有默认配置呢：</p>
+<p><img src="https://s2.loli.net/2022/08/19/yHZsCwEfNFQ2v7I.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image.png"
+	
+	
+></p>
+<p>这个数量的输出项怎么看覆盖都很全面呀。</p>
+<p>那么两行命令即可得到特定平台的编译工具链了（以qemu_aarch64_virt为例）：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">make qemu_aarch64_virt_defconfig
+</span></span><span class="line"><span class="cl">make toolchain
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>来到<code>buildroot/output/host</code>中取货即可。</p>
+<h2 id="binutils">binutils</h2>
+<p>GNU assembler, linker and binary utilities. The programs in this package are used to assemble, link and manipulate binary and object files. They may be used in conjunction with a compiler and various libraries to build programs.</p>
+<p>那么binutils包中包含了哪些路径下的哪些内容呢？</p>
+<p>使用apt-file工具查看下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">▶ sudo apt install apt-file
+</span></span><span class="line"><span class="cl">▶ apt-file list binutils
+</span></span><span class="line"><span class="cl">binutils: /usr/bin/addr2line
+</span></span><span class="line"><span class="cl">binutils: /usr/bin/ar
+</span></span><span class="line"><span class="cl">binutils: /usr/bin/as
+</span></span><span class="line"><span class="cl">binutils: /usr/bin/c++filt
+</span></span><span class="line"><span class="cl">binutils: /usr/bin/dwp
+</span></span><span class="line"><span class="cl">binutils: /usr/bin/elfedit
+</span></span><span class="line"><span class="cl">binutils: /usr/bin/gold
+</span></span><span class="line"><span class="cl">binutils: /usr/bin/gprof
+</span></span><span class="line"><span class="cl">binutils: /usr/bin/ld
+</span></span><span class="line"><span class="cl">binutils: /usr/bin/ld.bfd
+</span></span><span class="line"><span class="cl">binutils: /usr/bin/ld.gold
+</span></span><span class="line"><span class="cl">binutils: /usr/bin/nm
+</span></span><span class="line"><span class="cl">binutils: /usr/bin/objcopy
+</span></span><span class="line"><span class="cl">binutils: /usr/bin/objdump
+</span></span><span class="line"><span class="cl">binutils: /usr/bin/ranlib
+</span></span><span class="line"><span class="cl">binutils: /usr/bin/readelf
+</span></span><span class="line"><span class="cl">binutils: /usr/bin/size
+</span></span><span class="line"><span class="cl">binutils: /usr/bin/strings
+</span></span><span class="line"><span class="cl">binutils: /usr/bin/strip
+</span></span><span class="line"><span class="cl">binutils: /usr/lib/compat-ld/ld
+</span></span><span class="line"><span class="cl">binutils: /usr/lib/gold-ld/ld
+</span></span><span class="line"><span class="cl">binutils: /usr/share/bug/binutils/presubj
+</span></span><span class="line"><span class="cl">binutils: /usr/share/doc/binutils/changelog.Debian.gz
+</span></span><span class="line"><span class="cl">binutils: /usr/share/doc/binutils/copyright
+</span></span><span class="line"><span class="cl">binutils: /usr/share/lintian/overrides/binutils
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="configure">configure</h2>
+<h2 id="make">make</h2>
+<p>官方文档：<a class="link" href="https://www.gnu.org/software/make/manual/html_node/index.html"  target="_blank" rel="noopener"
+    >https://www.gnu.org/software/make/manual/html_node/index.html</a></p>
+<h2 id="cmake">cmake</h2>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/develop/">Develop</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/post/zkv%E5%AF%B9%E5%90%8E%E7%AB%AF%E7%9A%84%E6%B5%85%E5%B0%9D%E8%BE%84%E6%AD%A2/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://pic4.zhimg.com/v2-3ec9f9b98b4c3596e09b40d143410f0e_1440w.jpg?source=172ae18b" loading="lazy" data-key="" data-hash="https://pic4.zhimg.com/v2-3ec9f9b98b4c3596e09b40d143410f0e_1440w.jpg?source=172ae18b"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">ZKV对后端的浅尝辄止</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/post/zkv%E5%AF%B9%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%A1%AC%E4%BB%B6%E7%9A%84%E6%B5%85%E5%B0%9D%E4%B8%8D%E6%AD%A2/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://pic1.zhimg.com/v2-983af8971091bf560af2e2299d801cd1_1440w.jpg" loading="lazy" data-key="" data-hash="https://pic1.zhimg.com/v2-983af8971091bf560af2e2299d801cd1_1440w.jpg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">ZKV对嵌入式硬件的浅尝不止</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/post/zkv%E7%9A%84linux-kernel%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://s2.loli.net/2022/06/13/9o2jpBPbfcLRMFT.jpg" loading="lazy" data-key="" data-hash="https://s2.loli.net/2022/06/13/9o2jpBPbfcLRMFT.jpg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">ZKV的Linux Kernel学习之路</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/post/zkv%E7%9A%84fuzzing%E6%97%A9%E6%95%99/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://lcamtuf.coredump.cx/afl/afl_screen.png" loading="lazy" data-key="" data-hash="https://lcamtuf.coredump.cx/afl/afl_screen.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">ZKV的Fuzzing早教</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2022 Zikey Vi
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.13.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#编译工具链">编译工具链</a>
+      <ol>
+        <li><a href="#使用buildroot构建任意编译工具链">使用buildroot构建任意编译工具链</a></li>
+      </ol>
+    </li>
+    <li><a href="#binutils">binutils</a></li>
+    <li><a href="#configure">configure</a></li>
+    <li><a href="#make">make</a></li>
+    <li><a href="#cmake">cmake</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

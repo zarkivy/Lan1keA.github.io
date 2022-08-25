@@ -1,53 +1,268 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Embeded on Zikey Vi</title>
-    <link>https://cerr.cc/tags/embeded/</link>
-    <description>Recent content in Embeded on Zikey Vi</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh</language>
-    <copyright>© 2022, Zikey Vi</copyright>
-    <lastBuildDate>Fri, 08 Jul 2022 14:11:35 +0800</lastBuildDate><atom:link href="https://cerr.cc/tags/embeded/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>ZKV对嵌入式硬件的浅尝不止</title>
-      <link>https://cerr.cc/post/embeded_hardware/</link>
-      <pubDate>Fri, 08 Jul 2022 14:11:35 +0800</pubDate>
-      
-      <guid>https://cerr.cc/post/embeded_hardware/</guid>
-      <description> 物联网安全是离不开硬件领域的。而计算机科学与技术专业出身的我，嵌入式知识实属匮乏。公司组内有大量免费玩具却不会玩，这口气实在难以下咽。接下来是对自己嵌入式硬件知识的早教记录。
-PCB https://en.wikipedia.org/wiki/Printed_circuit_board
-处理器 MCU https://en.wikipedia.org/wiki/Microcontroller STM32 https://en.wikipedia.org/wiki/STM32 Flash https://en.wikipedia.org/wiki/Flash_memory https://nieyong.github.io/wiki_ny/Flash.html NOR NAND MMC MultiMediaCard
-https://en.wikipedia.org/wiki/MultiMediaCard
-eMMC https://en.wikipedia.org/wiki/MultiMediaCard#eMMC
-UFS https://en.wikipedia.org/wiki/Universal_Flash_Storage 芯片封装 https://www.sohu.com/a/158654863_609521
-https://www.youtube.com/watch?v=2ua8PeP9ql4&amp;amp;t=153s
-https://zhuanlan.zhihu.com/p/509647754
-https://semiwiki.com/semiconductor-services/308968-semiconductor-packaging-history-primer/
-协议 UART https://zh.wikipedia.org/zh-cn/UART RS232 https://zh.wikipedia.org/zh-cn/RS-232 I2C https://zh.wikipedia.org/wiki/I%C2%B2C JTAG https://en.wikipedia.org/wiki/JTAG https://www.xjtag.com/zh-hans/about-jtag/what-is-jtag/ https://iot-security.wiki/hardware-security/debug/jtag.html SPI 工具 逻辑分析仪 https://en.wikipedia.org/wiki/Logic_analyzer https://zhuanlan.zhihu.com/p/94386957 https://www.anquanke.com/post/id/276280 一款逻辑分析仪的样本：
-http://www.qdkingst.com/cn http://res.kingst.site/kfs/doc/Kingst%e9%87%91%e6%80%9d%e7%89%b9%e8%99%9a%e6%8b%9f%e4%bb%aa%e5%99%a8%e4%bd%bf%e7%94%a8%e6%89%8b%e5%86%8c.pdf 姿势 固件提取 https://www.anquanke.com/post/id/227285 硬件调试 https://www.riverloopsecurity.com/blog/2020/01/hw-101-uart/ </description>
-    </item>
-    
-    <item>
-      <title>华硕梅林固件的编译</title>
-      <link>https://cerr.cc/post/compile_asuswrt-merlin/</link>
-      <pubDate>Wed, 11 May 2022 16:27:10 +0800</pubDate>
-      
-      <guid>https://cerr.cc/post/compile_asuswrt-merlin/</guid>
-      <description>获取梅林 官网如下：asuswrt-merlin.net
-新梅林：https://github.com/RMerl/asuswrt-merlin.ng
-旧梅林（停止开发）：https://github.com/RMerl/asuswrt-merlin
-这里选用asuswrt-merlin.ng进行编译构建
-wget https://github.com/RMerl/asuswrt-merlin.ng/archive/refs/heads/master.zip （下载zip而非clone仓库，节省.git的占用
-环境准备 README.txt 给出了编译方式：https://github.com/RMerl/asuswrt-merlin.ng/blob/master/README.TXT
-包依赖非常多，所以尽力将本地环境贴合它的编译说明，以避免未知错误。
-所以选取 ubuntu:16.04 作为编译平台。
-故首先安装docker，快速安装cheatsheet在此：http://zikey.vip/post/some_installation/
-拉取ubuntu 16.04镜像并设定共享文件夹：
-sudo docker run -it -v /home/zkv/docker_share/:/share ubuntu:16.04 依赖安装 进入docker ubuntu环境后，下载并解压梅林ng：
-apt install wget unzip wget https://github.com/RMerl/asuswrt-merlin.ng/archive/refs/heads/master.zip unzip master.zip README.txt 中提到，需安装部分32位依赖包，故先添加32位软件源：
-dpkg --add-architecture i386 apt update 此后便可以直接依照说明安装所有依赖包：
-apt install libncurses5 libncurses5-dev m4 bison gawk flex libstdc++6-4.7-dev g++-4.7 g++ gengetopt git gitk zlib1g-dev autoconf autopoint libtool-bin shtool autogen mtd-utils intltool sharutils docbook-xsl-* libstdc++5 texinfo dos2unix xsltproc u-boot-tools device-tree-compiler qemu gperf liblzo2-dev uuid-dev build-essential lzma-dev liblzma-dev lzma binutils-dev patch cmake intltool libglib2.</description>
-    </item>
-    
-  </channel>
+    <channel>
+        <title>Embeded on Zikey Vi</title>
+        <link>https://cerr.cc/tags/embeded/</link>
+        <description>Recent content in Embeded on Zikey Vi</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Fri, 08 Jul 2022 14:11:35 +0800</lastBuildDate><atom:link href="https://cerr.cc/tags/embeded/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>ZKV对嵌入式硬件的浅尝不止</title>
+        <link>https://cerr.cc/post/zkv%E5%AF%B9%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%A1%AC%E4%BB%B6%E7%9A%84%E6%B5%85%E5%B0%9D%E4%B8%8D%E6%AD%A2/</link>
+        <pubDate>Fri, 08 Jul 2022 14:11:35 +0800</pubDate>
+        
+        <guid>https://cerr.cc/post/zkv%E5%AF%B9%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%A1%AC%E4%BB%B6%E7%9A%84%E6%B5%85%E5%B0%9D%E4%B8%8D%E6%AD%A2/</guid>
+        <description>&lt;img src="https://pic1.zhimg.com/v2-983af8971091bf560af2e2299d801cd1_1440w.jpg" alt="Featured image of post ZKV对嵌入式硬件的浅尝不止" /&gt;&lt;blockquote&gt;
+&lt;p&gt;物联网安全是离不开硬件领域的。而计算机科学与技术专业出身的我，嵌入式知识实属匮乏。公司组内有大量免费玩具却不会玩，这口气实在难以下咽。接下来是对自己嵌入式硬件知识的早教记录。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;pcb&#34;&gt;PCB&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/Printed_circuit_board&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://en.wikipedia.org/wiki/Printed_circuit_board&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;处理器&#34;&gt;处理器&lt;/h2&gt;
+&lt;h3 id=&#34;mcu&#34;&gt;MCU&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/Microcontroller&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://en.wikipedia.org/wiki/Microcontroller&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;stm32&#34;&gt;STM32&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/STM32&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://en.wikipedia.org/wiki/STM32&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;flash&#34;&gt;Flash&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/Flash_memory&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://en.wikipedia.org/wiki/Flash_memory&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://nieyong.github.io/wiki_ny/Flash.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://nieyong.github.io/wiki_ny/Flash.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;nor&#34;&gt;NOR&lt;/h3&gt;
+&lt;h3 id=&#34;nand&#34;&gt;NAND&lt;/h3&gt;
+&lt;h4 id=&#34;mmc&#34;&gt;MMC&lt;/h4&gt;
+&lt;p&gt;MultiMediaCard&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/MultiMediaCard&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://en.wikipedia.org/wiki/MultiMediaCard&lt;/a&gt;&lt;/p&gt;
+&lt;h5 id=&#34;emmc&#34;&gt;eMMC&lt;/h5&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/MultiMediaCard#eMMC&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://en.wikipedia.org/wiki/MultiMediaCard#eMMC&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&#34;ufs&#34;&gt;UFS&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/Universal_Flash_Storage&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://en.wikipedia.org/wiki/Universal_Flash_Storage&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;芯片封装&#34;&gt;芯片封装&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://semiwiki.com/wp-content/uploads/2022/03/https3A2F2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com2Fpublic2Fimages2F220c1577-6253-45ec-9e2d-fc0f8430db8e_594x496.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Semiconductor Packaging&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.sohu.com/a/158654863_609521&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.sohu.com/a/158654863_609521&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.youtube.com/watch?v=2ua8PeP9ql4&amp;amp;t=153s&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.youtube.com/watch?v=2ua8PeP9ql4&amp;amp;t=153s&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://zhuanlan.zhihu.com/p/509647754&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://zhuanlan.zhihu.com/p/509647754&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://semiwiki.com/semiconductor-services/308968-semiconductor-packaging-history-primer/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://semiwiki.com/semiconductor-services/308968-semiconductor-packaging-history-primer/&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;协议&#34;&gt;协议&lt;/h2&gt;
+&lt;h3 id=&#34;uart&#34;&gt;UART&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://zh.wikipedia.org/zh-cn/UART&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://zh.wikipedia.org/zh-cn/UART&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;rs232&#34;&gt;RS232&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://zh.wikipedia.org/zh-cn/RS-232&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://zh.wikipedia.org/zh-cn/RS-232&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;i2c&#34;&gt;I2C&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://zh.wikipedia.org/wiki/I%C2%B2C&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://zh.wikipedia.org/wiki/I%C2%B2C&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;jtag&#34;&gt;JTAG&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/JTAG&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://en.wikipedia.org/wiki/JTAG&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.xjtag.com/zh-hans/about-jtag/what-is-jtag/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.xjtag.com/zh-hans/about-jtag/what-is-jtag/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://iot-security.wiki/hardware-security/debug/jtag.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://iot-security.wiki/hardware-security/debug/jtag.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;spi&#34;&gt;SPI&lt;/h3&gt;
+&lt;h2 id=&#34;工具&#34;&gt;工具&lt;/h2&gt;
+&lt;h3 id=&#34;逻辑分析仪&#34;&gt;逻辑分析仪&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/Logic_analyzer&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://en.wikipedia.org/wiki/Logic_analyzer&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://zhuanlan.zhihu.com/p/94386957&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://zhuanlan.zhihu.com/p/94386957&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.anquanke.com/post/id/276280&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.anquanke.com/post/id/276280&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;一款逻辑分析仪的样本：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;http://www.qdkingst.com/cn&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://www.qdkingst.com/cn&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;http://res.kingst.site/kfs/doc/Kingst%e9%87%91%e6%80%9d%e7%89%b9%e8%99%9a%e6%8b%9f%e4%bb%aa%e5%99%a8%e4%bd%bf%e7%94%a8%e6%89%8b%e5%86%8c.pdf&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://res.kingst.site/kfs/doc/Kingst%e9%87%91%e6%80%9d%e7%89%b9%e8%99%9a%e6%8b%9f%e4%bb%aa%e5%99%a8%e4%bd%bf%e7%94%a8%e6%89%8b%e5%86%8c.pdf&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;姿势&#34;&gt;姿势&lt;/h2&gt;
+&lt;h3 id=&#34;固件提取&#34;&gt;固件提取&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.anquanke.com/post/id/227285&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.anquanke.com/post/id/227285&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;硬件调试&#34;&gt;硬件调试&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.riverloopsecurity.com/blog/2020/01/hw-101-uart/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.riverloopsecurity.com/blog/2020/01/hw-101-uart/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
+        <title>华硕梅林固件的编译</title>
+        <link>https://cerr.cc/post/%E5%8D%8E%E7%A1%95%E6%A2%85%E6%9E%97%E5%9B%BA%E4%BB%B6%E7%9A%84%E7%BC%96%E8%AF%91/</link>
+        <pubDate>Wed, 11 May 2022 16:27:10 +0800</pubDate>
+        
+        <guid>https://cerr.cc/post/%E5%8D%8E%E7%A1%95%E6%A2%85%E6%9E%97%E5%9B%BA%E4%BB%B6%E7%9A%84%E7%BC%96%E8%AF%91/</guid>
+        <description>&lt;img src="https://www.asuswrt-merlin.net/sites/default/files/inline-images/main_page_sm_2.png" alt="Featured image of post 华硕梅林固件的编译" /&gt;&lt;h2 id=&#34;获取梅林&#34;&gt;获取梅林&lt;/h2&gt;
+&lt;p&gt;官网如下：&lt;a class=&#34;link&#34; href=&#34;http://asuswrt-merlin.net&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;asuswrt-merlin.net&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;新梅林：https://github.com/RMerl/asuswrt-merlin.ng&lt;/p&gt;
+&lt;p&gt;旧梅林（停止开发）：https://github.com/RMerl/asuswrt-merlin&lt;/p&gt;
+&lt;p&gt;这里选用asuswrt-merlin.ng进行编译构建&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;wget https://github.com/RMerl/asuswrt-merlin.ng/archive/refs/heads/master.zip
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;（下载zip而非clone仓库，节省.git的占用&lt;/p&gt;
+&lt;h2 id=&#34;环境准备&#34;&gt;环境准备&lt;/h2&gt;
+&lt;p&gt;README.txt 给出了编译方式：&lt;a class=&#34;link&#34; href=&#34;https://github.com/RMerl/asuswrt-merlin.ng/blob/master/README.TXT&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/RMerl/asuswrt-merlin.ng/blob/master/README.TXT&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;包依赖非常多，所以尽力将本地环境贴合它的编译说明，以避免未知错误。&lt;/p&gt;
+&lt;p&gt;所以选取 ubuntu:16.04 作为编译平台。&lt;/p&gt;
+&lt;p&gt;故首先安装docker，快速安装cheatsheet在此：&lt;a class=&#34;link&#34; href=&#34;https://cerr.cc/post/some_installation/&#34; &gt;http://zikey.vip/post/some_installation/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;拉取ubuntu 16.04镜像并设定共享文件夹：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo docker run -it -v /home/zkv/docker_share/:/share ubuntu:16.04
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;依赖安装&#34;&gt;依赖安装&lt;/h2&gt;
+&lt;p&gt;进入docker ubuntu环境后，下载并解压梅林ng：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;apt install wget unzip
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;wget https://github.com/RMerl/asuswrt-merlin.ng/archive/refs/heads/master.zip
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;unzip master.zip
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;README.txt 中提到，需安装部分32位依赖包，故先添加32位软件源：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;dpkg --add-architecture i386
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;apt update
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;此后便可以直接依照说明安装所有依赖包：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;apt install libncurses5 libncurses5-dev m4 bison gawk flex libstdc++6-4.7-dev g++-4.7 g++ gengetopt git gitk zlib1g-dev autoconf autopoint libtool-bin shtool autogen mtd-utils intltool sharutils docbook-xsl-* libstdc++5 texinfo dos2unix xsltproc u-boot-tools device-tree-compiler qemu gperf liblzo2-dev uuid-dev build-essential lzma-dev liblzma-dev lzma binutils-dev patch cmake intltool libglib2.0-dev gtk-doc-tools libc6-i386 lib32stdc++6 lib32z1 libelf1:i386 lib32ncurses5 libc6-dev-i386
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;接着获取梅林提供的编译工具链：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$HOME&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git clone https://github.com/RMerl/am-toolchains
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;将工具链目录导出至环境变量，参见 &lt;a class=&#34;link&#34; href=&#34;https://github.com/RMerl/asuswrt-merlin.ng/wiki/Compile-Firmware-from-source&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/RMerl/asuswrt-merlin.ng/wiki/Compile-Firmware-from-source&lt;/a&gt;：&lt;/p&gt;
+&lt;p&gt;我这里的目标是 RT-AC86U，故：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo ln -s ~/am-toolchains/brcm-arm-hnd /opt/toolchains
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;export LD_LIBRARY_PATH=\$LD_LIBRARY:/opt/toolchains/crosstools-arm-gcc-5.3-linux-4.1-glibc-2.22-binutils-2.25/usr/lib&amp;#34;&lt;/span&gt; &amp;gt;&amp;gt; ~/.profile
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;export TOOLCHAIN_BASE=/opt/toolchains&amp;#34;&lt;/span&gt; &amp;gt;&amp;gt; ~/.profile
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;PATH=\$PATH:/opt/toolchains/crosstools-arm-gcc-5.3-linux-4.1-glibc-2.22-binutils-2.25/usr/bin&amp;#34;&lt;/span&gt; &amp;gt;&amp;gt; ~/.profile
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;PATH=\$PATH:/opt/toolchains/crosstools-aarch64-gcc-5.3-linux-4.1-glibc-2.22-binutils-2.25/usr/bin&amp;#34;&lt;/span&gt; &amp;gt;&amp;gt; ~/.profile
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;开始编译&#34;&gt;开始编译&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; ~/release/src-rt-5.02hnd
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;make rt-ac86u
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;easymod&#34;&gt;Easymod&lt;/h2&gt;
+&lt;p&gt;如上所述手动折腾到一半，发现了有简单模式的自动化方案。README内的信息实在太少，github wiki里有官方的编译构建教程：&lt;/p&gt;
+&lt;p&gt;官方wiki：&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/RMerl/asuswrt-merlin.ng/wiki/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/RMerl/asuswrt-merlin.ng/wiki/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;组件编译：&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/RMerl/asuswrt-merlin.ng/wiki/Compile-custom-programs-from-source&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/RMerl/asuswrt-merlin.ng/wiki/Compile-custom-programs-from-source&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;固件编译：&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/RMerl/asuswrt-merlin.ng/wiki/Compile-Firmware-from-source&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/RMerl/asuswrt-merlin.ng/wiki/Compile-Firmware-from-source&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;同时有现成的docker环境：&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/gnuton/Asuswrt-Merlin-Toolchains-Docker&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/gnuton/Asuswrt-Merlin-Toolchains-Docker&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;前面，白干。&lt;/del&gt;&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>
