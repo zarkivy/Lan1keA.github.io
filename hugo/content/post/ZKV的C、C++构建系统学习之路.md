@@ -9,7 +9,7 @@ image: "https://s2.loli.net/2022/08/09/FTvgEfriYsZ2a9L.png"
 
 
 
-## 编译工具链
+# 编译工具链
 
 此前疑惑的一个问题是，一套编译工具链究竟包含了些什么东西？当我们使用包管理器一键安装编译工具链时，所安装的程序、数据、文档被分散在了根文件系统的各个位置，难以让我们直接一窥究竟。好在老生常谈的buildroot又为我们解决了这个问题，（当然，从网上下载一份编译工具链也能达到相同的效果）。取一份buildroot构建完成的编译工具链瞅瞅，路径位于`buildroot/output/host`：
 
@@ -53,7 +53,7 @@ x86_64-linux-strings			# print the sequences of printable characters in files
 x86_64-linux-strip				# discard symbols and other data from object files
 ```
 
-### 使用buildroot构建任意编译工具链
+## 使用buildroot构建任意编译工具链
 
 buildroot对那些平台有默认配置呢：
 
@@ -70,7 +70,7 @@ make toolchain
 
 来到`buildroot/output/host`中取货即可。
 
-## binutils
+# binutils
 
 GNU assembler, linker and binary utilities. The programs in this package are used to assemble, link and manipulate binary and object files. They may be used in conjunction with a compiler and various libraries to build programs.
 
@@ -110,13 +110,13 @@ binutils: /usr/share/lintian/overrides/binutils
 
 
 
-## configure
+# configure
 
-## make
+# make
 
 官方文档：[https://www.gnu.org/software/make/manual/html_node/index.html](https://www.gnu.org/software/make/manual/html_node/index.html)
 
 
 
-## cmake
+# cmake
 

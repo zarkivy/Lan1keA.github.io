@@ -9,23 +9,23 @@ menu:
 
 
 
-# Trick
+## Trick
 
-## 谁在ping我？
+### 谁在ping我？
 
 ```sh
 tcpdump -i eth0 'icmp and icmp[icmptype]=icmp-echo'
 # root权限执行，eth0 换成你需要抓包的网卡iframe
 ```
 
-## 命令行看天气
+### 命令行看天气
 
 ```sh
 curl wttr.in/Beijing
 curl wttr.in/:help
 ```
 
-## 修复VMware共享文件夹
+### 修复VMware共享文件夹
 
 ```sh
 sudo vmhgfs-fuse .host:/ /mnt/hgfs -o allow_other -o uid=1000 -o gid=1000 -o umask=022
@@ -33,9 +33,9 @@ sudo vmhgfs-fuse .host:/ /mnt/hgfs -o allow_other -o uid=1000 -o gid=1000 -o uma
 
 
 
-# Key-Value
+## Key-Value
 
-## ANSI 颜色
+### ANSI 颜色
 
 | 重置     | \x1b[0m    |
 | -------- | ---------- |
@@ -57,7 +57,7 @@ sudo vmhgfs-fuse .host:/ /mnt/hgfs -o allow_other -o uid=1000 -o gid=1000 -o uma
 
 > 在bash中使用时需稍加变换，例：echo $'\x1b[31mTEST\x1b[0m'
 
-## Windows小鹤双拼注册表
+### Windows小鹤双拼注册表
 
 ```ini
 Windows Registry Editor Version 5.00
@@ -77,6 +77,6 @@ Windows Registry Editor Version 5.00
 
 
 
-# Vim教程
+## Vim教程
 
 ![img](http://michael.peopleofhonoronly.com/vim/vim_cheat_sheet_for_programmers_print.png)

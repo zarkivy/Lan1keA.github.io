@@ -9,7 +9,7 @@ image: "https://s2.loli.net/2022/06/16/EYHcq8joTrfdiBR.jpg"
 
 
 
-## 前传
+# 前传
 
 不同寻常的是，我是在将各种设备都玩过一轮后，最后才将目光放到了台式机上。想来原因应当在于我是一个无可救药的**MINI教**信徒——iPhone用mini；iPad用mini（曾经，奈何M1太香了）；Macbook用~~mini~~Air；台式机用NUC+电脑棒+单片机……
 
@@ -19,15 +19,15 @@ image: "https://s2.loli.net/2022/06/16/EYHcq8joTrfdiBR.jpg"
 
 
 
-## 通用资源
+# 通用资源
 
 - [https://www.zhihu.com/special/1436041011885293568?tab=1436061145295228928](https://www.zhihu.com/special/1436041011885293568?tab=1436061145295228928)
 - 一些排行榜和天梯图：[https://rank.kkj.cn/dgpu3.shtml](https://rank.kkj.cn/dgpu3.shtml)
 - 万物皆可对比：[https://versus.com/cn](https://versus.com/cn)
 
-## CPU
+# CPU
 
-### 通用资源
+## 通用资源
 
 可以于这些网站查询到绝大多数CPU的benchmark：
 
@@ -36,13 +36,13 @@ image: "https://s2.loli.net/2022/06/16/EYHcq8joTrfdiBR.jpg"
 
 天梯图：[https://www.mydrivers.com/zhuanti/tianti/cpu/index.html](https://www.mydrivers.com/zhuanti/tianti/cpu/index.html)
 
-### Intel
+## Intel
 
-#### 命名规则
+### 命名规则
 
 ![image.png](https://s2.loli.net/2022/06/20/9ITSVKgfYQq1lje.png)
 
-#### 酷睿后缀名
+### 酷睿后缀名
 
 | **后缀** |                     **含义**                     |
 | :------: | :----------------------------------------------: |
@@ -63,13 +63,13 @@ image: "https://s2.loli.net/2022/06/16/EYHcq8joTrfdiBR.jpg"
 
 reference：[https://www.intel.com/content/www/us/en/processors/processor-numbers.html](https://www.intel.com/content/www/us/en/processors/processor-numbers.html)
 
-### AMD
+## AMD
 
-#### 命名规则
+### 命名规则
 
 ![image.png](https://s2.loli.net/2022/06/20/bUcNP7BJ9GCdrD4.png)
 
-#### 锐龙后缀名
+### 锐龙后缀名
 
 - X后缀
     - AMD Ryzen X系列跟Intel的K系列类似，都是强化了超频特性。
@@ -86,7 +86,7 @@ reference：[https://www.intel.com/content/www/us/en/processors/processor-number
 
 
 
-## 显卡
+# 显卡
 
 天梯图：[https://www.mydrivers.com/zhuanti/tianti/gpu/index.html](https://www.mydrivers.com/zhuanti/tianti/gpu/index.html)
 
@@ -96,13 +96,13 @@ reference：[https://www.intel.com/content/www/us/en/processors/processor-number
 
 然而经过实际游戏测试，我发现这款显卡为我的渣渣75Hz 1080P显示器输出视频信号，简直应付自如。神优化的地平线4满帧率满画质下，显卡占用只有70%出头；荒野大镖客2默认高画质显卡虽满载，但也是满帧流畅；至于显卡杀手Cyberpunk2077，高画质也能流畅。果然只要需求是1080P下玩3A，三位数的中低端显卡即可胜任。
 
-## 硬盘
+# 硬盘
 
-### 固态硬盘
+## 固态硬盘
 
 **固态硬盘**使用**NAND闪存颗粒**作为存储的主体，采用主控+多颗闪存芯片的结构。
 
-#### NAND闪存颗粒
+### NAND闪存颗粒
 
 主要分为**SLC、MLC、TLC、QLC**四种。寿命和价格都依次递减。
 
@@ -110,7 +110,7 @@ reference：[https://www.intel.com/content/www/us/en/processors/processor-number
 
 reference：[https://www.kingston.com/cn/blog/pc-performance/difference-between-slc-mlc-tlc-3d-nand](https://www.kingston.com/cn/blog/pc-performance/difference-between-slc-mlc-tlc-3d-nand)
 
-#### 接口与协议
+### 接口与协议
 
 - 物理接口
     - M.2
@@ -137,7 +137,7 @@ reference：
 - 固态硬盘外形尺寸类型：[https://www.kingston.com/cn/blog/pc-performance/ssd-form-factors](https://www.kingston.com/cn/blog/pc-performance/ssd-form-factors)
 - M.2 固态硬盘的两种类型：SATA 和 NVMe：[https://www.kingston.com/cn/blog/pc-performance/two-types-m2-vs-ssd](https://www.kingston.com/cn/blog/pc-performance/two-types-m2-vs-ssd)
 
-### 机械硬盘
+## 机械硬盘
 
 存储技术分为 PMR(CMR) 与 SMR，参考如下：
 
@@ -146,7 +146,7 @@ reference：
 
 尺寸分为3.5英寸与2.5英寸。数字虽相差不大，实际体积却相去甚远。
 
-### 个人方案
+## 个人方案
 
 我的方案是：
 
@@ -155,7 +155,7 @@ reference：
 - 一个PMR 1TB 2.5寸 SATA HDD做热数据、FTP、BT数据存储。读速在150MB/s左右。
 - 一个MLC USB SCSI 128GB固态U盘做移动数据存储。读速在450MB/s左右。
 
-## 主板
+# 主板
 
 先来了解下PCIe。知乎老狼的文章都写的很好哇，推荐他的UEFI与BIOS探秘。
 
@@ -163,7 +163,7 @@ reference：
 - 深入PCI与PCIe之二：软件篇：[https://zhuanlan.zhihu.com/p/26244141](https://zhuanlan.zhihu.com/p/26244141)
 - PCIe中断机制(1):演变历史：[https://zhuanlan.zhihu.com/p/399239928](https://zhuanlan.zhihu.com/p/399239928)
 
-### 大小分类
+## 大小分类
 
 - 大板：ATX、Mini ATX、XL-ATX、非标准E-ATX
 - 小板：MATX、μATX、FlexATX
@@ -183,9 +183,9 @@ reference：
 
 
 
-## 内存
+# 内存
 
-### 硬件形态
+## 硬件形态
 
 在80286时代，内存颗粒（Chip）是直接插在主板上的，叫做DIP(Dual In-line Package)。到了80386时代，换成1片焊有内存颗粒的电路板，叫做SIMM（Single-Inline Memory Module）。由阵脚形态变化成电路板带来了很多好处：模块化，安装便利等等，由此DIY市场才有可能产生。当时SIMM的位宽是32bit，即一个周期读取4个字节，到了奔腾时，位宽变为64bit，即8个字节，于是SIMM就顺势变为DIMM（Double-Inline Memory Module）。这种形态一直延续至今，也是内存条的基本形态。现在DIMM分为很多种：
 
@@ -196,7 +196,7 @@ reference：
 
 ![Overals_660.png](https://s2.loli.net/2022/06/17/tzRLTHQ6rAVCdI4.png)
 
-### DDR
+## DDR
 
 **DDR SDRAM**: Double Data Rate Synchronous Dynamic Random Access Memory
 
@@ -207,7 +207,7 @@ reference：
 - https://zhuanlan.zhihu.com/p/26255460
 - [https://en.wikipedia.org/wiki/DDR_SDRAM](https://en.wikipedia.org/wiki/DDR_SDRAM)
 
-## 显示器
+# 显示器
 
 - 亮度：越高越好，300 cd/m² 中等，400 cd/m² 不错， 500 cd/m² 优秀
 - 对比度：越高越好，700~900:1 及格，900~ 1100 中等，1100~1300不错，1500 以上很好。
@@ -219,7 +219,7 @@ reference：
 
 reference：[https://www.zhihu.com/question/35668312](https://www.zhihu.com/question/35668312)
 
-## 机箱
+# 机箱
 
 - MINI机箱
     - 安装ITX和M-ATX的机箱
@@ -234,15 +234,15 @@ reference：
 - [https://www.zhihu.com/question/432376475](https://www.zhihu.com/question/432376475)
 - [https://zhuanlan.zhihu.com/p/373132410](https://zhuanlan.zhihu.com/p/373132410)
 
-## 电源
+# 电源
 
 主要参数为最大供电功率，计算得到机箱中所有部件满载功率需小于电源最大功率。主要耗电大户为显卡与CPU，计算得大致总功率值即可。
 
-## 散热
+# 散热
 
 水冷 VS 风冷，老生常谈。但我的这套配置实在凉意十足，廉价风冷完全足矣。在如下风冷配置下构建一个并不算很畅通的直角风道，日常负载下静音模式CPU稳定50°C左右，风扇散热模式下能来到30°C。但散热不仅仅是散热器的责任，通风良好的机箱外加恰当的风道设计同样不容忽视。所以挑选机箱和风扇时，也要注意最后不能组成了一台闷罐。
 
-## 终局
+# 终局
 
 - 总价
     - **¥ 5663**

@@ -13,9 +13,9 @@ image: "https://s2.loli.net/2022/05/11/7aWbNEkesXlmYxH.jpg"
 
 
 
-## 个人 apt 源 Linux 初始环境软件安装
+# 个人 apt 源 Linux 初始环境软件安装
 
-### 基本组件
+## 基本组件
 
 ```sh
 sudo apt install zsh git man man-db manpages ssh neovim tmux \
@@ -24,7 +24,7 @@ sudo apt install zsh git man man-db manpages ssh neovim tmux \
 	neofetch zip unzip ncdu htop dosfstools nyancat cmatrix
 ```
 
-### 开发与调试组件
+## 开发与调试组件
 
 ```sh
 sudo apt install gcc g++ gdb gdb-multiarch gdbserver flex bison make cmake clangd \
@@ -33,7 +33,7 @@ sudo apt install gcc g++ gdb gdb-multiarch gdbserver flex bison make cmake clang
 
 
 
-## dotfiles 快速就位
+# dotfiles 快速就位
 
 ```sh
 git clone https://github.com/dev2ero/dotfiles.git
@@ -46,9 +46,9 @@ cp `pwd`/dotfiles/zshrc ~/.zshrc
 source ~/.zshrc
 ```
 
-## Neovim 配置
+# Neovim 配置
 
-### 插件管理器
+## 插件管理器
 
 ```sh
 # vim-plug
@@ -63,7 +63,7 @@ end)
 EOF
 ```
 
-### Coc.nvim
+## Coc.nvim
 
 ```sh
 CocInstall coc-marketplace | CocInstall coc-clangd | CocInstall coc-pyright | CocInstall coc-highlight | CocInstall coc-cmake
@@ -71,7 +71,7 @@ CocInstall coc-marketplace | CocInstall coc-clangd | CocInstall coc-pyright | Co
 
 
 
-## docker 安装
+# docker 安装
 
 官方安装脚本：
 
@@ -87,7 +87,7 @@ sudo docker run -it -v /home/zkv/docker_share/:/share ubuntu:16.04
 
 
 
-## pwn 环境简易就位
+# pwn 环境简易就位
 
 ```sh
 apt install gdb gdb-multiarch gdbserver

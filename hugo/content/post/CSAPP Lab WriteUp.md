@@ -9,13 +9,13 @@ image: "https://s2.loli.net/2022/08/24/HhMzuB9lRFsCvy2.png"
 
 
 
-## 0x0
+# 0x0
 
 实验源：[http://csapp.cs.cmu.edu/3e/labs.html](http://csapp.cs.cmu.edu/3e/labs.html)
 
 > 直接点击实验名视作是图以教师身份下载教学资源。题目文件应于Self-Study Handout下载
 
-## Data Lab
+# Data Lab
 
 下载解压题目文件：
 
@@ -30,7 +30,7 @@ tar xvf datalab-handout.tar
 
 我们的任务是在受限使用运算符与控制流的前提下，实现bit.c中的每个函数的功能。
 
-### 实现异或运算
+## 实现异或运算
 
 异或，即 “不同时为0” 且 “不同时为1”
 
@@ -50,7 +50,7 @@ int bitXor(int x, int y) {
 }
 ```
 
-### 求32位下最小的补码数值
+## 求32位下最小的补码数值
 
 补码，二补数，2's complement，参见：
 
@@ -70,11 +70,11 @@ int bitXor(int x, int y) {
  *   Rating: 1
  */
 int tmin(void) {
-  return 1 << 31;
+	return 1 << 31;
 }
 ```
 
-### 判断输入是否是补码中的最大整数
+## 判断输入是否是补码中的最大整数
 
 32位下，补码中的最大整数是`0x7fffffff`，接下来省略一些，只写8bits，下文同理。
 
@@ -105,11 +105,11 @@ int tmin(void) {
  *   Rating: 1
  */
 int isTmax(int x) {
-  return !(~(x + 1 + x)) & (x + !(x + 1));
+	return !(~(x + 1 + x)) & (x + !(x + 1));
 }
 ```
 
-### 判断所有奇数位是否都为1
+## 判断所有奇数位是否都为1
 
 位的编号从0（最低有效）到31（最高有效）
 
@@ -127,12 +127,12 @@ int isTmax(int x) {
  *   Rating: 2
  */
 int allOddBits(int x) {
-  int a = (0x55 << 0) | (0x55 << 8) | (0x55 << 16) | (0x55 << 24);
-  return !~(x | a);
+	int a = (0x55 << 0) | (0x55 << 8) | (0x55 << 16) | (0x55 << 24);
+	return !~(x | a);
 }
 ```
 
-### 求 -x
+## 求 -x
 
 按位取反加一即得负数
 
@@ -147,11 +147,11 @@ int allOddBits(int x) {
  *   Rating: 2
  */
 int negate(int x) {
-  return ~x + 1;
+	return ~x + 1;
 }
 ```
 
-### 判断是否为数字字符ASCII码
+## 判断是否为数字字符ASCII码
 
 用减法，判断 `x-0x30 >= 0 && 0x39 - x >= 0`
 
@@ -170,13 +170,13 @@ int negate(int x) {
  *   Rating: 3
  */
 int isAsciiDigit(int x) {
-  int a = x + (~0x30 + 1); // x - 0x30
-  int b = 0x39 + (~x + 1); // 0x39 - x
-  return !(a >> 31 | b >> 31);
+	int a = x + (~0x30 + 1); // x - 0x30
+	int b = 0x39 + (~x + 1); // 0x39 - x
+	return !(a >> 31 | b >> 31);
 }
 ```
 
-### 实现C语言 ? : 运算符
+## 实现C语言 ? : 运算符
 
 将x转化为 `00000000` 或 `11111111` 用于计算
 
@@ -189,13 +189,13 @@ int isAsciiDigit(int x) {
  *   Rating: 3
  */
 int conditional(int x, int y, int z) {
-  x = !!x;
-  x = ~x+1;
-  return (x&y)|(~x&z);
+	x = !!x;
+	x = ~x+1;
+	return (x&y)|(~x&z);
 }
 ```
 
-### 实现 <= 运算符
+## 实现 <= 运算符
 
 > <<左移一律补0。>>右移可能补0也可能补符号位，视机器而定，通常是补符号位。
 
@@ -219,7 +219,7 @@ int isLessOrEqual(int x, int y) {
 }
 ```
 
-### 实现逻辑非!
+## 实现逻辑非!
 
 `00000000 ｜ (~00000000 + 1)` 得 0，其余数做此运算都得非0，且符号位为1
 
@@ -237,10 +237,10 @@ int logicalNeg(int x) {
 }
 ```
 
-### 求一个数用补码表示所需的最少位数
+## 求一个数用补码表示所需的最少位数
 
-### 求浮点数与2相乘的值
+## 求浮点数与2相乘的值
 
-### 浮点数转整数
+## 浮点数转整数
 
-### 判断指数是否上溢或者下溢
+## 判断指数是否上溢或者下溢

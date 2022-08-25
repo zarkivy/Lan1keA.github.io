@@ -9,9 +9,9 @@ image: "https://s2.loli.net/2022/08/09/PKcwjiVBTg6ApEv.png"
 
 
 
-## 环境准备
+# 环境准备
 
-### QEMU 的手动构建
+## QEMU 的手动构建
 
 获取QEMU源码：
 
@@ -35,9 +35,9 @@ make -j`nproc`
 sudo make install
 ```
 
-### 使用buildroot一键构建rootfs+kernel
+## 使用buildroot一键构建rootfs+kernel
 
-> buildroot自动构建过程若出现网络不畅，自备梯子，并设定shell变量all_proxy、http_proxy、https_proxy用于代理wget、curl等工具即可。参见：[https://cerr.cc/post/fgfw/](/post/fgfw/)
+> buildroot自动构建过程若出现网络不畅，自备梯子，并设定shell变量all_proxy、http_proxy、https_proxy用于代理wget、curl等工具即可。参见：[https://cerr.cc/post/fuck-the-great-fire-wall/](/post/fuck-the-great-fire-wall/)
 
 ```sh
 git clone https://git.buildroot.net/buildroot
@@ -89,7 +89,7 @@ pwndbg> c
 
 确认成功断下执行流即可。
 
-### 手动构建kernel+initramfs
+## 手动构建kernel+initramfs
 
 若不想借助自动化工具buildroot传达旨意，而是要亲自指挥亲自部署，记录如下：
 
@@ -143,7 +143,7 @@ qemu-system-x86_64 -m 512 -kernel arch/x86_64/boot/bzImage -nographic -append "c
 
 > 巧合的是，就在我执行完如上命令进入shell后，惊觉Linux居然已经6.0.0了😱。经查正是今天的新闻。
 
-### 试图调试
+## 试图调试
 
 沿用上述手动挡的构建方案，qemu启动时关闭kaslr（编译时若关闭了RANDOMIZE_BASE，则无需向kernel传递nokaslr参数）：
 
@@ -168,7 +168,7 @@ gdb vmlinux -ex "target remote :1234"
 
 [https://www.kernel.org/doc/html/latest/dev-tools/gdb-kernel-debugging.html](https://www.kernel.org/doc/html/latest/dev-tools/gdb-kernel-debugging.html)
 
-## 内核启动
+# 内核启动
 
 内核初始化主函数：`init/main.c:start_kernel`
 
@@ -297,9 +297,9 @@ static void do_idle(void)
 
 
 
-## 系统调用
+# 系统调用
 
-### 静态搜寻
+## 静态搜寻
 
 动态调试系统调用代码之前，不妨先来找到内核系统调用的静态代码位置。Linux Kernel使用`SYSCALL_DEFINE[N]`宏来定义系统调用入口，其原型位于[include/linux/syscalls.h](https://github.com/torvalds/linux/blob/16f73eb02d7e1765ccab3d2018e0bd98eb93d973/include/linux/syscalls.h)，其中会调用特定系统调用的实现函数。所以，我们使用如下命令可以帮助快速筛选想要动态调试的系统调用入口所在位置：
 
@@ -331,7 +331,7 @@ SYSCALL_DEFINE3(open, const char __user *, filename, int, flags, umode_t, mode)
 
 > Linux Kernel 系统调用流程参见：[https://0xax.gitbooks.io/linux-insides/content/SysCall/linux-syscall-2.html](https://0xax.gitbooks.io/linux-insides/content/SysCall/linux-syscall-2.html)
 
-### 动态调试
+## 动态调试
 
 继续以open系统调用为例，开始动态调试跟踪。
 
@@ -374,25 +374,25 @@ gdb vmlinux -ex "target remote :1234"
 
 
 
-## 内存管理
+# 内存管理
 
 
 
-## 文件系统
+# 文件系统
 
 
 
-## 网络栈
+# 网络栈
 
 
 
-## 实战漏洞调试
+# 实战漏洞调试
 
-参见：[https://cerr.cc/post/cve-2016-5195/](/post/cve-2016-5195/)
+参见：[https://cerr.cc/post/cve-2016-5195-linux-dirtycow漏洞分析/](/post/cve-2016-5195-linux-dirtycow漏洞分析/)
 
 
 
-## 参考
+# 参考
 
 - [http://nickdesaulniers.github.io/blog/2018/10/24/booting-a-custom-linux-kernel-in-qemu-and-debugging-it-with-gdb/](http://nickdesaulniers.github.io/blog/2018/10/24/booting-a-custom-linux-kernel-in-qemu-and-debugging-it-with-gdb/)
 - [https://kiprey.github.io/2021/10/kernel_pwn_introduction/](https://kiprey.github.io/2021/10/kernel_pwn_introduction/)

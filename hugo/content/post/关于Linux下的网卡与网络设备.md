@@ -9,7 +9,7 @@ image: https://s2.loli.net/2022/05/23/nEj1icSvZsA479q.jpg
 
 
 
-## ip与ifconfig命令输出
+# ip与ifconfig命令输出
 
 ```sh
 ~$ ip a
@@ -33,7 +33,7 @@ eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
 
 
 
-## 网卡的工作模式
+# 网卡的工作模式
 
 1. 广播模式（Broad Cast Model）：它的物理地址（MAC）地址是 0xffffff 的帧为广播帧，工作在广播模式的网卡接收广播帧；
 2. 多播传送（MultiCast Model）：多播传送地址作为目的物理地址的帧可以被组内的其它主机同时接收，而组外主机却接收不到。但是，如果将网卡设置为多播传送模式，它可以接收所有的多播传送帧，而不论它是不是组内成员；
@@ -44,7 +44,7 @@ eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
 
 
 
-## Linux下的虚拟网络设备
+# Linux下的虚拟网络设备
 
 通过`ip link add`可以创建多种类型的虚拟网络设备，在`man ip link`中可以得知有以下类型的device:
 
@@ -86,7 +86,7 @@ eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
 
 
 
-## TUN/TAP
+# TUN/TAP
 
 TUN是Linux系统里的虚拟网络设备，它的原理和使用在[Kernel Doc](https://www.kernel.org/doc/Documentation/networking/tuntap.txt)和[Wiki](https://en.wikipedia.org/wiki/TUN/TAP)做了比较清楚的说明。
 
@@ -109,7 +109,7 @@ TAP设备与TUN设备的区别在于:
 
 
 
-## 最小的虚拟网卡
+# 最小的虚拟网卡
 
 参见：
 

@@ -9,7 +9,7 @@ image: "https://s2.loli.net/2022/05/07/QW6X8VuxZCJnmfc.jpg"
 
 
 
-## Awesome colors
+# Awesome colors
 
 <div style="border: double; color: #ffffff; background-color: #4f0009; text-align: center; ">
         <br>

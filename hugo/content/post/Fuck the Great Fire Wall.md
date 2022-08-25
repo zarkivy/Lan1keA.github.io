@@ -17,7 +17,7 @@ image: "https://s2.loli.net/2022/05/09/FrNVRw5lSbfusgx.jpg"
 
 
 
-## Top-level solution selection
+# Top-level solution selection
 
 In terms of the ways I have tried myself:
 
@@ -35,7 +35,7 @@ As for the first two option:
 
 
 
-## 个人客户端解决方案
+# 个人客户端解决方案
 
 > 具体使用方面就大白话讲了
 
@@ -54,7 +54,7 @@ As for the first two option:
 - Android
   - v2rayNG：[https://github.com/2dust/v2rayNG](https://github.com/2dust/v2rayNG)
 
-### 代理层次
+## 代理层次
 
 <style>img{
     box-shadow: 5px 5px 5px rgba(0,0,0,.5);
@@ -78,33 +78,33 @@ As for the first two option:
 
 
 
-### 部分网站的镜像
+# 部分网站的镜像
 
-#### Google
+## Google
 
 - [https://www.ahhhhfs.com/4810/](https://www.ahhhhfs.com/4810/)
 
-#### Github
+## Github
 
 - [https://www.ahhhhfs.com/18927/](https://www.ahhhhfs.com/18927/)
 - [https://www.ahhhhfs.com/18876/](https://www.ahhhhfs.com/18876/)
 - [https://www.ahhhhfs.com/5442/](https://www.ahhhhfs.com/5442/)
 
-#### Youtube
+## Youtube
 
 - [https://www.ahhhhfs.com/16819/](https://www.ahhhhfs.com/16819/)
 
 
 
-### 各种应用的代理配置与镜像
+# 各种应用的代理配置与镜像
 
-#### chrome
+## chrome
 
 chrome 默认遵从系统代理。可是使用**Proxy SwitchyOmega**插件对chrome代理方式进行手动配置：
 
 [https://chrome.google.com/webstore/detail/proxy-switchyomega/padekgcemlokbadohgkifijomclgjgif](https://chrome.google.com/webstore/detail/proxy-switchyomega/padekgcemlokbadohgkifijomclgjgif)
 
-#### Linux软件源
+## Linux软件源
 
 不同Linux发行版具有不同的包管理器。即使是同一个发行版的不同版本（比如Ubuntu18.04与Ubuntu20.04），其上游软件源也是不同的。
 
@@ -112,7 +112,7 @@ chrome 默认遵从系统代理。可是使用**Proxy SwitchyOmega**插件对chr
 
 点击任意你想要使用清华源的服务（Linux软件源自然也涵盖在内），即能看到tuna为你提供的相应使用教程。（对于Linux软件源，需选定正确的系统版本）。
 
-#### pip
+## pip
 
 可使用清华源：[https://mirrors.tuna.tsinghua.edu.cn/help/pypi/](https://mirrors.tuna.tsinghua.edu.cn/help/pypi/)
 
@@ -125,7 +125,7 @@ proxy=http://127.0.0.1:1080
 
 > 不支持socks5协议
 
-#### git
+## git
 
 （将`http://127.0.0.1:1080`替换为你本地的socks5代理地址）
 
@@ -133,7 +133,7 @@ proxy=http://127.0.0.1:1080
 git config --global http.proxy socks5://127.0.0.1:1080
 ```
 
-#### apt
+## apt
 
 在 `/etc/apt/apt.conf.d/` 目录下新增 `proxy.conf` 文件，加入：（将`http://127.0.0.1:1080`替换为你本地的http代理地址）
 
@@ -144,7 +144,7 @@ Acquire::https::Proxy "http://127.0.0.1:1080/";
 
 > 不支持socks5协议
 
-#### curl、wget
+## curl、wget
 
 许多posix标准的命令行程序会遵从两个环境变量：
 
@@ -171,9 +171,9 @@ export all_proxy=http://proxyserver:port/
 
 
 
-## 合法翻墙
+# 合法翻墙
 
-### 澳门流量卡
+## 澳门流量卡
 
 就是这货👇，淘宝上就可以买到。
 
@@ -181,7 +181,7 @@ export all_proxy=http://proxyserver:port/
 
 
 
-## 其他攻略
+# 其他攻略
 
 - 2022永久免费白嫖节点方法
   - [https://www.ahhhhfs.com/19188/](https://www.ahhhhfs.com/19188/)

@@ -9,9 +9,9 @@ image: "https://s2.loli.net/2022/05/08/2DqjsbwNpdUM4XA.jpg"
 
 
 
-## 自动挡
+# 自动挡
 
-### 一路默认
+## 一路默认
 
 通过git或http获取buildroot：
 
@@ -98,7 +98,7 @@ qemu-system-arm \
 
 弄完发现过程竟如此简单，buildroot把所有活都干了……
 
-### 全自动方案中的定制
+## 全自动方案中的定制
 
 即使需要定制部分组件，也是能借力buildroot的全自动化方案的。
 
@@ -116,7 +116,7 @@ make menuconfig
          Kernel version (Custom Git repository)
 ```
 
-### 记一次旧版本工具链的自动挡构建
+## 记一次旧版本工具链的自动挡构建
 
 > 这一节实际上由另一篇文章合并而来，故与上下文不衔接，内容独立。
 
@@ -222,19 +222,13 @@ bin  boot  buildroot  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  r
 
 接着进入`buildroot/output`取货即可。虽然其中已有4.9.6的内核了，不过我需要的是由此得到的编译工具链，以便编译自行定制的4.9版本内核。（旧版内核需要旧版工具链编译）
 
-## 手动档
+# 手动档
 
-另一篇使用qemu-system调试内核的文章中已有部分描述：
-
-[http://cerr.cc/post/qemu_dbg_kernel/](/post/qemu_dbg_kernel/)
-
-不过接下来还是记录下另一次实践。目标设定为aarch64 linux 5.4
-
-### 编译工具链
+## 编译工具链
 
 这个好说，方才Easymode里不是刚好做了一个嘛。buildroot构建好了所有target目标，自然也为此生成了完整的host构建工具链。
 
-> 若目标为旧版本内核，则需要旧版本工具链，构建方式在另一篇文章中有记录：[https://cerr.cc/post/qemu_dbg_kernel/](post/qemu_dbg_kernel/)
+> 若目标为旧版本内核，则需要旧版本工具链，构建方式在另一篇文章中有记录：[https://cerr.cc/post/cross-debug-old-version-kernel-using-qemu-system/](post/cross-debug-old-version-kernel-using-qemu-system/)
 
 ```sh
 ➜  buildroot git:(master) ls
@@ -311,7 +305,7 @@ output/staging: symbolic link to /f/software/buildroot/output/host/aarch64-build
 
 若实在没有啥特殊需求， `apt install gcc-aarch64-linux-gnu`大部分情况下也能直接解决问题。
 
-#### OS/ABI的匹配
+### OS/ABI的匹配
 
 通常情况下，选取编译交叉编译工具链时，指令集、平台之类的内容是不容易弄错的。但 OS/ABI 却是个容易造成故障的点。
 
@@ -361,9 +355,9 @@ ELF Header:
 
 故换用标识了eabi的工具链重新编译即解决了该问题。
 
-### Kernel
+## Kernel
 
-#### Linux源码结构
+### Linux源码结构
 
 手动构建内核前，先了解下内核源码的文件树结构。以2022/6/1的linux源码为例：
 
@@ -399,7 +393,7 @@ certs  crypto   fs             ipc      kernel   MAINTAINERS  net       scripts 
 - **scripts**
   - This directory contains the scripts (for example *awk* and *tk* scripts) that are used when the kernel is configured.
 
-#### Linux构建系统
+### Linux构建系统
 
 同时需要先了解下 `.config`、`defconfig`、`Kconfig`
 
@@ -436,7 +430,7 @@ aspeed_g5_defconfig       h5000_defconfig          mv78xx0_defconfig     sama7_d
 make V=1 defconfig
 ```
 
-#### 开始构建
+### 开始构建
 
 现来此挑选中意的内核版本：[https://en.wikipedia.org/wiki/Linux_kernel_version_history](https://en.wikipedia.org/wiki/Linux_kernel_version_history)
 
@@ -504,9 +498,9 @@ make O=./build CROSS_COMPILE=aarch64-linux-gnu- -j`nproc`
 ./build/vmlinux
 ```
 
-### 通过qemu-system运行
+## 通过qemu-system运行
 
-#### 网桥的预配置
+### 网桥的预配置
 
 后续host于qemu-system中的guest将通过网桥连接，故先于host中配置网桥。
 

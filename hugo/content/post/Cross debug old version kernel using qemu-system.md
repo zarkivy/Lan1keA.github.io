@@ -4,19 +4,19 @@ description: "compile, emulate and debug"
 date: 2022-05-08T19:35:11+08:00
 categories: "工地日记"
 tags: [ "QEMU", "Kernel", "DBG" ]
-image: "https://s2.loli.net/2022/05/08/MGJ3tsAVHSYrThj.jpg"
+image: "https://s2.loli.net/2022/08/25/fHQPn8S2vLI7aR3.png"
 ---
 
 
 
 > From this post, our goal is tracing the execution procedure from kernel entry to userspace process (busybox init) by using qemu-system and gdb-multiarch.
 
-## Preparation
-### qemu-system-arm
+# Preparation
+## qemu-system-arm
 
 Compile it from source code or just use `sudo apt install qemu-system-arm`.
 
-### kernel
+## kernel
 
 Linux kernel v4.1 for armel as an example.
 Compiling a linux kernel requires a matched version of gcc.
@@ -85,7 +85,7 @@ make ARCH=arm O=./build/armel CROSS_COMPILE=/opt/crossc/armel-uclibc-gcc-4/usr/b
 
 We got zImage at build/armel/arch/arm/boot/zImage and vmlinux (with debug symbols) at build/armel
 
-### busybox
+## busybox
 
 Even though we can use the busybox from the filesystem directly, we got no debug symbols from it.
 Thus we should compile busybox manually:
@@ -97,7 +97,7 @@ make CROSS_COMPILE=/opt/crossc/armel-uclibc-gcc-4/usr/bin/arm-buildroot-linux-uc
 ```
 
 Then the busybox_unstripped is produced.
-### filesystem
+## filesystem
 
 Hummm maybe obtain it by yourself?
 
@@ -142,7 +142,7 @@ We are done preparing here. All we should do next is copying all the files recur
 so that we got a rootfs.img image file containing the armel filesystem we want.
 Don't forget replace the origin bin/busybox with our manually compiled version.
 
-## Tracing time !
+# Tracing time !
 Now we have :
 
 ```sh
