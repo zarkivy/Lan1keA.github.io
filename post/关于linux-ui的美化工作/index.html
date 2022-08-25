@@ -5,16 +5,16 @@
 
 <link rel='canonical' href='https://cerr.cc/post/%E5%85%B3%E4%BA%8Elinux-ui%E7%9A%84%E7%BE%8E%E5%8C%96%E5%B7%A5%E4%BD%9C/'>
 
-<link rel="stylesheet" href="/scss/style.min.ac77dcf8b111b51da39a92990f431923f210f3876d85798a2125667f96dc33a4.css"><meta property='og:title' content='关于Linux UI的美化工作'>
+<link rel="stylesheet" href="/scss/style.min.e75bab105855f77caa94de85bd0b7a889920eb03fa3048257f51f59c063a674d.css"><meta property='og:title' content='关于Linux UI的美化工作'>
 <meta property='og:description' content='how to beautify your Linux'>
 <meta property='og:url' content='https://cerr.cc/post/%E5%85%B3%E4%BA%8Elinux-ui%E7%9A%84%E7%BE%8E%E5%8C%96%E5%B7%A5%E4%BD%9C/'>
-<meta property='og:site_name' content='Zikey Vi'>
+<meta property='og:site_name' content='やれやれ DA✰ZE'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='UI' /><meta property='article:published_time' content='2022-05-07T22:50:57&#43;08:00'/><meta property='article:modified_time' content='2022-05-07T22:50:57&#43;08:00'/><meta property='og:image' content='https://s2.loli.net/2022/05/07/wqH1K7UnExrO4V5.jpg' />
 <meta name="twitter:site" content="@dev2ero">
     <meta name="twitter:creator" content="@dev2ero"><meta name="twitter:title" content="关于Linux UI的美化工作">
 <meta name="twitter:description" content="how to beautify your Linux"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://s2.loli.net/2022/05/07/wqH1K7UnExrO4V5.jpg' />
-    <link rel="shortcut icon" href="img/favicon.png" />
+    <link rel="shortcut icon" href="favicon.png" />
 
     </head>
     <body class="
@@ -65,15 +65,15 @@
                 
                 </a>
                 
-                    <span class="emoji">🍥</span>
+                    <span class="emoji">🐟</span>
                 
             </figure>
             
         
         
         <div class="site-meta">
-            <h1 class="site-name"><a href="/">Zikey Vi</a></h1>
-            <h2 class="site-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
+            <h1 class="site-name"><a href="/">やれやれ DA✰ZE</a></h1>
+            <h2 class="site-description">Yet anothor cyber nyandog.</h2>
         </div>
     </header><ol class="social-menu">
             
@@ -91,6 +91,26 @@
 </svg>
 
 
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='mailto:dev2ero@foxmail.com'
+                        target="_blank"
+                        title="Mail"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mail-opened" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <polyline points="3 9 12 15 21 9 12 3 3 9" />
+  <path d="M21 9v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10" />
+  <line x1="3" y1="19" x2="9" y2="13" />
+  <line x1="15" y1="13" x2="21" y2="19" />
+</svg>
 
                         
                     </a>
@@ -382,7 +402,7 @@
     <blockquote>
 <p>GNU/Linux 的桌面生态，开放虽是好事，但却由此带来了混乱。没有像微软这样的赛博中央政府制定规则，就产生了眼下这般群雄割据的态势。作为用户的我能做的，也只是择巨木而栖 —— 唯二的自由巨头 <strong>KDE</strong> 与 <strong>Gnome</strong>，<del>二选其一</del>~~（LXQt大法好）~~（当年煮酒论DE，今日叛逃用WM）（i3大法好）。幼年气盛，爱好折腾，留下了些许美化的经验。时至今日，能回忆起的已然不多。尽力而为做些记录，为日后回归赛博左派留些盘缠。</p>
 </blockquote>
-<h2 id="概念拆解">概念拆解</h2>
+<h1 id="概念拆解">概念拆解</h1>
 <p>被Windows驯化得温顺从良的我，当年对显示屏上花花绿绿的GUI组件并无概念。商业操作系统将一切整合，成为一个整体，迷惑我说：“这便是操作系统图形化用户接口”。今日慢慢爬出泥沼，留攻略如下：</p>
 <p>🎵我有一台树莓派<del>我从来不开机</del>。接通电源、引导器醒来、启动内核、唤醒<code>pid 1</code>，此时来到Virtual Terminal下的<code>/dev/tty1</code>。在自动登录GUI的设定下，有如下朋友先后会来迎接我：</p>
 <ul>
@@ -468,10 +488,10 @@
 </ul>
 </li>
 </ul>
-<h2 id="de">DE</h2>
+<h1 id="de">DE</h1>
 <h3 id="kde-plasma">KDE plasma</h3>
 <p>UI的（乡土风）现代感，很大部分要归因与透明化的效果。一年前的我也是透明化爱好者，恰逢那时使用 Archlinux + KDE，故记录如下KDE透明化配置方法。KDE自身本就具有各大DE中最为强大的视觉效果定制功能，所以如下所述只是KDE本身能力之外的美化方法：</p>
-<h4 id="窗口边框透明化">窗口边框透明化</h4>
+<h3 id="窗口边框透明化">窗口边框透明化</h3>
 <p>使用</p>
 <ul>
 <li><a class="link" href="https://github.com/ishovkun/SierraBreeze"  target="_blank" rel="noopener"
@@ -491,30 +511,30 @@
 </ul>
 </li>
 </ul>
-<h4 id="面板透明化">面板透明化</h4>
+<h3 id="面板透明化">面板透明化</h3>
 <p>需要自己魔改，参考如下大佬留下的教程：</p>
 <p><a class="link" href="https://www.joxrays.com/kde-panel-transparency/"  target="_blank" rel="noopener"
     >https://www.joxrays.com/kde-panel-transparency/</a></p>
 <p>原始论坛帖子：</p>
 <p><a class="link" href="https://forum.manjaro.org/t/where-can-the-transparency-of-the-kde-panel-be-set/50219"  target="_blank" rel="noopener"
     >https://forum.manjaro.org/t/where-can-the-transparency-of-the-kde-panel-be-set/50219</a></p>
-<h4 id="组件透明化">组件透明化</h4>
+<h3 id="组件透明化">组件透明化</h3>
 <p>这一需求有现成的工具Kvantum，亦有大佬教程如下：</p>
 <p><a class="link" href="https://blog.firerain.me/article/4"  target="_blank" rel="noopener"
     >https://blog.firerain.me/article/4</a></p>
 <blockquote>
 <p>此外，便是一些其它的效果组件</p>
 </blockquote>
-<h4 id="macos风的dock栏">MacOS风的Dock栏</h4>
+<h3 id="macos风的dock栏">MacOS风的Dock栏</h3>
 <p>状态、菜单、任务栏的呈现方式，我个人更倾向与MacOS的方案。比起Windows，牺牲了些许效率，换取美感。</p>
 <p>KDE下使用 <strong>latte-dock</strong> 来获取MacOS风的Dock栏，这样就可以将本身的Panel变为MacOS下的常驻状态栏。</p>
 <p>仓库地址：<a class="link" href="https://github.com/KDE/latte-dock"  target="_blank" rel="noopener"
     >https://github.com/KDE/latte-dock</a></p>
 <p>同时其是可以直接从KDE store一键下载安装的。</p>
-<h4 id="音乐可视化">音乐可视化</h4>
+<h3 id="音乐可视化">音乐可视化</h3>
 <p>Windows下可以使用Wallpaper engine，Linux就没有这个福分了，只能另寻替代方案。</p>
 <p>KDE插件 <strong>panon</strong> 能达到尚且凑活的效果，可以直接从插件商店一键安装。</p>
-<h3 id="gnome">Gnome</h3>
+<h2 id="gnome">Gnome</h2>
 <p>Gnome不像KDE，它没有向用户直接呈现DE UI定制接口，而是需要用户自行配置。好在Gnome同时也提供了美化总站：<a class="link" href="https://www.gnome-look.org/"  target="_blank" rel="noopener"
     >https://www.gnome-look.org/</a></p>
 <p>网站中基本涵盖了所有美化选项与资源。且对于采用GTK的其它DE来说，大量资源都是通用的。但在此之前需要有一些预先配置（出于DE稳定性考虑，默认不将定制接口提供给小白用户）：</p>
@@ -555,14 +575,14 @@
 </ul>
 <p>此后，尽情探索<a class="link" href="https://www.gnome-look.org/"  target="_blank" rel="noopener"
     >https://www.gnome-look.org/</a>，将下载到的资源在gnome-tweaks中启用即可。</p>
-<h2 id="wm">WM</h2>
-<h3 id="i3">i3</h3>
+<h1 id="wm">WM</h1>
+<h2 id="i3">i3</h2>
 <p>讨厌鼠标的键盘信徒？俺也一样！（即使我是老FPS玩家了，使用鼠标有天然的速度优势）</p>
 <p>话说图形化诞生的初衷就带有“坐标交互”的动机，想在图形化下扔掉鼠标，不是抛弃原教旨了嘛？</p>
 <p>但有需求就有造物，玩DE的后路是玩WM。i3目前是该领域的当红炸子鸡。</p>
 <p>不喜欢X11？面向Wayland的i3 clone：Sway，供你选择。</p>
 <p>快捷键并不多，比tmux简单。一天学会，受用终生。👍</p>
-<h2 id="shell">Shell</h2>
+<h1 id="shell">Shell</h1>
 <p>shell并不属于DE的一部分，有个字符终端足矣。</p>
 <p>最流行的美化方案还是zsh的一套：</p>
 <ul>
@@ -617,14 +637,14 @@
 <blockquote>
 <p>fish也不错，开箱即用，但惜败于不兼容bash</p>
 </blockquote>
-<h2 id="其它">其它</h2>
+<h1 id="其它">其它</h1>
 <p>程序太小以至于一句话就说完了……</p>
-<h3 id="终端配色">终端配色</h3>
-<h4 id="终端模拟器层">终端模拟器层</h4>
+<h2 id="终端配色">终端配色</h2>
+<h3 id="终端模拟器层">终端模拟器层</h3>
 <p>如下仓库，应有尽有：</p>
 <p><a class="link" href="https://github.com/mbadolato/iTerm2-Color-Schemes"  target="_blank" rel="noopener"
     >https://github.com/mbadolato/iTerm2-Color-Schemes</a></p>
-<h4 id="shell层">shell层</h4>
+<h3 id="shell层">shell层</h3>
 <p>shell层的配色只是用色号指定颜色，但相应颜色具体长什么样还得看上述终端模拟器层中定义的RGB值。</p>
 <p>我自己比较喜欢<code>ZSH_THEME=&quot;robbyrussell&quot;</code>的配色：</p>
 <div class="highlight"><div class="chroma">
@@ -644,15 +664,15 @@
 <li><a class="link" href="https://geoff.greer.fm/lscolors/"  target="_blank" rel="noopener"
     >https://geoff.greer.fm/lscolors/</a></li>
 </ul>
-<h3 id="grub">grub</h3>
+<h2 id="grub">grub</h2>
 <p>来自gnome-look，但啥都能用，毕竟定制的是grub这个引导器：</p>
 <p><a class="link" href="https://www.gnome-look.org/browse/cat/109/order/latest/"  target="_blank" rel="noopener"
     >https://www.gnome-look.org/browse/cat/109/order/latest/</a></p>
-<h3 id="桌面状态监测器">桌面状态监测器</h3>
+<h2 id="桌面状态监测器">桌面状态监测器</h2>
 <p>使用 <strong>conky</strong>，仓库如下：</p>
 <p><a class="link" href="https://github.com/brndnmtthws/conky"  target="_blank" rel="noopener"
     >https://github.com/brndnmtthws/conky</a></p>
-<h3 id="裸体终端模拟器">裸体终端模拟器</h3>
+<h2 id="裸体终端模拟器">裸体终端模拟器</h2>
 <p><strong>fbterm</strong>好东西，仓库如下：</p>
 <p><a class="link" href="https://github.com/sfzhi/fbterm"  target="_blank" rel="noopener"
     >https://github.com/sfzhi/fbterm</a></p>
@@ -760,39 +780,18 @@
      
     
         
-    <div class="disqus-container">
-    
-</div>
-
-<style>
-    .disqus-container {
-        background-color: var(--card-background);
-        border-radius: var(--card-border-radius);
-        box-shadow: var(--shadow-l1);
-        padding: var(--card-padding);
-    }
-</style>
-
-<script>
-    window.addEventListener('onColorSchemeChange', (e) => {
-        if (typeof DISQUS == 'object') {
-            DISQUS.reset({
-                reload: true
-            });
-        }
-    })
-</script>
-
     
 
     <footer class="site-footer">
     <section class="copyright">
         &copy; 
         
-        2022 Zikey Vi
+        2022 やれやれ DA✰ZE
     </section>
     
     <section class="powerby">
+        
+            All Right Abandoned. <br/>
         Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
         Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.13.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
     </section>
@@ -903,8 +902,9 @@
     <li><a href="#概念拆解">概念拆解</a></li>
     <li><a href="#de">DE</a>
       <ol>
-        <li><a href="#kde-plasma">KDE plasma</a>
+        <li>
           <ol>
+            <li><a href="#kde-plasma">KDE plasma</a></li>
             <li><a href="#窗口边框透明化">窗口边框透明化</a></li>
             <li><a href="#面板透明化">面板透明化</a></li>
             <li><a href="#组件透明化">组件透明化</a></li>

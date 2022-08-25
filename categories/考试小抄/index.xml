@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>考试小抄 on Zikey Vi</title>
+        <title>考试小抄 on やれやれ DA✰ZE</title>
         <link>https://cerr.cc/categories/%E8%80%83%E8%AF%95%E5%B0%8F%E6%8A%84/</link>
-        <description>Recent content in 考试小抄 on Zikey Vi</description>
+        <description>Recent content in 考试小抄 on やれやれ DA✰ZE</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <lastBuildDate>Tue, 10 May 2022 21:13:54 +0800</lastBuildDate><atom:link href="https://cerr.cc/categories/%E8%80%83%E8%AF%95%E5%B0%8F%E6%8A%84/index.xml" rel="self" type="application/rss+xml" /><item>
@@ -15,8 +15,8 @@
         <description>&lt;img src="https://s2.loli.net/2022/05/11/7aWbNEkesXlmYxH.jpg" alt="Featured image of post 一些配环境的Cheasheet" /&gt;&lt;blockquote&gt;
 &lt;p&gt;作为一个系统重装爱好者和硬件收集拾荒人，为了减少在环境配置上浪费的生命，记录常用环境配置命令用以直接复制粘贴&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h2 id=&#34;个人-apt-源-linux-初始环境软件安装&#34;&gt;个人 apt 源 Linux 初始环境软件安装&lt;/h2&gt;
-&lt;h3 id=&#34;基本组件&#34;&gt;基本组件&lt;/h3&gt;
+&lt;h1 id=&#34;个人-apt-源-linux-初始环境软件安装&#34;&gt;个人 apt 源 Linux 初始环境软件安装&lt;/h1&gt;
+&lt;h2 id=&#34;基本组件&#34;&gt;基本组件&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -31,7 +31,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;	neofetch zip unzip ncdu htop dosfstools nyancat cmatrix
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;开发与调试组件&#34;&gt;开发与调试组件&lt;/h3&gt;
+&lt;/div&gt;&lt;h2 id=&#34;开发与调试组件&#34;&gt;开发与调试组件&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -42,7 +42,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;	python3 ipython3 python-is-python3 python3-pip build-essential ninja-buildw
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;dotfiles-快速就位&#34;&gt;dotfiles 快速就位&lt;/h2&gt;
+&lt;/div&gt;&lt;h1 id=&#34;dotfiles-快速就位&#34;&gt;dotfiles 快速就位&lt;/h1&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -65,8 +65,8 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;source&lt;/span&gt; ~/.zshrc
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;neovim-配置&#34;&gt;Neovim 配置&lt;/h2&gt;
-&lt;h3 id=&#34;插件管理器&#34;&gt;插件管理器&lt;/h3&gt;
+&lt;/div&gt;&lt;h1 id=&#34;neovim-配置&#34;&gt;Neovim 配置&lt;/h1&gt;
+&lt;h2 id=&#34;插件管理器&#34;&gt;插件管理器&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -93,7 +93,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s&#34;&gt;EOF&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;cocnvim&#34;&gt;Coc.nvim&lt;/h3&gt;
+&lt;/div&gt;&lt;h2 id=&#34;cocnvim&#34;&gt;Coc.nvim&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -102,7 +102,7 @@
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;CocInstall coc-marketplace &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; CocInstall coc-clangd &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; CocInstall coc-pyright &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; CocInstall coc-highlight &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; CocInstall coc-cmake
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;docker-安装&#34;&gt;docker 安装&lt;/h2&gt;
+&lt;/div&gt;&lt;h1 id=&#34;docker-安装&#34;&gt;docker 安装&lt;/h1&gt;
 &lt;p&gt;官方安装脚本：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -121,7 +121,7 @@
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo docker run -it -v /home/zkv/docker_share/:/share ubuntu:16.04
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;pwn-环境简易就位&#34;&gt;pwn 环境简易就位&lt;/h2&gt;
+&lt;/div&gt;&lt;h1 id=&#34;pwn-环境简易就位&#34;&gt;pwn 环境简易就位&lt;/h1&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -144,7 +144,7 @@
         <pubDate>Sun, 08 May 2022 21:45:00 +0800</pubDate>
         
         <guid>https://cerr.cc/post/linux%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E5%A4%A7%E5%85%A8/</guid>
-        <description>&lt;img src="https://s2.loli.net/2022/05/08/1vXerd2a3qCgcfQ.jpg" alt="Featured image of post Linux系统调用大全" /&gt;&lt;h2 id=&#34;传参规则&#34;&gt;传参规则&lt;/h2&gt;
+        <description>&lt;img src="https://s2.loli.net/2022/05/08/1vXerd2a3qCgcfQ.jpg" alt="Featured image of post Linux系统调用大全" /&gt;&lt;h1 id=&#34;传参规则&#34;&gt;传参规则&lt;/h1&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
@@ -206,7 +206,7 @@
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;h2 id=&#34;x86_64-系统调用表&#34;&gt;x86_64 系统调用表&lt;/h2&gt;
+&lt;h1 id=&#34;x86_64-系统调用表&#34;&gt;x86_64 系统调用表&lt;/h1&gt;
 &lt;blockquote&gt;
 &lt;p&gt;以下调用表皆基于linux4.14.0&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -3744,7 +3744,7 @@
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;h2 id=&#34;x86系统调用表&#34;&gt;x86系统调用表&lt;/h2&gt;
+&lt;h1 id=&#34;x86系统调用表&#34;&gt;x86系统调用表&lt;/h1&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
@@ -7279,7 +7279,7 @@
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;h2 id=&#34;arm32系统调用表&#34;&gt;arm32系统调用表&lt;/h2&gt;
+&lt;h1 id=&#34;arm32系统调用表&#34;&gt;arm32系统调用表&lt;/h1&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
@@ -10862,7 +10862,7 @@
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;h2 id=&#34;aarch64系统调用表&#34;&gt;aarch64系统调用表&lt;/h2&gt;
+&lt;h1 id=&#34;aarch64系统调用表&#34;&gt;aarch64系统调用表&lt;/h1&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
@@ -13341,7 +13341,7 @@
         <pubDate>Sat, 07 May 2022 22:53:05 +0800</pubDate>
         
         <guid>https://cerr.cc/post/awesome-colors/</guid>
-        <description>&lt;img src="https://s2.loli.net/2022/05/07/QW6X8VuxZCJnmfc.jpg" alt="Featured image of post Awesome Colors" /&gt;&lt;h2 id=&#34;awesome-colors&#34;&gt;Awesome colors&lt;/h2&gt;
+        <description>&lt;img src="https://s2.loli.net/2022/05/07/QW6X8VuxZCJnmfc.jpg" alt="Featured image of post Awesome Colors" /&gt;&lt;h1 id=&#34;awesome-colors&#34;&gt;Awesome colors&lt;/h1&gt;
 &lt;div style=&#34;border: double; color: #ffffff; background-color: #4f0009; text-align: center; &#34;&gt;
         &lt;br&gt;
         &lt;h1&gt;波尔多红&lt;/h1&gt;

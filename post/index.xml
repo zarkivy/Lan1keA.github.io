@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>Posts on Zikey Vi</title>
+        <title>Posts on やれやれ DA✰ZE</title>
         <link>https://cerr.cc/post/</link>
-        <description>Recent content in Posts on Zikey Vi</description>
+        <description>Recent content in Posts on やれやれ DA✰ZE</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <lastBuildDate>Fri, 19 Aug 2022 17:06:58 +0800</lastBuildDate><atom:link href="https://cerr.cc/post/index.xml" rel="self" type="application/rss+xml" /><item>
@@ -12,13 +12,13 @@
         <pubDate>Fri, 19 Aug 2022 17:06:58 +0800</pubDate>
         
         <guid>https://cerr.cc/post/csapp-lab-writeup/</guid>
-        <description>&lt;img src="https://s2.loli.net/2022/08/24/HhMzuB9lRFsCvy2.png" alt="Featured image of post CSAPP Lab WriteUp" /&gt;&lt;h2 id=&#34;0x0&#34;&gt;0x0&lt;/h2&gt;
+        <description>&lt;img src="https://s2.loli.net/2022/08/24/HhMzuB9lRFsCvy2.png" alt="Featured image of post CSAPP Lab WriteUp" /&gt;&lt;h1 id=&#34;0x0&#34;&gt;0x0&lt;/h1&gt;
 &lt;p&gt;实验源：&lt;a class=&#34;link&#34; href=&#34;http://csapp.cs.cmu.edu/3e/labs.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;http://csapp.cs.cmu.edu/3e/labs.html&lt;/a&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;直接点击实验名视作是图以教师身份下载教学资源。题目文件应于Self-Study Handout下载&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h2 id=&#34;data-lab&#34;&gt;Data Lab&lt;/h2&gt;
+&lt;h1 id=&#34;data-lab&#34;&gt;Data Lab&lt;/h1&gt;
 &lt;p&gt;下载解压题目文件：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -34,7 +34,7 @@
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://csapp.cs.cmu.edu/3e/README-datalab&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;http://csapp.cs.cmu.edu/3e/README-datalab&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;我们的任务是在受限使用运算符与控制流的前提下，实现bit.c中的每个函数的功能。&lt;/p&gt;
-&lt;h3 id=&#34;实现异或运算&#34;&gt;实现异或运算&lt;/h3&gt;
+&lt;h2 id=&#34;实现异或运算&#34;&gt;实现异或运算&lt;/h2&gt;
 &lt;p&gt;异或，即 “不同时为0” 且 “不同时为1”&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;^&lt;/code&gt;，即 &lt;code&gt;~(~x&amp;amp;~y)&lt;/code&gt; 且 &lt;code&gt;~(x&amp;amp;y)&lt;/code&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -65,7 +65,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;求32位下最小的补码数值&#34;&gt;求32位下最小的补码数值&lt;/h3&gt;
+&lt;/div&gt;&lt;h2 id=&#34;求32位下最小的补码数值&#34;&gt;求32位下最小的补码数值&lt;/h2&gt;
 &lt;p&gt;补码，二补数，2&amp;rsquo;s complement，参见：&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://zh.wikipedia.org/zh-cn/%E4%BA%8C%E8%A3%9C%E6%95%B8&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://zh.wikipedia.org/zh-cn/%E4%BA%8C%E8%A3%9C%E6%95%B8&lt;/a&gt;&lt;/p&gt;
@@ -93,11 +93,11 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cm&#34;&gt; *   Rating: 1
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cm&#34;&gt; */&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;tmin&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;31&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;31&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;判断输入是否是补码中的最大整数&#34;&gt;判断输入是否是补码中的最大整数&lt;/h3&gt;
+&lt;/div&gt;&lt;h2 id=&#34;判断输入是否是补码中的最大整数&#34;&gt;判断输入是否是补码中的最大整数&lt;/h2&gt;
 &lt;p&gt;32位下，补码中的最大整数是&lt;code&gt;0x7fffffff&lt;/code&gt;，接下来省略一些，只写8bits，下文同理。&lt;/p&gt;
 &lt;p&gt;核心手段是造出&lt;code&gt;00000000&lt;/code&gt;，利用0与非0值返回true与false：&lt;/p&gt;
 &lt;p&gt;若 &lt;code&gt;x = 0111111&lt;/code&gt;&lt;/p&gt;
@@ -130,11 +130,11 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cm&#34;&gt; *   Rating: 1
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cm&#34;&gt; */&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;isTmax&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;~&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;));&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;~&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;));&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;判断所有奇数位是否都为1&#34;&gt;判断所有奇数位是否都为1&lt;/h3&gt;
+&lt;/div&gt;&lt;h2 id=&#34;判断所有奇数位是否都为1&#34;&gt;判断所有奇数位是否都为1&lt;/h2&gt;
 &lt;p&gt;位的编号从0（最低有效）到31（最高有效）&lt;/p&gt;
 &lt;p&gt;采用掩码，即当 &lt;code&gt;x | 0x55555555 == 0xffffffff&lt;/code&gt; 时则返回1&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;0x55 == 0b 0101 0101&lt;/code&gt;&lt;/p&gt;
@@ -163,12 +163,12 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cm&#34;&gt; *   Rating: 2
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cm&#34;&gt; */&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;allOddBits&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;a&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mh&#34;&gt;0x55&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mh&#34;&gt;0x55&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;8&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mh&#34;&gt;0x55&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;16&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mh&#34;&gt;0x55&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;24&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!~&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;a&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mh&#34;&gt;0x55&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mh&#34;&gt;0x55&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;8&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mh&#34;&gt;0x55&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;16&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mh&#34;&gt;0x55&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;24&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!~&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;求--x&#34;&gt;求 -x&lt;/h3&gt;
+&lt;/div&gt;&lt;h2 id=&#34;求--x&#34;&gt;求 -x&lt;/h2&gt;
 &lt;p&gt;按位取反加一即得负数&lt;/p&gt;
 &lt;p&gt;补码实际上是一个&lt;code&gt;阿贝尔群&lt;/code&gt;，对于 &lt;code&gt;x&lt;/code&gt;，&lt;code&gt;-x&lt;/code&gt; 是其补码，所以 &lt;code&gt;-x&lt;/code&gt; 可以通过对 &lt;code&gt;x&lt;/code&gt; 取反加1得到&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -193,11 +193,11 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cm&#34;&gt; *   Rating: 2
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cm&#34;&gt; */&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;negate&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;~&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;~&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;判断是否为数字字符ascii码&#34;&gt;判断是否为数字字符ASCII码&lt;/h3&gt;
+&lt;/div&gt;&lt;h2 id=&#34;判断是否为数字字符ascii码&#34;&gt;判断是否为数字字符ASCII码&lt;/h2&gt;
 &lt;p&gt;用减法，判断 &lt;code&gt;x-0x30 &amp;gt;= 0 &amp;amp;&amp;amp; 0x39 - x &amp;gt;= 0&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;但题干要求不能用减号，那么可以根据补码原理用加号实现减法&lt;/p&gt;
 &lt;p&gt;最后判断两个中间值的符号位全为0即可返回true&lt;/p&gt;
@@ -229,13 +229,13 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cm&#34;&gt; *   Rating: 3
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cm&#34;&gt; */&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;isAsciiDigit&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;a&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;~&lt;/span&gt;&lt;span class=&#34;mh&#34;&gt;0x30&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// x - 0x30
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;  &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;b&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x39&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;~&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// 0x39 - x
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;  &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;a&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;31&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;b&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;31&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;a&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;~&lt;/span&gt;&lt;span class=&#34;mh&#34;&gt;0x30&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// x - 0x30
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;	&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;b&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x39&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;~&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// 0x39 - x
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;	&lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;a&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;31&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;b&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;31&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;实现c语言---运算符&#34;&gt;实现C语言 ? : 运算符&lt;/h3&gt;
+&lt;/div&gt;&lt;h2 id=&#34;实现c语言---运算符&#34;&gt;实现C语言 ? : 运算符&lt;/h2&gt;
 &lt;p&gt;将x转化为 &lt;code&gt;00000000&lt;/code&gt; 或 &lt;code&gt;11111111&lt;/code&gt; 用于计算&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -261,13 +261,13 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cm&#34;&gt; *   Rating: 3
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cm&#34;&gt; */&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;conditional&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;y&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;z&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;x&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!!&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;x&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;~&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;y&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;~&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;z&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!!&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;~&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;y&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;~&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;z&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;实现--运算符&#34;&gt;实现 &amp;lt;= 运算符&lt;/h3&gt;
+&lt;/div&gt;&lt;h2 id=&#34;实现--运算符&#34;&gt;实现 &amp;lt;= 运算符&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&amp;laquo;左移一律补0。&amp;raquo;右移可能补0也可能补符号位，视机器而定，通常是补符号位。&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -308,7 +308,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;实现逻辑非&#34;&gt;实现逻辑非!&lt;/h3&gt;
+&lt;/div&gt;&lt;h2 id=&#34;实现逻辑非&#34;&gt;实现逻辑非!&lt;/h2&gt;
 &lt;p&gt;&lt;code&gt;00000000 ｜ (~00000000 + 1)&lt;/code&gt; 得 0，其余数做此运算都得非0，且符号位为1&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -338,10 +338,10 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;求一个数用补码表示所需的最少位数&#34;&gt;求一个数用补码表示所需的最少位数&lt;/h3&gt;
-&lt;h3 id=&#34;求浮点数与2相乘的值&#34;&gt;求浮点数与2相乘的值&lt;/h3&gt;
-&lt;h3 id=&#34;浮点数转整数&#34;&gt;浮点数转整数&lt;/h3&gt;
-&lt;h3 id=&#34;判断指数是否上溢或者下溢&#34;&gt;判断指数是否上溢或者下溢&lt;/h3&gt;
+&lt;/div&gt;&lt;h2 id=&#34;求一个数用补码表示所需的最少位数&#34;&gt;求一个数用补码表示所需的最少位数&lt;/h2&gt;
+&lt;h2 id=&#34;求浮点数与2相乘的值&#34;&gt;求浮点数与2相乘的值&lt;/h2&gt;
+&lt;h2 id=&#34;浮点数转整数&#34;&gt;浮点数转整数&lt;/h2&gt;
+&lt;h2 id=&#34;判断指数是否上溢或者下溢&#34;&gt;判断指数是否上溢或者下溢&lt;/h2&gt;
 </description>
         </item>
         <item>
@@ -350,7 +350,7 @@
         <pubDate>Mon, 08 Aug 2022 14:34:10 +0800</pubDate>
         
         <guid>https://cerr.cc/post/zkv%E7%9A%84cc-%E6%9E%84%E5%BB%BA%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/</guid>
-        <description>&lt;img src="https://s2.loli.net/2022/08/09/FTvgEfriYsZ2a9L.png" alt="Featured image of post ZKV的C、C&#43;&#43;构建系统学习之路" /&gt;&lt;h2 id=&#34;编译工具链&#34;&gt;编译工具链&lt;/h2&gt;
+        <description>&lt;img src="https://s2.loli.net/2022/08/09/FTvgEfriYsZ2a9L.png" alt="Featured image of post ZKV的C、C&#43;&#43;构建系统学习之路" /&gt;&lt;h1 id=&#34;编译工具链&#34;&gt;编译工具链&lt;/h1&gt;
 &lt;p&gt;此前疑惑的一个问题是，一套编译工具链究竟包含了些什么东西？当我们使用包管理器一键安装编译工具链时，所安装的程序、数据、文档被分散在了根文件系统的各个位置，难以让我们直接一窥究竟。好在老生常谈的buildroot又为我们解决了这个问题，（当然，从网上下载一份编译工具链也能达到相同的效果）。取一份buildroot构建完成的编译工具链瞅瞅，路径位于&lt;code&gt;buildroot/output/host&lt;/code&gt;：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -429,7 +429,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;x86_64-linux-strip				&lt;span class=&#34;c1&#34;&gt;# discard symbols and other data from object files&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;使用buildroot构建任意编译工具链&#34;&gt;使用buildroot构建任意编译工具链&lt;/h3&gt;
+&lt;/div&gt;&lt;h2 id=&#34;使用buildroot构建任意编译工具链&#34;&gt;使用buildroot构建任意编译工具链&lt;/h2&gt;
 &lt;p&gt;buildroot对那些平台有默认配置呢：&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://s2.loli.net/2022/08/19/yHZsCwEfNFQ2v7I.png&#34;
 	
@@ -454,7 +454,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;来到&lt;code&gt;buildroot/output/host&lt;/code&gt;中取货即可。&lt;/p&gt;
-&lt;h2 id=&#34;binutils&#34;&gt;binutils&lt;/h2&gt;
+&lt;h1 id=&#34;binutils&#34;&gt;binutils&lt;/h1&gt;
 &lt;p&gt;GNU assembler, linker and binary utilities. The programs in this package are used to assemble, link and manipulate binary and object files. They may be used in conjunction with a compiler and various libraries to build programs.&lt;/p&gt;
 &lt;p&gt;那么binutils包中包含了哪些路径下的哪些内容呢？&lt;/p&gt;
 &lt;p&gt;使用apt-file工具查看下：&lt;/p&gt;
@@ -518,11 +518,11 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;binutils: /usr/share/lintian/overrides/binutils
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;configure&#34;&gt;configure&lt;/h2&gt;
-&lt;h2 id=&#34;make&#34;&gt;make&lt;/h2&gt;
+&lt;/div&gt;&lt;h1 id=&#34;configure&#34;&gt;configure&lt;/h1&gt;
+&lt;h1 id=&#34;make&#34;&gt;make&lt;/h1&gt;
 &lt;p&gt;官方文档：&lt;a class=&#34;link&#34; href=&#34;https://www.gnu.org/software/make/manual/html_node/index.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.gnu.org/software/make/manual/html_node/index.html&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;cmake&#34;&gt;cmake&lt;/h2&gt;
+&lt;h1 id=&#34;cmake&#34;&gt;cmake&lt;/h1&gt;
 </description>
         </item>
         <item>
@@ -531,8 +531,8 @@
         <pubDate>Mon, 08 Aug 2022 14:17:44 +0800</pubDate>
         
         <guid>https://cerr.cc/post/%E4%BD%BF%E7%94%A8qemu-gdb%E8%B0%83%E8%AF%95linux%E5%86%85%E6%A0%B8/</guid>
-        <description>&lt;img src="https://s2.loli.net/2022/08/09/PKcwjiVBTg6ApEv.png" alt="Featured image of post 使用QEMU&#43;GDB调试Linux内核" /&gt;&lt;h2 id=&#34;环境准备&#34;&gt;环境准备&lt;/h2&gt;
-&lt;h3 id=&#34;qemu-的手动构建&#34;&gt;QEMU 的手动构建&lt;/h3&gt;
+        <description>&lt;img src="https://s2.loli.net/2022/08/09/PKcwjiVBTg6ApEv.png" alt="Featured image of post 使用QEMU&#43;GDB调试Linux内核" /&gt;&lt;h1 id=&#34;环境准备&#34;&gt;环境准备&lt;/h1&gt;
+&lt;h2 id=&#34;qemu-的手动构建&#34;&gt;QEMU 的手动构建&lt;/h2&gt;
 &lt;p&gt;获取QEMU源码：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -568,9 +568,9 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo make install
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;使用buildroot一键构建rootfskernel&#34;&gt;使用buildroot一键构建rootfs+kernel&lt;/h3&gt;
+&lt;/div&gt;&lt;h2 id=&#34;使用buildroot一键构建rootfskernel&#34;&gt;使用buildroot一键构建rootfs+kernel&lt;/h2&gt;
 &lt;blockquote&gt;
-&lt;p&gt;buildroot自动构建过程若出现网络不畅，自备梯子，并设定shell变量all_proxy、http_proxy、https_proxy用于代理wget、curl等工具即可。参见：&lt;a class=&#34;link&#34; href=&#34;https://cerr.cc/post/fgfw/&#34; &gt;https://cerr.cc/post/fgfw/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;buildroot自动构建过程若出现网络不畅，自备梯子，并设定shell变量all_proxy、http_proxy、https_proxy用于代理wget、curl等工具即可。参见：&lt;a class=&#34;link&#34; href=&#34;https://cerr.cc/post/fuck-the-great-fire-wall/&#34; &gt;https://cerr.cc/post/fuck-the-great-fire-wall/&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -659,7 +659,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;确认成功断下执行流即可。&lt;/p&gt;
-&lt;h3 id=&#34;手动构建kernelinitramfs&#34;&gt;手动构建kernel+initramfs&lt;/h3&gt;
+&lt;h2 id=&#34;手动构建kernelinitramfs&#34;&gt;手动构建kernel+initramfs&lt;/h2&gt;
 &lt;p&gt;若不想借助自动化工具buildroot传达旨意，而是要亲自指挥亲自部署，记录如下：&lt;/p&gt;
 &lt;p&gt;载入x86_64默认config：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -730,7 +730,7 @@
 &lt;blockquote&gt;
 &lt;p&gt;巧合的是，就在我执行完如上命令进入shell后，惊觉Linux居然已经6.0.0了😱。经查正是今天的新闻。&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h3 id=&#34;试图调试&#34;&gt;试图调试&lt;/h3&gt;
+&lt;h2 id=&#34;试图调试&#34;&gt;试图调试&lt;/h2&gt;
 &lt;p&gt;沿用上述手动挡的构建方案，qemu启动时关闭kaslr（编译时若关闭了RANDOMIZE_BASE，则无需向kernel传递nokaslr参数）：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -766,7 +766,7 @@
 &lt;/div&gt;&lt;p&gt;关于对gdb调试的支持，内核所提供的文档如下：&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.kernel.org/doc/html/latest/dev-tools/gdb-kernel-debugging.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.kernel.org/doc/html/latest/dev-tools/gdb-kernel-debugging.html&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;内核启动&#34;&gt;内核启动&lt;/h2&gt;
+&lt;h1 id=&#34;内核启动&#34;&gt;内核启动&lt;/h1&gt;
 &lt;p&gt;内核初始化主函数：&lt;code&gt;init/main.c:start_kernel&lt;/code&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -999,8 +999,8 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;系统调用&#34;&gt;系统调用&lt;/h2&gt;
-&lt;h3 id=&#34;静态搜寻&#34;&gt;静态搜寻&lt;/h3&gt;
+&lt;/div&gt;&lt;h1 id=&#34;系统调用&#34;&gt;系统调用&lt;/h1&gt;
+&lt;h2 id=&#34;静态搜寻&#34;&gt;静态搜寻&lt;/h2&gt;
 &lt;p&gt;动态调试系统调用代码之前，不妨先来找到内核系统调用的静态代码位置。Linux Kernel使用&lt;code&gt;SYSCALL_DEFINE[N]&lt;/code&gt;宏来定义系统调用入口，其原型位于&lt;a class=&#34;link&#34; href=&#34;https://github.com/torvalds/linux/blob/16f73eb02d7e1765ccab3d2018e0bd98eb93d973/include/linux/syscalls.h&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;include/linux/syscalls.h&lt;/a&gt;，其中会调用特定系统调用的实现函数。所以，我们使用如下命令可以帮助快速筛选想要动态调试的系统调用入口所在位置：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -1050,7 +1050,7 @@
 &lt;p&gt;Linux Kernel 系统调用流程参见：&lt;a class=&#34;link&#34; href=&#34;https://0xax.gitbooks.io/linux-insides/content/SysCall/linux-syscall-2.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://0xax.gitbooks.io/linux-insides/content/SysCall/linux-syscall-2.html&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h3 id=&#34;动态调试&#34;&gt;动态调试&lt;/h3&gt;
+&lt;h2 id=&#34;动态调试&#34;&gt;动态调试&lt;/h2&gt;
 &lt;p&gt;继续以open系统调用为例，开始动态调试跟踪。&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;qemu monitor，你的好帮手，Ctrl+A C进入与退出monitor模式：&lt;/p&gt;
@@ -1113,12 +1113,12 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;此前已经知道open系统调用的实现函数为&lt;code&gt;do_sys_open&lt;/code&gt;，故于此函数下断点即可。&lt;/p&gt;
-&lt;h2 id=&#34;内存管理&#34;&gt;内存管理&lt;/h2&gt;
-&lt;h2 id=&#34;文件系统&#34;&gt;文件系统&lt;/h2&gt;
-&lt;h2 id=&#34;网络栈&#34;&gt;网络栈&lt;/h2&gt;
-&lt;h2 id=&#34;实战漏洞调试&#34;&gt;实战漏洞调试&lt;/h2&gt;
-&lt;p&gt;参见：&lt;a class=&#34;link&#34; href=&#34;https://cerr.cc/post/cve-2016-5195/&#34; &gt;https://cerr.cc/post/cve-2016-5195/&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;参考&#34;&gt;参考&lt;/h2&gt;
+&lt;h1 id=&#34;内存管理&#34;&gt;内存管理&lt;/h1&gt;
+&lt;h1 id=&#34;文件系统&#34;&gt;文件系统&lt;/h1&gt;
+&lt;h1 id=&#34;网络栈&#34;&gt;网络栈&lt;/h1&gt;
+&lt;h1 id=&#34;实战漏洞调试&#34;&gt;实战漏洞调试&lt;/h1&gt;
+&lt;p&gt;参见：&lt;a class=&#34;link&#34; href=&#34;https://cerr.cc/post/cve-2016-5195-linux-dirtycow%e6%bc%8f%e6%b4%9e%e5%88%86%e6%9e%90/&#34; &gt;https://cerr.cc/post/cve-2016-5195-linux-dirtycow漏洞分析/&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;参考&#34;&gt;参考&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;http://nickdesaulniers.github.io/blog/2018/10/24/booting-a-custom-linux-kernel-in-qemu-and-debugging-it-with-gdb/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;http://nickdesaulniers.github.io/blog/2018/10/24/booting-a-custom-linux-kernel-in-qemu-and-debugging-it-with-gdb/&lt;/a&gt;&lt;/li&gt;
@@ -1133,16 +1133,16 @@
         <pubDate>Tue, 19 Jul 2022 10:50:06 +0800</pubDate>
         
         <guid>https://cerr.cc/post/%E6%89%8B%E6%9C%BA%E5%8F%98%E8%BA%AB%E5%B0%8F%E4%B8%BB%E6%9C%BA/</guid>
-        <description>&lt;img src="https://postmarketos.org/static/img/nexus5-bg-dark.jpg" alt="Featured image of post 手机变身小主机？！" /&gt;&lt;h2 id=&#34;快递还在路上&#34;&gt;&lt;del&gt;快递还在路上……&lt;/del&gt;&lt;/h2&gt;
+        <description>&lt;img src="https://postmarketos.org/static/img/nexus5-bg-dark.jpg" alt="Featured image of post 手机变身小主机？！" /&gt;&lt;h1 id=&#34;快递还在路上&#34;&gt;&lt;del&gt;快递还在路上……&lt;/del&gt;&lt;/h1&gt;
 &lt;p&gt;话说我大学专业之所以选了计算机，除去高二于学霸本&lt;em&gt;联想G510&lt;/em&gt;上玩过《看门狗》的原因外，就是因为有着折腾二手安卓机的爱好了。这一兴趣一直延续到了大学，以至于我童叟无欺的闲鱼账号被人怀疑为是机贩子账号 &lt;del&gt;（😤是可忍，孰不可忍）&lt;/del&gt; 。直至大三开始搞到了外快，可以不再为一台多次易主的设备在经济上精打细算，便渐渐失去了往日的激情。果然太容易得到的东西，就会失宠。&lt;/p&gt;
 &lt;p&gt;还记得大二那次Essential Phone换LG V30的交易，在我和那位小米前员工约定的地铁站内，他说，从我身上仿佛看见了当年的他，为一台心心念念的破旧设备奔波几十里却满心欢喜。两名垃机佬相视一笑，心照不宣，你东我西，从此再无交集……（😭&lt;/p&gt;
-&lt;h2 id=&#34;linux-on-a-phone&#34;&gt;Linux On a Phone&lt;/h2&gt;
+&lt;h1 id=&#34;linux-on-a-phone&#34;&gt;Linux On a Phone&lt;/h1&gt;
 &lt;p&gt;啥说是手机上的Linux？安卓的内核本来就是Linux呀？！&lt;/p&gt;
 &lt;p&gt;但那是Android/Linux，而我们本次的目标是GNU/Linux，将mainline kernel与GNU utils运行与手机之上。可以比喻成将手机刷成了一台运行了桌面级系统的小主机？&lt;/p&gt;
 &lt;p&gt;关于Android的Linux内核与mainline Linux内核的关系，参见Google的说明：&lt;a class=&#34;link&#34; href=&#34;https://source.android.com/devices/architecture/kernel?hl=zh-cn&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://source.android.com/devices/architecture/kernel?hl=zh-cn&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;有若干项目试图接近这个目标，其中最有名的应该还是Ubuntu Touch了。但经过一些调研后，我发现Ubuntu Touch并不是我满意的选择……&lt;/p&gt;
-&lt;h3 id=&#34;ubuntu-touch&#34;&gt;Ubuntu Touch&lt;/h3&gt;
+&lt;h2 id=&#34;ubuntu-touch&#34;&gt;Ubuntu Touch&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://ubuntu-touch.io/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://ubuntu-touch.io/&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Ubuntu Touch借助了&lt;a class=&#34;link&#34; href=&#34;https://halium.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -1159,18 +1159,18 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;似乎Ubuntu Touch的定位主要瞄准了Android，而非作为一个完全可定制的极客OS，所以在包管理、分区读写等方面并不能做到如同Ubuntu desktop一样的体验。再加上其没有使用mainline kernel不符合我的需求，故而弃之。&lt;/p&gt;
-&lt;h3 id=&#34;mobian&#34;&gt;Mobian&lt;/h3&gt;
+&lt;h2 id=&#34;mobian&#34;&gt;Mobian&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mobian.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://mobian.org/&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://wiki.mobian.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://wiki.mobian.org/&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Mobian，即mobile debian，好的地方在于其已为大家广泛熟悉的apt+dpkg包管理工具和软件源，且其使用了mainline内核。但缺乏对于大量设备的支持。Mobian的设备支持列表在这里：&lt;a class=&#34;link&#34; href=&#34;https://wiki.mobian.org/doku.php?id=devices&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://wiki.mobian.org/doku.php?id=devices&lt;/a&gt;。可以看到除去几款国内难以购买、价格高昂、配置低下的开源手机外，就只有一加6和小米Pocophone F1两款骁龙845机型了。&lt;/p&gt;
-&lt;h3 id=&#34;droidian&#34;&gt;Droidian&lt;/h3&gt;
+&lt;h2 id=&#34;droidian&#34;&gt;Droidian&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://droidian.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://droidian.org/&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Mobian的Haium版本，借由和Ubuntu Touch类似的方案，达成支持更多设备的目的。但也因此放弃了mainline kernel。&lt;/p&gt;
-&lt;h3 id=&#34;postmarketos&#34;&gt;postmarketOS&lt;/h3&gt;
+&lt;h2 id=&#34;postmarketos&#34;&gt;postmarketOS&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://postmarketos.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://postmarketos.org/&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;postmarketOS基于Alpine Linux，为busybox + musl libc的解决方案。在采用mainline kernel的mobile发行版中社区最大，维护最活跃。其支持的设备列表与支持情况可以于此查到：&lt;a class=&#34;link&#34; href=&#34;https://wiki.postmarketos.org/wiki/Devices&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -1184,34 +1184,34 @@
 &lt;p&gt;换源说明：&lt;a class=&#34;link&#34; href=&#34;https://mirrors.tuna.tsinghua.edu.cn/help/postmarketOS/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://mirrors.tuna.tsinghua.edu.cn/help/postmarketOS/&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;将软件源由特定发行版切换到master分支后，即相当于将系统转化为滚动更新模式。这样做的好处是，昨天上报的bug可能今天就被修复了，下游设备立即执行&lt;code&gt;apk update; apk upgrade&lt;/code&gt;即可立即获取修复的更新。缺点则是是master分支的不稳定。但考虑到mobile发行版的可用性与稳定性本身就堪忧，切换至滚动更新，或许是牺牲1份稳定性，换取5分可用性。在我看来是很划算的生意。&lt;/p&gt;
-&lt;h3 id=&#34;其余暂未进一步了解的mobile-distros&#34;&gt;其余暂未进一步了解的Mobile Distros&lt;/h3&gt;
-&lt;h4 id=&#34;sailfish-os&#34;&gt;Sailfish OS&lt;/h4&gt;
+&lt;h2 id=&#34;其余暂未进一步了解的mobile-distros&#34;&gt;其余暂未进一步了解的Mobile Distros&lt;/h2&gt;
+&lt;h3 id=&#34;sailfish-os&#34;&gt;Sailfish OS&lt;/h3&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://sailfishos.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://sailfishos.org/&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;体量貌似也很大，但其官网首页就是标价，预感不妙，逃……&lt;/p&gt;
-&lt;h4 id=&#34;luneos&#34;&gt;LuneOS&lt;/h4&gt;
+&lt;h3 id=&#34;luneos&#34;&gt;LuneOS&lt;/h3&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://www.webos-ports.org/wiki/Main_Page&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;http://www.webos-ports.org/wiki/Main_Page&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;也是Haium方案。&lt;/p&gt;
-&lt;h4 id=&#34;pureosmanjaro-arm等&#34;&gt;PureOS、Manjaro ARM等&lt;/h4&gt;
+&lt;h3 id=&#34;pureosmanjaro-arm等&#34;&gt;PureOS、Manjaro ARM等&lt;/h3&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://pureos.net/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://pureos.net/&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://manjaro.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://manjaro.org/&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;其定位并非为移动端努力。只能说是支持了Pine Phone等开源手机而已。&lt;/p&gt;
-&lt;h2 id=&#34;关于刷机&#34;&gt;关于刷机&lt;/h2&gt;
+&lt;h1 id=&#34;关于刷机&#34;&gt;关于刷机&lt;/h1&gt;
 &lt;p&gt;参考&lt;a class=&#34;link&#34; href=&#34;https://www.jianshu.com/p/d960a6f517d8&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.jianshu.com/p/d960a6f517d8&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&#34;fastboot&#34;&gt;Fastboot&lt;/h3&gt;
+&lt;h2 id=&#34;fastboot&#34;&gt;Fastboot&lt;/h2&gt;
 &lt;p&gt;一个通信协议，用于直接向安卓手机Flash的不同分区中写入数据。&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://android.googlesource.com/platform/system/core/&amp;#43;/refs/heads/master/fastboot/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://android.googlesource.com/platform/system/core/+/refs/heads/master/fastboot/&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&#34;recovery&#34;&gt;Recovery&lt;/h3&gt;
+&lt;h2 id=&#34;recovery&#34;&gt;Recovery&lt;/h2&gt;
 &lt;p&gt;一个单独的分区，内可包含一个恢复用的迷你系统，如TWRP。&lt;/p&gt;
-&lt;h3 id=&#34;安卓设备分区&#34;&gt;安卓设备分区&lt;/h3&gt;
+&lt;h2 id=&#34;安卓设备分区&#34;&gt;安卓设备分区&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://source.android.com/devices/bootloader/partitions&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://source.android.com/devices/bootloader/partitions&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;xiaomi-mi-note2&#34;&gt;Xiaomi Mi Note2&lt;/h2&gt;
+&lt;h1 id=&#34;xiaomi-mi-note2&#34;&gt;Xiaomi Mi Note2&lt;/h1&gt;
 &lt;p&gt;&lt;img src=&#34;https://s2.loli.net/2022/08/11/LDPaqzpkYbAgtOE.jpg&#34;
 	
 	
@@ -1251,42 +1251,42 @@
         <description>&lt;img src="https://pic1.zhimg.com/v2-983af8971091bf560af2e2299d801cd1_1440w.jpg" alt="Featured image of post ZKV对嵌入式硬件的浅尝不止" /&gt;&lt;blockquote&gt;
 &lt;p&gt;物联网安全是离不开硬件领域的。而计算机科学与技术专业出身的我，嵌入式知识实属匮乏。公司组内有大量免费玩具却不会玩，这口气实在难以下咽。接下来是对自己嵌入式硬件知识的早教记录。&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h2 id=&#34;pcb&#34;&gt;PCB&lt;/h2&gt;
+&lt;h1 id=&#34;pcb&#34;&gt;PCB&lt;/h1&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/Printed_circuit_board&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://en.wikipedia.org/wiki/Printed_circuit_board&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;处理器&#34;&gt;处理器&lt;/h2&gt;
-&lt;h3 id=&#34;mcu&#34;&gt;MCU&lt;/h3&gt;
+&lt;h1 id=&#34;处理器&#34;&gt;处理器&lt;/h1&gt;
+&lt;h2 id=&#34;mcu&#34;&gt;MCU&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/Microcontroller&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://en.wikipedia.org/wiki/Microcontroller&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;stm32&#34;&gt;STM32&lt;/h4&gt;
+&lt;h2 id=&#34;stm32&#34;&gt;STM32&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/STM32&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://en.wikipedia.org/wiki/STM32&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;flash&#34;&gt;Flash&lt;/h2&gt;
+&lt;h1 id=&#34;flash&#34;&gt;Flash&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/Flash_memory&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://en.wikipedia.org/wiki/Flash_memory&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://nieyong.github.io/wiki_ny/Flash.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://nieyong.github.io/wiki_ny/Flash.html&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;nor&#34;&gt;NOR&lt;/h3&gt;
-&lt;h3 id=&#34;nand&#34;&gt;NAND&lt;/h3&gt;
-&lt;h4 id=&#34;mmc&#34;&gt;MMC&lt;/h4&gt;
+&lt;h2 id=&#34;nor&#34;&gt;NOR&lt;/h2&gt;
+&lt;h2 id=&#34;nand&#34;&gt;NAND&lt;/h2&gt;
+&lt;h3 id=&#34;mmc&#34;&gt;MMC&lt;/h3&gt;
 &lt;p&gt;MultiMediaCard&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/MultiMediaCard&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://en.wikipedia.org/wiki/MultiMediaCard&lt;/a&gt;&lt;/p&gt;
-&lt;h5 id=&#34;emmc&#34;&gt;eMMC&lt;/h5&gt;
+&lt;h4 id=&#34;emmc&#34;&gt;eMMC&lt;/h4&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/MultiMediaCard#eMMC&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://en.wikipedia.org/wiki/MultiMediaCard#eMMC&lt;/a&gt;&lt;/p&gt;
-&lt;h4 id=&#34;ufs&#34;&gt;UFS&lt;/h4&gt;
+&lt;h3 id=&#34;ufs&#34;&gt;UFS&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/Universal_Flash_Storage&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://en.wikipedia.org/wiki/Universal_Flash_Storage&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;芯片封装&#34;&gt;芯片封装&lt;/h2&gt;
+&lt;h1 id=&#34;芯片封装&#34;&gt;芯片封装&lt;/h1&gt;
 &lt;p&gt;&lt;img src=&#34;https://semiwiki.com/wp-content/uploads/2022/03/https3A2F2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com2Fpublic2Fimages2F220c1577-6253-45ec-9e2d-fc0f8430db8e_594x496.png&#34;
 	
 	
@@ -1315,23 +1315,23 @@
     &gt;https://semiwiki.com/semiconductor-services/308968-semiconductor-packaging-history-primer/&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;协议&#34;&gt;协议&lt;/h2&gt;
-&lt;h3 id=&#34;uart&#34;&gt;UART&lt;/h3&gt;
+&lt;h1 id=&#34;协议&#34;&gt;协议&lt;/h1&gt;
+&lt;h2 id=&#34;uart&#34;&gt;UART&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://zh.wikipedia.org/zh-cn/UART&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://zh.wikipedia.org/zh-cn/UART&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;rs232&#34;&gt;RS232&lt;/h4&gt;
+&lt;h3 id=&#34;rs232&#34;&gt;RS232&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://zh.wikipedia.org/zh-cn/RS-232&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://zh.wikipedia.org/zh-cn/RS-232&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;i2c&#34;&gt;I2C&lt;/h3&gt;
+&lt;h2 id=&#34;i2c&#34;&gt;I2C&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://zh.wikipedia.org/wiki/I%C2%B2C&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://zh.wikipedia.org/wiki/I%C2%B2C&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;jtag&#34;&gt;JTAG&lt;/h3&gt;
+&lt;h2 id=&#34;jtag&#34;&gt;JTAG&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/JTAG&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://en.wikipedia.org/wiki/JTAG&lt;/a&gt;&lt;/li&gt;
@@ -1340,9 +1340,9 @@
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://iot-security.wiki/hardware-security/debug/jtag.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://iot-security.wiki/hardware-security/debug/jtag.html&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;spi&#34;&gt;SPI&lt;/h3&gt;
-&lt;h2 id=&#34;工具&#34;&gt;工具&lt;/h2&gt;
-&lt;h3 id=&#34;逻辑分析仪&#34;&gt;逻辑分析仪&lt;/h3&gt;
+&lt;h2 id=&#34;spi&#34;&gt;SPI&lt;/h2&gt;
+&lt;h1 id=&#34;工具&#34;&gt;工具&lt;/h1&gt;
+&lt;h2 id=&#34;逻辑分析仪&#34;&gt;逻辑分析仪&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/Logic_analyzer&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://en.wikipedia.org/wiki/Logic_analyzer&lt;/a&gt;&lt;/li&gt;
@@ -1358,13 +1358,13 @@
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;http://res.kingst.site/kfs/doc/Kingst%e9%87%91%e6%80%9d%e7%89%b9%e8%99%9a%e6%8b%9f%e4%bb%aa%e5%99%a8%e4%bd%bf%e7%94%a8%e6%89%8b%e5%86%8c.pdf&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;http://res.kingst.site/kfs/doc/Kingst%e9%87%91%e6%80%9d%e7%89%b9%e8%99%9a%e6%8b%9f%e4%bb%aa%e5%99%a8%e4%bd%bf%e7%94%a8%e6%89%8b%e5%86%8c.pdf&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;姿势&#34;&gt;姿势&lt;/h2&gt;
-&lt;h3 id=&#34;固件提取&#34;&gt;固件提取&lt;/h3&gt;
+&lt;h1 id=&#34;姿势&#34;&gt;姿势&lt;/h1&gt;
+&lt;h2 id=&#34;固件提取&#34;&gt;固件提取&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.anquanke.com/post/id/227285&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.anquanke.com/post/id/227285&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;硬件调试&#34;&gt;硬件调试&lt;/h3&gt;
+&lt;h2 id=&#34;硬件调试&#34;&gt;硬件调试&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.riverloopsecurity.com/blog/2020/01/hw-101-uart/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.riverloopsecurity.com/blog/2020/01/hw-101-uart/&lt;/a&gt;&lt;/li&gt;
@@ -1393,19 +1393,19 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;概念&#34;&gt;概念&lt;/h2&gt;
-&lt;h3 id=&#34;总览&#34;&gt;总览&lt;/h3&gt;
+&lt;h1 id=&#34;概念&#34;&gt;概念&lt;/h1&gt;
+&lt;h2 id=&#34;总览&#34;&gt;总览&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.redhat.com/zh/topics&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.redhat.com/zh/topics&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;云原生&#34;&gt;云原生&lt;/h3&gt;
+&lt;h2 id=&#34;云原生&#34;&gt;云原生&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.redhat.com/zh/topics/cloud-native-apps&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.redhat.com/zh/topics/cloud-native-apps&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;分布式&#34;&gt;分布式&lt;/h3&gt;
-&lt;h4 id=&#34;cap理论&#34;&gt;CAP理论&lt;/h4&gt;
+&lt;h2 id=&#34;分布式&#34;&gt;分布式&lt;/h2&gt;
+&lt;h3 id=&#34;cap理论&#34;&gt;CAP理论&lt;/h3&gt;
 &lt;p&gt;在计算机科学中, CAP定理（CAP theorem）, 又被称作 布鲁尔定理（Brewer&amp;rsquo;s theorem）, 它指出对于一个分布式计算系统来说，不可能同时满足以下三点:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;一致性(Consistency)&lt;/strong&gt; (所有节点在同一时间具有相同的数据)&lt;/li&gt;
@@ -1429,17 +1429,17 @@
 	
 	
 &gt;&lt;/p&gt;
-&lt;h2 id=&#34;计算&#34;&gt;计算&lt;/h2&gt;
-&lt;h3 id=&#34;技术&#34;&gt;技术&lt;/h3&gt;
-&lt;h4 id=&#34;lvs&#34;&gt;LVS&lt;/h4&gt;
+&lt;h1 id=&#34;计算&#34;&gt;计算&lt;/h1&gt;
+&lt;h2 id=&#34;技术&#34;&gt;技术&lt;/h2&gt;
+&lt;h3 id=&#34;lvs&#34;&gt;LVS&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://cloud.tencent.com/developer/article/1657962&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://cloud.tencent.com/developer/article/1657962&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://my.oschina.net/leeypp1/blog/294807?fromerr=xfCehUJY&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://my.oschina.net/leeypp1/blog/294807?fromerr=xfCehUJY&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;产品&#34;&gt;产品&lt;/h3&gt;
-&lt;h4 id=&#34;centos&#34;&gt;CentOS&lt;/h4&gt;
+&lt;h2 id=&#34;产品&#34;&gt;产品&lt;/h2&gt;
+&lt;h3 id=&#34;centos&#34;&gt;CentOS&lt;/h3&gt;
 &lt;p&gt;reference：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/CentOS&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -1447,29 +1447,29 @@
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://zhuanlan.zhihu.com/p/337075432&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://zhuanlan.zhihu.com/p/337075432&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;docker&#34;&gt;Docker&lt;/h4&gt;
-&lt;h5 id=&#34;dockerfile&#34;&gt;dockerfile&lt;/h5&gt;
+&lt;h3 id=&#34;docker&#34;&gt;Docker&lt;/h3&gt;
+&lt;h4 id=&#34;dockerfile&#34;&gt;dockerfile&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.docker.com/engine/reference/builder/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://docs.docker.com/engine/reference/builder/&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.runoob.com/docker/docker-dockerfile.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.runoob.com/docker/docker-dockerfile.html&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h5 id=&#34;compose&#34;&gt;compose&lt;/h5&gt;
+&lt;h4 id=&#34;compose&#34;&gt;compose&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.docker.com/compose/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://docs.docker.com/compose/&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.runoob.com/docker/docker-compose.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.runoob.com/docker/docker-compose.html&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h5 id=&#34;swarm&#34;&gt;swarm&lt;/h5&gt;
+&lt;h4 id=&#34;swarm&#34;&gt;swarm&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.docker.com/engine/swarm/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://docs.docker.com/engine/swarm/&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.runoob.com/docker/docker-swarm.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.runoob.com/docker/docker-swarm.html&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;k8s&#34;&gt;K8s&lt;/h4&gt;
+&lt;h3 id=&#34;k8s&#34;&gt;K8s&lt;/h3&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://kubernetes.io/docs/concepts/overview/what-is-kubernetes/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Kubernetes&lt;/a&gt;, also known as K8s, is an open-source system for automating deployment, scaling, and management of containerized applications.&lt;/p&gt;
 &lt;ul&gt;
@@ -1480,30 +1480,30 @@
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.redhat.com/zh/topics/containers/what-is-kubernetes&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.redhat.com/zh/topics/containers/what-is-kubernetes&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;存储&#34;&gt;存储&lt;/h2&gt;
-&lt;h3 id=&#34;技术-1&#34;&gt;技术&lt;/h3&gt;
-&lt;h4 id=&#34;sql&#34;&gt;SQL&lt;/h4&gt;
+&lt;h1 id=&#34;存储&#34;&gt;存储&lt;/h1&gt;
+&lt;h2 id=&#34;技术-1&#34;&gt;技术&lt;/h2&gt;
+&lt;h3 id=&#34;sql&#34;&gt;SQL&lt;/h3&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/SQL&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://en.wikipedia.org/wiki/SQL&lt;/a&gt;&lt;/p&gt;
-&lt;h4 id=&#34;raid&#34;&gt;RAID&lt;/h4&gt;
+&lt;h3 id=&#34;raid&#34;&gt;RAID&lt;/h3&gt;
 &lt;p&gt;reference：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://zh.wikipedia.org/zh-tw/RAID&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://zh.wikipedia.org/zh-tw/RAID&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;xfs&#34;&gt;XFS&lt;/h4&gt;
+&lt;h3 id=&#34;xfs&#34;&gt;XFS&lt;/h3&gt;
 &lt;p&gt;reference：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://zh.wikipedia.org/zh-tw/XFS&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://zh.wikipedia.org/zh-tw/XFS&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;nosql&#34;&gt;NoSQL&lt;/h4&gt;
+&lt;h3 id=&#34;nosql&#34;&gt;NoSQL&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.runoob.com/mongodb/nosql.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.runoob.com/mongodb/nosql.html&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;产品-1&#34;&gt;产品&lt;/h3&gt;
-&lt;h4 id=&#34;amazon-s3&#34;&gt;Amazon S3&lt;/h4&gt;
+&lt;h2 id=&#34;产品-1&#34;&gt;产品&lt;/h2&gt;
+&lt;h3 id=&#34;amazon-s3&#34;&gt;Amazon S3&lt;/h3&gt;
 &lt;p&gt;官网：&lt;a class=&#34;link&#34; href=&#34;https://aws.amazon.com/cn/s3/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://aws.amazon.com/cn/s3/&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Amazon Simple Storage Service (Amazon S3) 是一种对象存储服务&lt;/p&gt;
@@ -1522,12 +1522,12 @@
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://zhuanlan.zhihu.com/p/269794747&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://zhuanlan.zhihu.com/p/269794747&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;mongodb&#34;&gt;MongoDB&lt;/h4&gt;
+&lt;h3 id=&#34;mongodb&#34;&gt;MongoDB&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.runoob.com/mongodb/mongodb-tutorial.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.runoob.com/mongodb/mongodb-tutorial.html&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;elasticsearch&#34;&gt;elasticsearch&lt;/h4&gt;
+&lt;h3 id=&#34;elasticsearch&#34;&gt;elasticsearch&lt;/h3&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.elastic.co/cn/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.elastic.co/cn/&lt;/a&gt;&lt;/p&gt;
 &lt;ul&gt;
@@ -1536,36 +1536,36 @@
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.elastic.co/cn/elasticsearch/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.elastic.co/cn/elasticsearch/&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h5 id=&#34;kibana&#34;&gt;Kibana&lt;/h5&gt;
+&lt;h4 id=&#34;kibana&#34;&gt;Kibana&lt;/h4&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.elastic.co/cn/kibana/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.elastic.co/cn/kibana/&lt;/a&gt;&lt;/p&gt;
-&lt;h4 id=&#34;redis&#34;&gt;Redis&lt;/h4&gt;
+&lt;h3 id=&#34;redis&#34;&gt;Redis&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://redis.io/docs/about/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://redis.io/docs/about/&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.runoob.com/redis/redis-tutorial.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.runoob.com/redis/redis-tutorial.html&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;管理&#34;&gt;管理&lt;/h2&gt;
-&lt;h3 id=&#34;产品-2&#34;&gt;产品&lt;/h3&gt;
-&lt;h4 id=&#34;apache-hadoop&#34;&gt;Apache Hadoop&lt;/h4&gt;
+&lt;h1 id=&#34;管理&#34;&gt;管理&lt;/h1&gt;
+&lt;h2 id=&#34;产品-2&#34;&gt;产品&lt;/h2&gt;
+&lt;h3 id=&#34;apache-hadoop&#34;&gt;Apache Hadoop&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://hadoop.apache.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://hadoop.apache.org/&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.runoob.com/w3cnote/hadoop-tutorial.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.runoob.com/w3cnote/hadoop-tutorial.html&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;apache-zookeeper&#34;&gt;Apache Zookeeper&lt;/h4&gt;
+&lt;h3 id=&#34;apache-zookeeper&#34;&gt;Apache Zookeeper&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.runoob.com/w3cnote/zookeeper-tutorial.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.runoob.com/w3cnote/zookeeper-tutorial.html&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;apache-kafka&#34;&gt;Apache Kafka&lt;/h4&gt;
+&lt;h3 id=&#34;apache-kafka&#34;&gt;Apache Kafka&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.redhat.com/zh/topics/integration/what-is-apache-kafka&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.redhat.com/zh/topics/integration/what-is-apache-kafka&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;jenkins&#34;&gt;Jenkins&lt;/h4&gt;
+&lt;h3 id=&#34;jenkins&#34;&gt;Jenkins&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.jenkins.io/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.jenkins.io/&lt;/a&gt;&lt;/li&gt;
@@ -1580,11 +1580,11 @@
         <pubDate>Thu, 16 Jun 2022 18:42:34 +0800</pubDate>
         
         <guid>https://cerr.cc/post/zkv%E7%9A%84%E6%94%92%E6%9C%BA%E7%AE%80%E5%8F%B2/</guid>
-        <description>&lt;img src="https://s2.loli.net/2022/06/16/EYHcq8joTrfdiBR.jpg" alt="Featured image of post ZKV的攒机简史" /&gt;&lt;h2 id=&#34;前传&#34;&gt;前传&lt;/h2&gt;
+        <description>&lt;img src="https://s2.loli.net/2022/06/16/EYHcq8joTrfdiBR.jpg" alt="Featured image of post ZKV的攒机简史" /&gt;&lt;h1 id=&#34;前传&#34;&gt;前传&lt;/h1&gt;
 &lt;p&gt;不同寻常的是，我是在将各种设备都玩过一轮后，最后才将目光放到了台式机上。想来原因应当在于我是一个无可救药的&lt;strong&gt;MINI教&lt;/strong&gt;信徒——iPhone用mini；iPad用mini（曾经，奈何M1太香了）；Macbook用&lt;del&gt;mini&lt;/del&gt;Air；台式机用NUC+电脑棒+单片机……&lt;/p&gt;
 &lt;p&gt;好吧，其实我也不能说没有台式机，毕竟NUC也算得上。但在把各类小型设备都折腾过一遍后，我陷入了茫然四顾无所寄托的悲惨境地。突然想起自己这几年来竟未尝进入DIY PC的海洋试试水。又瞥了瞥手上这台NUC11PAHi5，估摸着这孩子也是天资平平、前途黯淡，竭尽全力地运行OW1却只是凑活能玩，没有能带起OW2的天赋。恰逢本世代全球大萧条之始，加密货币市场一泻千里，难窥其底。显卡价格也是应声而落，众望所归。天时地利人和——这钱，我不得不花。毕竟天意不可违。&lt;/p&gt;
 &lt;p&gt;但对于村儿里长大的我来说，掏出去的钱倘若没能换来足量的快乐，乃至买来的是糟心，实在是大逆不道有违祖训的事情。其负罪感甚至要甚于倒掉没吃完的肉（或许正因如此我才有幸成为闲鱼大V，焉知非福啊）。所以，事前进行全方位的考察与调研是十分必要的事情。&lt;/p&gt;
-&lt;h2 id=&#34;通用资源&#34;&gt;通用资源&lt;/h2&gt;
+&lt;h1 id=&#34;通用资源&#34;&gt;通用资源&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.zhihu.com/special/1436041011885293568?tab=1436061145295228928&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.zhihu.com/special/1436041011885293568?tab=1436061145295228928&lt;/a&gt;&lt;/li&gt;
@@ -1593,8 +1593,8 @@
 &lt;li&gt;万物皆可对比：&lt;a class=&#34;link&#34; href=&#34;https://versus.com/cn&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://versus.com/cn&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;cpu&#34;&gt;CPU&lt;/h2&gt;
-&lt;h3 id=&#34;通用资源-1&#34;&gt;通用资源&lt;/h3&gt;
+&lt;h1 id=&#34;cpu&#34;&gt;CPU&lt;/h1&gt;
+&lt;h2 id=&#34;通用资源-1&#34;&gt;通用资源&lt;/h2&gt;
 &lt;p&gt;可以于这些网站查询到绝大多数CPU的benchmark：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.cpubenchmark.net/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -1604,8 +1604,8 @@
 &lt;/ul&gt;
 &lt;p&gt;天梯图：&lt;a class=&#34;link&#34; href=&#34;https://www.mydrivers.com/zhuanti/tianti/cpu/index.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.mydrivers.com/zhuanti/tianti/cpu/index.html&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&#34;intel&#34;&gt;Intel&lt;/h3&gt;
-&lt;h4 id=&#34;命名规则&#34;&gt;命名规则&lt;/h4&gt;
+&lt;h2 id=&#34;intel&#34;&gt;Intel&lt;/h2&gt;
+&lt;h3 id=&#34;命名规则&#34;&gt;命名规则&lt;/h3&gt;
 &lt;p&gt;&lt;img src=&#34;https://s2.loli.net/2022/06/20/9ITSVKgfYQq1lje.png&#34;
 	
 	
@@ -1616,7 +1616,7 @@
 	
 	
 &gt;&lt;/p&gt;
-&lt;h4 id=&#34;酷睿后缀名&#34;&gt;酷睿后缀名&lt;/h4&gt;
+&lt;h3 id=&#34;酷睿后缀名&#34;&gt;酷睿后缀名&lt;/h3&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
@@ -1685,8 +1685,8 @@
 &lt;/table&gt;
 &lt;p&gt;reference：&lt;a class=&#34;link&#34; href=&#34;https://www.intel.com/content/www/us/en/processors/processor-numbers.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.intel.com/content/www/us/en/processors/processor-numbers.html&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&#34;amd&#34;&gt;AMD&lt;/h3&gt;
-&lt;h4 id=&#34;命名规则-1&#34;&gt;命名规则&lt;/h4&gt;
+&lt;h2 id=&#34;amd&#34;&gt;AMD&lt;/h2&gt;
+&lt;h3 id=&#34;命名规则-1&#34;&gt;命名规则&lt;/h3&gt;
 &lt;p&gt;&lt;img src=&#34;https://s2.loli.net/2022/06/20/bUcNP7BJ9GCdrD4.png&#34;
 	
 	
@@ -1697,7 +1697,7 @@
 	
 	
 &gt;&lt;/p&gt;
-&lt;h4 id=&#34;锐龙后缀名&#34;&gt;锐龙后缀名&lt;/h4&gt;
+&lt;h3 id=&#34;锐龙后缀名&#34;&gt;锐龙后缀名&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;X后缀&lt;/p&gt;
@@ -1733,16 +1733,16 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;显卡&#34;&gt;显卡&lt;/h2&gt;
+&lt;h1 id=&#34;显卡&#34;&gt;显卡&lt;/h1&gt;
 &lt;p&gt;天梯图：&lt;a class=&#34;link&#34; href=&#34;https://www.mydrivers.com/zhuanti/tianti/gpu/index.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.mydrivers.com/zhuanti/tianti/gpu/index.html&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;时时刻刻，当心矿卡！写于装机完毕后：&lt;/p&gt;
 &lt;p&gt;出于对买到矿卡的担忧，我最终于同事手中购入了他的RX5500XT——一款口碑并不算佳的中低端显卡。想来大不了等下一代显卡发售后，或是真有更高的浮点运算需求后，再升级也不迟。&lt;/p&gt;
 &lt;p&gt;然而经过实际游戏测试，我发现这款显卡为我的渣渣75Hz 1080P显示器输出视频信号，简直应付自如。神优化的地平线4满帧率满画质下，显卡占用只有70%出头；荒野大镖客2默认高画质显卡虽满载，但也是满帧流畅；至于显卡杀手Cyberpunk2077，高画质也能流畅。果然只要需求是1080P下玩3A，三位数的中低端显卡即可胜任。&lt;/p&gt;
-&lt;h2 id=&#34;硬盘&#34;&gt;硬盘&lt;/h2&gt;
-&lt;h3 id=&#34;固态硬盘&#34;&gt;固态硬盘&lt;/h3&gt;
+&lt;h1 id=&#34;硬盘&#34;&gt;硬盘&lt;/h1&gt;
+&lt;h2 id=&#34;固态硬盘&#34;&gt;固态硬盘&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;固态硬盘&lt;/strong&gt;使用&lt;strong&gt;NAND闪存颗粒&lt;/strong&gt;作为存储的主体，采用主控+多颗闪存芯片的结构。&lt;/p&gt;
-&lt;h4 id=&#34;nand闪存颗粒&#34;&gt;NAND闪存颗粒&lt;/h4&gt;
+&lt;h3 id=&#34;nand闪存颗粒&#34;&gt;NAND闪存颗粒&lt;/h3&gt;
 &lt;p&gt;主要分为&lt;strong&gt;SLC、MLC、TLC、QLC&lt;/strong&gt;四种。寿命和价格都依次递减。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://media.kingston.com/kingston/content/ktc-content-solutions-pc-performance-difference-between-slc-mlc-tlc-3d-nand-infographic-cn.jpg&#34;
 	
@@ -1756,7 +1756,7 @@
 &gt;&lt;/p&gt;
 &lt;p&gt;reference：&lt;a class=&#34;link&#34; href=&#34;https://www.kingston.com/cn/blog/pc-performance/difference-between-slc-mlc-tlc-3d-nand&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.kingston.com/cn/blog/pc-performance/difference-between-slc-mlc-tlc-3d-nand&lt;/a&gt;&lt;/p&gt;
-&lt;h4 id=&#34;接口与协议&#34;&gt;接口与协议&lt;/h4&gt;
+&lt;h3 id=&#34;接口与协议&#34;&gt;接口与协议&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;物理接口
 &lt;ul&gt;
@@ -1810,7 +1810,7 @@
 &lt;li&gt;M.2 固态硬盘的两种类型：SATA 和 NVMe：&lt;a class=&#34;link&#34; href=&#34;https://www.kingston.com/cn/blog/pc-performance/two-types-m2-vs-ssd&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.kingston.com/cn/blog/pc-performance/two-types-m2-vs-ssd&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;机械硬盘&#34;&gt;机械硬盘&lt;/h3&gt;
+&lt;h2 id=&#34;机械硬盘&#34;&gt;机械硬盘&lt;/h2&gt;
 &lt;p&gt;存储技术分为 PMR(CMR) 与 SMR，参考如下：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://kb.synology.cn/zh-cn/DSM/tutorial/PMR_SMR_hard_disk_drives&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -1819,7 +1819,7 @@
     &gt;https://zhuanlan.zhihu.com/p/353963603&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;尺寸分为3.5英寸与2.5英寸。数字虽相差不大，实际体积却相去甚远。&lt;/p&gt;
-&lt;h3 id=&#34;个人方案&#34;&gt;个人方案&lt;/h3&gt;
+&lt;h2 id=&#34;个人方案&#34;&gt;个人方案&lt;/h2&gt;
 &lt;p&gt;我的方案是：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;单个插到主板M.2口的NVMe 1TB SSD做系统盘，单独分区为C盘。读速在2.8GB/s左右。&lt;/li&gt;
@@ -1827,7 +1827,7 @@
 &lt;li&gt;一个PMR 1TB 2.5寸 SATA HDD做热数据、FTP、BT数据存储。读速在150MB/s左右。&lt;/li&gt;
 &lt;li&gt;一个MLC USB SCSI 128GB固态U盘做移动数据存储。读速在450MB/s左右。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;主板&#34;&gt;主板&lt;/h2&gt;
+&lt;h1 id=&#34;主板&#34;&gt;主板&lt;/h1&gt;
 &lt;p&gt;先来了解下PCIe。知乎老狼的文章都写的很好哇，推荐他的UEFI与BIOS探秘。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;深入PCI与PCIe之一：硬件篇：&lt;a class=&#34;link&#34; href=&#34;https://zhuanlan.zhihu.com/p/26172972&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -1837,7 +1837,7 @@
 &lt;li&gt;PCIe中断机制(1):演变历史：&lt;a class=&#34;link&#34; href=&#34;https://zhuanlan.zhihu.com/p/399239928&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://zhuanlan.zhihu.com/p/399239928&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;大小分类&#34;&gt;大小分类&lt;/h3&gt;
+&lt;h2 id=&#34;大小分类&#34;&gt;大小分类&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;大板：ATX、Mini ATX、XL-ATX、非标准E-ATX&lt;/li&gt;
 &lt;li&gt;小板：MATX、μATX、FlexATX&lt;/li&gt;
@@ -1857,8 +1857,8 @@
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://zhuanlan.zhihu.com/p/53379889&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://zhuanlan.zhihu.com/p/53379889&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;内存&#34;&gt;内存&lt;/h2&gt;
-&lt;h3 id=&#34;硬件形态&#34;&gt;硬件形态&lt;/h3&gt;
+&lt;h1 id=&#34;内存&#34;&gt;内存&lt;/h1&gt;
+&lt;h2 id=&#34;硬件形态&#34;&gt;硬件形态&lt;/h2&gt;
 &lt;p&gt;在80286时代，内存颗粒（Chip）是直接插在主板上的，叫做DIP(Dual In-line Package)。到了80386时代，换成1片焊有内存颗粒的电路板，叫做SIMM（Single-Inline Memory Module）。由阵脚形态变化成电路板带来了很多好处：模块化，安装便利等等，由此DIY市场才有可能产生。当时SIMM的位宽是32bit，即一个周期读取4个字节，到了奔腾时，位宽变为64bit，即8个字节，于是SIMM就顺势变为DIMM（Double-Inline Memory Module）。这种形态一直延续至今，也是内存条的基本形态。现在DIMM分为很多种：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;RDIMM&lt;/strong&gt;: 全称（Registered DIMM），寄存型模组，主要用在服务器上，为了增加内存的容量和稳定性分有ECC和无ECC两种，但市场上几乎都是ECC的。&lt;/li&gt;
@@ -1876,7 +1876,7 @@
 	
 	
 &gt;&lt;/p&gt;
-&lt;h3 id=&#34;ddr&#34;&gt;DDR&lt;/h3&gt;
+&lt;h2 id=&#34;ddr&#34;&gt;DDR&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;DDR SDRAM&lt;/strong&gt;: Double Data Rate Synchronous Dynamic Random Access Memory&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://s2.loli.net/2022/06/17/bWU14gfY3HwxLKV.png&#34;
 	
@@ -1895,7 +1895,7 @@
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/DDR_SDRAM&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://en.wikipedia.org/wiki/DDR_SDRAM&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;显示器&#34;&gt;显示器&lt;/h2&gt;
+&lt;h1 id=&#34;显示器&#34;&gt;显示器&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;亮度：越高越好，300 cd/m² 中等，400 cd/m² 不错， 500 cd/m² 优秀&lt;/li&gt;
 &lt;li&gt;对比度：越高越好，700~900:1 及格，900~ 1100 中等，1100~1300不错，1500 以上很好。&lt;/li&gt;
@@ -1907,7 +1907,7 @@
 &lt;/ul&gt;
 &lt;p&gt;reference：&lt;a class=&#34;link&#34; href=&#34;https://www.zhihu.com/question/35668312&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.zhihu.com/question/35668312&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;机箱&#34;&gt;机箱&lt;/h2&gt;
+&lt;h1 id=&#34;机箱&#34;&gt;机箱&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;MINI机箱
 &lt;ul&gt;
@@ -1934,11 +1934,11 @@
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://zhuanlan.zhihu.com/p/373132410&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://zhuanlan.zhihu.com/p/373132410&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;电源&#34;&gt;电源&lt;/h2&gt;
+&lt;h1 id=&#34;电源&#34;&gt;电源&lt;/h1&gt;
 &lt;p&gt;主要参数为最大供电功率，计算得到机箱中所有部件满载功率需小于电源最大功率。主要耗电大户为显卡与CPU，计算得大致总功率值即可。&lt;/p&gt;
-&lt;h2 id=&#34;散热&#34;&gt;散热&lt;/h2&gt;
+&lt;h1 id=&#34;散热&#34;&gt;散热&lt;/h1&gt;
 &lt;p&gt;水冷 VS 风冷，老生常谈。但我的这套配置实在凉意十足，廉价风冷完全足矣。在如下风冷配置下构建一个并不算很畅通的直角风道，日常负载下静音模式CPU稳定50°C左右，风扇散热模式下能来到30°C。但散热不仅仅是散热器的责任，通风良好的机箱外加恰当的风道设计同样不容忽视。所以挑选机箱和风扇时，也要注意最后不能组成了一台闷罐。&lt;/p&gt;
-&lt;h2 id=&#34;终局&#34;&gt;终局&lt;/h2&gt;
+&lt;h1 id=&#34;终局&#34;&gt;终局&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;总价
 &lt;ul&gt;
@@ -2078,7 +2078,7 @@
         <pubDate>Thu, 16 Jun 2022 10:11:14 +0800</pubDate>
         
         <guid>https://cerr.cc/post/%E5%AF%B9u-boot-cve-2022-30790%E7%9A%84%E8%B7%9F%E8%B8%AA/</guid>
-        <description>&lt;img src="https://s2.loli.net/2022/06/16/R9KWInUb6Cdyhl2.jpg" alt="Featured image of post 对U-Boot CVE-2022-30790的跟踪" /&gt;&lt;h2 id=&#34;u-boot速览&#34;&gt;U-Boot速览&lt;/h2&gt;
+        <description>&lt;img src="https://s2.loli.net/2022/06/16/R9KWInUb6Cdyhl2.jpg" alt="Featured image of post 对U-Boot CVE-2022-30790的跟踪" /&gt;&lt;h1 id=&#34;u-boot速览&#34;&gt;U-Boot速览&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/Das_U-Boot&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Das U-Boot - Wikipedia&lt;/a&gt;&lt;/li&gt;
@@ -2087,7 +2087,7 @@
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://elixir.bootlin.com/u-boot/latest/source&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;U-Boot源码在线浏览&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;村中传言&#34;&gt;村中传言&lt;/h2&gt;
+&lt;h1 id=&#34;村中传言&#34;&gt;村中传言&lt;/h1&gt;
 &lt;p&gt;&lt;strong&gt;&lt;a class=&#34;link&#34; href=&#34;https://research.nccgroup.com/2022/06/03/technical-advisory-multiple-vulnerabilities-in-u-boot-cve-2022-30790-cve-2022-30552/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://research.nccgroup.com/2022/06/03/technical-advisory-multiple-vulnerabilities-in-u-boot-cve-2022-30790-cve-2022-30552/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;🤔Hmmm&amp;hellip;新鲜漏洞，没有PoC。这次是出了两个漏洞，分别是：&lt;/p&gt;
@@ -2102,14 +2102,14 @@
 &lt;p&gt;&lt;strong&gt;May 18th 2022:&lt;/strong&gt; Initial e-mail from NCC to U-boot maintainers announcing two vulnerabilities were identified.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;那么用U-Boot v2022.04跟踪漏洞应该是没有问题的。&lt;/p&gt;
-&lt;h2 id=&#34;漏洞源码分析&#34;&gt;漏洞源码分析&lt;/h2&gt;
-&lt;h3 id=&#34;cve-2022-30790&#34;&gt;CVE-2022-30790&lt;/h3&gt;
+&lt;h1 id=&#34;漏洞源码分析&#34;&gt;漏洞源码分析&lt;/h1&gt;
+&lt;h2 id=&#34;cve-2022-30790&#34;&gt;CVE-2022-30790&lt;/h2&gt;
 &lt;p&gt;漏洞影响：&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;The U-Boot implementation of &lt;a class=&#34;link&#34; href=&#34;https://datatracker.ietf.org/doc/html/rfc815&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;RFC815&lt;/a&gt; IP DATAGRAM REASSEMBLY ALGORITHMS is susceptible to a Hole Descriptor overwrite attack which ultimately leads to an arbitrary write primitive.&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h4 id=&#34;rfc815&#34;&gt;RFC815&lt;/h4&gt;
+&lt;h3 id=&#34;rfc815&#34;&gt;RFC815&lt;/h3&gt;
 &lt;p&gt;看来需要先了解下RFC815的IPv4分片算法：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;原文档：&lt;a class=&#34;link&#34; href=&#34;https://datatracker.ietf.org/doc/html/rfc815&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -2267,7 +2267,7 @@
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;但内容有些不同：U-Boot的实现并不包含&lt;code&gt;hole.first&lt;/code&gt;域，因为 first_byte is address of this structure.&lt;/p&gt;
 &lt;p&gt;由此看来，这里的内存管理方式类似于Glibc堆内存管理方案。用双向链表管理了空闲区域（hole、free chunk），且在空闲区域内部记录自己的相关信息，最小大小为自身控制域（8-Bytes struct hole、free chunk header），并组成双向链表用于高效检索。但一个区别是，hole之间组成的链表，是借由字节索引而非指针实现的。&lt;/p&gt;
-&lt;h4 id=&#34;开始分析&#34;&gt;开始分析&lt;/h4&gt;
+&lt;h3 id=&#34;开始分析&#34;&gt;开始分析&lt;/h3&gt;
 &lt;p&gt;漏洞位置：&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;In &lt;code&gt;u-boot/net/net.c&lt;/code&gt; the &lt;code&gt;__net_defragment&lt;/code&gt; function line 900 through 1018.&lt;/p&gt;
@@ -2530,7 +2530,7 @@
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;所以实际上是一个：盲目信任用户传入的IP数据报中的&lt;code&gt;ip_len&lt;/code&gt;字段，造成hole结构被劫持，而导致的数组越界写漏洞。&lt;/p&gt;
 &lt;p&gt;由此达成的任意地址写可以用于root本地设备。但由于路由器往往会对经过自己的数据包合法性做校验并丢弃非法数据报，导致此漏洞难以于互联网上利用。&lt;/p&gt;
-&lt;h3 id=&#34;cve-2022-30552&#34;&gt;CVE-2022-30552&lt;/h3&gt;
+&lt;h2 id=&#34;cve-2022-30552&#34;&gt;CVE-2022-30552&lt;/h2&gt;
 &lt;p&gt;漏洞出现位置和上个漏洞相同&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -2777,7 +2777,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;同样是因为盲信攻击者的IP数据报而未做校验，造成的整数溢出与栈溢出漏洞。&lt;/p&gt;
-&lt;h2 id=&#34;漏洞影响&#34;&gt;漏洞影响&lt;/h2&gt;
+&lt;h1 id=&#34;漏洞影响&#34;&gt;漏洞影响&lt;/h1&gt;
 &lt;p&gt;由git仓库查看：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -2827,7 +2827,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;所以这两个漏洞影响了2009/8/7～2022/5/26间开启了&lt;code&gt;CONFIG_IP_DEFRAG&lt;/code&gt;编译选项的U-Boot。&lt;/p&gt;
-&lt;h2 id=&#34;漏洞修复&#34;&gt;漏洞修复&lt;/h2&gt;
+&lt;h1 id=&#34;漏洞修复&#34;&gt;漏洞修复&lt;/h1&gt;
 &lt;p&gt;查看修复的patch：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -2908,23 +2908,23 @@
         <pubDate>Mon, 13 Jun 2022 17:41:00 +0800</pubDate>
         
         <guid>https://cerr.cc/post/zkv%E7%9A%84linux-kernel%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/</guid>
-        <description>&lt;img src="https://s2.loli.net/2022/06/13/9o2jpBPbfcLRMFT.jpg" alt="Featured image of post ZKV的Linux Kernel学习之路" /&gt;&lt;h2 id=&#34;学习资料&#34;&gt;学习资料&lt;/h2&gt;
-&lt;h3 id=&#34;教程&#34;&gt;教程&lt;/h3&gt;
+        <description>&lt;img src="https://s2.loli.net/2022/06/13/9o2jpBPbfcLRMFT.jpg" alt="Featured image of post ZKV的Linux Kernel学习之路" /&gt;&lt;h1 id=&#34;学习资料&#34;&gt;学习资料&lt;/h1&gt;
+&lt;h2 id=&#34;教程&#34;&gt;教程&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://0xax.gitbooks.io/linux-insides/content/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Linux Inside&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;实验&#34;&gt;实验&lt;/h3&gt;
+&lt;h2 id=&#34;实验&#34;&gt;实验&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://linux-kernel-labs.github.io/refs/heads/master/labs/infrastructure.html#&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Linux Kernel Lab&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;其他人汇总的资源&#34;&gt;其他人汇总的资源&lt;/h3&gt;
+&lt;h2 id=&#34;其他人汇总的资源&#34;&gt;其他人汇总的资源&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/Martins3/Martins3.github.io/blob/master/os/os-route.md&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Martins3大佬的收集&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;获取&#34;&gt;获取&lt;/h2&gt;
+&lt;h1 id=&#34;内核获取&#34;&gt;内核获取&lt;/h1&gt;
 &lt;p&gt;官方网站：&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.kernel.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.kernel.org/&lt;/a&gt;&lt;/p&gt;
@@ -2941,7 +2941,7 @@
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://gitee.com/mirrors/linux_old1&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://gitee.com/mirrors/linux_old1&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;落后主仓库一天，用来加速clone的选择之一。&lt;/p&gt;
-&lt;h2 id=&#34;内核文档&#34;&gt;内核文档&lt;/h2&gt;
+&lt;h1 id=&#34;内核文档&#34;&gt;内核文档&lt;/h1&gt;
 &lt;p&gt;文档资源总览：&lt;a class=&#34;link&#34; href=&#34;https://www.kernel.org/doc/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.kernel.org/doc/&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Latest kernel的HTML文档页：&lt;a class=&#34;link&#34; href=&#34;https://www.kernel.org/doc/html/latest&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -3064,7 +3064,7 @@
 &lt;p&gt;嗯，功能十分完善，就决定是你了。&lt;/p&gt;
 &lt;p&gt;不过HTML doc也是给了Kernel Core API Documentation的：&lt;a class=&#34;link&#34; href=&#34;https://www.kernel.org/doc/html/latest/core-api/index.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.kernel.org/doc/html/latest/core-api/index.html&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;内核构建系统&#34;&gt;内核构建系统&lt;/h2&gt;
+&lt;h1 id=&#34;内核构建系统&#34;&gt;内核构建系统&lt;/h1&gt;
 &lt;p&gt;第一次向内核源码输入的&lt;code&gt;make&lt;/code&gt;命令最好是&lt;code&gt;make help&lt;/code&gt;，其输出也可以于此查阅：&lt;a class=&#34;link&#34; href=&#34;https://www.kernel.org/doc/makehelp.txt&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.kernel.org/doc/makehelp.txt&lt;/a&gt;&lt;/p&gt;
 </description>
@@ -3075,7 +3075,7 @@
         <pubDate>Thu, 09 Jun 2022 17:44:21 +0800</pubDate>
         
         <guid>https://cerr.cc/post/cve-2015-5165-qemu%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/</guid>
-        <description>&lt;img src="https://s2.loli.net/2022/06/09/jupCyBcahdQEJmP.jpg" alt="Featured image of post CVE-2015-5165 QEMU信息泄露漏洞分析" /&gt;&lt;h2 id=&#34;waiting&#34;&gt;waiting&lt;/h2&gt;
+        <description>&lt;img src="https://s2.loli.net/2022/06/09/jupCyBcahdQEJmP.jpg" alt="Featured image of post CVE-2015-5165 QEMU信息泄露漏洞分析" /&gt;&lt;h1 id=&#34;waiting&#34;&gt;waiting&lt;/h1&gt;
 </description>
         </item>
         <item>
@@ -3088,10 +3088,10 @@
     &gt;reduced instruction set computer&lt;/a&gt; (RISC) &lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/Instruction_set_architecture&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;instruction set architectures&lt;/a&gt; for &lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/Central_processing_unit&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;computer processors&lt;/a&gt;, configured for various environments.&lt;/p&gt;
-&lt;h2 id=&#34;aarch32&#34;&gt;AArch32&lt;/h2&gt;
+&lt;h1 id=&#34;aarch32&#34;&gt;AArch32&lt;/h1&gt;
 &lt;p&gt;&lt;strong&gt;armel&lt;/strong&gt; : arm eabi little-endian, use soft float&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;armhf&lt;/strong&gt; : arm hard float, arm with &lt;strong&gt;FPU&lt;/strong&gt;&lt;/p&gt;
-&lt;h2 id=&#34;from-aarch32-to-aarch64&#34;&gt;From AArch32 to AArch64&lt;/h2&gt;
+&lt;h1 id=&#34;from-aarch32-to-aarch64&#34;&gt;From AArch32 to AArch64&lt;/h1&gt;
 &lt;p&gt;Transitioning rom ARMv7 to ARMv8, all the basics you must know:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://events.static.linuxfound.org/sites/events/files/slides/KoreaLinuxForum-2014.pdf&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -3104,12 +3104,12 @@
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/torvalds/linux/blob/v4.17/arch/arm64/Kconfig#L1274&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/torvalds/linux/blob/v4.17/arch/arm64/Kconfig#L1274&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;manual&#34;&gt;Manual&lt;/h2&gt;
+&lt;h1 id=&#34;manual&#34;&gt;Manual&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://developer.arm.com/documentation/dui0068/b/ARM-Instruction-Reference&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://developer.arm.com/documentation/dui0068/b/ARM-Instruction-Reference&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
+&lt;h1 id=&#34;reference&#34;&gt;Reference&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/ARM_architecture_family&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://en.wikipedia.org/wiki/ARM_architecture_family&lt;/a&gt;&lt;/li&gt;
@@ -3124,7 +3124,7 @@
         <pubDate>Thu, 26 May 2022 15:51:22 +0800</pubDate>
         
         <guid>https://cerr.cc/post/%E8%AE%B0%E4%B8%80%E6%AC%A1qemu-system-arm%E4%BB%BF%E7%9C%9F%E7%9A%84%E6%8E%92%E9%94%99/</guid>
-        <description>&lt;img src="https://s2.loli.net/2022/05/26/RS1JrGW2t4vzD3M.jpg" alt="Featured image of post 记一次qemu-system-arm仿真的排错" /&gt;&lt;h2 id=&#34;探案&#34;&gt;🕵️探案&lt;/h2&gt;
+        <description>&lt;img src="https://s2.loli.net/2022/05/26/RS1JrGW2t4vzD3M.jpg" alt="Featured image of post 记一次qemu-system-arm仿真的排错" /&gt;&lt;h1 id=&#34;探案&#34;&gt;🕵️探案&lt;/h1&gt;
 &lt;p&gt;在一次尝试使用&lt;code&gt;qemu-system-arm&lt;/code&gt;对于asuswrt的固件进行仿真运行时，出现了十分诡异的问题：整个qemu-system、linux内核、固件文件系统运行完全正常，除了在使用到&lt;code&gt;openssl&lt;/code&gt;时：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -3643,7 +3643,7 @@
 &lt;/blockquote&gt;
 &lt;p&gt;由此破案了：华硕为这台路由器用了较新的A53 64位CPU和64位内核，内部软件却都是较旧的&lt;code&gt;Armv7&lt;/code&gt;指令集下的32位软件。整台机器相当于是跑在一个“向下兼容模式”。&lt;/p&gt;
 &lt;p&gt;——直到他们修复OpenSSL CVE-2022-0778时，固件中才首次出现了&lt;code&gt;Armv8&lt;/code&gt;的软件OpenSSL。（当然配套依赖也引入了，如&lt;code&gt;ld-linux-aarch64.so.1&lt;/code&gt;）&lt;/p&gt;
-&lt;h2 id=&#34;收网&#34;&gt;👮收网&lt;/h2&gt;
+&lt;h1 id=&#34;收网&#34;&gt;👮收网&lt;/h1&gt;
 &lt;p&gt;qemu难道就不包含&lt;code&gt;Armv8&lt;/code&gt;了吗？&lt;/p&gt;
 &lt;p&gt;使用&lt;code&gt;qemu-user&lt;/code&gt;试试：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -3892,8 +3892,8 @@
         <pubDate>Tue, 24 May 2022 17:43:25 +0800</pubDate>
         
         <guid>https://cerr.cc/post/cve-2016-5195-linux-dirtycow%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/</guid>
-        <description>&lt;img src="https://s2.loli.net/2022/05/24/JFAS5mGpYn9utWi.jpg" alt="Featured image of post CVE-2016-5195 Linux DirtyCOW漏洞分析" /&gt;&lt;h2 id=&#34;背景知识&#34;&gt;背景知识&lt;/h2&gt;
-&lt;h3 id=&#34;dirtycow&#34;&gt;DirtyCOW&lt;/h3&gt;
+        <description>&lt;img src="https://s2.loli.net/2022/05/24/JFAS5mGpYn9utWi.jpg" alt="Featured image of post CVE-2016-5195 Linux DirtyCOW漏洞分析" /&gt;&lt;h1 id=&#34;背景知识&#34;&gt;背景知识&lt;/h1&gt;
+&lt;h2 id=&#34;dirtycow&#34;&gt;DirtyCOW&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://dirtycow.ninja/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://dirtycow.ninja/&lt;/a&gt;&lt;/li&gt;
@@ -3902,36 +3902,36 @@
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/dirtycow/dirtycow.github.io/wiki/VulnerabilityDetails&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/dirtycow/dirtycow.github.io/wiki/VulnerabilityDetails&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;copy-on-write&#34;&gt;Copy on Write&lt;/h3&gt;
+&lt;h2 id=&#34;copy-on-write&#34;&gt;Copy on Write&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.cnblogs.com/biyeymyhjob/archive/2012/07/20/2601655.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.cnblogs.com/biyeymyhjob/archive/2012/07/20/2601655.html&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/puliao4167/article/details/87894191&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://blog.csdn.net/puliao4167/article/details/87894191&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;page-cache&#34;&gt;Page Cache&lt;/h3&gt;
+&lt;h2 id=&#34;page-cache&#34;&gt;Page Cache&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/Page_cache&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://en.wikipedia.org/wiki/Page_cache&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;mmap&#34;&gt;mmap&lt;/h3&gt;
+&lt;h2 id=&#34;mmap&#34;&gt;mmap&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.cnblogs.com/huxiao-tee/p/4660352.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.cnblogs.com/huxiao-tee/p/4660352.html&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;内核文件系统&#34;&gt;内核文件系统&lt;/h3&gt;
+&lt;h2 id=&#34;内核文件系统&#34;&gt;内核文件系统&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.cnblogs.com/huxiao-tee/p/4657851.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.cnblogs.com/huxiao-tee/p/4657851.html&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;条件竞争&#34;&gt;条件竞争&lt;/h3&gt;
+&lt;h2 id=&#34;条件竞争&#34;&gt;条件竞争&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://ctf-wiki.github.io/ctf-wiki/pwn/linux/race-condition/introduction-zh/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://ctf-wiki.github.io/ctf-wiki/pwn/linux/race-condition/introduction-zh/&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;环境准备&#34;&gt;环境准备&lt;/h2&gt;
-&lt;h3 id=&#34;linux-kernel&#34;&gt;Linux Kernel&lt;/h3&gt;
-&lt;h4 id=&#34;直接下载&#34;&gt;直接下载&lt;/h4&gt;
+&lt;h1 id=&#34;环境准备&#34;&gt;环境准备&lt;/h1&gt;
+&lt;h2 id=&#34;linux-kernel&#34;&gt;Linux Kernel&lt;/h2&gt;
+&lt;h3 id=&#34;直接下载&#34;&gt;直接下载&lt;/h3&gt;
 &lt;p&gt;选取一个有漏洞的版本4.4.0，下载ubuntu对应的deb包。解压得到&lt;code&gt;./boot/vmlinuz-4.4.0-31-generic&lt;/code&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -3946,7 +3946,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;缺点是由此得到的bootable kernel中不包含调试信息。&lt;/p&gt;
-&lt;h4 id=&#34;自行编译&#34;&gt;自行编译&lt;/h4&gt;
+&lt;h3 id=&#34;自行编译&#34;&gt;自行编译&lt;/h3&gt;
 &lt;p&gt;获取Linux Kernel源码仓库并切换到一个有漏洞的版本4.4：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -4017,7 +4017,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;即得到bootable kernel。&lt;/p&gt;
-&lt;h3 id=&#34;poc&#34;&gt;PoC&lt;/h3&gt;
+&lt;h2 id=&#34;poc&#34;&gt;PoC&lt;/h2&gt;
 &lt;p&gt;从&lt;a class=&#34;link&#34; href=&#34;https://github.com/dirtycow/dirtycow.github.io/wiki/PoCs&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/dirtycow/dirtycow.github.io/wiki/PoCs&lt;/a&gt;选取dirtyc0w.c：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -4227,7 +4227,7 @@
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;gcc -static -pthread dirtyc0w.c -o dirtyc0w
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;rootfs&#34;&gt;rootfs&lt;/h3&gt;
+&lt;/div&gt;&lt;h2 id=&#34;rootfs&#34;&gt;rootfs&lt;/h2&gt;
 &lt;p&gt;这里采用busybox手动构建。克隆busybox源码仓库，进行menuconfig配置：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -4320,7 +4320,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;rootfs即准备完毕。&lt;/p&gt;
-&lt;h2 id=&#34;漏洞复现&#34;&gt;漏洞复现&lt;/h2&gt;
+&lt;h1 id=&#34;漏洞复现&#34;&gt;漏洞复现&lt;/h1&gt;
 &lt;p&gt;上一步已经得到了：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;带调试信息的Linux Kernel：bzImage&lt;/li&gt;
@@ -4385,7 +4385,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;至此漏洞成功复现！🥳&lt;/p&gt;
-&lt;h2 id=&#34;漏洞分析&#34;&gt;漏洞分析&lt;/h2&gt;
+&lt;h1 id=&#34;漏洞分析&#34;&gt;漏洞分析&lt;/h1&gt;
 &lt;p&gt;Waiting&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://xz.aliyun.com/t/7561&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://xz.aliyun.com/t/7561&lt;/a&gt;&lt;/p&gt;
@@ -4397,7 +4397,7 @@
         <pubDate>Mon, 23 May 2022 23:21:12 +0800</pubDate>
         
         <guid>https://cerr.cc/post/%E5%85%B3%E4%BA%8Elinux%E4%B8%8B%E7%9A%84%E7%BD%91%E5%8D%A1%E4%B8%8E%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87/</guid>
-        <description>&lt;img src="https://s2.loli.net/2022/05/23/nEj1icSvZsA479q.jpg" alt="Featured image of post 关于Linux下的网卡与网络设备" /&gt;&lt;h2 id=&#34;ip与ifconfig命令输出&#34;&gt;ip与ifconfig命令输出&lt;/h2&gt;
+        <description>&lt;img src="https://s2.loli.net/2022/05/23/nEj1icSvZsA479q.jpg" alt="Featured image of post 关于Linux下的网卡与网络设备" /&gt;&lt;h1 id=&#34;ip与ifconfig命令输出&#34;&gt;ip与ifconfig命令输出&lt;/h1&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -4438,7 +4438,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        TX errors &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;  dropped &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt; overruns &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;  carrier &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;  collisions &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;网卡的工作模式&#34;&gt;网卡的工作模式&lt;/h2&gt;
+&lt;/div&gt;&lt;h1 id=&#34;网卡的工作模式&#34;&gt;网卡的工作模式&lt;/h1&gt;
 &lt;ol&gt;
 &lt;li&gt;广播模式（Broad Cast Model）：它的物理地址（MAC）地址是 0xffffff 的帧为广播帧，工作在广播模式的网卡接收广播帧；&lt;/li&gt;
 &lt;li&gt;多播传送（MultiCast Model）：多播传送地址作为目的物理地址的帧可以被组内的其它主机同时接收，而组外主机却接收不到。但是，如果将网卡设置为多播传送模式，它可以接收所有的多播传送帧，而不论它是不是组内成员；&lt;/li&gt;
@@ -4446,7 +4446,7 @@
 &lt;li&gt;混杂模式（Promiscuous Model）：工作在混杂模式下的网卡接收所有的流过网卡的帧，信包捕获程序就是在这种模式下运行的。&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;网卡的缺省工作模式包含广播模式和直接模式，即它只接收广播帧和发给自己的帧。如果采用混杂模式，一个站点的网卡将接受同一网络内所有站点所发送的数据包这样就可以到达对于网络信息监视捕获的目的。&lt;/p&gt;
-&lt;h2 id=&#34;linux下的虚拟网络设备&#34;&gt;Linux下的虚拟网络设备&lt;/h2&gt;
+&lt;h1 id=&#34;linux下的虚拟网络设备&#34;&gt;Linux下的虚拟网络设备&lt;/h1&gt;
 &lt;p&gt;通过&lt;code&gt;ip link add&lt;/code&gt;可以创建多种类型的虚拟网络设备，在&lt;code&gt;man ip link&lt;/code&gt;中可以得知有以下类型的device:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;bridge - Ethernet Bridge device&lt;/li&gt;
@@ -4485,7 +4485,7 @@
 &lt;li&gt;rmnet - Qualcomm rmnet device&lt;/li&gt;
 &lt;li&gt;xfrm - Virtual xfrm interface&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;tuntap&#34;&gt;TUN/TAP&lt;/h2&gt;
+&lt;h1 id=&#34;tuntap&#34;&gt;TUN/TAP&lt;/h1&gt;
 &lt;p&gt;TUN是Linux系统里的虚拟网络设备，它的原理和使用在&lt;a class=&#34;link&#34; href=&#34;https://www.kernel.org/doc/Documentation/networking/tuntap.txt&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Kernel Doc&lt;/a&gt;和&lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/TUN/TAP&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Wiki&lt;/a&gt;做了比较清楚的说明。&lt;/p&gt;
@@ -4520,7 +4520,7 @@
 &lt;li&gt;TAP虚拟的是一个二层设备，具有MAC地址，接收、发送的是二层包。&lt;/li&gt;
 &lt;li&gt;TUN虚拟的是一个三层设备，没有MAC地址，接收、发送的是三层包。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;最小的虚拟网卡&#34;&gt;最小的虚拟网卡&lt;/h2&gt;
+&lt;h1 id=&#34;最小的虚拟网卡&#34;&gt;最小的虚拟网卡&lt;/h1&gt;
 &lt;p&gt;参见：&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://zhou-yuxin.github.io/articles/2017/%E7%AC%AC%E4%B8%80%E4%B8%AALinux%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87%E9%A9%B1%E5%8A%A8%E2%80%94%E2%80%94%E6%9C%80%E7%AE%80%E8%99%9A%E6%8B%9F%E7%BD%91%E5%8D%A1virnet/index.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://zhou-yuxin.github.io/articles/2017/%E7%AC%AC%E4%B8%80%E4%B8%AALinux%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87%E9%A9%B1%E5%8A%A8%E2%80%94%E2%80%94%E6%9C%80%E7%AE%80%E8%99%9A%E6%8B%9F%E7%BD%91%E5%8D%A1virnet/index.html&lt;/a&gt;&lt;/p&gt;
@@ -4539,8 +4539,8 @@
 &lt;p&gt;影响范围：OpenSSL1.0.1、OpenSSL 1.0.1a~ OpenSSL 1.0.1f、OpenSSL 1.0.2-beta&lt;/p&gt;
 &lt;p&gt;漏洞描述：OpenSSL 在实现 TLS（传输层安全协议）和 DTLS（数据报安全传输协议）的心跳包处理逻辑时存在问题。OpenSSL 的 Heartbleed 模块在处理心跳包时没有检查心跳包中的长度字段是否与后续的数据字段一致，攻击者利用该漏洞构造异常数据包，可获取服务器内存中多达 64KB 的数据。这些数据可能会包含证书私钥、用户账号、密码、邮件内容等敏感信息。&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h2 id=&#34;背景知识&#34;&gt;背景知识&lt;/h2&gt;
-&lt;h3 id=&#34;简介&#34;&gt;简介&lt;/h3&gt;
+&lt;h1 id=&#34;背景知识&#34;&gt;背景知识&lt;/h1&gt;
+&lt;h1 id=&#34;简介&#34;&gt;简介&lt;/h1&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/Transport_Layer_Security&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;传输层安全性协议SSL&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;SSL&lt;/strong&gt; 全称 Secure Sockets Layer（安全套接字层协议），要求建立在可靠的传输层协议（&lt;strong&gt;TCP&lt;/strong&gt;）之上，主要提供机密性、认证性及数据完整性服务。SSL 最初（SSL 1.0、SSL2.0、SSL 3.0 版本）由网景公司设计和维护，从 3.1 版本开始，SSL 协议由因特网工程任务小组（IETF）正式接管，并更名为 &lt;strong&gt;TLS&lt;/strong&gt;（传输层安全协议，Transport Layer Security），发展至今已有 TLS 1.0、TLS1.1、TLS1.2 三个版本。&lt;/p&gt;
@@ -4551,7 +4551,7 @@
 &lt;li&gt;完整性——使用消息认证码（MAC）保障数据完整性，防止消息被篡改；&lt;/li&gt;
 &lt;li&gt;重放保护——通过使用隐式序列号防止重放攻击；&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;ssl握手过程&#34;&gt;SSL握手过程&lt;/h3&gt;
+&lt;h2 id=&#34;ssl握手过程&#34;&gt;SSL握手过程&lt;/h2&gt;
 &lt;p&gt;客户端获取服务器的数字证书后，协商后续数据传输所使用的对称加密密钥。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://s2.loli.net/2022/05/23/v2tSmBZsi1PWHTO.png&#34;
 	
@@ -4563,7 +4563,7 @@
 	
 	
 &gt;&lt;/p&gt;
-&lt;h3 id=&#34;ssl-heartbeat&#34;&gt;SSL Heartbeat&lt;/h3&gt;
+&lt;h2 id=&#34;ssl-heartbeat&#34;&gt;SSL Heartbeat&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Heartbleed was introduced by the Heartbeat Extension in the OpenSSL version 1.0.11 . This extension enables a low-cost, keepalive mechanism for peers to know that they’re still connected and all is well at the TLS layer. Standard implementations of TLS do not require the extension as they can rely on TCP for equivalent session management. Version 1.0.1 of OpenSSL added support for the Heartbeat functionality and enabled it by default.&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -4635,7 +4635,7 @@
 	
 	
 &gt;&lt;/p&gt;
-&lt;h3 id=&#34;openssl&#34;&gt;OpenSSL&lt;/h3&gt;
+&lt;h2 id=&#34;openssl&#34;&gt;OpenSSL&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.openssl.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.openssl.org/&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;查阅文档：&lt;/p&gt;
@@ -4651,8 +4651,8 @@
 &lt;p&gt;The OpenSSL crypto library (&lt;code&gt;libcrypto&lt;/code&gt;) implements a wide range of cryptographic algorithms used in various Internet standards. The services provided by this library are used by the OpenSSL implementations of TLS and CMS, and they have also been used to implement many other third party products and protocols.&lt;/p&gt;
 &lt;p&gt;The functionality includes symmetric encryption, public key cryptography, key agreement, certificate handling, cryptographic hash functions, cryptographic pseudo-random number generators, message authentication codes (MACs), key derivation functions (KDFs), and various utilities.&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h2 id=&#34;漏洞分析&#34;&gt;漏洞分析&lt;/h2&gt;
-&lt;h3 id=&#34;源码获取&#34;&gt;源码获取&lt;/h3&gt;
+&lt;h1 id=&#34;漏洞分析&#34;&gt;漏洞分析&lt;/h1&gt;
+&lt;h2 id=&#34;源码获取&#34;&gt;源码获取&lt;/h2&gt;
 &lt;p&gt;获取含漏洞的源码：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -4667,7 +4667,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;OpenSSL 是 SSL 协议实现的开源软件包，存在漏洞的两个文件为 ssl/d1_both.c 和 ssl/t1_lib.c，这两个文件中的 dtls1_process_heartbeat 函数和 tls1_process_heartbeat 函数分别为 DTLS（数据报安全传输协议）和 TLS（传输层安全协议）处理心跳请求包的函数。两函数的实现完全相同，此处选取 dtls1_process_heartbeat 进行分析。&lt;/p&gt;
-&lt;h3 id=&#34;成因预习&#34;&gt;成因预习&lt;/h3&gt;
+&lt;h2 id=&#34;成因预习&#34;&gt;成因预习&lt;/h2&gt;
 &lt;p&gt;&lt;img src=&#34;https://s2.loli.net/2022/05/23/7bzQV5f1GZLcCgl.jpg&#34;
 	
 	
@@ -4678,7 +4678,7 @@
 	
 	
 &gt;&lt;/p&gt;
-&lt;h3 id=&#34;代码分析&#34;&gt;代码分析&lt;/h3&gt;
+&lt;h2 id=&#34;代码分析&#34;&gt;代码分析&lt;/h2&gt;
 &lt;p&gt;预习完后首先来看看出现漏洞的函数：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -4929,7 +4929,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;漏洞修复&#34;&gt;漏洞修复&lt;/h3&gt;
+&lt;/div&gt;&lt;h2 id=&#34;漏洞修复&#34;&gt;漏洞修复&lt;/h2&gt;
 &lt;p&gt;git 查看漏洞修复前后版本差异：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -5082,7 +5082,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                OPENSSL_free(buffer);
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;fuzzing-挖掘-cve-2014-0160&#34;&gt;Fuzzing 挖掘 CVE-2014-0160&lt;/h2&gt;
+&lt;/div&gt;&lt;h1 id=&#34;fuzzing-挖掘-cve-2014-0160&#34;&gt;Fuzzing 挖掘 CVE-2014-0160&lt;/h1&gt;
 &lt;p&gt;使用Google的&lt;a class=&#34;link&#34; href=&#34;https://github.com/google/fuzzer-test-suite&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;fuzzer-test-suite&lt;/a&gt;来实践，先构建包含漏洞的openssl：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -5356,7 +5356,7 @@
         <description>&lt;img src="https://s2.loli.net/2022/05/19/FeqdKtWJZ3GonMX.png" alt="Featured image of post CVE-2021-3156 sudo 提权漏洞分析" /&gt;&lt;blockquote&gt;
 &lt;p&gt;CVE-2021-3156是sudo中存在一个堆溢出漏洞。影响从1.8.2~1.8.31p2下的所有旧版本sudo，以及1.9.0~1.9.5p1的所有稳定版sudo。可以使得任何没有特权的用户均可使用默认的sudo配置获取root权限&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h2 id=&#34;环境准备&#34;&gt;环境准备&lt;/h2&gt;
+&lt;h1 id=&#34;环境准备&#34;&gt;环境准备&lt;/h1&gt;
 &lt;p&gt;使用apt获取软件源提供的sudo源码：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -5443,7 +5443,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;说明漏洞的确存在。&lt;/p&gt;
-&lt;h2 id=&#34;漏洞成因&#34;&gt;漏洞成因&lt;/h2&gt;
+&lt;h1 id=&#34;漏洞成因&#34;&gt;漏洞成因&lt;/h1&gt;
 &lt;p&gt;sudo.c 中的 main 函数，会调用 parse_args 函数来处理sudo的命令行参数：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -6136,7 +6136,7 @@
         <pubDate>Wed, 11 May 2022 16:27:10 +0800</pubDate>
         
         <guid>https://cerr.cc/post/%E5%8D%8E%E7%A1%95%E6%A2%85%E6%9E%97%E5%9B%BA%E4%BB%B6%E7%9A%84%E7%BC%96%E8%AF%91/</guid>
-        <description>&lt;img src="https://www.asuswrt-merlin.net/sites/default/files/inline-images/main_page_sm_2.png" alt="Featured image of post 华硕梅林固件的编译" /&gt;&lt;h2 id=&#34;获取梅林&#34;&gt;获取梅林&lt;/h2&gt;
+        <description>&lt;img src="https://www.asuswrt-merlin.net/sites/default/files/inline-images/main_page_sm_2.png" alt="Featured image of post 华硕梅林固件的编译" /&gt;&lt;h1 id=&#34;获取梅林&#34;&gt;获取梅林&lt;/h1&gt;
 &lt;p&gt;官网如下：&lt;a class=&#34;link&#34; href=&#34;http://asuswrt-merlin.net&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;asuswrt-merlin.net&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;新梅林：https://github.com/RMerl/asuswrt-merlin.ng&lt;/p&gt;
@@ -6151,7 +6151,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;（下载zip而非clone仓库，节省.git的占用&lt;/p&gt;
-&lt;h2 id=&#34;环境准备&#34;&gt;环境准备&lt;/h2&gt;
+&lt;h1 id=&#34;环境准备&#34;&gt;环境准备&lt;/h1&gt;
 &lt;p&gt;README.txt 给出了编译方式：&lt;a class=&#34;link&#34; href=&#34;https://github.com/RMerl/asuswrt-merlin.ng/blob/master/README.TXT&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/RMerl/asuswrt-merlin.ng/blob/master/README.TXT&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;包依赖非常多，所以尽力将本地环境贴合它的编译说明，以避免未知错误。&lt;/p&gt;
@@ -6166,7 +6166,7 @@
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo docker run -it -v /home/zkv/docker_share/:/share ubuntu:16.04
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;依赖安装&#34;&gt;依赖安装&lt;/h2&gt;
+&lt;/div&gt;&lt;h1 id=&#34;依赖安装&#34;&gt;依赖安装&lt;/h1&gt;
 &lt;p&gt;进入docker ubuntu环境后，下载并解压梅林ng：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -6230,7 +6230,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;PATH=\$PATH:/opt/toolchains/crosstools-aarch64-gcc-5.3-linux-4.1-glibc-2.22-binutils-2.25/usr/bin&amp;#34;&lt;/span&gt; &amp;gt;&amp;gt; ~/.profile
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;开始编译&#34;&gt;开始编译&lt;/h2&gt;
+&lt;/div&gt;&lt;h1 id=&#34;开始编译&#34;&gt;开始编译&lt;/h1&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -6241,7 +6241,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;make rt-ac86u
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;easymod&#34;&gt;Easymod&lt;/h2&gt;
+&lt;/div&gt;&lt;h1 id=&#34;easymod&#34;&gt;Easymod&lt;/h1&gt;
 &lt;p&gt;如上所述手动折腾到一半，发现了有简单模式的自动化方案。README内的信息实在太少，github wiki里有官方的编译构建教程：&lt;/p&gt;
 &lt;p&gt;官方wiki：&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/RMerl/asuswrt-merlin.ng/wiki/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -6264,13 +6264,13 @@
         <pubDate>Wed, 11 May 2022 13:57:01 +0800</pubDate>
         
         <guid>https://cerr.cc/post/zkv%E7%9A%84fuzzing%E6%97%A9%E6%95%99/</guid>
-        <description>&lt;img src="https://lcamtuf.coredump.cx/afl/afl_screen.png" alt="Featured image of post ZKV的Fuzzing早教" /&gt;&lt;h2 id=&#34;x00-早教教程&#34;&gt;\x00 早教教程&lt;/h2&gt;
-&lt;h3 id=&#34;教程&#34;&gt;教程&lt;/h3&gt;
+        <description>&lt;img src="https://lcamtuf.coredump.cx/afl/afl_screen.png" alt="Featured image of post ZKV的Fuzzing早教" /&gt;&lt;h1 id=&#34;x00-早教教程&#34;&gt;\x00 早教教程&lt;/h1&gt;
+&lt;h2 id=&#34;教程&#34;&gt;教程&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/google/fuzzing&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;谷歌的Fuzzing教程&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.fuzzingbook.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Fuzzingbook&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&#34;课程&#34;&gt;课程&lt;/h3&gt;
+&lt;h2 id=&#34;课程&#34;&gt;课程&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://pascal-group.bitbucket.io/teaching.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;南京大学：软件分析&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.bilibili.com/video/BV1b7411K7P4/?spm_id_from=333.788.videocard.1&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -6294,7 +6294,7 @@
     &lt;/iframe&gt;
 &lt;/div&gt;
 
-&lt;h3 id=&#34;博文&#34;&gt;博文&lt;/h3&gt;
+&lt;h2 id=&#34;博文&#34;&gt;博文&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://riusksk.me/2020/01/22/Fuzzing%E6%8A%80%E6%9C%AF%E5%8F%91%E5%B1%95%E7%9A%84%E8%BF%9930%E5%B9%B4/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Fuzzing技术发展的这30年&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://riusksk.me/2019/07/14/%e4%b8%80%e4%ba%9b%e5%80%bc%e5%be%97%e5%ad%a6%e4%b9%a0%e7%9a%84Fuzzer%e5%bc%80%e6%ba%90%e9%a1%b9%e7%9b%ae/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -6303,22 +6303,22 @@
     &gt;Fuzzing战争: 从刀剑弓斧到星球大战&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://blog.flanker017.me/fuzzing%e6%88%98%e4%ba%89%e7%b3%bb%e5%88%97%e4%b9%8b%e4%ba%8c%ef%bc%9a%e4%b8%8d%e7%95%8f%e6%b5%ae%e4%ba%91%e9%81%ae%e6%9c%9b%e7%9c%bc/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Fuzzing战争系列之二：不畏浮云遮望眼&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&#34;练兵场&#34;&gt;练兵场&lt;/h3&gt;
+&lt;h2 id=&#34;练兵场&#34;&gt;练兵场&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/antonio-morales/Fuzzing101&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Fuzzing101&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&#34;兵器&#34;&gt;兵器&lt;/h3&gt;
+&lt;h2 id=&#34;兵器&#34;&gt;兵器&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/google/AFL&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;AFL&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/AFLplusplus/AFLplusplus&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;AFLplusplus&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&#34;论文&#34;&gt;论文&lt;/h3&gt;
-&lt;h4 id=&#34;开山&#34;&gt;开山&lt;/h4&gt;
+&lt;h2 id=&#34;论文&#34;&gt;论文&lt;/h2&gt;
+&lt;h3 id=&#34;开山&#34;&gt;开山&lt;/h3&gt;
 &lt;p&gt;1988年，在威斯康星大学Barton Miller教授的计算机实验课上，首次提出&lt;code&gt;Fuzz生成器&lt;/code&gt;(Fuzz Generator)的概念，用于测试Unix程序的健壮性，即用随机数据来测试程序直至崩溃。因此，Barton Miller教授也被多数人尊称为”模糊测试之父”。&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://pages.cs.wisc.edu/~bart/fuzz/CS736-Projects-f1988.pdf&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;http://pages.cs.wisc.edu/~bart/fuzz/CS736-Projects-f1988.pdf&lt;/a&gt;&lt;/p&gt;
-&lt;h4 id=&#34;代码覆盖引导fuzzing之afl&#34;&gt;代码覆盖引导Fuzzing之AFL&lt;/h4&gt;
-&lt;h2 id=&#34;x01-学步车afl&#34;&gt;\x01 学步车AFL&lt;/h2&gt;
-&lt;h3 id=&#34;最简单的-fuzzing-demo&#34;&gt;最简单的 fuzzing demo&lt;/h3&gt;
+&lt;h3 id=&#34;代码覆盖引导fuzzing之afl&#34;&gt;代码覆盖引导Fuzzing之AFL&lt;/h3&gt;
+&lt;h1 id=&#34;x01-学步车afl&#34;&gt;\x01 学步车AFL&lt;/h1&gt;
+&lt;h2 id=&#34;最简单的-fuzzing-demo&#34;&gt;最简单的 fuzzing demo&lt;/h2&gt;
 &lt;p&gt;使用AFL，故先安装：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -6437,7 +6437,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;可以看到发生了栈溢出。&lt;/p&gt;
-&lt;h3 id=&#34;为学步车装上名为sanitizers的轮子&#34;&gt;为学步车装上名为sanitizers的轮子&lt;/h3&gt;
+&lt;h2 id=&#34;为学步车装上名为sanitizers的轮子&#34;&gt;为学步车装上名为sanitizers的轮子&lt;/h2&gt;
 &lt;p&gt;借助于&lt;a class=&#34;link&#34; href=&#34;https://github.com/google/sanitizers&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;sanitizers&lt;/a&gt;获得更多崩溃的详细信息：&lt;/p&gt;
 &lt;p&gt;开启&lt;a class=&#34;link&#34; href=&#34;https://github.com/google/fuzzing/blob/master/docs/ASan&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -6560,7 +6560,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;由此得到了crash的详细信息输出。&lt;/p&gt;
-&lt;h3 id=&#34;黑盒测试qemu-mode拆走源码の轮儿&#34;&gt;黑盒测试QEMU mode——拆走源码の轮儿&lt;/h3&gt;
+&lt;h2 id=&#34;黑盒测试qemu-mode拆走源码の轮儿&#34;&gt;黑盒测试QEMU mode——拆走源码の轮儿&lt;/h2&gt;
 &lt;p&gt;AFL的QEMU mode不会默认安装，而是需要我们手动安装：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -6597,7 +6597,7 @@
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;afl-fuzz -Q -i fuzz_in -o fuzz_out ./vulner
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;afl并发学步车的四缸引擎&#34;&gt;AFL并发——学步车的四缸引擎&lt;/h3&gt;
+&lt;/div&gt;&lt;h2 id=&#34;afl并发学步车的四缸引擎&#34;&gt;AFL并发——学步车的四缸引擎&lt;/h2&gt;
 &lt;p&gt;通过-M指定master fuzzer进程，-S指定一系列slave fuzzer进程即可。四核机器就：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -6613,8 +6613,8 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;afl-fuzz -i fuzz_in -o fuzz_out -S fuzzer4 ./vulner
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;x02-四轮单车libfuzzer&#34;&gt;\x02 四轮单车libFuzzer&lt;/h2&gt;
-&lt;h3 id=&#34;环境准备&#34;&gt;环境准备&lt;/h3&gt;
+&lt;/div&gt;&lt;h1 id=&#34;x02-四轮单车libfuzzer&#34;&gt;\x02 四轮单车libFuzzer&lt;/h1&gt;
+&lt;h2 id=&#34;环境准备&#34;&gt;环境准备&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;LibFuzzer is an in-process, coverage-guided, evolutionary fuzzing engine.&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -6659,7 +6659,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;看来没问题，继续前进。&lt;/p&gt;
-&lt;h3 id=&#34;火花塞打火demo拆解&#34;&gt;火花塞打火——demo拆解&lt;/h3&gt;
+&lt;h2 id=&#34;火花塞打火demo拆解&#34;&gt;火花塞打火——demo拆解&lt;/h2&gt;
 &lt;p&gt;样例程序如下：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -6952,7 +6952,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;由此便是借助libFuzzer完成的最简单的Fuzzing与找到的漏洞。&lt;/p&gt;
-&lt;h3 id=&#34;下赛道后的复盘fuzzing输出解析&#34;&gt;下赛道后的复盘——fuzzing输出解析&lt;/h3&gt;
+&lt;h2 id=&#34;下赛道后的复盘fuzzing输出解析&#34;&gt;下赛道后的复盘——fuzzing输出解析&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -7018,9 +7018,9 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;Before exiting the process libFuzzer has created a file on disc with the bytes that triggered the crash.&lt;/p&gt;
-&lt;h3 id=&#34;驾校实习cve-2014-0160&#34;&gt;驾校实习——CVE-2014-0160&lt;/h3&gt;
+&lt;h2 id=&#34;驾校实习cve-2014-0160&#34;&gt;驾校实习——CVE-2014-0160&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://cerr.cc/post/cve-2014-0160/&#34; &gt;见CVE-2014-0160分析&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&#34;种子语料库&#34;&gt;种子语料库&lt;/h3&gt;
+&lt;h2 id=&#34;种子语料库&#34;&gt;种子语料库&lt;/h2&gt;
 &lt;p&gt;使用谷歌的教程仓库实验：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -7130,8 +7130,8 @@
         <description>&lt;img src="https://s2.loli.net/2022/05/11/7aWbNEkesXlmYxH.jpg" alt="Featured image of post 一些配环境的Cheasheet" /&gt;&lt;blockquote&gt;
 &lt;p&gt;作为一个系统重装爱好者和硬件收集拾荒人，为了减少在环境配置上浪费的生命，记录常用环境配置命令用以直接复制粘贴&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h2 id=&#34;个人-apt-源-linux-初始环境软件安装&#34;&gt;个人 apt 源 Linux 初始环境软件安装&lt;/h2&gt;
-&lt;h3 id=&#34;基本组件&#34;&gt;基本组件&lt;/h3&gt;
+&lt;h1 id=&#34;个人-apt-源-linux-初始环境软件安装&#34;&gt;个人 apt 源 Linux 初始环境软件安装&lt;/h1&gt;
+&lt;h2 id=&#34;基本组件&#34;&gt;基本组件&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -7146,7 +7146,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;	neofetch zip unzip ncdu htop dosfstools nyancat cmatrix
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;开发与调试组件&#34;&gt;开发与调试组件&lt;/h3&gt;
+&lt;/div&gt;&lt;h2 id=&#34;开发与调试组件&#34;&gt;开发与调试组件&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -7157,7 +7157,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;	python3 ipython3 python-is-python3 python3-pip build-essential ninja-buildw
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;dotfiles-快速就位&#34;&gt;dotfiles 快速就位&lt;/h2&gt;
+&lt;/div&gt;&lt;h1 id=&#34;dotfiles-快速就位&#34;&gt;dotfiles 快速就位&lt;/h1&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -7180,8 +7180,8 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;source&lt;/span&gt; ~/.zshrc
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;neovim-配置&#34;&gt;Neovim 配置&lt;/h2&gt;
-&lt;h3 id=&#34;插件管理器&#34;&gt;插件管理器&lt;/h3&gt;
+&lt;/div&gt;&lt;h1 id=&#34;neovim-配置&#34;&gt;Neovim 配置&lt;/h1&gt;
+&lt;h2 id=&#34;插件管理器&#34;&gt;插件管理器&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -7208,7 +7208,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s&#34;&gt;EOF&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;cocnvim&#34;&gt;Coc.nvim&lt;/h3&gt;
+&lt;/div&gt;&lt;h2 id=&#34;cocnvim&#34;&gt;Coc.nvim&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -7217,7 +7217,7 @@
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;CocInstall coc-marketplace &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; CocInstall coc-clangd &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; CocInstall coc-pyright &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; CocInstall coc-highlight &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; CocInstall coc-cmake
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;docker-安装&#34;&gt;docker 安装&lt;/h2&gt;
+&lt;/div&gt;&lt;h1 id=&#34;docker-安装&#34;&gt;docker 安装&lt;/h1&gt;
 &lt;p&gt;官方安装脚本：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -7236,7 +7236,7 @@
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo docker run -it -v /home/zkv/docker_share/:/share ubuntu:16.04
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;pwn-环境简易就位&#34;&gt;pwn 环境简易就位&lt;/h2&gt;
+&lt;/div&gt;&lt;h1 id=&#34;pwn-环境简易就位&#34;&gt;pwn 环境简易就位&lt;/h1&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -7259,8 +7259,8 @@
         <pubDate>Tue, 10 May 2022 20:59:43 +0800</pubDate>
         
         <guid>https://cerr.cc/post/%E6%9E%84%E5%BB%BA%E4%B8%8E%E8%BF%90%E8%A1%8C%E5%B5%8C%E5%85%A5%E5%BC%8Flinux%E8%99%9A%E6%8B%9F%E6%9C%BA/</guid>
-        <description>&lt;img src="https://s2.loli.net/2022/05/08/2DqjsbwNpdUM4XA.jpg" alt="Featured image of post 构建与运行嵌入式linux虚拟机" /&gt;&lt;h2 id=&#34;自动挡&#34;&gt;自动挡&lt;/h2&gt;
-&lt;h3 id=&#34;一路默认&#34;&gt;一路默认&lt;/h3&gt;
+        <description>&lt;img src="https://s2.loli.net/2022/05/08/2DqjsbwNpdUM4XA.jpg" alt="Featured image of post 构建与运行嵌入式linux虚拟机" /&gt;&lt;h1 id=&#34;自动挡&#34;&gt;自动挡&lt;/h1&gt;
+&lt;h2 id=&#34;一路默认&#34;&gt;一路默认&lt;/h2&gt;
 &lt;p&gt;通过git或http获取buildroot：&lt;/p&gt;
 &lt;p&gt;官网：https://buildroot.org/&lt;/p&gt;
 &lt;p&gt;git：&lt;code&gt;git clone https://git.buildroot.net/buildroot&lt;/code&gt;&lt;/p&gt;
@@ -7404,7 +7404,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;弄完发现过程竟如此简单，buildroot把所有活都干了……&lt;/p&gt;
-&lt;h3 id=&#34;全自动方案中的定制&#34;&gt;全自动方案中的定制&lt;/h3&gt;
+&lt;h2 id=&#34;全自动方案中的定制&#34;&gt;全自动方案中的定制&lt;/h2&gt;
 &lt;p&gt;即使需要定制部分组件，也是能借力buildroot的全自动化方案的。&lt;/p&gt;
 &lt;p&gt;先导入自己需要的全自动方案的默认配置，再使用&lt;code&gt;make menuconfig&lt;/code&gt;对其生成的&lt;code&gt;.config&lt;/code&gt;进行定制：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -7428,7 +7428,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;         Kernel version &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;Custom Git repository&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;记一次旧版本工具链的自动挡构建&#34;&gt;记一次旧版本工具链的自动挡构建&lt;/h3&gt;
+&lt;/div&gt;&lt;h2 id=&#34;记一次旧版本工具链的自动挡构建&#34;&gt;记一次旧版本工具链的自动挡构建&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;这一节实际上由另一篇文章合并而来，故与上下文不衔接，内容独立。&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -7583,14 +7583,11 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;接着进入&lt;code&gt;buildroot/output&lt;/code&gt;取货即可。虽然其中已有4.9.6的内核了，不过我需要的是由此得到的编译工具链，以便编译自行定制的4.9版本内核。（旧版内核需要旧版工具链编译）&lt;/p&gt;
-&lt;h2 id=&#34;手动档&#34;&gt;手动档&lt;/h2&gt;
-&lt;p&gt;另一篇使用qemu-system调试内核的文章中已有部分描述：&lt;/p&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://cerr.cc/post/qemu_dbg_kernel/&#34; &gt;http://cerr.cc/post/qemu_dbg_kernel/&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;不过接下来还是记录下另一次实践。目标设定为aarch64 linux 5.4&lt;/p&gt;
-&lt;h3 id=&#34;编译工具链&#34;&gt;编译工具链&lt;/h3&gt;
+&lt;h1 id=&#34;手动档&#34;&gt;手动档&lt;/h1&gt;
+&lt;h2 id=&#34;编译工具链&#34;&gt;编译工具链&lt;/h2&gt;
 &lt;p&gt;这个好说，方才Easymode里不是刚好做了一个嘛。buildroot构建好了所有target目标，自然也为此生成了完整的host构建工具链。&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;若目标为旧版本内核，则需要旧版本工具链，构建方式在另一篇文章中有记录：&lt;a class=&#34;link&#34; href=&#34;post/qemu_dbg_kernel/&#34; &gt;https://cerr.cc/post/qemu_dbg_kernel/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;若目标为旧版本内核，则需要旧版本工具链，构建方式在另一篇文章中有记录：&lt;a class=&#34;link&#34; href=&#34;post/cross-debug-old-version-kernel-using-qemu-system/&#34; &gt;https://cerr.cc/post/cross-debug-old-version-kernel-using-qemu-system/&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -7740,7 +7737,7 @@
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;若实在没有啥特殊需求， &lt;code&gt;apt install gcc-aarch64-linux-gnu&lt;/code&gt;大部分情况下也能直接解决问题。&lt;/p&gt;
-&lt;h4 id=&#34;osabi的匹配&#34;&gt;OS/ABI的匹配&lt;/h4&gt;
+&lt;h3 id=&#34;osabi的匹配&#34;&gt;OS/ABI的匹配&lt;/h3&gt;
 &lt;p&gt;通常情况下，选取编译交叉编译工具链时，指令集、平台之类的内容是不容易弄错的。但 OS/ABI 却是个容易造成故障的点。&lt;/p&gt;
 &lt;p&gt;举例来讲，在我一次对libnvram.so的编译时，得到的目标ELF文件为：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -7816,8 +7813,8 @@
 &lt;p&gt;导致这一结果的原因是：使用OABI编译工具链编译出的结果为&lt;code&gt;OS/ABI: ARM&lt;/code&gt;，而使用EABI编译工具链编译出的结果为&lt;code&gt;OS/ABI: UNIX - System V&lt;/code&gt;。关于OABI与EABI的区别，参见：&lt;a class=&#34;link&#34; href=&#34;https://docs.embeddedts.com/EABI_vs_OABI&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://docs.embeddedts.com/EABI_vs_OABI&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;故换用标识了eabi的工具链重新编译即解决了该问题。&lt;/p&gt;
-&lt;h3 id=&#34;kernel&#34;&gt;Kernel&lt;/h3&gt;
-&lt;h4 id=&#34;linux源码结构&#34;&gt;Linux源码结构&lt;/h4&gt;
+&lt;h2 id=&#34;kernel&#34;&gt;Kernel&lt;/h2&gt;
+&lt;h3 id=&#34;linux源码结构&#34;&gt;Linux源码结构&lt;/h3&gt;
 &lt;p&gt;手动构建内核前，先了解下内核源码的文件树结构。以2022/6/1的linux源码为例：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -7895,7 +7892,7 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;linux构建系统&#34;&gt;Linux构建系统&lt;/h4&gt;
+&lt;h3 id=&#34;linux构建系统&#34;&gt;Linux构建系统&lt;/h3&gt;
 &lt;p&gt;同时需要先了解下 &lt;code&gt;.config&lt;/code&gt;、&lt;code&gt;defconfig&lt;/code&gt;、&lt;code&gt;Kconfig&lt;/code&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://stackoverflow.com/questions/41885015/what-exactly-does-linux-kernels-make-defconfig-do&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -7942,7 +7939,7 @@
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;make &lt;span class=&#34;nv&#34;&gt;V&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; defconfig
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h4 id=&#34;开始构建&#34;&gt;开始构建&lt;/h4&gt;
+&lt;/div&gt;&lt;h3 id=&#34;开始构建&#34;&gt;开始构建&lt;/h3&gt;
 &lt;p&gt;现来此挑选中意的内核版本：&lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/Linux_kernel_version_history&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://en.wikipedia.org/wiki/Linux_kernel_version_history&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;我这边以5.4版本内核为例继续实验：&lt;/p&gt;
@@ -8051,8 +8048,8 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;./build/vmlinux
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;通过qemu-system运行&#34;&gt;通过qemu-system运行&lt;/h3&gt;
-&lt;h4 id=&#34;网桥的预配置&#34;&gt;网桥的预配置&lt;/h4&gt;
+&lt;/div&gt;&lt;h2 id=&#34;通过qemu-system运行&#34;&gt;通过qemu-system运行&lt;/h2&gt;
+&lt;h3 id=&#34;网桥的预配置&#34;&gt;网桥的预配置&lt;/h3&gt;
 &lt;p&gt;后续host于qemu-system中的guest将通过网桥连接，故先于host中配置网桥。&lt;/p&gt;
 &lt;p&gt;首先准备网桥与tun/tap虚拟网卡：&lt;/p&gt;
 &lt;p&gt;创建网桥br0：&lt;/p&gt;
@@ -8087,7 +8084,7 @@
 &lt;p&gt;当我老了，回顾一生，就会发觉，我三分之一的生命，都浪费在和GFW作斗争上了。&lt;/p&gt;
 &lt;p&gt;呜呼！何等宏伟啊！两千年多前的巨石，砌就秦帝国的坚不可摧；今日那日夜呼啸的服务器集群，彰显共和国非凡的制度自信。😫&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h2 id=&#34;top-level-solution-selection&#34;&gt;Top-level solution selection&lt;/h2&gt;
+&lt;h1 id=&#34;top-level-solution-selection&#34;&gt;Top-level solution selection&lt;/h1&gt;
 &lt;p&gt;In terms of the ways I have tried myself:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Use a VPN application&lt;/li&gt;
@@ -8101,7 +8098,7 @@
 &lt;li&gt;High cost in time or money&lt;/li&gt;
 &lt;li&gt;Stability is a concern&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h2 id=&#34;个人客户端解决方案&#34;&gt;个人客户端解决方案&lt;/h2&gt;
+&lt;h1 id=&#34;个人客户端解决方案&#34;&gt;个人客户端解决方案&lt;/h1&gt;
 &lt;blockquote&gt;
 &lt;p&gt;具体使用方面就大白话讲了&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -8138,7 +8135,7 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;代理层次&#34;&gt;代理层次&lt;/h3&gt;
+&lt;h2 id=&#34;代理层次&#34;&gt;代理层次&lt;/h2&gt;
 &lt;style&gt;img{
     box-shadow: 5px 5px 5px rgba(0,0,0,.5);
     -moz-box-shadow: 5px 5px 5px rgba(0,0,0,.5);
@@ -8159,13 +8156,13 @@
 	
 	
 &gt;&lt;/p&gt;
-&lt;h3 id=&#34;部分网站的镜像&#34;&gt;部分网站的镜像&lt;/h3&gt;
-&lt;h4 id=&#34;google&#34;&gt;Google&lt;/h4&gt;
+&lt;h1 id=&#34;部分网站的镜像&#34;&gt;部分网站的镜像&lt;/h1&gt;
+&lt;h2 id=&#34;google&#34;&gt;Google&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.ahhhhfs.com/4810/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.ahhhhfs.com/4810/&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;github&#34;&gt;Github&lt;/h4&gt;
+&lt;h2 id=&#34;github&#34;&gt;Github&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.ahhhhfs.com/18927/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.ahhhhfs.com/18927/&lt;/a&gt;&lt;/li&gt;
@@ -8174,22 +8171,22 @@
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.ahhhhfs.com/5442/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.ahhhhfs.com/5442/&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;youtube&#34;&gt;Youtube&lt;/h4&gt;
+&lt;h2 id=&#34;youtube&#34;&gt;Youtube&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.ahhhhfs.com/16819/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.ahhhhfs.com/16819/&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;各种应用的代理配置与镜像&#34;&gt;各种应用的代理配置与镜像&lt;/h3&gt;
-&lt;h4 id=&#34;chrome&#34;&gt;chrome&lt;/h4&gt;
+&lt;h1 id=&#34;各种应用的代理配置与镜像&#34;&gt;各种应用的代理配置与镜像&lt;/h1&gt;
+&lt;h2 id=&#34;chrome&#34;&gt;chrome&lt;/h2&gt;
 &lt;p&gt;chrome 默认遵从系统代理。可是使用&lt;strong&gt;Proxy SwitchyOmega&lt;/strong&gt;插件对chrome代理方式进行手动配置：&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://chrome.google.com/webstore/detail/proxy-switchyomega/padekgcemlokbadohgkifijomclgjgif&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://chrome.google.com/webstore/detail/proxy-switchyomega/padekgcemlokbadohgkifijomclgjgif&lt;/a&gt;&lt;/p&gt;
-&lt;h4 id=&#34;linux软件源&#34;&gt;Linux软件源&lt;/h4&gt;
+&lt;h2 id=&#34;linux软件源&#34;&gt;Linux软件源&lt;/h2&gt;
 &lt;p&gt;不同Linux发行版具有不同的包管理器。即使是同一个发行版的不同版本（比如Ubuntu18.04与Ubuntu20.04），其上游软件源也是不同的。&lt;/p&gt;
 &lt;p&gt;使用国内镜像为软件源换源可以大大加速安装软件源上的软件的过程。以tuna维护的清华源为例，我们来到使用帮助页面：&lt;a class=&#34;link&#34; href=&#34;https://mirrors.tuna.tsinghua.edu.cn/help&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://mirrors.tuna.tsinghua.edu.cn/help&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;点击任意你想要使用清华源的服务（Linux软件源自然也涵盖在内），即能看到tuna为你提供的相应使用教程。（对于Linux软件源，需选定正确的系统版本）。&lt;/p&gt;
-&lt;h4 id=&#34;pip&#34;&gt;pip&lt;/h4&gt;
+&lt;h2 id=&#34;pip&#34;&gt;pip&lt;/h2&gt;
 &lt;p&gt;可使用清华源：&lt;a class=&#34;link&#34; href=&#34;https://mirrors.tuna.tsinghua.edu.cn/help/pypi/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://mirrors.tuna.tsinghua.edu.cn/help/pypi/&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;若使用代理方案，在&lt;code&gt;~/.config/pip/pip.conf&lt;/code&gt;，中添加：（将&lt;code&gt;http://127.0.0.1:1080&lt;/code&gt;替换为你本地的http代理地址）&lt;/p&gt;
@@ -8206,7 +8203,7 @@
 &lt;/div&gt;&lt;blockquote&gt;
 &lt;p&gt;不支持socks5协议&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h4 id=&#34;git&#34;&gt;git&lt;/h4&gt;
+&lt;h2 id=&#34;git&#34;&gt;git&lt;/h2&gt;
 &lt;p&gt;（将&lt;code&gt;http://127.0.0.1:1080&lt;/code&gt;替换为你本地的socks5代理地址）&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -8216,7 +8213,7 @@
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git config --global http.proxy socks5://127.0.0.1:1080
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h4 id=&#34;apt&#34;&gt;apt&lt;/h4&gt;
+&lt;/div&gt;&lt;h2 id=&#34;apt&#34;&gt;apt&lt;/h2&gt;
 &lt;p&gt;在 &lt;code&gt;/etc/apt/apt.conf.d/&lt;/code&gt; 目录下新增 &lt;code&gt;proxy.conf&lt;/code&gt; 文件，加入：（将&lt;code&gt;http://127.0.0.1:1080&lt;/code&gt;替换为你本地的http代理地址）&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -8231,7 +8228,7 @@
 &lt;/div&gt;&lt;blockquote&gt;
 &lt;p&gt;不支持socks5协议&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h4 id=&#34;curlwget&#34;&gt;curl、wget&lt;/h4&gt;
+&lt;h2 id=&#34;curlwget&#34;&gt;curl、wget&lt;/h2&gt;
 &lt;p&gt;许多posix标准的命令行程序会遵从两个环境变量：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -8263,8 +8260,8 @@
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;all_proxy&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;http://proxyserver:port/
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;合法翻墙&#34;&gt;合法翻墙&lt;/h2&gt;
-&lt;h3 id=&#34;澳门流量卡&#34;&gt;澳门流量卡&lt;/h3&gt;
+&lt;/div&gt;&lt;h1 id=&#34;合法翻墙&#34;&gt;合法翻墙&lt;/h1&gt;
+&lt;h2 id=&#34;澳门流量卡&#34;&gt;澳门流量卡&lt;/h2&gt;
 &lt;p&gt;就是这货👇，淘宝上就可以买到。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://s2.loli.net/2022/08/18/ScbgXVYpdRmrnyQ.jpg&#34;
 	
@@ -8276,7 +8273,7 @@
 	
 	
 &gt;&lt;/p&gt;
-&lt;h2 id=&#34;其他攻略&#34;&gt;其他攻略&lt;/h2&gt;
+&lt;h1 id=&#34;其他攻略&#34;&gt;其他攻略&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;2022永久免费白嫖节点方法
 &lt;ul&gt;
@@ -8299,7 +8296,7 @@
         <pubDate>Sun, 08 May 2022 21:45:00 +0800</pubDate>
         
         <guid>https://cerr.cc/post/linux%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E5%A4%A7%E5%85%A8/</guid>
-        <description>&lt;img src="https://s2.loli.net/2022/05/08/1vXerd2a3qCgcfQ.jpg" alt="Featured image of post Linux系统调用大全" /&gt;&lt;h2 id=&#34;传参规则&#34;&gt;传参规则&lt;/h2&gt;
+        <description>&lt;img src="https://s2.loli.net/2022/05/08/1vXerd2a3qCgcfQ.jpg" alt="Featured image of post Linux系统调用大全" /&gt;&lt;h1 id=&#34;传参规则&#34;&gt;传参规则&lt;/h1&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
@@ -8361,7 +8358,7 @@
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;h2 id=&#34;x86_64-系统调用表&#34;&gt;x86_64 系统调用表&lt;/h2&gt;
+&lt;h1 id=&#34;x86_64-系统调用表&#34;&gt;x86_64 系统调用表&lt;/h1&gt;
 &lt;blockquote&gt;
 &lt;p&gt;以下调用表皆基于linux4.14.0&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -11899,7 +11896,7 @@
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;h2 id=&#34;x86系统调用表&#34;&gt;x86系统调用表&lt;/h2&gt;
+&lt;h1 id=&#34;x86系统调用表&#34;&gt;x86系统调用表&lt;/h1&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
@@ -15434,7 +15431,7 @@
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;h2 id=&#34;arm32系统调用表&#34;&gt;arm32系统调用表&lt;/h2&gt;
+&lt;h1 id=&#34;arm32系统调用表&#34;&gt;arm32系统调用表&lt;/h1&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
@@ -19017,7 +19014,7 @@
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;h2 id=&#34;aarch64系统调用表&#34;&gt;aarch64系统调用表&lt;/h2&gt;
+&lt;h1 id=&#34;aarch64系统调用表&#34;&gt;aarch64系统调用表&lt;/h1&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
@@ -21496,13 +21493,13 @@
         <pubDate>Sun, 08 May 2022 19:35:11 +0800</pubDate>
         
         <guid>https://cerr.cc/post/cross-debug-old-version-kernel-using-qemu-system/</guid>
-        <description>&lt;img src="https://s2.loli.net/2022/05/08/MGJ3tsAVHSYrThj.jpg" alt="Featured image of post Cross debug old version kernel using qemu-system" /&gt;&lt;blockquote&gt;
+        <description>&lt;img src="https://s2.loli.net/2022/08/25/fHQPn8S2vLI7aR3.png" alt="Featured image of post Cross debug old version kernel using qemu-system" /&gt;&lt;blockquote&gt;
 &lt;p&gt;From this post, our goal is tracing the execution procedure from kernel entry to userspace process (busybox init) by using qemu-system and gdb-multiarch.&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h2 id=&#34;preparation&#34;&gt;Preparation&lt;/h2&gt;
-&lt;h3 id=&#34;qemu-system-arm&#34;&gt;qemu-system-arm&lt;/h3&gt;
+&lt;h1 id=&#34;preparation&#34;&gt;Preparation&lt;/h1&gt;
+&lt;h2 id=&#34;qemu-system-arm&#34;&gt;qemu-system-arm&lt;/h2&gt;
 &lt;p&gt;Compile it from source code or just use &lt;code&gt;sudo apt install qemu-system-arm&lt;/code&gt;.&lt;/p&gt;
-&lt;h3 id=&#34;kernel&#34;&gt;kernel&lt;/h3&gt;
+&lt;h2 id=&#34;kernel&#34;&gt;kernel&lt;/h2&gt;
 &lt;p&gt;Linux kernel v4.1 for armel as an example.
 Compiling a linux kernel requires a matched version of gcc.
 For example, the linux kernel v4.1 requires the gcc version between 3 and 5:&lt;/p&gt;
@@ -21597,7 +21594,7 @@ Ready for compiling the old version linux kernel :)&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;We got zImage at build/armel/arch/arm/boot/zImage and vmlinux (with debug symbols) at build/armel&lt;/p&gt;
-&lt;h3 id=&#34;busybox&#34;&gt;busybox&lt;/h3&gt;
+&lt;h2 id=&#34;busybox&#34;&gt;busybox&lt;/h2&gt;
 &lt;p&gt;Even though we can use the busybox from the filesystem directly, we got no debug symbols from it.
 Thus we should compile busybox manually:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -21613,7 +21610,7 @@ Thus we should compile busybox manually:&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;Then the busybox_unstripped is produced.&lt;/p&gt;
-&lt;h3 id=&#34;filesystem&#34;&gt;filesystem&lt;/h3&gt;
+&lt;h2 id=&#34;filesystem&#34;&gt;filesystem&lt;/h2&gt;
 &lt;p&gt;Hummm maybe obtain it by yourself?&lt;/p&gt;
 &lt;p&gt;As for my situation, I just extract the filesystem from a TP-Link firmware.
 And we need do some modification to turn our filesystem directory to a filesystem image.
@@ -21670,7 +21667,7 @@ The next step is create disk partitions using fdisk on rootfs.img :&lt;/p&gt;
 &lt;/div&gt;&lt;p&gt;We are done preparing here. All we should do next is copying all the files recursively from the origin root filesystem directory to our mounted directory,
 so that we got a rootfs.img image file containing the armel filesystem we want.
 Don&amp;rsquo;t forget replace the origin bin/busybox with our manually compiled version.&lt;/p&gt;
-&lt;h2 id=&#34;tracing-time-&#34;&gt;Tracing time !&lt;/h2&gt;
+&lt;h1 id=&#34;tracing-time-&#34;&gt;Tracing time !&lt;/h1&gt;
 &lt;p&gt;Now we have :&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -21800,7 +21797,7 @@ So set a breakpoint at busybox&amp;rsquo;s entry address and send c to gdb, we w
         <pubDate>Sat, 07 May 2022 22:53:05 +0800</pubDate>
         
         <guid>https://cerr.cc/post/awesome-colors/</guid>
-        <description>&lt;img src="https://s2.loli.net/2022/05/07/QW6X8VuxZCJnmfc.jpg" alt="Featured image of post Awesome Colors" /&gt;&lt;h2 id=&#34;awesome-colors&#34;&gt;Awesome colors&lt;/h2&gt;
+        <description>&lt;img src="https://s2.loli.net/2022/05/07/QW6X8VuxZCJnmfc.jpg" alt="Featured image of post Awesome Colors" /&gt;&lt;h1 id=&#34;awesome-colors&#34;&gt;Awesome colors&lt;/h1&gt;
 &lt;div style=&#34;border: double; color: #ffffff; background-color: #4f0009; text-align: center; &#34;&gt;
         &lt;br&gt;
         &lt;h1&gt;波尔多红&lt;/h1&gt;
@@ -22004,7 +22001,7 @@ So set a breakpoint at busybox&amp;rsquo;s entry address and send c to gdb, we w
         <description>&lt;img src="https://s2.loli.net/2022/05/07/wqH1K7UnExrO4V5.jpg" alt="Featured image of post 关于Linux UI的美化工作" /&gt;&lt;blockquote&gt;
 &lt;p&gt;GNU/Linux 的桌面生态，开放虽是好事，但却由此带来了混乱。没有像微软这样的赛博中央政府制定规则，就产生了眼下这般群雄割据的态势。作为用户的我能做的，也只是择巨木而栖 —— 唯二的自由巨头 &lt;strong&gt;KDE&lt;/strong&gt; 与 &lt;strong&gt;Gnome&lt;/strong&gt;，&lt;del&gt;二选其一&lt;/del&gt;~~（LXQt大法好）~~（当年煮酒论DE，今日叛逃用WM）（i3大法好）。幼年气盛，爱好折腾，留下了些许美化的经验。时至今日，能回忆起的已然不多。尽力而为做些记录，为日后回归赛博左派留些盘缠。&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h2 id=&#34;概念拆解&#34;&gt;概念拆解&lt;/h2&gt;
+&lt;h1 id=&#34;概念拆解&#34;&gt;概念拆解&lt;/h1&gt;
 &lt;p&gt;被Windows驯化得温顺从良的我，当年对显示屏上花花绿绿的GUI组件并无概念。商业操作系统将一切整合，成为一个整体，迷惑我说：“这便是操作系统图形化用户接口”。今日慢慢爬出泥沼，留攻略如下：&lt;/p&gt;
 &lt;p&gt;🎵我有一台树莓派&lt;del&gt;我从来不开机&lt;/del&gt;。接通电源、引导器醒来、启动内核、唤醒&lt;code&gt;pid 1&lt;/code&gt;，此时来到Virtual Terminal下的&lt;code&gt;/dev/tty1&lt;/code&gt;。在自动登录GUI的设定下，有如下朋友先后会来迎接我：&lt;/p&gt;
 &lt;ul&gt;
@@ -22090,10 +22087,10 @@ So set a breakpoint at busybox&amp;rsquo;s entry address and send c to gdb, we w
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;de&#34;&gt;DE&lt;/h2&gt;
+&lt;h1 id=&#34;de&#34;&gt;DE&lt;/h1&gt;
 &lt;h3 id=&#34;kde-plasma&#34;&gt;KDE plasma&lt;/h3&gt;
 &lt;p&gt;UI的（乡土风）现代感，很大部分要归因与透明化的效果。一年前的我也是透明化爱好者，恰逢那时使用 Archlinux + KDE，故记录如下KDE透明化配置方法。KDE自身本就具有各大DE中最为强大的视觉效果定制功能，所以如下所述只是KDE本身能力之外的美化方法：&lt;/p&gt;
-&lt;h4 id=&#34;窗口边框透明化&#34;&gt;窗口边框透明化&lt;/h4&gt;
+&lt;h3 id=&#34;窗口边框透明化&#34;&gt;窗口边框透明化&lt;/h3&gt;
 &lt;p&gt;使用&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/ishovkun/SierraBreeze&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -22113,30 +22110,30 @@ So set a breakpoint at busybox&amp;rsquo;s entry address and send c to gdb, we w
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;面板透明化&#34;&gt;面板透明化&lt;/h4&gt;
+&lt;h3 id=&#34;面板透明化&#34;&gt;面板透明化&lt;/h3&gt;
 &lt;p&gt;需要自己魔改，参考如下大佬留下的教程：&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.joxrays.com/kde-panel-transparency/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.joxrays.com/kde-panel-transparency/&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;原始论坛帖子：&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://forum.manjaro.org/t/where-can-the-transparency-of-the-kde-panel-be-set/50219&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://forum.manjaro.org/t/where-can-the-transparency-of-the-kde-panel-be-set/50219&lt;/a&gt;&lt;/p&gt;
-&lt;h4 id=&#34;组件透明化&#34;&gt;组件透明化&lt;/h4&gt;
+&lt;h3 id=&#34;组件透明化&#34;&gt;组件透明化&lt;/h3&gt;
 &lt;p&gt;这一需求有现成的工具Kvantum，亦有大佬教程如下：&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://blog.firerain.me/article/4&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://blog.firerain.me/article/4&lt;/a&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;此外，便是一些其它的效果组件&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h4 id=&#34;macos风的dock栏&#34;&gt;MacOS风的Dock栏&lt;/h4&gt;
+&lt;h3 id=&#34;macos风的dock栏&#34;&gt;MacOS风的Dock栏&lt;/h3&gt;
 &lt;p&gt;状态、菜单、任务栏的呈现方式，我个人更倾向与MacOS的方案。比起Windows，牺牲了些许效率，换取美感。&lt;/p&gt;
 &lt;p&gt;KDE下使用 &lt;strong&gt;latte-dock&lt;/strong&gt; 来获取MacOS风的Dock栏，这样就可以将本身的Panel变为MacOS下的常驻状态栏。&lt;/p&gt;
 &lt;p&gt;仓库地址：&lt;a class=&#34;link&#34; href=&#34;https://github.com/KDE/latte-dock&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/KDE/latte-dock&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;同时其是可以直接从KDE store一键下载安装的。&lt;/p&gt;
-&lt;h4 id=&#34;音乐可视化&#34;&gt;音乐可视化&lt;/h4&gt;
+&lt;h3 id=&#34;音乐可视化&#34;&gt;音乐可视化&lt;/h3&gt;
 &lt;p&gt;Windows下可以使用Wallpaper engine，Linux就没有这个福分了，只能另寻替代方案。&lt;/p&gt;
 &lt;p&gt;KDE插件 &lt;strong&gt;panon&lt;/strong&gt; 能达到尚且凑活的效果，可以直接从插件商店一键安装。&lt;/p&gt;
-&lt;h3 id=&#34;gnome&#34;&gt;Gnome&lt;/h3&gt;
+&lt;h2 id=&#34;gnome&#34;&gt;Gnome&lt;/h2&gt;
 &lt;p&gt;Gnome不像KDE，它没有向用户直接呈现DE UI定制接口，而是需要用户自行配置。好在Gnome同时也提供了美化总站：&lt;a class=&#34;link&#34; href=&#34;https://www.gnome-look.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.gnome-look.org/&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;网站中基本涵盖了所有美化选项与资源。且对于采用GTK的其它DE来说，大量资源都是通用的。但在此之前需要有一些预先配置（出于DE稳定性考虑，默认不将定制接口提供给小白用户）：&lt;/p&gt;
@@ -22177,14 +22174,14 @@ So set a breakpoint at busybox&amp;rsquo;s entry address and send c to gdb, we w
 &lt;/ul&gt;
 &lt;p&gt;此后，尽情探索&lt;a class=&#34;link&#34; href=&#34;https://www.gnome-look.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.gnome-look.org/&lt;/a&gt;，将下载到的资源在gnome-tweaks中启用即可。&lt;/p&gt;
-&lt;h2 id=&#34;wm&#34;&gt;WM&lt;/h2&gt;
-&lt;h3 id=&#34;i3&#34;&gt;i3&lt;/h3&gt;
+&lt;h1 id=&#34;wm&#34;&gt;WM&lt;/h1&gt;
+&lt;h2 id=&#34;i3&#34;&gt;i3&lt;/h2&gt;
 &lt;p&gt;讨厌鼠标的键盘信徒？俺也一样！（即使我是老FPS玩家了，使用鼠标有天然的速度优势）&lt;/p&gt;
 &lt;p&gt;话说图形化诞生的初衷就带有“坐标交互”的动机，想在图形化下扔掉鼠标，不是抛弃原教旨了嘛？&lt;/p&gt;
 &lt;p&gt;但有需求就有造物，玩DE的后路是玩WM。i3目前是该领域的当红炸子鸡。&lt;/p&gt;
 &lt;p&gt;不喜欢X11？面向Wayland的i3 clone：Sway，供你选择。&lt;/p&gt;
 &lt;p&gt;快捷键并不多，比tmux简单。一天学会，受用终生。👍&lt;/p&gt;
-&lt;h2 id=&#34;shell&#34;&gt;Shell&lt;/h2&gt;
+&lt;h1 id=&#34;shell&#34;&gt;Shell&lt;/h1&gt;
 &lt;p&gt;shell并不属于DE的一部分，有个字符终端足矣。&lt;/p&gt;
 &lt;p&gt;最流行的美化方案还是zsh的一套：&lt;/p&gt;
 &lt;ul&gt;
@@ -22239,14 +22236,14 @@ So set a breakpoint at busybox&amp;rsquo;s entry address and send c to gdb, we w
 &lt;blockquote&gt;
 &lt;p&gt;fish也不错，开箱即用，但惜败于不兼容bash&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h2 id=&#34;其它&#34;&gt;其它&lt;/h2&gt;
+&lt;h1 id=&#34;其它&#34;&gt;其它&lt;/h1&gt;
 &lt;p&gt;程序太小以至于一句话就说完了……&lt;/p&gt;
-&lt;h3 id=&#34;终端配色&#34;&gt;终端配色&lt;/h3&gt;
-&lt;h4 id=&#34;终端模拟器层&#34;&gt;终端模拟器层&lt;/h4&gt;
+&lt;h2 id=&#34;终端配色&#34;&gt;终端配色&lt;/h2&gt;
+&lt;h3 id=&#34;终端模拟器层&#34;&gt;终端模拟器层&lt;/h3&gt;
 &lt;p&gt;如下仓库，应有尽有：&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/mbadolato/iTerm2-Color-Schemes&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/mbadolato/iTerm2-Color-Schemes&lt;/a&gt;&lt;/p&gt;
-&lt;h4 id=&#34;shell层&#34;&gt;shell层&lt;/h4&gt;
+&lt;h3 id=&#34;shell层&#34;&gt;shell层&lt;/h3&gt;
 &lt;p&gt;shell层的配色只是用色号指定颜色，但相应颜色具体长什么样还得看上述终端模拟器层中定义的RGB值。&lt;/p&gt;
 &lt;p&gt;我自己比较喜欢&lt;code&gt;ZSH_THEME=&amp;quot;robbyrussell&amp;quot;&lt;/code&gt;的配色：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -22266,15 +22263,15 @@ So set a breakpoint at busybox&amp;rsquo;s entry address and send c to gdb, we w
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://geoff.greer.fm/lscolors/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://geoff.greer.fm/lscolors/&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;grub&#34;&gt;grub&lt;/h3&gt;
+&lt;h2 id=&#34;grub&#34;&gt;grub&lt;/h2&gt;
 &lt;p&gt;来自gnome-look，但啥都能用，毕竟定制的是grub这个引导器：&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.gnome-look.org/browse/cat/109/order/latest/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.gnome-look.org/browse/cat/109/order/latest/&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&#34;桌面状态监测器&#34;&gt;桌面状态监测器&lt;/h3&gt;
+&lt;h2 id=&#34;桌面状态监测器&#34;&gt;桌面状态监测器&lt;/h2&gt;
 &lt;p&gt;使用 &lt;strong&gt;conky&lt;/strong&gt;，仓库如下：&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/brndnmtthws/conky&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/brndnmtthws/conky&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&#34;裸体终端模拟器&#34;&gt;裸体终端模拟器&lt;/h3&gt;
+&lt;h2 id=&#34;裸体终端模拟器&#34;&gt;裸体终端模拟器&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;fbterm&lt;/strong&gt;好东西，仓库如下：&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/sfzhi/fbterm&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/sfzhi/fbterm&lt;/a&gt;&lt;/p&gt;

@@ -5,16 +5,16 @@
 
 <link rel='canonical' href='https://cerr.cc/post/%E5%8D%8E%E7%A1%95%E6%A2%85%E6%9E%97%E5%9B%BA%E4%BB%B6%E7%9A%84%E7%BC%96%E8%AF%91/'>
 
-<link rel="stylesheet" href="/scss/style.min.ac77dcf8b111b51da39a92990f431923f210f3876d85798a2125667f96dc33a4.css"><meta property='og:title' content='华硕梅林固件的编译'>
+<link rel="stylesheet" href="/scss/style.min.e75bab105855f77caa94de85bd0b7a889920eb03fa3048257f51f59c063a674d.css"><meta property='og:title' content='华硕梅林固件的编译'>
 <meta property='og:description' content='记录一下手动编译asuswrt-merlin的过程'>
 <meta property='og:url' content='https://cerr.cc/post/%E5%8D%8E%E7%A1%95%E6%A2%85%E6%9E%97%E5%9B%BA%E4%BB%B6%E7%9A%84%E7%BC%96%E8%AF%91/'>
-<meta property='og:site_name' content='Zikey Vi'>
+<meta property='og:site_name' content='やれやれ DA✰ZE'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Embeded' /><meta property='article:tag' content='Compile' /><meta property='article:published_time' content='2022-05-11T16:27:10&#43;08:00'/><meta property='article:modified_time' content='2022-05-11T16:27:10&#43;08:00'/><meta property='og:image' content='https://www.asuswrt-merlin.net/sites/default/files/inline-images/main_page_sm_2.png' />
 <meta name="twitter:site" content="@dev2ero">
     <meta name="twitter:creator" content="@dev2ero"><meta name="twitter:title" content="华硕梅林固件的编译">
 <meta name="twitter:description" content="记录一下手动编译asuswrt-merlin的过程"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://www.asuswrt-merlin.net/sites/default/files/inline-images/main_page_sm_2.png' />
-    <link rel="shortcut icon" href="img/favicon.png" />
+    <link rel="shortcut icon" href="favicon.png" />
 
     </head>
     <body class="
@@ -65,15 +65,15 @@
                 
                 </a>
                 
-                    <span class="emoji">🍥</span>
+                    <span class="emoji">🐟</span>
                 
             </figure>
             
         
         
         <div class="site-meta">
-            <h1 class="site-name"><a href="/">Zikey Vi</a></h1>
-            <h2 class="site-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
+            <h1 class="site-name"><a href="/">やれやれ DA✰ZE</a></h1>
+            <h2 class="site-description">Yet anothor cyber nyandog.</h2>
         </div>
     </header><ol class="social-menu">
             
@@ -91,6 +91,26 @@
 </svg>
 
 
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='mailto:dev2ero@foxmail.com'
+                        target="_blank"
+                        title="Mail"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mail-opened" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <polyline points="3 9 12 15 21 9 12 3 3 9" />
+  <path d="M21 9v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10" />
+  <line x1="3" y1="19" x2="9" y2="13" />
+  <line x1="15" y1="13" x2="21" y2="19" />
+</svg>
 
                         
                     </a>
@@ -379,7 +399,7 @@
     <section class="article-content">
     
     
-    <h2 id="获取梅林">获取梅林</h2>
+    <h1 id="获取梅林">获取梅林</h1>
 <p>官网如下：<a class="link" href="http://asuswrt-merlin.net"  target="_blank" rel="noopener"
     >asuswrt-merlin.net</a></p>
 <p>新梅林：https://github.com/RMerl/asuswrt-merlin.ng</p>
@@ -394,7 +414,7 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>（下载zip而非clone仓库，节省.git的占用</p>
-<h2 id="环境准备">环境准备</h2>
+<h1 id="环境准备">环境准备</h1>
 <p>README.txt 给出了编译方式：<a class="link" href="https://github.com/RMerl/asuswrt-merlin.ng/blob/master/README.TXT"  target="_blank" rel="noopener"
     >https://github.com/RMerl/asuswrt-merlin.ng/blob/master/README.TXT</a></p>
 <p>包依赖非常多，所以尽力将本地环境贴合它的编译说明，以避免未知错误。</p>
@@ -409,7 +429,7 @@
 <pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">sudo docker run -it -v /home/zkv/docker_share/:/share ubuntu:16.04
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h2 id="依赖安装">依赖安装</h2>
+</div><h1 id="依赖安装">依赖安装</h1>
 <p>进入docker ubuntu环境后，下载并解压梅林ng：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -473,7 +493,7 @@
 </span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;PATH=\$PATH:/opt/toolchains/crosstools-aarch64-gcc-5.3-linux-4.1-glibc-2.22-binutils-2.25/usr/bin&#34;</span> &gt;&gt; ~/.profile
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h2 id="开始编译">开始编译</h2>
+</div><h1 id="开始编译">开始编译</h1>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -484,7 +504,7 @@
 </span></span><span class="line"><span class="cl">make rt-ac86u
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h2 id="easymod">Easymod</h2>
+</div><h1 id="easymod">Easymod</h1>
 <p>如上所述手动折腾到一半，发现了有简单模式的自动化方案。README内的信息实在太少，github wiki里有官方的编译构建教程：</p>
 <p>官方wiki：</p>
 <p><a class="link" href="https://github.com/RMerl/asuswrt-merlin.ng/wiki/"  target="_blank" rel="noopener"
@@ -605,7 +625,7 @@
         
             <div class="article-image">
                 
-                    <img src="https://s2.loli.net/2022/05/08/MGJ3tsAVHSYrThj.jpg" loading="lazy" data-key="" data-hash="https://s2.loli.net/2022/05/08/MGJ3tsAVHSYrThj.jpg"/>
+                    <img src="https://s2.loli.net/2022/08/25/fHQPn8S2vLI7aR3.png" loading="lazy" data-key="" data-hash="https://s2.loli.net/2022/08/25/fHQPn8S2vLI7aR3.png"/>
                 
             </div>
         
@@ -624,39 +644,18 @@
      
     
         
-    <div class="disqus-container">
-    
-</div>
-
-<style>
-    .disqus-container {
-        background-color: var(--card-background);
-        border-radius: var(--card-border-radius);
-        box-shadow: var(--shadow-l1);
-        padding: var(--card-padding);
-    }
-</style>
-
-<script>
-    window.addEventListener('onColorSchemeChange', (e) => {
-        if (typeof DISQUS == 'object') {
-            DISQUS.reset({
-                reload: true
-            });
-        }
-    })
-</script>
-
     
 
     <footer class="site-footer">
     <section class="copyright">
         &copy; 
         
-        2022 Zikey Vi
+        2022 やれやれ DA✰ZE
     </section>
     
     <section class="powerby">
+        
+            All Right Abandoned. <br/>
         Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
         Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.13.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
     </section>

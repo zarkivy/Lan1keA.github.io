@@ -5,16 +5,16 @@
 
 <link rel='canonical' href='https://cerr.cc/post/zkv%E7%9A%84cc-%E6%9E%84%E5%BB%BA%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/'>
 
-<link rel="stylesheet" href="/scss/style.min.ac77dcf8b111b51da39a92990f431923f210f3876d85798a2125667f96dc33a4.css"><meta property='og:title' content='ZKV的C、C&#43;&#43;构建系统学习之路'>
+<link rel="stylesheet" href="/scss/style.min.e75bab105855f77caa94de85bd0b7a889920eb03fa3048257f51f59c063a674d.css"><meta property='og:title' content='ZKV的C、C&#43;&#43;构建系统学习之路'>
 <meta property='og:description' content='门外汉试图跨步入门'>
 <meta property='og:url' content='https://cerr.cc/post/zkv%E7%9A%84cc-%E6%9E%84%E5%BB%BA%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/'>
-<meta property='og:site_name' content='Zikey Vi'>
+<meta property='og:site_name' content='やれやれ DA✰ZE'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Develop' /><meta property='article:published_time' content='2022-08-08T14:34:10&#43;08:00'/><meta property='article:modified_time' content='2022-08-08T14:34:10&#43;08:00'/><meta property='og:image' content='https://s2.loli.net/2022/08/09/FTvgEfriYsZ2a9L.png' />
 <meta name="twitter:site" content="@dev2ero">
     <meta name="twitter:creator" content="@dev2ero"><meta name="twitter:title" content="ZKV的C、C&#43;&#43;构建系统学习之路">
 <meta name="twitter:description" content="门外汉试图跨步入门"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://s2.loli.net/2022/08/09/FTvgEfriYsZ2a9L.png' />
-    <link rel="shortcut icon" href="img/favicon.png" />
+    <link rel="shortcut icon" href="favicon.png" />
 
     </head>
     <body class="
@@ -65,15 +65,15 @@
                 
                 </a>
                 
-                    <span class="emoji">🍥</span>
+                    <span class="emoji">🐟</span>
                 
             </figure>
             
         
         
         <div class="site-meta">
-            <h1 class="site-name"><a href="/">Zikey Vi</a></h1>
-            <h2 class="site-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
+            <h1 class="site-name"><a href="/">やれやれ DA✰ZE</a></h1>
+            <h2 class="site-description">Yet anothor cyber nyandog.</h2>
         </div>
     </header><ol class="social-menu">
             
@@ -91,6 +91,26 @@
 </svg>
 
 
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='mailto:dev2ero@foxmail.com'
+                        target="_blank"
+                        title="Mail"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mail-opened" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <polyline points="3 9 12 15 21 9 12 3 3 9" />
+  <path d="M21 9v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10" />
+  <line x1="3" y1="19" x2="9" y2="13" />
+  <line x1="15" y1="13" x2="21" y2="19" />
+</svg>
 
                         
                     </a>
@@ -379,7 +399,7 @@
     <section class="article-content">
     
     
-    <h2 id="编译工具链">编译工具链</h2>
+    <h1 id="编译工具链">编译工具链</h1>
 <p>此前疑惑的一个问题是，一套编译工具链究竟包含了些什么东西？当我们使用包管理器一键安装编译工具链时，所安装的程序、数据、文档被分散在了根文件系统的各个位置，难以让我们直接一窥究竟。好在老生常谈的buildroot又为我们解决了这个问题，（当然，从网上下载一份编译工具链也能达到相同的效果）。取一份buildroot构建完成的编译工具链瞅瞅，路径位于<code>buildroot/output/host</code>：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -458,7 +478,7 @@
 </span></span><span class="line"><span class="cl">x86_64-linux-strip				<span class="c1"># discard symbols and other data from object files</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="使用buildroot构建任意编译工具链">使用buildroot构建任意编译工具链</h3>
+</div><h2 id="使用buildroot构建任意编译工具链">使用buildroot构建任意编译工具链</h2>
 <p>buildroot对那些平台有默认配置呢：</p>
 <p><img src="https://s2.loli.net/2022/08/19/yHZsCwEfNFQ2v7I.png"
 	
@@ -483,7 +503,7 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>来到<code>buildroot/output/host</code>中取货即可。</p>
-<h2 id="binutils">binutils</h2>
+<h1 id="binutils">binutils</h1>
 <p>GNU assembler, linker and binary utilities. The programs in this package are used to assemble, link and manipulate binary and object files. They may be used in conjunction with a compiler and various libraries to build programs.</p>
 <p>那么binutils包中包含了哪些路径下的哪些内容呢？</p>
 <p>使用apt-file工具查看下：</p>
@@ -547,11 +567,11 @@
 </span></span><span class="line"><span class="cl">binutils: /usr/share/lintian/overrides/binutils
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h2 id="configure">configure</h2>
-<h2 id="make">make</h2>
+</div><h1 id="configure">configure</h1>
+<h1 id="make">make</h1>
 <p>官方文档：<a class="link" href="https://www.gnu.org/software/make/manual/html_node/index.html"  target="_blank" rel="noopener"
     >https://www.gnu.org/software/make/manual/html_node/index.html</a></p>
-<h2 id="cmake">cmake</h2>
+<h1 id="cmake">cmake</h1>
 
 </section>
 
@@ -675,39 +695,18 @@
      
     
         
-    <div class="disqus-container">
-    
-</div>
-
-<style>
-    .disqus-container {
-        background-color: var(--card-background);
-        border-radius: var(--card-border-radius);
-        box-shadow: var(--shadow-l1);
-        padding: var(--card-padding);
-    }
-</style>
-
-<script>
-    window.addEventListener('onColorSchemeChange', (e) => {
-        if (typeof DISQUS == 'object') {
-            DISQUS.reset({
-                reload: true
-            });
-        }
-    })
-</script>
-
     
 
     <footer class="site-footer">
     <section class="copyright">
         &copy; 
         
-        2022 Zikey Vi
+        2022 やれやれ DA✰ZE
     </section>
     
     <section class="powerby">
+        
+            All Right Abandoned. <br/>
         Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
         Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.13.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
     </section>

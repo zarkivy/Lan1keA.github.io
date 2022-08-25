@@ -5,16 +5,16 @@
 
 <link rel='canonical' href='https://cerr.cc/post/%E4%BD%BF%E7%94%A8qemu-gdb%E8%B0%83%E8%AF%95linux%E5%86%85%E6%A0%B8/'>
 
-<link rel="stylesheet" href="/scss/style.min.ac77dcf8b111b51da39a92990f431923f210f3876d85798a2125667f96dc33a4.css"><meta property='og:title' content='使用QEMU&#43;GDB调试Linux内核'>
+<link rel="stylesheet" href="/scss/style.min.e75bab105855f77caa94de85bd0b7a889920eb03fa3048257f51f59c063a674d.css"><meta property='og:title' content='使用QEMU&#43;GDB调试Linux内核'>
 <meta property='og:description' content='学好Kernel的基操？'>
 <meta property='og:url' content='https://cerr.cc/post/%E4%BD%BF%E7%94%A8qemu-gdb%E8%B0%83%E8%AF%95linux%E5%86%85%E6%A0%B8/'>
-<meta property='og:site_name' content='Zikey Vi'>
+<meta property='og:site_name' content='やれやれ DA✰ZE'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='QEMU' /><meta property='article:tag' content='Kernel' /><meta property='article:tag' content='DBG' /><meta property='article:published_time' content='2022-08-08T14:17:44&#43;08:00'/><meta property='article:modified_time' content='2022-08-08T14:17:44&#43;08:00'/><meta property='og:image' content='https://s2.loli.net/2022/08/09/PKcwjiVBTg6ApEv.png' />
 <meta name="twitter:site" content="@dev2ero">
     <meta name="twitter:creator" content="@dev2ero"><meta name="twitter:title" content="使用QEMU&#43;GDB调试Linux内核">
 <meta name="twitter:description" content="学好Kernel的基操？"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://s2.loli.net/2022/08/09/PKcwjiVBTg6ApEv.png' />
-    <link rel="shortcut icon" href="img/favicon.png" />
+    <link rel="shortcut icon" href="favicon.png" />
 
     </head>
     <body class="
@@ -65,15 +65,15 @@
                 
                 </a>
                 
-                    <span class="emoji">🍥</span>
+                    <span class="emoji">🐟</span>
                 
             </figure>
             
         
         
         <div class="site-meta">
-            <h1 class="site-name"><a href="/">Zikey Vi</a></h1>
-            <h2 class="site-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
+            <h1 class="site-name"><a href="/">やれやれ DA✰ZE</a></h1>
+            <h2 class="site-description">Yet anothor cyber nyandog.</h2>
         </div>
     </header><ol class="social-menu">
             
@@ -91,6 +91,26 @@
 </svg>
 
 
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='mailto:dev2ero@foxmail.com'
+                        target="_blank"
+                        title="Mail"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mail-opened" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <polyline points="3 9 12 15 21 9 12 3 3 9" />
+  <path d="M21 9v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10" />
+  <line x1="3" y1="19" x2="9" y2="13" />
+  <line x1="15" y1="13" x2="21" y2="19" />
+</svg>
 
                         
                     </a>
@@ -379,8 +399,8 @@
     <section class="article-content">
     
     
-    <h2 id="环境准备">环境准备</h2>
-<h3 id="qemu-的手动构建">QEMU 的手动构建</h3>
+    <h1 id="环境准备">环境准备</h1>
+<h2 id="qemu-的手动构建">QEMU 的手动构建</h2>
 <p>获取QEMU源码：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -416,9 +436,9 @@
 </span></span><span class="line"><span class="cl">sudo make install
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="使用buildroot一键构建rootfskernel">使用buildroot一键构建rootfs+kernel</h3>
+</div><h2 id="使用buildroot一键构建rootfskernel">使用buildroot一键构建rootfs+kernel</h2>
 <blockquote>
-<p>buildroot自动构建过程若出现网络不畅，自备梯子，并设定shell变量all_proxy、http_proxy、https_proxy用于代理wget、curl等工具即可。参见：<a class="link" href="/post/fgfw/" >https://cerr.cc/post/fgfw/</a></p>
+<p>buildroot自动构建过程若出现网络不畅，自备梯子，并设定shell变量all_proxy、http_proxy、https_proxy用于代理wget、curl等工具即可。参见：<a class="link" href="/post/fuck-the-great-fire-wall/" >https://cerr.cc/post/fuck-the-great-fire-wall/</a></p>
 </blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -507,7 +527,7 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>确认成功断下执行流即可。</p>
-<h3 id="手动构建kernelinitramfs">手动构建kernel+initramfs</h3>
+<h2 id="手动构建kernelinitramfs">手动构建kernel+initramfs</h2>
 <p>若不想借助自动化工具buildroot传达旨意，而是要亲自指挥亲自部署，记录如下：</p>
 <p>载入x86_64默认config：</p>
 <div class="highlight"><div class="chroma">
@@ -578,7 +598,7 @@
 <blockquote>
 <p>巧合的是，就在我执行完如上命令进入shell后，惊觉Linux居然已经6.0.0了😱。经查正是今天的新闻。</p>
 </blockquote>
-<h3 id="试图调试">试图调试</h3>
+<h2 id="试图调试">试图调试</h2>
 <p>沿用上述手动挡的构建方案，qemu启动时关闭kaslr（编译时若关闭了RANDOMIZE_BASE，则无需向kernel传递nokaslr参数）：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -614,7 +634,7 @@
 </div><p>关于对gdb调试的支持，内核所提供的文档如下：</p>
 <p><a class="link" href="https://www.kernel.org/doc/html/latest/dev-tools/gdb-kernel-debugging.html"  target="_blank" rel="noopener"
     >https://www.kernel.org/doc/html/latest/dev-tools/gdb-kernel-debugging.html</a></p>
-<h2 id="内核启动">内核启动</h2>
+<h1 id="内核启动">内核启动</h1>
 <p>内核初始化主函数：<code>init/main.c:start_kernel</code></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -847,8 +867,8 @@
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h2 id="系统调用">系统调用</h2>
-<h3 id="静态搜寻">静态搜寻</h3>
+</div><h1 id="系统调用">系统调用</h1>
+<h2 id="静态搜寻">静态搜寻</h2>
 <p>动态调试系统调用代码之前，不妨先来找到内核系统调用的静态代码位置。Linux Kernel使用<code>SYSCALL_DEFINE[N]</code>宏来定义系统调用入口，其原型位于<a class="link" href="https://github.com/torvalds/linux/blob/16f73eb02d7e1765ccab3d2018e0bd98eb93d973/include/linux/syscalls.h"  target="_blank" rel="noopener"
     >include/linux/syscalls.h</a>，其中会调用特定系统调用的实现函数。所以，我们使用如下命令可以帮助快速筛选想要动态调试的系统调用入口所在位置：</p>
 <div class="highlight"><div class="chroma">
@@ -898,7 +918,7 @@
 <p>Linux Kernel 系统调用流程参见：<a class="link" href="https://0xax.gitbooks.io/linux-insides/content/SysCall/linux-syscall-2.html"  target="_blank" rel="noopener"
     >https://0xax.gitbooks.io/linux-insides/content/SysCall/linux-syscall-2.html</a></p>
 </blockquote>
-<h3 id="动态调试">动态调试</h3>
+<h2 id="动态调试">动态调试</h2>
 <p>继续以open系统调用为例，开始动态调试跟踪。</p>
 <blockquote>
 <p>qemu monitor，你的好帮手，Ctrl+A C进入与退出monitor模式：</p>
@@ -961,12 +981,12 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>此前已经知道open系统调用的实现函数为<code>do_sys_open</code>，故于此函数下断点即可。</p>
-<h2 id="内存管理">内存管理</h2>
-<h2 id="文件系统">文件系统</h2>
-<h2 id="网络栈">网络栈</h2>
-<h2 id="实战漏洞调试">实战漏洞调试</h2>
-<p>参见：<a class="link" href="/post/cve-2016-5195/" >https://cerr.cc/post/cve-2016-5195/</a></p>
-<h2 id="参考">参考</h2>
+<h1 id="内存管理">内存管理</h1>
+<h1 id="文件系统">文件系统</h1>
+<h1 id="网络栈">网络栈</h1>
+<h1 id="实战漏洞调试">实战漏洞调试</h1>
+<p>参见：<a class="link" href="/post/cve-2016-5195-linux-dirtycow%e6%bc%8f%e6%b4%9e%e5%88%86%e6%9e%90/" >https://cerr.cc/post/cve-2016-5195-linux-dirtycow漏洞分析/</a></p>
+<h1 id="参考">参考</h1>
 <ul>
 <li><a class="link" href="http://nickdesaulniers.github.io/blog/2018/10/24/booting-a-custom-linux-kernel-in-qemu-and-debugging-it-with-gdb/"  target="_blank" rel="noopener"
     >http://nickdesaulniers.github.io/blog/2018/10/24/booting-a-custom-linux-kernel-in-qemu-and-debugging-it-with-gdb/</a></li>
@@ -1024,7 +1044,7 @@
         
             <div class="article-image">
                 
-                    <img src="https://s2.loli.net/2022/05/08/MGJ3tsAVHSYrThj.jpg" loading="lazy" data-key="" data-hash="https://s2.loli.net/2022/05/08/MGJ3tsAVHSYrThj.jpg"/>
+                    <img src="https://s2.loli.net/2022/08/25/fHQPn8S2vLI7aR3.png" loading="lazy" data-key="" data-hash="https://s2.loli.net/2022/08/25/fHQPn8S2vLI7aR3.png"/>
                 
             </div>
         
@@ -1100,39 +1120,18 @@
      
     
         
-    <div class="disqus-container">
-    
-</div>
-
-<style>
-    .disqus-container {
-        background-color: var(--card-background);
-        border-radius: var(--card-border-radius);
-        box-shadow: var(--shadow-l1);
-        padding: var(--card-padding);
-    }
-</style>
-
-<script>
-    window.addEventListener('onColorSchemeChange', (e) => {
-        if (typeof DISQUS == 'object') {
-            DISQUS.reset({
-                reload: true
-            });
-        }
-    })
-</script>
-
     
 
     <footer class="site-footer">
     <section class="copyright">
         &copy; 
         
-        2022 Zikey Vi
+        2022 やれやれ DA✰ZE
     </section>
     
     <section class="powerby">
+        
+            All Right Abandoned. <br/>
         Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
         Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.13.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
     </section>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>UI on Zikey Vi</title>
+        <title>UI on やれやれ DA✰ZE</title>
         <link>https://cerr.cc/tags/ui/</link>
-        <description>Recent content in UI on Zikey Vi</description>
+        <description>Recent content in UI on やれやれ DA✰ZE</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <lastBuildDate>Sat, 07 May 2022 22:53:05 +0800</lastBuildDate><atom:link href="https://cerr.cc/tags/ui/index.xml" rel="self" type="application/rss+xml" /><item>
@@ -12,7 +12,7 @@
         <pubDate>Sat, 07 May 2022 22:53:05 +0800</pubDate>
         
         <guid>https://cerr.cc/post/awesome-colors/</guid>
-        <description>&lt;img src="https://s2.loli.net/2022/05/07/QW6X8VuxZCJnmfc.jpg" alt="Featured image of post Awesome Colors" /&gt;&lt;h2 id=&#34;awesome-colors&#34;&gt;Awesome colors&lt;/h2&gt;
+        <description>&lt;img src="https://s2.loli.net/2022/05/07/QW6X8VuxZCJnmfc.jpg" alt="Featured image of post Awesome Colors" /&gt;&lt;h1 id=&#34;awesome-colors&#34;&gt;Awesome colors&lt;/h1&gt;
 &lt;div style=&#34;border: double; color: #ffffff; background-color: #4f0009; text-align: center; &#34;&gt;
         &lt;br&gt;
         &lt;h1&gt;波尔多红&lt;/h1&gt;
@@ -216,7 +216,7 @@
         <description>&lt;img src="https://s2.loli.net/2022/05/07/wqH1K7UnExrO4V5.jpg" alt="Featured image of post 关于Linux UI的美化工作" /&gt;&lt;blockquote&gt;
 &lt;p&gt;GNU/Linux 的桌面生态，开放虽是好事，但却由此带来了混乱。没有像微软这样的赛博中央政府制定规则，就产生了眼下这般群雄割据的态势。作为用户的我能做的，也只是择巨木而栖 —— 唯二的自由巨头 &lt;strong&gt;KDE&lt;/strong&gt; 与 &lt;strong&gt;Gnome&lt;/strong&gt;，&lt;del&gt;二选其一&lt;/del&gt;~~（LXQt大法好）~~（当年煮酒论DE，今日叛逃用WM）（i3大法好）。幼年气盛，爱好折腾，留下了些许美化的经验。时至今日，能回忆起的已然不多。尽力而为做些记录，为日后回归赛博左派留些盘缠。&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h2 id=&#34;概念拆解&#34;&gt;概念拆解&lt;/h2&gt;
+&lt;h1 id=&#34;概念拆解&#34;&gt;概念拆解&lt;/h1&gt;
 &lt;p&gt;被Windows驯化得温顺从良的我，当年对显示屏上花花绿绿的GUI组件并无概念。商业操作系统将一切整合，成为一个整体，迷惑我说：“这便是操作系统图形化用户接口”。今日慢慢爬出泥沼，留攻略如下：&lt;/p&gt;
 &lt;p&gt;🎵我有一台树莓派&lt;del&gt;我从来不开机&lt;/del&gt;。接通电源、引导器醒来、启动内核、唤醒&lt;code&gt;pid 1&lt;/code&gt;，此时来到Virtual Terminal下的&lt;code&gt;/dev/tty1&lt;/code&gt;。在自动登录GUI的设定下，有如下朋友先后会来迎接我：&lt;/p&gt;
 &lt;ul&gt;
@@ -302,10 +302,10 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;de&#34;&gt;DE&lt;/h2&gt;
+&lt;h1 id=&#34;de&#34;&gt;DE&lt;/h1&gt;
 &lt;h3 id=&#34;kde-plasma&#34;&gt;KDE plasma&lt;/h3&gt;
 &lt;p&gt;UI的（乡土风）现代感，很大部分要归因与透明化的效果。一年前的我也是透明化爱好者，恰逢那时使用 Archlinux + KDE，故记录如下KDE透明化配置方法。KDE自身本就具有各大DE中最为强大的视觉效果定制功能，所以如下所述只是KDE本身能力之外的美化方法：&lt;/p&gt;
-&lt;h4 id=&#34;窗口边框透明化&#34;&gt;窗口边框透明化&lt;/h4&gt;
+&lt;h3 id=&#34;窗口边框透明化&#34;&gt;窗口边框透明化&lt;/h3&gt;
 &lt;p&gt;使用&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/ishovkun/SierraBreeze&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -325,30 +325,30 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;面板透明化&#34;&gt;面板透明化&lt;/h4&gt;
+&lt;h3 id=&#34;面板透明化&#34;&gt;面板透明化&lt;/h3&gt;
 &lt;p&gt;需要自己魔改，参考如下大佬留下的教程：&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.joxrays.com/kde-panel-transparency/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.joxrays.com/kde-panel-transparency/&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;原始论坛帖子：&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://forum.manjaro.org/t/where-can-the-transparency-of-the-kde-panel-be-set/50219&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://forum.manjaro.org/t/where-can-the-transparency-of-the-kde-panel-be-set/50219&lt;/a&gt;&lt;/p&gt;
-&lt;h4 id=&#34;组件透明化&#34;&gt;组件透明化&lt;/h4&gt;
+&lt;h3 id=&#34;组件透明化&#34;&gt;组件透明化&lt;/h3&gt;
 &lt;p&gt;这一需求有现成的工具Kvantum，亦有大佬教程如下：&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://blog.firerain.me/article/4&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://blog.firerain.me/article/4&lt;/a&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;此外，便是一些其它的效果组件&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h4 id=&#34;macos风的dock栏&#34;&gt;MacOS风的Dock栏&lt;/h4&gt;
+&lt;h3 id=&#34;macos风的dock栏&#34;&gt;MacOS风的Dock栏&lt;/h3&gt;
 &lt;p&gt;状态、菜单、任务栏的呈现方式，我个人更倾向与MacOS的方案。比起Windows，牺牲了些许效率，换取美感。&lt;/p&gt;
 &lt;p&gt;KDE下使用 &lt;strong&gt;latte-dock&lt;/strong&gt; 来获取MacOS风的Dock栏，这样就可以将本身的Panel变为MacOS下的常驻状态栏。&lt;/p&gt;
 &lt;p&gt;仓库地址：&lt;a class=&#34;link&#34; href=&#34;https://github.com/KDE/latte-dock&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/KDE/latte-dock&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;同时其是可以直接从KDE store一键下载安装的。&lt;/p&gt;
-&lt;h4 id=&#34;音乐可视化&#34;&gt;音乐可视化&lt;/h4&gt;
+&lt;h3 id=&#34;音乐可视化&#34;&gt;音乐可视化&lt;/h3&gt;
 &lt;p&gt;Windows下可以使用Wallpaper engine，Linux就没有这个福分了，只能另寻替代方案。&lt;/p&gt;
 &lt;p&gt;KDE插件 &lt;strong&gt;panon&lt;/strong&gt; 能达到尚且凑活的效果，可以直接从插件商店一键安装。&lt;/p&gt;
-&lt;h3 id=&#34;gnome&#34;&gt;Gnome&lt;/h3&gt;
+&lt;h2 id=&#34;gnome&#34;&gt;Gnome&lt;/h2&gt;
 &lt;p&gt;Gnome不像KDE，它没有向用户直接呈现DE UI定制接口，而是需要用户自行配置。好在Gnome同时也提供了美化总站：&lt;a class=&#34;link&#34; href=&#34;https://www.gnome-look.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.gnome-look.org/&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;网站中基本涵盖了所有美化选项与资源。且对于采用GTK的其它DE来说，大量资源都是通用的。但在此之前需要有一些预先配置（出于DE稳定性考虑，默认不将定制接口提供给小白用户）：&lt;/p&gt;
@@ -389,14 +389,14 @@
 &lt;/ul&gt;
 &lt;p&gt;此后，尽情探索&lt;a class=&#34;link&#34; href=&#34;https://www.gnome-look.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.gnome-look.org/&lt;/a&gt;，将下载到的资源在gnome-tweaks中启用即可。&lt;/p&gt;
-&lt;h2 id=&#34;wm&#34;&gt;WM&lt;/h2&gt;
-&lt;h3 id=&#34;i3&#34;&gt;i3&lt;/h3&gt;
+&lt;h1 id=&#34;wm&#34;&gt;WM&lt;/h1&gt;
+&lt;h2 id=&#34;i3&#34;&gt;i3&lt;/h2&gt;
 &lt;p&gt;讨厌鼠标的键盘信徒？俺也一样！（即使我是老FPS玩家了，使用鼠标有天然的速度优势）&lt;/p&gt;
 &lt;p&gt;话说图形化诞生的初衷就带有“坐标交互”的动机，想在图形化下扔掉鼠标，不是抛弃原教旨了嘛？&lt;/p&gt;
 &lt;p&gt;但有需求就有造物，玩DE的后路是玩WM。i3目前是该领域的当红炸子鸡。&lt;/p&gt;
 &lt;p&gt;不喜欢X11？面向Wayland的i3 clone：Sway，供你选择。&lt;/p&gt;
 &lt;p&gt;快捷键并不多，比tmux简单。一天学会，受用终生。👍&lt;/p&gt;
-&lt;h2 id=&#34;shell&#34;&gt;Shell&lt;/h2&gt;
+&lt;h1 id=&#34;shell&#34;&gt;Shell&lt;/h1&gt;
 &lt;p&gt;shell并不属于DE的一部分，有个字符终端足矣。&lt;/p&gt;
 &lt;p&gt;最流行的美化方案还是zsh的一套：&lt;/p&gt;
 &lt;ul&gt;
@@ -451,14 +451,14 @@
 &lt;blockquote&gt;
 &lt;p&gt;fish也不错，开箱即用，但惜败于不兼容bash&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h2 id=&#34;其它&#34;&gt;其它&lt;/h2&gt;
+&lt;h1 id=&#34;其它&#34;&gt;其它&lt;/h1&gt;
 &lt;p&gt;程序太小以至于一句话就说完了……&lt;/p&gt;
-&lt;h3 id=&#34;终端配色&#34;&gt;终端配色&lt;/h3&gt;
-&lt;h4 id=&#34;终端模拟器层&#34;&gt;终端模拟器层&lt;/h4&gt;
+&lt;h2 id=&#34;终端配色&#34;&gt;终端配色&lt;/h2&gt;
+&lt;h3 id=&#34;终端模拟器层&#34;&gt;终端模拟器层&lt;/h3&gt;
 &lt;p&gt;如下仓库，应有尽有：&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/mbadolato/iTerm2-Color-Schemes&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/mbadolato/iTerm2-Color-Schemes&lt;/a&gt;&lt;/p&gt;
-&lt;h4 id=&#34;shell层&#34;&gt;shell层&lt;/h4&gt;
+&lt;h3 id=&#34;shell层&#34;&gt;shell层&lt;/h3&gt;
 &lt;p&gt;shell层的配色只是用色号指定颜色，但相应颜色具体长什么样还得看上述终端模拟器层中定义的RGB值。&lt;/p&gt;
 &lt;p&gt;我自己比较喜欢&lt;code&gt;ZSH_THEME=&amp;quot;robbyrussell&amp;quot;&lt;/code&gt;的配色：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -478,15 +478,15 @@
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://geoff.greer.fm/lscolors/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://geoff.greer.fm/lscolors/&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;grub&#34;&gt;grub&lt;/h3&gt;
+&lt;h2 id=&#34;grub&#34;&gt;grub&lt;/h2&gt;
 &lt;p&gt;来自gnome-look，但啥都能用，毕竟定制的是grub这个引导器：&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.gnome-look.org/browse/cat/109/order/latest/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.gnome-look.org/browse/cat/109/order/latest/&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&#34;桌面状态监测器&#34;&gt;桌面状态监测器&lt;/h3&gt;
+&lt;h2 id=&#34;桌面状态监测器&#34;&gt;桌面状态监测器&lt;/h2&gt;
 &lt;p&gt;使用 &lt;strong&gt;conky&lt;/strong&gt;，仓库如下：&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/brndnmtthws/conky&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/brndnmtthws/conky&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&#34;裸体终端模拟器&#34;&gt;裸体终端模拟器&lt;/h3&gt;
+&lt;h2 id=&#34;裸体终端模拟器&#34;&gt;裸体终端模拟器&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;fbterm&lt;/strong&gt;好东西，仓库如下：&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/sfzhi/fbterm&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/sfzhi/fbterm&lt;/a&gt;&lt;/p&gt;

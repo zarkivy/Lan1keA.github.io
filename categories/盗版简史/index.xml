@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>盗版简史 on Zikey Vi</title>
+        <title>盗版简史 on やれやれ DA✰ZE</title>
         <link>https://cerr.cc/categories/%E7%9B%97%E7%89%88%E7%AE%80%E5%8F%B2/</link>
-        <description>Recent content in 盗版简史 on Zikey Vi</description>
+        <description>Recent content in 盗版简史 on やれやれ DA✰ZE</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <lastBuildDate>Wed, 01 Jun 2022 10:55:17 +0800</lastBuildDate><atom:link href="https://cerr.cc/categories/%E7%9B%97%E7%89%88%E7%AE%80%E5%8F%B2/index.xml" rel="self" type="application/rss+xml" /><item>
@@ -16,10 +16,10 @@
     &gt;reduced instruction set computer&lt;/a&gt; (RISC) &lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/Instruction_set_architecture&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;instruction set architectures&lt;/a&gt; for &lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/Central_processing_unit&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;computer processors&lt;/a&gt;, configured for various environments.&lt;/p&gt;
-&lt;h2 id=&#34;aarch32&#34;&gt;AArch32&lt;/h2&gt;
+&lt;h1 id=&#34;aarch32&#34;&gt;AArch32&lt;/h1&gt;
 &lt;p&gt;&lt;strong&gt;armel&lt;/strong&gt; : arm eabi little-endian, use soft float&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;armhf&lt;/strong&gt; : arm hard float, arm with &lt;strong&gt;FPU&lt;/strong&gt;&lt;/p&gt;
-&lt;h2 id=&#34;from-aarch32-to-aarch64&#34;&gt;From AArch32 to AArch64&lt;/h2&gt;
+&lt;h1 id=&#34;from-aarch32-to-aarch64&#34;&gt;From AArch32 to AArch64&lt;/h1&gt;
 &lt;p&gt;Transitioning rom ARMv7 to ARMv8, all the basics you must know:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://events.static.linuxfound.org/sites/events/files/slides/KoreaLinuxForum-2014.pdf&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -32,12 +32,12 @@
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/torvalds/linux/blob/v4.17/arch/arm64/Kconfig#L1274&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/torvalds/linux/blob/v4.17/arch/arm64/Kconfig#L1274&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;manual&#34;&gt;Manual&lt;/h2&gt;
+&lt;h1 id=&#34;manual&#34;&gt;Manual&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://developer.arm.com/documentation/dui0068/b/ARM-Instruction-Reference&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://developer.arm.com/documentation/dui0068/b/ARM-Instruction-Reference&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
+&lt;h1 id=&#34;reference&#34;&gt;Reference&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/ARM_architecture_family&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://en.wikipedia.org/wiki/ARM_architecture_family&lt;/a&gt;&lt;/li&gt;
@@ -52,7 +52,7 @@
         <pubDate>Mon, 23 May 2022 23:21:12 +0800</pubDate>
         
         <guid>https://cerr.cc/post/%E5%85%B3%E4%BA%8Elinux%E4%B8%8B%E7%9A%84%E7%BD%91%E5%8D%A1%E4%B8%8E%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87/</guid>
-        <description>&lt;img src="https://s2.loli.net/2022/05/23/nEj1icSvZsA479q.jpg" alt="Featured image of post 关于Linux下的网卡与网络设备" /&gt;&lt;h2 id=&#34;ip与ifconfig命令输出&#34;&gt;ip与ifconfig命令输出&lt;/h2&gt;
+        <description>&lt;img src="https://s2.loli.net/2022/05/23/nEj1icSvZsA479q.jpg" alt="Featured image of post 关于Linux下的网卡与网络设备" /&gt;&lt;h1 id=&#34;ip与ifconfig命令输出&#34;&gt;ip与ifconfig命令输出&lt;/h1&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -93,7 +93,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        TX errors &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;  dropped &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt; overruns &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;  carrier &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;  collisions &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;网卡的工作模式&#34;&gt;网卡的工作模式&lt;/h2&gt;
+&lt;/div&gt;&lt;h1 id=&#34;网卡的工作模式&#34;&gt;网卡的工作模式&lt;/h1&gt;
 &lt;ol&gt;
 &lt;li&gt;广播模式（Broad Cast Model）：它的物理地址（MAC）地址是 0xffffff 的帧为广播帧，工作在广播模式的网卡接收广播帧；&lt;/li&gt;
 &lt;li&gt;多播传送（MultiCast Model）：多播传送地址作为目的物理地址的帧可以被组内的其它主机同时接收，而组外主机却接收不到。但是，如果将网卡设置为多播传送模式，它可以接收所有的多播传送帧，而不论它是不是组内成员；&lt;/li&gt;
@@ -101,7 +101,7 @@
 &lt;li&gt;混杂模式（Promiscuous Model）：工作在混杂模式下的网卡接收所有的流过网卡的帧，信包捕获程序就是在这种模式下运行的。&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;网卡的缺省工作模式包含广播模式和直接模式，即它只接收广播帧和发给自己的帧。如果采用混杂模式，一个站点的网卡将接受同一网络内所有站点所发送的数据包这样就可以到达对于网络信息监视捕获的目的。&lt;/p&gt;
-&lt;h2 id=&#34;linux下的虚拟网络设备&#34;&gt;Linux下的虚拟网络设备&lt;/h2&gt;
+&lt;h1 id=&#34;linux下的虚拟网络设备&#34;&gt;Linux下的虚拟网络设备&lt;/h1&gt;
 &lt;p&gt;通过&lt;code&gt;ip link add&lt;/code&gt;可以创建多种类型的虚拟网络设备，在&lt;code&gt;man ip link&lt;/code&gt;中可以得知有以下类型的device:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;bridge - Ethernet Bridge device&lt;/li&gt;
@@ -140,7 +140,7 @@
 &lt;li&gt;rmnet - Qualcomm rmnet device&lt;/li&gt;
 &lt;li&gt;xfrm - Virtual xfrm interface&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;tuntap&#34;&gt;TUN/TAP&lt;/h2&gt;
+&lt;h1 id=&#34;tuntap&#34;&gt;TUN/TAP&lt;/h1&gt;
 &lt;p&gt;TUN是Linux系统里的虚拟网络设备，它的原理和使用在&lt;a class=&#34;link&#34; href=&#34;https://www.kernel.org/doc/Documentation/networking/tuntap.txt&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Kernel Doc&lt;/a&gt;和&lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/TUN/TAP&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Wiki&lt;/a&gt;做了比较清楚的说明。&lt;/p&gt;
@@ -175,7 +175,7 @@
 &lt;li&gt;TAP虚拟的是一个二层设备，具有MAC地址，接收、发送的是二层包。&lt;/li&gt;
 &lt;li&gt;TUN虚拟的是一个三层设备，没有MAC地址，接收、发送的是三层包。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;最小的虚拟网卡&#34;&gt;最小的虚拟网卡&lt;/h2&gt;
+&lt;h1 id=&#34;最小的虚拟网卡&#34;&gt;最小的虚拟网卡&lt;/h1&gt;
 &lt;p&gt;参见：&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://zhou-yuxin.github.io/articles/2017/%E7%AC%AC%E4%B8%80%E4%B8%AALinux%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87%E9%A9%B1%E5%8A%A8%E2%80%94%E2%80%94%E6%9C%80%E7%AE%80%E8%99%9A%E6%8B%9F%E7%BD%91%E5%8D%A1virnet/index.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://zhou-yuxin.github.io/articles/2017/%E7%AC%AC%E4%B8%80%E4%B8%AALinux%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87%E9%A9%B1%E5%8A%A8%E2%80%94%E2%80%94%E6%9C%80%E7%AE%80%E8%99%9A%E6%8B%9F%E7%BD%91%E5%8D%A1virnet/index.html&lt;/a&gt;&lt;/p&gt;

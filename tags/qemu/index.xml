@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>QEMU on Zikey Vi</title>
+        <title>QEMU on やれやれ DA✰ZE</title>
         <link>https://cerr.cc/tags/qemu/</link>
-        <description>Recent content in QEMU on Zikey Vi</description>
+        <description>Recent content in QEMU on やれやれ DA✰ZE</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <lastBuildDate>Mon, 08 Aug 2022 14:17:44 +0800</lastBuildDate><atom:link href="https://cerr.cc/tags/qemu/index.xml" rel="self" type="application/rss+xml" /><item>
@@ -12,8 +12,8 @@
         <pubDate>Mon, 08 Aug 2022 14:17:44 +0800</pubDate>
         
         <guid>https://cerr.cc/post/%E4%BD%BF%E7%94%A8qemu-gdb%E8%B0%83%E8%AF%95linux%E5%86%85%E6%A0%B8/</guid>
-        <description>&lt;img src="https://s2.loli.net/2022/08/09/PKcwjiVBTg6ApEv.png" alt="Featured image of post 使用QEMU&#43;GDB调试Linux内核" /&gt;&lt;h2 id=&#34;环境准备&#34;&gt;环境准备&lt;/h2&gt;
-&lt;h3 id=&#34;qemu-的手动构建&#34;&gt;QEMU 的手动构建&lt;/h3&gt;
+        <description>&lt;img src="https://s2.loli.net/2022/08/09/PKcwjiVBTg6ApEv.png" alt="Featured image of post 使用QEMU&#43;GDB调试Linux内核" /&gt;&lt;h1 id=&#34;环境准备&#34;&gt;环境准备&lt;/h1&gt;
+&lt;h2 id=&#34;qemu-的手动构建&#34;&gt;QEMU 的手动构建&lt;/h2&gt;
 &lt;p&gt;获取QEMU源码：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -49,9 +49,9 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo make install
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;使用buildroot一键构建rootfskernel&#34;&gt;使用buildroot一键构建rootfs+kernel&lt;/h3&gt;
+&lt;/div&gt;&lt;h2 id=&#34;使用buildroot一键构建rootfskernel&#34;&gt;使用buildroot一键构建rootfs+kernel&lt;/h2&gt;
 &lt;blockquote&gt;
-&lt;p&gt;buildroot自动构建过程若出现网络不畅，自备梯子，并设定shell变量all_proxy、http_proxy、https_proxy用于代理wget、curl等工具即可。参见：&lt;a class=&#34;link&#34; href=&#34;https://cerr.cc/post/fgfw/&#34; &gt;https://cerr.cc/post/fgfw/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;buildroot自动构建过程若出现网络不畅，自备梯子，并设定shell变量all_proxy、http_proxy、https_proxy用于代理wget、curl等工具即可。参见：&lt;a class=&#34;link&#34; href=&#34;https://cerr.cc/post/fuck-the-great-fire-wall/&#34; &gt;https://cerr.cc/post/fuck-the-great-fire-wall/&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -140,7 +140,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;确认成功断下执行流即可。&lt;/p&gt;
-&lt;h3 id=&#34;手动构建kernelinitramfs&#34;&gt;手动构建kernel+initramfs&lt;/h3&gt;
+&lt;h2 id=&#34;手动构建kernelinitramfs&#34;&gt;手动构建kernel+initramfs&lt;/h2&gt;
 &lt;p&gt;若不想借助自动化工具buildroot传达旨意，而是要亲自指挥亲自部署，记录如下：&lt;/p&gt;
 &lt;p&gt;载入x86_64默认config：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -211,7 +211,7 @@
 &lt;blockquote&gt;
 &lt;p&gt;巧合的是，就在我执行完如上命令进入shell后，惊觉Linux居然已经6.0.0了😱。经查正是今天的新闻。&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h3 id=&#34;试图调试&#34;&gt;试图调试&lt;/h3&gt;
+&lt;h2 id=&#34;试图调试&#34;&gt;试图调试&lt;/h2&gt;
 &lt;p&gt;沿用上述手动挡的构建方案，qemu启动时关闭kaslr（编译时若关闭了RANDOMIZE_BASE，则无需向kernel传递nokaslr参数）：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -247,7 +247,7 @@
 &lt;/div&gt;&lt;p&gt;关于对gdb调试的支持，内核所提供的文档如下：&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.kernel.org/doc/html/latest/dev-tools/gdb-kernel-debugging.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.kernel.org/doc/html/latest/dev-tools/gdb-kernel-debugging.html&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;内核启动&#34;&gt;内核启动&lt;/h2&gt;
+&lt;h1 id=&#34;内核启动&#34;&gt;内核启动&lt;/h1&gt;
 &lt;p&gt;内核初始化主函数：&lt;code&gt;init/main.c:start_kernel&lt;/code&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -480,8 +480,8 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;系统调用&#34;&gt;系统调用&lt;/h2&gt;
-&lt;h3 id=&#34;静态搜寻&#34;&gt;静态搜寻&lt;/h3&gt;
+&lt;/div&gt;&lt;h1 id=&#34;系统调用&#34;&gt;系统调用&lt;/h1&gt;
+&lt;h2 id=&#34;静态搜寻&#34;&gt;静态搜寻&lt;/h2&gt;
 &lt;p&gt;动态调试系统调用代码之前，不妨先来找到内核系统调用的静态代码位置。Linux Kernel使用&lt;code&gt;SYSCALL_DEFINE[N]&lt;/code&gt;宏来定义系统调用入口，其原型位于&lt;a class=&#34;link&#34; href=&#34;https://github.com/torvalds/linux/blob/16f73eb02d7e1765ccab3d2018e0bd98eb93d973/include/linux/syscalls.h&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;include/linux/syscalls.h&lt;/a&gt;，其中会调用特定系统调用的实现函数。所以，我们使用如下命令可以帮助快速筛选想要动态调试的系统调用入口所在位置：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -531,7 +531,7 @@
 &lt;p&gt;Linux Kernel 系统调用流程参见：&lt;a class=&#34;link&#34; href=&#34;https://0xax.gitbooks.io/linux-insides/content/SysCall/linux-syscall-2.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://0xax.gitbooks.io/linux-insides/content/SysCall/linux-syscall-2.html&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h3 id=&#34;动态调试&#34;&gt;动态调试&lt;/h3&gt;
+&lt;h2 id=&#34;动态调试&#34;&gt;动态调试&lt;/h2&gt;
 &lt;p&gt;继续以open系统调用为例，开始动态调试跟踪。&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;qemu monitor，你的好帮手，Ctrl+A C进入与退出monitor模式：&lt;/p&gt;
@@ -594,12 +594,12 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;此前已经知道open系统调用的实现函数为&lt;code&gt;do_sys_open&lt;/code&gt;，故于此函数下断点即可。&lt;/p&gt;
-&lt;h2 id=&#34;内存管理&#34;&gt;内存管理&lt;/h2&gt;
-&lt;h2 id=&#34;文件系统&#34;&gt;文件系统&lt;/h2&gt;
-&lt;h2 id=&#34;网络栈&#34;&gt;网络栈&lt;/h2&gt;
-&lt;h2 id=&#34;实战漏洞调试&#34;&gt;实战漏洞调试&lt;/h2&gt;
-&lt;p&gt;参见：&lt;a class=&#34;link&#34; href=&#34;https://cerr.cc/post/cve-2016-5195/&#34; &gt;https://cerr.cc/post/cve-2016-5195/&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;参考&#34;&gt;参考&lt;/h2&gt;
+&lt;h1 id=&#34;内存管理&#34;&gt;内存管理&lt;/h1&gt;
+&lt;h1 id=&#34;文件系统&#34;&gt;文件系统&lt;/h1&gt;
+&lt;h1 id=&#34;网络栈&#34;&gt;网络栈&lt;/h1&gt;
+&lt;h1 id=&#34;实战漏洞调试&#34;&gt;实战漏洞调试&lt;/h1&gt;
+&lt;p&gt;参见：&lt;a class=&#34;link&#34; href=&#34;https://cerr.cc/post/cve-2016-5195-linux-dirtycow%e6%bc%8f%e6%b4%9e%e5%88%86%e6%9e%90/&#34; &gt;https://cerr.cc/post/cve-2016-5195-linux-dirtycow漏洞分析/&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;参考&#34;&gt;参考&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;http://nickdesaulniers.github.io/blog/2018/10/24/booting-a-custom-linux-kernel-in-qemu-and-debugging-it-with-gdb/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;http://nickdesaulniers.github.io/blog/2018/10/24/booting-a-custom-linux-kernel-in-qemu-and-debugging-it-with-gdb/&lt;/a&gt;&lt;/li&gt;
@@ -614,7 +614,7 @@
         <pubDate>Thu, 09 Jun 2022 17:44:21 +0800</pubDate>
         
         <guid>https://cerr.cc/post/cve-2015-5165-qemu%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/</guid>
-        <description>&lt;img src="https://s2.loli.net/2022/06/09/jupCyBcahdQEJmP.jpg" alt="Featured image of post CVE-2015-5165 QEMU信息泄露漏洞分析" /&gt;&lt;h2 id=&#34;waiting&#34;&gt;waiting&lt;/h2&gt;
+        <description>&lt;img src="https://s2.loli.net/2022/06/09/jupCyBcahdQEJmP.jpg" alt="Featured image of post CVE-2015-5165 QEMU信息泄露漏洞分析" /&gt;&lt;h1 id=&#34;waiting&#34;&gt;waiting&lt;/h1&gt;
 </description>
         </item>
         <item>
@@ -623,7 +623,7 @@
         <pubDate>Thu, 26 May 2022 15:51:22 +0800</pubDate>
         
         <guid>https://cerr.cc/post/%E8%AE%B0%E4%B8%80%E6%AC%A1qemu-system-arm%E4%BB%BF%E7%9C%9F%E7%9A%84%E6%8E%92%E9%94%99/</guid>
-        <description>&lt;img src="https://s2.loli.net/2022/05/26/RS1JrGW2t4vzD3M.jpg" alt="Featured image of post 记一次qemu-system-arm仿真的排错" /&gt;&lt;h2 id=&#34;探案&#34;&gt;🕵️探案&lt;/h2&gt;
+        <description>&lt;img src="https://s2.loli.net/2022/05/26/RS1JrGW2t4vzD3M.jpg" alt="Featured image of post 记一次qemu-system-arm仿真的排错" /&gt;&lt;h1 id=&#34;探案&#34;&gt;🕵️探案&lt;/h1&gt;
 &lt;p&gt;在一次尝试使用&lt;code&gt;qemu-system-arm&lt;/code&gt;对于asuswrt的固件进行仿真运行时，出现了十分诡异的问题：整个qemu-system、linux内核、固件文件系统运行完全正常，除了在使用到&lt;code&gt;openssl&lt;/code&gt;时：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -1142,7 +1142,7 @@
 &lt;/blockquote&gt;
 &lt;p&gt;由此破案了：华硕为这台路由器用了较新的A53 64位CPU和64位内核，内部软件却都是较旧的&lt;code&gt;Armv7&lt;/code&gt;指令集下的32位软件。整台机器相当于是跑在一个“向下兼容模式”。&lt;/p&gt;
 &lt;p&gt;——直到他们修复OpenSSL CVE-2022-0778时，固件中才首次出现了&lt;code&gt;Armv8&lt;/code&gt;的软件OpenSSL。（当然配套依赖也引入了，如&lt;code&gt;ld-linux-aarch64.so.1&lt;/code&gt;）&lt;/p&gt;
-&lt;h2 id=&#34;收网&#34;&gt;👮收网&lt;/h2&gt;
+&lt;h1 id=&#34;收网&#34;&gt;👮收网&lt;/h1&gt;
 &lt;p&gt;qemu难道就不包含&lt;code&gt;Armv8&lt;/code&gt;了吗？&lt;/p&gt;
 &lt;p&gt;使用&lt;code&gt;qemu-user&lt;/code&gt;试试：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -1391,8 +1391,8 @@
         <pubDate>Tue, 10 May 2022 20:59:43 +0800</pubDate>
         
         <guid>https://cerr.cc/post/%E6%9E%84%E5%BB%BA%E4%B8%8E%E8%BF%90%E8%A1%8C%E5%B5%8C%E5%85%A5%E5%BC%8Flinux%E8%99%9A%E6%8B%9F%E6%9C%BA/</guid>
-        <description>&lt;img src="https://s2.loli.net/2022/05/08/2DqjsbwNpdUM4XA.jpg" alt="Featured image of post 构建与运行嵌入式linux虚拟机" /&gt;&lt;h2 id=&#34;自动挡&#34;&gt;自动挡&lt;/h2&gt;
-&lt;h3 id=&#34;一路默认&#34;&gt;一路默认&lt;/h3&gt;
+        <description>&lt;img src="https://s2.loli.net/2022/05/08/2DqjsbwNpdUM4XA.jpg" alt="Featured image of post 构建与运行嵌入式linux虚拟机" /&gt;&lt;h1 id=&#34;自动挡&#34;&gt;自动挡&lt;/h1&gt;
+&lt;h2 id=&#34;一路默认&#34;&gt;一路默认&lt;/h2&gt;
 &lt;p&gt;通过git或http获取buildroot：&lt;/p&gt;
 &lt;p&gt;官网：https://buildroot.org/&lt;/p&gt;
 &lt;p&gt;git：&lt;code&gt;git clone https://git.buildroot.net/buildroot&lt;/code&gt;&lt;/p&gt;
@@ -1536,7 +1536,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;弄完发现过程竟如此简单，buildroot把所有活都干了……&lt;/p&gt;
-&lt;h3 id=&#34;全自动方案中的定制&#34;&gt;全自动方案中的定制&lt;/h3&gt;
+&lt;h2 id=&#34;全自动方案中的定制&#34;&gt;全自动方案中的定制&lt;/h2&gt;
 &lt;p&gt;即使需要定制部分组件，也是能借力buildroot的全自动化方案的。&lt;/p&gt;
 &lt;p&gt;先导入自己需要的全自动方案的默认配置，再使用&lt;code&gt;make menuconfig&lt;/code&gt;对其生成的&lt;code&gt;.config&lt;/code&gt;进行定制：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -1560,7 +1560,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;         Kernel version &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;Custom Git repository&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;记一次旧版本工具链的自动挡构建&#34;&gt;记一次旧版本工具链的自动挡构建&lt;/h3&gt;
+&lt;/div&gt;&lt;h2 id=&#34;记一次旧版本工具链的自动挡构建&#34;&gt;记一次旧版本工具链的自动挡构建&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;这一节实际上由另一篇文章合并而来，故与上下文不衔接，内容独立。&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -1715,14 +1715,11 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;接着进入&lt;code&gt;buildroot/output&lt;/code&gt;取货即可。虽然其中已有4.9.6的内核了，不过我需要的是由此得到的编译工具链，以便编译自行定制的4.9版本内核。（旧版内核需要旧版工具链编译）&lt;/p&gt;
-&lt;h2 id=&#34;手动档&#34;&gt;手动档&lt;/h2&gt;
-&lt;p&gt;另一篇使用qemu-system调试内核的文章中已有部分描述：&lt;/p&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://cerr.cc/post/qemu_dbg_kernel/&#34; &gt;http://cerr.cc/post/qemu_dbg_kernel/&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;不过接下来还是记录下另一次实践。目标设定为aarch64 linux 5.4&lt;/p&gt;
-&lt;h3 id=&#34;编译工具链&#34;&gt;编译工具链&lt;/h3&gt;
+&lt;h1 id=&#34;手动档&#34;&gt;手动档&lt;/h1&gt;
+&lt;h2 id=&#34;编译工具链&#34;&gt;编译工具链&lt;/h2&gt;
 &lt;p&gt;这个好说，方才Easymode里不是刚好做了一个嘛。buildroot构建好了所有target目标，自然也为此生成了完整的host构建工具链。&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;若目标为旧版本内核，则需要旧版本工具链，构建方式在另一篇文章中有记录：&lt;a class=&#34;link&#34; href=&#34;post/qemu_dbg_kernel/&#34; &gt;https://cerr.cc/post/qemu_dbg_kernel/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;若目标为旧版本内核，则需要旧版本工具链，构建方式在另一篇文章中有记录：&lt;a class=&#34;link&#34; href=&#34;post/cross-debug-old-version-kernel-using-qemu-system/&#34; &gt;https://cerr.cc/post/cross-debug-old-version-kernel-using-qemu-system/&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -1872,7 +1869,7 @@
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;若实在没有啥特殊需求， &lt;code&gt;apt install gcc-aarch64-linux-gnu&lt;/code&gt;大部分情况下也能直接解决问题。&lt;/p&gt;
-&lt;h4 id=&#34;osabi的匹配&#34;&gt;OS/ABI的匹配&lt;/h4&gt;
+&lt;h3 id=&#34;osabi的匹配&#34;&gt;OS/ABI的匹配&lt;/h3&gt;
 &lt;p&gt;通常情况下，选取编译交叉编译工具链时，指令集、平台之类的内容是不容易弄错的。但 OS/ABI 却是个容易造成故障的点。&lt;/p&gt;
 &lt;p&gt;举例来讲，在我一次对libnvram.so的编译时，得到的目标ELF文件为：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -1948,8 +1945,8 @@
 &lt;p&gt;导致这一结果的原因是：使用OABI编译工具链编译出的结果为&lt;code&gt;OS/ABI: ARM&lt;/code&gt;，而使用EABI编译工具链编译出的结果为&lt;code&gt;OS/ABI: UNIX - System V&lt;/code&gt;。关于OABI与EABI的区别，参见：&lt;a class=&#34;link&#34; href=&#34;https://docs.embeddedts.com/EABI_vs_OABI&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://docs.embeddedts.com/EABI_vs_OABI&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;故换用标识了eabi的工具链重新编译即解决了该问题。&lt;/p&gt;
-&lt;h3 id=&#34;kernel&#34;&gt;Kernel&lt;/h3&gt;
-&lt;h4 id=&#34;linux源码结构&#34;&gt;Linux源码结构&lt;/h4&gt;
+&lt;h2 id=&#34;kernel&#34;&gt;Kernel&lt;/h2&gt;
+&lt;h3 id=&#34;linux源码结构&#34;&gt;Linux源码结构&lt;/h3&gt;
 &lt;p&gt;手动构建内核前，先了解下内核源码的文件树结构。以2022/6/1的linux源码为例：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -2027,7 +2024,7 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;linux构建系统&#34;&gt;Linux构建系统&lt;/h4&gt;
+&lt;h3 id=&#34;linux构建系统&#34;&gt;Linux构建系统&lt;/h3&gt;
 &lt;p&gt;同时需要先了解下 &lt;code&gt;.config&lt;/code&gt;、&lt;code&gt;defconfig&lt;/code&gt;、&lt;code&gt;Kconfig&lt;/code&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://stackoverflow.com/questions/41885015/what-exactly-does-linux-kernels-make-defconfig-do&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -2074,7 +2071,7 @@
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;make &lt;span class=&#34;nv&#34;&gt;V&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; defconfig
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h4 id=&#34;开始构建&#34;&gt;开始构建&lt;/h4&gt;
+&lt;/div&gt;&lt;h3 id=&#34;开始构建&#34;&gt;开始构建&lt;/h3&gt;
 &lt;p&gt;现来此挑选中意的内核版本：&lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/Linux_kernel_version_history&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://en.wikipedia.org/wiki/Linux_kernel_version_history&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;我这边以5.4版本内核为例继续实验：&lt;/p&gt;
@@ -2183,8 +2180,8 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;./build/vmlinux
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;通过qemu-system运行&#34;&gt;通过qemu-system运行&lt;/h3&gt;
-&lt;h4 id=&#34;网桥的预配置&#34;&gt;网桥的预配置&lt;/h4&gt;
+&lt;/div&gt;&lt;h2 id=&#34;通过qemu-system运行&#34;&gt;通过qemu-system运行&lt;/h2&gt;
+&lt;h3 id=&#34;网桥的预配置&#34;&gt;网桥的预配置&lt;/h3&gt;
 &lt;p&gt;后续host于qemu-system中的guest将通过网桥连接，故先于host中配置网桥。&lt;/p&gt;
 &lt;p&gt;首先准备网桥与tun/tap虚拟网卡：&lt;/p&gt;
 &lt;p&gt;创建网桥br0：&lt;/p&gt;
@@ -2215,13 +2212,13 @@
         <pubDate>Sun, 08 May 2022 19:35:11 +0800</pubDate>
         
         <guid>https://cerr.cc/post/cross-debug-old-version-kernel-using-qemu-system/</guid>
-        <description>&lt;img src="https://s2.loli.net/2022/05/08/MGJ3tsAVHSYrThj.jpg" alt="Featured image of post Cross debug old version kernel using qemu-system" /&gt;&lt;blockquote&gt;
+        <description>&lt;img src="https://s2.loli.net/2022/08/25/fHQPn8S2vLI7aR3.png" alt="Featured image of post Cross debug old version kernel using qemu-system" /&gt;&lt;blockquote&gt;
 &lt;p&gt;From this post, our goal is tracing the execution procedure from kernel entry to userspace process (busybox init) by using qemu-system and gdb-multiarch.&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h2 id=&#34;preparation&#34;&gt;Preparation&lt;/h2&gt;
-&lt;h3 id=&#34;qemu-system-arm&#34;&gt;qemu-system-arm&lt;/h3&gt;
+&lt;h1 id=&#34;preparation&#34;&gt;Preparation&lt;/h1&gt;
+&lt;h2 id=&#34;qemu-system-arm&#34;&gt;qemu-system-arm&lt;/h2&gt;
 &lt;p&gt;Compile it from source code or just use &lt;code&gt;sudo apt install qemu-system-arm&lt;/code&gt;.&lt;/p&gt;
-&lt;h3 id=&#34;kernel&#34;&gt;kernel&lt;/h3&gt;
+&lt;h2 id=&#34;kernel&#34;&gt;kernel&lt;/h2&gt;
 &lt;p&gt;Linux kernel v4.1 for armel as an example.
 Compiling a linux kernel requires a matched version of gcc.
 For example, the linux kernel v4.1 requires the gcc version between 3 and 5:&lt;/p&gt;
@@ -2316,7 +2313,7 @@ Ready for compiling the old version linux kernel :)&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;We got zImage at build/armel/arch/arm/boot/zImage and vmlinux (with debug symbols) at build/armel&lt;/p&gt;
-&lt;h3 id=&#34;busybox&#34;&gt;busybox&lt;/h3&gt;
+&lt;h2 id=&#34;busybox&#34;&gt;busybox&lt;/h2&gt;
 &lt;p&gt;Even though we can use the busybox from the filesystem directly, we got no debug symbols from it.
 Thus we should compile busybox manually:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -2332,7 +2329,7 @@ Thus we should compile busybox manually:&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;Then the busybox_unstripped is produced.&lt;/p&gt;
-&lt;h3 id=&#34;filesystem&#34;&gt;filesystem&lt;/h3&gt;
+&lt;h2 id=&#34;filesystem&#34;&gt;filesystem&lt;/h2&gt;
 &lt;p&gt;Hummm maybe obtain it by yourself?&lt;/p&gt;
 &lt;p&gt;As for my situation, I just extract the filesystem from a TP-Link firmware.
 And we need do some modification to turn our filesystem directory to a filesystem image.
@@ -2389,7 +2386,7 @@ The next step is create disk partitions using fdisk on rootfs.img :&lt;/p&gt;
 &lt;/div&gt;&lt;p&gt;We are done preparing here. All we should do next is copying all the files recursively from the origin root filesystem directory to our mounted directory,
 so that we got a rootfs.img image file containing the armel filesystem we want.
 Don&amp;rsquo;t forget replace the origin bin/busybox with our manually compiled version.&lt;/p&gt;
-&lt;h2 id=&#34;tracing-time-&#34;&gt;Tracing time !&lt;/h2&gt;
+&lt;h1 id=&#34;tracing-time-&#34;&gt;Tracing time !&lt;/h1&gt;
 &lt;p&gt;Now we have :&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;

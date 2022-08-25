@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>Fuzzing on Zikey Vi</title>
+        <title>Fuzzing on やれやれ DA✰ZE</title>
         <link>https://cerr.cc/tags/fuzzing/</link>
-        <description>Recent content in Fuzzing on Zikey Vi</description>
+        <description>Recent content in Fuzzing on やれやれ DA✰ZE</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <lastBuildDate>Fri, 20 May 2022 17:57:07 +0800</lastBuildDate><atom:link href="https://cerr.cc/tags/fuzzing/index.xml" rel="self" type="application/rss+xml" /><item>
@@ -19,8 +19,8 @@
 &lt;p&gt;影响范围：OpenSSL1.0.1、OpenSSL 1.0.1a~ OpenSSL 1.0.1f、OpenSSL 1.0.2-beta&lt;/p&gt;
 &lt;p&gt;漏洞描述：OpenSSL 在实现 TLS（传输层安全协议）和 DTLS（数据报安全传输协议）的心跳包处理逻辑时存在问题。OpenSSL 的 Heartbleed 模块在处理心跳包时没有检查心跳包中的长度字段是否与后续的数据字段一致，攻击者利用该漏洞构造异常数据包，可获取服务器内存中多达 64KB 的数据。这些数据可能会包含证书私钥、用户账号、密码、邮件内容等敏感信息。&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h2 id=&#34;背景知识&#34;&gt;背景知识&lt;/h2&gt;
-&lt;h3 id=&#34;简介&#34;&gt;简介&lt;/h3&gt;
+&lt;h1 id=&#34;背景知识&#34;&gt;背景知识&lt;/h1&gt;
+&lt;h1 id=&#34;简介&#34;&gt;简介&lt;/h1&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/Transport_Layer_Security&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;传输层安全性协议SSL&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;SSL&lt;/strong&gt; 全称 Secure Sockets Layer（安全套接字层协议），要求建立在可靠的传输层协议（&lt;strong&gt;TCP&lt;/strong&gt;）之上，主要提供机密性、认证性及数据完整性服务。SSL 最初（SSL 1.0、SSL2.0、SSL 3.0 版本）由网景公司设计和维护，从 3.1 版本开始，SSL 协议由因特网工程任务小组（IETF）正式接管，并更名为 &lt;strong&gt;TLS&lt;/strong&gt;（传输层安全协议，Transport Layer Security），发展至今已有 TLS 1.0、TLS1.1、TLS1.2 三个版本。&lt;/p&gt;
@@ -31,7 +31,7 @@
 &lt;li&gt;完整性——使用消息认证码（MAC）保障数据完整性，防止消息被篡改；&lt;/li&gt;
 &lt;li&gt;重放保护——通过使用隐式序列号防止重放攻击；&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;ssl握手过程&#34;&gt;SSL握手过程&lt;/h3&gt;
+&lt;h2 id=&#34;ssl握手过程&#34;&gt;SSL握手过程&lt;/h2&gt;
 &lt;p&gt;客户端获取服务器的数字证书后，协商后续数据传输所使用的对称加密密钥。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://s2.loli.net/2022/05/23/v2tSmBZsi1PWHTO.png&#34;
 	
@@ -43,7 +43,7 @@
 	
 	
 &gt;&lt;/p&gt;
-&lt;h3 id=&#34;ssl-heartbeat&#34;&gt;SSL Heartbeat&lt;/h3&gt;
+&lt;h2 id=&#34;ssl-heartbeat&#34;&gt;SSL Heartbeat&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Heartbleed was introduced by the Heartbeat Extension in the OpenSSL version 1.0.11 . This extension enables a low-cost, keepalive mechanism for peers to know that they’re still connected and all is well at the TLS layer. Standard implementations of TLS do not require the extension as they can rely on TCP for equivalent session management. Version 1.0.1 of OpenSSL added support for the Heartbeat functionality and enabled it by default.&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -115,7 +115,7 @@
 	
 	
 &gt;&lt;/p&gt;
-&lt;h3 id=&#34;openssl&#34;&gt;OpenSSL&lt;/h3&gt;
+&lt;h2 id=&#34;openssl&#34;&gt;OpenSSL&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.openssl.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.openssl.org/&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;查阅文档：&lt;/p&gt;
@@ -131,8 +131,8 @@
 &lt;p&gt;The OpenSSL crypto library (&lt;code&gt;libcrypto&lt;/code&gt;) implements a wide range of cryptographic algorithms used in various Internet standards. The services provided by this library are used by the OpenSSL implementations of TLS and CMS, and they have also been used to implement many other third party products and protocols.&lt;/p&gt;
 &lt;p&gt;The functionality includes symmetric encryption, public key cryptography, key agreement, certificate handling, cryptographic hash functions, cryptographic pseudo-random number generators, message authentication codes (MACs), key derivation functions (KDFs), and various utilities.&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h2 id=&#34;漏洞分析&#34;&gt;漏洞分析&lt;/h2&gt;
-&lt;h3 id=&#34;源码获取&#34;&gt;源码获取&lt;/h3&gt;
+&lt;h1 id=&#34;漏洞分析&#34;&gt;漏洞分析&lt;/h1&gt;
+&lt;h2 id=&#34;源码获取&#34;&gt;源码获取&lt;/h2&gt;
 &lt;p&gt;获取含漏洞的源码：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -147,7 +147,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;OpenSSL 是 SSL 协议实现的开源软件包，存在漏洞的两个文件为 ssl/d1_both.c 和 ssl/t1_lib.c，这两个文件中的 dtls1_process_heartbeat 函数和 tls1_process_heartbeat 函数分别为 DTLS（数据报安全传输协议）和 TLS（传输层安全协议）处理心跳请求包的函数。两函数的实现完全相同，此处选取 dtls1_process_heartbeat 进行分析。&lt;/p&gt;
-&lt;h3 id=&#34;成因预习&#34;&gt;成因预习&lt;/h3&gt;
+&lt;h2 id=&#34;成因预习&#34;&gt;成因预习&lt;/h2&gt;
 &lt;p&gt;&lt;img src=&#34;https://s2.loli.net/2022/05/23/7bzQV5f1GZLcCgl.jpg&#34;
 	
 	
@@ -158,7 +158,7 @@
 	
 	
 &gt;&lt;/p&gt;
-&lt;h3 id=&#34;代码分析&#34;&gt;代码分析&lt;/h3&gt;
+&lt;h2 id=&#34;代码分析&#34;&gt;代码分析&lt;/h2&gt;
 &lt;p&gt;预习完后首先来看看出现漏洞的函数：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -409,7 +409,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;漏洞修复&#34;&gt;漏洞修复&lt;/h3&gt;
+&lt;/div&gt;&lt;h2 id=&#34;漏洞修复&#34;&gt;漏洞修复&lt;/h2&gt;
 &lt;p&gt;git 查看漏洞修复前后版本差异：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -562,7 +562,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                OPENSSL_free(buffer);
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;fuzzing-挖掘-cve-2014-0160&#34;&gt;Fuzzing 挖掘 CVE-2014-0160&lt;/h2&gt;
+&lt;/div&gt;&lt;h1 id=&#34;fuzzing-挖掘-cve-2014-0160&#34;&gt;Fuzzing 挖掘 CVE-2014-0160&lt;/h1&gt;
 &lt;p&gt;使用Google的&lt;a class=&#34;link&#34; href=&#34;https://github.com/google/fuzzer-test-suite&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;fuzzer-test-suite&lt;/a&gt;来实践，先构建包含漏洞的openssl：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -833,13 +833,13 @@
         <pubDate>Wed, 11 May 2022 13:57:01 +0800</pubDate>
         
         <guid>https://cerr.cc/post/zkv%E7%9A%84fuzzing%E6%97%A9%E6%95%99/</guid>
-        <description>&lt;img src="https://lcamtuf.coredump.cx/afl/afl_screen.png" alt="Featured image of post ZKV的Fuzzing早教" /&gt;&lt;h2 id=&#34;x00-早教教程&#34;&gt;\x00 早教教程&lt;/h2&gt;
-&lt;h3 id=&#34;教程&#34;&gt;教程&lt;/h3&gt;
+        <description>&lt;img src="https://lcamtuf.coredump.cx/afl/afl_screen.png" alt="Featured image of post ZKV的Fuzzing早教" /&gt;&lt;h1 id=&#34;x00-早教教程&#34;&gt;\x00 早教教程&lt;/h1&gt;
+&lt;h2 id=&#34;教程&#34;&gt;教程&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/google/fuzzing&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;谷歌的Fuzzing教程&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.fuzzingbook.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Fuzzingbook&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&#34;课程&#34;&gt;课程&lt;/h3&gt;
+&lt;h2 id=&#34;课程&#34;&gt;课程&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://pascal-group.bitbucket.io/teaching.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;南京大学：软件分析&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.bilibili.com/video/BV1b7411K7P4/?spm_id_from=333.788.videocard.1&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -863,7 +863,7 @@
     &lt;/iframe&gt;
 &lt;/div&gt;
 
-&lt;h3 id=&#34;博文&#34;&gt;博文&lt;/h3&gt;
+&lt;h2 id=&#34;博文&#34;&gt;博文&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://riusksk.me/2020/01/22/Fuzzing%E6%8A%80%E6%9C%AF%E5%8F%91%E5%B1%95%E7%9A%84%E8%BF%9930%E5%B9%B4/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Fuzzing技术发展的这30年&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://riusksk.me/2019/07/14/%e4%b8%80%e4%ba%9b%e5%80%bc%e5%be%97%e5%ad%a6%e4%b9%a0%e7%9a%84Fuzzer%e5%bc%80%e6%ba%90%e9%a1%b9%e7%9b%ae/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -872,22 +872,22 @@
     &gt;Fuzzing战争: 从刀剑弓斧到星球大战&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://blog.flanker017.me/fuzzing%e6%88%98%e4%ba%89%e7%b3%bb%e5%88%97%e4%b9%8b%e4%ba%8c%ef%bc%9a%e4%b8%8d%e7%95%8f%e6%b5%ae%e4%ba%91%e9%81%ae%e6%9c%9b%e7%9c%bc/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Fuzzing战争系列之二：不畏浮云遮望眼&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&#34;练兵场&#34;&gt;练兵场&lt;/h3&gt;
+&lt;h2 id=&#34;练兵场&#34;&gt;练兵场&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/antonio-morales/Fuzzing101&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Fuzzing101&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&#34;兵器&#34;&gt;兵器&lt;/h3&gt;
+&lt;h2 id=&#34;兵器&#34;&gt;兵器&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/google/AFL&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;AFL&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/AFLplusplus/AFLplusplus&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;AFLplusplus&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&#34;论文&#34;&gt;论文&lt;/h3&gt;
-&lt;h4 id=&#34;开山&#34;&gt;开山&lt;/h4&gt;
+&lt;h2 id=&#34;论文&#34;&gt;论文&lt;/h2&gt;
+&lt;h3 id=&#34;开山&#34;&gt;开山&lt;/h3&gt;
 &lt;p&gt;1988年，在威斯康星大学Barton Miller教授的计算机实验课上，首次提出&lt;code&gt;Fuzz生成器&lt;/code&gt;(Fuzz Generator)的概念，用于测试Unix程序的健壮性，即用随机数据来测试程序直至崩溃。因此，Barton Miller教授也被多数人尊称为”模糊测试之父”。&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://pages.cs.wisc.edu/~bart/fuzz/CS736-Projects-f1988.pdf&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;http://pages.cs.wisc.edu/~bart/fuzz/CS736-Projects-f1988.pdf&lt;/a&gt;&lt;/p&gt;
-&lt;h4 id=&#34;代码覆盖引导fuzzing之afl&#34;&gt;代码覆盖引导Fuzzing之AFL&lt;/h4&gt;
-&lt;h2 id=&#34;x01-学步车afl&#34;&gt;\x01 学步车AFL&lt;/h2&gt;
-&lt;h3 id=&#34;最简单的-fuzzing-demo&#34;&gt;最简单的 fuzzing demo&lt;/h3&gt;
+&lt;h3 id=&#34;代码覆盖引导fuzzing之afl&#34;&gt;代码覆盖引导Fuzzing之AFL&lt;/h3&gt;
+&lt;h1 id=&#34;x01-学步车afl&#34;&gt;\x01 学步车AFL&lt;/h1&gt;
+&lt;h2 id=&#34;最简单的-fuzzing-demo&#34;&gt;最简单的 fuzzing demo&lt;/h2&gt;
 &lt;p&gt;使用AFL，故先安装：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -1006,7 +1006,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;可以看到发生了栈溢出。&lt;/p&gt;
-&lt;h3 id=&#34;为学步车装上名为sanitizers的轮子&#34;&gt;为学步车装上名为sanitizers的轮子&lt;/h3&gt;
+&lt;h2 id=&#34;为学步车装上名为sanitizers的轮子&#34;&gt;为学步车装上名为sanitizers的轮子&lt;/h2&gt;
 &lt;p&gt;借助于&lt;a class=&#34;link&#34; href=&#34;https://github.com/google/sanitizers&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;sanitizers&lt;/a&gt;获得更多崩溃的详细信息：&lt;/p&gt;
 &lt;p&gt;开启&lt;a class=&#34;link&#34; href=&#34;https://github.com/google/fuzzing/blob/master/docs/ASan&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -1129,7 +1129,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;由此得到了crash的详细信息输出。&lt;/p&gt;
-&lt;h3 id=&#34;黑盒测试qemu-mode拆走源码の轮儿&#34;&gt;黑盒测试QEMU mode——拆走源码の轮儿&lt;/h3&gt;
+&lt;h2 id=&#34;黑盒测试qemu-mode拆走源码の轮儿&#34;&gt;黑盒测试QEMU mode——拆走源码の轮儿&lt;/h2&gt;
 &lt;p&gt;AFL的QEMU mode不会默认安装，而是需要我们手动安装：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -1166,7 +1166,7 @@
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;afl-fuzz -Q -i fuzz_in -o fuzz_out ./vulner
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;afl并发学步车的四缸引擎&#34;&gt;AFL并发——学步车的四缸引擎&lt;/h3&gt;
+&lt;/div&gt;&lt;h2 id=&#34;afl并发学步车的四缸引擎&#34;&gt;AFL并发——学步车的四缸引擎&lt;/h2&gt;
 &lt;p&gt;通过-M指定master fuzzer进程，-S指定一系列slave fuzzer进程即可。四核机器就：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -1182,8 +1182,8 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;afl-fuzz -i fuzz_in -o fuzz_out -S fuzzer4 ./vulner
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;x02-四轮单车libfuzzer&#34;&gt;\x02 四轮单车libFuzzer&lt;/h2&gt;
-&lt;h3 id=&#34;环境准备&#34;&gt;环境准备&lt;/h3&gt;
+&lt;/div&gt;&lt;h1 id=&#34;x02-四轮单车libfuzzer&#34;&gt;\x02 四轮单车libFuzzer&lt;/h1&gt;
+&lt;h2 id=&#34;环境准备&#34;&gt;环境准备&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;LibFuzzer is an in-process, coverage-guided, evolutionary fuzzing engine.&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -1228,7 +1228,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;看来没问题，继续前进。&lt;/p&gt;
-&lt;h3 id=&#34;火花塞打火demo拆解&#34;&gt;火花塞打火——demo拆解&lt;/h3&gt;
+&lt;h2 id=&#34;火花塞打火demo拆解&#34;&gt;火花塞打火——demo拆解&lt;/h2&gt;
 &lt;p&gt;样例程序如下：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -1521,7 +1521,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;由此便是借助libFuzzer完成的最简单的Fuzzing与找到的漏洞。&lt;/p&gt;
-&lt;h3 id=&#34;下赛道后的复盘fuzzing输出解析&#34;&gt;下赛道后的复盘——fuzzing输出解析&lt;/h3&gt;
+&lt;h2 id=&#34;下赛道后的复盘fuzzing输出解析&#34;&gt;下赛道后的复盘——fuzzing输出解析&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -1587,9 +1587,9 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;Before exiting the process libFuzzer has created a file on disc with the bytes that triggered the crash.&lt;/p&gt;
-&lt;h3 id=&#34;驾校实习cve-2014-0160&#34;&gt;驾校实习——CVE-2014-0160&lt;/h3&gt;
+&lt;h2 id=&#34;驾校实习cve-2014-0160&#34;&gt;驾校实习——CVE-2014-0160&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://cerr.cc/post/cve-2014-0160/&#34; &gt;见CVE-2014-0160分析&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&#34;种子语料库&#34;&gt;种子语料库&lt;/h3&gt;
+&lt;h2 id=&#34;种子语料库&#34;&gt;种子语料库&lt;/h2&gt;
 &lt;p&gt;使用谷歌的教程仓库实验：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;

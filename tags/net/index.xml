@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>Net on Zikey Vi</title>
+        <title>Net on やれやれ DA✰ZE</title>
         <link>https://cerr.cc/tags/net/</link>
-        <description>Recent content in Net on Zikey Vi</description>
+        <description>Recent content in Net on やれやれ DA✰ZE</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <lastBuildDate>Mon, 23 May 2022 23:21:12 +0800</lastBuildDate><atom:link href="https://cerr.cc/tags/net/index.xml" rel="self" type="application/rss+xml" /><item>
@@ -12,7 +12,7 @@
         <pubDate>Mon, 23 May 2022 23:21:12 +0800</pubDate>
         
         <guid>https://cerr.cc/post/%E5%85%B3%E4%BA%8Elinux%E4%B8%8B%E7%9A%84%E7%BD%91%E5%8D%A1%E4%B8%8E%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87/</guid>
-        <description>&lt;img src="https://s2.loli.net/2022/05/23/nEj1icSvZsA479q.jpg" alt="Featured image of post 关于Linux下的网卡与网络设备" /&gt;&lt;h2 id=&#34;ip与ifconfig命令输出&#34;&gt;ip与ifconfig命令输出&lt;/h2&gt;
+        <description>&lt;img src="https://s2.loli.net/2022/05/23/nEj1icSvZsA479q.jpg" alt="Featured image of post 关于Linux下的网卡与网络设备" /&gt;&lt;h1 id=&#34;ip与ifconfig命令输出&#34;&gt;ip与ifconfig命令输出&lt;/h1&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -53,7 +53,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        TX errors &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;  dropped &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt; overruns &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;  carrier &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;  collisions &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;网卡的工作模式&#34;&gt;网卡的工作模式&lt;/h2&gt;
+&lt;/div&gt;&lt;h1 id=&#34;网卡的工作模式&#34;&gt;网卡的工作模式&lt;/h1&gt;
 &lt;ol&gt;
 &lt;li&gt;广播模式（Broad Cast Model）：它的物理地址（MAC）地址是 0xffffff 的帧为广播帧，工作在广播模式的网卡接收广播帧；&lt;/li&gt;
 &lt;li&gt;多播传送（MultiCast Model）：多播传送地址作为目的物理地址的帧可以被组内的其它主机同时接收，而组外主机却接收不到。但是，如果将网卡设置为多播传送模式，它可以接收所有的多播传送帧，而不论它是不是组内成员；&lt;/li&gt;
@@ -61,7 +61,7 @@
 &lt;li&gt;混杂模式（Promiscuous Model）：工作在混杂模式下的网卡接收所有的流过网卡的帧，信包捕获程序就是在这种模式下运行的。&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;网卡的缺省工作模式包含广播模式和直接模式，即它只接收广播帧和发给自己的帧。如果采用混杂模式，一个站点的网卡将接受同一网络内所有站点所发送的数据包这样就可以到达对于网络信息监视捕获的目的。&lt;/p&gt;
-&lt;h2 id=&#34;linux下的虚拟网络设备&#34;&gt;Linux下的虚拟网络设备&lt;/h2&gt;
+&lt;h1 id=&#34;linux下的虚拟网络设备&#34;&gt;Linux下的虚拟网络设备&lt;/h1&gt;
 &lt;p&gt;通过&lt;code&gt;ip link add&lt;/code&gt;可以创建多种类型的虚拟网络设备，在&lt;code&gt;man ip link&lt;/code&gt;中可以得知有以下类型的device:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;bridge - Ethernet Bridge device&lt;/li&gt;
@@ -100,7 +100,7 @@
 &lt;li&gt;rmnet - Qualcomm rmnet device&lt;/li&gt;
 &lt;li&gt;xfrm - Virtual xfrm interface&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;tuntap&#34;&gt;TUN/TAP&lt;/h2&gt;
+&lt;h1 id=&#34;tuntap&#34;&gt;TUN/TAP&lt;/h1&gt;
 &lt;p&gt;TUN是Linux系统里的虚拟网络设备，它的原理和使用在&lt;a class=&#34;link&#34; href=&#34;https://www.kernel.org/doc/Documentation/networking/tuntap.txt&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Kernel Doc&lt;/a&gt;和&lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/TUN/TAP&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Wiki&lt;/a&gt;做了比较清楚的说明。&lt;/p&gt;
@@ -135,7 +135,7 @@
 &lt;li&gt;TAP虚拟的是一个二层设备，具有MAC地址，接收、发送的是二层包。&lt;/li&gt;
 &lt;li&gt;TUN虚拟的是一个三层设备，没有MAC地址，接收、发送的是三层包。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;最小的虚拟网卡&#34;&gt;最小的虚拟网卡&lt;/h2&gt;
+&lt;h1 id=&#34;最小的虚拟网卡&#34;&gt;最小的虚拟网卡&lt;/h1&gt;
 &lt;p&gt;参见：&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://zhou-yuxin.github.io/articles/2017/%E7%AC%AC%E4%B8%80%E4%B8%AALinux%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87%E9%A9%B1%E5%8A%A8%E2%80%94%E2%80%94%E6%9C%80%E7%AE%80%E8%99%9A%E6%8B%9F%E7%BD%91%E5%8D%A1virnet/index.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://zhou-yuxin.github.io/articles/2017/%E7%AC%AC%E4%B8%80%E4%B8%AALinux%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87%E9%A9%B1%E5%8A%A8%E2%80%94%E2%80%94%E6%9C%80%E7%AE%80%E8%99%9A%E6%8B%9F%E7%BD%91%E5%8D%A1virnet/index.html&lt;/a&gt;&lt;/p&gt;
@@ -151,7 +151,7 @@
 &lt;p&gt;当我老了，回顾一生，就会发觉，我三分之一的生命，都浪费在和GFW作斗争上了。&lt;/p&gt;
 &lt;p&gt;呜呼！何等宏伟啊！两千年多前的巨石，砌就秦帝国的坚不可摧；今日那日夜呼啸的服务器集群，彰显共和国非凡的制度自信。😫&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h2 id=&#34;top-level-solution-selection&#34;&gt;Top-level solution selection&lt;/h2&gt;
+&lt;h1 id=&#34;top-level-solution-selection&#34;&gt;Top-level solution selection&lt;/h1&gt;
 &lt;p&gt;In terms of the ways I have tried myself:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Use a VPN application&lt;/li&gt;
@@ -165,7 +165,7 @@
 &lt;li&gt;High cost in time or money&lt;/li&gt;
 &lt;li&gt;Stability is a concern&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h2 id=&#34;个人客户端解决方案&#34;&gt;个人客户端解决方案&lt;/h2&gt;
+&lt;h1 id=&#34;个人客户端解决方案&#34;&gt;个人客户端解决方案&lt;/h1&gt;
 &lt;blockquote&gt;
 &lt;p&gt;具体使用方面就大白话讲了&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -202,7 +202,7 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;代理层次&#34;&gt;代理层次&lt;/h3&gt;
+&lt;h2 id=&#34;代理层次&#34;&gt;代理层次&lt;/h2&gt;
 &lt;style&gt;img{
     box-shadow: 5px 5px 5px rgba(0,0,0,.5);
     -moz-box-shadow: 5px 5px 5px rgba(0,0,0,.5);
@@ -223,13 +223,13 @@
 	
 	
 &gt;&lt;/p&gt;
-&lt;h3 id=&#34;部分网站的镜像&#34;&gt;部分网站的镜像&lt;/h3&gt;
-&lt;h4 id=&#34;google&#34;&gt;Google&lt;/h4&gt;
+&lt;h1 id=&#34;部分网站的镜像&#34;&gt;部分网站的镜像&lt;/h1&gt;
+&lt;h2 id=&#34;google&#34;&gt;Google&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.ahhhhfs.com/4810/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.ahhhhfs.com/4810/&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;github&#34;&gt;Github&lt;/h4&gt;
+&lt;h2 id=&#34;github&#34;&gt;Github&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.ahhhhfs.com/18927/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.ahhhhfs.com/18927/&lt;/a&gt;&lt;/li&gt;
@@ -238,22 +238,22 @@
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.ahhhhfs.com/5442/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.ahhhhfs.com/5442/&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;youtube&#34;&gt;Youtube&lt;/h4&gt;
+&lt;h2 id=&#34;youtube&#34;&gt;Youtube&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.ahhhhfs.com/16819/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.ahhhhfs.com/16819/&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;各种应用的代理配置与镜像&#34;&gt;各种应用的代理配置与镜像&lt;/h3&gt;
-&lt;h4 id=&#34;chrome&#34;&gt;chrome&lt;/h4&gt;
+&lt;h1 id=&#34;各种应用的代理配置与镜像&#34;&gt;各种应用的代理配置与镜像&lt;/h1&gt;
+&lt;h2 id=&#34;chrome&#34;&gt;chrome&lt;/h2&gt;
 &lt;p&gt;chrome 默认遵从系统代理。可是使用&lt;strong&gt;Proxy SwitchyOmega&lt;/strong&gt;插件对chrome代理方式进行手动配置：&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://chrome.google.com/webstore/detail/proxy-switchyomega/padekgcemlokbadohgkifijomclgjgif&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://chrome.google.com/webstore/detail/proxy-switchyomega/padekgcemlokbadohgkifijomclgjgif&lt;/a&gt;&lt;/p&gt;
-&lt;h4 id=&#34;linux软件源&#34;&gt;Linux软件源&lt;/h4&gt;
+&lt;h2 id=&#34;linux软件源&#34;&gt;Linux软件源&lt;/h2&gt;
 &lt;p&gt;不同Linux发行版具有不同的包管理器。即使是同一个发行版的不同版本（比如Ubuntu18.04与Ubuntu20.04），其上游软件源也是不同的。&lt;/p&gt;
 &lt;p&gt;使用国内镜像为软件源换源可以大大加速安装软件源上的软件的过程。以tuna维护的清华源为例，我们来到使用帮助页面：&lt;a class=&#34;link&#34; href=&#34;https://mirrors.tuna.tsinghua.edu.cn/help&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://mirrors.tuna.tsinghua.edu.cn/help&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;点击任意你想要使用清华源的服务（Linux软件源自然也涵盖在内），即能看到tuna为你提供的相应使用教程。（对于Linux软件源，需选定正确的系统版本）。&lt;/p&gt;
-&lt;h4 id=&#34;pip&#34;&gt;pip&lt;/h4&gt;
+&lt;h2 id=&#34;pip&#34;&gt;pip&lt;/h2&gt;
 &lt;p&gt;可使用清华源：&lt;a class=&#34;link&#34; href=&#34;https://mirrors.tuna.tsinghua.edu.cn/help/pypi/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://mirrors.tuna.tsinghua.edu.cn/help/pypi/&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;若使用代理方案，在&lt;code&gt;~/.config/pip/pip.conf&lt;/code&gt;，中添加：（将&lt;code&gt;http://127.0.0.1:1080&lt;/code&gt;替换为你本地的http代理地址）&lt;/p&gt;
@@ -270,7 +270,7 @@
 &lt;/div&gt;&lt;blockquote&gt;
 &lt;p&gt;不支持socks5协议&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h4 id=&#34;git&#34;&gt;git&lt;/h4&gt;
+&lt;h2 id=&#34;git&#34;&gt;git&lt;/h2&gt;
 &lt;p&gt;（将&lt;code&gt;http://127.0.0.1:1080&lt;/code&gt;替换为你本地的socks5代理地址）&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -280,7 +280,7 @@
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git config --global http.proxy socks5://127.0.0.1:1080
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h4 id=&#34;apt&#34;&gt;apt&lt;/h4&gt;
+&lt;/div&gt;&lt;h2 id=&#34;apt&#34;&gt;apt&lt;/h2&gt;
 &lt;p&gt;在 &lt;code&gt;/etc/apt/apt.conf.d/&lt;/code&gt; 目录下新增 &lt;code&gt;proxy.conf&lt;/code&gt; 文件，加入：（将&lt;code&gt;http://127.0.0.1:1080&lt;/code&gt;替换为你本地的http代理地址）&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -295,7 +295,7 @@
 &lt;/div&gt;&lt;blockquote&gt;
 &lt;p&gt;不支持socks5协议&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h4 id=&#34;curlwget&#34;&gt;curl、wget&lt;/h4&gt;
+&lt;h2 id=&#34;curlwget&#34;&gt;curl、wget&lt;/h2&gt;
 &lt;p&gt;许多posix标准的命令行程序会遵从两个环境变量：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -327,8 +327,8 @@
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;all_proxy&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;http://proxyserver:port/
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;合法翻墙&#34;&gt;合法翻墙&lt;/h2&gt;
-&lt;h3 id=&#34;澳门流量卡&#34;&gt;澳门流量卡&lt;/h3&gt;
+&lt;/div&gt;&lt;h1 id=&#34;合法翻墙&#34;&gt;合法翻墙&lt;/h1&gt;
+&lt;h2 id=&#34;澳门流量卡&#34;&gt;澳门流量卡&lt;/h2&gt;
 &lt;p&gt;就是这货👇，淘宝上就可以买到。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://s2.loli.net/2022/08/18/ScbgXVYpdRmrnyQ.jpg&#34;
 	
@@ -340,7 +340,7 @@
 	
 	
 &gt;&lt;/p&gt;
-&lt;h2 id=&#34;其他攻略&#34;&gt;其他攻略&lt;/h2&gt;
+&lt;h1 id=&#34;其他攻略&#34;&gt;其他攻略&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;2022永久免费白嫖节点方法
 &lt;ul&gt;

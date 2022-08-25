@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>Kernel on Zikey Vi</title>
+        <title>Kernel on やれやれ DA✰ZE</title>
         <link>https://cerr.cc/tags/kernel/</link>
-        <description>Recent content in Kernel on Zikey Vi</description>
+        <description>Recent content in Kernel on やれやれ DA✰ZE</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <lastBuildDate>Mon, 08 Aug 2022 14:17:44 +0800</lastBuildDate><atom:link href="https://cerr.cc/tags/kernel/index.xml" rel="self" type="application/rss+xml" /><item>
@@ -12,8 +12,8 @@
         <pubDate>Mon, 08 Aug 2022 14:17:44 +0800</pubDate>
         
         <guid>https://cerr.cc/post/%E4%BD%BF%E7%94%A8qemu-gdb%E8%B0%83%E8%AF%95linux%E5%86%85%E6%A0%B8/</guid>
-        <description>&lt;img src="https://s2.loli.net/2022/08/09/PKcwjiVBTg6ApEv.png" alt="Featured image of post 使用QEMU&#43;GDB调试Linux内核" /&gt;&lt;h2 id=&#34;环境准备&#34;&gt;环境准备&lt;/h2&gt;
-&lt;h3 id=&#34;qemu-的手动构建&#34;&gt;QEMU 的手动构建&lt;/h3&gt;
+        <description>&lt;img src="https://s2.loli.net/2022/08/09/PKcwjiVBTg6ApEv.png" alt="Featured image of post 使用QEMU&#43;GDB调试Linux内核" /&gt;&lt;h1 id=&#34;环境准备&#34;&gt;环境准备&lt;/h1&gt;
+&lt;h2 id=&#34;qemu-的手动构建&#34;&gt;QEMU 的手动构建&lt;/h2&gt;
 &lt;p&gt;获取QEMU源码：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -49,9 +49,9 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo make install
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;使用buildroot一键构建rootfskernel&#34;&gt;使用buildroot一键构建rootfs+kernel&lt;/h3&gt;
+&lt;/div&gt;&lt;h2 id=&#34;使用buildroot一键构建rootfskernel&#34;&gt;使用buildroot一键构建rootfs+kernel&lt;/h2&gt;
 &lt;blockquote&gt;
-&lt;p&gt;buildroot自动构建过程若出现网络不畅，自备梯子，并设定shell变量all_proxy、http_proxy、https_proxy用于代理wget、curl等工具即可。参见：&lt;a class=&#34;link&#34; href=&#34;https://cerr.cc/post/fgfw/&#34; &gt;https://cerr.cc/post/fgfw/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;buildroot自动构建过程若出现网络不畅，自备梯子，并设定shell变量all_proxy、http_proxy、https_proxy用于代理wget、curl等工具即可。参见：&lt;a class=&#34;link&#34; href=&#34;https://cerr.cc/post/fuck-the-great-fire-wall/&#34; &gt;https://cerr.cc/post/fuck-the-great-fire-wall/&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -140,7 +140,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;确认成功断下执行流即可。&lt;/p&gt;
-&lt;h3 id=&#34;手动构建kernelinitramfs&#34;&gt;手动构建kernel+initramfs&lt;/h3&gt;
+&lt;h2 id=&#34;手动构建kernelinitramfs&#34;&gt;手动构建kernel+initramfs&lt;/h2&gt;
 &lt;p&gt;若不想借助自动化工具buildroot传达旨意，而是要亲自指挥亲自部署，记录如下：&lt;/p&gt;
 &lt;p&gt;载入x86_64默认config：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -211,7 +211,7 @@
 &lt;blockquote&gt;
 &lt;p&gt;巧合的是，就在我执行完如上命令进入shell后，惊觉Linux居然已经6.0.0了😱。经查正是今天的新闻。&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h3 id=&#34;试图调试&#34;&gt;试图调试&lt;/h3&gt;
+&lt;h2 id=&#34;试图调试&#34;&gt;试图调试&lt;/h2&gt;
 &lt;p&gt;沿用上述手动挡的构建方案，qemu启动时关闭kaslr（编译时若关闭了RANDOMIZE_BASE，则无需向kernel传递nokaslr参数）：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -247,7 +247,7 @@
 &lt;/div&gt;&lt;p&gt;关于对gdb调试的支持，内核所提供的文档如下：&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.kernel.org/doc/html/latest/dev-tools/gdb-kernel-debugging.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.kernel.org/doc/html/latest/dev-tools/gdb-kernel-debugging.html&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;内核启动&#34;&gt;内核启动&lt;/h2&gt;
+&lt;h1 id=&#34;内核启动&#34;&gt;内核启动&lt;/h1&gt;
 &lt;p&gt;内核初始化主函数：&lt;code&gt;init/main.c:start_kernel&lt;/code&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -480,8 +480,8 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;系统调用&#34;&gt;系统调用&lt;/h2&gt;
-&lt;h3 id=&#34;静态搜寻&#34;&gt;静态搜寻&lt;/h3&gt;
+&lt;/div&gt;&lt;h1 id=&#34;系统调用&#34;&gt;系统调用&lt;/h1&gt;
+&lt;h2 id=&#34;静态搜寻&#34;&gt;静态搜寻&lt;/h2&gt;
 &lt;p&gt;动态调试系统调用代码之前，不妨先来找到内核系统调用的静态代码位置。Linux Kernel使用&lt;code&gt;SYSCALL_DEFINE[N]&lt;/code&gt;宏来定义系统调用入口，其原型位于&lt;a class=&#34;link&#34; href=&#34;https://github.com/torvalds/linux/blob/16f73eb02d7e1765ccab3d2018e0bd98eb93d973/include/linux/syscalls.h&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;include/linux/syscalls.h&lt;/a&gt;，其中会调用特定系统调用的实现函数。所以，我们使用如下命令可以帮助快速筛选想要动态调试的系统调用入口所在位置：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -531,7 +531,7 @@
 &lt;p&gt;Linux Kernel 系统调用流程参见：&lt;a class=&#34;link&#34; href=&#34;https://0xax.gitbooks.io/linux-insides/content/SysCall/linux-syscall-2.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://0xax.gitbooks.io/linux-insides/content/SysCall/linux-syscall-2.html&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h3 id=&#34;动态调试&#34;&gt;动态调试&lt;/h3&gt;
+&lt;h2 id=&#34;动态调试&#34;&gt;动态调试&lt;/h2&gt;
 &lt;p&gt;继续以open系统调用为例，开始动态调试跟踪。&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;qemu monitor，你的好帮手，Ctrl+A C进入与退出monitor模式：&lt;/p&gt;
@@ -594,12 +594,12 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;此前已经知道open系统调用的实现函数为&lt;code&gt;do_sys_open&lt;/code&gt;，故于此函数下断点即可。&lt;/p&gt;
-&lt;h2 id=&#34;内存管理&#34;&gt;内存管理&lt;/h2&gt;
-&lt;h2 id=&#34;文件系统&#34;&gt;文件系统&lt;/h2&gt;
-&lt;h2 id=&#34;网络栈&#34;&gt;网络栈&lt;/h2&gt;
-&lt;h2 id=&#34;实战漏洞调试&#34;&gt;实战漏洞调试&lt;/h2&gt;
-&lt;p&gt;参见：&lt;a class=&#34;link&#34; href=&#34;https://cerr.cc/post/cve-2016-5195/&#34; &gt;https://cerr.cc/post/cve-2016-5195/&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;参考&#34;&gt;参考&lt;/h2&gt;
+&lt;h1 id=&#34;内存管理&#34;&gt;内存管理&lt;/h1&gt;
+&lt;h1 id=&#34;文件系统&#34;&gt;文件系统&lt;/h1&gt;
+&lt;h1 id=&#34;网络栈&#34;&gt;网络栈&lt;/h1&gt;
+&lt;h1 id=&#34;实战漏洞调试&#34;&gt;实战漏洞调试&lt;/h1&gt;
+&lt;p&gt;参见：&lt;a class=&#34;link&#34; href=&#34;https://cerr.cc/post/cve-2016-5195-linux-dirtycow%e6%bc%8f%e6%b4%9e%e5%88%86%e6%9e%90/&#34; &gt;https://cerr.cc/post/cve-2016-5195-linux-dirtycow漏洞分析/&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;参考&#34;&gt;参考&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;http://nickdesaulniers.github.io/blog/2018/10/24/booting-a-custom-linux-kernel-in-qemu-and-debugging-it-with-gdb/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;http://nickdesaulniers.github.io/blog/2018/10/24/booting-a-custom-linux-kernel-in-qemu-and-debugging-it-with-gdb/&lt;/a&gt;&lt;/li&gt;
@@ -614,23 +614,23 @@
         <pubDate>Mon, 13 Jun 2022 17:41:00 +0800</pubDate>
         
         <guid>https://cerr.cc/post/zkv%E7%9A%84linux-kernel%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/</guid>
-        <description>&lt;img src="https://s2.loli.net/2022/06/13/9o2jpBPbfcLRMFT.jpg" alt="Featured image of post ZKV的Linux Kernel学习之路" /&gt;&lt;h2 id=&#34;学习资料&#34;&gt;学习资料&lt;/h2&gt;
-&lt;h3 id=&#34;教程&#34;&gt;教程&lt;/h3&gt;
+        <description>&lt;img src="https://s2.loli.net/2022/06/13/9o2jpBPbfcLRMFT.jpg" alt="Featured image of post ZKV的Linux Kernel学习之路" /&gt;&lt;h1 id=&#34;学习资料&#34;&gt;学习资料&lt;/h1&gt;
+&lt;h2 id=&#34;教程&#34;&gt;教程&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://0xax.gitbooks.io/linux-insides/content/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Linux Inside&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;实验&#34;&gt;实验&lt;/h3&gt;
+&lt;h2 id=&#34;实验&#34;&gt;实验&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://linux-kernel-labs.github.io/refs/heads/master/labs/infrastructure.html#&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Linux Kernel Lab&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;其他人汇总的资源&#34;&gt;其他人汇总的资源&lt;/h3&gt;
+&lt;h2 id=&#34;其他人汇总的资源&#34;&gt;其他人汇总的资源&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/Martins3/Martins3.github.io/blob/master/os/os-route.md&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Martins3大佬的收集&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;获取&#34;&gt;获取&lt;/h2&gt;
+&lt;h1 id=&#34;内核获取&#34;&gt;内核获取&lt;/h1&gt;
 &lt;p&gt;官方网站：&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.kernel.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.kernel.org/&lt;/a&gt;&lt;/p&gt;
@@ -647,7 +647,7 @@
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://gitee.com/mirrors/linux_old1&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://gitee.com/mirrors/linux_old1&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;落后主仓库一天，用来加速clone的选择之一。&lt;/p&gt;
-&lt;h2 id=&#34;内核文档&#34;&gt;内核文档&lt;/h2&gt;
+&lt;h1 id=&#34;内核文档&#34;&gt;内核文档&lt;/h1&gt;
 &lt;p&gt;文档资源总览：&lt;a class=&#34;link&#34; href=&#34;https://www.kernel.org/doc/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.kernel.org/doc/&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Latest kernel的HTML文档页：&lt;a class=&#34;link&#34; href=&#34;https://www.kernel.org/doc/html/latest&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -770,7 +770,7 @@
 &lt;p&gt;嗯，功能十分完善，就决定是你了。&lt;/p&gt;
 &lt;p&gt;不过HTML doc也是给了Kernel Core API Documentation的：&lt;a class=&#34;link&#34; href=&#34;https://www.kernel.org/doc/html/latest/core-api/index.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.kernel.org/doc/html/latest/core-api/index.html&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;内核构建系统&#34;&gt;内核构建系统&lt;/h2&gt;
+&lt;h1 id=&#34;内核构建系统&#34;&gt;内核构建系统&lt;/h1&gt;
 &lt;p&gt;第一次向内核源码输入的&lt;code&gt;make&lt;/code&gt;命令最好是&lt;code&gt;make help&lt;/code&gt;，其输出也可以于此查阅：&lt;a class=&#34;link&#34; href=&#34;https://www.kernel.org/doc/makehelp.txt&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.kernel.org/doc/makehelp.txt&lt;/a&gt;&lt;/p&gt;
 </description>
@@ -781,8 +781,8 @@
         <pubDate>Tue, 24 May 2022 17:43:25 +0800</pubDate>
         
         <guid>https://cerr.cc/post/cve-2016-5195-linux-dirtycow%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/</guid>
-        <description>&lt;img src="https://s2.loli.net/2022/05/24/JFAS5mGpYn9utWi.jpg" alt="Featured image of post CVE-2016-5195 Linux DirtyCOW漏洞分析" /&gt;&lt;h2 id=&#34;背景知识&#34;&gt;背景知识&lt;/h2&gt;
-&lt;h3 id=&#34;dirtycow&#34;&gt;DirtyCOW&lt;/h3&gt;
+        <description>&lt;img src="https://s2.loli.net/2022/05/24/JFAS5mGpYn9utWi.jpg" alt="Featured image of post CVE-2016-5195 Linux DirtyCOW漏洞分析" /&gt;&lt;h1 id=&#34;背景知识&#34;&gt;背景知识&lt;/h1&gt;
+&lt;h2 id=&#34;dirtycow&#34;&gt;DirtyCOW&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://dirtycow.ninja/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://dirtycow.ninja/&lt;/a&gt;&lt;/li&gt;
@@ -791,36 +791,36 @@
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/dirtycow/dirtycow.github.io/wiki/VulnerabilityDetails&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/dirtycow/dirtycow.github.io/wiki/VulnerabilityDetails&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;copy-on-write&#34;&gt;Copy on Write&lt;/h3&gt;
+&lt;h2 id=&#34;copy-on-write&#34;&gt;Copy on Write&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.cnblogs.com/biyeymyhjob/archive/2012/07/20/2601655.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.cnblogs.com/biyeymyhjob/archive/2012/07/20/2601655.html&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/puliao4167/article/details/87894191&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://blog.csdn.net/puliao4167/article/details/87894191&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;page-cache&#34;&gt;Page Cache&lt;/h3&gt;
+&lt;h2 id=&#34;page-cache&#34;&gt;Page Cache&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/Page_cache&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://en.wikipedia.org/wiki/Page_cache&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;mmap&#34;&gt;mmap&lt;/h3&gt;
+&lt;h2 id=&#34;mmap&#34;&gt;mmap&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.cnblogs.com/huxiao-tee/p/4660352.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.cnblogs.com/huxiao-tee/p/4660352.html&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;内核文件系统&#34;&gt;内核文件系统&lt;/h3&gt;
+&lt;h2 id=&#34;内核文件系统&#34;&gt;内核文件系统&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.cnblogs.com/huxiao-tee/p/4657851.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.cnblogs.com/huxiao-tee/p/4657851.html&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;条件竞争&#34;&gt;条件竞争&lt;/h3&gt;
+&lt;h2 id=&#34;条件竞争&#34;&gt;条件竞争&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://ctf-wiki.github.io/ctf-wiki/pwn/linux/race-condition/introduction-zh/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://ctf-wiki.github.io/ctf-wiki/pwn/linux/race-condition/introduction-zh/&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;环境准备&#34;&gt;环境准备&lt;/h2&gt;
-&lt;h3 id=&#34;linux-kernel&#34;&gt;Linux Kernel&lt;/h3&gt;
-&lt;h4 id=&#34;直接下载&#34;&gt;直接下载&lt;/h4&gt;
+&lt;h1 id=&#34;环境准备&#34;&gt;环境准备&lt;/h1&gt;
+&lt;h2 id=&#34;linux-kernel&#34;&gt;Linux Kernel&lt;/h2&gt;
+&lt;h3 id=&#34;直接下载&#34;&gt;直接下载&lt;/h3&gt;
 &lt;p&gt;选取一个有漏洞的版本4.4.0，下载ubuntu对应的deb包。解压得到&lt;code&gt;./boot/vmlinuz-4.4.0-31-generic&lt;/code&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -835,7 +835,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;缺点是由此得到的bootable kernel中不包含调试信息。&lt;/p&gt;
-&lt;h4 id=&#34;自行编译&#34;&gt;自行编译&lt;/h4&gt;
+&lt;h3 id=&#34;自行编译&#34;&gt;自行编译&lt;/h3&gt;
 &lt;p&gt;获取Linux Kernel源码仓库并切换到一个有漏洞的版本4.4：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -906,7 +906,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;即得到bootable kernel。&lt;/p&gt;
-&lt;h3 id=&#34;poc&#34;&gt;PoC&lt;/h3&gt;
+&lt;h2 id=&#34;poc&#34;&gt;PoC&lt;/h2&gt;
 &lt;p&gt;从&lt;a class=&#34;link&#34; href=&#34;https://github.com/dirtycow/dirtycow.github.io/wiki/PoCs&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/dirtycow/dirtycow.github.io/wiki/PoCs&lt;/a&gt;选取dirtyc0w.c：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -1116,7 +1116,7 @@
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;gcc -static -pthread dirtyc0w.c -o dirtyc0w
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;rootfs&#34;&gt;rootfs&lt;/h3&gt;
+&lt;/div&gt;&lt;h2 id=&#34;rootfs&#34;&gt;rootfs&lt;/h2&gt;
 &lt;p&gt;这里采用busybox手动构建。克隆busybox源码仓库，进行menuconfig配置：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -1209,7 +1209,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;rootfs即准备完毕。&lt;/p&gt;
-&lt;h2 id=&#34;漏洞复现&#34;&gt;漏洞复现&lt;/h2&gt;
+&lt;h1 id=&#34;漏洞复现&#34;&gt;漏洞复现&lt;/h1&gt;
 &lt;p&gt;上一步已经得到了：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;带调试信息的Linux Kernel：bzImage&lt;/li&gt;
@@ -1274,7 +1274,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;至此漏洞成功复现！🥳&lt;/p&gt;
-&lt;h2 id=&#34;漏洞分析&#34;&gt;漏洞分析&lt;/h2&gt;
+&lt;h1 id=&#34;漏洞分析&#34;&gt;漏洞分析&lt;/h1&gt;
 &lt;p&gt;Waiting&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://xz.aliyun.com/t/7561&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://xz.aliyun.com/t/7561&lt;/a&gt;&lt;/p&gt;
@@ -1286,7 +1286,7 @@
         <pubDate>Sun, 08 May 2022 21:45:00 +0800</pubDate>
         
         <guid>https://cerr.cc/post/linux%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E5%A4%A7%E5%85%A8/</guid>
-        <description>&lt;img src="https://s2.loli.net/2022/05/08/1vXerd2a3qCgcfQ.jpg" alt="Featured image of post Linux系统调用大全" /&gt;&lt;h2 id=&#34;传参规则&#34;&gt;传参规则&lt;/h2&gt;
+        <description>&lt;img src="https://s2.loli.net/2022/05/08/1vXerd2a3qCgcfQ.jpg" alt="Featured image of post Linux系统调用大全" /&gt;&lt;h1 id=&#34;传参规则&#34;&gt;传参规则&lt;/h1&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
@@ -1348,7 +1348,7 @@
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;h2 id=&#34;x86_64-系统调用表&#34;&gt;x86_64 系统调用表&lt;/h2&gt;
+&lt;h1 id=&#34;x86_64-系统调用表&#34;&gt;x86_64 系统调用表&lt;/h1&gt;
 &lt;blockquote&gt;
 &lt;p&gt;以下调用表皆基于linux4.14.0&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -4886,7 +4886,7 @@
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;h2 id=&#34;x86系统调用表&#34;&gt;x86系统调用表&lt;/h2&gt;
+&lt;h1 id=&#34;x86系统调用表&#34;&gt;x86系统调用表&lt;/h1&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
@@ -8421,7 +8421,7 @@
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;h2 id=&#34;arm32系统调用表&#34;&gt;arm32系统调用表&lt;/h2&gt;
+&lt;h1 id=&#34;arm32系统调用表&#34;&gt;arm32系统调用表&lt;/h1&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
@@ -12004,7 +12004,7 @@
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;h2 id=&#34;aarch64系统调用表&#34;&gt;aarch64系统调用表&lt;/h2&gt;
+&lt;h1 id=&#34;aarch64系统调用表&#34;&gt;aarch64系统调用表&lt;/h1&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
@@ -14483,13 +14483,13 @@
         <pubDate>Sun, 08 May 2022 19:35:11 +0800</pubDate>
         
         <guid>https://cerr.cc/post/cross-debug-old-version-kernel-using-qemu-system/</guid>
-        <description>&lt;img src="https://s2.loli.net/2022/05/08/MGJ3tsAVHSYrThj.jpg" alt="Featured image of post Cross debug old version kernel using qemu-system" /&gt;&lt;blockquote&gt;
+        <description>&lt;img src="https://s2.loli.net/2022/08/25/fHQPn8S2vLI7aR3.png" alt="Featured image of post Cross debug old version kernel using qemu-system" /&gt;&lt;blockquote&gt;
 &lt;p&gt;From this post, our goal is tracing the execution procedure from kernel entry to userspace process (busybox init) by using qemu-system and gdb-multiarch.&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h2 id=&#34;preparation&#34;&gt;Preparation&lt;/h2&gt;
-&lt;h3 id=&#34;qemu-system-arm&#34;&gt;qemu-system-arm&lt;/h3&gt;
+&lt;h1 id=&#34;preparation&#34;&gt;Preparation&lt;/h1&gt;
+&lt;h2 id=&#34;qemu-system-arm&#34;&gt;qemu-system-arm&lt;/h2&gt;
 &lt;p&gt;Compile it from source code or just use &lt;code&gt;sudo apt install qemu-system-arm&lt;/code&gt;.&lt;/p&gt;
-&lt;h3 id=&#34;kernel&#34;&gt;kernel&lt;/h3&gt;
+&lt;h2 id=&#34;kernel&#34;&gt;kernel&lt;/h2&gt;
 &lt;p&gt;Linux kernel v4.1 for armel as an example.
 Compiling a linux kernel requires a matched version of gcc.
 For example, the linux kernel v4.1 requires the gcc version between 3 and 5:&lt;/p&gt;
@@ -14584,7 +14584,7 @@ Ready for compiling the old version linux kernel :)&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;We got zImage at build/armel/arch/arm/boot/zImage and vmlinux (with debug symbols) at build/armel&lt;/p&gt;
-&lt;h3 id=&#34;busybox&#34;&gt;busybox&lt;/h3&gt;
+&lt;h2 id=&#34;busybox&#34;&gt;busybox&lt;/h2&gt;
 &lt;p&gt;Even though we can use the busybox from the filesystem directly, we got no debug symbols from it.
 Thus we should compile busybox manually:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -14600,7 +14600,7 @@ Thus we should compile busybox manually:&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;Then the busybox_unstripped is produced.&lt;/p&gt;
-&lt;h3 id=&#34;filesystem&#34;&gt;filesystem&lt;/h3&gt;
+&lt;h2 id=&#34;filesystem&#34;&gt;filesystem&lt;/h2&gt;
 &lt;p&gt;Hummm maybe obtain it by yourself?&lt;/p&gt;
 &lt;p&gt;As for my situation, I just extract the filesystem from a TP-Link firmware.
 And we need do some modification to turn our filesystem directory to a filesystem image.
@@ -14657,7 +14657,7 @@ The next step is create disk partitions using fdisk on rootfs.img :&lt;/p&gt;
 &lt;/div&gt;&lt;p&gt;We are done preparing here. All we should do next is copying all the files recursively from the origin root filesystem directory to our mounted directory,
 so that we got a rootfs.img image file containing the armel filesystem we want.
 Don&amp;rsquo;t forget replace the origin bin/busybox with our manually compiled version.&lt;/p&gt;
-&lt;h2 id=&#34;tracing-time-&#34;&gt;Tracing time !&lt;/h2&gt;
+&lt;h1 id=&#34;tracing-time-&#34;&gt;Tracing time !&lt;/h1&gt;
 &lt;p&gt;Now we have :&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;

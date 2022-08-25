@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>Compile on Zikey Vi</title>
+        <title>Compile on やれやれ DA✰ZE</title>
         <link>https://cerr.cc/tags/compile/</link>
-        <description>Recent content in Compile on Zikey Vi</description>
+        <description>Recent content in Compile on やれやれ DA✰ZE</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <lastBuildDate>Wed, 11 May 2022 16:27:10 +0800</lastBuildDate><atom:link href="https://cerr.cc/tags/compile/index.xml" rel="self" type="application/rss+xml" /><item>
@@ -12,7 +12,7 @@
         <pubDate>Wed, 11 May 2022 16:27:10 +0800</pubDate>
         
         <guid>https://cerr.cc/post/%E5%8D%8E%E7%A1%95%E6%A2%85%E6%9E%97%E5%9B%BA%E4%BB%B6%E7%9A%84%E7%BC%96%E8%AF%91/</guid>
-        <description>&lt;img src="https://www.asuswrt-merlin.net/sites/default/files/inline-images/main_page_sm_2.png" alt="Featured image of post 华硕梅林固件的编译" /&gt;&lt;h2 id=&#34;获取梅林&#34;&gt;获取梅林&lt;/h2&gt;
+        <description>&lt;img src="https://www.asuswrt-merlin.net/sites/default/files/inline-images/main_page_sm_2.png" alt="Featured image of post 华硕梅林固件的编译" /&gt;&lt;h1 id=&#34;获取梅林&#34;&gt;获取梅林&lt;/h1&gt;
 &lt;p&gt;官网如下：&lt;a class=&#34;link&#34; href=&#34;http://asuswrt-merlin.net&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;asuswrt-merlin.net&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;新梅林：https://github.com/RMerl/asuswrt-merlin.ng&lt;/p&gt;
@@ -27,7 +27,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;（下载zip而非clone仓库，节省.git的占用&lt;/p&gt;
-&lt;h2 id=&#34;环境准备&#34;&gt;环境准备&lt;/h2&gt;
+&lt;h1 id=&#34;环境准备&#34;&gt;环境准备&lt;/h1&gt;
 &lt;p&gt;README.txt 给出了编译方式：&lt;a class=&#34;link&#34; href=&#34;https://github.com/RMerl/asuswrt-merlin.ng/blob/master/README.TXT&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/RMerl/asuswrt-merlin.ng/blob/master/README.TXT&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;包依赖非常多，所以尽力将本地环境贴合它的编译说明，以避免未知错误。&lt;/p&gt;
@@ -42,7 +42,7 @@
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo docker run -it -v /home/zkv/docker_share/:/share ubuntu:16.04
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;依赖安装&#34;&gt;依赖安装&lt;/h2&gt;
+&lt;/div&gt;&lt;h1 id=&#34;依赖安装&#34;&gt;依赖安装&lt;/h1&gt;
 &lt;p&gt;进入docker ubuntu环境后，下载并解压梅林ng：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -106,7 +106,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;PATH=\$PATH:/opt/toolchains/crosstools-aarch64-gcc-5.3-linux-4.1-glibc-2.22-binutils-2.25/usr/bin&amp;#34;&lt;/span&gt; &amp;gt;&amp;gt; ~/.profile
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;开始编译&#34;&gt;开始编译&lt;/h2&gt;
+&lt;/div&gt;&lt;h1 id=&#34;开始编译&#34;&gt;开始编译&lt;/h1&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -117,7 +117,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;make rt-ac86u
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;easymod&#34;&gt;Easymod&lt;/h2&gt;
+&lt;/div&gt;&lt;h1 id=&#34;easymod&#34;&gt;Easymod&lt;/h1&gt;
 &lt;p&gt;如上所述手动折腾到一半，发现了有简单模式的自动化方案。README内的信息实在太少，github wiki里有官方的编译构建教程：&lt;/p&gt;
 &lt;p&gt;官方wiki：&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/RMerl/asuswrt-merlin.ng/wiki/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -140,8 +140,8 @@
         <pubDate>Tue, 10 May 2022 20:59:43 +0800</pubDate>
         
         <guid>https://cerr.cc/post/%E6%9E%84%E5%BB%BA%E4%B8%8E%E8%BF%90%E8%A1%8C%E5%B5%8C%E5%85%A5%E5%BC%8Flinux%E8%99%9A%E6%8B%9F%E6%9C%BA/</guid>
-        <description>&lt;img src="https://s2.loli.net/2022/05/08/2DqjsbwNpdUM4XA.jpg" alt="Featured image of post 构建与运行嵌入式linux虚拟机" /&gt;&lt;h2 id=&#34;自动挡&#34;&gt;自动挡&lt;/h2&gt;
-&lt;h3 id=&#34;一路默认&#34;&gt;一路默认&lt;/h3&gt;
+        <description>&lt;img src="https://s2.loli.net/2022/05/08/2DqjsbwNpdUM4XA.jpg" alt="Featured image of post 构建与运行嵌入式linux虚拟机" /&gt;&lt;h1 id=&#34;自动挡&#34;&gt;自动挡&lt;/h1&gt;
+&lt;h2 id=&#34;一路默认&#34;&gt;一路默认&lt;/h2&gt;
 &lt;p&gt;通过git或http获取buildroot：&lt;/p&gt;
 &lt;p&gt;官网：https://buildroot.org/&lt;/p&gt;
 &lt;p&gt;git：&lt;code&gt;git clone https://git.buildroot.net/buildroot&lt;/code&gt;&lt;/p&gt;
@@ -285,7 +285,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;弄完发现过程竟如此简单，buildroot把所有活都干了……&lt;/p&gt;
-&lt;h3 id=&#34;全自动方案中的定制&#34;&gt;全自动方案中的定制&lt;/h3&gt;
+&lt;h2 id=&#34;全自动方案中的定制&#34;&gt;全自动方案中的定制&lt;/h2&gt;
 &lt;p&gt;即使需要定制部分组件，也是能借力buildroot的全自动化方案的。&lt;/p&gt;
 &lt;p&gt;先导入自己需要的全自动方案的默认配置，再使用&lt;code&gt;make menuconfig&lt;/code&gt;对其生成的&lt;code&gt;.config&lt;/code&gt;进行定制：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -309,7 +309,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;         Kernel version &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;Custom Git repository&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;记一次旧版本工具链的自动挡构建&#34;&gt;记一次旧版本工具链的自动挡构建&lt;/h3&gt;
+&lt;/div&gt;&lt;h2 id=&#34;记一次旧版本工具链的自动挡构建&#34;&gt;记一次旧版本工具链的自动挡构建&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;这一节实际上由另一篇文章合并而来，故与上下文不衔接，内容独立。&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -464,14 +464,11 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;接着进入&lt;code&gt;buildroot/output&lt;/code&gt;取货即可。虽然其中已有4.9.6的内核了，不过我需要的是由此得到的编译工具链，以便编译自行定制的4.9版本内核。（旧版内核需要旧版工具链编译）&lt;/p&gt;
-&lt;h2 id=&#34;手动档&#34;&gt;手动档&lt;/h2&gt;
-&lt;p&gt;另一篇使用qemu-system调试内核的文章中已有部分描述：&lt;/p&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://cerr.cc/post/qemu_dbg_kernel/&#34; &gt;http://cerr.cc/post/qemu_dbg_kernel/&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;不过接下来还是记录下另一次实践。目标设定为aarch64 linux 5.4&lt;/p&gt;
-&lt;h3 id=&#34;编译工具链&#34;&gt;编译工具链&lt;/h3&gt;
+&lt;h1 id=&#34;手动档&#34;&gt;手动档&lt;/h1&gt;
+&lt;h2 id=&#34;编译工具链&#34;&gt;编译工具链&lt;/h2&gt;
 &lt;p&gt;这个好说，方才Easymode里不是刚好做了一个嘛。buildroot构建好了所有target目标，自然也为此生成了完整的host构建工具链。&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;若目标为旧版本内核，则需要旧版本工具链，构建方式在另一篇文章中有记录：&lt;a class=&#34;link&#34; href=&#34;post/qemu_dbg_kernel/&#34; &gt;https://cerr.cc/post/qemu_dbg_kernel/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;若目标为旧版本内核，则需要旧版本工具链，构建方式在另一篇文章中有记录：&lt;a class=&#34;link&#34; href=&#34;post/cross-debug-old-version-kernel-using-qemu-system/&#34; &gt;https://cerr.cc/post/cross-debug-old-version-kernel-using-qemu-system/&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -621,7 +618,7 @@
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;若实在没有啥特殊需求， &lt;code&gt;apt install gcc-aarch64-linux-gnu&lt;/code&gt;大部分情况下也能直接解决问题。&lt;/p&gt;
-&lt;h4 id=&#34;osabi的匹配&#34;&gt;OS/ABI的匹配&lt;/h4&gt;
+&lt;h3 id=&#34;osabi的匹配&#34;&gt;OS/ABI的匹配&lt;/h3&gt;
 &lt;p&gt;通常情况下，选取编译交叉编译工具链时，指令集、平台之类的内容是不容易弄错的。但 OS/ABI 却是个容易造成故障的点。&lt;/p&gt;
 &lt;p&gt;举例来讲，在我一次对libnvram.so的编译时，得到的目标ELF文件为：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -697,8 +694,8 @@
 &lt;p&gt;导致这一结果的原因是：使用OABI编译工具链编译出的结果为&lt;code&gt;OS/ABI: ARM&lt;/code&gt;，而使用EABI编译工具链编译出的结果为&lt;code&gt;OS/ABI: UNIX - System V&lt;/code&gt;。关于OABI与EABI的区别，参见：&lt;a class=&#34;link&#34; href=&#34;https://docs.embeddedts.com/EABI_vs_OABI&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://docs.embeddedts.com/EABI_vs_OABI&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;故换用标识了eabi的工具链重新编译即解决了该问题。&lt;/p&gt;
-&lt;h3 id=&#34;kernel&#34;&gt;Kernel&lt;/h3&gt;
-&lt;h4 id=&#34;linux源码结构&#34;&gt;Linux源码结构&lt;/h4&gt;
+&lt;h2 id=&#34;kernel&#34;&gt;Kernel&lt;/h2&gt;
+&lt;h3 id=&#34;linux源码结构&#34;&gt;Linux源码结构&lt;/h3&gt;
 &lt;p&gt;手动构建内核前，先了解下内核源码的文件树结构。以2022/6/1的linux源码为例：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -776,7 +773,7 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;linux构建系统&#34;&gt;Linux构建系统&lt;/h4&gt;
+&lt;h3 id=&#34;linux构建系统&#34;&gt;Linux构建系统&lt;/h3&gt;
 &lt;p&gt;同时需要先了解下 &lt;code&gt;.config&lt;/code&gt;、&lt;code&gt;defconfig&lt;/code&gt;、&lt;code&gt;Kconfig&lt;/code&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://stackoverflow.com/questions/41885015/what-exactly-does-linux-kernels-make-defconfig-do&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -823,7 +820,7 @@
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;make &lt;span class=&#34;nv&#34;&gt;V&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; defconfig
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h4 id=&#34;开始构建&#34;&gt;开始构建&lt;/h4&gt;
+&lt;/div&gt;&lt;h3 id=&#34;开始构建&#34;&gt;开始构建&lt;/h3&gt;
 &lt;p&gt;现来此挑选中意的内核版本：&lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/Linux_kernel_version_history&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://en.wikipedia.org/wiki/Linux_kernel_version_history&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;我这边以5.4版本内核为例继续实验：&lt;/p&gt;
@@ -932,8 +929,8 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;./build/vmlinux
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;通过qemu-system运行&#34;&gt;通过qemu-system运行&lt;/h3&gt;
-&lt;h4 id=&#34;网桥的预配置&#34;&gt;网桥的预配置&lt;/h4&gt;
+&lt;/div&gt;&lt;h2 id=&#34;通过qemu-system运行&#34;&gt;通过qemu-system运行&lt;/h2&gt;
+&lt;h3 id=&#34;网桥的预配置&#34;&gt;网桥的预配置&lt;/h3&gt;
 &lt;p&gt;后续host于qemu-system中的guest将通过网桥连接，故先于host中配置网桥。&lt;/p&gt;
 &lt;p&gt;首先准备网桥与tun/tap虚拟网卡：&lt;/p&gt;
 &lt;p&gt;创建网桥br0：&lt;/p&gt;

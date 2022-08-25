@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>Architecture on Zikey Vi</title>
+        <title>Architecture on やれやれ DA✰ZE</title>
         <link>https://cerr.cc/tags/architecture/</link>
-        <description>Recent content in Architecture on Zikey Vi</description>
+        <description>Recent content in Architecture on やれやれ DA✰ZE</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <lastBuildDate>Wed, 01 Jun 2022 10:55:17 +0800</lastBuildDate><atom:link href="https://cerr.cc/tags/architecture/index.xml" rel="self" type="application/rss+xml" /><item>
@@ -16,10 +16,10 @@
     &gt;reduced instruction set computer&lt;/a&gt; (RISC) &lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/Instruction_set_architecture&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;instruction set architectures&lt;/a&gt; for &lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/Central_processing_unit&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;computer processors&lt;/a&gt;, configured for various environments.&lt;/p&gt;
-&lt;h2 id=&#34;aarch32&#34;&gt;AArch32&lt;/h2&gt;
+&lt;h1 id=&#34;aarch32&#34;&gt;AArch32&lt;/h1&gt;
 &lt;p&gt;&lt;strong&gt;armel&lt;/strong&gt; : arm eabi little-endian, use soft float&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;armhf&lt;/strong&gt; : arm hard float, arm with &lt;strong&gt;FPU&lt;/strong&gt;&lt;/p&gt;
-&lt;h2 id=&#34;from-aarch32-to-aarch64&#34;&gt;From AArch32 to AArch64&lt;/h2&gt;
+&lt;h1 id=&#34;from-aarch32-to-aarch64&#34;&gt;From AArch32 to AArch64&lt;/h1&gt;
 &lt;p&gt;Transitioning rom ARMv7 to ARMv8, all the basics you must know:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://events.static.linuxfound.org/sites/events/files/slides/KoreaLinuxForum-2014.pdf&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -32,12 +32,12 @@
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/torvalds/linux/blob/v4.17/arch/arm64/Kconfig#L1274&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/torvalds/linux/blob/v4.17/arch/arm64/Kconfig#L1274&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;manual&#34;&gt;Manual&lt;/h2&gt;
+&lt;h1 id=&#34;manual&#34;&gt;Manual&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://developer.arm.com/documentation/dui0068/b/ARM-Instruction-Reference&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://developer.arm.com/documentation/dui0068/b/ARM-Instruction-Reference&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
+&lt;h1 id=&#34;reference&#34;&gt;Reference&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/ARM_architecture_family&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://en.wikipedia.org/wiki/ARM_architecture_family&lt;/a&gt;&lt;/li&gt;

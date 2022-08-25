@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>漏洞分析 on Zikey Vi</title>
+        <title>漏洞分析 on やれやれ DA✰ZE</title>
         <link>https://cerr.cc/categories/%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/</link>
-        <description>Recent content in 漏洞分析 on Zikey Vi</description>
+        <description>Recent content in 漏洞分析 on やれやれ DA✰ZE</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <lastBuildDate>Thu, 16 Jun 2022 10:11:14 +0800</lastBuildDate><atom:link href="https://cerr.cc/categories/%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/index.xml" rel="self" type="application/rss+xml" /><item>
@@ -12,7 +12,7 @@
         <pubDate>Thu, 16 Jun 2022 10:11:14 +0800</pubDate>
         
         <guid>https://cerr.cc/post/%E5%AF%B9u-boot-cve-2022-30790%E7%9A%84%E8%B7%9F%E8%B8%AA/</guid>
-        <description>&lt;img src="https://s2.loli.net/2022/06/16/R9KWInUb6Cdyhl2.jpg" alt="Featured image of post 对U-Boot CVE-2022-30790的跟踪" /&gt;&lt;h2 id=&#34;u-boot速览&#34;&gt;U-Boot速览&lt;/h2&gt;
+        <description>&lt;img src="https://s2.loli.net/2022/06/16/R9KWInUb6Cdyhl2.jpg" alt="Featured image of post 对U-Boot CVE-2022-30790的跟踪" /&gt;&lt;h1 id=&#34;u-boot速览&#34;&gt;U-Boot速览&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/Das_U-Boot&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Das U-Boot - Wikipedia&lt;/a&gt;&lt;/li&gt;
@@ -21,7 +21,7 @@
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://elixir.bootlin.com/u-boot/latest/source&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;U-Boot源码在线浏览&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;村中传言&#34;&gt;村中传言&lt;/h2&gt;
+&lt;h1 id=&#34;村中传言&#34;&gt;村中传言&lt;/h1&gt;
 &lt;p&gt;&lt;strong&gt;&lt;a class=&#34;link&#34; href=&#34;https://research.nccgroup.com/2022/06/03/technical-advisory-multiple-vulnerabilities-in-u-boot-cve-2022-30790-cve-2022-30552/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://research.nccgroup.com/2022/06/03/technical-advisory-multiple-vulnerabilities-in-u-boot-cve-2022-30790-cve-2022-30552/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;🤔Hmmm&amp;hellip;新鲜漏洞，没有PoC。这次是出了两个漏洞，分别是：&lt;/p&gt;
@@ -36,14 +36,14 @@
 &lt;p&gt;&lt;strong&gt;May 18th 2022:&lt;/strong&gt; Initial e-mail from NCC to U-boot maintainers announcing two vulnerabilities were identified.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;那么用U-Boot v2022.04跟踪漏洞应该是没有问题的。&lt;/p&gt;
-&lt;h2 id=&#34;漏洞源码分析&#34;&gt;漏洞源码分析&lt;/h2&gt;
-&lt;h3 id=&#34;cve-2022-30790&#34;&gt;CVE-2022-30790&lt;/h3&gt;
+&lt;h1 id=&#34;漏洞源码分析&#34;&gt;漏洞源码分析&lt;/h1&gt;
+&lt;h2 id=&#34;cve-2022-30790&#34;&gt;CVE-2022-30790&lt;/h2&gt;
 &lt;p&gt;漏洞影响：&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;The U-Boot implementation of &lt;a class=&#34;link&#34; href=&#34;https://datatracker.ietf.org/doc/html/rfc815&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;RFC815&lt;/a&gt; IP DATAGRAM REASSEMBLY ALGORITHMS is susceptible to a Hole Descriptor overwrite attack which ultimately leads to an arbitrary write primitive.&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h4 id=&#34;rfc815&#34;&gt;RFC815&lt;/h4&gt;
+&lt;h3 id=&#34;rfc815&#34;&gt;RFC815&lt;/h3&gt;
 &lt;p&gt;看来需要先了解下RFC815的IPv4分片算法：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;原文档：&lt;a class=&#34;link&#34; href=&#34;https://datatracker.ietf.org/doc/html/rfc815&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -201,7 +201,7 @@
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;但内容有些不同：U-Boot的实现并不包含&lt;code&gt;hole.first&lt;/code&gt;域，因为 first_byte is address of this structure.&lt;/p&gt;
 &lt;p&gt;由此看来，这里的内存管理方式类似于Glibc堆内存管理方案。用双向链表管理了空闲区域（hole、free chunk），且在空闲区域内部记录自己的相关信息，最小大小为自身控制域（8-Bytes struct hole、free chunk header），并组成双向链表用于高效检索。但一个区别是，hole之间组成的链表，是借由字节索引而非指针实现的。&lt;/p&gt;
-&lt;h4 id=&#34;开始分析&#34;&gt;开始分析&lt;/h4&gt;
+&lt;h3 id=&#34;开始分析&#34;&gt;开始分析&lt;/h3&gt;
 &lt;p&gt;漏洞位置：&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;In &lt;code&gt;u-boot/net/net.c&lt;/code&gt; the &lt;code&gt;__net_defragment&lt;/code&gt; function line 900 through 1018.&lt;/p&gt;
@@ -464,7 +464,7 @@
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;所以实际上是一个：盲目信任用户传入的IP数据报中的&lt;code&gt;ip_len&lt;/code&gt;字段，造成hole结构被劫持，而导致的数组越界写漏洞。&lt;/p&gt;
 &lt;p&gt;由此达成的任意地址写可以用于root本地设备。但由于路由器往往会对经过自己的数据包合法性做校验并丢弃非法数据报，导致此漏洞难以于互联网上利用。&lt;/p&gt;
-&lt;h3 id=&#34;cve-2022-30552&#34;&gt;CVE-2022-30552&lt;/h3&gt;
+&lt;h2 id=&#34;cve-2022-30552&#34;&gt;CVE-2022-30552&lt;/h2&gt;
 &lt;p&gt;漏洞出现位置和上个漏洞相同&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -711,7 +711,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;同样是因为盲信攻击者的IP数据报而未做校验，造成的整数溢出与栈溢出漏洞。&lt;/p&gt;
-&lt;h2 id=&#34;漏洞影响&#34;&gt;漏洞影响&lt;/h2&gt;
+&lt;h1 id=&#34;漏洞影响&#34;&gt;漏洞影响&lt;/h1&gt;
 &lt;p&gt;由git仓库查看：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -761,7 +761,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;所以这两个漏洞影响了2009/8/7～2022/5/26间开启了&lt;code&gt;CONFIG_IP_DEFRAG&lt;/code&gt;编译选项的U-Boot。&lt;/p&gt;
-&lt;h2 id=&#34;漏洞修复&#34;&gt;漏洞修复&lt;/h2&gt;
+&lt;h1 id=&#34;漏洞修复&#34;&gt;漏洞修复&lt;/h1&gt;
 &lt;p&gt;查看修复的patch：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -842,7 +842,7 @@
         <pubDate>Thu, 09 Jun 2022 17:44:21 +0800</pubDate>
         
         <guid>https://cerr.cc/post/cve-2015-5165-qemu%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/</guid>
-        <description>&lt;img src="https://s2.loli.net/2022/06/09/jupCyBcahdQEJmP.jpg" alt="Featured image of post CVE-2015-5165 QEMU信息泄露漏洞分析" /&gt;&lt;h2 id=&#34;waiting&#34;&gt;waiting&lt;/h2&gt;
+        <description>&lt;img src="https://s2.loli.net/2022/06/09/jupCyBcahdQEJmP.jpg" alt="Featured image of post CVE-2015-5165 QEMU信息泄露漏洞分析" /&gt;&lt;h1 id=&#34;waiting&#34;&gt;waiting&lt;/h1&gt;
 </description>
         </item>
         <item>
@@ -851,8 +851,8 @@
         <pubDate>Tue, 24 May 2022 17:43:25 +0800</pubDate>
         
         <guid>https://cerr.cc/post/cve-2016-5195-linux-dirtycow%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/</guid>
-        <description>&lt;img src="https://s2.loli.net/2022/05/24/JFAS5mGpYn9utWi.jpg" alt="Featured image of post CVE-2016-5195 Linux DirtyCOW漏洞分析" /&gt;&lt;h2 id=&#34;背景知识&#34;&gt;背景知识&lt;/h2&gt;
-&lt;h3 id=&#34;dirtycow&#34;&gt;DirtyCOW&lt;/h3&gt;
+        <description>&lt;img src="https://s2.loli.net/2022/05/24/JFAS5mGpYn9utWi.jpg" alt="Featured image of post CVE-2016-5195 Linux DirtyCOW漏洞分析" /&gt;&lt;h1 id=&#34;背景知识&#34;&gt;背景知识&lt;/h1&gt;
+&lt;h2 id=&#34;dirtycow&#34;&gt;DirtyCOW&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://dirtycow.ninja/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://dirtycow.ninja/&lt;/a&gt;&lt;/li&gt;
@@ -861,36 +861,36 @@
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/dirtycow/dirtycow.github.io/wiki/VulnerabilityDetails&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/dirtycow/dirtycow.github.io/wiki/VulnerabilityDetails&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;copy-on-write&#34;&gt;Copy on Write&lt;/h3&gt;
+&lt;h2 id=&#34;copy-on-write&#34;&gt;Copy on Write&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.cnblogs.com/biyeymyhjob/archive/2012/07/20/2601655.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.cnblogs.com/biyeymyhjob/archive/2012/07/20/2601655.html&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/puliao4167/article/details/87894191&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://blog.csdn.net/puliao4167/article/details/87894191&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;page-cache&#34;&gt;Page Cache&lt;/h3&gt;
+&lt;h2 id=&#34;page-cache&#34;&gt;Page Cache&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/Page_cache&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://en.wikipedia.org/wiki/Page_cache&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;mmap&#34;&gt;mmap&lt;/h3&gt;
+&lt;h2 id=&#34;mmap&#34;&gt;mmap&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.cnblogs.com/huxiao-tee/p/4660352.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.cnblogs.com/huxiao-tee/p/4660352.html&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;内核文件系统&#34;&gt;内核文件系统&lt;/h3&gt;
+&lt;h2 id=&#34;内核文件系统&#34;&gt;内核文件系统&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.cnblogs.com/huxiao-tee/p/4657851.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.cnblogs.com/huxiao-tee/p/4657851.html&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;条件竞争&#34;&gt;条件竞争&lt;/h3&gt;
+&lt;h2 id=&#34;条件竞争&#34;&gt;条件竞争&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://ctf-wiki.github.io/ctf-wiki/pwn/linux/race-condition/introduction-zh/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://ctf-wiki.github.io/ctf-wiki/pwn/linux/race-condition/introduction-zh/&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;环境准备&#34;&gt;环境准备&lt;/h2&gt;
-&lt;h3 id=&#34;linux-kernel&#34;&gt;Linux Kernel&lt;/h3&gt;
-&lt;h4 id=&#34;直接下载&#34;&gt;直接下载&lt;/h4&gt;
+&lt;h1 id=&#34;环境准备&#34;&gt;环境准备&lt;/h1&gt;
+&lt;h2 id=&#34;linux-kernel&#34;&gt;Linux Kernel&lt;/h2&gt;
+&lt;h3 id=&#34;直接下载&#34;&gt;直接下载&lt;/h3&gt;
 &lt;p&gt;选取一个有漏洞的版本4.4.0，下载ubuntu对应的deb包。解压得到&lt;code&gt;./boot/vmlinuz-4.4.0-31-generic&lt;/code&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -905,7 +905,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;缺点是由此得到的bootable kernel中不包含调试信息。&lt;/p&gt;
-&lt;h4 id=&#34;自行编译&#34;&gt;自行编译&lt;/h4&gt;
+&lt;h3 id=&#34;自行编译&#34;&gt;自行编译&lt;/h3&gt;
 &lt;p&gt;获取Linux Kernel源码仓库并切换到一个有漏洞的版本4.4：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -976,7 +976,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;即得到bootable kernel。&lt;/p&gt;
-&lt;h3 id=&#34;poc&#34;&gt;PoC&lt;/h3&gt;
+&lt;h2 id=&#34;poc&#34;&gt;PoC&lt;/h2&gt;
 &lt;p&gt;从&lt;a class=&#34;link&#34; href=&#34;https://github.com/dirtycow/dirtycow.github.io/wiki/PoCs&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/dirtycow/dirtycow.github.io/wiki/PoCs&lt;/a&gt;选取dirtyc0w.c：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -1186,7 +1186,7 @@
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;gcc -static -pthread dirtyc0w.c -o dirtyc0w
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;rootfs&#34;&gt;rootfs&lt;/h3&gt;
+&lt;/div&gt;&lt;h2 id=&#34;rootfs&#34;&gt;rootfs&lt;/h2&gt;
 &lt;p&gt;这里采用busybox手动构建。克隆busybox源码仓库，进行menuconfig配置：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -1279,7 +1279,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;rootfs即准备完毕。&lt;/p&gt;
-&lt;h2 id=&#34;漏洞复现&#34;&gt;漏洞复现&lt;/h2&gt;
+&lt;h1 id=&#34;漏洞复现&#34;&gt;漏洞复现&lt;/h1&gt;
 &lt;p&gt;上一步已经得到了：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;带调试信息的Linux Kernel：bzImage&lt;/li&gt;
@@ -1344,7 +1344,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;至此漏洞成功复现！🥳&lt;/p&gt;
-&lt;h2 id=&#34;漏洞分析&#34;&gt;漏洞分析&lt;/h2&gt;
+&lt;h1 id=&#34;漏洞分析&#34;&gt;漏洞分析&lt;/h1&gt;
 &lt;p&gt;Waiting&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://xz.aliyun.com/t/7561&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://xz.aliyun.com/t/7561&lt;/a&gt;&lt;/p&gt;
@@ -1363,8 +1363,8 @@
 &lt;p&gt;影响范围：OpenSSL1.0.1、OpenSSL 1.0.1a~ OpenSSL 1.0.1f、OpenSSL 1.0.2-beta&lt;/p&gt;
 &lt;p&gt;漏洞描述：OpenSSL 在实现 TLS（传输层安全协议）和 DTLS（数据报安全传输协议）的心跳包处理逻辑时存在问题。OpenSSL 的 Heartbleed 模块在处理心跳包时没有检查心跳包中的长度字段是否与后续的数据字段一致，攻击者利用该漏洞构造异常数据包，可获取服务器内存中多达 64KB 的数据。这些数据可能会包含证书私钥、用户账号、密码、邮件内容等敏感信息。&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h2 id=&#34;背景知识&#34;&gt;背景知识&lt;/h2&gt;
-&lt;h3 id=&#34;简介&#34;&gt;简介&lt;/h3&gt;
+&lt;h1 id=&#34;背景知识&#34;&gt;背景知识&lt;/h1&gt;
+&lt;h1 id=&#34;简介&#34;&gt;简介&lt;/h1&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/Transport_Layer_Security&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;传输层安全性协议SSL&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;SSL&lt;/strong&gt; 全称 Secure Sockets Layer（安全套接字层协议），要求建立在可靠的传输层协议（&lt;strong&gt;TCP&lt;/strong&gt;）之上，主要提供机密性、认证性及数据完整性服务。SSL 最初（SSL 1.0、SSL2.0、SSL 3.0 版本）由网景公司设计和维护，从 3.1 版本开始，SSL 协议由因特网工程任务小组（IETF）正式接管，并更名为 &lt;strong&gt;TLS&lt;/strong&gt;（传输层安全协议，Transport Layer Security），发展至今已有 TLS 1.0、TLS1.1、TLS1.2 三个版本。&lt;/p&gt;
@@ -1375,7 +1375,7 @@
 &lt;li&gt;完整性——使用消息认证码（MAC）保障数据完整性，防止消息被篡改；&lt;/li&gt;
 &lt;li&gt;重放保护——通过使用隐式序列号防止重放攻击；&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;ssl握手过程&#34;&gt;SSL握手过程&lt;/h3&gt;
+&lt;h2 id=&#34;ssl握手过程&#34;&gt;SSL握手过程&lt;/h2&gt;
 &lt;p&gt;客户端获取服务器的数字证书后，协商后续数据传输所使用的对称加密密钥。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://s2.loli.net/2022/05/23/v2tSmBZsi1PWHTO.png&#34;
 	
@@ -1387,7 +1387,7 @@
 	
 	
 &gt;&lt;/p&gt;
-&lt;h3 id=&#34;ssl-heartbeat&#34;&gt;SSL Heartbeat&lt;/h3&gt;
+&lt;h2 id=&#34;ssl-heartbeat&#34;&gt;SSL Heartbeat&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Heartbleed was introduced by the Heartbeat Extension in the OpenSSL version 1.0.11 . This extension enables a low-cost, keepalive mechanism for peers to know that they’re still connected and all is well at the TLS layer. Standard implementations of TLS do not require the extension as they can rely on TCP for equivalent session management. Version 1.0.1 of OpenSSL added support for the Heartbeat functionality and enabled it by default.&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -1459,7 +1459,7 @@
 	
 	
 &gt;&lt;/p&gt;
-&lt;h3 id=&#34;openssl&#34;&gt;OpenSSL&lt;/h3&gt;
+&lt;h2 id=&#34;openssl&#34;&gt;OpenSSL&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.openssl.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.openssl.org/&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;查阅文档：&lt;/p&gt;
@@ -1475,8 +1475,8 @@
 &lt;p&gt;The OpenSSL crypto library (&lt;code&gt;libcrypto&lt;/code&gt;) implements a wide range of cryptographic algorithms used in various Internet standards. The services provided by this library are used by the OpenSSL implementations of TLS and CMS, and they have also been used to implement many other third party products and protocols.&lt;/p&gt;
 &lt;p&gt;The functionality includes symmetric encryption, public key cryptography, key agreement, certificate handling, cryptographic hash functions, cryptographic pseudo-random number generators, message authentication codes (MACs), key derivation functions (KDFs), and various utilities.&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h2 id=&#34;漏洞分析&#34;&gt;漏洞分析&lt;/h2&gt;
-&lt;h3 id=&#34;源码获取&#34;&gt;源码获取&lt;/h3&gt;
+&lt;h1 id=&#34;漏洞分析&#34;&gt;漏洞分析&lt;/h1&gt;
+&lt;h2 id=&#34;源码获取&#34;&gt;源码获取&lt;/h2&gt;
 &lt;p&gt;获取含漏洞的源码：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -1491,7 +1491,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;OpenSSL 是 SSL 协议实现的开源软件包，存在漏洞的两个文件为 ssl/d1_both.c 和 ssl/t1_lib.c，这两个文件中的 dtls1_process_heartbeat 函数和 tls1_process_heartbeat 函数分别为 DTLS（数据报安全传输协议）和 TLS（传输层安全协议）处理心跳请求包的函数。两函数的实现完全相同，此处选取 dtls1_process_heartbeat 进行分析。&lt;/p&gt;
-&lt;h3 id=&#34;成因预习&#34;&gt;成因预习&lt;/h3&gt;
+&lt;h2 id=&#34;成因预习&#34;&gt;成因预习&lt;/h2&gt;
 &lt;p&gt;&lt;img src=&#34;https://s2.loli.net/2022/05/23/7bzQV5f1GZLcCgl.jpg&#34;
 	
 	
@@ -1502,7 +1502,7 @@
 	
 	
 &gt;&lt;/p&gt;
-&lt;h3 id=&#34;代码分析&#34;&gt;代码分析&lt;/h3&gt;
+&lt;h2 id=&#34;代码分析&#34;&gt;代码分析&lt;/h2&gt;
 &lt;p&gt;预习完后首先来看看出现漏洞的函数：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -1753,7 +1753,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;漏洞修复&#34;&gt;漏洞修复&lt;/h3&gt;
+&lt;/div&gt;&lt;h2 id=&#34;漏洞修复&#34;&gt;漏洞修复&lt;/h2&gt;
 &lt;p&gt;git 查看漏洞修复前后版本差异：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -1906,7 +1906,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                OPENSSL_free(buffer);
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;fuzzing-挖掘-cve-2014-0160&#34;&gt;Fuzzing 挖掘 CVE-2014-0160&lt;/h2&gt;
+&lt;/div&gt;&lt;h1 id=&#34;fuzzing-挖掘-cve-2014-0160&#34;&gt;Fuzzing 挖掘 CVE-2014-0160&lt;/h1&gt;
 &lt;p&gt;使用Google的&lt;a class=&#34;link&#34; href=&#34;https://github.com/google/fuzzer-test-suite&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;fuzzer-test-suite&lt;/a&gt;来实践，先构建包含漏洞的openssl：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -2180,7 +2180,7 @@
         <description>&lt;img src="https://s2.loli.net/2022/05/19/FeqdKtWJZ3GonMX.png" alt="Featured image of post CVE-2021-3156 sudo 提权漏洞分析" /&gt;&lt;blockquote&gt;
 &lt;p&gt;CVE-2021-3156是sudo中存在一个堆溢出漏洞。影响从1.8.2~1.8.31p2下的所有旧版本sudo，以及1.9.0~1.9.5p1的所有稳定版sudo。可以使得任何没有特权的用户均可使用默认的sudo配置获取root权限&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h2 id=&#34;环境准备&#34;&gt;环境准备&lt;/h2&gt;
+&lt;h1 id=&#34;环境准备&#34;&gt;环境准备&lt;/h1&gt;
 &lt;p&gt;使用apt获取软件源提供的sudo源码：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -2267,7 +2267,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;说明漏洞的确存在。&lt;/p&gt;
-&lt;h2 id=&#34;漏洞成因&#34;&gt;漏洞成因&lt;/h2&gt;
+&lt;h1 id=&#34;漏洞成因&#34;&gt;漏洞成因&lt;/h1&gt;
 &lt;p&gt;sudo.c 中的 main 函数，会调用 parse_args 函数来处理sudo的命令行参数：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;

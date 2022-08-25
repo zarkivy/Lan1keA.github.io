@@ -5,16 +5,16 @@
 
 <link rel='canonical' href='https://cerr.cc/post/csapp-lab-writeup/'>
 
-<link rel="stylesheet" href="/scss/style.min.ac77dcf8b111b51da39a92990f431923f210f3876d85798a2125667f96dc33a4.css"><meta property='og:title' content='CSAPP Lab WriteUp'>
+<link rel="stylesheet" href="/scss/style.min.e75bab105855f77caa94de85bd0b7a889920eb03fa3048257f51f59c063a674d.css"><meta property='og:title' content='CSAPP Lab WriteUp'>
 <meta property='og:description' content='http://csapp.cs.cmu.edu/3e/labs.html'>
 <meta property='og:url' content='https://cerr.cc/post/csapp-lab-writeup/'>
-<meta property='og:site_name' content='Zikey Vi'>
+<meta property='og:site_name' content='やれやれ DA✰ZE'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='System' /><meta property='article:published_time' content='2022-08-19T17:06:58&#43;08:00'/><meta property='article:modified_time' content='2022-08-19T17:06:58&#43;08:00'/><meta property='og:image' content='https://s2.loli.net/2022/08/24/HhMzuB9lRFsCvy2.png' />
 <meta name="twitter:site" content="@dev2ero">
     <meta name="twitter:creator" content="@dev2ero"><meta name="twitter:title" content="CSAPP Lab WriteUp">
 <meta name="twitter:description" content="http://csapp.cs.cmu.edu/3e/labs.html"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://s2.loli.net/2022/08/24/HhMzuB9lRFsCvy2.png' />
-    <link rel="shortcut icon" href="img/favicon.png" />
+    <link rel="shortcut icon" href="favicon.png" />
 
     </head>
     <body class="
@@ -65,15 +65,15 @@
                 
                 </a>
                 
-                    <span class="emoji">🍥</span>
+                    <span class="emoji">🐟</span>
                 
             </figure>
             
         
         
         <div class="site-meta">
-            <h1 class="site-name"><a href="/">Zikey Vi</a></h1>
-            <h2 class="site-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
+            <h1 class="site-name"><a href="/">やれやれ DA✰ZE</a></h1>
+            <h2 class="site-description">Yet anothor cyber nyandog.</h2>
         </div>
     </header><ol class="social-menu">
             
@@ -91,6 +91,26 @@
 </svg>
 
 
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='mailto:dev2ero@foxmail.com'
+                        target="_blank"
+                        title="Mail"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mail-opened" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <polyline points="3 9 12 15 21 9 12 3 3 9" />
+  <path d="M21 9v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10" />
+  <line x1="3" y1="19" x2="9" y2="13" />
+  <line x1="15" y1="13" x2="21" y2="19" />
+</svg>
 
                         
                     </a>
@@ -379,13 +399,13 @@
     <section class="article-content">
     
     
-    <h2 id="0x0">0x0</h2>
+    <h1 id="0x0">0x0</h1>
 <p>实验源：<a class="link" href="http://csapp.cs.cmu.edu/3e/labs.html"  target="_blank" rel="noopener"
     >http://csapp.cs.cmu.edu/3e/labs.html</a></p>
 <blockquote>
 <p>直接点击实验名视作是图以教师身份下载教学资源。题目文件应于Self-Study Handout下载</p>
 </blockquote>
-<h2 id="data-lab">Data Lab</h2>
+<h1 id="data-lab">Data Lab</h1>
 <p>下载解压题目文件：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -401,7 +421,7 @@
 <p><a class="link" href="http://csapp.cs.cmu.edu/3e/README-datalab"  target="_blank" rel="noopener"
     >http://csapp.cs.cmu.edu/3e/README-datalab</a></p>
 <p>我们的任务是在受限使用运算符与控制流的前提下，实现bit.c中的每个函数的功能。</p>
-<h3 id="实现异或运算">实现异或运算</h3>
+<h2 id="实现异或运算">实现异或运算</h2>
 <p>异或，即 “不同时为0” 且 “不同时为1”</p>
 <p><code>^</code>，即 <code>~(~x&amp;~y)</code> 且 <code>~(x&amp;y)</code></p>
 <div class="highlight"><div class="chroma">
@@ -432,7 +452,7 @@
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="求32位下最小的补码数值">求32位下最小的补码数值</h3>
+</div><h2 id="求32位下最小的补码数值">求32位下最小的补码数值</h2>
 <p>补码，二补数，2&rsquo;s complement，参见：</p>
 <p><a class="link" href="https://zh.wikipedia.org/zh-cn/%E4%BA%8C%E8%A3%9C%E6%95%B8"  target="_blank" rel="noopener"
     >https://zh.wikipedia.org/zh-cn/%E4%BA%8C%E8%A3%9C%E6%95%B8</a></p>
@@ -460,11 +480,11 @@
 </span></span></span><span class="line"><span class="cl"><span class="cm"> *   Rating: 1
 </span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
 </span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">tmin</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">31</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">31</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="判断输入是否是补码中的最大整数">判断输入是否是补码中的最大整数</h3>
+</div><h2 id="判断输入是否是补码中的最大整数">判断输入是否是补码中的最大整数</h2>
 <p>32位下，补码中的最大整数是<code>0x7fffffff</code>，接下来省略一些，只写8bits，下文同理。</p>
 <p>核心手段是造出<code>00000000</code>，利用0与非0值返回true与false：</p>
 <p>若 <code>x = 0111111</code></p>
@@ -497,11 +517,11 @@
 </span></span></span><span class="line"><span class="cl"><span class="cm"> *   Rating: 1
 </span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
 </span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">isTmax</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="o">!</span><span class="p">(</span><span class="o">~</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">x</span><span class="p">))</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="o">!</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="o">!</span><span class="p">(</span><span class="o">~</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">x</span><span class="p">))</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="o">!</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">));</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="判断所有奇数位是否都为1">判断所有奇数位是否都为1</h3>
+</div><h2 id="判断所有奇数位是否都为1">判断所有奇数位是否都为1</h2>
 <p>位的编号从0（最低有效）到31（最高有效）</p>
 <p>采用掩码，即当 <code>x | 0x55555555 == 0xffffffff</code> 时则返回1</p>
 <p><code>0x55 == 0b 0101 0101</code></p>
@@ -530,12 +550,12 @@
 </span></span></span><span class="line"><span class="cl"><span class="cm"> *   Rating: 2
 </span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
 </span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">allOddBits</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="mh">0x55</span> <span class="o">&lt;&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="mh">0x55</span> <span class="o">&lt;&lt;</span> <span class="mi">8</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="mh">0x55</span> <span class="o">&lt;&lt;</span> <span class="mi">16</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="mh">0x55</span> <span class="o">&lt;&lt;</span> <span class="mi">24</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="o">!~</span><span class="p">(</span><span class="n">x</span> <span class="o">|</span> <span class="n">a</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="mh">0x55</span> <span class="o">&lt;&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="mh">0x55</span> <span class="o">&lt;&lt;</span> <span class="mi">8</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="mh">0x55</span> <span class="o">&lt;&lt;</span> <span class="mi">16</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="mh">0x55</span> <span class="o">&lt;&lt;</span> <span class="mi">24</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="o">!~</span><span class="p">(</span><span class="n">x</span> <span class="o">|</span> <span class="n">a</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="求--x">求 -x</h3>
+</div><h2 id="求--x">求 -x</h2>
 <p>按位取反加一即得负数</p>
 <p>补码实际上是一个<code>阿贝尔群</code>，对于 <code>x</code>，<code>-x</code> 是其补码，所以 <code>-x</code> 可以通过对 <code>x</code> 取反加1得到</p>
 <div class="highlight"><div class="chroma">
@@ -560,11 +580,11 @@
 </span></span></span><span class="line"><span class="cl"><span class="cm"> *   Rating: 2
 </span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
 </span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">negate</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="o">~</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="o">~</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="判断是否为数字字符ascii码">判断是否为数字字符ASCII码</h3>
+</div><h2 id="判断是否为数字字符ascii码">判断是否为数字字符ASCII码</h2>
 <p>用减法，判断 <code>x-0x30 &gt;= 0 &amp;&amp; 0x39 - x &gt;= 0</code></p>
 <p>但题干要求不能用减号，那么可以根据补码原理用加号实现减法</p>
 <p>最后判断两个中间值的符号位全为0即可返回true</p>
@@ -596,13 +616,13 @@
 </span></span></span><span class="line"><span class="cl"><span class="cm"> *   Rating: 3
 </span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
 </span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">isAsciiDigit</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="p">(</span><span class="o">~</span><span class="mh">0x30</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span> <span class="c1">// x - 0x30
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="mh">0x39</span> <span class="o">+</span> <span class="p">(</span><span class="o">~</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span> <span class="c1">// 0x39 - x
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="k">return</span> <span class="o">!</span><span class="p">(</span><span class="n">a</span> <span class="o">&gt;&gt;</span> <span class="mi">31</span> <span class="o">|</span> <span class="n">b</span> <span class="o">&gt;&gt;</span> <span class="mi">31</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="p">(</span><span class="o">~</span><span class="mh">0x30</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span> <span class="c1">// x - 0x30
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="mh">0x39</span> <span class="o">+</span> <span class="p">(</span><span class="o">~</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span> <span class="c1">// 0x39 - x
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">return</span> <span class="o">!</span><span class="p">(</span><span class="n">a</span> <span class="o">&gt;&gt;</span> <span class="mi">31</span> <span class="o">|</span> <span class="n">b</span> <span class="o">&gt;&gt;</span> <span class="mi">31</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="实现c语言---运算符">实现C语言 ? : 运算符</h3>
+</div><h2 id="实现c语言---运算符">实现C语言 ? : 运算符</h2>
 <p>将x转化为 <code>00000000</code> 或 <code>11111111</code> 用于计算</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -628,13 +648,13 @@
 </span></span></span><span class="line"><span class="cl"><span class="cm"> *   Rating: 3
 </span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
 </span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">conditional</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">,</span> <span class="kt">int</span> <span class="n">z</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="n">x</span> <span class="o">=</span> <span class="o">!!</span><span class="n">x</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="n">x</span> <span class="o">=</span> <span class="o">~</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="p">(</span><span class="n">x</span><span class="o">&amp;</span><span class="n">y</span><span class="p">)</span><span class="o">|</span><span class="p">(</span><span class="o">~</span><span class="n">x</span><span class="o">&amp;</span><span class="n">z</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="n">x</span> <span class="o">=</span> <span class="o">!!</span><span class="n">x</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">x</span> <span class="o">=</span> <span class="o">~</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="p">(</span><span class="n">x</span><span class="o">&amp;</span><span class="n">y</span><span class="p">)</span><span class="o">|</span><span class="p">(</span><span class="o">~</span><span class="n">x</span><span class="o">&amp;</span><span class="n">z</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="实现--运算符">实现 &lt;= 运算符</h3>
+</div><h2 id="实现--运算符">实现 &lt;= 运算符</h2>
 <blockquote>
 <p>&laquo;左移一律补0。&raquo;右移可能补0也可能补符号位，视机器而定，通常是补符号位。</p>
 </blockquote>
@@ -675,7 +695,7 @@
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="实现逻辑非">实现逻辑非!</h3>
+</div><h2 id="实现逻辑非">实现逻辑非!</h2>
 <p><code>00000000 ｜ (~00000000 + 1)</code> 得 0，其余数做此运算都得非0，且符号位为1</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -705,10 +725,10 @@
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="求一个数用补码表示所需的最少位数">求一个数用补码表示所需的最少位数</h3>
-<h3 id="求浮点数与2相乘的值">求浮点数与2相乘的值</h3>
-<h3 id="浮点数转整数">浮点数转整数</h3>
-<h3 id="判断指数是否上溢或者下溢">判断指数是否上溢或者下溢</h3>
+</div><h2 id="求一个数用补码表示所需的最少位数">求一个数用补码表示所需的最少位数</h2>
+<h2 id="求浮点数与2相乘的值">求浮点数与2相乘的值</h2>
+<h2 id="浮点数转整数">浮点数转整数</h2>
+<h2 id="判断指数是否上溢或者下溢">判断指数是否上溢或者下溢</h2>
 
 </section>
 
@@ -747,39 +767,18 @@
      
     
         
-    <div class="disqus-container">
-    
-</div>
-
-<style>
-    .disqus-container {
-        background-color: var(--card-background);
-        border-radius: var(--card-border-radius);
-        box-shadow: var(--shadow-l1);
-        padding: var(--card-padding);
-    }
-</style>
-
-<script>
-    window.addEventListener('onColorSchemeChange', (e) => {
-        if (typeof DISQUS == 'object') {
-            DISQUS.reset({
-                reload: true
-            });
-        }
-    })
-</script>
-
     
 
     <footer class="site-footer">
     <section class="copyright">
         &copy; 
         
-        2022 Zikey Vi
+        2022 やれやれ DA✰ZE
     </section>
     
     <section class="powerby">
+        
+            All Right Abandoned. <br/>
         Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
         Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.13.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
     </section>
