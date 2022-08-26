@@ -711,9 +711,320 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="求一个数用补码表示所需的最少位数">求一个数用补码表示所需的最少位数</h2>
-<h2 id="求浮点数与2相乘的值">求浮点数与2相乘的值</h2>
-<h2 id="浮点数转整数">浮点数转整数</h2>
-<h2 id="判断指数是否上溢或者下溢">判断指数是否上溢或者下溢</h2>
+<p>正数则查找从左边第一个1开始，一直到最右边那一位的位数，再加上一个符号位</p>
+<p>负数则查找从左边第一个0开始，一直到最右边那一位的位数，再加上一个符号位</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cm">/* howManyBits - return the minimum number of bits required to represent x in
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *             two&#39;s complement
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *  Examples: howManyBits(12) = 5           0......0    01100
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *            howManyBits(298) = 10         0.0    0100101010
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *            howManyBits(-5) = 4           1.......1    1011
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *            howManyBits(0)  = 1           0..........0    0
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *            howManyBits(-1) = 1           1..........1    1
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *            howManyBits(0x80000000) = 32      10.........00
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *  Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *  Max ops: 90
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *  Rating: 4
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">howManyBits</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">int</span> <span class="n">bit16</span><span class="p">,</span> <span class="n">bit8</span><span class="p">,</span> <span class="n">bit4</span><span class="p">,</span> <span class="n">bit2</span><span class="p">,</span> <span class="n">bit1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 对操作数取反，将负数转为正数，正数不变，便于更好的计算
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kt">int</span> <span class="n">sign</span> <span class="o">=</span> <span class="n">x</span> <span class="o">&gt;&gt;</span> <span class="mi">31</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">x</span> <span class="o">^=</span> <span class="n">sign</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 二分查找，先判断高16位有无存在1,并将范围缩小到高16位或低16位
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// 如果高16位存在1,则bit16 == 16,否则等于0
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">bit16</span> <span class="o">=</span> <span class="p">(</span><span class="o">!!</span><span class="p">(</span><span class="n">x</span> <span class="o">&gt;&gt;</span> <span class="mi">16</span><span class="p">))</span> <span class="o">&lt;&lt;</span> <span class="mi">4</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">x</span> <span class="o">&gt;&gt;=</span> <span class="n">bit16</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 查找剩余16位中的高8位是否存在1
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">bit8</span> <span class="o">=</span> <span class="p">(</span><span class="o">!!</span><span class="p">(</span><span class="n">x</span> <span class="o">&gt;&gt;</span> <span class="mi">8</span><span class="p">))</span> <span class="o">&lt;&lt;</span> <span class="mi">3</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">x</span> <span class="o">&gt;&gt;=</span> <span class="n">bit8</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 查找剩余8位中的高4位是否存在1
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">bit4</span> <span class="o">=</span> <span class="p">(</span><span class="o">!!</span><span class="p">(</span><span class="n">x</span> <span class="o">&gt;&gt;</span> <span class="mi">4</span><span class="p">))</span> <span class="o">&lt;&lt;</span> <span class="mi">2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">x</span> <span class="o">&gt;&gt;=</span> <span class="n">bit4</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 查找剩余4位中的高2位是否存在1
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">bit2</span> <span class="o">=</span> <span class="p">(</span><span class="o">!!</span><span class="p">(</span><span class="n">x</span> <span class="o">&gt;&gt;</span> <span class="mi">2</span><span class="p">))</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">x</span> <span class="o">&gt;&gt;=</span> <span class="n">bit2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 查找剩余2位中的高1位是否存在1
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">bit1</span> <span class="o">=</span> <span class="p">(</span><span class="o">!!</span><span class="p">(</span><span class="n">x</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span><span class="p">))</span> <span class="o">&lt;&lt;</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">x</span> <span class="o">&gt;&gt;=</span> <span class="n">bit1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 最终加上一个符号位
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">return</span> <span class="n">bit16</span> <span class="o">+</span> <span class="n">bit8</span> <span class="o">+</span> <span class="n">bit4</span> <span class="o">+</span> <span class="n">bit2</span> <span class="o">+</span> <span class="n">bit1</span> <span class="o">+</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="求浮点数与2相乘的值">求浮点数与2相乘的值</h2>
+<p>目前浮点数通常遵循IEEE 754标准，参见：</p>
+<p><a class="link" href="https://zh.wikipedia.org/wiki/IEEE_754"  target="_blank" rel="noopener"
+    >https://zh.wikipedia.org/wiki/IEEE_754</a></p>
+<p>32位下，我们使用IEEE 754单精度浮点数。</p>
+<p><img src="https://s2.loli.net/2022/08/26/AeWpmMJY5COnThX.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image.png"
+	
+	
+></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cm">/* 
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * floatScale2 - Return bit-level equivalent of expression 2*f for
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *   floating point argument f.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *   Both the argument and result are passed as unsigned int&#39;s, but
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *   they are to be interpreted as the bit-level representation of
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *   single-precision floating point values.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *   When argument is NaN, return argument
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *   Legal ops: Any integer/unsigned operations incl. ||, &amp;&amp;. also if, while
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *   Max ops: 30
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *   Rating: 4
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
+</span></span><span class="line"><span class="cl"><span class="kt">unsigned</span> <span class="nf">floatScale2</span><span class="p">(</span><span class="kt">unsigned</span> <span class="n">uf</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 获取其exp部分的值
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="kt">int</span> <span class="n">exp</span> <span class="o">=</span> <span class="p">(</span><span class="n">uf</span> <span class="o">&gt;&gt;</span> <span class="mi">23</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xff</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">int</span> <span class="n">sign</span> <span class="o">=</span> <span class="n">uf</span> <span class="o">&amp;</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">31</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 如果传入的是非规格化的值
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">if</span><span class="p">(</span><span class="n">exp</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="n">sign</span> <span class="o">|</span> <span class="n">uf</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 如果传入的是无穷大或NaN
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">exp</span> <span class="o">==</span> <span class="mh">0xff</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="c1">// 没法继续乘了，只能返回参数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="k">return</span> <span class="n">uf</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">//乘2
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">exp</span><span class="o">++</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 如果乘2后的结果超出范围（即溢出），则返回无穷大
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">if</span><span class="p">(</span><span class="n">exp</span> <span class="o">==</span> <span class="mh">0xff</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="n">sign</span> <span class="o">|</span> <span class="mh">0x7f800000</span><span class="p">;</span> <span class="c1">// expr全为0, frac全为1
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// 否则返回正常乘2后的值
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">return</span> <span class="n">sign</span> <span class="o">|</span> <span class="p">(</span><span class="n">exp</span> <span class="o">&lt;&lt;</span> <span class="mi">23</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">uf</span> <span class="o">&amp;</span> <span class="mh">0x7fffff</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="浮点数转整数">浮点数转整数</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cm">/* 
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * floatFloat2Int - Return bit-level equivalent of expression (int) f
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *   for floating point argument f.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *   Argument is passed as unsigned int, but
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *   it is to be interpreted as the bit-level representation of a
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *   single-precision floating point value.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *   Anything out of range (including NaN and infinity) should return
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *   0x80000000u.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *   Legal ops: Any integer/unsigned operations incl. ||, &amp;&amp;. also if, while
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *   Max ops: 30
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *   Rating: 4
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">floatFloat2Int</span><span class="p">(</span><span class="kt">unsigned</span> <span class="n">uf</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">int</span> <span class="n">exp</span> <span class="o">=</span> <span class="p">(</span><span class="n">uf</span> <span class="o">&gt;&gt;</span> <span class="mi">23</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xff</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">int</span> <span class="n">sign</span> <span class="o">=</span> <span class="p">(</span><span class="n">uf</span> <span class="o">&gt;&gt;</span> <span class="mi">31</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">int</span> <span class="n">frac</span> <span class="o">=</span> <span class="n">uf</span> <span class="o">&amp;</span> <span class="mh">0x7fffff</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">int</span> <span class="n">shiftBits</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 0比较特殊，先判断0(正负0都算作0)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">uf</span> <span class="o">&amp;</span> <span class="mh">0x7fffffff</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 判断是否为NaN还是无穷大
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">if</span><span class="p">(</span><span class="n">exp</span> <span class="o">==</span> <span class="mh">0xff</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="mh">0x80000000u</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 指数减去偏移量，获取到真正的指数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">exp</span> <span class="o">-=</span> <span class="mi">127</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 需要注意的是，原来的frac一旦向左移位，其值就一定会小于1，所以返回0
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">if</span><span class="p">(</span><span class="n">exp</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 获取M，注意exp等于-127和不等于-127的情况是不一样的。当exp != -127时还有一个隐藏的1
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">if</span><span class="p">(</span><span class="n">exp</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">127</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="n">frac</span> <span class="o">|=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">23</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 要移位的位数。注意float的小数点是点在第23位与第22位之间
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">shiftBits</span> <span class="o">=</span> <span class="mi">23</span> <span class="o">-</span> <span class="n">exp</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 需要注意一点，如果指数过大，则也返回0x80000000u
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">if</span><span class="p">(</span><span class="n">shiftBits</span> <span class="o">&lt;</span> <span class="mi">31</span> <span class="o">-</span> <span class="mi">23</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="mh">0x80000000u</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 获取真正的结果
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">frac</span> <span class="o">&gt;&gt;=</span> <span class="n">shiftBits</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 判断符号
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">if</span><span class="p">(</span><span class="n">sign</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="o">~</span><span class="n">frac</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">else</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="n">frac</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="求20的x次方">求2.0的x次方</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cm">/* 
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * floatPower2 - Return bit-level equivalent of the expression 2.0^x
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *   (2.0 raised to the power x) for any 32-bit integer x.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *   The unsigned value that is returned should have the identical bit
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *   representation as the single-precision floating-point number 2.0^x.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *   If the result is too small to be represented as a denorm, return
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *   0. If too large, return +INF.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * 
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *   Legal ops: Any integer/unsigned operations incl. ||, &amp;&amp;. Also if, while 
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *   Max ops: 30 
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *   Rating: 4
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
+</span></span><span class="line"><span class="cl"><span class="kt">unsigned</span> <span class="nf">floatPower2</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 得到偏移后的指数exp
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="kt">int</span> <span class="n">exp</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">127</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 如果exp大于等于255则为无穷大或越界
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">if</span><span class="p">(</span><span class="n">exp</span> <span class="o">&gt;</span> <span class="mh">0xfe</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="mh">0x7f800000</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// exp为0时，结果为0
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">exp</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//因为是求结果的浮点数比特级表示，所以偏移后的指数直接左移23bits即可
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">return</span> <span class="n">exp</span> <span class="o">&lt;&lt;</span> <span class="mi">23</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="bomb-lab">Bomb Lab</h1>
 
 </section>
 
@@ -873,9 +1184,10 @@
         <li><a href="#求一个数用补码表示所需的最少位数">求一个数用补码表示所需的最少位数</a></li>
         <li><a href="#求浮点数与2相乘的值">求浮点数与2相乘的值</a></li>
         <li><a href="#浮点数转整数">浮点数转整数</a></li>
-        <li><a href="#判断指数是否上溢或者下溢">判断指数是否上溢或者下溢</a></li>
+        <li><a href="#求20的x次方">求2.0的x次方</a></li>
       </ol>
     </li>
+    <li><a href="#bomb-lab">Bomb Lab</a></li>
   </ol>
 </nav>
         </div>

@@ -239,8 +239,172 @@ int logicalNeg(int x) {
 
 ## 求一个数用补码表示所需的最少位数
 
+正数则查找从左边第一个1开始，一直到最右边那一位的位数，再加上一个符号位
+
+负数则查找从左边第一个0开始，一直到最右边那一位的位数，再加上一个符号位
+
+```c
+/* howManyBits - return the minimum number of bits required to represent x in
+ *             two's complement
+ *  Examples: howManyBits(12) = 5           0......0    01100
+ *            howManyBits(298) = 10         0.0    0100101010
+ *            howManyBits(-5) = 4           1.......1    1011
+ *            howManyBits(0)  = 1           0..........0    0
+ *            howManyBits(-1) = 1           1..........1    1
+ *            howManyBits(0x80000000) = 32      10.........00
+ *  Legal ops: ! ~ & ^ | + << >>
+ *  Max ops: 90
+ *  Rating: 4
+ */
+int howManyBits(int x) {
+	int bit16, bit8, bit4, bit2, bit1;
+    // 对操作数取反，将负数转为正数，正数不变，便于更好的计算
+    int sign = x >> 31;
+    x ^= sign;
+	// 二分查找，先判断高16位有无存在1,并将范围缩小到高16位或低16位
+	// 如果高16位存在1,则bit16 == 16,否则等于0
+	bit16 = (!!(x >> 16)) << 4;
+	x >>= bit16;
+	// 查找剩余16位中的高8位是否存在1
+	bit8 = (!!(x >> 8)) << 3;
+	x >>= bit8;
+	// 查找剩余8位中的高4位是否存在1
+	bit4 = (!!(x >> 4)) << 2;
+	x >>= bit4;
+	// 查找剩余4位中的高2位是否存在1
+	bit2 = (!!(x >> 2)) << 1;
+	x >>= bit2;
+	// 查找剩余2位中的高1位是否存在1
+	bit1 = (!!(x >> 1)) << 0;
+	x >>= bit1;
+	// 最终加上一个符号位
+	return bit16 + bit8 + bit4 + bit2 + bit1 + x + 1;
+}
+```
+
 ## 求浮点数与2相乘的值
+
+目前浮点数通常遵循IEEE 754标准，参见：
+
+[https://zh.wikipedia.org/wiki/IEEE_754](https://zh.wikipedia.org/wiki/IEEE_754)
+
+32位下，我们使用IEEE 754单精度浮点数。
+
+![image.png](https://s2.loli.net/2022/08/26/AeWpmMJY5COnThX.png)
+
+```c
+/* 
+ * floatScale2 - Return bit-level equivalent of expression 2*f for
+ *   floating point argument f.
+ *   Both the argument and result are passed as unsigned int's, but
+ *   they are to be interpreted as the bit-level representation of
+ *   single-precision floating point values.
+ *   When argument is NaN, return argument
+ *   Legal ops: Any integer/unsigned operations incl. ||, &&. also if, while
+ *   Max ops: 30
+ *   Rating: 4
+ */
+unsigned floatScale2(unsigned uf) {
+	// 获取其exp部分的值
+	int exp = (uf >> 23) & 0xff;
+	int sign = uf & (1 << 31);
+	// 如果传入的是非规格化的值
+	if(exp == 0)
+		return sign | uf << 1;
+	// 如果传入的是无穷大或NaN
+	else if(exp == 0xff)
+		// 没法继续乘了，只能返回参数
+		return uf;
+	//乘2
+	exp++;
+	// 如果乘2后的结果超出范围（即溢出），则返回无穷大
+	if(exp == 0xff)
+		return sign | 0x7f800000; // expr全为0, frac全为1
+	// 否则返回正常乘2后的值
+	return sign | (exp << 23) | (uf & 0x7fffff);
+}
+```
 
 ## 浮点数转整数
 
-## 判断指数是否上溢或者下溢
+```c
+/* 
+ * floatFloat2Int - Return bit-level equivalent of expression (int) f
+ *   for floating point argument f.
+ *   Argument is passed as unsigned int, but
+ *   it is to be interpreted as the bit-level representation of a
+ *   single-precision floating point value.
+ *   Anything out of range (including NaN and infinity) should return
+ *   0x80000000u.
+ *   Legal ops: Any integer/unsigned operations incl. ||, &&. also if, while
+ *   Max ops: 30
+ *   Rating: 4
+ */
+int floatFloat2Int(unsigned uf) {
+	int exp = (uf >> 23) & 0xff;
+	int sign = (uf >> 31) & 1;
+	int frac = uf & 0x7fffff;
+	int shiftBits = 0;
+	// 0比较特殊，先判断0(正负0都算作0)
+	if(!(uf & 0x7fffffff))
+		return 0;
+	// 判断是否为NaN还是无穷大
+	if(exp == 0xff)
+		return 0x80000000u;
+	// 指数减去偏移量，获取到真正的指数
+	exp -= 127;
+	// 需要注意的是，原来的frac一旦向左移位，其值就一定会小于1，所以返回0
+	if(exp < 0)
+		return 0;
+	// 获取M，注意exp等于-127和不等于-127的情况是不一样的。当exp != -127时还有一个隐藏的1
+	if(exp != -127)
+		frac |= (1 << 23);
+	// 要移位的位数。注意float的小数点是点在第23位与第22位之间
+	shiftBits = 23 - exp;
+	// 需要注意一点，如果指数过大，则也返回0x80000000u
+	if(shiftBits < 31 - 23)
+		return 0x80000000u;
+	// 获取真正的结果
+	frac >>= shiftBits;
+	// 判断符号
+	if(sign == 1)
+		return ~frac + 1;
+	else
+		return frac;
+}
+```
+
+## 求2.0的x次方
+
+```c
+/* 
+ * floatPower2 - Return bit-level equivalent of the expression 2.0^x
+ *   (2.0 raised to the power x) for any 32-bit integer x.
+ *
+ *   The unsigned value that is returned should have the identical bit
+ *   representation as the single-precision floating-point number 2.0^x.
+ *   If the result is too small to be represented as a denorm, return
+ *   0. If too large, return +INF.
+ * 
+ *   Legal ops: Any integer/unsigned operations incl. ||, &&. Also if, while 
+ *   Max ops: 30 
+ *   Rating: 4
+ */
+unsigned floatPower2(int x) {
+    // 得到偏移后的指数exp
+	int exp = x + 127;
+    // 如果exp大于等于255则为无穷大或越界
+	if(exp > 0xfe)
+		return 0x7f800000;
+    // exp为0时，结果为0
+	else if(exp < 0)
+		return 0;
+    //因为是求结果的浮点数比特级表示，所以偏移后的指数直接左移23bits即可
+	return exp << 23;
+}
+```
+
+# Bomb Lab
+
+
+
