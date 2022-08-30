@@ -145,8 +145,8 @@
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
         <guid>https://cerr.cc/board/</guid>
-        <description>&lt;h2 id=&#34;trick&#34;&gt;Trick&lt;/h2&gt;
-&lt;h3 id=&#34;谁在ping我&#34;&gt;谁在ping我？&lt;/h3&gt;
+        <description>&lt;h1 id=&#34;trick&#34;&gt;Trick&lt;/h1&gt;
+&lt;h2 id=&#34;谁在ping我&#34;&gt;谁在ping我？&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -157,7 +157,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# root权限执行，eth0 换成你需要抓包的网卡iframe&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;命令行看天气&#34;&gt;命令行看天气&lt;/h3&gt;
+&lt;/div&gt;&lt;h2 id=&#34;命令行看天气&#34;&gt;命令行看天气&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -168,7 +168,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;curl wttr.in/:help
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;修复vmware共享文件夹&#34;&gt;修复VMware共享文件夹&lt;/h3&gt;
+&lt;/div&gt;&lt;h2 id=&#34;修复vmware共享文件夹&#34;&gt;修复VMware共享文件夹&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -177,8 +177,20 @@
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo vmhgfs-fuse .host:/ /mnt/hgfs -o allow_other -o &lt;span class=&#34;nv&#34;&gt;uid&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;1000&lt;/span&gt; -o &lt;span class=&#34;nv&#34;&gt;gid&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;1000&lt;/span&gt; -o &lt;span class=&#34;nv&#34;&gt;umask&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;022&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;key-value&#34;&gt;Key-Value&lt;/h2&gt;
-&lt;h3 id=&#34;ansi-颜色&#34;&gt;ANSI 颜色&lt;/h3&gt;
+&lt;/div&gt;&lt;h2 id=&#34;ssh超时&#34;&gt;ssh超时&lt;/h2&gt;
+&lt;p&gt;客户端&lt;code&gt;/etc/ssh/ssh_config&lt;/code&gt;或服务端&lt;code&gt;/etc/ssh/sshd_config&lt;/code&gt;添加：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ServerAliveInterval &lt;span class=&#34;m&#34;&gt;120&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ServerAliveCountMax &lt;span class=&#34;m&#34;&gt;60&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h1 id=&#34;key-value&#34;&gt;Key-Value&lt;/h1&gt;
+&lt;h2 id=&#34;ansi-颜色&#34;&gt;ANSI 颜色&lt;/h2&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
@@ -252,7 +264,7 @@
 &lt;blockquote&gt;
 &lt;p&gt;在bash中使用时需稍加变换，例：echo $&amp;rsquo;\x1b[31mTEST\x1b[0m&#39;&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h3 id=&#34;windows小鹤双拼注册表&#34;&gt;Windows小鹤双拼注册表&lt;/h3&gt;
+&lt;h2 id=&#34;windows小鹤双拼注册表&#34;&gt;Windows小鹤双拼注册表&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -285,7 +297,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;na&#34;&gt;&amp;#34;DoublePinyinScheme&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;dword:0000000a&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;vim教程&#34;&gt;Vim教程&lt;/h2&gt;
+&lt;/div&gt;&lt;h1 id=&#34;vim教程&#34;&gt;Vim教程&lt;/h1&gt;
 &lt;p&gt;&lt;img src=&#34;http://michael.peopleofhonoronly.com/vim/vim_cheat_sheet_for_programmers_print.png&#34;
 	
 	

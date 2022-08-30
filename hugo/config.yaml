@@ -19,7 +19,7 @@ params:
 
     footer:
         since: 2022
-        customText: All Right Abandoned.
+        customText: All Rights Abandoned.
 
     dateFormat:
         published: Jan 02, 2006
