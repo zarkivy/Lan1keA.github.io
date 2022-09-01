@@ -1475,7 +1475,7 @@
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p><code>func4</code>汇编函数重写后，编写汇编程序对此函数暴力枚举：</p>
+</div><p>将<code>func4</code>反汇编函数重写为可编译的形式后，编写汇编程序对此函数暴力枚举：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -1619,8 +1619,539 @@
 <p>故此关的一个合法解为<code>7 0</code></p>
 <p><code>echo &quot;7 0&quot; &gt;&gt; passcodes</code></p>
 <h2 id="phase_5">phase_5</h2>
+<p><code>phase_5</code>函数反汇编：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">0x0000000000401062 &lt;+0&gt;:     push   rbx
+</span></span><span class="line"><span class="cl">0x0000000000401063 &lt;+1&gt;:     sub    rsp,0x20
+</span></span><span class="line"><span class="cl">0x0000000000401067 &lt;+5&gt;:     mov    rbx,rdi
+</span></span><span class="line"><span class="cl">0x000000000040106a &lt;+8&gt;:     mov    rax,QWORD PTR fs:0x28
+</span></span><span class="line"><span class="cl">0x0000000000401073 &lt;+17&gt;:    mov    QWORD PTR [rsp+0x18],rax
+</span></span><span class="line"><span class="cl">0x0000000000401078 &lt;+22&gt;:    xor    eax,eax
+</span></span><span class="line"><span class="cl">0x000000000040107a &lt;+24&gt;:    call   0x40131b &lt;string_length&gt;
+</span></span><span class="line"><span class="cl">0x000000000040107f &lt;+29&gt;:    cmp    eax,0x6
+</span></span><span class="line"><span class="cl">0x0000000000401082 &lt;+32&gt;:    je     0x4010d2 &lt;phase_5+112&gt;
+</span></span><span class="line"><span class="cl">0x0000000000401084 &lt;+34&gt;:    call   0x40143a &lt;explode_bomb&gt;
+</span></span><span class="line"><span class="cl">0x0000000000401089 &lt;+39&gt;:    jmp    0x4010d2 &lt;phase_5+112&gt;
+</span></span><span class="line"><span class="cl">0x000000000040108b &lt;+41&gt;:    movzx  ecx,BYTE PTR [rbx+rax*1]
+</span></span><span class="line"><span class="cl">0x000000000040108f &lt;+45&gt;:    mov    BYTE PTR [rsp],cl
+</span></span><span class="line"><span class="cl">0x0000000000401092 &lt;+48&gt;:    mov    rdx,QWORD PTR [rsp]
+</span></span><span class="line"><span class="cl">0x0000000000401096 &lt;+52&gt;:    and    edx,0xf
+</span></span><span class="line"><span class="cl">0x0000000000401099 &lt;+55&gt;:    movzx  edx,BYTE PTR [rdx+0x4024b0]
+</span></span><span class="line"><span class="cl">0x00000000004010a0 &lt;+62&gt;:    mov    BYTE PTR [rsp+rax*1+0x10],dl
+</span></span><span class="line"><span class="cl">0x00000000004010a4 &lt;+66&gt;:    add    rax,0x1
+</span></span><span class="line"><span class="cl">0x00000000004010a8 &lt;+70&gt;:    cmp    rax,0x6
+</span></span><span class="line"><span class="cl">0x00000000004010ac &lt;+74&gt;:    jne    0x40108b &lt;phase_5+41&gt;
+</span></span><span class="line"><span class="cl">0x00000000004010ae &lt;+76&gt;:    mov    BYTE PTR [rsp+0x16],0x0
+</span></span><span class="line"><span class="cl">0x00000000004010b3 &lt;+81&gt;:    mov    esi,0x40245e
+</span></span><span class="line"><span class="cl">0x00000000004010b8 &lt;+86&gt;:    lea    rdi,[rsp+0x10]
+</span></span><span class="line"><span class="cl">0x00000000004010bd &lt;+91&gt;:    call   0x401338 &lt;strings_not_equal&gt;
+</span></span><span class="line"><span class="cl">0x00000000004010c2 &lt;+96&gt;:    test   eax,eax
+</span></span><span class="line"><span class="cl">0x00000000004010c4 &lt;+98&gt;:    je     0x4010d9 &lt;phase_5+119&gt;
+</span></span><span class="line"><span class="cl">0x00000000004010c6 &lt;+100&gt;:   call   0x40143a &lt;explode_bomb&gt;
+</span></span><span class="line"><span class="cl">0x00000000004010cb &lt;+105&gt;:   nop    DWORD PTR [rax+rax*1+0x0]
+</span></span><span class="line"><span class="cl">0x00000000004010d0 &lt;+110&gt;:   jmp    0x4010d9 &lt;phase_5+119&gt;
+</span></span><span class="line"><span class="cl">0x00000000004010d2 &lt;+112&gt;:   mov    eax,0x0
+</span></span><span class="line"><span class="cl">0x00000000004010d7 &lt;+117&gt;:   jmp    0x40108b &lt;phase_5+41&gt;
+</span></span><span class="line"><span class="cl">0x00000000004010d9 &lt;+119&gt;:   mov    rax,QWORD PTR [rsp+0x18]
+</span></span><span class="line"><span class="cl">0x00000000004010de &lt;+124&gt;:   xor    rax,QWORD PTR fs:0x28
+</span></span><span class="line"><span class="cl">0x00000000004010e7 &lt;+133&gt;:   je     0x4010ee &lt;phase_5+140&gt;
+</span></span><span class="line"><span class="cl">0x00000000004010e9 &lt;+135&gt;:   call   0x400b30 &lt;__stack_chk_fail@plt&gt;
+</span></span><span class="line"><span class="cl">0x00000000004010ee &lt;+140&gt;:   add    rsp,0x20
+</span></span><span class="line"><span class="cl">0x00000000004010f2 &lt;+144&gt;:   pop    rbx
+</span></span><span class="line"><span class="cl">0x00000000004010f3 &lt;+145&gt;:   ret
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>其中：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">pwndbg&gt; x/s 0x4024b0
+</span></span><span class="line"><span class="cl">0x4024b0 &lt;array.3449&gt;:  <span class="s2">&#34;maduiersnfotvbylSo you think you can stop the bomb with ctrl-c, do you?&#34;</span>
+</span></span><span class="line"><span class="cl">pwndbg&gt; x/s 0x40245e
+</span></span><span class="line"><span class="cl">0x40245e:       <span class="s2">&#34;flyers&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>可知校验逻辑如下：</p>
+<ul>
+<li>判断输入的字符串长度是否为6</li>
+<li>循环6次如下操作：
+<ul>
+<li>以当前字符与<code>0xf</code>做<code>&amp;</code>运算，<code>ch &amp; 0xf</code>得到的结果为索引，从字符串常量<code>maduiersnfotvbyl</code>中取出对应字符</li>
+</ul>
+</li>
+<li>判断取出的6个字符是否为<code>flyers</code></li>
+</ul>
+<p>故可得一个解为：<code>ionefg</code></p>
+<p><code>echo &quot;ionefg&quot; &gt;&gt; passcodes</code></p>
 <h2 id="phase_6">phase_6</h2>
+<details>
+<summary>点击展开<code>phase_6</code>函数的完整反汇编</summary>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span><span class="lnt">80
+</span><span class="lnt">81
+</span><span class="lnt">82
+</span><span class="lnt">83
+</span><span class="lnt">84
+</span><span class="lnt">85
+</span><span class="lnt">86
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">0x00000000004010f4 &lt;+0&gt;:     push   r14
+</span></span><span class="line"><span class="cl">0x00000000004010f6 &lt;+2&gt;:     push   r13
+</span></span><span class="line"><span class="cl">0x00000000004010f8 &lt;+4&gt;:     push   r12
+</span></span><span class="line"><span class="cl">0x00000000004010fa &lt;+6&gt;:     push   rbp
+</span></span><span class="line"><span class="cl">0x00000000004010fb &lt;+7&gt;:     push   rbx
+</span></span><span class="line"><span class="cl">0x00000000004010fc &lt;+8&gt;:     sub    rsp,0x50
+</span></span><span class="line"><span class="cl">0x0000000000401100 &lt;+12&gt;:    mov    r13,rsp
+</span></span><span class="line"><span class="cl">0x0000000000401103 &lt;+15&gt;:    mov    rsi,rsp
+</span></span><span class="line"><span class="cl">0x0000000000401106 &lt;+18&gt;:    call   0x40145c &lt;read_six_numbers&gt;
+</span></span><span class="line"><span class="cl">0x000000000040110b &lt;+23&gt;:    mov    r14,rsp
+</span></span><span class="line"><span class="cl">0x000000000040110e &lt;+26&gt;:    mov    r12d,0x0
+</span></span><span class="line"><span class="cl">0x0000000000401114 &lt;+32&gt;:    mov    rbp,r13
+</span></span><span class="line"><span class="cl">0x0000000000401117 &lt;+35&gt;:    mov    eax,DWORD PTR [r13+0x0]
+</span></span><span class="line"><span class="cl">0x000000000040111b &lt;+39&gt;:    sub    eax,0x1
+</span></span><span class="line"><span class="cl">0x000000000040111e &lt;+42&gt;:    cmp    eax,0x5
+</span></span><span class="line"><span class="cl">0x0000000000401121 &lt;+45&gt;:    jbe    0x401128 &lt;phase_6+52&gt;
+</span></span><span class="line"><span class="cl">0x0000000000401123 &lt;+47&gt;:    call   0x40143a &lt;explode_bomb&gt;
+</span></span><span class="line"><span class="cl">0x0000000000401128 &lt;+52&gt;:    add    r12d,0x1
+</span></span><span class="line"><span class="cl">0x000000000040112c &lt;+56&gt;:    cmp    r12d,0x6
+</span></span><span class="line"><span class="cl">0x0000000000401130 &lt;+60&gt;:    je     0x401153 &lt;phase_6+95&gt;
+</span></span><span class="line"><span class="cl">0x0000000000401132 &lt;+62&gt;:    mov    ebx,r12d
+</span></span><span class="line"><span class="cl">0x0000000000401135 &lt;+65&gt;:    movsxd rax,ebx
+</span></span><span class="line"><span class="cl">0x0000000000401138 &lt;+68&gt;:    mov    eax,DWORD PTR [rsp+rax*4]
+</span></span><span class="line"><span class="cl">0x000000000040113b &lt;+71&gt;:    cmp    DWORD PTR [rbp+0x0],eax
+</span></span><span class="line"><span class="cl">0x000000000040113e &lt;+74&gt;:    jne    0x401145 &lt;phase_6+81&gt;
+</span></span><span class="line"><span class="cl">0x0000000000401140 &lt;+76&gt;:    call   0x40143a &lt;explode_bomb&gt;
+</span></span><span class="line"><span class="cl">0x0000000000401145 &lt;+81&gt;:    add    ebx,0x1
+</span></span><span class="line"><span class="cl">0x0000000000401148 &lt;+84&gt;:    cmp    ebx,0x5
+</span></span><span class="line"><span class="cl">0x000000000040114b &lt;+87&gt;:    jle    0x401135 &lt;phase_6+65&gt;
+</span></span><span class="line"><span class="cl">0x000000000040114d &lt;+89&gt;:    add    r13,0x4
+</span></span><span class="line"><span class="cl">0x0000000000401151 &lt;+93&gt;:    jmp    0x401114 &lt;phase_6+32&gt;
+</span></span><span class="line"><span class="cl">0x0000000000401153 &lt;+95&gt;:    lea    rsi,[rsp+0x18]
+</span></span><span class="line"><span class="cl">0x0000000000401158 &lt;+100&gt;:   mov    rax,r14
+</span></span><span class="line"><span class="cl">0x000000000040115b &lt;+103&gt;:   mov    ecx,0x7
+</span></span><span class="line"><span class="cl">0x0000000000401160 &lt;+108&gt;:   mov    edx,ecx
+</span></span><span class="line"><span class="cl">0x0000000000401162 &lt;+110&gt;:   sub    edx,DWORD PTR [rax]
+</span></span><span class="line"><span class="cl">0x0000000000401164 &lt;+112&gt;:   mov    DWORD PTR [rax],edx
+</span></span><span class="line"><span class="cl">0x0000000000401166 &lt;+114&gt;:   add    rax,0x4
+</span></span><span class="line"><span class="cl">0x000000000040116a &lt;+118&gt;:   cmp    rax,rsi
+</span></span><span class="line"><span class="cl">0x000000000040116d &lt;+121&gt;:   jne    0x401160 &lt;phase_6+108&gt;
+</span></span><span class="line"><span class="cl">0x000000000040116f &lt;+123&gt;:   mov    esi,0x0
+</span></span><span class="line"><span class="cl">0x0000000000401174 &lt;+128&gt;:   jmp    0x401197 &lt;phase_6+163&gt;
+</span></span><span class="line"><span class="cl">0x0000000000401176 &lt;+130&gt;:   mov    rdx,QWORD PTR [rdx+0x8]
+</span></span><span class="line"><span class="cl">0x000000000040117a &lt;+134&gt;:   add    eax,0x1
+</span></span><span class="line"><span class="cl">0x000000000040117d &lt;+137&gt;:   cmp    eax,ecx
+</span></span><span class="line"><span class="cl">0x000000000040117f &lt;+139&gt;:   jne    0x401176 &lt;phase_6+130&gt;
+</span></span><span class="line"><span class="cl">0x0000000000401181 &lt;+141&gt;:   jmp    0x401188 &lt;phase_6+148&gt;
+</span></span><span class="line"><span class="cl">0x0000000000401183 &lt;+143&gt;:   mov    edx,0x6032d0
+</span></span><span class="line"><span class="cl">0x0000000000401188 &lt;+148&gt;:   mov    QWORD PTR [rsp+rsi*2+0x20],rdx
+</span></span><span class="line"><span class="cl">0x000000000040118d &lt;+153&gt;:   add    rsi,0x4
+</span></span><span class="line"><span class="cl">0x0000000000401191 &lt;+157&gt;:   cmp    rsi,0x18
+</span></span><span class="line"><span class="cl">0x0000000000401195 &lt;+161&gt;:   je     0x4011ab &lt;phase_6+183&gt;
+</span></span><span class="line"><span class="cl">0x0000000000401197 &lt;+163&gt;:   mov    ecx,DWORD PTR [rsp+rsi*1]
+</span></span><span class="line"><span class="cl">0x000000000040119a &lt;+166&gt;:   cmp    ecx,0x1
+</span></span><span class="line"><span class="cl">0x000000000040119d &lt;+169&gt;:   jle    0x401183 &lt;phase_6+143&gt;
+</span></span><span class="line"><span class="cl">0x000000000040119f &lt;+171&gt;:   mov    eax,0x1
+</span></span><span class="line"><span class="cl">0x00000000004011a4 &lt;+176&gt;:   mov    edx,0x6032d0
+</span></span><span class="line"><span class="cl">0x00000000004011a9 &lt;+181&gt;:   jmp    0x401176 &lt;phase_6+130&gt;
+</span></span><span class="line"><span class="cl">0x00000000004011ab &lt;+183&gt;:   mov    rbx,QWORD PTR [rsp+0x20]
+</span></span><span class="line"><span class="cl">0x00000000004011b0 &lt;+188&gt;:   lea    rax,[rsp+0x28]
+</span></span><span class="line"><span class="cl">0x00000000004011b5 &lt;+193&gt;:   lea    rsi,[rsp+0x50]
+</span></span><span class="line"><span class="cl">0x00000000004011ba &lt;+198&gt;:   mov    rcx,rbx
+</span></span><span class="line"><span class="cl">0x00000000004011bd &lt;+201&gt;:   mov    rdx,QWORD PTR [rax]
+</span></span><span class="line"><span class="cl">0x00000000004011c0 &lt;+204&gt;:   mov    QWORD PTR [rcx+0x8],rdx
+</span></span><span class="line"><span class="cl">0x00000000004011c4 &lt;+208&gt;:   add    rax,0x8
+</span></span><span class="line"><span class="cl">0x00000000004011c8 &lt;+212&gt;:   cmp    rax,rsi
+</span></span><span class="line"><span class="cl">0x00000000004011cb &lt;+215&gt;:   je     0x4011d2 &lt;phase_6+222&gt;
+</span></span><span class="line"><span class="cl">0x00000000004011cd &lt;+217&gt;:   mov    rcx,rdx
+</span></span><span class="line"><span class="cl">0x00000000004011d0 &lt;+220&gt;:   jmp    0x4011bd &lt;phase_6+201&gt;
+</span></span><span class="line"><span class="cl">0x00000000004011d2 &lt;+222&gt;:   mov    QWORD PTR [rdx+0x8],0x0
+</span></span><span class="line"><span class="cl">0x00000000004011da &lt;+230&gt;:   mov    ebp,0x5
+</span></span><span class="line"><span class="cl">0x00000000004011df &lt;+235&gt;:   mov    rax,QWORD PTR [rbx+0x8]
+</span></span><span class="line"><span class="cl">0x00000000004011e3 &lt;+239&gt;:   mov    eax,DWORD PTR [rax]
+</span></span><span class="line"><span class="cl">0x00000000004011e5 &lt;+241&gt;:   cmp    DWORD PTR [rbx],eax
+</span></span><span class="line"><span class="cl">0x00000000004011e7 &lt;+243&gt;:   jge    0x4011ee &lt;phase_6+250&gt;
+</span></span><span class="line"><span class="cl">0x00000000004011e9 &lt;+245&gt;:   call   0x40143a &lt;explode_bomb&gt;
+</span></span><span class="line"><span class="cl">0x00000000004011ee &lt;+250&gt;:   mov    rbx,QWORD PTR [rbx+0x8]
+</span></span><span class="line"><span class="cl">0x00000000004011f2 &lt;+254&gt;:   sub    ebp,0x1
+</span></span><span class="line"><span class="cl">0x00000000004011f5 &lt;+257&gt;:   jne    0x4011df &lt;phase_6+235&gt;
+</span></span><span class="line"><span class="cl">0x00000000004011f7 &lt;+259&gt;:   add    rsp,0x50
+</span></span><span class="line"><span class="cl">0x00000000004011fb &lt;+263&gt;:   pop    rbx
+</span></span><span class="line"><span class="cl">0x00000000004011fc &lt;+264&gt;:   pop    rbp
+</span></span><span class="line"><span class="cl">0x00000000004011fd &lt;+265&gt;:   pop    r12
+</span></span><span class="line"><span class="cl">0x00000000004011ff &lt;+267&gt;:   pop    r13
+</span></span><span class="line"><span class="cl">0x0000000000401201 &lt;+269&gt;:   pop    r14
+</span></span><span class="line"><span class="cl">0x0000000000401203 &lt;+271&gt;:   ret
+</span></span></code></pre></td></tr></table>
+</div>
+</div></details>
+<p>逻辑较长，我们分块分析</p>
+<p>首先有<code>read_six_numbers</code>函数，读入6个数字：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">0x0000000000401106 &lt;+18&gt;:    call   0x40145c &lt;read_six_numbers&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>接着是一个二层循环结构：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">0x0000000000401114 &lt;+32&gt;:    mov    rbp,r13
+</span></span><span class="line"><span class="cl">0x0000000000401117 &lt;+35&gt;:    mov    eax,DWORD PTR [r13+0x0]
+</span></span><span class="line"><span class="cl">0x000000000040111b &lt;+39&gt;:    sub    eax,0x1
+</span></span><span class="line"><span class="cl">0x000000000040111e &lt;+42&gt;:    cmp    eax,0x5
+</span></span><span class="line"><span class="cl">0x0000000000401121 &lt;+45&gt;:    jbe    0x401128 &lt;phase_6+52&gt;
+</span></span><span class="line"><span class="cl">0x0000000000401123 &lt;+47&gt;:    call   0x40143a &lt;explode_bomb&gt;
+</span></span><span class="line"><span class="cl">0x0000000000401128 &lt;+52&gt;:    add    r12d,0x1
+</span></span><span class="line"><span class="cl">0x000000000040112c &lt;+56&gt;:    cmp    r12d,0x6
+</span></span><span class="line"><span class="cl">0x0000000000401130 &lt;+60&gt;:    je     0x401153 &lt;phase_6+95&gt;
+</span></span><span class="line"><span class="cl">0x0000000000401132 &lt;+62&gt;:    mov    ebx,r12d
+</span></span><span class="line"><span class="cl">0x0000000000401135 &lt;+65&gt;:    movsxd rax,ebx
+</span></span><span class="line"><span class="cl">0x0000000000401138 &lt;+68&gt;:    mov    eax,DWORD PTR [rsp+rax*4]
+</span></span><span class="line"><span class="cl">0x000000000040113b &lt;+71&gt;:    cmp    DWORD PTR [rbp+0x0],eax
+</span></span><span class="line"><span class="cl">0x000000000040113e &lt;+74&gt;:    jne    0x401145 &lt;phase_6+81&gt;
+</span></span><span class="line"><span class="cl">0x0000000000401140 &lt;+76&gt;:    call   0x40143a &lt;explode_bomb&gt;
+</span></span><span class="line"><span class="cl">0x0000000000401145 &lt;+81&gt;:    add    ebx,0x1
+</span></span><span class="line"><span class="cl">0x0000000000401148 &lt;+84&gt;:    cmp    ebx,0x5
+</span></span><span class="line"><span class="cl">0x000000000040114b &lt;+87&gt;:    jle    0x401135 &lt;phase_6+65&gt;
+</span></span><span class="line"><span class="cl">0x000000000040114d &lt;+89&gt;:    add    r13,0x4
+</span></span><span class="line"><span class="cl">0x0000000000401151 &lt;+93&gt;:    jmp    0x401114 &lt;phase_6+32&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>对应的功能为检测：</p>
+<ul>
+<li>输入的数字大小在[1,6]中</li>
+<li>6个数字无重复</li>
+</ul>
+<p>接下来是一个一层循环结构：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">0x0000000000401153 &lt;+95&gt;:    lea    rsi,[rsp+0x18]
+</span></span><span class="line"><span class="cl">0x0000000000401158 &lt;+100&gt;:   mov    rax,r14
+</span></span><span class="line"><span class="cl">0x000000000040115b &lt;+103&gt;:   mov    ecx,0x7
+</span></span><span class="line"><span class="cl">0x0000000000401160 &lt;+108&gt;:   mov    edx,ecx
+</span></span><span class="line"><span class="cl">0x0000000000401162 &lt;+110&gt;:   sub    edx,DWORD PTR [rax]
+</span></span><span class="line"><span class="cl">0x0000000000401164 &lt;+112&gt;:   mov    DWORD PTR [rax],edx
+</span></span><span class="line"><span class="cl">0x0000000000401166 &lt;+114&gt;:   add    rax,0x4
+</span></span><span class="line"><span class="cl">0x000000000040116a &lt;+118&gt;:   cmp    rax,rsi
+</span></span><span class="line"><span class="cl">0x000000000040116d &lt;+121&gt;:   jne    0x401160 &lt;phase_6+108&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>用于实现：<code>input_numbers[i] = 7 - input_numbers[i]</code></p>
+<p>接下来又是一个循环结构：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">0x000000000040116f &lt;+123&gt;:   mov    esi,0x0
+</span></span><span class="line"><span class="cl">0x0000000000401174 &lt;+128&gt;:   jmp    0x401197 &lt;phase_6+163&gt;
+</span></span><span class="line"><span class="cl">0x0000000000401176 &lt;+130&gt;:   mov    rdx,QWORD PTR [rdx+0x8]
+</span></span><span class="line"><span class="cl">0x000000000040117a &lt;+134&gt;:   add    eax,0x1
+</span></span><span class="line"><span class="cl">0x000000000040117d &lt;+137&gt;:   cmp    eax,ecx
+</span></span><span class="line"><span class="cl">0x000000000040117f &lt;+139&gt;:   jne    0x401176 &lt;phase_6+130&gt;
+</span></span><span class="line"><span class="cl">0x0000000000401181 &lt;+141&gt;:   jmp    0x401188 &lt;phase_6+148&gt;
+</span></span><span class="line"><span class="cl">0x0000000000401183 &lt;+143&gt;:   mov    edx,0x6032d0
+</span></span><span class="line"><span class="cl">0x0000000000401188 &lt;+148&gt;:   mov    QWORD PTR [rsp+rsi*2+0x20],rdx
+</span></span><span class="line"><span class="cl">0x000000000040118d &lt;+153&gt;:   add    rsi,0x4
+</span></span><span class="line"><span class="cl">0x0000000000401191 &lt;+157&gt;:   cmp    rsi,0x18
+</span></span><span class="line"><span class="cl">0x0000000000401195 &lt;+161&gt;:   je     0x4011ab &lt;phase_6+183&gt;
+</span></span><span class="line"><span class="cl">0x0000000000401197 &lt;+163&gt;:   mov    ecx,DWORD PTR [rsp+rsi*1]
+</span></span><span class="line"><span class="cl">0x000000000040119a &lt;+166&gt;:   cmp    ecx,0x1
+</span></span><span class="line"><span class="cl">0x000000000040119d &lt;+169&gt;:   jle    0x401183 &lt;phase_6+143&gt;
+</span></span><span class="line"><span class="cl">0x000000000040119f &lt;+171&gt;:   mov    eax,0x1
+</span></span><span class="line"><span class="cl">0x00000000004011a4 &lt;+176&gt;:   mov    edx,0x6032d0
+</span></span><span class="line"><span class="cl">0x00000000004011a9 &lt;+181&gt;:   jmp    0x401176 &lt;phase_6+130&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>0x6032d0</code>处保存的为<code>node</code>链表，数据域和指针域类型分别为<code>int</code>和<code>int*</code>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">pwndbg&gt; x/12 0x6032d0
+</span></span><span class="line"><span class="cl">0x6032d0 &lt;node1&gt;:       0x000000010000014c      0x00000000006032e0
+</span></span><span class="line"><span class="cl">0x6032e0 &lt;node2&gt;:       0x00000002000000a8      0x00000000006032f0
+</span></span><span class="line"><span class="cl">0x6032f0 &lt;node3&gt;:       0x000000030000039c      0x0000000000603300
+</span></span><span class="line"><span class="cl">0x603300 &lt;node4&gt;:       0x00000004000002b3      0x0000000000603310
+</span></span><span class="line"><span class="cl">0x603310 &lt;node5&gt;:       0x00000005000001dd      0x0000000000603320
+</span></span><span class="line"><span class="cl">0x603320 &lt;node6&gt;:       0x00000006000001bb      0x0000000000000000
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这部分是将经过上一步计算的6个数作为索引，分别取出对应node的所在地址，并存放于栈上</p>
+<p>接着又是一个循环：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">0x00000000004011ab &lt;+183&gt;:   mov    rbx,QWORD PTR [rsp+0x20]
+</span></span><span class="line"><span class="cl">0x00000000004011b0 &lt;+188&gt;:   lea    rax,[rsp+0x28]
+</span></span><span class="line"><span class="cl">0x00000000004011b5 &lt;+193&gt;:   lea    rsi,[rsp+0x50]
+</span></span><span class="line"><span class="cl">0x00000000004011ba &lt;+198&gt;:   mov    rcx,rbx
+</span></span><span class="line"><span class="cl">0x00000000004011bd &lt;+201&gt;:   mov    rdx,QWORD PTR [rax]
+</span></span><span class="line"><span class="cl">0x00000000004011c0 &lt;+204&gt;:   mov    QWORD PTR [rcx+0x8],rdx
+</span></span><span class="line"><span class="cl">0x00000000004011c4 &lt;+208&gt;:   add    rax,0x8
+</span></span><span class="line"><span class="cl">0x00000000004011c8 &lt;+212&gt;:   cmp    rax,rsi
+</span></span><span class="line"><span class="cl">0x00000000004011cb &lt;+215&gt;:   je     0x4011d2 &lt;phase_6+222&gt;
+</span></span><span class="line"><span class="cl">0x00000000004011cd &lt;+217&gt;:   mov    rcx,rdx
+</span></span><span class="line"><span class="cl">0x00000000004011d0 &lt;+220&gt;:   jmp    0x4011bd &lt;phase_6+201&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>用于将<code>0x6032d0</code>处的<code>node</code>链表顺序修改为和上一步得到的栈数组相同的顺序</p>
+<p>然后就是最终的校验了：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">0x00000000004011d2 &lt;+222&gt;:   mov    QWORD PTR [rdx+0x8],0x0
+</span></span><span class="line"><span class="cl">0x00000000004011da &lt;+230&gt;:   mov    ebp,0x5
+</span></span><span class="line"><span class="cl">0x00000000004011df &lt;+235&gt;:   mov    rax,QWORD PTR [rbx+0x8]
+</span></span><span class="line"><span class="cl">0x00000000004011e3 &lt;+239&gt;:   mov    eax,DWORD PTR [rax]
+</span></span><span class="line"><span class="cl">0x00000000004011e5 &lt;+241&gt;:   cmp    DWORD PTR [rbx],eax
+</span></span><span class="line"><span class="cl">0x00000000004011e7 &lt;+243&gt;:   jge    0x4011ee &lt;phase_6+250&gt;
+</span></span><span class="line"><span class="cl">0x00000000004011e9 &lt;+245&gt;:   call   0x40143a &lt;explode_bomb&gt;
+</span></span><span class="line"><span class="cl">0x00000000004011ee &lt;+250&gt;:   mov    rbx,QWORD PTR [rbx+0x8]
+</span></span><span class="line"><span class="cl">0x00000000004011f2 &lt;+254&gt;:   sub    ebp,0x1
+</span></span><span class="line"><span class="cl">0x00000000004011f5 &lt;+257&gt;:   jne    0x4011df &lt;phase_6+235&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>判断由上一步得到的链表中的数据是否为逐级递减的</p>
+<p>原始链表数据大小关系为：<code>node3 &gt; node4 &gt; node5 &gt; node6 &gt; node1 &gt; node2</code></p>
+<p>故我们需要输入：<code>4 3 2 1 6 5</code></p>
+<p><code>echo &quot;4 3 2 1 6 5&quot; &gt;&gt; passcodes</code></p>
 <h2 id="secret_phase">secret_phase</h2>
+<p>我们成功解除了炸弹？观测到<code>bomb.c</code>的末尾有：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl">    <span class="p">......</span>
+</span></span><span class="line"><span class="cl">	<span class="n">phase_6</span><span class="p">(</span><span class="n">input</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">phase_defused</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cm">/* Wow, they got it!  But isn&#39;t something... missing?  Perhaps
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * something they overlooked?  Mua ha ha ha ha! */</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>看起来不妙，我们在此打断点调试跟进试试：</p>
 <h1 id="attack-lab">Attack Lab</h1>
 <h1 id="buffer-lab">Buffer Lab</h1>
 <h1 id="architecture-lab">Architecture Lab</h1>
@@ -1651,6 +2182,34 @@
     
 
     
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/post/ucore-lab-writeup/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://s2.loli.net/2022/08/31/1oK4x5BTMAQhy9O.png" loading="lazy" data-key="" data-hash="https://s2.loli.net/2022/08/31/1oK4x5BTMAQhy9O.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">uCore Lab WriteUp</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
 
      
     

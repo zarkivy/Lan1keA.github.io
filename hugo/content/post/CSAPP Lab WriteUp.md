@@ -672,7 +672,7 @@ __int64 __fastcall func4(__int64 a1, __int64 a2, int a3)
 }
 ```
 
-`func4`汇编函数重写后，编写汇编程序对此函数暴力枚举：
+将`func4`反汇编函数重写为可编译的形式后，编写汇编程序对此函数暴力枚举：
 
 ```assembly
 global  _start
@@ -753,9 +753,315 @@ ld -o phase_4 phase_4.o
 
 ## phase_5
 
+`phase_5`函数反汇编：
+
+```assembly
+0x0000000000401062 <+0>:     push   rbx
+0x0000000000401063 <+1>:     sub    rsp,0x20
+0x0000000000401067 <+5>:     mov    rbx,rdi
+0x000000000040106a <+8>:     mov    rax,QWORD PTR fs:0x28
+0x0000000000401073 <+17>:    mov    QWORD PTR [rsp+0x18],rax
+0x0000000000401078 <+22>:    xor    eax,eax
+0x000000000040107a <+24>:    call   0x40131b <string_length>
+0x000000000040107f <+29>:    cmp    eax,0x6
+0x0000000000401082 <+32>:    je     0x4010d2 <phase_5+112>
+0x0000000000401084 <+34>:    call   0x40143a <explode_bomb>
+0x0000000000401089 <+39>:    jmp    0x4010d2 <phase_5+112>
+0x000000000040108b <+41>:    movzx  ecx,BYTE PTR [rbx+rax*1]
+0x000000000040108f <+45>:    mov    BYTE PTR [rsp],cl
+0x0000000000401092 <+48>:    mov    rdx,QWORD PTR [rsp]
+0x0000000000401096 <+52>:    and    edx,0xf
+0x0000000000401099 <+55>:    movzx  edx,BYTE PTR [rdx+0x4024b0]
+0x00000000004010a0 <+62>:    mov    BYTE PTR [rsp+rax*1+0x10],dl
+0x00000000004010a4 <+66>:    add    rax,0x1
+0x00000000004010a8 <+70>:    cmp    rax,0x6
+0x00000000004010ac <+74>:    jne    0x40108b <phase_5+41>
+0x00000000004010ae <+76>:    mov    BYTE PTR [rsp+0x16],0x0
+0x00000000004010b3 <+81>:    mov    esi,0x40245e
+0x00000000004010b8 <+86>:    lea    rdi,[rsp+0x10]
+0x00000000004010bd <+91>:    call   0x401338 <strings_not_equal>
+0x00000000004010c2 <+96>:    test   eax,eax
+0x00000000004010c4 <+98>:    je     0x4010d9 <phase_5+119>
+0x00000000004010c6 <+100>:   call   0x40143a <explode_bomb>
+0x00000000004010cb <+105>:   nop    DWORD PTR [rax+rax*1+0x0]
+0x00000000004010d0 <+110>:   jmp    0x4010d9 <phase_5+119>
+0x00000000004010d2 <+112>:   mov    eax,0x0
+0x00000000004010d7 <+117>:   jmp    0x40108b <phase_5+41>
+0x00000000004010d9 <+119>:   mov    rax,QWORD PTR [rsp+0x18]
+0x00000000004010de <+124>:   xor    rax,QWORD PTR fs:0x28
+0x00000000004010e7 <+133>:   je     0x4010ee <phase_5+140>
+0x00000000004010e9 <+135>:   call   0x400b30 <__stack_chk_fail@plt>
+0x00000000004010ee <+140>:   add    rsp,0x20
+0x00000000004010f2 <+144>:   pop    rbx
+0x00000000004010f3 <+145>:   ret
+```
+
+其中：
+
+```sh
+pwndbg> x/s 0x4024b0
+0x4024b0 <array.3449>:  "maduiersnfotvbylSo you think you can stop the bomb with ctrl-c, do you?"
+pwndbg> x/s 0x40245e
+0x40245e:       "flyers"
+```
+
+可知校验逻辑如下：
+
+- 判断输入的字符串长度是否为6
+- 循环6次如下操作：
+    - 以当前字符与`0xf`做`&`运算，`ch & 0xf`得到的结果为索引，从字符串常量`maduiersnfotvbyl`中取出对应字符
+- 判断取出的6个字符是否为`flyers`
+
+故可得一个解为：`ionefg`
+
+`echo "ionefg" >> passcodes`
+
 ## phase_6
 
+<details>
+
+<summary>点击展开<code>phase_6</code>函数的完整反汇编</summary>
+
+```assembly
+0x00000000004010f4 <+0>:     push   r14
+0x00000000004010f6 <+2>:     push   r13
+0x00000000004010f8 <+4>:     push   r12
+0x00000000004010fa <+6>:     push   rbp
+0x00000000004010fb <+7>:     push   rbx
+0x00000000004010fc <+8>:     sub    rsp,0x50
+0x0000000000401100 <+12>:    mov    r13,rsp
+0x0000000000401103 <+15>:    mov    rsi,rsp
+0x0000000000401106 <+18>:    call   0x40145c <read_six_numbers>
+0x000000000040110b <+23>:    mov    r14,rsp
+0x000000000040110e <+26>:    mov    r12d,0x0
+0x0000000000401114 <+32>:    mov    rbp,r13
+0x0000000000401117 <+35>:    mov    eax,DWORD PTR [r13+0x0]
+0x000000000040111b <+39>:    sub    eax,0x1
+0x000000000040111e <+42>:    cmp    eax,0x5
+0x0000000000401121 <+45>:    jbe    0x401128 <phase_6+52>
+0x0000000000401123 <+47>:    call   0x40143a <explode_bomb>
+0x0000000000401128 <+52>:    add    r12d,0x1
+0x000000000040112c <+56>:    cmp    r12d,0x6
+0x0000000000401130 <+60>:    je     0x401153 <phase_6+95>
+0x0000000000401132 <+62>:    mov    ebx,r12d
+0x0000000000401135 <+65>:    movsxd rax,ebx
+0x0000000000401138 <+68>:    mov    eax,DWORD PTR [rsp+rax*4]
+0x000000000040113b <+71>:    cmp    DWORD PTR [rbp+0x0],eax
+0x000000000040113e <+74>:    jne    0x401145 <phase_6+81>
+0x0000000000401140 <+76>:    call   0x40143a <explode_bomb>
+0x0000000000401145 <+81>:    add    ebx,0x1
+0x0000000000401148 <+84>:    cmp    ebx,0x5
+0x000000000040114b <+87>:    jle    0x401135 <phase_6+65>
+0x000000000040114d <+89>:    add    r13,0x4
+0x0000000000401151 <+93>:    jmp    0x401114 <phase_6+32>
+0x0000000000401153 <+95>:    lea    rsi,[rsp+0x18]
+0x0000000000401158 <+100>:   mov    rax,r14
+0x000000000040115b <+103>:   mov    ecx,0x7
+0x0000000000401160 <+108>:   mov    edx,ecx
+0x0000000000401162 <+110>:   sub    edx,DWORD PTR [rax]
+0x0000000000401164 <+112>:   mov    DWORD PTR [rax],edx
+0x0000000000401166 <+114>:   add    rax,0x4
+0x000000000040116a <+118>:   cmp    rax,rsi
+0x000000000040116d <+121>:   jne    0x401160 <phase_6+108>
+0x000000000040116f <+123>:   mov    esi,0x0
+0x0000000000401174 <+128>:   jmp    0x401197 <phase_6+163>
+0x0000000000401176 <+130>:   mov    rdx,QWORD PTR [rdx+0x8]
+0x000000000040117a <+134>:   add    eax,0x1
+0x000000000040117d <+137>:   cmp    eax,ecx
+0x000000000040117f <+139>:   jne    0x401176 <phase_6+130>
+0x0000000000401181 <+141>:   jmp    0x401188 <phase_6+148>
+0x0000000000401183 <+143>:   mov    edx,0x6032d0
+0x0000000000401188 <+148>:   mov    QWORD PTR [rsp+rsi*2+0x20],rdx
+0x000000000040118d <+153>:   add    rsi,0x4
+0x0000000000401191 <+157>:   cmp    rsi,0x18
+0x0000000000401195 <+161>:   je     0x4011ab <phase_6+183>
+0x0000000000401197 <+163>:   mov    ecx,DWORD PTR [rsp+rsi*1]
+0x000000000040119a <+166>:   cmp    ecx,0x1
+0x000000000040119d <+169>:   jle    0x401183 <phase_6+143>
+0x000000000040119f <+171>:   mov    eax,0x1
+0x00000000004011a4 <+176>:   mov    edx,0x6032d0
+0x00000000004011a9 <+181>:   jmp    0x401176 <phase_6+130>
+0x00000000004011ab <+183>:   mov    rbx,QWORD PTR [rsp+0x20]
+0x00000000004011b0 <+188>:   lea    rax,[rsp+0x28]
+0x00000000004011b5 <+193>:   lea    rsi,[rsp+0x50]
+0x00000000004011ba <+198>:   mov    rcx,rbx
+0x00000000004011bd <+201>:   mov    rdx,QWORD PTR [rax]
+0x00000000004011c0 <+204>:   mov    QWORD PTR [rcx+0x8],rdx
+0x00000000004011c4 <+208>:   add    rax,0x8
+0x00000000004011c8 <+212>:   cmp    rax,rsi
+0x00000000004011cb <+215>:   je     0x4011d2 <phase_6+222>
+0x00000000004011cd <+217>:   mov    rcx,rdx
+0x00000000004011d0 <+220>:   jmp    0x4011bd <phase_6+201>
+0x00000000004011d2 <+222>:   mov    QWORD PTR [rdx+0x8],0x0
+0x00000000004011da <+230>:   mov    ebp,0x5
+0x00000000004011df <+235>:   mov    rax,QWORD PTR [rbx+0x8]
+0x00000000004011e3 <+239>:   mov    eax,DWORD PTR [rax]
+0x00000000004011e5 <+241>:   cmp    DWORD PTR [rbx],eax
+0x00000000004011e7 <+243>:   jge    0x4011ee <phase_6+250>
+0x00000000004011e9 <+245>:   call   0x40143a <explode_bomb>
+0x00000000004011ee <+250>:   mov    rbx,QWORD PTR [rbx+0x8]
+0x00000000004011f2 <+254>:   sub    ebp,0x1
+0x00000000004011f5 <+257>:   jne    0x4011df <phase_6+235>
+0x00000000004011f7 <+259>:   add    rsp,0x50
+0x00000000004011fb <+263>:   pop    rbx
+0x00000000004011fc <+264>:   pop    rbp
+0x00000000004011fd <+265>:   pop    r12
+0x00000000004011ff <+267>:   pop    r13
+0x0000000000401201 <+269>:   pop    r14
+0x0000000000401203 <+271>:   ret
+```
+
+</details>
+
+逻辑较长，我们分块分析
+
+首先有`read_six_numbers`函数，读入6个数字：
+
+```assembly
+0x0000000000401106 <+18>:    call   0x40145c <read_six_numbers>
+```
+
+接着是一个二层循环结构：
+
+```assembly
+0x0000000000401114 <+32>:    mov    rbp,r13
+0x0000000000401117 <+35>:    mov    eax,DWORD PTR [r13+0x0]
+0x000000000040111b <+39>:    sub    eax,0x1
+0x000000000040111e <+42>:    cmp    eax,0x5
+0x0000000000401121 <+45>:    jbe    0x401128 <phase_6+52>
+0x0000000000401123 <+47>:    call   0x40143a <explode_bomb>
+0x0000000000401128 <+52>:    add    r12d,0x1
+0x000000000040112c <+56>:    cmp    r12d,0x6
+0x0000000000401130 <+60>:    je     0x401153 <phase_6+95>
+0x0000000000401132 <+62>:    mov    ebx,r12d
+0x0000000000401135 <+65>:    movsxd rax,ebx
+0x0000000000401138 <+68>:    mov    eax,DWORD PTR [rsp+rax*4]
+0x000000000040113b <+71>:    cmp    DWORD PTR [rbp+0x0],eax
+0x000000000040113e <+74>:    jne    0x401145 <phase_6+81>
+0x0000000000401140 <+76>:    call   0x40143a <explode_bomb>
+0x0000000000401145 <+81>:    add    ebx,0x1
+0x0000000000401148 <+84>:    cmp    ebx,0x5
+0x000000000040114b <+87>:    jle    0x401135 <phase_6+65>
+0x000000000040114d <+89>:    add    r13,0x4
+0x0000000000401151 <+93>:    jmp    0x401114 <phase_6+32>
+```
+
+对应的功能为检测：
+
+- 输入的数字大小在[1,6]中
+- 6个数字无重复
+
+接下来是一个一层循环结构：
+
+```assembly
+0x0000000000401153 <+95>:    lea    rsi,[rsp+0x18]
+0x0000000000401158 <+100>:   mov    rax,r14
+0x000000000040115b <+103>:   mov    ecx,0x7
+0x0000000000401160 <+108>:   mov    edx,ecx
+0x0000000000401162 <+110>:   sub    edx,DWORD PTR [rax]
+0x0000000000401164 <+112>:   mov    DWORD PTR [rax],edx
+0x0000000000401166 <+114>:   add    rax,0x4
+0x000000000040116a <+118>:   cmp    rax,rsi
+0x000000000040116d <+121>:   jne    0x401160 <phase_6+108>
+```
+
+用于实现：`input_numbers[i] = 7 - input_numbers[i]`
+
+接下来又是一个循环结构：
+
+```assembly
+0x000000000040116f <+123>:   mov    esi,0x0
+0x0000000000401174 <+128>:   jmp    0x401197 <phase_6+163>
+0x0000000000401176 <+130>:   mov    rdx,QWORD PTR [rdx+0x8]
+0x000000000040117a <+134>:   add    eax,0x1
+0x000000000040117d <+137>:   cmp    eax,ecx
+0x000000000040117f <+139>:   jne    0x401176 <phase_6+130>
+0x0000000000401181 <+141>:   jmp    0x401188 <phase_6+148>
+0x0000000000401183 <+143>:   mov    edx,0x6032d0
+0x0000000000401188 <+148>:   mov    QWORD PTR [rsp+rsi*2+0x20],rdx
+0x000000000040118d <+153>:   add    rsi,0x4
+0x0000000000401191 <+157>:   cmp    rsi,0x18
+0x0000000000401195 <+161>:   je     0x4011ab <phase_6+183>
+0x0000000000401197 <+163>:   mov    ecx,DWORD PTR [rsp+rsi*1]
+0x000000000040119a <+166>:   cmp    ecx,0x1
+0x000000000040119d <+169>:   jle    0x401183 <phase_6+143>
+0x000000000040119f <+171>:   mov    eax,0x1
+0x00000000004011a4 <+176>:   mov    edx,0x6032d0
+0x00000000004011a9 <+181>:   jmp    0x401176 <phase_6+130>
+```
+
+`0x6032d0`处保存的为`node`链表，数据域和指针域类型分别为`int`和`int*`：
+
+```sh
+pwndbg> x/12 0x6032d0
+0x6032d0 <node1>:       0x000000010000014c      0x00000000006032e0
+0x6032e0 <node2>:       0x00000002000000a8      0x00000000006032f0
+0x6032f0 <node3>:       0x000000030000039c      0x0000000000603300
+0x603300 <node4>:       0x00000004000002b3      0x0000000000603310
+0x603310 <node5>:       0x00000005000001dd      0x0000000000603320
+0x603320 <node6>:       0x00000006000001bb      0x0000000000000000
+```
+
+这部分是将经过上一步计算的6个数作为索引，分别取出对应node的所在地址，并存放于栈上
+
+接着又是一个循环：
+
+```assembly
+0x00000000004011ab <+183>:   mov    rbx,QWORD PTR [rsp+0x20]
+0x00000000004011b0 <+188>:   lea    rax,[rsp+0x28]
+0x00000000004011b5 <+193>:   lea    rsi,[rsp+0x50]
+0x00000000004011ba <+198>:   mov    rcx,rbx
+0x00000000004011bd <+201>:   mov    rdx,QWORD PTR [rax]
+0x00000000004011c0 <+204>:   mov    QWORD PTR [rcx+0x8],rdx
+0x00000000004011c4 <+208>:   add    rax,0x8
+0x00000000004011c8 <+212>:   cmp    rax,rsi
+0x00000000004011cb <+215>:   je     0x4011d2 <phase_6+222>
+0x00000000004011cd <+217>:   mov    rcx,rdx
+0x00000000004011d0 <+220>:   jmp    0x4011bd <phase_6+201>
+```
+
+用于将`0x6032d0`处的`node`链表顺序修改为和上一步得到的栈数组相同的顺序
+
+然后就是最终的校验了：
+
+```assembly
+0x00000000004011d2 <+222>:   mov    QWORD PTR [rdx+0x8],0x0
+0x00000000004011da <+230>:   mov    ebp,0x5
+0x00000000004011df <+235>:   mov    rax,QWORD PTR [rbx+0x8]
+0x00000000004011e3 <+239>:   mov    eax,DWORD PTR [rax]
+0x00000000004011e5 <+241>:   cmp    DWORD PTR [rbx],eax
+0x00000000004011e7 <+243>:   jge    0x4011ee <phase_6+250>
+0x00000000004011e9 <+245>:   call   0x40143a <explode_bomb>
+0x00000000004011ee <+250>:   mov    rbx,QWORD PTR [rbx+0x8]
+0x00000000004011f2 <+254>:   sub    ebp,0x1
+0x00000000004011f5 <+257>:   jne    0x4011df <phase_6+235>
+```
+
+判断由上一步得到的链表中的数据是否为逐级递减的
+
+原始链表数据大小关系为：`node3 > node4 > node5 > node6 > node1 > node2`
+
+故我们需要输入：`4 3 2 1 6 5`
+
+`echo "4 3 2 1 6 5" >> passcodes`
+
 ## secret_phase
+
+我们成功解除了炸弹？观测到`bomb.c`的末尾有：
+
+```c
+    ......
+	phase_6(input);
+    phase_defused();
+
+    /* Wow, they got it!  But isn't something... missing?  Perhaps
+     * something they overlooked?  Mua ha ha ha ha! */
+
+    return 0;
+}
+```
+
+看起来不妙，我们在此打断点调试跟进试试：
 
 # Attack Lab
 

@@ -19,6 +19,10 @@ image: "https://s2.loli.net/2022/06/13/9o2jpBPbfcLRMFT.jpg"
 
 - [Linux Kernel Lab](https://linux-kernel-labs.github.io/refs/heads/master/labs/infrastructure.html#)
 
+## 资料
+
+- [Linux-0.11内核完全注释](http://oldlinux.org/download/clk011c-3.0-toc.pdf)
+
 ## 其他人汇总的资源
 
 - [Martins3大佬的收集](https://github.com/Martins3/Martins3.github.io/blob/master/os/os-route.md)
