@@ -116,7 +116,22 @@ binutils: /usr/share/lintian/overrides/binutils
 
 官方文档：[https://www.gnu.org/software/make/manual/html_node/index.html](https://www.gnu.org/software/make/manual/html_node/index.html)
 
+一页版ASCII文档，方便`Ctrl + F`速查：[https://www.gnu.org/software/make/manual/make.txt](https://www.gnu.org/software/make/manual/make.txt)
 
+make通过makefile中定义的各个文件的依赖关系，以及文件系统中所标记的文件修改时间，判断哪些文件是需要通过特定命令重新构建的。由此达到自动化构建的目的。
 
 # cmake
 
+
+
+# gcc
+
+官方文档：[https://gcc.gnu.org/onlinedocs/](https://gcc.gnu.org/onlinedocs/)
+
+快速查询文档：`man gcc`。对应的是gcc的本地单页文档。
+
+由于文档太长，没有在线的单页版，所以如需在线查询文档需借助Google，例如查询`-march`编译选项的含义：
+
+![image.png](https://s2.loli.net/2022/09/01/wtayhx9UZJnCjLY.png)
+
+> 注意不能搜索`-march site:gcc.gnu.org`，`-`对于Google来说是“不包含该关键词”的含义

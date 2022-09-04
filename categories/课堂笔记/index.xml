@@ -183,7 +183,28 @@
 &lt;h1 id=&#34;make&#34;&gt;make&lt;/h1&gt;
 &lt;p&gt;官方文档：&lt;a class=&#34;link&#34; href=&#34;https://www.gnu.org/software/make/manual/html_node/index.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.gnu.org/software/make/manual/html_node/index.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;一页版ASCII文档，方便&lt;code&gt;Ctrl + F&lt;/code&gt;速查：&lt;a class=&#34;link&#34; href=&#34;https://www.gnu.org/software/make/manual/make.txt&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.gnu.org/software/make/manual/make.txt&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;make通过makefile中定义的各个文件的依赖关系，以及文件系统中所标记的文件修改时间，判断哪些文件是需要通过特定命令重新构建的。由此达到自动化构建的目的。&lt;/p&gt;
 &lt;h1 id=&#34;cmake&#34;&gt;cmake&lt;/h1&gt;
+&lt;h1 id=&#34;gcc&#34;&gt;gcc&lt;/h1&gt;
+&lt;p&gt;官方文档：&lt;a class=&#34;link&#34; href=&#34;https://gcc.gnu.org/onlinedocs/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://gcc.gnu.org/onlinedocs/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;快速查询文档：&lt;code&gt;man gcc&lt;/code&gt;。对应的是gcc的本地单页文档。&lt;/p&gt;
+&lt;p&gt;由于文档太长，没有在线的单页版，所以如需在线查询文档需借助Google，例如查询&lt;code&gt;-march&lt;/code&gt;编译选项的含义：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://s2.loli.net/2022/09/01/wtayhx9UZJnCjLY.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image.png&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注意不能搜索&lt;code&gt;-march site:gcc.gnu.org&lt;/code&gt;，&lt;code&gt;-&lt;/code&gt;对于Google来说是“不包含该关键词”的含义&lt;/p&gt;
+&lt;/blockquote&gt;
 </description>
         </item>
         <item>

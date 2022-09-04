@@ -40,6 +40,63 @@ git switch master
 
 传送门：[https://chyyuu.gitbooks.io/ucore_os_docs/content/lab1/lab1_1_goals.html](https://chyyuu.gitbooks.io/ucore_os_docs/content/lab1/lab1_1_goals.html)
 
+## 练习1 理解通过make生成执行文件的过程
+
+传送门：[https://chyyuu.gitbooks.io/ucore_os_docs/content/lab1/lab1_2_1_1_ex1.html](https://chyyuu.gitbooks.io/ucore_os_docs/content/lab1/lab1_2_1_1_ex1.html)
+
+学习记录：[https://cerr.cc/post/zkv的cc-构建系统学习之路/](/post/zkv%E7%9A%84cc-%E6%9E%84%E5%BB%BA%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/)
+
+gnu make官方文档：[https://www.gnu.org/software/make/manual/html_node/index.html](https://www.gnu.org/software/make/manual/html_node/index.html)
+
+### 操作系统镜像文件ucore.img是如何一步一步生成的？
+
+gnu make的一页版ASCII文档，方便`Ctrl + F`速查：[https://www.gnu.org/software/make/manual/make.txt](https://www.gnu.org/software/make/manual/make.txt)
+
+Lab1 Makefile 涉及到的make关键词：
+
+```
+'.SUFFIXES'
+
+     The prerequisites of the special target '.SUFFIXES' are the list of
+     suffixes to be used in checking for suffix rules.  *Note
+     Old-Fashioned Suffix Rules: Suffix Rules.
+     
+'.DELETE_ON_ERROR'
+
+     If '.DELETE_ON_ERROR' is mentioned as a target anywhere in the
+     makefile, then 'make' will delete the target of a rule if it has
+     changed and its recipe exits with a nonzero exit status, just as it
+     does when it receives a signal.  *Note Errors in Recipes: Errors.
+```
+
+<details>
+
+<summary>注释后的 Lab1 Makefile 如下</summary>
+
+```makefile
+
+```
+
+</details>
+
+### 一个被系统认为是符合规范的硬盘主引导扇区的特征是什么？
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Lab2 物理内存管理
 
 # Lab3 虚拟内存管理

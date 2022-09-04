@@ -416,6 +416,56 @@
 <h1 id="lab1-系统软件启动">Lab1 系统软件启动</h1>
 <p>传送门：<a class="link" href="https://chyyuu.gitbooks.io/ucore_os_docs/content/lab1/lab1_1_goals.html"  target="_blank" rel="noopener"
     >https://chyyuu.gitbooks.io/ucore_os_docs/content/lab1/lab1_1_goals.html</a></p>
+<h2 id="练习1-理解通过make生成执行文件的过程">练习1 理解通过make生成执行文件的过程</h2>
+<p>传送门：<a class="link" href="https://chyyuu.gitbooks.io/ucore_os_docs/content/lab1/lab1_2_1_1_ex1.html"  target="_blank" rel="noopener"
+    >https://chyyuu.gitbooks.io/ucore_os_docs/content/lab1/lab1_2_1_1_ex1.html</a></p>
+<p>学习记录：<a class="link" href="/post/zkv%E7%9A%84cc-%E6%9E%84%E5%BB%BA%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/" >https://cerr.cc/post/zkv的cc-构建系统学习之路/</a></p>
+<p>gnu make官方文档：<a class="link" href="https://www.gnu.org/software/make/manual/html_node/index.html"  target="_blank" rel="noopener"
+    >https://www.gnu.org/software/make/manual/html_node/index.html</a></p>
+<h3 id="操作系统镜像文件ucoreimg是如何一步一步生成的">操作系统镜像文件ucore.img是如何一步一步生成的？</h3>
+<p>gnu make的一页版ASCII文档，方便<code>Ctrl + F</code>速查：<a class="link" href="https://www.gnu.org/software/make/manual/make.txt"  target="_blank" rel="noopener"
+    >https://www.gnu.org/software/make/manual/make.txt</a></p>
+<p>Lab1 Makefile 涉及到的make关键词：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">&#39;.SUFFIXES&#39;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">     The prerequisites of the special target &#39;.SUFFIXES&#39; are the list of
+</span></span><span class="line"><span class="cl">     suffixes to be used in checking for suffix rules.  *Note
+</span></span><span class="line"><span class="cl">     Old-Fashioned Suffix Rules: Suffix Rules.
+</span></span><span class="line"><span class="cl">     
+</span></span><span class="line"><span class="cl">&#39;.DELETE_ON_ERROR&#39;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">     If &#39;.DELETE_ON_ERROR&#39; is mentioned as a target anywhere in the
+</span></span><span class="line"><span class="cl">     makefile, then &#39;make&#39; will delete the target of a rule if it has
+</span></span><span class="line"><span class="cl">     changed and its recipe exits with a nonzero exit status, just as it
+</span></span><span class="line"><span class="cl">     does when it receives a signal.  *Note Errors in Recipes: Errors.
+</span></span></code></pre></td></tr></table>
+</div>
+</div><details>
+<summary>注释后的 Lab1 Makefile 如下</summary>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"></code></pre></td></tr></table>
+</div>
+</div></details>
+<h3 id="一个被系统认为是符合规范的硬盘主引导扇区的特征是什么">一个被系统认为是符合规范的硬盘主引导扇区的特征是什么？</h3>
 <h1 id="lab2-物理内存管理">Lab2 物理内存管理</h1>
 <h1 id="lab3-虚拟内存管理">Lab3 虚拟内存管理</h1>
 <h1 id="lab4-内核线程管理">Lab4 内核线程管理</h1>
@@ -596,7 +646,16 @@
             <nav id="TableOfContents">
   <ol>
     <li><a href="#lab0-知识环境准备">Lab0 知识环境准备</a></li>
-    <li><a href="#lab1-系统软件启动">Lab1 系统软件启动</a></li>
+    <li><a href="#lab1-系统软件启动">Lab1 系统软件启动</a>
+      <ol>
+        <li><a href="#练习1-理解通过make生成执行文件的过程">练习1 理解通过make生成执行文件的过程</a>
+          <ol>
+            <li><a href="#操作系统镜像文件ucoreimg是如何一步一步生成的">操作系统镜像文件ucore.img是如何一步一步生成的？</a></li>
+            <li><a href="#一个被系统认为是符合规范的硬盘主引导扇区的特征是什么">一个被系统认为是符合规范的硬盘主引导扇区的特征是什么？</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
     <li><a href="#lab2-物理内存管理">Lab2 物理内存管理</a></li>
     <li><a href="#lab3-虚拟内存管理">Lab3 虚拟内存管理</a></li>
     <li><a href="#lab4-内核线程管理">Lab4 内核线程管理</a></li>

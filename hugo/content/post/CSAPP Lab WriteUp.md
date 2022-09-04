@@ -1061,15 +1061,242 @@ pwndbg> x/12 0x6032d0
 }
 ```
 
-看起来不妙，我们在此打断点调试跟进试试：
+看起来不妙，我们在此打断点调试跟进试试：` gdb -ex "b bomb.c:109" -ex "r" --args bomb passcodes`
+
+跟进`phase_defused`函数，观测到：
+
+```sh
+   0x4015f0 <phase_defused+44>    mov    esi, 0x402619
+   0x4015f5 <phase_defused+49>    mov    edi, input_strings+240        <0x603870>
+ ► 0x4015fa <phase_defused+54>    call   __isoc99_sscanf@plt                      <__isoc99_sscanf@plt>
+        s: 0x603870 (input_strings+240) ◂— 0x302037 /* '7 0' */
+        format: 0x402619 ◂— '%d %d %s'
+        vararg: 0x7fffffffe038 ◂— 0x600000005
+
+   0x4015ff <phase_defused+59>    cmp    eax, 3
+   0x401602 <phase_defused+62>    jne    phase_defused+113                      <phase_defused+113>
+
+   0x401604 <phase_defused+64>    mov    esi, 0x402622
+   0x401609 <phase_defused+69>    lea    rdi, [rsp + 0x10]
+   0x40160e <phase_defused+74>    call   strings_not_equal                      <strings_not_equal>
+```
+
+其中：
+
+```sh
+pwndbg> x/s 0x402619
+0x402619:       "%d %d %s"
+pwndbg> x/s 0x603870
+0x603870 <input_strings+240>:   "7 0"
+```
+
+看来这在读取第四关的两个数字时，还试图在后面读取一个字符串。阅读反汇编后发现，是用于在下方`strings_not_equal`函数中与`0x402622`处的字符串进行比较：
+
+```sh
+pwndbg> x/s 0x402622
+0x402622:       "DrEvil"
+```
+
+所以我们在第四关的输入后追加字符串`DrEvil`，即可进入隐藏关卡：`gdb -ex "b secret_phase" -ex "r" --args bomb passcodes`
+
+`secret_phase`函数反汇编如下：
+
+```assembly
+0x0000000000401242 <+0>:     push   rbx
+0x0000000000401243 <+1>:     call   0x40149e <read_line>
+0x0000000000401248 <+6>:     mov    edx,0xa
+0x000000000040124d <+11>:    mov    esi,0x0
+0x0000000000401252 <+16>:    mov    rdi,rax
+0x0000000000401255 <+19>:    call   0x400bd0 <strtol@plt>
+0x000000000040125a <+24>:    mov    rbx,rax
+0x000000000040125d <+27>:    lea    eax,[rax-0x1]
+0x0000000000401260 <+30>:    cmp    eax,0x3e8
+0x0000000000401265 <+35>:    jbe    0x40126c <secret_phase+42>
+0x0000000000401267 <+37>:    call   0x40143a <explode_bomb>
+0x000000000040126c <+42>:    mov    esi,ebx
+0x000000000040126e <+44>:    mov    edi,0x6030f0
+0x0000000000401273 <+49>:    call   0x401204 <fun7>
+0x0000000000401278 <+54>:    cmp    eax,0x2
+0x000000000040127b <+57>:    je     0x401282 <secret_phase+64>
+0x000000000040127d <+59>:    call   0x40143a <explode_bomb>
+0x0000000000401282 <+64>:    mov    edi,0x402438
+0x0000000000401287 <+69>:    call   0x400b10 <puts@plt>
+0x000000000040128c <+74>:    call   0x4015c4 <phase_defused>
+0x0000000000401291 <+79>:    pop    rbx
+0x0000000000401292 <+80>:    ret
+```
+
+其流程为：
+
+- 读取一个用户输入的数字
+- 判断输入数字是否满足：`input_number - 1 <= 1000`
+- 判断是否满足：`fun7(&n1, input_number) == 2`
+
+`fun7`反汇编如下：
+
+```assembly
+0x0000000000401204 <+0>:     sub    rsp,0x8
+0x0000000000401208 <+4>:     test   rdi,rdi
+0x000000000040120b <+7>:     je     0x401238 <fun7+52>
+0x000000000040120d <+9>:     mov    edx,DWORD PTR [rdi]
+0x000000000040120f <+11>:    cmp    edx,esi
+0x0000000000401211 <+13>:    jle    0x401220 <fun7+28>
+0x0000000000401213 <+15>:    mov    rdi,QWORD PTR [rdi+0x8]
+0x0000000000401217 <+19>:    call   0x401204 <fun7>
+0x000000000040121c <+24>:    add    eax,eax
+0x000000000040121e <+26>:    jmp    0x40123d <fun7+57>
+0x0000000000401220 <+28>:    mov    eax,0x0
+0x0000000000401225 <+33>:    cmp    edx,esi
+0x0000000000401227 <+35>:    je     0x40123d <fun7+57>
+0x0000000000401229 <+37>:    mov    rdi,QWORD PTR [rdi+0x10]
+0x000000000040122d <+41>:    call   0x401204 <fun7>
+0x0000000000401232 <+46>:    lea    eax,[rax+rax*1+0x1]
+0x0000000000401236 <+50>:    jmp    0x40123d <fun7+57>
+0x0000000000401238 <+52>:    mov    eax,0xffffffff
+0x000000000040123d <+57>:    add    rsp,0x8
+0x0000000000401241 <+61>:    ret
+```
+
+`n1`为一个树结点：
+
+```sh
+pwndbg> x/60 &n1
+0x6030f0 <n1>:  		0x0000000000000024      0x0000000000603110
+0x603100 <n1+16>:       0x0000000000603130      0x0000000000000000
+0x603110 <n21>: 		0x0000000000000008      0x0000000000603190
+0x603120 <n21+16>:      0x0000000000603150      0x0000000000000000
+0x603130 <n22>: 		0x0000000000000032      0x0000000000603170
+0x603140 <n22+16>:      0x00000000006031b0      0x0000000000000000
+0x603150 <n32>: 		0x0000000000000016      0x0000000000603270
+0x603160 <n32+16>:      0x0000000000603230      0x0000000000000000
+0x603170 <n33>: 		0x000000000000002d      0x00000000006031d0
+0x603180 <n33+16>:      0x0000000000603290      0x0000000000000000
+0x603190 <n31>: 		0x0000000000000006      0x00000000006031f0
+0x6031a0 <n31+16>:      0x0000000000603250      0x0000000000000000
+0x6031b0 <n34>: 		0x000000000000006b      0x0000000000603210
+0x6031c0 <n34+16>:      0x00000000006032b0      0x0000000000000000
+0x6031d0 <n45>: 		0x0000000000000028      0x0000000000000000
+0x6031e0 <n45+16>:      0x0000000000000000      0x0000000000000000
+0x6031f0 <n41>: 		0x0000000000000001      0x0000000000000000
+0x603200 <n41+16>:      0x0000000000000000      0x0000000000000000
+0x603210 <n47>: 		0x0000000000000063      0x0000000000000000
+0x603220 <n47+16>:      0x0000000000000000      0x0000000000000000
+0x603230 <n44>: 		0x0000000000000023      0x0000000000000000
+0x603240 <n44+16>:      0x0000000000000000      0x0000000000000000
+0x603250 <n42>: 		0x0000000000000007      0x0000000000000000
+0x603260 <n42+16>:      0x0000000000000000      0x0000000000000000
+0x603270 <n43>: 		0x0000000000000014      0x0000000000000000
+0x603280 <n43+16>:      0x0000000000000000      0x0000000000000000
+0x603290 <n46>: 		0x000000000000002f      0x0000000000000000
+0x6032a0 <n46+16>:      0x0000000000000000      0x0000000000000000
+0x6032b0 <n48>: 		0x00000000000003e9      0x0000000000000000
+0x6032c0 <n48+16>:      0x0000000000000000      0x0000000000000000
+```
+
+`fun7`翻译为C语言代码如下：
+
+```c
+int fun7(TreeNode* node, int num)
+{
+  if(node == NULL)
+    return -1;
+  else
+  {
+    if(node->val <= num)
+    {
+      if(node->Val == num)
+        return 0;
+      else
+        return 2 * fun7(node->right, num) + 1;
+    }
+    else
+      return 2 * fun7(node->left, num);
+  }
+}
+```
+
+明显只有从`return 2 * fun7(node->left, num);`才能返回2这个数字
+
+由此逆推可得，最终解为`22`
+
+`echo "22" >> passcodes`
+
+完整答案：
+
+```sh
+▶ cat passcodes
+Border relations with Canada have never been better.
+1 2 4 8 16 32
+1 311
+7 0 DrEvil
+ionefg
+4 3 2 1 6 5
+22
+```
+
+```sh
+▶ ./bomb passcodes
+Welcome to my fiendish little bomb. You have 6 phases with
+which to blow yourself up. Have a nice day!
+Phase 1 defused. How about the next one?
+That's number 2.  Keep going!
+Halfway there!
+So you got that one.  Try this one.
+Good work!  On to the next...
+Curses, you've found the secret phase!
+But finding it and solving it are quite different...
+Wow! You've defused the secret stage!
+Congratulations! You've defused the bomb!
+```
 
 # Attack Lab
+
+## Code Injection
+
+- `ctarget`用于缓冲区溢出攻击
+- `rtarget`用于ROP攻击
+- `hex2raw`用于将16禁止转字符串
+- `farm.c`
+- `cookie.txt`
+
+`ctarget`和`rtarget`需要参数`-q`取消链接服务器，参数`-i`用于输入文件：
+
+```sh
+▶ ./ctarget -h
+Usage: [-hq] ./ctarget -i <infile>
+  -h          Print help information
+  -q          Don't submit result to server
+  -i <infile> Input file
+```
+
+在我的本地环境运行时会直接segmentation fault，经查原因为：
+
+```sh
+*RSP  0x5561d668 ◂— 0
+ ► 0x7ffff7df7150 <__vfprintf_internal+160>    movaps xmmword ptr [rsp + 0x10], xmm1
+```
+
+中，`xmmword ptr [rsp + 0x10]`不满足`movaps`指令要求的16字节对齐
+
+### 0x1
+
+### 0x2
+
+### 0x3
+
+## ROP
+
+### 0x4
+
+### 0x5
 
 # Buffer Lab
 
 # Architecture Lab
 
 # Cache Lab
+
+参考：[Cache Lab Implementation and Blocking](http://www.cs.cmu.edu/afs/cs/academic/class/15213-f15/www/recitations/rec07.pdf)
 
 # Performance Lab
 
