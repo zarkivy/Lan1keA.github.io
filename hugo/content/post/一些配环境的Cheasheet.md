@@ -28,7 +28,7 @@ sudo apt install zsh git man man-db manpages ssh neovim tmux \
 
 ```sh
 sudo apt install gcc g++ gdb gdb-multiarch gdbserver flex bison make cmake clangd \
-	python3 ipython3 python-is-python3 python3-pip build-essential ninja-buildw
+	python3 ipython3 python-is-python3 python3-pip build-essential ninja-build
 ```
 
 

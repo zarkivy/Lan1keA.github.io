@@ -78,17 +78,7 @@
     &gt;https://manjaro.org/&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;其定位并非为移动端努力。只能说是支持了Pine Phone等开源手机而已。&lt;/p&gt;
 &lt;h1 id=&#34;关于刷机&#34;&gt;关于刷机&lt;/h1&gt;
-&lt;p&gt;参考&lt;a class=&#34;link&#34; href=&#34;https://www.jianshu.com/p/d960a6f517d8&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://www.jianshu.com/p/d960a6f517d8&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;fastboot&#34;&gt;Fastboot&lt;/h2&gt;
-&lt;p&gt;一个通信协议，用于直接向安卓手机Flash的不同分区中写入数据。&lt;/p&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://android.googlesource.com/platform/system/core/&amp;#43;/refs/heads/master/fastboot/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://android.googlesource.com/platform/system/core/+/refs/heads/master/fastboot/&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;recovery&#34;&gt;Recovery&lt;/h2&gt;
-&lt;p&gt;一个单独的分区，内可包含一个恢复用的迷你系统，如TWRP。&lt;/p&gt;
-&lt;h2 id=&#34;安卓设备分区&#34;&gt;安卓设备分区&lt;/h2&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://source.android.com/devices/bootloader/partitions&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://source.android.com/devices/bootloader/partitions&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;参考&lt;a class=&#34;link&#34; href=&#34;https://cerr.cc/post/Android%e6%90%9e%e6%9c%ba%e7%ac%94%e8%ae%b0&#34; &gt;https://cerr.cc/post/Android搞机笔记&lt;/a&gt;&lt;/p&gt;
 &lt;h1 id=&#34;xiaomi-mi-note2&#34;&gt;Xiaomi Mi Note2&lt;/h1&gt;
 &lt;p&gt;&lt;img src=&#34;https://s2.loli.net/2022/08/11/LDPaqzpkYbAgtOE.jpg&#34;
 	

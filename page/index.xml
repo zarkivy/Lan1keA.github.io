@@ -1170,9 +1170,17 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;web与浏览器&#34;&gt;Web与浏览器&lt;/h2&gt;
+&lt;h2 id=&#34;计算机网络web浏览器&#34;&gt;计算机网络、Web、浏览器&lt;/h2&gt;
 &lt;ul&gt;
-&lt;li&gt;谷歌的浏览器内在机制教程
+&lt;li&gt;
+&lt;p&gt;斯坦福CS 144: Introduction to Computer Networking&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://cs144.github.io/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://cs144.github.io/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;谷歌的浏览器内在机制教程&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://developers.google.com/web/updates/2018/09/inside-browser-part1&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://developers.google.com/web/updates/2018/09/inside-browser-part1&lt;/a&gt;&lt;/li&gt;

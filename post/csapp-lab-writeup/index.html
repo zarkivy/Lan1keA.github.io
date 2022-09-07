@@ -390,6 +390,8 @@
 <blockquote>
 <p>直接点击实验名视作以教师身份下载教学资源。题目文件应于Self-Study Handout下载</p>
 </blockquote>
+<p>原书pdf：<a class="link" href="https://github.com/Sorosliu1029/CSAPP-Labs/raw/master/Computer%20Systems%20A%20Programmers%20Perspective%20%283rd%29.pdf"  target="_blank" rel="noopener"
+    >https://github.com/Sorosliu1029/CSAPP-Labs/raw/master/Computer%20Systems%20A%20Programmers%20Perspective%20(3rd).pdf</a></p>
 <h1 id="data-lab">Data Lab</h1>
 <p>下载解压题目文件：</p>
 <div class="highlight"><div class="chroma">
@@ -2483,6 +2485,9 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h1 id="attack-lab">Attack Lab</h1>
+<blockquote>
+<p>Attack Lab是CSAPP2e中的Buffer Lab的更新，所以可以忽略后者</p>
+</blockquote>
 <h2 id="code-injection">Code Injection</h2>
 <ul>
 <li><code>ctarget</code>用于缓冲区溢出攻击</li>
@@ -2526,12 +2531,422 @@
 <h2 id="rop">ROP</h2>
 <h3 id="0x4">0x4</h3>
 <h3 id="0x5">0x5</h3>
-<h1 id="buffer-lab">Buffer Lab</h1>
 <h1 id="architecture-lab">Architecture Lab</h1>
 <h1 id="cache-lab">Cache Lab</h1>
+<p>README：<a class="link" href="http://csapp.cs.cmu.edu/3e/README-cachelab"  target="_blank" rel="noopener"
+    >http://csapp.cs.cmu.edu/3e/README-cachelab</a></p>
 <p>参考：<a class="link" href="http://www.cs.cmu.edu/afs/cs/academic/class/15213-f15/www/recitations/rec07.pdf"  target="_blank" rel="noopener"
     >Cache Lab Implementation and Blocking</a></p>
-<h1 id="performance-lab">Performance Lab</h1>
+<h2 id="part-a-building-a-cache-simulator">Part A. Building a cache simulator</h2>
+<p>在<code>csim.c</code>中编码，实现<code>csim-ref</code>相同的功能。</p>
+<p>实现代码：<code>csim.c</code>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span><span class="lnt">118
+</span><span class="lnt">119
+</span><span class="lnt">120
+</span><span class="lnt">121
+</span><span class="lnt">122
+</span><span class="lnt">123
+</span><span class="lnt">124
+</span><span class="lnt">125
+</span><span class="lnt">126
+</span><span class="lnt">127
+</span><span class="lnt">128
+</span><span class="lnt">129
+</span><span class="lnt">130
+</span><span class="lnt">131
+</span><span class="lnt">132
+</span><span class="lnt">133
+</span><span class="lnt">134
+</span><span class="lnt">135
+</span><span class="lnt">136
+</span><span class="lnt">137
+</span><span class="lnt">138
+</span><span class="lnt">139
+</span><span class="lnt">140
+</span><span class="lnt">141
+</span><span class="lnt">142
+</span><span class="lnt">143
+</span><span class="lnt">144
+</span><span class="lnt">145
+</span><span class="lnt">146
+</span><span class="lnt">147
+</span><span class="lnt">148
+</span><span class="lnt">149
+</span><span class="lnt">150
+</span><span class="lnt">151
+</span><span class="lnt">152
+</span><span class="lnt">153
+</span><span class="lnt">154
+</span><span class="lnt">155
+</span><span class="lnt">156
+</span><span class="lnt">157
+</span><span class="lnt">158
+</span><span class="lnt">159
+</span><span class="lnt">160
+</span><span class="lnt">161
+</span><span class="lnt">162
+</span><span class="lnt">163
+</span><span class="lnt">164
+</span><span class="lnt">165
+</span><span class="lnt">166
+</span><span class="lnt">167
+</span><span class="lnt">168
+</span><span class="lnt">169
+</span><span class="lnt">170
+</span><span class="lnt">171
+</span><span class="lnt">172
+</span><span class="lnt">173
+</span><span class="lnt">174
+</span><span class="lnt">175
+</span><span class="lnt">176
+</span><span class="lnt">177
+</span><span class="lnt">178
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;cachelab.h&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;getopt.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;limits.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="c1">// global parameters
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">int</span> <span class="n">s</span><span class="p">,</span> <span class="n">E</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">S</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">char</span> <span class="n">filename</span><span class="p">[</span><span class="mi">1000</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// emulation status counts
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">int</span> <span class="n">hit_count</span><span class="p">,</span> <span class="n">miss_count</span><span class="p">,</span> <span class="n">eviction_count</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">typedef</span> <span class="k">struct</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">valid_bit</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">tag</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">lru_stamp</span><span class="p">;</span>  <span class="c1">// LRU时间戳
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kt">char</span><span class="o">*</span> <span class="n">block</span><span class="p">;</span>    <span class="c1">// 数据块，对于题目来说实际上并不需要，此处仅为了模拟真实cache
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span><span class="n">cache_line</span><span class="p">,</span> <span class="o">*</span><span class="n">cache_asso</span><span class="p">,</span> <span class="o">**</span><span class="n">cache</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">cache</span> <span class="n">_cache_</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>   <span class="c1">// cache的(二级索引形式的)二维数组
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 打印 helper 内容的函数，-h 命令使用
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">void</span> <span class="nf">printUsage</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">printf</span><span class="p">(</span><span class="s">&#34;Usage: ./csim-ref [-hv] -s &lt;num&gt; -E &lt;num&gt; -b &lt;num&gt; -t &lt;file&gt;</span><span class="se">\n</span><span class="s">&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="s">&#34;Options:</span><span class="se">\n</span><span class="s">&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="s">&#34;  -h         Print this help message.</span><span class="se">\n</span><span class="s">&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="s">&#34;  -v         Optional verbose flag.</span><span class="se">\n</span><span class="s">&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="s">&#34;  -s &lt;num&gt;   Number of set index bits.</span><span class="se">\n</span><span class="s">&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="s">&#34;  -E &lt;num&gt;   Number of lines per set.</span><span class="se">\n</span><span class="s">&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="s">&#34;  -b &lt;num&gt;   Number of block offset bits.</span><span class="se">\n</span><span class="s">&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="s">&#34;  -t &lt;file&gt;  Trace file.</span><span class="se">\n\n</span><span class="s">&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="s">&#34;Examples:</span><span class="se">\n</span><span class="s">&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="s">&#34;  linux&gt;  ./csim -s 4 -E 1 -b 4 -t traces/yi.trace</span><span class="se">\n</span><span class="s">&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="s">&#34;  linux&gt;  ./csim -v -s 8 -E 2 -b 4 -t traces/yi.trace</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 初始化cache
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">void</span> <span class="nf">initCache</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">_cache_</span> <span class="o">=</span> <span class="p">(</span><span class="n">cache</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">cache_asso</span><span class="p">)</span> <span class="o">*</span> <span class="n">S</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">S</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">_cache_</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">cache_asso</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">cache_line</span><span class="p">)</span> <span class="o">*</span> <span class="n">E</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">E</span><span class="p">;</span> <span class="o">++</span><span class="n">j</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">_cache_</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">].</span><span class="n">valid_bit</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="n">_cache_</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">].</span><span class="n">tag</span>       <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="n">_cache_</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">].</span><span class="n">lru_stamp</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="n">_cache_</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">].</span><span class="n">block</span>     <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">update</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">address</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">max_stamp</span> <span class="o">=</span> <span class="n">INT_MIN</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">max_stamp_index</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 由内存地址求组索引与目标tag值
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kt">int</span> <span class="n">set_index</span> <span class="o">=</span> <span class="p">(</span><span class="n">address</span> <span class="o">&gt;&gt;</span> <span class="n">b</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">((</span><span class="o">-</span><span class="mi">1U</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="p">(</span><span class="mi">64</span> <span class="o">-</span> <span class="n">s</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">tag_value</span> <span class="o">=</span> <span class="n">address</span> <span class="o">&gt;&gt;</span> <span class="p">(</span><span class="n">b</span> <span class="o">+</span> <span class="n">s</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 在当前组中搜索
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">E</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// tag相同，cache hit
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">if</span><span class="p">(</span><span class="n">_cache_</span><span class="p">[</span><span class="n">set_index</span><span class="p">][</span><span class="n">i</span><span class="p">].</span><span class="n">tag</span> <span class="o">==</span> <span class="n">tag_value</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">_cache_</span><span class="p">[</span><span class="n">set_index</span><span class="p">][</span><span class="n">i</span><span class="p">].</span><span class="n">lru_stamp</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="n">hit_count</span><span class="o">++</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 当前组在hit后，处理其中空行
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">E</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="p">(</span><span class="n">_cache_</span><span class="p">[</span><span class="n">set_index</span><span class="p">][</span><span class="n">i</span><span class="p">].</span><span class="n">valid_bit</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">_cache_</span><span class="p">[</span><span class="n">set_index</span><span class="p">][</span><span class="n">i</span><span class="p">].</span><span class="n">valid_bit</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="n">_cache_</span><span class="p">[</span><span class="n">set_index</span><span class="p">][</span><span class="n">i</span><span class="p">].</span><span class="n">lru_stamp</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="n">_cache_</span><span class="p">[</span><span class="n">set_index</span><span class="p">][</span><span class="n">i</span><span class="p">].</span><span class="n">tag</span>       <span class="o">=</span> <span class="n">tag_value</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="n">miss_count</span><span class="o">++</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 既没有hit，也没有空行，则触发替换
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">eviction_count</span><span class="o">++</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">miss_count</span><span class="o">++</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">E</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// LRU擂台
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">if</span><span class="p">(</span><span class="n">_cache_</span><span class="p">[</span><span class="n">set_index</span><span class="p">][</span><span class="n">i</span><span class="p">].</span><span class="n">lru_stamp</span> <span class="o">&gt;</span> <span class="n">max_stamp</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">max_stamp</span> <span class="o">=</span> <span class="n">_cache_</span><span class="p">[</span><span class="n">set_index</span><span class="p">][</span><span class="n">i</span><span class="p">].</span><span class="n">lru_stamp</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="n">max_stamp_index</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 挑选出LRU后的最坏的cache_line提供给tag_value对应的内存
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">_cache_</span><span class="p">[</span><span class="n">set_index</span><span class="p">][</span><span class="n">max_stamp_index</span><span class="p">].</span><span class="n">tag</span> <span class="o">=</span> <span class="n">tag_value</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">_cache_</span><span class="p">[</span><span class="n">set_index</span><span class="p">][</span><span class="n">max_stamp_index</span><span class="p">].</span><span class="n">lru_stamp</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 每一轮全体时间戳都要+1
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">void</span> <span class="nf">updateStamp</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">S</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">E</span><span class="p">;</span> <span class="o">++</span><span class="n">j</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span><span class="p">(</span><span class="n">_cache_</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">].</span><span class="n">valid_bit</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="o">++</span><span class="n">_cache_</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">].</span><span class="n">lru_stamp</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">parseTrace</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">FILE</span><span class="o">*</span> <span class="n">fp</span> <span class="o">=</span> <span class="n">fopen</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s">&#34;r&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span><span class="p">(</span><span class="n">fp</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">printf</span><span class="p">(</span><span class="s">&#34;open error&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">exit</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 解析输入内容
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kt">char</span> <span class="n">operator</span><span class="p">;</span>          <span class="c1">// I:忽略 L:load M:modify S:store
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">address</span><span class="p">;</span>   <span class="c1">// 内存地址
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kt">int</span> <span class="n">size</span><span class="p">;</span>               <span class="c1">// 数据大小
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">    <span class="k">while</span><span class="p">(</span> <span class="n">fscanf</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="s">&#34; %c %xu,%d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">operator</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">address</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">size</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">switch</span> <span class="p">(</span><span class="n">operator</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">case</span> <span class="sc">&#39;I&#39;</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">                <span class="k">continue</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="k">case</span> <span class="sc">&#39;L&#39;</span><span class="o">:</span>       <span class="c1">// load访问一次
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="n">update</span><span class="p">(</span><span class="n">address</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="k">case</span> <span class="sc">&#39;M&#39;</span><span class="o">:</span>       <span class="c1">// modify若miss，则还需store一次
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="n">update</span><span class="p">(</span><span class="n">address</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="k">case</span> <span class="sc">&#39;S&#39;</span><span class="o">:</span>       <span class="c1">// store访问一次
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="n">update</span><span class="p">(</span><span class="n">address</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="n">updateStamp</span><span class="p">();</span>      <span class="c1">// 每轮更新时间戳
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 关文件，free内存
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">fclose</span><span class="p">(</span><span class="n">fp</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">S</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">free</span><span class="p">(</span><span class="n">_cache_</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">free</span><span class="p">(</span><span class="n">_cache_</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">hit_count</span> <span class="o">=</span> <span class="n">miss_count</span> <span class="o">=</span> <span class="n">eviction_count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">opt</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">while</span><span class="p">(</span> <span class="o">-</span><span class="mi">1</span> <span class="o">!=</span> <span class="p">(</span><span class="n">opt</span> <span class="o">=</span> <span class="p">(</span><span class="n">getopt</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span> <span class="n">argv</span><span class="p">,</span> <span class="s">&#34;hvs:E:b:t:&#34;</span><span class="p">)))</span> <span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">switch</span> <span class="p">(</span><span class="n">opt</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">case</span> <span class="sc">&#39;h&#39;</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">                <span class="n">printUsage</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">                <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="k">case</span> <span class="sc">&#39;v&#39;</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">                <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="k">case</span> <span class="sc">&#39;s&#39;</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">                <span class="n">s</span> <span class="o">=</span> <span class="n">atoi</span><span class="p">(</span><span class="n">optarg</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="k">case</span> <span class="sc">&#39;E&#39;</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">                <span class="n">E</span> <span class="o">=</span> <span class="n">atoi</span><span class="p">(</span><span class="n">optarg</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="k">case</span> <span class="sc">&#39;b&#39;</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">                <span class="n">b</span> <span class="o">=</span> <span class="n">atoi</span><span class="p">(</span><span class="n">optarg</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="k">case</span> <span class="sc">&#39;t&#39;</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">                <span class="n">strcpy</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">optarg</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="k">default</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">                <span class="n">printUsage</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">                <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">S</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">s</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">initCache</span><span class="p">();</span>    <span class="c1">// 初始化cache
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">parseTrace</span><span class="p">();</span>   <span class="c1">// 更新最终的三个参数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">printSummary</span><span class="p">(</span><span class="n">hit_count</span><span class="p">,</span> <span class="n">miss_count</span><span class="p">,</span> <span class="n">eviction_count</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>编译：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">gcc csim.c cachelab.c -o csim
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>结果：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">▶ ./test-csim
+</span></span><span class="line"><span class="cl">                        Your simulator     Reference simulator
+</span></span><span class="line"><span class="cl">Points <span class="o">(</span>s,E,b<span class="o">)</span>    Hits  Misses  Evicts    Hits  Misses  Evicts
+</span></span><span class="line"><span class="cl">     <span class="m">3</span> <span class="o">(</span>1,1,1<span class="o">)</span>       <span class="m">9</span>       <span class="m">8</span>       <span class="m">6</span>       <span class="m">9</span>       <span class="m">8</span>       <span class="m">6</span>  traces/yi2.trace
+</span></span><span class="line"><span class="cl">     <span class="m">3</span> <span class="o">(</span>4,2,4<span class="o">)</span>       <span class="m">4</span>       <span class="m">5</span>       <span class="m">2</span>       <span class="m">4</span>       <span class="m">5</span>       <span class="m">2</span>  traces/yi.trace
+</span></span><span class="line"><span class="cl">     <span class="m">3</span> <span class="o">(</span>2,1,4<span class="o">)</span>       <span class="m">2</span>       <span class="m">3</span>       <span class="m">1</span>       <span class="m">2</span>       <span class="m">3</span>       <span class="m">1</span>  traces/dave.trace
+</span></span><span class="line"><span class="cl">     <span class="m">3</span> <span class="o">(</span>2,1,3<span class="o">)</span>     <span class="m">167</span>      <span class="m">71</span>      <span class="m">67</span>     <span class="m">167</span>      <span class="m">71</span>      <span class="m">67</span>  traces/trans.trace
+</span></span><span class="line"><span class="cl">     <span class="m">3</span> <span class="o">(</span>2,2,3<span class="o">)</span>     <span class="m">201</span>      <span class="m">37</span>      <span class="m">29</span>     <span class="m">201</span>      <span class="m">37</span>      <span class="m">29</span>  traces/trans.trace
+</span></span><span class="line"><span class="cl">     <span class="m">3</span> <span class="o">(</span>2,4,3<span class="o">)</span>     <span class="m">212</span>      <span class="m">26</span>      <span class="m">10</span>     <span class="m">212</span>      <span class="m">26</span>      <span class="m">10</span>  traces/trans.trace
+</span></span><span class="line"><span class="cl">     <span class="m">3</span> <span class="o">(</span>5,1,5<span class="o">)</span>     <span class="m">231</span>       <span class="m">7</span>       <span class="m">0</span>     <span class="m">231</span>       <span class="m">7</span>       <span class="m">0</span>  traces/trans.trace
+</span></span><span class="line"><span class="cl">     <span class="m">6</span> <span class="o">(</span>5,1,5<span class="o">)</span>  <span class="m">265189</span>   <span class="m">21775</span>   <span class="m">21743</span>  <span class="m">265189</span>   <span class="m">21775</span>   <span class="m">21743</span>  traces/long.trace
+</span></span><span class="line"><span class="cl">    <span class="m">27</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">TEST_CSIM_RESULTS</span><span class="o">=</span><span class="m">27</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="part-b-optimizing-matrix-transpose">Part B. Optimizing matrix transpose</h2>
 <h1 id="shell-lab">Shell Lab</h1>
 <h1 id="malloc-lab">Malloc Lab</h1>
 <h1 id="proxy-lab">Proxy Lab</h1>
@@ -2753,10 +3168,13 @@
         </li>
       </ol>
     </li>
-    <li><a href="#buffer-lab">Buffer Lab</a></li>
     <li><a href="#architecture-lab">Architecture Lab</a></li>
-    <li><a href="#cache-lab">Cache Lab</a></li>
-    <li><a href="#performance-lab">Performance Lab</a></li>
+    <li><a href="#cache-lab">Cache Lab</a>
+      <ol>
+        <li><a href="#part-a-building-a-cache-simulator">Part A. Building a cache simulator</a></li>
+        <li><a href="#part-b-optimizing-matrix-transpose">Part B. Optimizing matrix transpose</a></li>
+      </ol>
+    </li>
     <li><a href="#shell-lab">Shell Lab</a></li>
     <li><a href="#malloc-lab">Malloc Lab</a></li>
     <li><a href="#proxy-lab">Proxy Lab</a></li>

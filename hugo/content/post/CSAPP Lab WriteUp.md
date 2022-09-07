@@ -15,6 +15,8 @@ image: "https://s2.loli.net/2022/08/24/HhMzuB9lRFsCvy2.png"
 
 > 直接点击实验名视作以教师身份下载教学资源。题目文件应于Self-Study Handout下载
 
+原书pdf：[https://github.com/Sorosliu1029/CSAPP-Labs/raw/master/Computer%20Systems%20A%20Programmers%20Perspective%20(3rd).pdf](https://github.com/Sorosliu1029/CSAPP-Labs/raw/master/Computer%20Systems%20A%20Programmers%20Perspective%20(3rd).pdf)
+
 # Data Lab
 
 下载解压题目文件：
@@ -1251,6 +1253,8 @@ Congratulations! You've defused the bomb!
 
 # Attack Lab
 
+> Attack Lab是CSAPP2e中的Buffer Lab的更新，所以可以忽略后者
+
 ## Code Injection
 
 - `ctarget`用于缓冲区溢出攻击
@@ -1290,15 +1294,227 @@ Usage: [-hq] ./ctarget -i <infile>
 
 ### 0x5
 
-# Buffer Lab
-
 # Architecture Lab
 
 # Cache Lab
 
+README：[http://csapp.cs.cmu.edu/3e/README-cachelab](http://csapp.cs.cmu.edu/3e/README-cachelab)
+
 参考：[Cache Lab Implementation and Blocking](http://www.cs.cmu.edu/afs/cs/academic/class/15213-f15/www/recitations/rec07.pdf)
 
-# Performance Lab
+## Part A. Building a cache simulator
+
+在`csim.c`中编码，实现`csim-ref`相同的功能。
+
+实现代码：`csim.c`：
+
+```c
+#include "cachelab.h"
+#include <stdlib.h>
+#include <getopt.h>
+#include <unistd.h>
+#include <stdio.h>
+#include <string.h>
+#include <limits.h>
+
+// global parameters
+int s, E, b, S;
+char filename[1000];
+// emulation status counts
+int hit_count, miss_count, eviction_count;
+
+typedef struct {
+    int valid_bit;
+    int tag;
+    int lru_stamp;  // LRU时间戳
+    char* block;    // 数据块，对于题目来说实际上并不需要，此处仅为了模拟真实cache
+}cache_line, *cache_asso, **cache;
+
+cache _cache_ = NULL;   // cache的(二级索引形式的)二维数组
+
+// 打印 helper 内容的函数，-h 命令使用
+void printUsage() {
+    printf("Usage: ./csim-ref [-hv] -s <num> -E <num> -b <num> -t <file>\n"
+            "Options:\n"
+            "  -h         Print this help message.\n"
+            "  -v         Optional verbose flag.\n"
+            "  -s <num>   Number of set index bits.\n"
+            "  -E <num>   Number of lines per set.\n"
+            "  -b <num>   Number of block offset bits.\n"
+            "  -t <file>  Trace file.\n\n"
+            "Examples:\n"
+            "  linux>  ./csim -s 4 -E 1 -b 4 -t traces/yi.trace\n"
+            "  linux>  ./csim -v -s 8 -E 2 -b 4 -t traces/yi.trace\n");
+}
+
+// 初始化cache
+void initCache() {
+    _cache_ = (cache)malloc(sizeof(cache_asso) * S);
+    for(int i = 0; i < S; ++i) {
+        _cache_[i] = (cache_asso)malloc(sizeof(cache_line) * E);
+        for(int j = 0; j < E; ++j) {
+            _cache_[i][j].valid_bit = 0;
+            _cache_[i][j].tag       = -1;
+            _cache_[i][j].lru_stamp = -1;
+            _cache_[i][j].block     = NULL;
+        }
+    }
+}
+
+void update(unsigned int address) {
+    int max_stamp = INT_MIN;
+    int max_stamp_index = -1;
+
+    // 由内存地址求组索引与目标tag值
+    int set_index = (address >> b) & ((-1U) >> (64 - s));
+    int tag_value = address >> (b + s);
+
+    // 在当前组中搜索
+    for(int i = 0; i < E; ++i) {
+        // tag相同，cache hit
+        if(_cache_[set_index][i].tag == tag_value) {
+            _cache_[set_index][i].lru_stamp = 0;
+            hit_count++;
+            return;
+        }
+    }
+
+    // 当前组在hit后，处理其中空行
+    for(int i = 0; i < E; ++i) {
+        if(_cache_[set_index][i].valid_bit == 0) {
+            _cache_[set_index][i].valid_bit = 1;
+            _cache_[set_index][i].lru_stamp = 0;
+            _cache_[set_index][i].tag       = tag_value;
+            miss_count++;
+            return;
+        }
+    }
+
+    // 既没有hit，也没有空行，则触发替换
+    eviction_count++;
+    miss_count++;
+    for(int i = 0; i < E; ++i) {
+        // LRU擂台
+        if(_cache_[set_index][i].lru_stamp > max_stamp) {
+            max_stamp = _cache_[set_index][i].lru_stamp;
+            max_stamp_index = i;
+        }
+    }
+
+    // 挑选出LRU后的最坏的cache_line提供给tag_value对应的内存
+    _cache_[set_index][max_stamp_index].tag = tag_value;
+    _cache_[set_index][max_stamp_index].lru_stamp = 0;
+    return;
+}
+
+// 每一轮全体时间戳都要+1
+void updateStamp() {
+    for(int i = 0; i < S; ++i)
+        for(int j = 0; j < E; ++j)
+            if(_cache_[i][j].valid_bit == 1)
+                ++_cache_[i][j].lru_stamp;
+}
+
+void parseTrace() {
+    FILE* fp = fopen(filename, "r");
+    if(fp == NULL) {
+        printf("open error");
+        exit(-1);
+    }
+
+    // 解析输入内容
+    char operator;          // I:忽略 L:load M:modify S:store
+    unsigned int address;   // 内存地址
+    int size;               // 数据大小
+
+    while( fscanf(fp, " %c %xu,%d\n", &operator, &address, &size) > 0 ) {
+        switch (operator) {
+            case 'I':
+                continue;
+            case 'L':       // load访问一次
+                update(address);
+                break;
+            case 'M':       // modify若miss，则还需store一次
+                update(address);
+            case 'S':       // store访问一次
+                update(address);
+        }
+        updateStamp();      // 每轮更新时间戳
+    }
+
+    // 关文件，free内存
+    fclose(fp);
+    for(int i = 0; i < S; ++i)
+        free(_cache_[i]);
+    free(_cache_);
+}
+
+int main(int argc, char *argv[])
+{
+    hit_count = miss_count = eviction_count = 0;
+
+    int opt;
+    while( -1 != (opt = (getopt(argc, argv, "hvs:E:b:t:"))) ) {
+        switch (opt) {
+            case 'h':
+                printUsage();
+                return 0;
+            case 'v':
+                break;
+            case 's':
+                s = atoi(optarg);
+                break;
+            case 'E':
+                E = atoi(optarg);
+                break;
+            case 'b':
+                b = atoi(optarg);
+                break;
+            case 't':
+                strcpy(filename, optarg);
+                break;
+            default:
+                printUsage();
+                return 0;
+        }
+    }
+
+    S = 1 << s;
+
+    initCache();    // 初始化cache
+    parseTrace();   // 更新最终的三个参数
+    printSummary(hit_count, miss_count, eviction_count);
+
+    return 0;
+}
+```
+
+编译：
+
+```sh
+gcc csim.c cachelab.c -o csim
+```
+
+结果：
+
+```sh
+▶ ./test-csim
+                        Your simulator     Reference simulator
+Points (s,E,b)    Hits  Misses  Evicts    Hits  Misses  Evicts
+     3 (1,1,1)       9       8       6       9       8       6  traces/yi2.trace
+     3 (4,2,4)       4       5       2       4       5       2  traces/yi.trace
+     3 (2,1,4)       2       3       1       2       3       1  traces/dave.trace
+     3 (2,1,3)     167      71      67     167      71      67  traces/trans.trace
+     3 (2,2,3)     201      37      29     201      37      29  traces/trans.trace
+     3 (2,4,3)     212      26      10     212      26      10  traces/trans.trace
+     3 (5,1,5)     231       7       0     231       7       0  traces/trans.trace
+     6 (5,1,5)  265189   21775   21743  265189   21775   21743  traces/long.trace
+    27
+
+TEST_CSIM_RESULTS=27
+```
+
+## Part B. Optimizing matrix transpose	
 
 # Shell Lab
 
