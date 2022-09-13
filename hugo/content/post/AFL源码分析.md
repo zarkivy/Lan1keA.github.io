@@ -1,11 +1,8 @@
 ---
 title: "AFL源码分析"
-description: 
+description: 今天好想玩，明天在做吧
 date: 2022-09-05T14:09:16+08:00
 image: 
-math: 
-license: 
-hidden: false
-comments: true
-draft: true
+categories: "课堂笔记"
+tags: [ "Fuzzing" ]
 ---

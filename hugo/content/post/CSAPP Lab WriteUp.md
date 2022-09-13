@@ -1514,7 +1514,118 @@ Points (s,E,b)    Hits  Misses  Evicts    Hits  Misses  Evicts
 TEST_CSIM_RESULTS=27
 ```
 
-## Part B. Optimizing matrix transpose	
+## Part B. Optimizing matrix transpose
+
+Part B则是编写cache友好型程序，核心在于利用好程序的局部性，划分内存区域的访问顺序，尽量连续访问被cache缓存的数据。具体任务是实现矩阵转置。
+
+对应的，我们需要计算给定的cache大小，以其为单位，分批次将同样大小的内存数据放入cache并完整处理完毕，以提高cache效率。ZiYang-Xie大佬的图很形象，蓝色箭头原地转置，红色箭头分块交换。
+
+![img](https://tva1.sinaimg.cn/large/008eGmZEgy1gpi2azu5g2j31dl0qz42z.jpg)`trans.c:transpose_submit`具体实现如下：
+
+```c
+void transpose_submit(int M, int N, int A[N][M], int B[M][N])
+{
+    // S = 5, E = 1, B = 5
+
+    if(M == 32 && N == 32) {
+        // 该cache最多可读入32x32矩阵中的8行数据，故以每块8x8的大小分割并转置存放到另一个矩阵中
+        for(int i = 0; i < N; i += 8)
+            for(int j = 0; j < M; j += 8) {
+                // 8x8块内转置
+                for(int k = i; k < i + 8; ++k) {
+                    int tmp1 = A[k][j];
+                    int tmp2 = A[k][j+1];
+                    int tmp3 = A[k][j+2];
+                    int tmp4 = A[k][j+3];
+                    int tmp5 = A[k][j+4];
+                    int tmp6 = A[k][j+5];
+                    int tmp7 = A[k][j+6];
+                    int tmp8 = A[k][j+7];
+                    B[j][k] = tmp1;
+                    B[j+1][k] = tmp2;
+                    B[j+2][k] = tmp3;
+                    B[j+3][k] = tmp4;
+                    B[j+4][k] = tmp5;
+                    B[j+5][k] = tmp6;
+                    B[j+6][k] = tmp7;
+                    B[j+7][k] = tmp8;
+                }
+            }
+    }
+
+    else if (M == 64 && N == 64) {
+        // 该cache最多可读入64x64矩阵中的4行数据，故以每块4x4的大小分割并转置存放到另一个矩阵中
+        for (int i = 0; i < N; i += 4)
+            for (int j = 0; j < M; j += 4) {
+                for(int k = i; k < i + 4; k += 2) {
+                    int tmp1 = A[k][j];
+                    int tmp2 = A[k][j+1];
+                    int tmp3 = A[k][j+2];
+                    int tmp4 = A[k][j+3];
+                    int tmp5 = A[k+1][j];
+                    int tmp6 = A[k+1][j+1];
+                    int tmp7 = A[k+1][j+2];
+                    int tmp8 = A[k+1][j+3];
+                    B[j][k] = tmp1;
+                    B[j+1][k] = tmp2;
+                    B[j+2][k] = tmp3;
+                    B[j+3][k] = tmp4;
+                    B[j][k+1] = tmp5;
+                    B[j+1][k+1] = tmp6;
+                    B[j+2][k+1] = tmp7;
+                    B[j+3][k+1] = tmp8;
+                }
+            }
+    }
+
+    else if (M == 61 && N == 67) {
+        // 对于61x67的矩阵，16x16可以满足miss数小于2k的要求，而17x17是最优选择，miss数为1950
+        for (int i = 0; i < N; i += 17) {
+            for (int j = 0; j < M; j += 17) {
+                for(int k = i; k < i + 17 && k < N; k ++)
+                    for(int l = j; l < j + 17 && l < M; l++)
+                        B[l][k] = A[k][l];
+            }
+        }
+
+    }
+
+    return;
+}
+```
+
+测试结果：
+
+```sh
+▶ ./driver.py
+Part A: Testing cache simulator
+Running ./test-csim
+                        Your simulator     Reference simulator
+Points (s,E,b)    Hits  Misses  Evicts    Hits  Misses  Evicts
+     3 (1,1,1)       9       8       6       9       8       6  traces/yi2.trace
+     3 (4,2,4)       4       5       2       4       5       2  traces/yi.trace
+     3 (2,1,4)       2       3       1       2       3       1  traces/dave.trace
+     3 (2,1,3)     167      71      67     167      71      67  traces/trans.trace
+     3 (2,2,3)     201      37      29     201      37      29  traces/trans.trace
+     3 (2,4,3)     212      26      10     212      26      10  traces/trans.trace
+     3 (5,1,5)     231       7       0     231       7       0  traces/trans.trace
+     6 (5,1,5)  265189   21775   21743  265189   21775   21743  traces/long.trace
+    27
+
+
+Part B: Testing transpose function
+Running ./test-trans -M 32 -N 32
+Running ./test-trans -M 64 -N 64
+Running ./test-trans -M 61 -N 67
+
+Cache Lab summary:
+                        Points   Max pts      Misses
+Csim correctness          27.0        27
+Trans perf 32x32           8.0         8         288
+Trans perf 64x64           3.8         8        1668
+Trans perf 61x67          10.0        10        1951
+          Total points    48.8        53
+```
 
 # Shell Lab
 

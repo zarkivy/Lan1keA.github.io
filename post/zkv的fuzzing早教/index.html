@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="/scss/style.min.e75bab105855f77caa94de85bd0b7a889920eb03fa3048257f51f59c063a674d.css"><meta property='og:title' content='ZKV的Fuzzing早教'>
 <meta property='og:description' content='from 0 to 1'>
 <meta property='og:url' content='https://cerr.cc/post/zkv%E7%9A%84fuzzing%E6%97%A9%E6%95%99/'>
-<meta property='og:site_name' content='やれやれ DA✰ZE'>
+<meta property='og:site_name' content='Zikey Vi'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Fuzzing' /><meta property='article:published_time' content='2022-05-11T13:57:01&#43;08:00'/><meta property='article:modified_time' content='2022-05-11T13:57:01&#43;08:00'/><meta property='og:image' content='https://lcamtuf.coredump.cx/afl/afl_screen.png' />
 <meta name="twitter:title" content="ZKV的Fuzzing早教">
 <meta name="twitter:description" content="from 0 to 1"><meta name="twitter:card" content="summary_large_image">
@@ -71,7 +71,7 @@
         
         
         <div class="site-meta">
-            <h1 class="site-name"><a href="/">やれやれ DA✰ZE</a></h1>
+            <h1 class="site-name"><a href="/">Zikey Vi</a></h1>
             <h2 class="site-description">Yet anothor cyber nyandog.</h2>
         </div>
     </header><ol class="social-menu">
@@ -431,13 +431,16 @@
     >AFL</a></p>
 <p><a class="link" href="https://github.com/AFLplusplus/AFLplusplus"  target="_blank" rel="noopener"
     >AFLplusplus</a></p>
+<h2 id="资源">资源</h2>
+<p><a class="link" href="https://github.com/secfigo/Awesome-Fuzzing"  target="_blank" rel="noopener"
+    >https://github.com/secfigo/Awesome-Fuzzing</a></p>
 <h2 id="论文">论文</h2>
 <h3 id="开山">开山</h3>
 <p>1988年，在威斯康星大学Barton Miller教授的计算机实验课上，首次提出<code>Fuzz生成器</code>(Fuzz Generator)的概念，用于测试Unix程序的健壮性，即用随机数据来测试程序直至崩溃。因此，Barton Miller教授也被多数人尊称为”模糊测试之父”。</p>
 <p><a class="link" href="http://pages.cs.wisc.edu/~bart/fuzz/CS736-Projects-f1988.pdf"  target="_blank" rel="noopener"
     >http://pages.cs.wisc.edu/~bart/fuzz/CS736-Projects-f1988.pdf</a></p>
 <h3 id="代码覆盖引导fuzzing之afl">代码覆盖引导Fuzzing之AFL</h3>
-<h1 id="x01-学步车afl">\x01 学步车AFL</h1>
+<h1 id="x01-学步车afl初探">\x01 学步车AFL初探</h1>
 <h2 id="最简单的-fuzzing-demo">最简单的 fuzzing demo</h2>
 <p>使用AFL，故先安装：</p>
 <div class="highlight"><div class="chroma">
@@ -733,7 +736,19 @@
 </span></span><span class="line"><span class="cl">afl-fuzz -i fuzz_in -o fuzz_out -S fuzzer4 ./vulner
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h1 id="x02-四轮单车libfuzzer">\x02 四轮单车libFuzzer</h1>
+</div><h2 id="fuzzing-capstone-using-afl-persistent-mode">Fuzzing capstone using AFL persistent mode</h2>
+<p>Ref：<a class="link" href="https://toastedcornflakes.github.io/articles/fuzzing_capstone_with_afl.html"  target="_blank" rel="noopener"
+    >https://toastedcornflakes.github.io/articles/fuzzing_capstone_with_afl.html</a></p>
+<p>获取受害者capstone：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">git clone https://github.com/capstone-engine/capstone.git
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="x02-libfuzzer初探">\x02 libFuzzer初探</h1>
 <h2 id="环境准备">环境准备</h2>
 <blockquote>
 <p>LibFuzzer is an in-process, coverage-guided, evolutionary fuzzing engine.</p>
@@ -1268,6 +1283,19 @@
         <div class="flex article-list--tile">
             
                 
+<article class="">
+    <a href="/post/afl%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">AFL源码分析</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
 <article class="has-image">
     <a href="/post/zkv%E7%9A%84cc-%E6%9E%84%E5%BB%BA%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/">
         
@@ -1356,7 +1384,7 @@
     <section class="copyright">
         &copy; 
         
-        2022 やれやれ DA✰ZE
+        2022 Zikey Vi
     </section>
     
     <section class="powerby">
@@ -1475,6 +1503,7 @@
         <li><a href="#博文">博文</a></li>
         <li><a href="#练兵场">练兵场</a></li>
         <li><a href="#兵器">兵器</a></li>
+        <li><a href="#资源">资源</a></li>
         <li><a href="#论文">论文</a>
           <ol>
             <li><a href="#开山">开山</a></li>
@@ -1483,15 +1512,16 @@
         </li>
       </ol>
     </li>
-    <li><a href="#x01-学步车afl">\x01 学步车AFL</a>
+    <li><a href="#x01-学步车afl初探">\x01 学步车AFL初探</a>
       <ol>
         <li><a href="#最简单的-fuzzing-demo">最简单的 fuzzing demo</a></li>
         <li><a href="#为学步车装上名为sanitizers的轮子">为学步车装上名为sanitizers的轮子</a></li>
         <li><a href="#黑盒测试qemu-mode拆走源码の轮儿">黑盒测试QEMU mode——拆走源码の轮儿</a></li>
         <li><a href="#afl并发学步车的四缸引擎">AFL并发——学步车的四缸引擎</a></li>
+        <li><a href="#fuzzing-capstone-using-afl-persistent-mode">Fuzzing capstone using AFL persistent mode</a></li>
       </ol>
     </li>
-    <li><a href="#x02-四轮单车libfuzzer">\x02 四轮单车libFuzzer</a>
+    <li><a href="#x02-libfuzzer初探">\x02 libFuzzer初探</a>
       <ol>
         <li><a href="#环境准备">环境准备</a></li>
         <li><a href="#火花塞打火demo拆解">火花塞打火——demo拆解</a></li>

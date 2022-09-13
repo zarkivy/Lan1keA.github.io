@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>Develop on やれやれ DA✰ZE</title>
+        <title>Develop on Zikey Vi</title>
         <link>https://cerr.cc/tags/develop/</link>
-        <description>Recent content in Develop on やれやれ DA✰ZE</description>
+        <description>Recent content in Develop on Zikey Vi</description>
         <generator>Hugo -- gohugo.io</generator>
         <lastBuildDate>Mon, 08 Aug 2022 14:34:10 +0800</lastBuildDate><atom:link href="https://cerr.cc/tags/develop/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>ZKV的C、C&#43;&#43;构建系统学习之路</title>
@@ -265,6 +265,12 @@
 	
 	
 &gt;&lt;/p&gt;
+&lt;h1 id=&#34;编码&#34;&gt;编码&lt;/h1&gt;
+&lt;h2 id=&#34;go语言&#34;&gt;Go语言&lt;/h2&gt;
+&lt;p&gt;官网：&lt;a class=&#34;link&#34; href=&#34;https://go.dev/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://go.dev/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;语法：&lt;a class=&#34;link&#34; href=&#34;https://go.dev/ref/spec&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://go.dev/ref/spec&lt;/a&gt;&lt;/p&gt;
 &lt;h1 id=&#34;计算&#34;&gt;计算&lt;/h1&gt;
 &lt;h2 id=&#34;技术&#34;&gt;技术&lt;/h2&gt;
 &lt;h3 id=&#34;lvs&#34;&gt;LVS&lt;/h3&gt;

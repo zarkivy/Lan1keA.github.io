@@ -1,50 +1,18 @@
 <!DOCTYPE html>
 <html lang="" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='参考https://www.jianshu.com/p/d960a6f517d8
-Fastboot 一个通信协议，用于直接向安卓手机Flash的不同分区中写入数据。
-https://android.googlesource.com/platform/system/core/&#43;/refs/heads/master/fastboot/
-一般在bootloader中提供fastboot。连接电脑后可以执行fastboot命令。
-Recovery 一个单独的分区，内可包含一个恢复用的迷你系统，如TWRP。可以使用adb。
-TWRP 官网：https://twrp.me/
-于其中下载到对应手机型号所用TWRP镜像后，以USB调试模式连接到手机。
-使用adb重启手机到fastboot：
-1 adb reboot bootloader 刷入twrp镜像：
-1 fastboot flash recovery twrp.img 重启手机：
-1 fastboot reboot recovery 目前许多ROM会在第一次启动时重写recovery分区导致TWRP被官方recovery程序覆盖。所以我们要直接重启进入Recovery：
-Note many devices will replace your custom recovery automatically during first boot. To prevent this, use Google to find the proper key combo to enter recovery. After typing fastboot reboot, hold the key combo and boot to TWRP. Once TWRP is booted, TWRP will patch the stock ROM to prevent the stock ROM from replacing TWRP.'><title>Android搞机笔记</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='垃机佬想上科班'><title>Android搞机笔记</title>
 
 <link rel='canonical' href='https://cerr.cc/post/android%E6%90%9E%E6%9C%BA%E7%AC%94%E8%AE%B0/'>
 
 <link rel="stylesheet" href="/scss/style.min.e75bab105855f77caa94de85bd0b7a889920eb03fa3048257f51f59c063a674d.css"><meta property='og:title' content='Android搞机笔记'>
-<meta property='og:description' content='参考https://www.jianshu.com/p/d960a6f517d8
-Fastboot 一个通信协议，用于直接向安卓手机Flash的不同分区中写入数据。
-https://android.googlesource.com/platform/system/core/&#43;/refs/heads/master/fastboot/
-一般在bootloader中提供fastboot。连接电脑后可以执行fastboot命令。
-Recovery 一个单独的分区，内可包含一个恢复用的迷你系统，如TWRP。可以使用adb。
-TWRP 官网：https://twrp.me/
-于其中下载到对应手机型号所用TWRP镜像后，以USB调试模式连接到手机。
-使用adb重启手机到fastboot：
-1 adb reboot bootloader 刷入twrp镜像：
-1 fastboot flash recovery twrp.img 重启手机：
-1 fastboot reboot recovery 目前许多ROM会在第一次启动时重写recovery分区导致TWRP被官方recovery程序覆盖。所以我们要直接重启进入Recovery：
-Note many devices will replace your custom recovery automatically during first boot. To prevent this, use Google to find the proper key combo to enter recovery. After typing fastboot reboot, hold the key combo and boot to TWRP. Once TWRP is booted, TWRP will patch the stock ROM to prevent the stock ROM from replacing TWRP.'>
+<meta property='og:description' content='垃机佬想上科班'>
 <meta property='og:url' content='https://cerr.cc/post/android%E6%90%9E%E6%9C%BA%E7%AC%94%E8%AE%B0/'>
-<meta property='og:site_name' content='やれやれ DA✰ZE'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2022-09-05T16:56:14&#43;08:00'/><meta property='article:modified_time' content='2022-09-05T16:56:14&#43;08:00'/>
+<meta property='og:site_name' content='Zikey Vi'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Android' /><meta property='article:tag' content='Mobile' /><meta property='article:published_time' content='2022-09-05T16:56:14&#43;08:00'/><meta property='article:modified_time' content='2022-09-05T16:56:14&#43;08:00'/><meta property='og:image' content='https://s2.loli.net/2022/09/13/u6ESQwpdvaU2igk.png' />
 <meta name="twitter:title" content="Android搞机笔记">
-<meta name="twitter:description" content="参考https://www.jianshu.com/p/d960a6f517d8
-Fastboot 一个通信协议，用于直接向安卓手机Flash的不同分区中写入数据。
-https://android.googlesource.com/platform/system/core/&#43;/refs/heads/master/fastboot/
-一般在bootloader中提供fastboot。连接电脑后可以执行fastboot命令。
-Recovery 一个单独的分区，内可包含一个恢复用的迷你系统，如TWRP。可以使用adb。
-TWRP 官网：https://twrp.me/
-于其中下载到对应手机型号所用TWRP镜像后，以USB调试模式连接到手机。
-使用adb重启手机到fastboot：
-1 adb reboot bootloader 刷入twrp镜像：
-1 fastboot flash recovery twrp.img 重启手机：
-1 fastboot reboot recovery 目前许多ROM会在第一次启动时重写recovery分区导致TWRP被官方recovery程序覆盖。所以我们要直接重启进入Recovery：
-Note many devices will replace your custom recovery automatically during first boot. To prevent this, use Google to find the proper key combo to enter recovery. After typing fastboot reboot, hold the key combo and boot to TWRP. Once TWRP is booted, TWRP will patch the stock ROM to prevent the stock ROM from replacing TWRP.">
+<meta name="twitter:description" content="垃机佬想上科班"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://s2.loli.net/2022/09/13/u6ESQwpdvaU2igk.png' />
     <link rel="shortcut icon" href="favicon.png" />
 
     </head>
@@ -103,7 +71,7 @@ Note many devices will replace your custom recovery automatically during first b
         
         
         <div class="site-meta">
-            <h1 class="site-name"><a href="/">やれやれ DA✰ZE</a></h1>
+            <h1 class="site-name"><a href="/">Zikey Vi</a></h1>
             <h2 class="site-description">Yet anothor cyber nyandog.</h2>
         </div>
     </header><ol class="social-menu">
@@ -354,10 +322,26 @@ Note many devices will replace your custom recovery automatically during first b
     </ol>
 </aside>
 <main class="main full-width">
-    <article class="main-article">
+    <article class="has-image main-article">
     <header class="article-header">
+        <div class="article-image">
+            <a href="/post/android%E6%90%9E%E6%9C%BA%E7%AC%94%E8%AE%B0/">
+                
+                    <img src="https://s2.loli.net/2022/09/13/u6ESQwpdvaU2igk.png" loading="lazy" alt="Featured image of post Android搞机笔记" />
+                
+            </a>
+        </div>
+    
 
     <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E8%B5%9B%E5%8D%9A%E4%BA%BA%E7%94%9F/" >
+                赛博人生
+            </a>
+        
+    </header>
     
 
     <div class="article-title-wrapper">
@@ -365,6 +349,10 @@ Note many devices will replace your custom recovery automatically during first b
             <a href="/post/android%E6%90%9E%E6%9C%BA%E7%AC%94%E8%AE%B0/">Android搞机笔记</a>
         </h2>
     
+        
+        <h3 class="article-subtitle">
+            垃机佬想上科班
+        </h3>
         
     </div>
 
@@ -450,6 +438,14 @@ Note many devices will replace your custom recovery automatically during first b
 
     <footer class="article-footer">
     
+    <section class="article-tags">
+        
+            <a href="/tags/android/">Android</a>
+        
+            <a href="/tags/mobile/">Mobile</a>
+        
+    </section>
+
 
     </footer>
 
@@ -461,6 +457,110 @@ Note many devices will replace your custom recovery automatically during first b
 
     
 
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/post/%E6%89%8B%E6%9C%BA%E5%8F%98%E8%BA%AB%E5%B0%8F%E4%B8%BB%E6%9C%BA/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://postmarketos.org/static/img/nexus5-bg-dark.jpg" loading="lazy" data-key="" data-hash="https://postmarketos.org/static/img/nexus5-bg-dark.jpg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">手机变身小主机？！</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/post/%E4%B8%80%E6%AC%A1u%E7%9B%98%E7%B3%BB%E7%BB%9F%E7%9B%98%E7%9A%84%E6%8A%98%E8%85%BE%E8%AE%B0/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://s2.loli.net/2022/09/13/kjqmNCfOILzuZgn.jpg" loading="lazy" data-key="" data-hash="https://s2.loli.net/2022/09/13/kjqmNCfOILzuZgn.jpg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">一次U盘系统盘的折腾记</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/post/zkv%E7%9A%84%E6%94%92%E6%9C%BA%E7%AE%80%E5%8F%B2/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://s2.loli.net/2022/06/16/EYHcq8joTrfdiBR.jpg" loading="lazy" data-key="" data-hash="https://s2.loli.net/2022/06/16/EYHcq8joTrfdiBR.jpg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">ZKV的攒机简史</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/post/fuck-the-great-fire-wall/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://s2.loli.net/2022/05/09/FrNVRw5lSbfusgx.jpg" loading="lazy" data-key="" data-hash="https://s2.loli.net/2022/05/09/FrNVRw5lSbfusgx.jpg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Fuck the Great Fire Wall</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/post/%E5%85%B3%E4%BA%8Elinux-ui%E7%9A%84%E7%BE%8E%E5%8C%96%E5%B7%A5%E4%BD%9C/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://s2.loli.net/2022/05/07/wqH1K7UnExrO4V5.jpg" loading="lazy" data-key="" data-hash="https://s2.loli.net/2022/05/07/wqH1K7UnExrO4V5.jpg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">关于Linux UI的美化工作</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
      
     
         
@@ -470,7 +570,7 @@ Note many devices will replace your custom recovery automatically during first b
     <section class="copyright">
         &copy; 
         
-        2022 やれやれ DA✰ZE
+        2022 Zikey Vi
     </section>
     
     <section class="powerby">

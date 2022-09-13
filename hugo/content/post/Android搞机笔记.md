@@ -1,13 +1,10 @@
 ---
 title: "Android搞机笔记"
-description: 
+description: 垃机佬想上科班
 date: 2022-09-05T16:56:14+08:00
-image: 
-math: 
-license: 
-hidden: false
-comments: true
-draft: true
+image: "https://s2.loli.net/2022/09/13/u6ESQwpdvaU2igk.png"
+categories: "赛博人生"
+tags: [ "Android", "Mobile" ]
 ---
 
 

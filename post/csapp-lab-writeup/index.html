@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="/scss/style.min.e75bab105855f77caa94de85bd0b7a889920eb03fa3048257f51f59c063a674d.css"><meta property='og:title' content='CSAPP Lab WriteUp'>
 <meta property='og:description' content='http://csapp.cs.cmu.edu/3e/labs.html'>
 <meta property='og:url' content='https://cerr.cc/post/csapp-lab-writeup/'>
-<meta property='og:site_name' content='やれやれ DA✰ZE'>
+<meta property='og:site_name' content='Zikey Vi'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='System' /><meta property='article:published_time' content='2022-08-19T17:06:58&#43;08:00'/><meta property='article:modified_time' content='2022-08-19T17:06:58&#43;08:00'/><meta property='og:image' content='https://s2.loli.net/2022/08/24/HhMzuB9lRFsCvy2.png' />
 <meta name="twitter:title" content="CSAPP Lab WriteUp">
 <meta name="twitter:description" content="http://csapp.cs.cmu.edu/3e/labs.html"><meta name="twitter:card" content="summary_large_image">
@@ -71,7 +71,7 @@
         
         
         <div class="site-meta">
-            <h1 class="site-name"><a href="/">やれやれ DA✰ZE</a></h1>
+            <h1 class="site-name"><a href="/">Zikey Vi</a></h1>
             <h2 class="site-description">Yet anothor cyber nyandog.</h2>
         </div>
     </header><ol class="social-menu">
@@ -2947,7 +2947,226 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="part-b-optimizing-matrix-transpose">Part B. Optimizing matrix transpose</h2>
-<h1 id="shell-lab">Shell Lab</h1>
+<p>Part B则是编写cache友好型程序，核心在于利用好程序的局部性，划分内存区域的访问顺序，尽量连续访问被cache缓存的数据。具体任务是实现矩阵转置。</p>
+<p>对应的，我们需要计算给定的cache大小，以其为单位，分批次将同样大小的内存数据放入cache并完整处理完毕，以提高cache效率。ZiYang-Xie大佬的图很形象，蓝色箭头原地转置，红色箭头分块交换。</p>
+<p><img src="https://tva1.sinaimg.cn/large/008eGmZEgy1gpi2azu5g2j31dl0qz42z.jpg"
+	
+	
+	
+	loading="lazy"
+	
+		alt="img"
+	
+	
+><code>trans.c:transpose_submit</code>具体实现如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">transpose_submit</span><span class="p">(</span><span class="kt">int</span> <span class="n">M</span><span class="p">,</span> <span class="kt">int</span> <span class="n">N</span><span class="p">,</span> <span class="kt">int</span> <span class="n">A</span><span class="p">[</span><span class="n">N</span><span class="p">][</span><span class="n">M</span><span class="p">],</span> <span class="kt">int</span> <span class="n">B</span><span class="p">[</span><span class="n">M</span><span class="p">][</span><span class="n">N</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// S = 5, E = 1, B = 5
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span><span class="p">(</span><span class="n">M</span> <span class="o">==</span> <span class="mi">32</span> <span class="o">&amp;&amp;</span> <span class="n">N</span> <span class="o">==</span> <span class="mi">32</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 该cache最多可读入32x32矩阵中的8行数据，故以每块8x8的大小分割并转置存放到另一个矩阵中
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">N</span><span class="p">;</span> <span class="n">i</span> <span class="o">+=</span> <span class="mi">8</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">M</span><span class="p">;</span> <span class="n">j</span> <span class="o">+=</span> <span class="mi">8</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="c1">// 8x8块内转置
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">8</span><span class="p">;</span> <span class="o">++</span><span class="n">k</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="kt">int</span> <span class="n">tmp1</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">j</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">                    <span class="kt">int</span> <span class="n">tmp2</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">                    <span class="kt">int</span> <span class="n">tmp3</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">j</span><span class="o">+</span><span class="mi">2</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">                    <span class="kt">int</span> <span class="n">tmp4</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">j</span><span class="o">+</span><span class="mi">3</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">                    <span class="kt">int</span> <span class="n">tmp5</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">j</span><span class="o">+</span><span class="mi">4</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">                    <span class="kt">int</span> <span class="n">tmp6</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">j</span><span class="o">+</span><span class="mi">5</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">                    <span class="kt">int</span> <span class="n">tmp7</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">j</span><span class="o">+</span><span class="mi">6</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">                    <span class="kt">int</span> <span class="n">tmp8</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">j</span><span class="o">+</span><span class="mi">7</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">B</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">B</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">B</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">2</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp3</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">B</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">3</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp4</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">B</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">4</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp5</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">B</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">5</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp6</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">B</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">6</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp7</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">B</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">7</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp8</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">M</span> <span class="o">==</span> <span class="mi">64</span> <span class="o">&amp;&amp;</span> <span class="n">N</span> <span class="o">==</span> <span class="mi">64</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 该cache最多可读入64x64矩阵中的4行数据，故以每块4x4的大小分割并转置存放到另一个矩阵中
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">N</span><span class="p">;</span> <span class="n">i</span> <span class="o">+=</span> <span class="mi">4</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">M</span><span class="p">;</span> <span class="n">j</span> <span class="o">+=</span> <span class="mi">4</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">4</span><span class="p">;</span> <span class="n">k</span> <span class="o">+=</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="kt">int</span> <span class="n">tmp1</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">j</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">                    <span class="kt">int</span> <span class="n">tmp2</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">                    <span class="kt">int</span> <span class="n">tmp3</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">j</span><span class="o">+</span><span class="mi">2</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">                    <span class="kt">int</span> <span class="n">tmp4</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">j</span><span class="o">+</span><span class="mi">3</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">                    <span class="kt">int</span> <span class="n">tmp5</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">                    <span class="kt">int</span> <span class="n">tmp6</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">                    <span class="kt">int</span> <span class="n">tmp7</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="o">+</span><span class="mi">2</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">                    <span class="kt">int</span> <span class="n">tmp8</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="o">+</span><span class="mi">3</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">B</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">B</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">B</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">2</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp3</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">B</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">3</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp4</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">B</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp5</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">B</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp6</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">B</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">2</span><span class="p">][</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp7</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">B</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">3</span><span class="p">][</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp8</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">M</span> <span class="o">==</span> <span class="mi">61</span> <span class="o">&amp;&amp;</span> <span class="n">N</span> <span class="o">==</span> <span class="mi">67</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 对于61x67的矩阵，16x16可以满足miss数小于2k的要求，而17x17是最优选择，miss数为1950
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">N</span><span class="p">;</span> <span class="n">i</span> <span class="o">+=</span> <span class="mi">17</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">M</span><span class="p">;</span> <span class="n">j</span> <span class="o">+=</span> <span class="mi">17</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">17</span> <span class="o">&amp;&amp;</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="n">N</span><span class="p">;</span> <span class="n">k</span> <span class="o">++</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">l</span> <span class="o">=</span> <span class="n">j</span><span class="p">;</span> <span class="n">l</span> <span class="o">&lt;</span> <span class="n">j</span> <span class="o">+</span> <span class="mi">17</span> <span class="o">&amp;&amp;</span> <span class="n">l</span> <span class="o">&lt;</span> <span class="n">M</span><span class="p">;</span> <span class="n">l</span><span class="o">++</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">B</span><span class="p">[</span><span class="n">l</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">l</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>测试结果：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">▶ ./driver.py
+</span></span><span class="line"><span class="cl">Part A: Testing cache simulator
+</span></span><span class="line"><span class="cl">Running ./test-csim
+</span></span><span class="line"><span class="cl">                        Your simulator     Reference simulator
+</span></span><span class="line"><span class="cl">Points <span class="o">(</span>s,E,b<span class="o">)</span>    Hits  Misses  Evicts    Hits  Misses  Evicts
+</span></span><span class="line"><span class="cl">     <span class="m">3</span> <span class="o">(</span>1,1,1<span class="o">)</span>       <span class="m">9</span>       <span class="m">8</span>       <span class="m">6</span>       <span class="m">9</span>       <span class="m">8</span>       <span class="m">6</span>  traces/yi2.trace
+</span></span><span class="line"><span class="cl">     <span class="m">3</span> <span class="o">(</span>4,2,4<span class="o">)</span>       <span class="m">4</span>       <span class="m">5</span>       <span class="m">2</span>       <span class="m">4</span>       <span class="m">5</span>       <span class="m">2</span>  traces/yi.trace
+</span></span><span class="line"><span class="cl">     <span class="m">3</span> <span class="o">(</span>2,1,4<span class="o">)</span>       <span class="m">2</span>       <span class="m">3</span>       <span class="m">1</span>       <span class="m">2</span>       <span class="m">3</span>       <span class="m">1</span>  traces/dave.trace
+</span></span><span class="line"><span class="cl">     <span class="m">3</span> <span class="o">(</span>2,1,3<span class="o">)</span>     <span class="m">167</span>      <span class="m">71</span>      <span class="m">67</span>     <span class="m">167</span>      <span class="m">71</span>      <span class="m">67</span>  traces/trans.trace
+</span></span><span class="line"><span class="cl">     <span class="m">3</span> <span class="o">(</span>2,2,3<span class="o">)</span>     <span class="m">201</span>      <span class="m">37</span>      <span class="m">29</span>     <span class="m">201</span>      <span class="m">37</span>      <span class="m">29</span>  traces/trans.trace
+</span></span><span class="line"><span class="cl">     <span class="m">3</span> <span class="o">(</span>2,4,3<span class="o">)</span>     <span class="m">212</span>      <span class="m">26</span>      <span class="m">10</span>     <span class="m">212</span>      <span class="m">26</span>      <span class="m">10</span>  traces/trans.trace
+</span></span><span class="line"><span class="cl">     <span class="m">3</span> <span class="o">(</span>5,1,5<span class="o">)</span>     <span class="m">231</span>       <span class="m">7</span>       <span class="m">0</span>     <span class="m">231</span>       <span class="m">7</span>       <span class="m">0</span>  traces/trans.trace
+</span></span><span class="line"><span class="cl">     <span class="m">6</span> <span class="o">(</span>5,1,5<span class="o">)</span>  <span class="m">265189</span>   <span class="m">21775</span>   <span class="m">21743</span>  <span class="m">265189</span>   <span class="m">21775</span>   <span class="m">21743</span>  traces/long.trace
+</span></span><span class="line"><span class="cl">    <span class="m">27</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Part B: Testing transpose <span class="k">function</span>
+</span></span><span class="line"><span class="cl">Running ./test-trans -M <span class="m">32</span> -N <span class="m">32</span>
+</span></span><span class="line"><span class="cl">Running ./test-trans -M <span class="m">64</span> -N <span class="m">64</span>
+</span></span><span class="line"><span class="cl">Running ./test-trans -M <span class="m">61</span> -N <span class="m">67</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Cache Lab summary:
+</span></span><span class="line"><span class="cl">                        Points   Max pts      Misses
+</span></span><span class="line"><span class="cl">Csim correctness          27.0        <span class="m">27</span>
+</span></span><span class="line"><span class="cl">Trans perf 32x32           8.0         <span class="m">8</span>         <span class="m">288</span>
+</span></span><span class="line"><span class="cl">Trans perf 64x64           3.8         <span class="m">8</span>        <span class="m">1668</span>
+</span></span><span class="line"><span class="cl">Trans perf 61x67          10.0        <span class="m">10</span>        <span class="m">1951</span>
+</span></span><span class="line"><span class="cl">          Total points    48.8        <span class="m">53</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="shell-lab">Shell Lab</h1>
 <h1 id="malloc-lab">Malloc Lab</h1>
 <h1 id="proxy-lab">Proxy Lab</h1>
 
@@ -3010,7 +3229,7 @@
     <section class="copyright">
         &copy; 
         
-        2022 やれやれ DA✰ZE
+        2022 Zikey Vi
     </section>
     
     <section class="powerby">

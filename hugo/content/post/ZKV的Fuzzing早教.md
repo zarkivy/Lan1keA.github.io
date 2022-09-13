@@ -45,6 +45,10 @@ image: "https://lcamtuf.coredump.cx/afl/afl_screen.png"
 
 [AFLplusplus](https://github.com/AFLplusplus/AFLplusplus)
 
+## 资源
+
+[https://github.com/secfigo/Awesome-Fuzzing](https://github.com/secfigo/Awesome-Fuzzing)
+
 ## 论文
 
 ### 开山
@@ -57,7 +61,7 @@ image: "https://lcamtuf.coredump.cx/afl/afl_screen.png"
 
 
 
-# \x01 学步车AFL
+# \x01 学步车AFL初探
 
 ## 最简单的 fuzzing demo
 
@@ -237,9 +241,21 @@ afl-fuzz -i fuzz_in -o fuzz_out -S fuzzer3 ./vulner
 afl-fuzz -i fuzz_in -o fuzz_out -S fuzzer4 ./vulner
 ```
 
+## Fuzzing capstone using AFL persistent mode
+
+Ref：[https://toastedcornflakes.github.io/articles/fuzzing_capstone_with_afl.html](https://toastedcornflakes.github.io/articles/fuzzing_capstone_with_afl.html)
+
+获取受害者capstone：
+
+```sh
+git clone https://github.com/capstone-engine/capstone.git
+```
 
 
-# \x02 四轮单车libFuzzer
+
+
+
+# \x02 libFuzzer初探
 
 ## 环境准备
 
