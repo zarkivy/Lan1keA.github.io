@@ -236,3 +236,9 @@ ref：
 **fbterm**好东西，仓库如下：
 
 [https://github.com/sfzhi/fbterm](https://github.com/sfzhi/fbterm)
+
+
+
+# 参考
+
+- [https://zjuyk.gitlab.io/posts/i3wm-config/](https://zjuyk.gitlab.io/posts/i3wm-config/)

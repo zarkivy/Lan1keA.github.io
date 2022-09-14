@@ -19,8 +19,8 @@ image: "https://s2.loli.net/2022/05/11/7aWbNEkesXlmYxH.jpg"
 
 ```sh
 sudo apt install zsh git man man-db manpages ssh neovim tmux \
-	curl wget netcat net-tools nmap tcpdump figlet bat\
-	binutils xxd strace libncurses5-dev traceroute \
+	curl wget netcat net-tools nmap tcpdump figlet bat \
+	binutils xxd strace libncurses5-dev traceroute network-manager \
 	neofetch zip unzip ncdu htop dosfstools nyancat cmatrix
 ```
 
