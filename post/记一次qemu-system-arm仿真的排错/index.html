@@ -673,16 +673,16 @@
 </span></span><span class="line"><span class="cl"><span class="na">.section</span> <span class="no">.text</span>
 </span></span><span class="line"><span class="cl"><span class="na">.global</span> <span class="no">_start</span>
 </span></span><span class="line"><span class="cl"><span class="nl">_start:</span>
-</span></span><span class="line"><span class="cl">    <span class="nf">mov</span> <span class="no">r0</span><span class="p">,</span> <span class="c">#1
-</span></span></span><span class="line"><span class="cl"><span class="c"></span>    <span class="no">ldr</span> <span class="no">r1</span><span class="p">,</span> <span class="err">=</span><span class="no">hello</span>
-</span></span><span class="line"><span class="cl">    <span class="nf">mov</span> <span class="no">r2</span><span class="p">,</span> <span class="c">#len
-</span></span></span><span class="line"><span class="cl"><span class="c"></span>    <span class="no">mov</span> <span class="no">r7</span><span class="p">,</span> <span class="c">#4
-</span></span></span><span class="line"><span class="cl"><span class="c"></span>    <span class="no">swi</span> <span class="c">#0
-</span></span></span><span class="line"><span class="cl"><span class="c"></span>
+</span></span><span class="line"><span class="cl">    <span class="nf">mov</span> <span class="no">r0</span><span class="p">,</span> <span class="c1">#1
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nf">ldr</span> <span class="no">r1</span><span class="p">,</span> <span class="err">=</span><span class="no">hello</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">mov</span> <span class="no">r2</span><span class="p">,</span> <span class="c1">#len
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nf">mov</span> <span class="no">r7</span><span class="p">,</span> <span class="c1">#4
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nf">swi</span> <span class="c1">#0
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
 </span></span><span class="line"><span class="cl"><span class="nl">exit:</span>
-</span></span><span class="line"><span class="cl">    <span class="nf">mov</span> <span class="no">r0</span><span class="p">,</span> <span class="c">#0
-</span></span></span><span class="line"><span class="cl"><span class="c"></span>    <span class="no">mov</span> <span class="no">r7</span><span class="p">,</span> <span class="c">#1
-</span></span></span><span class="line"><span class="cl"><span class="c"></span>    <span class="no">swi</span> <span class="c">#0
+</span></span><span class="line"><span class="cl">    <span class="nf">mov</span> <span class="no">r0</span><span class="p">,</span> <span class="c1">#0
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nf">mov</span> <span class="no">r7</span><span class="p">,</span> <span class="c1">#1
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nf">swi</span> <span class="c1">#0
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>使用旧版<code>arm-linux-gnueabi-gcc</code>，可以正常汇编链接运行：</p>
