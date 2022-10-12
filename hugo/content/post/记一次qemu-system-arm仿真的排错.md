@@ -356,7 +356,7 @@ OpenSSL>
 
 - ELF，二进制文件，有狭义文件头，魔数为`\x7fELF`，“解释器”为`ld.so`，即标明：“本可执行文件请交由`ld.so`来执行”
 
-- .sh，文本文件，无狭义文件头，`#!/bin/sh`作为文件起始内容，即标明：“本可执行文件请交由`/bin/sh`来执行”
+- .sh，文本文件，无狭义文件头，`#!/bin/sh`作为文件起始内容，即标明：“本可执行文件请交由`/bin/sh`来执行”，参见：[http://en.wikipedia.org/wiki/Shebang_(Unix)](http://en.wikipedia.org/wiki/Shebang_(Unix))
 
   - 没有显式注明解释器的可执行文件默认当作sh脚本文件处理：
 

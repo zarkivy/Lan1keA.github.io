@@ -1164,7 +1164,8 @@
 &lt;p&gt;ELF，二进制文件，有狭义文件头，魔数为&lt;code&gt;\x7fELF&lt;/code&gt;，“解释器”为&lt;code&gt;ld.so&lt;/code&gt;，即标明：“本可执行文件请交由&lt;code&gt;ld.so&lt;/code&gt;来执行”&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;.sh，文本文件，无狭义文件头，&lt;code&gt;#!/bin/sh&lt;/code&gt;作为文件起始内容，即标明：“本可执行文件请交由&lt;code&gt;/bin/sh&lt;/code&gt;来执行”&lt;/p&gt;
+&lt;p&gt;.sh，文本文件，无狭义文件头，&lt;code&gt;#!/bin/sh&lt;/code&gt;作为文件起始内容，即标明：“本可执行文件请交由&lt;code&gt;/bin/sh&lt;/code&gt;来执行”，参见：&lt;a class=&#34;link&#34; href=&#34;http://en.wikipedia.org/wiki/Shebang_%28Unix%29&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://en.wikipedia.org/wiki/Shebang_(Unix)&lt;/a&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;没有显式注明解释器的可执行文件默认当作sh脚本文件处理：&lt;/p&gt;

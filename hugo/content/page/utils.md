@@ -24,16 +24,13 @@ menu:
   - [https://fontawesome.com/icons?d=gallery](https://fontawesome.com/icons?d=gallery)
   - [https://simpleicons.org/](https://simpleicons.org/)
   - [https://tablericons.com/](https://tablericons.com/)
-
 - 图片库
 
   - [https://dotown.maeda-design-room.net/](https://dotown.maeda-design-room.net/)
-
 - 壁纸库
 
   - [https://wallroom.io/](https://wallroom.io/)
   - [http://simpledesktops.com/](http://simpledesktops.com/)
-
 - 图片转换器
 
   - 在线Photoshop
@@ -55,87 +52,73 @@ menu:
     - [https://github.com/itorr/eva-title](https://github.com/itorr/eva-title)
   - emoji加法生成器
       - [https://emoji.supply/kitchen/](https://emoji.supply/kitchen/)
-
 - ASCII art
 
   - [http://www.network-science.de/ascii/](http://www.network-science.de/ascii/)
   - [https://cowsay-svelte.vercel.app/](https://cowsay-svelte.vercel.app/)
   - [http://patorjk.com/software/taag/#p=display&f=Block&t=ZKV](http://patorjk.com/software/taag/#p=display&f=Block&t=ZKV)
   - [https://asciiflow.com/](https://asciiflow.com/)
-
 - 创建自己的LOGO
 
   - 正常
     - [https://ailogo.qq.com/guide/brandname](https://ailogo.qq.com/guide/brandname)
   - 不正常
     - [https://www.logoly.pro/](https://www.logoly.pro/)
-
 - 特殊字体Unicode
 
   - [https://www.wakatool.com/fancy/text](https://www.wakatool.com/fancy/text)
-
 - 狗屁不通文章生成器
 
   - [https://suulnnka.github.io/BullshitGenerator/index.html](https://suulnnka.github.io/BullshitGenerator/index.html)
-
 - 在线视频下载器 支持900+网站
 
   - [https://youtube4kdownloader.com/](https://youtube4kdownloader.com/)
-
 - 全球网络威胁实时地图
 
   - [https://cybermap.kaspersky.com/cn](https://cybermap.kaspersky.com/cn)
-
 - 反向词典
 
   - [https://wantwords.net/](https://wantwords.net/)
-
 - 网速在线测速
 
   - [https://www.speedtest.net/zh-Hans](https://www.speedtest.net/zh-Hans)
-
 - 多种多媒体文件格式互相转换
 
   - [https://tinywow.com/](https://tinywow.com/)
   - [https://anyconv.com/](https://anyconv.com/)
-
 - 在线作图工具
 
   - [https://app.diagrams.net/](https://app.diagrams.net/)
-
 - 在线文件传输
 
   - [https://app.tmp.link/](https://app.tmp.link/)
   - [https://cowtransfer.com/](https://cowtransfer.com/)
-
 - 听写记事本
 
   - [https://speechnotes.co/zh/](https://speechnotes.co/zh/)
-
 - 在线mrp模拟器
 
   - [https://vmrp.github.io/](https://vmrp.github.io/)
-
 - 定制你的终端配色——实时在线查看
 
   - [https://geoff.greer.fm/lscolors/](https://geoff.greer.fm/lscolors/)
 - 来挑选你的vim主题吧
     - [https://vimcolorschemes.com/](https://vimcolorschemes.com/)
-
 - 在线挑选你的编程字体
     - [https://www.programmingfonts.org/](https://www.programmingfonts.org/)
-
 - 万物皆可对比
   - [https://versus.com/cn](https://versus.com/cn)
 - 你的Web Terminal
   - [https://github.com/tsl0922/ttyd](https://github.com/tsl0922/ttyd)
 - 微软的文字转语音系统
     - [https://azure.microsoft.com/en-us/services/cognitive-services/text-to-speech](https://azure.microsoft.com/en-us/services/cognitive-services/text-to-speech)
-
 - Vim教程，一图搞定
     - [http://michael.peopleofhonoronly.com/vim/](http://michael.peopleofhonoronly.com/vim/)
 - 最难的俄罗斯方块
     - [https://qntm.org/files/hatetris/hatetris.html](https://qntm.org/files/hatetris/hatetris.html)
+- AI 作图青春版
+    - [https://beta.dreamstudio.ai/dream](https://beta.dreamstudio.ai/dream)
+
 
 
 

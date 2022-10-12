@@ -926,7 +926,8 @@
 <p>ELF，二进制文件，有狭义文件头，魔数为<code>\x7fELF</code>，“解释器”为<code>ld.so</code>，即标明：“本可执行文件请交由<code>ld.so</code>来执行”</p>
 </li>
 <li>
-<p>.sh，文本文件，无狭义文件头，<code>#!/bin/sh</code>作为文件起始内容，即标明：“本可执行文件请交由<code>/bin/sh</code>来执行”</p>
+<p>.sh，文本文件，无狭义文件头，<code>#!/bin/sh</code>作为文件起始内容，即标明：“本可执行文件请交由<code>/bin/sh</code>来执行”，参见：<a class="link" href="http://en.wikipedia.org/wiki/Shebang_%28Unix%29"  target="_blank" rel="noopener"
+    >http://en.wikipedia.org/wiki/Shebang_(Unix)</a></p>
 <ul>
 <li>
 <p>没有显式注明解释器的可执行文件默认当作sh脚本文件处理：</p>
