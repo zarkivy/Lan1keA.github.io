@@ -6,3 +6,7 @@ image:
 categories: "课堂笔记"
 tags: [ "Fuzzing" ]
 ---
+
+
+
+AFL的[技术白皮书](http://lcamtuf.coredump.cx/afl/technical_details.txt)
