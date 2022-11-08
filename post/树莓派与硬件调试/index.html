@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content=' 「&amp;nbsp; V I V I A I Q I Q I
-【 天 时 分 秒 】 Q I Q I A I V I V I &amp;nbsp;」 '><title>Love</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='准备工作 本次的样本为树莓派3B armbian arm64。印刷如下：
+UART '><title>树莓派与硬件调试</title>
 
-<link rel='canonical' href='https://cerr.cc/love/'>
+<link rel='canonical' href='https://cerr.cc/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/'>
 
-<link rel="stylesheet" href="/scss/style.min.e75bab105855f77caa94de85bd0b7a889920eb03fa3048257f51f59c063a674d.css"><meta property='og:title' content='Love'>
-<meta property='og:description' content=' 「&amp;nbsp; V I V I A I Q I Q I
-【 天 时 分 秒 】 Q I Q I A I V I V I &amp;nbsp;」 '>
-<meta property='og:url' content='https://cerr.cc/love/'>
+<link rel="stylesheet" href="/scss/style.min.e75bab105855f77caa94de85bd0b7a889920eb03fa3048257f51f59c063a674d.css"><meta property='og:title' content='树莓派与硬件调试'>
+<meta property='og:description' content='准备工作 本次的样本为树莓派3B armbian arm64。印刷如下：
+UART '>
+<meta property='og:url' content='https://cerr.cc/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/'>
 <meta property='og:site_name' content='Zikey Vi'>
-<meta property='og:type' content='article'><meta property='article:section' content='Page' />
-<meta name="twitter:title" content="Love">
-<meta name="twitter:description" content=" 「&amp;nbsp; V I V I A I Q I Q I
-【 天 时 分 秒 】 Q I Q I A I V I V I &amp;nbsp;」 ">
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2022-11-08T17:14:04&#43;08:00'/><meta property='article:modified_time' content='2022-11-08T17:14:04&#43;08:00'/>
+<meta name="twitter:title" content="树莓派与硬件调试">
+<meta name="twitter:description" content="准备工作 本次的样本为树莓派3B armbian arm64。印刷如下：
+UART ">
     <link rel="shortcut icon" href="favicon.png" />
 
     </head>
@@ -203,7 +203,7 @@
         
         
 
-        <li  class='current' >
+        <li >
             <a href='/love/' >
                 
                 
@@ -332,12 +332,31 @@
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/love/">Love</a>
+            <a href="/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/">树莓派与硬件调试</a>
         </h2>
     
         
     </div>
 
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Nov 08, 2022</time>
+            </div>
+        
+
+        
+    </footer>
     
 
     
@@ -347,41 +366,19 @@
     <section class="article-content">
     
     
-    <div align="center">
-	<div sytle="font-size: 16px; margin-top: 10%" align="left">
-    	「&nbsp; V I V I A I Q I Q I<br>
-    </div>
-	<div class="timer" style="font-size: 32px; color: #3f4f65; margin-top:11%; margin-bottom:10%">
-    	【 <b id="d"></b> 天 <b id="h"></b> 时 <b id="m"></b> 分 <b id="s"></b> 秒 】
-	</div>
-    <div sytle="font-size: 16px;" align="right">
-    	<br>Q I Q I A I V I V I &nbsp;」
-    </div>
-<script>
-    function timer() {
-        var start = new Date(2017, 8, 30);
-        var t = new Date() - start;
-        var h = ~~(t / 1000 / 60 / 60 % 24);
-        if (h < 10) {
-            h = "0" + h;
-        }
-        var m = ~~(t / 1000 / 60 % 60);
-        if (m < 10) {
-            m = "0" + m;
-        }
-        var s = ~~(t / 1000 % 60);
-        if (s < 10) {
-            s = "0" + s;
-        }
-        document.getElementById('d').innerHTML = ~~(t / 1000 / 60 / 60 / 24);
-        document.getElementById('h').innerHTML = h;
-        document.getElementById('m').innerHTML = m;
-        document.getElementById('s').innerHTML = s;
-    }
-    timer();
-    setInterval(timer, 1000);
-</script>
-</div>
+    <h1 id="准备工作">准备工作</h1>
+<p>本次的样本为树莓派3B armbian arm64。印刷如下：</p>
+<p><img src="/Users/zkv/Downloads/Parts-of-R-Pi-3B.webp"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Parts-of-R-Pi-3B"
+	
+	
+></p>
+<h1 id="uart">UART</h1>
 
 </section>
 
@@ -499,7 +496,39 @@
             >
 
             </main>
-    
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#准备工作">准备工作</a></li>
+    <li><a href="#uart">UART</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
 
         </div>
         <script 
