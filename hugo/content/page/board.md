@@ -33,14 +33,19 @@ sudo vmhgfs-fuse .host:/ /mnt/hgfs -o allow_other -o uid=1000 -o gid=1000 -o uma
 
 ## ssh超时
 
-客户端`/etc/ssh/ssh_config`或服务端`/etc/ssh/sshd_config`添加：
+客户端`/etc/ssh/ssh_config`添加：
 
 ```sh
 ServerAliveInterval 120
 ServerAliveCountMax 60
 ```
 
+或服务端`/etc/ssh/sshd_config`添加：
 
+```sh
+ClientAliveInterval 120
+ClientAliveCountMax 60
+```
 
 # Key-Value
 
