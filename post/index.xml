@@ -5,25 +5,26 @@
         <link>https://cerr.cc/post/</link>
         <description>Recent content in Posts on Zikey Vi</description>
         <generator>Hugo -- gohugo.io</generator>
-        <lastBuildDate>Tue, 08 Nov 2022 17:14:04 +0800</lastBuildDate><atom:link href="https://cerr.cc/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 08 Nov 2022 17:30:39 +0800</lastBuildDate><atom:link href="https://cerr.cc/post/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>树莓派与硬件调试</title>
         <link>https://cerr.cc/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/</link>
-        <pubDate>Tue, 08 Nov 2022 17:14:04 +0800</pubDate>
+        <pubDate>Tue, 08 Nov 2022 17:30:39 +0800</pubDate>
         
         <guid>https://cerr.cc/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/</guid>
-        <description>&lt;h1 id=&#34;准备工作&#34;&gt;准备工作&lt;/h1&gt;
-&lt;p&gt;本次的样本为树莓派3B armbian arm64。印刷如下：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://cerr.cc/Users/zkv/Downloads/Parts-of-R-Pi-3B.webp&#34;
-	
-	
-	
+        <description>&lt;p&gt;&lt;img src=&#34;https://cerr.cc/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/Parts-of-R-Pi-3B.webp&#34;
+	width=&#34;1024&#34;
+	height=&#34;694&#34;
+	srcset=&#34;https://cerr.cc/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/Parts-of-R-Pi-3B_hu2185f7169ef70ed92bbb816a734fb592_78246_480x0_resize_q75_h2_box_2.webp 480w, https://cerr.cc/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/Parts-of-R-Pi-3B_hu2185f7169ef70ed92bbb816a734fb592_78246_1024x0_resize_q75_h2_box_2.webp 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;Parts-of-R-Pi-3B&#34;
 	
 	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;147&#34;
+		data-flex-basis=&#34;354px&#34;
+	
 &gt;&lt;/p&gt;
-&lt;h1 id=&#34;uart&#34;&gt;UART&lt;/h1&gt;
 </description>
         </item>
         <item>
