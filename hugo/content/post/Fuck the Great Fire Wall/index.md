@@ -74,7 +74,7 @@ As for the first two option:
 
 故若需要更精细化地控制系统中不同组件的代理行为，则更适合于使用**应用层的代理接口**。这种情况下，代理软件客户端做的仅仅是在本地打开一个端口用来监听和服务上层应用主动发来的代理请求，以此将是否被代理的选择权交由了每个应用本身。举例来说，v2rayN的蓝色图标对应的“清除系统代理”就是这种方案。
 
-![Snipaste_2022-05-09_14-01-32.jpg](https://s2.loli.net/2022/05/09/HzWigwtaf5L26Sd.jpg)
+![img](2.jpg)
 
 
 
@@ -177,7 +177,7 @@ export all_proxy=http://proxyserver:port/
 
 就是这货👇，淘宝上就可以买到。
 
-![9E9E47AD-ACAC-4401-81EB-2A3D29D89EAF_1_201_a.jpeg](https://s2.loli.net/2022/08/18/ScbgXVYpdRmrnyQ.jpg)
+![img](3.jpg)
 
 
 

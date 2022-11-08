@@ -1376,14 +1376,18 @@
 &lt;/ul&gt;
 &lt;h2 id=&#34;ssl握手过程&#34;&gt;SSL握手过程&lt;/h2&gt;
 &lt;p&gt;客户端获取服务器的数字证书后，协商后续数据传输所使用的对称加密密钥。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://s2.loli.net/2022/05/23/v2tSmBZsi1PWHTO.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://cerr.cc/post/cve-2014-0160-%E5%BF%83%E8%84%8F%E6%BB%B4%E8%A1%80%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98%E4%B8%8E%E5%88%86%E6%9E%90/1.png&#34;
+	width=&#34;499&#34;
+	height=&#34;563&#34;
+	srcset=&#34;https://cerr.cc/post/cve-2014-0160-%E5%BF%83%E8%84%8F%E6%BB%B4%E8%A1%80%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98%E4%B8%8E%E5%88%86%E6%9E%90/1_huababda8551a2150b04ea0eb0561ab941_1126238_480x0_resize_box_3.png 480w, https://cerr.cc/post/cve-2014-0160-%E5%BF%83%E8%84%8F%E6%BB%B4%E8%A1%80%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98%E4%B8%8E%E5%88%86%E6%9E%90/1_huababda8551a2150b04ea0eb0561ab941_1126238_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;img&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;88&#34;
+		data-flex-basis=&#34;212px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;h2 id=&#34;ssl-heartbeat&#34;&gt;SSL Heartbeat&lt;/h2&gt;
@@ -1418,14 +1422,18 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;心跳包的结构如下图所示，前半部分为 SSL 记录头，Content Type 为消息类型（0x18 表示心跳包消息），TLS Version 为 SSL 版本信息，Record length 为记录长度；后半部分即为心跳消息。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://s2.loli.net/2022/05/23/rfcnZhoetL6jK9C.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://cerr.cc/post/cve-2014-0160-%E5%BF%83%E8%84%8F%E6%BB%B4%E8%A1%80%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98%E4%B8%8E%E5%88%86%E6%9E%90/2.png&#34;
+	width=&#34;765&#34;
+	height=&#34;187&#34;
+	srcset=&#34;https://cerr.cc/post/cve-2014-0160-%E5%BF%83%E8%84%8F%E6%BB%B4%E8%A1%80%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98%E4%B8%8E%E5%88%86%E6%9E%90/2_hu1526675b6e4ccd34471df08b7157cac7_25420_480x0_resize_box_3.png 480w, https://cerr.cc/post/cve-2014-0160-%E5%BF%83%E8%84%8F%E6%BB%B4%E8%A1%80%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98%E4%B8%8E%E5%88%86%E6%9E%90/2_hu1526675b6e4ccd34471df08b7157cac7_25420_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;img&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;409&#34;
+		data-flex-basis=&#34;981px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;其中，SSL 记录长度（Record length）为心跳消息的总长度。心跳包消息由数据包类型（type）、载荷长度（payload length）、载荷内容（payload）和填充字节（padding）组成。&lt;/p&gt;
@@ -1448,14 +1456,18 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;下图为心跳请求包的数据包实例，其载荷长度为 5 bytes：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://s2.loli.net/2022/05/23/i6WzNbtolc4VrZn.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://cerr.cc/post/cve-2014-0160-%E5%BF%83%E8%84%8F%E6%BB%B4%E8%A1%80%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98%E4%B8%8E%E5%88%86%E6%9E%90/3.png&#34;
+	width=&#34;770&#34;
+	height=&#34;482&#34;
+	srcset=&#34;https://cerr.cc/post/cve-2014-0160-%E5%BF%83%E8%84%8F%E6%BB%B4%E8%A1%80%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98%E4%B8%8E%E5%88%86%E6%9E%90/3_hu568688140641e115f76d508bf029e7b2_40703_480x0_resize_box_3.png 480w, https://cerr.cc/post/cve-2014-0160-%E5%BF%83%E8%84%8F%E6%BB%B4%E8%A1%80%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98%E4%B8%8E%E5%88%86%E6%9E%90/3_hu568688140641e115f76d508bf029e7b2_40703_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
-		alt=&#34;1586019909_91460635.jpg&#34;
+		alt=&#34;img&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;159&#34;
+		data-flex-basis=&#34;383px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;h2 id=&#34;openssl&#34;&gt;OpenSSL&lt;/h2&gt;
@@ -1491,14 +1503,18 @@
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;OpenSSL 是 SSL 协议实现的开源软件包，存在漏洞的两个文件为 ssl/d1_both.c 和 ssl/t1_lib.c，这两个文件中的 dtls1_process_heartbeat 函数和 tls1_process_heartbeat 函数分别为 DTLS（数据报安全传输协议）和 TLS（传输层安全协议）处理心跳请求包的函数。两函数的实现完全相同，此处选取 dtls1_process_heartbeat 进行分析。&lt;/p&gt;
 &lt;h2 id=&#34;成因预习&#34;&gt;成因预习&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;https://s2.loli.net/2022/05/23/7bzQV5f1GZLcCgl.jpg&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://cerr.cc/post/cve-2014-0160-%E5%BF%83%E8%84%8F%E6%BB%B4%E8%A1%80%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98%E4%B8%8E%E5%88%86%E6%9E%90/4.jpg&#34;
+	width=&#34;808&#34;
+	height=&#34;1722&#34;
+	srcset=&#34;https://cerr.cc/post/cve-2014-0160-%E5%BF%83%E8%84%8F%E6%BB%B4%E8%A1%80%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98%E4%B8%8E%E5%88%86%E6%9E%90/4_hu1354b5c6a958b4785706b4507bf6d245_207842_480x0_resize_q75_box.jpg 480w, https://cerr.cc/post/cve-2014-0160-%E5%BF%83%E8%84%8F%E6%BB%B4%E8%A1%80%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98%E4%B8%8E%E5%88%86%E6%9E%90/4_hu1354b5c6a958b4785706b4507bf6d245_207842_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
-		alt=&#34;Snipaste_2022-05-23_18-12-44.jpg&#34;
+		alt=&#34;img&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;46&#34;
+		data-flex-basis=&#34;112px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;h2 id=&#34;代码分析&#34;&gt;代码分析&lt;/h2&gt;

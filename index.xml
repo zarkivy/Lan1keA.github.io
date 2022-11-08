@@ -2828,14 +2828,18 @@
 &lt;/div&gt;&lt;h2 id=&#34;part-b-optimizing-matrix-transpose&#34;&gt;Part B. Optimizing matrix transpose&lt;/h2&gt;
 &lt;p&gt;Part B则是编写cache友好型程序，核心在于利用好程序的局部性，划分内存区域的访问顺序，尽量连续访问被cache缓存的数据。具体任务是实现矩阵转置。&lt;/p&gt;
 &lt;p&gt;对应的，我们需要计算给定的cache大小，以其为单位，分批次将同样大小的内存数据放入cache并完整处理完毕，以提高cache效率。ZiYang-Xie大佬的图很形象，蓝色箭头原地转置，红色箭头分块交换。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/008eGmZEgy1gpi2azu5g2j31dl0qz42z.jpg&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://cerr.cc/post/csapp-lab-writeup/1.jpg&#34;
+	width=&#34;1785&#34;
+	height=&#34;971&#34;
+	srcset=&#34;https://cerr.cc/post/csapp-lab-writeup/1_hu611792f4bc04af27b369d3615c293907_169587_480x0_resize_q75_box.jpg 480w, https://cerr.cc/post/csapp-lab-writeup/1_hu611792f4bc04af27b369d3615c293907_169587_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;img&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;183&#34;
+		data-flex-basis=&#34;441px&#34;
 	
 &gt;&lt;code&gt;trans.c:transpose_submit&lt;/code&gt;具体实现如下：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -4604,14 +4608,18 @@
 &lt;h2 id=&#34;spi&#34;&gt;SPI&lt;/h2&gt;
 &lt;h1 id=&#34;tfsd&#34;&gt;TF/SD&lt;/h1&gt;
 &lt;p&gt;SD卡的内部结构如下图所示，可区分为slave卡控制器（Card Controller）、卡寄存器组、内存控制器（Memory Controller）和内存（Memory Chip）4部分。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://s2.loli.net/2022/10/06/lpZGsIQEkfJXVRd.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://cerr.cc/post/zkv%E5%AF%B9%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%A1%AC%E4%BB%B6%E7%9A%84%E6%B5%85%E5%B0%9D%E4%B8%8D%E6%AD%A2/1.png&#34;
+	width=&#34;720&#34;
+	height=&#34;930&#34;
+	srcset=&#34;https://cerr.cc/post/zkv%E5%AF%B9%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%A1%AC%E4%BB%B6%E7%9A%84%E6%B5%85%E5%B0%9D%E4%B8%8D%E6%AD%A2/1_hu7b837fe38a69cce58ab767dc7bcd174a_2013059_480x0_resize_box_3.png 480w, https://cerr.cc/post/zkv%E5%AF%B9%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%A1%AC%E4%BB%B6%E7%9A%84%E6%B5%85%E5%B0%9D%E4%B8%8D%E6%AD%A2/1_hu7b837fe38a69cce58ab767dc7bcd174a_2013059_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
-		alt=&#34;image.png&#34;
+		alt=&#34;img&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;77&#34;
+		data-flex-basis=&#34;185px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;slave卡控制器主要完成以下功能∶&lt;/p&gt;
@@ -4622,14 +4630,18 @@
 &lt;p&gt;卡寄存器组内存放卡支持的特性或者参数，可通过特定的指令进行读取。SD3.0协议定义了8个寄存器用来作为存储卡与SD卡HOST控制器交互的接口，包括4个描述卡片详细信息的寄存器（OCR、CID、SCR、CSD）、2个配置寄存器（RCA、DSR）、2个描述强制型的卡状态信息寄存器（SSR、CS）。通过专用命令可访问这些寄存器，获得卡支持的特性或者设置参数。&lt;/p&gt;
 &lt;p&gt;内存控制器完成对内存的读写。内存完成对数据的存储。&lt;/p&gt;
 &lt;p&gt;TF卡采用SD卡架构，读写协议与SD卡一致，但只有一根地线，其它针脚与SD卡相同。TF卡和SD卡的针脚对应关系如下图所示。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://s2.loli.net/2022/10/06/Efiplbu9zq87dOI.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://cerr.cc/post/zkv%E5%AF%B9%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%A1%AC%E4%BB%B6%E7%9A%84%E6%B5%85%E5%B0%9D%E4%B8%8D%E6%AD%A2/2.png&#34;
+	width=&#34;912&#34;
+	height=&#34;720&#34;
+	srcset=&#34;https://cerr.cc/post/zkv%E5%AF%B9%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%A1%AC%E4%BB%B6%E7%9A%84%E6%B5%85%E5%B0%9D%E4%B8%8D%E6%AD%A2/2_hu7153d534df001869ee3da854a2b965fe_1973909_480x0_resize_box_3.png 480w, https://cerr.cc/post/zkv%E5%AF%B9%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%A1%AC%E4%BB%B6%E7%9A%84%E6%B5%85%E5%B0%9D%E4%B8%8D%E6%AD%A2/2_hu7153d534df001869ee3da854a2b965fe_1973909_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
-		alt=&#34;image.png&#34;
+		alt=&#34;img&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;126&#34;
+		data-flex-basis=&#34;304px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;SD工作模式&lt;/p&gt;
@@ -4918,7 +4930,7 @@
 	
 	loading=&#34;lazy&#34;
 	
-		alt=&#34;image.png&#34;
+		alt=&#34;img&#34;
 	
 	
 &gt;&lt;/p&gt;
@@ -6349,27 +6361,35 @@
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;然后在&lt;code&gt;Documentation/output/epub/TheLinuxKernel.epub&lt;/code&gt;拿到结果。&lt;/p&gt;
 &lt;p&gt;但是我想要的&lt;code&gt;man 9 printk&lt;/code&gt;还是没被解决呀，咋办？莫非要我去HTML doc查询？&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://s2.loli.net/2022/06/14/dEzT7ZKYiScJ4Dk.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://cerr.cc/post/zkv%E7%9A%84linux-kernel%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/1.png&#34;
+	width=&#34;1608&#34;
+	height=&#34;682&#34;
+	srcset=&#34;https://cerr.cc/post/zkv%E7%9A%84linux-kernel%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/1_hu21eb777400b49493ee9f18d712a28d21_317567_480x0_resize_box_3.png 480w, https://cerr.cc/post/zkv%E7%9A%84linux-kernel%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/1_hu21eb777400b49493ee9f18d712a28d21_317567_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;img&#34;
 	
 	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;235&#34;
+		data-flex-basis=&#34;565px&#34;
+	
 &gt;&lt;/p&gt;
 &lt;p&gt;唔……看起来效果并不好，我想查阅的是函数原型。&lt;/p&gt;
 &lt;p&gt;这时想起了那个在线浏览Linux Kernel源码的网站：&lt;a class=&#34;link&#34; href=&#34;https://elixir.bootlin.com/linux/latest/source&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://elixir.bootlin.com/linux/latest/source&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://s2.loli.net/2022/06/14/kDNxfzr1p6FBqVA.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://cerr.cc/post/zkv%E7%9A%84linux-kernel%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/2.png&#34;
+	width=&#34;2390&#34;
+	height=&#34;956&#34;
+	srcset=&#34;https://cerr.cc/post/zkv%E7%9A%84linux-kernel%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/2_huc72fce7aaf412729a937929ec02a02fb_276855_480x0_resize_box_3.png 480w, https://cerr.cc/post/zkv%E7%9A%84linux-kernel%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/2_huc72fce7aaf412729a937929ec02a02fb_276855_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
-		alt=&#34;image.png&#34;
+		alt=&#34;img&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;250&#34;
+		data-flex-basis=&#34;600px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;嗯，功能十分完善，就决定是你了。&lt;/p&gt;
@@ -7865,14 +7885,18 @@
 &lt;/ul&gt;
 &lt;h2 id=&#34;ssl握手过程&#34;&gt;SSL握手过程&lt;/h2&gt;
 &lt;p&gt;客户端获取服务器的数字证书后，协商后续数据传输所使用的对称加密密钥。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://s2.loli.net/2022/05/23/v2tSmBZsi1PWHTO.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://cerr.cc/post/cve-2014-0160-%E5%BF%83%E8%84%8F%E6%BB%B4%E8%A1%80%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98%E4%B8%8E%E5%88%86%E6%9E%90/1.png&#34;
+	width=&#34;499&#34;
+	height=&#34;563&#34;
+	srcset=&#34;https://cerr.cc/post/cve-2014-0160-%E5%BF%83%E8%84%8F%E6%BB%B4%E8%A1%80%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98%E4%B8%8E%E5%88%86%E6%9E%90/1_huababda8551a2150b04ea0eb0561ab941_1126238_480x0_resize_box_3.png 480w, https://cerr.cc/post/cve-2014-0160-%E5%BF%83%E8%84%8F%E6%BB%B4%E8%A1%80%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98%E4%B8%8E%E5%88%86%E6%9E%90/1_huababda8551a2150b04ea0eb0561ab941_1126238_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;img&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;88&#34;
+		data-flex-basis=&#34;212px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;h2 id=&#34;ssl-heartbeat&#34;&gt;SSL Heartbeat&lt;/h2&gt;
@@ -7907,14 +7931,18 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;心跳包的结构如下图所示，前半部分为 SSL 记录头，Content Type 为消息类型（0x18 表示心跳包消息），TLS Version 为 SSL 版本信息，Record length 为记录长度；后半部分即为心跳消息。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://s2.loli.net/2022/05/23/rfcnZhoetL6jK9C.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://cerr.cc/post/cve-2014-0160-%E5%BF%83%E8%84%8F%E6%BB%B4%E8%A1%80%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98%E4%B8%8E%E5%88%86%E6%9E%90/2.png&#34;
+	width=&#34;765&#34;
+	height=&#34;187&#34;
+	srcset=&#34;https://cerr.cc/post/cve-2014-0160-%E5%BF%83%E8%84%8F%E6%BB%B4%E8%A1%80%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98%E4%B8%8E%E5%88%86%E6%9E%90/2_hu1526675b6e4ccd34471df08b7157cac7_25420_480x0_resize_box_3.png 480w, https://cerr.cc/post/cve-2014-0160-%E5%BF%83%E8%84%8F%E6%BB%B4%E8%A1%80%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98%E4%B8%8E%E5%88%86%E6%9E%90/2_hu1526675b6e4ccd34471df08b7157cac7_25420_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;img&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;409&#34;
+		data-flex-basis=&#34;981px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;其中，SSL 记录长度（Record length）为心跳消息的总长度。心跳包消息由数据包类型（type）、载荷长度（payload length）、载荷内容（payload）和填充字节（padding）组成。&lt;/p&gt;
@@ -7937,14 +7965,18 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;下图为心跳请求包的数据包实例，其载荷长度为 5 bytes：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://s2.loli.net/2022/05/23/i6WzNbtolc4VrZn.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://cerr.cc/post/cve-2014-0160-%E5%BF%83%E8%84%8F%E6%BB%B4%E8%A1%80%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98%E4%B8%8E%E5%88%86%E6%9E%90/3.png&#34;
+	width=&#34;770&#34;
+	height=&#34;482&#34;
+	srcset=&#34;https://cerr.cc/post/cve-2014-0160-%E5%BF%83%E8%84%8F%E6%BB%B4%E8%A1%80%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98%E4%B8%8E%E5%88%86%E6%9E%90/3_hu568688140641e115f76d508bf029e7b2_40703_480x0_resize_box_3.png 480w, https://cerr.cc/post/cve-2014-0160-%E5%BF%83%E8%84%8F%E6%BB%B4%E8%A1%80%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98%E4%B8%8E%E5%88%86%E6%9E%90/3_hu568688140641e115f76d508bf029e7b2_40703_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
-		alt=&#34;1586019909_91460635.jpg&#34;
+		alt=&#34;img&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;159&#34;
+		data-flex-basis=&#34;383px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;h2 id=&#34;openssl&#34;&gt;OpenSSL&lt;/h2&gt;
@@ -7980,14 +8012,18 @@
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;OpenSSL 是 SSL 协议实现的开源软件包，存在漏洞的两个文件为 ssl/d1_both.c 和 ssl/t1_lib.c，这两个文件中的 dtls1_process_heartbeat 函数和 tls1_process_heartbeat 函数分别为 DTLS（数据报安全传输协议）和 TLS（传输层安全协议）处理心跳请求包的函数。两函数的实现完全相同，此处选取 dtls1_process_heartbeat 进行分析。&lt;/p&gt;
 &lt;h2 id=&#34;成因预习&#34;&gt;成因预习&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;https://s2.loli.net/2022/05/23/7bzQV5f1GZLcCgl.jpg&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://cerr.cc/post/cve-2014-0160-%E5%BF%83%E8%84%8F%E6%BB%B4%E8%A1%80%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98%E4%B8%8E%E5%88%86%E6%9E%90/4.jpg&#34;
+	width=&#34;808&#34;
+	height=&#34;1722&#34;
+	srcset=&#34;https://cerr.cc/post/cve-2014-0160-%E5%BF%83%E8%84%8F%E6%BB%B4%E8%A1%80%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98%E4%B8%8E%E5%88%86%E6%9E%90/4_hu1354b5c6a958b4785706b4507bf6d245_207842_480x0_resize_q75_box.jpg 480w, https://cerr.cc/post/cve-2014-0160-%E5%BF%83%E8%84%8F%E6%BB%B4%E8%A1%80%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98%E4%B8%8E%E5%88%86%E6%9E%90/4_hu1354b5c6a958b4785706b4507bf6d245_207842_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
-		alt=&#34;Snipaste_2022-05-23_18-12-44.jpg&#34;
+		alt=&#34;img&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;46&#34;
+		data-flex-basis=&#34;112px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;h2 id=&#34;代码分析&#34;&gt;代码分析&lt;/h2&gt;
@@ -11473,14 +11509,18 @@
 &lt;p&gt;许多VPN软件都是利用了tun/tap创建了&lt;strong&gt;虚拟网卡&lt;/strong&gt;，将系统中所有流量直接通过虚拟网卡转发至代理服务器。这种方案代理于链接层，全局代理效果好。但同时由此带来的缺点是，一些我们不想被代理的流量也会经由代理服务器转发了。部分SSR、v2ray客户端有tun模式，也是同样的道理。&lt;/p&gt;
 &lt;p&gt;再者就是于操作系统层面配置&lt;strong&gt;系统代理&lt;/strong&gt;，这样一来所以会遵循系统代理设置的应用都会被代理。但同时也会有其它一些不遵守系统代理的应用。举例来讲，chrome默认是走系统代理的，而firefox则需手动配置选择代理方案。如右图是Windows11的系统代理设置，红框内的文字说明了其与VPN使用虚拟网卡的方案并不重叠。&lt;/p&gt;
 &lt;p&gt;故若需要更精细化地控制系统中不同组件的代理行为，则更适合于使用&lt;strong&gt;应用层的代理接口&lt;/strong&gt;。这种情况下，代理软件客户端做的仅仅是在本地打开一个端口用来监听和服务上层应用主动发来的代理请求，以此将是否被代理的选择权交由了每个应用本身。举例来说，v2rayN的蓝色图标对应的“清除系统代理”就是这种方案。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://s2.loli.net/2022/05/09/HzWigwtaf5L26Sd.jpg&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://cerr.cc/post/fuck-the-great-fire-wall/2.jpg&#34;
+	width=&#34;403&#34;
+	height=&#34;221&#34;
+	srcset=&#34;https://cerr.cc/post/fuck-the-great-fire-wall/2_huec691103f4cfe0e536d506aec96997fb_23174_480x0_resize_q75_box.jpg 480w, https://cerr.cc/post/fuck-the-great-fire-wall/2_huec691103f4cfe0e536d506aec96997fb_23174_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
-		alt=&#34;Snipaste_2022-05-09_14-01-32.jpg&#34;
+		alt=&#34;img&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;182&#34;
+		data-flex-basis=&#34;437px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;h1 id=&#34;部分网站的镜像&#34;&gt;部分网站的镜像&lt;/h1&gt;
@@ -11590,14 +11630,18 @@
 &lt;/div&gt;&lt;h1 id=&#34;合法翻墙&#34;&gt;合法翻墙&lt;/h1&gt;
 &lt;h2 id=&#34;澳门流量卡&#34;&gt;澳门流量卡&lt;/h2&gt;
 &lt;p&gt;就是这货👇，淘宝上就可以买到。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://s2.loli.net/2022/08/18/ScbgXVYpdRmrnyQ.jpg&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://cerr.cc/post/fuck-the-great-fire-wall/3.jpg&#34;
+	width=&#34;558&#34;
+	height=&#34;368&#34;
+	srcset=&#34;https://cerr.cc/post/fuck-the-great-fire-wall/3_hu46bf41d467b773bb702071b67911f4bf_51479_480x0_resize_q75_box.jpg 480w, https://cerr.cc/post/fuck-the-great-fire-wall/3_hu46bf41d467b773bb702071b67911f4bf_51479_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
-		alt=&#34;9E9E47AD-ACAC-4401-81EB-2A3D29D89EAF_1_201_a.jpeg&#34;
+		alt=&#34;img&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;151&#34;
+		data-flex-basis=&#34;363px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;h1 id=&#34;其他攻略&#34;&gt;其他攻略&lt;/h1&gt;

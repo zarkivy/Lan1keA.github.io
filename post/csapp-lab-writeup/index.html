@@ -2949,14 +2949,18 @@
 </div><h2 id="part-b-optimizing-matrix-transpose">Part B. Optimizing matrix transpose</h2>
 <p>Part B则是编写cache友好型程序，核心在于利用好程序的局部性，划分内存区域的访问顺序，尽量连续访问被cache缓存的数据。具体任务是实现矩阵转置。</p>
 <p>对应的，我们需要计算给定的cache大小，以其为单位，分批次将同样大小的内存数据放入cache并完整处理完毕，以提高cache效率。ZiYang-Xie大佬的图很形象，蓝色箭头原地转置，红色箭头分块交换。</p>
-<p><img src="https://tva1.sinaimg.cn/large/008eGmZEgy1gpi2azu5g2j31dl0qz42z.jpg"
-	
-	
-	
+<p><img src="/post/csapp-lab-writeup/1.jpg"
+	width="1785"
+	height="971"
+	srcset="/post/csapp-lab-writeup/1_hu611792f4bc04af27b369d3615c293907_169587_480x0_resize_q75_box.jpg 480w, /post/csapp-lab-writeup/1_hu611792f4bc04af27b369d3615c293907_169587_1024x0_resize_q75_box.jpg 1024w"
 	loading="lazy"
 	
 		alt="img"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="183"
+		data-flex-basis="441px"
 	
 ><code>trans.c:transpose_submit</code>具体实现如下：</p>
 <div class="highlight"><div class="chroma">

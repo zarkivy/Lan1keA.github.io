@@ -164,7 +164,7 @@ eMMC由一个嵌入式存储解决方案组成，带有MMC（多媒体卡）接�
 
 SD卡的内部结构如下图所示，可区分为slave卡控制器（Card Controller）、卡寄存器组、内存控制器（Memory Controller）和内存（Memory Chip）4部分。 
 
-![image.png](https://s2.loli.net/2022/10/06/lpZGsIQEkfJXVRd.png)
+![img](1.png)
 
 slave卡控制器主要完成以下功能∶
 
@@ -182,7 +182,7 @@ slave卡控制器主要完成以下功能∶
 
 TF卡采用SD卡架构，读写协议与SD卡一致，但只有一根地线，其它针脚与SD卡相同。TF卡和SD卡的针脚对应关系如下图所示。 
 
-![image.png](https://s2.loli.net/2022/10/06/Efiplbu9zq87dOI.png)
+![img](2.png)
 
 SD工作模式
 

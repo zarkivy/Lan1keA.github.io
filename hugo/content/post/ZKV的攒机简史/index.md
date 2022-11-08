@@ -40,7 +40,7 @@ image: "https://s2.loli.net/2022/06/16/EYHcq8joTrfdiBR.jpg"
 
 ### 命名规则
 
-![image.png](https://s2.loli.net/2022/06/20/9ITSVKgfYQq1lje.png)
+![img](https://s2.loli.net/2022/06/20/9ITSVKgfYQq1lje.png)
 
 ### 酷睿后缀名
 

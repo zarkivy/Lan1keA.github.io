@@ -1520,7 +1520,7 @@ Part B则是编写cache友好型程序，核心在于利用好程序的局部性
 
 对应的，我们需要计算给定的cache大小，以其为单位，分批次将同样大小的内存数据放入cache并完整处理完毕，以提高cache效率。ZiYang-Xie大佬的图很形象，蓝色箭头原地转置，红色箭头分块交换。
 
-![img](https://tva1.sinaimg.cn/large/008eGmZEgy1gpi2azu5g2j31dl0qz42z.jpg)`trans.c:transpose_submit`具体实现如下：
+![img](1.jpg)`trans.c:transpose_submit`具体实现如下：
 
 ```c
 void transpose_submit(int M, int N, int A[N][M], int B[M][N])

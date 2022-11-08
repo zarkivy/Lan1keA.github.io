@@ -122,13 +122,13 @@ make epubdocs
 
 但是我想要的`man 9 printk`还是没被解决呀，咋办？莫非要我去HTML doc查询？
 
-![img](https://s2.loli.net/2022/06/14/dEzT7ZKYiScJ4Dk.png)
+![img](1.png)
 
 唔……看起来效果并不好，我想查阅的是函数原型。
 
 这时想起了那个在线浏览Linux Kernel源码的网站：[https://elixir.bootlin.com/linux/latest/source](https://elixir.bootlin.com/linux/latest/source)
 
-![image.png](https://s2.loli.net/2022/06/14/kDNxfzr1p6FBqVA.png)
+![img](2.png)
 
 嗯，功能十分完善，就决定是你了。
 

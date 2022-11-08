@@ -2576,14 +2576,18 @@
 &lt;/div&gt;&lt;h2 id=&#34;part-b-optimizing-matrix-transpose&#34;&gt;Part B. Optimizing matrix transpose&lt;/h2&gt;
 &lt;p&gt;Part B则是编写cache友好型程序，核心在于利用好程序的局部性，划分内存区域的访问顺序，尽量连续访问被cache缓存的数据。具体任务是实现矩阵转置。&lt;/p&gt;
 &lt;p&gt;对应的，我们需要计算给定的cache大小，以其为单位，分批次将同样大小的内存数据放入cache并完整处理完毕，以提高cache效率。ZiYang-Xie大佬的图很形象，蓝色箭头原地转置，红色箭头分块交换。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/008eGmZEgy1gpi2azu5g2j31dl0qz42z.jpg&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://cerr.cc/post/csapp-lab-writeup/1.jpg&#34;
+	width=&#34;1785&#34;
+	height=&#34;971&#34;
+	srcset=&#34;https://cerr.cc/post/csapp-lab-writeup/1_hu611792f4bc04af27b369d3615c293907_169587_480x0_resize_q75_box.jpg 480w, https://cerr.cc/post/csapp-lab-writeup/1_hu611792f4bc04af27b369d3615c293907_169587_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;img&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;183&#34;
+		data-flex-basis=&#34;441px&#34;
 	
 &gt;&lt;code&gt;trans.c:transpose_submit&lt;/code&gt;具体实现如下：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;

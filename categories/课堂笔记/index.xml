@@ -352,14 +352,18 @@
 &lt;h2 id=&#34;spi&#34;&gt;SPI&lt;/h2&gt;
 &lt;h1 id=&#34;tfsd&#34;&gt;TF/SD&lt;/h1&gt;
 &lt;p&gt;SD卡的内部结构如下图所示，可区分为slave卡控制器（Card Controller）、卡寄存器组、内存控制器（Memory Controller）和内存（Memory Chip）4部分。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://s2.loli.net/2022/10/06/lpZGsIQEkfJXVRd.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://cerr.cc/post/zkv%E5%AF%B9%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%A1%AC%E4%BB%B6%E7%9A%84%E6%B5%85%E5%B0%9D%E4%B8%8D%E6%AD%A2/1.png&#34;
+	width=&#34;720&#34;
+	height=&#34;930&#34;
+	srcset=&#34;https://cerr.cc/post/zkv%E5%AF%B9%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%A1%AC%E4%BB%B6%E7%9A%84%E6%B5%85%E5%B0%9D%E4%B8%8D%E6%AD%A2/1_hu7b837fe38a69cce58ab767dc7bcd174a_2013059_480x0_resize_box_3.png 480w, https://cerr.cc/post/zkv%E5%AF%B9%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%A1%AC%E4%BB%B6%E7%9A%84%E6%B5%85%E5%B0%9D%E4%B8%8D%E6%AD%A2/1_hu7b837fe38a69cce58ab767dc7bcd174a_2013059_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
-		alt=&#34;image.png&#34;
+		alt=&#34;img&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;77&#34;
+		data-flex-basis=&#34;185px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;slave卡控制器主要完成以下功能∶&lt;/p&gt;
@@ -370,14 +374,18 @@
 &lt;p&gt;卡寄存器组内存放卡支持的特性或者参数，可通过特定的指令进行读取。SD3.0协议定义了8个寄存器用来作为存储卡与SD卡HOST控制器交互的接口，包括4个描述卡片详细信息的寄存器（OCR、CID、SCR、CSD）、2个配置寄存器（RCA、DSR）、2个描述强制型的卡状态信息寄存器（SSR、CS）。通过专用命令可访问这些寄存器，获得卡支持的特性或者设置参数。&lt;/p&gt;
 &lt;p&gt;内存控制器完成对内存的读写。内存完成对数据的存储。&lt;/p&gt;
 &lt;p&gt;TF卡采用SD卡架构，读写协议与SD卡一致，但只有一根地线，其它针脚与SD卡相同。TF卡和SD卡的针脚对应关系如下图所示。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://s2.loli.net/2022/10/06/Efiplbu9zq87dOI.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://cerr.cc/post/zkv%E5%AF%B9%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%A1%AC%E4%BB%B6%E7%9A%84%E6%B5%85%E5%B0%9D%E4%B8%8D%E6%AD%A2/2.png&#34;
+	width=&#34;912&#34;
+	height=&#34;720&#34;
+	srcset=&#34;https://cerr.cc/post/zkv%E5%AF%B9%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%A1%AC%E4%BB%B6%E7%9A%84%E6%B5%85%E5%B0%9D%E4%B8%8D%E6%AD%A2/2_hu7153d534df001869ee3da854a2b965fe_1973909_480x0_resize_box_3.png 480w, https://cerr.cc/post/zkv%E5%AF%B9%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%A1%AC%E4%BB%B6%E7%9A%84%E6%B5%85%E5%B0%9D%E4%B8%8D%E6%AD%A2/2_hu7153d534df001869ee3da854a2b965fe_1973909_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
-		alt=&#34;image.png&#34;
+		alt=&#34;img&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;126&#34;
+		data-flex-basis=&#34;304px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;SD工作模式&lt;/p&gt;
@@ -769,27 +777,35 @@
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;然后在&lt;code&gt;Documentation/output/epub/TheLinuxKernel.epub&lt;/code&gt;拿到结果。&lt;/p&gt;
 &lt;p&gt;但是我想要的&lt;code&gt;man 9 printk&lt;/code&gt;还是没被解决呀，咋办？莫非要我去HTML doc查询？&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://s2.loli.net/2022/06/14/dEzT7ZKYiScJ4Dk.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://cerr.cc/post/zkv%E7%9A%84linux-kernel%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/1.png&#34;
+	width=&#34;1608&#34;
+	height=&#34;682&#34;
+	srcset=&#34;https://cerr.cc/post/zkv%E7%9A%84linux-kernel%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/1_hu21eb777400b49493ee9f18d712a28d21_317567_480x0_resize_box_3.png 480w, https://cerr.cc/post/zkv%E7%9A%84linux-kernel%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/1_hu21eb777400b49493ee9f18d712a28d21_317567_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;img&#34;
 	
 	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;235&#34;
+		data-flex-basis=&#34;565px&#34;
+	
 &gt;&lt;/p&gt;
 &lt;p&gt;唔……看起来效果并不好，我想查阅的是函数原型。&lt;/p&gt;
 &lt;p&gt;这时想起了那个在线浏览Linux Kernel源码的网站：&lt;a class=&#34;link&#34; href=&#34;https://elixir.bootlin.com/linux/latest/source&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://elixir.bootlin.com/linux/latest/source&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://s2.loli.net/2022/06/14/kDNxfzr1p6FBqVA.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://cerr.cc/post/zkv%E7%9A%84linux-kernel%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/2.png&#34;
+	width=&#34;2390&#34;
+	height=&#34;956&#34;
+	srcset=&#34;https://cerr.cc/post/zkv%E7%9A%84linux-kernel%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/2_huc72fce7aaf412729a937929ec02a02fb_276855_480x0_resize_box_3.png 480w, https://cerr.cc/post/zkv%E7%9A%84linux-kernel%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/2_huc72fce7aaf412729a937929ec02a02fb_276855_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
-		alt=&#34;image.png&#34;
+		alt=&#34;img&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;250&#34;
+		data-flex-basis=&#34;600px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;嗯，功能十分完善，就决定是你了。&lt;/p&gt;
