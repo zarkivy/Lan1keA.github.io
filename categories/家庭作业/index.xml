@@ -2895,6 +2895,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;h1 id=&#34;shell-lab&#34;&gt;Shell Lab&lt;/h1&gt;
+&lt;p&gt;在本shell里，我们需要完善&lt;code&gt;tsh.c&lt;/code&gt;，来实现一个行为与tshref相同的shell。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -3405,7 +3406,6 @@
 &lt;/div&gt;
 &lt;/div&gt;&lt;h1 id=&#34;malloc-lab&#34;&gt;Malloc Lab&lt;/h1&gt;
 &lt;p&gt;In this lab you will write a dynamic memory allocator which will consist of the malloc, free, realloc, and calloc functions. Your goal is to implement an allocator that is correct, efficient, and fast.&lt;/p&gt;
-&lt;p&gt;本lab的目的是用C语言编写一个正确高效和快速的动态存储分配器，即malloc，free，realloc，和calloc函数。主要是在mm.c这个文件中编写以下几个函数：&lt;/p&gt;
 &lt;h1 id=&#34;proxy-lab&#34;&gt;Proxy Lab&lt;/h1&gt;
 </description>
         </item>

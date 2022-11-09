@@ -5,7 +5,507 @@
         <link>https://cerr.cc/tags/embeded/</link>
         <description>Recent content in Embeded on Zikey Vi</description>
         <generator>Hugo -- gohugo.io</generator>
-        <lastBuildDate>Fri, 08 Jul 2022 14:11:35 +0800</lastBuildDate><atom:link href="https://cerr.cc/tags/embeded/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 08 Nov 2022 17:30:39 +0800</lastBuildDate><atom:link href="https://cerr.cc/tags/embeded/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>树莓派与硬件调试</title>
+        <link>https://cerr.cc/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/</link>
+        <pubDate>Tue, 08 Nov 2022 17:30:39 +0800</pubDate>
+        
+        <guid>https://cerr.cc/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/</guid>
+        <description>&lt;img src="https://images.prismic.io/rpf-products/bef8cda3-64ea-4098-bf18-8e731a6e9a0d_3b%2B%20Angle%202.jpg?ixlib=gatsbyFP&auto=compress%2Cformat&fit=max&w=600&h=400" alt="Featured image of post 树莓派与硬件调试" /&gt;&lt;h1 id=&#34;树莓派3b的结构&#34;&gt;树莓派3B+的结构&lt;/h1&gt;
+&lt;p&gt;以本次的样本**树莓派3B+**为例，先来认识认识它的PCB板：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cerr.cc/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/Parts-of-R-Pi-3B.webp&#34;
+	width=&#34;1024&#34;
+	height=&#34;694&#34;
+	srcset=&#34;https://cerr.cc/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/Parts-of-R-Pi-3B_hu2185f7169ef70ed92bbb816a734fb592_78246_480x0_resize_q75_h2_box_2.webp 480w, https://cerr.cc/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/Parts-of-R-Pi-3B_hu2185f7169ef70ed92bbb816a734fb592_78246_1024x0_resize_q75_h2_box_2.webp 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;树莓派3B&amp;#43; PCB&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;147&#34;
+		data-flex-basis=&#34;354px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;我们重点会使用到的是其上的GPIO接口，其引脚如下：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;GPIO, General-purpose input/output, &lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/General-purpose_input/output&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://en.wikipedia.org/wiki/General-purpose_input/output&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;https://cerr.cc/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/2.png&#34;
+	width=&#34;2064&#34;
+	height=&#34;1185&#34;
+	srcset=&#34;https://cerr.cc/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/2_hua49859c3abb8d59effc7f48992911ff2_206936_480x0_resize_box_3.png 480w, https://cerr.cc/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/2_hua49859c3abb8d59effc7f48992911ff2_206936_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;GPIO引脚&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;174&#34;
+		data-flex-basis=&#34;418px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h1 id=&#34;uart连接与逻辑分析仪&#34;&gt;UART连接与逻辑分析仪&lt;/h1&gt;
+&lt;h2 id=&#34;从uart获取login-shell&#34;&gt;从UART获取login shell&lt;/h2&gt;
+&lt;p&gt;UART，Universal asynchronous receiver-transmitter：&lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/Universal_asynchronous_receiver-transmitter&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://en.wikipedia.org/wiki/Universal_asynchronous_receiver-transmitter&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;UART使用两条线进行双向异步数据传输，Tx-&amp;gt;Rx; Rx-&amp;gt;Tx：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cerr.cc/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/3.png&#34;
+	width=&#34;1280&#34;
+	height=&#34;552&#34;
+	srcset=&#34;https://cerr.cc/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/3_hu4d70cd902d697a5ecefcd17d3e94479e_36523_480x0_resize_box_3.png 480w, https://cerr.cc/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/3_hu4d70cd902d697a5ecefcd17d3e94479e_36523_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;UART&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;231&#34;
+		data-flex-basis=&#34;556px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;树莓派3B+的UART口为GPIO的8号和10号引脚，在raspbian若启用，则于此默认提供login shell。想要链接它则你先需要一个USB转TTL模块：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://zhuanlan.zhihu.com/p/25893717&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;UART、RS232、TTL关系浅析&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;https://cerr.cc/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/4.jpeg&#34;
+	width=&#34;3750&#34;
+	height=&#34;2525&#34;
+	srcset=&#34;https://cerr.cc/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/4_hufa28a6bf28e6164c6a53b2dbc757cd21_1572111_480x0_resize_q75_box.jpeg 480w, https://cerr.cc/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/4_hufa28a6bf28e6164c6a53b2dbc757cd21_1572111_1024x0_resize_q75_box.jpeg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;USB-TTL模块&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;148&#34;
+		data-flex-basis=&#34;356px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;然后将模块TXD接树莓派RXD、模块RXD接树莓派TXD，模块GND接树莓派GND（地线），并将模块接入你的电脑：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cerr.cc/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/5.jpeg&#34;
+	width=&#34;4032&#34;
+	height=&#34;3024&#34;
+	srcset=&#34;https://cerr.cc/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/5_hu1d9eb03f46f5e5fb91d72ed9ddaa96ea_2758974_480x0_resize_q75_box.jpeg 480w, https://cerr.cc/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/5_hu1d9eb03f46f5e5fb91d72ed9ddaa96ea_2758974_1024x0_resize_q75_box.jpeg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;USB-TTL连接&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;133&#34;
+		data-flex-basis=&#34;320px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;此时若已在树莓派中启用UART串口与UART串口console，则可以电脑直接访问该得到树莓派login shell。MacOS下的命令为：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cerr.cc/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/6.png&#34;
+	width=&#34;760&#34;
+	height=&#34;272&#34;
+	srcset=&#34;https://cerr.cc/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/6_hu805ef3ebcf6703a27ddcfd47ecc2ced7_31668_480x0_resize_box_3.png 480w, https://cerr.cc/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/6_hu805ef3ebcf6703a27ddcfd47ecc2ced7_31668_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;dev设备文件与cu命令&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;279&#34;
+		data-flex-basis=&#34;670px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;自uart进行裸串口通信&#34;&gt;自UART进行裸串口通信&lt;/h2&gt;
+&lt;p&gt;但若我们想要的不是login shell，而是一个raw的异步通信接口，可供我们编程，则需要做相应的操作。&lt;/p&gt;
+&lt;p&gt;树莓派的串口分为了主串口和辅助串口：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;主串口：通过硬件引脚进行通信&lt;/li&gt;
+&lt;li&gt;辅助串口：默认被分配给蓝牙端，不能用于GPIO引脚通信&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;对应到树莓派的设备文件，则为：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;/dev/ttyS0：字符设备文件，mini UART，mini串口&lt;/li&gt;
+&lt;li&gt;/dev/ttyAMA0：字符设备文件，first PL001 UART0，硬件串口&lt;/li&gt;
+&lt;li&gt;/dev/serial0：符号链接文件，主串口&lt;/li&gt;
+&lt;li&gt;/dev/serial1：符号链接文件，辅助串口&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;我们先对串口做如下设置：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo raspi-config
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;或使用GUI配置程序，将串口调整为：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cerr.cc/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/7.png&#34;
+	width=&#34;1024&#34;
+	height=&#34;796&#34;
+	srcset=&#34;https://cerr.cc/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/7_hu41a1ee39731f742fb9eb49ec0e190bb7_195286_480x0_resize_box_3.png 480w, https://cerr.cc/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/7_hu41a1ee39731f742fb9eb49ec0e190bb7_195286_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;config内容&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;128&#34;
+		data-flex-basis=&#34;308px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;树莓派重启后，此时执行&lt;code&gt;ls -l /dev&lt;/code&gt;可以发现，serial0 -&amp;gt; ttyS0; serial1 -&amp;gt; ttyAMA0，主串口（serial0）指向了mini串口，辅助串口（serial1）指向了硬件串口（ttyAM0）。我们需要对其进行调换。&lt;/p&gt;
+&lt;p&gt;编辑&lt;code&gt;/boot/config.txt&lt;/code&gt;，追加&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;dtoverlay&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;pi3-miniuart-bt
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;force_turbo&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;重启后可以看到，串口指向如我们所愿：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cerr.cc/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/8.png&#34;
+	width=&#34;1024&#34;
+	height=&#34;796&#34;
+	srcset=&#34;https://cerr.cc/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/8_hu41a1ee39731f742fb9eb49ec0e190bb7_249441_480x0_resize_box_3.png 480w, https://cerr.cc/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/8_hu41a1ee39731f742fb9eb49ec0e190bb7_249441_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;串口符号链接指向&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;128&#34;
+		data-flex-basis=&#34;308px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;接下来在树莓派上安装minicom用于串口通信：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt install minicom
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;此后树莓派执行：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;minicom -D /dev/ttyAMA0 -b &lt;span class=&#34;m&#34;&gt;115200&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Mac执行：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo cu -l /dev/cu.usbserial-130 -s &lt;span class=&#34;m&#34;&gt;115200&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;此时于一端输入的数据会直接打印到另一端：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cerr.cc/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/9.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;1080&#34;
+	srcset=&#34;https://cerr.cc/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/9_hu612dc3dd254e92b49e67df07d1f17ddd_1088975_480x0_resize_box_3.png 480w, https://cerr.cc/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/9_hu612dc3dd254e92b49e67df07d1f17ddd_1088975_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;UART裸通信效果&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;177&#34;
+		data-flex-basis=&#34;426px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;使用逻辑分析仪读取uart传输电平还原数据&#34;&gt;使用逻辑分析仪读取UART传输电平还原数据&lt;/h2&gt;
+&lt;p&gt;请出逻辑分析仪&lt;strong&gt;Kingst LA5016&lt;/strong&gt;，将其的两个通道连接至树莓派UART针脚，GND连接至树莓派GND针脚：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cerr.cc/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/10.jpeg&#34;
+	width=&#34;4032&#34;
+	height=&#34;3024&#34;
+	srcset=&#34;https://cerr.cc/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/10_hu5463b5649c4f46cbca4c42d8bf64f70a_3611807_480x0_resize_q75_box.jpeg 480w, https://cerr.cc/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/10_hu5463b5649c4f46cbca4c42d8bf64f70a_3611807_1024x0_resize_q75_box.jpeg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;img&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;133&#34;
+		data-flex-basis=&#34;320px&#34;
+	
+&gt;（这玩意还挺贵，不是我掏钱。逻辑分析仪价格从几十到几千都有)&lt;/p&gt;
+&lt;p&gt;我们于任意一端输入数据，则可在逻辑分析仪配套软件中捕获到电平信号，接使用UART解码器能解析出明文数据：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cerr.cc/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/11.png&#34;
+	width=&#34;1602&#34;
+	height=&#34;662&#34;
+	srcset=&#34;https://cerr.cc/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/11_hudc7e9b70e9802176a56c5995d6c1c4b0_317752_480x0_resize_box_3.png 480w, https://cerr.cc/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/11_hudc7e9b70e9802176a56c5995d6c1c4b0_317752_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;电平分析&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;241&#34;
+		data-flex-basis=&#34;580px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h1 id=&#34;树莓派的-jtag调试&#34;&gt;树莓派的 JTAG调试&lt;/h1&gt;
+&lt;p&gt;首先在树莓派中开启GPIO JTAG，在&lt;code&gt;/boot/config.txt&lt;/code&gt;末尾添加&lt;code&gt;enable_jtag_gpio=1&lt;/code&gt;即可。&lt;/p&gt;
+&lt;p&gt;由于gdb未适配我手头的采用M2芯片的MacBook Air，故使用Debian11物理运行JTAG调试端。采用的工具是openocd：&lt;/p&gt;
+&lt;p&gt;由此下载：&lt;a class=&#34;link&#34; href=&#34;https://github.com/xpack-dev-tools/openocd-xpack/releases&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/xpack-dev-tools/openocd-xpack/releases&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;将JLINK与树莓派的JTAG引脚连接起来，加上GND，总共6根线：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cerr.cc/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/13.png&#34;
+	width=&#34;782&#34;
+	height=&#34;794&#34;
+	srcset=&#34;https://cerr.cc/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/13_hu48742408ddad759885768aaf7ba126d3_238465_480x0_resize_box_3.png 480w, https://cerr.cc/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/13_hu48742408ddad759885768aaf7ba126d3_238465_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;JTAG引脚&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;98&#34;
+		data-flex-basis=&#34;236px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cerr.cc/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/12.jpeg&#34;
+	width=&#34;4032&#34;
+	height=&#34;3024&#34;
+	srcset=&#34;https://cerr.cc/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/12_hu066b38368c90fb8eaf8e8d402aa68689_3060841_480x0_resize_q75_box.jpeg 480w, https://cerr.cc/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/12_hu066b38368c90fb8eaf8e8d402aa68689_3060841_1024x0_resize_q75_box.jpeg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;JLINK连接&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;133&#34;
+		data-flex-basis=&#34;320px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;将下载好的openocd工具解压，进入目录后，执行：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;./bin/openocd -f ./scripts/interface/jlink.cfg -f ./scripts/board/rpi3.cfg
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;其中&lt;code&gt;./scripts/interface/jlink.cfg&lt;/code&gt;对应的是我们使用的ARM仿真器JLINK V9的配置文件，&lt;code&gt;./scripts/board/rpi3.cfg&lt;/code&gt;是树莓派3B的配置文件。也可以添加&lt;code&gt; -c &amp;quot;bindto 0.0.0.0&amp;quot;&lt;/code&gt;将调试端口（默认127.0.0.1）开放在0.0.0.0以方便远程调试：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;27
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;28
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;29
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;30
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;~/xpack-openocd-0.11.0-5                                                                      
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;▶ ./bin/openocd -f ./scripts/interface/jlink.cfg -f ./scripts/board/rpi3.cfg
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;xPack OpenOCD x86_64 Open On-Chip Debugger 0.11.0+dev &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;2022-09-01-17:56&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Licensed under GNU GPL v2
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;For bug reports, &lt;span class=&#34;nb&#34;&gt;read&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        http://openocd.org/doc/doxygen/bugs.html
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Info : auto-selecting first available session transport &lt;span class=&#34;s2&#34;&gt;&amp;#34;jtag&amp;#34;&lt;/span&gt;. To override use &lt;span class=&#34;err&#34;&gt;&amp;#39;&lt;/span&gt;transport &lt;span class=&#34;k&#34;&gt;select&lt;/span&gt; &amp;lt;trans
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Warn : Transport &lt;span class=&#34;s2&#34;&gt;&amp;#34;jtag&amp;#34;&lt;/span&gt; was already selected
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;trst_only separate trst_push_pull
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Info : Listening on port &lt;span class=&#34;m&#34;&gt;6666&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; tcl connections
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Info : Listening on port &lt;span class=&#34;m&#34;&gt;4444&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; telnet connections
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Info : J-Link V9 compiled Dec &lt;span class=&#34;m&#34;&gt;13&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;2019&lt;/span&gt; 11:14:50
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Info : Hardware version: 9.70
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Info : &lt;span class=&#34;nv&#34;&gt;VTarget&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; 3.291 V
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Info : clock speed &lt;span class=&#34;m&#34;&gt;4000&lt;/span&gt; kHz
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Info : JTAG tap: bcm2837.cpu tap/device found: 0x4ba00477 &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;mfg: 0x23b &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;ARM Ltd&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;, part: 0xba00, ver: 0x4&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Info : bcm2837.cpu0: hardware has &lt;span class=&#34;m&#34;&gt;6&lt;/span&gt; breakpoints, &lt;span class=&#34;m&#34;&gt;4&lt;/span&gt; watchpoints
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Info : bcm2837.cpu1: hardware has &lt;span class=&#34;m&#34;&gt;6&lt;/span&gt; breakpoints, &lt;span class=&#34;m&#34;&gt;4&lt;/span&gt; watchpoints
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Info : bcm2837.cpu2: hardware has &lt;span class=&#34;m&#34;&gt;6&lt;/span&gt; breakpoints, &lt;span class=&#34;m&#34;&gt;4&lt;/span&gt; watchpoints
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Info : bcm2837.cpu3: hardware has &lt;span class=&#34;m&#34;&gt;6&lt;/span&gt; breakpoints, &lt;span class=&#34;m&#34;&gt;4&lt;/span&gt; watchpoints
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Info : gdb port disabled
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Info : starting gdb server &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; bcm2837.cpu0 on &lt;span class=&#34;m&#34;&gt;3333&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Info : Listening on port &lt;span class=&#34;m&#34;&gt;3333&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; gdb connections
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Info : starting gdb server &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; bcm2837.cpu1 on &lt;span class=&#34;m&#34;&gt;3334&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Info : Listening on port &lt;span class=&#34;m&#34;&gt;3334&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; gdb connections
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Info : starting gdb server &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; bcm2837.cpu2 on &lt;span class=&#34;m&#34;&gt;3335&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Info : Listening on port &lt;span class=&#34;m&#34;&gt;3335&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; gdb connections
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Info : starting gdb server &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; bcm2837.cpu3 on &lt;span class=&#34;m&#34;&gt;3336&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Info : Listening on port &lt;span class=&#34;m&#34;&gt;3336&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; gdb connections
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;可以看到对于树莓派3B+的博通BCM2837四核心处理器，开启了3333～3336四个端口供调试。使用gdb-multiarch attach上去即可开始调试CPU：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;27
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;28
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;29
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;30
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;31
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;32
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;33
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;34
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;35
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;36
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;37
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;38
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;39
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;40
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;41
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;42
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;43
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;44
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;45
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;46
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;47
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;48
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;49
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;50
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;51
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;52
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;53
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;54
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;55
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;56
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;57
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;58
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;59
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;60
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;61
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;62
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;63
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;64
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;65
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;66
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;67
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;gef➤  &lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; architecture aarch64
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;The target architecture is &lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; to &lt;span class=&#34;s2&#34;&gt;&amp;#34;aarch64&amp;#34;&lt;/span&gt;.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;gef➤  &lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; endian little
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;The target is &lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; to little endian.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;gef➤  target remote 127.0.0.1:3333    
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;!&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; Using &lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt;target remote&lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt; with GEF does not work, use &lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt;gef-remote&lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt; instead. You&lt;span class=&#34;s1&#34;&gt;&amp;#39;ve been warned.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;Remote debugging using 127.0.0.1:3333
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;warning: No executable has been specified and target does not support
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;determining executable automatically.  Try using the &amp;#34;file&amp;#34; command.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;0xffffffd85e1249e4 in ?? ()
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;[ Legend: Modified register | Code | Heap | Stack | String ]
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;───────────────────────────────────────────────────────────────────────────────────────── registers ────
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;[!] Command &amp;#39;&lt;/span&gt;registers&lt;span class=&#34;s1&#34;&gt;&amp;#39; failed to execute properly, reason: max() arg is an empty sequence
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;───────────────────────────────────────────────────────────────────────────────────────────── stack ────
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;[!] Unmapped address: &amp;#39;&lt;/span&gt;0xffffffd85e933d40&lt;span class=&#34;s1&#34;&gt;&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;───────────────────────────────────────────────────────────────────────────────────── code:generic: ────
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;   0xffffffd85e1249d8                  paciasp 
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;   0xffffffd85e1249dc                  dsb    sy
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;   0xffffffd85e1249e0                  wfi    
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;[!] Command &amp;#39;&lt;/span&gt;context&lt;span class=&#34;err&#34;&gt;&amp;#39;&lt;/span&gt; failed to execute properly, reason: 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;gef➤  i r
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;x0             0x43fb1de           0x43fb1de
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;x1             0xffffff803b1889a0  0xffffff803b1889a0
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;x2             0x0                 0x0
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;x3             0xffffffd85e93fac0  0xffffffd85e93fac0
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;x4             0x1                 0x1
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;x5             0xffffffa7dcb27000  0xffffffa7dcb27000
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;x6             0xffffffd85e933ce0  0xffffffd85e933ce0
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;x7             0xfffffffffffffffe  0xfffffffffffffffe
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;x8             0x0                 0x0
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;x9             0xffffffd85d70fe60  0xffffffd85d70fe60
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;x10            0x1a00              0x1a00
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;x11            0x0                 0x0
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;x12            0x0                 0x0
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;x13            0x0                 0x0
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;x14            0x0                 0x0
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;x15            0x7fbcd646a8        0x7fbcd646a8
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;x16            0x0                 0x0
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;x17            0x0                 0x0
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;x18            0x0                 0x0
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;x19            0x1                 0x1
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;x20            0xffffffd85e93892c  0xffffffd85e93892c
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;x21            0xffffffd85e938840  0xffffffd85e938840
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;x22            0xffffffd85e49b508  0xffffffd85e49b508
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;x23            0xffffffd85e65f938  0xffffffd85e65f938
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;x24            0xffffffd85e44dbb0  0xffffffd85e44dbb0
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;x25            0x0                 0x0
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;x26            0x0                 0x0
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;x27            0xffffff803b1e8280  0xffffff803b1e8280
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;x28            0xffffffd85e400438  0xffffffd85e400438
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;x29            0xffffffd85e933d40  0xffffffd85e933d40
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;x30            0xffffffd85e124a00  0xffffffd85e124a00
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sp             0xffffffd85e933d40  0xffffffd85e933d40
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;pc             0xffffffd85e1249e4  0xffffffd85e1249e4
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;cpsr           0x400000c5          &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;SP&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;EL&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;2&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;nRW&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;0&lt;/span&gt; F I Z &lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;fpsr           0x10                0x10
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;fpcr           0x0                 0x0
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ELR_EL1        0xffffffd85e124a08  0xffffffd85e124a08
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ESR_EL1        0x56000000          0x56000000
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;SPSR_EL1       0x40000005          0x40000005
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ELR_EL2        0x0                 0x0
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ESR_EL2        0x0                 0x0
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;SPSR_EL2       0x0                 0x0
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ELR_EL3        0x0                 0x0
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ESR_EL3        0x0                 0x0
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;SPSR_EL3       0x0                 0x0
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;gef➤  
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description>
+        </item>
+        <item>
         <title>ZKV对嵌入式硬件的浅尝不止</title>
         <link>https://cerr.cc/post/zkv%E5%AF%B9%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%A1%AC%E4%BB%B6%E7%9A%84%E6%B5%85%E5%B0%9D%E4%B8%8D%E6%AD%A2/</link>
         <pubDate>Fri, 08 Jul 2022 14:11:35 +0800</pubDate>

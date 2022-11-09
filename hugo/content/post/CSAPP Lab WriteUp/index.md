@@ -1629,6 +1629,8 @@ Trans perf 61x67          10.0        10        1951
 
 # Shell Lab
 
+在本shell里，我们需要完善`tsh.c`，来实现一个行为与tshref相同的shell。
+
 ```c
 /*
  * eval - Evaluate the command line that the user has just typed in
@@ -1887,6 +1889,6 @@ void sigtstp_handler(int sig)
 
 In this lab you will write a dynamic memory allocator which will consist of the malloc, free, realloc, and calloc functions. Your goal is to implement an allocator that is correct, efficient, and fast.
 
-本lab的目的是用C语言编写一个正确高效和快速的动态存储分配器，即malloc，free，realloc，和calloc函数。主要是在mm.c这个文件中编写以下几个函数：
+
 
 # Proxy Lab

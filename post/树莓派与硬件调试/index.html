@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html lang="" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content=''><title>树莓派与硬件调试</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='UART、JTAG，JLINK与逻辑分析仪'><title>树莓派与硬件调试</title>
 
 <link rel='canonical' href='https://cerr.cc/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/'>
 
 <link rel="stylesheet" href="/scss/style.min.e75bab105855f77caa94de85bd0b7a889920eb03fa3048257f51f59c063a674d.css"><meta property='og:title' content='树莓派与硬件调试'>
-<meta property='og:description' content=''>
+<meta property='og:description' content='UART、JTAG，JLINK与逻辑分析仪'>
 <meta property='og:url' content='https://cerr.cc/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/'>
 <meta property='og:site_name' content='Zikey Vi'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2022-11-08T17:30:39&#43;08:00'/><meta property='article:modified_time' content='2022-11-08T17:30:39&#43;08:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Embeded' /><meta property='article:published_time' content='2022-11-08T17:30:39&#43;08:00'/><meta property='article:modified_time' content='2022-11-08T17:30:39&#43;08:00'/><meta property='og:image' content='https://images.prismic.io/rpf-products/bef8cda3-64ea-4098-bf18-8e731a6e9a0d_3b%2B%20Angle%202.jpg?ixlib=gatsbyFP&auto=compress%2Cformat&fit=max&w=600&h=400' />
 <meta name="twitter:title" content="树莓派与硬件调试">
-<meta name="twitter:description" content="">
+<meta name="twitter:description" content="UART、JTAG，JLINK与逻辑分析仪"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://images.prismic.io/rpf-products/bef8cda3-64ea-4098-bf18-8e731a6e9a0d_3b%2B%20Angle%202.jpg?ixlib=gatsbyFP&auto=compress%2Cformat&fit=max&w=600&h=400' />
     <link rel="shortcut icon" href="favicon.png" />
 
     </head>
@@ -321,10 +322,26 @@
     </ol>
 </aside>
 <main class="main full-width">
-    <article class="main-article">
+    <article class="has-image main-article">
     <header class="article-header">
+        <div class="article-image">
+            <a href="/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/">
+                
+                    <img src="https://images.prismic.io/rpf-products/bef8cda3-64ea-4098-bf18-8e731a6e9a0d_3b%2B%20Angle%202.jpg?ixlib=gatsbyFP&amp;auto=compress%2Cformat&amp;fit=max&amp;w=600&amp;h=400" loading="lazy" alt="Featured image of post 树莓派与硬件调试" />
+                
+            </a>
+        </div>
+    
 
     <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E5%B7%A5%E5%9C%B0%E6%97%A5%E8%AE%B0/" >
+                工地日记
+            </a>
+        
+    </header>
     
 
     <div class="article-title-wrapper">
@@ -332,6 +349,10 @@
             <a href="/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/">树莓派与硬件调试</a>
         </h2>
     
+        
+        <h3 class="article-subtitle">
+            UART、JTAG，JLINK与逻辑分析仪
+        </h3>
         
     </div>
 
@@ -363,13 +384,15 @@
     <section class="article-content">
     
     
-    <p><img src="/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/Parts-of-R-Pi-3B.webp"
+    <h1 id="树莓派3b的结构">树莓派3B+的结构</h1>
+<p>以本次的样本**树莓派3B+**为例，先来认识认识它的PCB板：</p>
+<p><img src="/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/Parts-of-R-Pi-3B.webp"
 	width="1024"
 	height="694"
 	srcset="/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/Parts-of-R-Pi-3B_hu2185f7169ef70ed92bbb816a734fb592_78246_480x0_resize_q75_h2_box_2.webp 480w, /post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/Parts-of-R-Pi-3B_hu2185f7169ef70ed92bbb816a734fb592_78246_1024x0_resize_q75_h2_box_2.webp 1024w"
 	loading="lazy"
 	
-		alt="Parts-of-R-Pi-3B"
+		alt="树莓派3B&#43; PCB"
 	
 	
 		class="gallery-image" 
@@ -377,12 +400,494 @@
 		data-flex-basis="354px"
 	
 ></p>
-
+<p>我们重点会使用到的是其上的GPIO接口，其引脚如下：</p>
+<blockquote>
+<p>GPIO, General-purpose input/output, <a class="link" href="https://en.wikipedia.org/wiki/General-purpose_input/output"  target="_blank" rel="noopener"
+    >https://en.wikipedia.org/wiki/General-purpose_input/output</a></p>
+</blockquote>
+<p><img src="/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/2.png"
+	width="2064"
+	height="1185"
+	srcset="/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/2_hua49859c3abb8d59effc7f48992911ff2_206936_480x0_resize_box_3.png 480w, /post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/2_hua49859c3abb8d59effc7f48992911ff2_206936_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="GPIO引脚"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="174"
+		data-flex-basis="418px"
+	
+></p>
+<h1 id="uart连接与逻辑分析仪">UART连接与逻辑分析仪</h1>
+<h2 id="从uart获取login-shell">从UART获取login shell</h2>
+<p>UART，Universal asynchronous receiver-transmitter：<a class="link" href="https://en.wikipedia.org/wiki/Universal_asynchronous_receiver-transmitter"  target="_blank" rel="noopener"
+    >https://en.wikipedia.org/wiki/Universal_asynchronous_receiver-transmitter</a></p>
+<p>UART使用两条线进行双向异步数据传输，Tx-&gt;Rx; Rx-&gt;Tx：</p>
+<p><img src="/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/3.png"
+	width="1280"
+	height="552"
+	srcset="/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/3_hu4d70cd902d697a5ecefcd17d3e94479e_36523_480x0_resize_box_3.png 480w, /post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/3_hu4d70cd902d697a5ecefcd17d3e94479e_36523_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="UART"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="231"
+		data-flex-basis="556px"
+	
+></p>
+<p>树莓派3B+的UART口为GPIO的8号和10号引脚，在raspbian若启用，则于此默认提供login shell。想要链接它则你先需要一个USB转TTL模块：</p>
+<blockquote>
+<p><a class="link" href="https://zhuanlan.zhihu.com/p/25893717"  target="_blank" rel="noopener"
+    >UART、RS232、TTL关系浅析</a></p>
+</blockquote>
+<p><img src="/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/4.jpeg"
+	width="3750"
+	height="2525"
+	srcset="/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/4_hufa28a6bf28e6164c6a53b2dbc757cd21_1572111_480x0_resize_q75_box.jpeg 480w, /post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/4_hufa28a6bf28e6164c6a53b2dbc757cd21_1572111_1024x0_resize_q75_box.jpeg 1024w"
+	loading="lazy"
+	
+		alt="USB-TTL模块"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="148"
+		data-flex-basis="356px"
+	
+></p>
+<p>然后将模块TXD接树莓派RXD、模块RXD接树莓派TXD，模块GND接树莓派GND（地线），并将模块接入你的电脑：</p>
+<p><img src="/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/5.jpeg"
+	width="4032"
+	height="3024"
+	srcset="/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/5_hu1d9eb03f46f5e5fb91d72ed9ddaa96ea_2758974_480x0_resize_q75_box.jpeg 480w, /post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/5_hu1d9eb03f46f5e5fb91d72ed9ddaa96ea_2758974_1024x0_resize_q75_box.jpeg 1024w"
+	loading="lazy"
+	
+		alt="USB-TTL连接"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="133"
+		data-flex-basis="320px"
+	
+></p>
+<p>此时若已在树莓派中启用UART串口与UART串口console，则可以电脑直接访问该得到树莓派login shell。MacOS下的命令为：</p>
+<p><img src="/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/6.png"
+	width="760"
+	height="272"
+	srcset="/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/6_hu805ef3ebcf6703a27ddcfd47ecc2ced7_31668_480x0_resize_box_3.png 480w, /post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/6_hu805ef3ebcf6703a27ddcfd47ecc2ced7_31668_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="dev设备文件与cu命令"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="279"
+		data-flex-basis="670px"
+	
+></p>
+<h2 id="自uart进行裸串口通信">自UART进行裸串口通信</h2>
+<p>但若我们想要的不是login shell，而是一个raw的异步通信接口，可供我们编程，则需要做相应的操作。</p>
+<p>树莓派的串口分为了主串口和辅助串口：</p>
+<ul>
+<li>主串口：通过硬件引脚进行通信</li>
+<li>辅助串口：默认被分配给蓝牙端，不能用于GPIO引脚通信</li>
+</ul>
+<p>对应到树莓派的设备文件，则为：</p>
+<ul>
+<li>/dev/ttyS0：字符设备文件，mini UART，mini串口</li>
+<li>/dev/ttyAMA0：字符设备文件，first PL001 UART0，硬件串口</li>
+<li>/dev/serial0：符号链接文件，主串口</li>
+<li>/dev/serial1：符号链接文件，辅助串口</li>
+</ul>
+<p>我们先对串口做如下设置：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">sudo raspi-config
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>或使用GUI配置程序，将串口调整为：</p>
+<p><img src="/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/7.png"
+	width="1024"
+	height="796"
+	srcset="/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/7_hu41a1ee39731f742fb9eb49ec0e190bb7_195286_480x0_resize_box_3.png 480w, /post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/7_hu41a1ee39731f742fb9eb49ec0e190bb7_195286_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="config内容"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="128"
+		data-flex-basis="308px"
+	
+></p>
+<p>树莓派重启后，此时执行<code>ls -l /dev</code>可以发现，serial0 -&gt; ttyS0; serial1 -&gt; ttyAMA0，主串口（serial0）指向了mini串口，辅助串口（serial1）指向了硬件串口（ttyAM0）。我们需要对其进行调换。</p>
+<p>编辑<code>/boot/config.txt</code>，追加</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="nv">dtoverlay</span><span class="o">=</span>pi3-miniuart-bt
+</span></span><span class="line"><span class="cl"><span class="nv">force_turbo</span><span class="o">=</span><span class="m">1</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>重启后可以看到，串口指向如我们所愿：</p>
+<p><img src="/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/8.png"
+	width="1024"
+	height="796"
+	srcset="/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/8_hu41a1ee39731f742fb9eb49ec0e190bb7_249441_480x0_resize_box_3.png 480w, /post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/8_hu41a1ee39731f742fb9eb49ec0e190bb7_249441_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="串口符号链接指向"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="128"
+		data-flex-basis="308px"
+	
+></p>
+<p>接下来在树莓派上安装minicom用于串口通信：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">sudo apt install minicom
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>此后树莓派执行：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">minicom -D /dev/ttyAMA0 -b <span class="m">115200</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Mac执行：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">sudo cu -l /dev/cu.usbserial-130 -s <span class="m">115200</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>此时于一端输入的数据会直接打印到另一端：</p>
+<p><img src="/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/9.png"
+	width="1920"
+	height="1080"
+	srcset="/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/9_hu612dc3dd254e92b49e67df07d1f17ddd_1088975_480x0_resize_box_3.png 480w, /post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/9_hu612dc3dd254e92b49e67df07d1f17ddd_1088975_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="UART裸通信效果"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="177"
+		data-flex-basis="426px"
+	
+></p>
+<h2 id="使用逻辑分析仪读取uart传输电平还原数据">使用逻辑分析仪读取UART传输电平还原数据</h2>
+<p>请出逻辑分析仪<strong>Kingst LA5016</strong>，将其的两个通道连接至树莓派UART针脚，GND连接至树莓派GND针脚：</p>
+<p><img src="/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/10.jpeg"
+	width="4032"
+	height="3024"
+	srcset="/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/10_hu5463b5649c4f46cbca4c42d8bf64f70a_3611807_480x0_resize_q75_box.jpeg 480w, /post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/10_hu5463b5649c4f46cbca4c42d8bf64f70a_3611807_1024x0_resize_q75_box.jpeg 1024w"
+	loading="lazy"
+	
+		alt="img"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="133"
+		data-flex-basis="320px"
+	
+>（这玩意还挺贵，不是我掏钱。逻辑分析仪价格从几十到几千都有)</p>
+<p>我们于任意一端输入数据，则可在逻辑分析仪配套软件中捕获到电平信号，接使用UART解码器能解析出明文数据：</p>
+<p><img src="/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/11.png"
+	width="1602"
+	height="662"
+	srcset="/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/11_hudc7e9b70e9802176a56c5995d6c1c4b0_317752_480x0_resize_box_3.png 480w, /post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/11_hudc7e9b70e9802176a56c5995d6c1c4b0_317752_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="电平分析"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="241"
+		data-flex-basis="580px"
+	
+></p>
+<h1 id="树莓派的-jtag调试">树莓派的 JTAG调试</h1>
+<p>首先在树莓派中开启GPIO JTAG，在<code>/boot/config.txt</code>末尾添加<code>enable_jtag_gpio=1</code>即可。</p>
+<p>由于gdb未适配我手头的采用M2芯片的MacBook Air，故使用Debian11物理运行JTAG调试端。采用的工具是openocd：</p>
+<p>由此下载：<a class="link" href="https://github.com/xpack-dev-tools/openocd-xpack/releases"  target="_blank" rel="noopener"
+    >https://github.com/xpack-dev-tools/openocd-xpack/releases</a></p>
+<p>将JLINK与树莓派的JTAG引脚连接起来，加上GND，总共6根线：</p>
+<p><img src="/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/13.png"
+	width="782"
+	height="794"
+	srcset="/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/13_hu48742408ddad759885768aaf7ba126d3_238465_480x0_resize_box_3.png 480w, /post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/13_hu48742408ddad759885768aaf7ba126d3_238465_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="JTAG引脚"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="98"
+		data-flex-basis="236px"
+	
+></p>
+<p><img src="/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/12.jpeg"
+	width="4032"
+	height="3024"
+	srcset="/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/12_hu066b38368c90fb8eaf8e8d402aa68689_3060841_480x0_resize_q75_box.jpeg 480w, /post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/12_hu066b38368c90fb8eaf8e8d402aa68689_3060841_1024x0_resize_q75_box.jpeg 1024w"
+	loading="lazy"
+	
+		alt="JLINK连接"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="133"
+		data-flex-basis="320px"
+	
+></p>
+<p>将下载好的openocd工具解压，进入目录后，执行：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">./bin/openocd -f ./scripts/interface/jlink.cfg -f ./scripts/board/rpi3.cfg
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>其中<code>./scripts/interface/jlink.cfg</code>对应的是我们使用的ARM仿真器JLINK V9的配置文件，<code>./scripts/board/rpi3.cfg</code>是树莓派3B的配置文件。也可以添加<code> -c &quot;bindto 0.0.0.0&quot;</code>将调试端口（默认127.0.0.1）开放在0.0.0.0以方便远程调试：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">~/xpack-openocd-0.11.0-5                                                                      
+</span></span><span class="line"><span class="cl">▶ ./bin/openocd -f ./scripts/interface/jlink.cfg -f ./scripts/board/rpi3.cfg
+</span></span><span class="line"><span class="cl">xPack OpenOCD x86_64 Open On-Chip Debugger 0.11.0+dev <span class="o">(</span>2022-09-01-17:56<span class="o">)</span>
+</span></span><span class="line"><span class="cl">Licensed under GNU GPL v2
+</span></span><span class="line"><span class="cl">For bug reports, <span class="nb">read</span>
+</span></span><span class="line"><span class="cl">        http://openocd.org/doc/doxygen/bugs.html
+</span></span><span class="line"><span class="cl">Info : auto-selecting first available session transport <span class="s2">&#34;jtag&#34;</span>. To override use <span class="err">&#39;</span>transport <span class="k">select</span> &lt;trans
+</span></span><span class="line"><span class="cl">Warn : Transport <span class="s2">&#34;jtag&#34;</span> was already selected
+</span></span><span class="line"><span class="cl">trst_only separate trst_push_pull
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Info : Listening on port <span class="m">6666</span> <span class="k">for</span> tcl connections
+</span></span><span class="line"><span class="cl">Info : Listening on port <span class="m">4444</span> <span class="k">for</span> telnet connections
+</span></span><span class="line"><span class="cl">Info : J-Link V9 compiled Dec <span class="m">13</span> <span class="m">2019</span> 11:14:50
+</span></span><span class="line"><span class="cl">Info : Hardware version: 9.70
+</span></span><span class="line"><span class="cl">Info : <span class="nv">VTarget</span> <span class="o">=</span> 3.291 V
+</span></span><span class="line"><span class="cl">Info : clock speed <span class="m">4000</span> kHz
+</span></span><span class="line"><span class="cl">Info : JTAG tap: bcm2837.cpu tap/device found: 0x4ba00477 <span class="o">(</span>mfg: 0x23b <span class="o">(</span>ARM Ltd<span class="o">)</span>, part: 0xba00, ver: 0x4<span class="o">)</span>
+</span></span><span class="line"><span class="cl">Info : bcm2837.cpu0: hardware has <span class="m">6</span> breakpoints, <span class="m">4</span> watchpoints
+</span></span><span class="line"><span class="cl">Info : bcm2837.cpu1: hardware has <span class="m">6</span> breakpoints, <span class="m">4</span> watchpoints
+</span></span><span class="line"><span class="cl">Info : bcm2837.cpu2: hardware has <span class="m">6</span> breakpoints, <span class="m">4</span> watchpoints
+</span></span><span class="line"><span class="cl">Info : bcm2837.cpu3: hardware has <span class="m">6</span> breakpoints, <span class="m">4</span> watchpoints
+</span></span><span class="line"><span class="cl">Info : gdb port disabled
+</span></span><span class="line"><span class="cl">Info : starting gdb server <span class="k">for</span> bcm2837.cpu0 on <span class="m">3333</span>
+</span></span><span class="line"><span class="cl">Info : Listening on port <span class="m">3333</span> <span class="k">for</span> gdb connections
+</span></span><span class="line"><span class="cl">Info : starting gdb server <span class="k">for</span> bcm2837.cpu1 on <span class="m">3334</span>
+</span></span><span class="line"><span class="cl">Info : Listening on port <span class="m">3334</span> <span class="k">for</span> gdb connections
+</span></span><span class="line"><span class="cl">Info : starting gdb server <span class="k">for</span> bcm2837.cpu2 on <span class="m">3335</span>
+</span></span><span class="line"><span class="cl">Info : Listening on port <span class="m">3335</span> <span class="k">for</span> gdb connections
+</span></span><span class="line"><span class="cl">Info : starting gdb server <span class="k">for</span> bcm2837.cpu3 on <span class="m">3336</span>
+</span></span><span class="line"><span class="cl">Info : Listening on port <span class="m">3336</span> <span class="k">for</span> gdb connections
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>可以看到对于树莓派3B+的博通BCM2837四核心处理器，开启了3333～3336四个端口供调试。使用gdb-multiarch attach上去即可开始调试CPU：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">gef➤  <span class="nb">set</span> architecture aarch64
+</span></span><span class="line"><span class="cl">The target architecture is <span class="nb">set</span> to <span class="s2">&#34;aarch64&#34;</span>.
+</span></span><span class="line"><span class="cl">gef➤  <span class="nb">set</span> endian little
+</span></span><span class="line"><span class="cl">The target is <span class="nb">set</span> to little endian.
+</span></span><span class="line"><span class="cl">gef➤  target remote 127.0.0.1:3333    
+</span></span><span class="line"><span class="cl"><span class="o">[</span>!<span class="o">]</span> Using <span class="sb">`</span>target remote<span class="sb">`</span> with GEF does not work, use <span class="sb">`</span>gef-remote<span class="sb">`</span> instead. You<span class="s1">&#39;ve been warned.
+</span></span></span><span class="line"><span class="cl"><span class="s1">Remote debugging using 127.0.0.1:3333
+</span></span></span><span class="line"><span class="cl"><span class="s1">warning: No executable has been specified and target does not support
+</span></span></span><span class="line"><span class="cl"><span class="s1">determining executable automatically.  Try using the &#34;file&#34; command.
+</span></span></span><span class="line"><span class="cl"><span class="s1">0xffffffd85e1249e4 in ?? ()
+</span></span></span><span class="line"><span class="cl"><span class="s1">[ Legend: Modified register | Code | Heap | Stack | String ]
+</span></span></span><span class="line"><span class="cl"><span class="s1">───────────────────────────────────────────────────────────────────────────────────────── registers ────
+</span></span></span><span class="line"><span class="cl"><span class="s1">[!] Command &#39;</span>registers<span class="s1">&#39; failed to execute properly, reason: max() arg is an empty sequence
+</span></span></span><span class="line"><span class="cl"><span class="s1">───────────────────────────────────────────────────────────────────────────────────────────── stack ────
+</span></span></span><span class="line"><span class="cl"><span class="s1">[!] Unmapped address: &#39;</span>0xffffffd85e933d40<span class="s1">&#39;
+</span></span></span><span class="line"><span class="cl"><span class="s1">───────────────────────────────────────────────────────────────────────────────────── code:generic: ────
+</span></span></span><span class="line"><span class="cl"><span class="s1">   0xffffffd85e1249d8                  paciasp 
+</span></span></span><span class="line"><span class="cl"><span class="s1">   0xffffffd85e1249dc                  dsb    sy
+</span></span></span><span class="line"><span class="cl"><span class="s1">   0xffffffd85e1249e0                  wfi    
+</span></span></span><span class="line"><span class="cl"><span class="s1">[!] Command &#39;</span>context<span class="err">&#39;</span> failed to execute properly, reason: 
+</span></span><span class="line"><span class="cl">gef➤  i r
+</span></span><span class="line"><span class="cl">x0             0x43fb1de           0x43fb1de
+</span></span><span class="line"><span class="cl">x1             0xffffff803b1889a0  0xffffff803b1889a0
+</span></span><span class="line"><span class="cl">x2             0x0                 0x0
+</span></span><span class="line"><span class="cl">x3             0xffffffd85e93fac0  0xffffffd85e93fac0
+</span></span><span class="line"><span class="cl">x4             0x1                 0x1
+</span></span><span class="line"><span class="cl">x5             0xffffffa7dcb27000  0xffffffa7dcb27000
+</span></span><span class="line"><span class="cl">x6             0xffffffd85e933ce0  0xffffffd85e933ce0
+</span></span><span class="line"><span class="cl">x7             0xfffffffffffffffe  0xfffffffffffffffe
+</span></span><span class="line"><span class="cl">x8             0x0                 0x0
+</span></span><span class="line"><span class="cl">x9             0xffffffd85d70fe60  0xffffffd85d70fe60
+</span></span><span class="line"><span class="cl">x10            0x1a00              0x1a00
+</span></span><span class="line"><span class="cl">x11            0x0                 0x0
+</span></span><span class="line"><span class="cl">x12            0x0                 0x0
+</span></span><span class="line"><span class="cl">x13            0x0                 0x0
+</span></span><span class="line"><span class="cl">x14            0x0                 0x0
+</span></span><span class="line"><span class="cl">x15            0x7fbcd646a8        0x7fbcd646a8
+</span></span><span class="line"><span class="cl">x16            0x0                 0x0
+</span></span><span class="line"><span class="cl">x17            0x0                 0x0
+</span></span><span class="line"><span class="cl">x18            0x0                 0x0
+</span></span><span class="line"><span class="cl">x19            0x1                 0x1
+</span></span><span class="line"><span class="cl">x20            0xffffffd85e93892c  0xffffffd85e93892c
+</span></span><span class="line"><span class="cl">x21            0xffffffd85e938840  0xffffffd85e938840
+</span></span><span class="line"><span class="cl">x22            0xffffffd85e49b508  0xffffffd85e49b508
+</span></span><span class="line"><span class="cl">x23            0xffffffd85e65f938  0xffffffd85e65f938
+</span></span><span class="line"><span class="cl">x24            0xffffffd85e44dbb0  0xffffffd85e44dbb0
+</span></span><span class="line"><span class="cl">x25            0x0                 0x0
+</span></span><span class="line"><span class="cl">x26            0x0                 0x0
+</span></span><span class="line"><span class="cl">x27            0xffffff803b1e8280  0xffffff803b1e8280
+</span></span><span class="line"><span class="cl">x28            0xffffffd85e400438  0xffffffd85e400438
+</span></span><span class="line"><span class="cl">x29            0xffffffd85e933d40  0xffffffd85e933d40
+</span></span><span class="line"><span class="cl">x30            0xffffffd85e124a00  0xffffffd85e124a00
+</span></span><span class="line"><span class="cl">sp             0xffffffd85e933d40  0xffffffd85e933d40
+</span></span><span class="line"><span class="cl">pc             0xffffffd85e1249e4  0xffffffd85e1249e4
+</span></span><span class="line"><span class="cl">cpsr           0x400000c5          <span class="o">[</span> <span class="nv">SP</span><span class="o">=</span><span class="m">1</span> <span class="nv">EL</span><span class="o">=</span><span class="m">2</span> <span class="nv">nRW</span><span class="o">=</span><span class="m">0</span> F I Z <span class="o">]</span>
+</span></span><span class="line"><span class="cl">fpsr           0x10                0x10
+</span></span><span class="line"><span class="cl">fpcr           0x0                 0x0
+</span></span><span class="line"><span class="cl">ELR_EL1        0xffffffd85e124a08  0xffffffd85e124a08
+</span></span><span class="line"><span class="cl">ESR_EL1        0x56000000          0x56000000
+</span></span><span class="line"><span class="cl">SPSR_EL1       0x40000005          0x40000005
+</span></span><span class="line"><span class="cl">ELR_EL2        0x0                 0x0
+</span></span><span class="line"><span class="cl">ESR_EL2        0x0                 0x0
+</span></span><span class="line"><span class="cl">SPSR_EL2       0x0                 0x0
+</span></span><span class="line"><span class="cl">ELR_EL3        0x0                 0x0
+</span></span><span class="line"><span class="cl">ESR_EL3        0x0                 0x0
+</span></span><span class="line"><span class="cl">SPSR_EL3       0x0                 0x0
+</span></span><span class="line"><span class="cl">gef➤  
+</span></span></code></pre></td></tr></table>
+</div>
+</div>
 </section>
 
 
     <footer class="article-footer">
     
+    <section class="article-tags">
+        
+            <a href="/tags/embeded/">Embeded</a>
+        
+    </section>
+
 
     </footer>
 
@@ -393,6 +898,110 @@
     
 
     
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/post/%E5%8D%8E%E7%A1%95%E6%A2%85%E6%9E%97%E5%9B%BA%E4%BB%B6%E7%9A%84%E7%BC%96%E8%AF%91/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://www.asuswrt-merlin.net/sites/default/files/inline-images/main_page_sm_2.png" loading="lazy" data-key="" data-hash="https://www.asuswrt-merlin.net/sites/default/files/inline-images/main_page_sm_2.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">华硕梅林固件的编译</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/post/%E4%BD%BF%E7%94%A8qemu-gdb%E8%B0%83%E8%AF%95linux%E5%86%85%E6%A0%B8/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://s2.loli.net/2022/08/09/PKcwjiVBTg6ApEv.png" loading="lazy" data-key="" data-hash="https://s2.loli.net/2022/08/09/PKcwjiVBTg6ApEv.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">使用QEMU&#43;GDB调试Linux内核</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/post/%E8%AE%B0%E4%B8%80%E6%AC%A1qemu-system-arm%E4%BB%BF%E7%9C%9F%E7%9A%84%E6%8E%92%E9%94%99/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://s2.loli.net/2022/05/26/RS1JrGW2t4vzD3M.jpg" loading="lazy" data-key="" data-hash="https://s2.loli.net/2022/05/26/RS1JrGW2t4vzD3M.jpg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">记一次qemu-system-arm仿真的排错</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/post/%E6%9E%84%E5%BB%BA%E4%B8%8E%E8%BF%90%E8%A1%8C%E5%B5%8C%E5%85%A5%E5%BC%8Flinux%E8%99%9A%E6%8B%9F%E6%9C%BA/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://s2.loli.net/2022/05/08/2DqjsbwNpdUM4XA.jpg" loading="lazy" data-key="" data-hash="https://s2.loli.net/2022/05/08/2DqjsbwNpdUM4XA.jpg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">构建与运行嵌入式linux虚拟机</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/post/cross-debug-old-version-kernel-using-qemu-system/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://s2.loli.net/2022/08/25/fHQPn8S2vLI7aR3.png" loading="lazy" data-key="" data-hash="https://s2.loli.net/2022/08/25/fHQPn8S2vLI7aR3.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Cross debug old version kernel using qemu-system</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
 
      
     
@@ -494,7 +1103,46 @@
             >
 
             </main>
-    
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#树莓派3b的结构">树莓派3B+的结构</a></li>
+    <li><a href="#uart连接与逻辑分析仪">UART连接与逻辑分析仪</a>
+      <ol>
+        <li><a href="#从uart获取login-shell">从UART获取login shell</a></li>
+        <li><a href="#自uart进行裸串口通信">自UART进行裸串口通信</a></li>
+        <li><a href="#使用逻辑分析仪读取uart传输电平还原数据">使用逻辑分析仪读取UART传输电平还原数据</a></li>
+      </ol>
+    </li>
+    <li><a href="#树莓派的-jtag调试">树莓派的 JTAG调试</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
 
         </div>
         <script 

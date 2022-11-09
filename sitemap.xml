@@ -5,25 +5,31 @@
     <loc>https://cerr.cc/</loc>
     <lastmod>2022-11-08T17:30:39+08:00</lastmod>
   </url><url>
+    <loc>https://cerr.cc/categories/</loc>
+    <lastmod>2022-11-08T17:30:39+08:00</lastmod>
+  </url><url>
+    <loc>https://cerr.cc/categories/</loc>
+    <lastmod>2022-11-08T17:30:39+08:00</lastmod>
+  </url><url>
+    <loc>https://cerr.cc/tags/embeded/</loc>
+    <lastmod>2022-11-08T17:30:39+08:00</lastmod>
+  </url><url>
     <loc>https://cerr.cc/post/</loc>
+    <lastmod>2022-11-08T17:30:39+08:00</lastmod>
+  </url><url>
+    <loc>https://cerr.cc/tags/</loc>
+    <lastmod>2022-11-08T17:30:39+08:00</lastmod>
+  </url><url>
+    <loc>https://cerr.cc/categories/%E5%B7%A5%E5%9C%B0%E6%97%A5%E8%AE%B0/</loc>
     <lastmod>2022-11-08T17:30:39+08:00</lastmod>
   </url><url>
     <loc>https://cerr.cc/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8E%E7%A1%AC%E4%BB%B6%E8%B0%83%E8%AF%95/</loc>
     <lastmod>2022-11-08T17:30:39+08:00</lastmod>
   </url><url>
-    <loc>https://cerr.cc/categories/</loc>
-    <lastmod>2022-09-13T15:45:25+08:00</lastmod>
-  </url><url>
-    <loc>https://cerr.cc/categories/</loc>
-    <lastmod>2022-09-13T15:45:25+08:00</lastmod>
-  </url><url>
     <loc>https://cerr.cc/tags/hardware/</loc>
     <lastmod>2022-09-13T15:45:25+08:00</lastmod>
   </url><url>
     <loc>https://cerr.cc/tags/linux/</loc>
-    <lastmod>2022-09-13T15:45:25+08:00</lastmod>
-  </url><url>
-    <loc>https://cerr.cc/tags/</loc>
     <lastmod>2022-09-13T15:45:25+08:00</lastmod>
   </url><url>
     <loc>https://cerr.cc/post/%E4%B8%80%E6%AC%A1u%E7%9B%98%E7%B3%BB%E7%BB%9F%E7%9B%98%E7%9A%84%E6%8A%98%E8%85%BE%E8%AE%B0/</loc>
@@ -80,14 +86,8 @@
     <loc>https://cerr.cc/post/%E4%BD%BF%E7%94%A8qemu-gdb%E8%B0%83%E8%AF%95linux%E5%86%85%E6%A0%B8/</loc>
     <lastmod>2022-08-08T14:17:44+08:00</lastmod>
   </url><url>
-    <loc>https://cerr.cc/categories/%E5%B7%A5%E5%9C%B0%E6%97%A5%E8%AE%B0/</loc>
-    <lastmod>2022-08-08T14:17:44+08:00</lastmod>
-  </url><url>
     <loc>https://cerr.cc/post/%E6%89%8B%E6%9C%BA%E5%8F%98%E8%BA%AB%E5%B0%8F%E4%B8%BB%E6%9C%BA/</loc>
     <lastmod>2022-07-19T10:50:06+08:00</lastmod>
-  </url><url>
-    <loc>https://cerr.cc/tags/embeded/</loc>
-    <lastmod>2022-07-08T14:11:35+08:00</lastmod>
   </url><url>
     <loc>https://cerr.cc/post/zkv%E5%AF%B9%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%A1%AC%E4%BB%B6%E7%9A%84%E6%B5%85%E5%B0%9D%E4%B8%8D%E6%AD%A2/</loc>
     <lastmod>2022-07-08T14:11:35+08:00</lastmod>

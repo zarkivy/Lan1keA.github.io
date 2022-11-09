@@ -5,7 +5,15 @@
         <link>https://cerr.cc/tags/</link>
         <description>Recent content in Tags on Zikey Vi</description>
         <generator>Hugo -- gohugo.io</generator>
-        <lastBuildDate>Tue, 13 Sep 2022 15:45:25 +0800</lastBuildDate><atom:link href="https://cerr.cc/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 08 Nov 2022 17:30:39 +0800</lastBuildDate><atom:link href="https://cerr.cc/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Embeded</title>
+        <link>https://cerr.cc/tags/embeded/</link>
+        <pubDate>Tue, 08 Nov 2022 17:30:39 +0800</pubDate>
+        
+        <guid>https://cerr.cc/tags/embeded/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>Hardware</title>
         <link>https://cerr.cc/tags/hardware/</link>
         <pubDate>Tue, 13 Sep 2022 15:45:25 +0800</pubDate>
@@ -83,14 +91,6 @@
         <pubDate>Mon, 08 Aug 2022 14:17:44 +0800</pubDate>
         
         <guid>https://cerr.cc/tags/qemu/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>Embeded</title>
-        <link>https://cerr.cc/tags/embeded/</link>
-        <pubDate>Fri, 08 Jul 2022 14:11:35 +0800</pubDate>
-        
-        <guid>https://cerr.cc/tags/embeded/</guid>
         <description></description>
         </item>
         <item>
