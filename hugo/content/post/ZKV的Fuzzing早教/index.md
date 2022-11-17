@@ -39,6 +39,8 @@ image: "https://lcamtuf.coredump.cx/afl/afl_screen.png"
 
 [Fuzzing101](https://github.com/antonio-morales/Fuzzing101)
 
+[afl-training](https://github.com/mykter/afl-training)
+
 ## 兵器
 
 [AFL](https://github.com/google/AFL)
@@ -57,7 +59,16 @@ image: "https://lcamtuf.coredump.cx/afl/afl_screen.png"
 
 [http://pages.cs.wisc.edu/~bart/fuzz/CS736-Projects-f1988.pdf](http://pages.cs.wisc.edu/~bart/fuzz/CS736-Projects-f1988.pdf)
 
-### 代码覆盖引导Fuzzing之AFL
+### 资料
+
+- https://docs.google.com/presentation/d/1Ap3eUIo4RrI_9GAGfn2Q0RKtBPNmGhI1DZlivdcFKPo/edit#slide=id.p33
+- https://trustfoundry.net/2020/01/22/introduction-to-triaging-fuzzer-generated-crashes/
+- https://github.com/antonio-morales/EkoParty_Advanced_Fuzzing_Workshop
+- https://docs.google.com/presentation/d/1FgcMRv_pwgOh1yL5y4GFsl1ozFwd6PMNGlMi2ONkGec/edit#slide=id.g190ecf0108_0_130
+- https://vimeo.com/129701495
+- https://bughunters.google.com/about/patch-rewards
+- https://www.vegardno.net/2017/03/fuzzing-openssh-daemon-using-afl.html
+- https://lcamtuf.blogspot.com/2014/11/pulling-jpegs-out-of-thin-air.html
 
 
 

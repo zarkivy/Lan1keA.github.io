@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>Architecture on Zikey Vi</title>
+        <title>Architecture on Lanikea</title>
         <link>https://cerr.cc/tags/architecture/</link>
-        <description>Recent content in Architecture on Zikey Vi</description>
+        <description>Recent content in Architecture on Lanikea</description>
         <generator>Hugo -- gohugo.io</generator>
         <lastBuildDate>Wed, 01 Jun 2022 10:55:17 +0800</lastBuildDate><atom:link href="https://cerr.cc/tags/architecture/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>ARM简史</title>

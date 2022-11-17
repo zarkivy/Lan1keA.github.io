@@ -1,0 +1,1569 @@
+<!DOCTYPE html>
+<html lang="" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Resource https://github.com/antonio-morales/Fuzzing101
+Exercise 1 Download Xpdf 3.02:
+1 2 wget https://dl.xpdfreader.com/old/xpdf-3.02.tar.gz tar -xvzf xpdf-3.02.tar.gz Checkout and build AFL&#43;&#43;:
+1 2 3 4 git clone https://github.com/AFLplusplus/AFLplusplus &amp;amp;&amp;amp; cd AFLplusplus export LLVM_CONFIG=&amp;#34;llvm-config-11&amp;#34; make distrib sudo make install Build xpdf with aft-clang-fast:
+1 2 3 4 export LLVM_CONFIG=&amp;#34;llvm-config-11&amp;#34; CC=afl-clang-fast CXX=afl-clang-fast&#43;&#43; ./configure --prefix=/tmp/xpdf_install make make install No fuzz:
+1 afl-fuzz -i pdf_examples -o out /tmp/xpdf_install/bin/pdftotext @@ /tmp/pdf_out Rebuild xpdf with origin clang &amp;amp;&amp;amp; with -g enabled:'><title>Fuzzing101 WriteUp</title>
+
+<link rel='canonical' href='https://cerr.cc/post/fuzzing101-writeup/'>
+
+<link rel="stylesheet" href="/scss/style.min.e75bab105855f77caa94de85bd0b7a889920eb03fa3048257f51f59c063a674d.css"><meta property='og:title' content='Fuzzing101 WriteUp'>
+<meta property='og:description' content='Resource https://github.com/antonio-morales/Fuzzing101
+Exercise 1 Download Xpdf 3.02:
+1 2 wget https://dl.xpdfreader.com/old/xpdf-3.02.tar.gz tar -xvzf xpdf-3.02.tar.gz Checkout and build AFL&#43;&#43;:
+1 2 3 4 git clone https://github.com/AFLplusplus/AFLplusplus &amp;amp;&amp;amp; cd AFLplusplus export LLVM_CONFIG=&amp;#34;llvm-config-11&amp;#34; make distrib sudo make install Build xpdf with aft-clang-fast:
+1 2 3 4 export LLVM_CONFIG=&amp;#34;llvm-config-11&amp;#34; CC=afl-clang-fast CXX=afl-clang-fast&#43;&#43; ./configure --prefix=/tmp/xpdf_install make make install No fuzz:
+1 afl-fuzz -i pdf_examples -o out /tmp/xpdf_install/bin/pdftotext @@ /tmp/pdf_out Rebuild xpdf with origin clang &amp;amp;&amp;amp; with -g enabled:'>
+<meta property='og:url' content='https://cerr.cc/post/fuzzing101-writeup/'>
+<meta property='og:site_name' content='Lanikea'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2022-11-11T20:03:38&#43;08:00'/><meta property='article:modified_time' content='2022-11-11T20:03:38&#43;08:00'/>
+<meta name="twitter:title" content="Fuzzing101 WriteUp">
+<meta name="twitter:description" content="Resource https://github.com/antonio-morales/Fuzzing101
+Exercise 1 Download Xpdf 3.02:
+1 2 wget https://dl.xpdfreader.com/old/xpdf-3.02.tar.gz tar -xvzf xpdf-3.02.tar.gz Checkout and build AFL&#43;&#43;:
+1 2 3 4 git clone https://github.com/AFLplusplus/AFLplusplus &amp;amp;&amp;amp; cd AFLplusplus export LLVM_CONFIG=&amp;#34;llvm-config-11&amp;#34; make distrib sudo make install Build xpdf with aft-clang-fast:
+1 2 3 4 export LLVM_CONFIG=&amp;#34;llvm-config-11&amp;#34; CC=afl-clang-fast CXX=afl-clang-fast&#43;&#43; ./configure --prefix=/tmp/xpdf_install make make install No fuzz:
+1 afl-fuzz -i pdf_examples -o out /tmp/xpdf_install/bin/pdftotext @@ /tmp/pdf_out Rebuild xpdf with origin clang &amp;amp;&amp;amp; with -g enabled:">
+    <link rel="shortcut icon" href="favicon.png" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu83ce41192ed66b608a10477eb7108e0c_128714_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🐟</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Lanikea</a></h1>
+            <h2 class="site-description">Yet anothor cyber nyandog.</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/lan1kea'
+                        target="_blank"
+                        title="GitHub"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='mailto:lan1kea@outlook.com'
+                        target="_blank"
+                        title="Mail"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mail-opened" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <polyline points="3 9 12 15 21 9 12 3 3 9" />
+  <path d="M21 9v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10" />
+  <line x1="3" y1="19" x2="9" y2="13" />
+  <line x1="15" y1="13" x2="21" y2="19" />
+</svg>
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com/lan1kea'
+                        target="_blank"
+                        title="Twitter"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archive</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/love/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-heart" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M19.5 13.572l-7.5 7.428l-7.5 -7.428m0 0a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
+</svg>
+
+                
+                <span>Love</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/friends/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-friends" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <circle cx="7" cy="5" r="2" />
+  <path d="M5 22v-5l-1 -1v-4a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4l-1 1v5" />
+  <circle cx="17" cy="5" r="2" />
+  <path d="M15 22v-4h-2l2 -6a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1l2 6h-2v4" />
+</svg>
+
+                
+                <span>Friends</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/utils/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Utils</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/board/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copy" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <rect x="8" y="8" width="12" height="12" rx="2" />
+  <path d="M16 8v-2a2 2 0 0 0 -2 -2h-8a2 2 0 0 0 -2 2v8a2 2 0 0 0 2 2h2" />
+</svg>
+
+                
+                <span>Board</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+<main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/post/fuzzing101-writeup/">Fuzzing101 WriteUp</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Nov 11, 2022</time>
+            </div>
+        
+
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="resource">Resource</h1>
+<p><a class="link" href="https://github.com/antonio-morales/Fuzzing101"  target="_blank" rel="noopener"
+    >https://github.com/antonio-morales/Fuzzing101</a></p>
+<h1 id="exercise-1">Exercise 1</h1>
+<p>Download Xpdf 3.02:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">wget https://dl.xpdfreader.com/old/xpdf-3.02.tar.gz
+</span></span><span class="line"><span class="cl">tar -xvzf xpdf-3.02.tar.gz
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Checkout and build AFL++:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">git clone https://github.com/AFLplusplus/AFLplusplus <span class="o">&amp;&amp;</span> <span class="nb">cd</span> AFLplusplus
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">LLVM_CONFIG</span><span class="o">=</span><span class="s2">&#34;llvm-config-11&#34;</span>
+</span></span><span class="line"><span class="cl">make distrib
+</span></span><span class="line"><span class="cl">sudo make install
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Build xpdf with aft-clang-fast:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">LLVM_CONFIG</span><span class="o">=</span><span class="s2">&#34;llvm-config-11&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">CC</span><span class="o">=</span>afl-clang-fast <span class="nv">CXX</span><span class="o">=</span>afl-clang-fast++ ./configure --prefix<span class="o">=</span>/tmp/xpdf_install
+</span></span><span class="line"><span class="cl">make
+</span></span><span class="line"><span class="cl">make install
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>No fuzz:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">afl-fuzz -i pdf_examples -o out /tmp/xpdf_install/bin/pdftotext @@ /tmp/pdf_out
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Rebuild xpdf with origin clang &amp;&amp; with -g enabled:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="nb">cd</span> xpdf-3.02
+</span></span><span class="line"><span class="cl">make clean
+</span></span><span class="line"><span class="cl"><span class="nv">CC</span><span class="o">=</span>clang <span class="nv">CXX</span><span class="o">=</span>clang++ <span class="nv">CFLAGS</span><span class="o">+=</span>-g <span class="nv">CXXFLAGS</span><span class="o">+=</span>-g ./configure --prefix<span class="o">=</span>/tmp/xpdf_install 
+</span></span><span class="line"><span class="cl">make
+</span></span><span class="line"><span class="cl">make install
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Checkout one of the crash:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">/tmp/xpdf_install/bin/pdftotext out/default/crashes/id:000000,sig:11,src:001108+001151,time:107605,execs:157950,op:splice,rep:16 /tmp/pdf_out
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Got segmentation fault.</p>
+<p>Tiger segmentation fault again and check <code>bt</code>，we got a infinite recursion of this:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">#14896 0x00000000004708bc in Parser::getObj (this=0xbedc10, obj=0x7fffffa75848, fileKey=0x0, encAlgorithm=cryptRC4, keyLength=0x0, objNum=0x7, objGen=0x0) at Parser.cc:94
+</span></span><span class="line"><span class="cl">#14897 0x0000000000491d24 in XRef::fetch (this=0x537210, num=0x7, gen=0x0, obj=0x7fffffa75848) at XRef.cc:823
+</span></span><span class="line"><span class="cl">#14898 0x000000000046c5e7 in Object::fetch (this=0xbedb08, xref=0x537210, obj=0x7fffffa75848) at Object.cc:106
+</span></span><span class="line"><span class="cl">#14899 0x0000000000412ab3 in Dict::lookup (this=0xbedab0, key=0x4b3242 &#34;Length&#34;, obj=0x7fffffa75848) at Dict.cc:76
+</span></span><span class="line"><span class="cl">#14900 0x0000000000408ef9 in Object::dictLookup (this=0x7fffffa75c58, key=0x4b3242 &#34;Length&#34;, obj=0x7fffffa75848) at ./Object.h:253
+</span></span><span class="line"><span class="cl">#14901 0x0000000000470dde in Parser::makeStream (this=0xbed730, dict=0x7fffffa75c58, fileKey=0x0, encAlgorithm=cryptRC4, keyLength=0x0, objNum=0x7, objGen=0x0) at Parser.cc:156
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>In order to checking out why this happened, we set breakpoints at: <code>Parser.cc:94</code>、<code>XRef.cc:823</code>、<code>Object.cc:106</code>、<code>Dict.cc:76</code>、<code>Object.h:253</code>、<code>Parser.cc:156</code></p>
+<p>Check the diff between 3.02 and 4.02:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span><span class="lnt">118
+</span><span class="lnt">119
+</span><span class="lnt">120
+</span><span class="lnt">121
+</span><span class="lnt">122
+</span><span class="lnt">123
+</span><span class="lnt">124
+</span><span class="lnt">125
+</span><span class="lnt">126
+</span><span class="lnt">127
+</span><span class="lnt">128
+</span><span class="lnt">129
+</span><span class="lnt">130
+</span><span class="lnt">131
+</span><span class="lnt">132
+</span><span class="lnt">133
+</span><span class="lnt">134
+</span><span class="lnt">135
+</span><span class="lnt">136
+</span><span class="lnt">137
+</span><span class="lnt">138
+</span><span class="lnt">139
+</span><span class="lnt">140
+</span><span class="lnt">141
+</span><span class="lnt">142
+</span><span class="lnt">143
+</span><span class="lnt">144
+</span><span class="lnt">145
+</span><span class="lnt">146
+</span><span class="lnt">147
+</span><span class="lnt">148
+</span><span class="lnt">149
+</span><span class="lnt">150
+</span><span class="lnt">151
+</span><span class="lnt">152
+</span><span class="lnt">153
+</span><span class="lnt">154
+</span><span class="lnt">155
+</span><span class="lnt">156
+</span><span class="lnt">157
+</span><span class="lnt">158
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-diff" data-lang="diff"><span class="line"><span class="cl">15a16,17
+</span></span><span class="line"><span class="cl">&gt; #include &lt;string.h&gt;
+</span></span><span class="line"><span class="cl">&gt; #include &#34;gmempp.h&#34;
+</span></span><span class="line"><span class="cl">23a26,29
+</span></span><span class="line"><span class="cl">&gt; // Max number of nested objects.  This is used to catch infinite loops
+</span></span><span class="line"><span class="cl">&gt; // in the object structure.
+</span></span><span class="line"><span class="cl">&gt; #define recursionLimit 500
+</span></span><span class="line"><span class="cl">&gt;
+</span></span><span class="line"><span class="cl">39c45,46
+</span></span><span class="line"><span class="cl">&lt; Object *Parser::getObj(Object *obj, Guchar *fileKey,
+</span></span><span class="line"><span class="cl"><span class="gd">---
+</span></span></span><span class="line"><span class="cl"><span class="gd"></span>&gt; Object *Parser::getObj(Object *obj, GBool simpleOnly,
+</span></span><span class="line"><span class="cl">&gt; 		       Guchar *fileKey,
+</span></span><span class="line"><span class="cl">41c48
+</span></span><span class="line"><span class="cl">&lt; 		       int objNum, int objGen) {
+</span></span><span class="line"><span class="cl"><span class="gd">---
+</span></span></span><span class="line"><span class="cl"><span class="gd"></span>&gt; 		       int objNum, int objGen, int recursion) {
+</span></span><span class="line"><span class="cl">60c67
+</span></span><span class="line"><span class="cl">&lt;   if (buf1.isCmd(&#34;[&#34;)) {
+</span></span><span class="line"><span class="cl"><span class="gd">---
+</span></span></span><span class="line"><span class="cl"><span class="gd"></span>&gt;   if (!simpleOnly &amp;&amp; recursion &lt; recursionLimit &amp;&amp; buf1.isCmd(&#34;[&#34;)) {
+</span></span><span class="line"><span class="cl">64,65c71,72
+</span></span><span class="line"><span class="cl">&lt;       obj-&gt;arrayAdd(getObj(&amp;obj2, fileKey, encAlgorithm, keyLength,
+</span></span><span class="line"><span class="cl">&lt; 			   objNum, objGen));
+</span></span><span class="line"><span class="cl"><span class="gd">---
+</span></span></span><span class="line"><span class="cl"><span class="gd"></span>&gt;       obj-&gt;arrayAdd(getObj(&amp;obj2, gFalse, fileKey, encAlgorithm, keyLength,
+</span></span><span class="line"><span class="cl">&gt; 			   objNum, objGen, recursion + 1));
+</span></span><span class="line"><span class="cl">67c74
+</span></span><span class="line"><span class="cl">&lt;       error(getPos(), &#34;End of file inside array&#34;);
+</span></span><span class="line"><span class="cl"><span class="gd">---
+</span></span></span><span class="line"><span class="cl"><span class="gd"></span>&gt;       error(errSyntaxError, getPos(), &#34;End of file inside array&#34;);
+</span></span><span class="line"><span class="cl">71c78
+</span></span><span class="line"><span class="cl">&lt;   } else if (buf1.isCmd(&#34;&lt;&lt;&#34;)) {
+</span></span><span class="line"><span class="cl"><span class="gd">---
+</span></span></span><span class="line"><span class="cl"><span class="gd"></span>&gt;   } else if (!simpleOnly &amp;&amp; recursion &lt; recursionLimit &amp;&amp; buf1.isCmd(&#34;&lt;&lt;&#34;)) {
+</span></span><span class="line"><span class="cl">76c83,84
+</span></span><span class="line"><span class="cl">&lt; 	error(getPos(), &#34;Dictionary key must be a name object&#34;);
+</span></span><span class="line"><span class="cl"><span class="gd">---
+</span></span></span><span class="line"><span class="cl"><span class="gd"></span>&gt; 	error(errSyntaxError, getPos(),
+</span></span><span class="line"><span class="cl">&gt; 	      &#34;Dictionary key must be a name object&#34;);
+</span></span><span class="line"><span class="cl">85,86c93,95
+</span></span><span class="line"><span class="cl">&lt; 	obj-&gt;dictAdd(key, getObj(&amp;obj2, fileKey, encAlgorithm, keyLength,
+</span></span><span class="line"><span class="cl">&lt; 				 objNum, objGen));
+</span></span><span class="line"><span class="cl"><span class="gd">---
+</span></span></span><span class="line"><span class="cl"><span class="gd"></span>&gt; 	obj-&gt;dictAdd(key, getObj(&amp;obj2, gFalse,
+</span></span><span class="line"><span class="cl">&gt; 				 fileKey, encAlgorithm, keyLength,
+</span></span><span class="line"><span class="cl">&gt; 				 objNum, objGen, recursion + 1));
+</span></span><span class="line"><span class="cl">90c99
+</span></span><span class="line"><span class="cl">&lt;       error(getPos(), &#34;End of file inside dictionary&#34;);
+</span></span><span class="line"><span class="cl"><span class="gd">---
+</span></span></span><span class="line"><span class="cl"><span class="gd"></span>&gt;       error(errSyntaxError, getPos(), &#34;End of file inside dictionary&#34;);
+</span></span><span class="line"><span class="cl">95c104
+</span></span><span class="line"><span class="cl">&lt; 			    objNum, objGen))) {
+</span></span><span class="line"><span class="cl"><span class="gd">---
+</span></span></span><span class="line"><span class="cl"><span class="gd"></span>&gt; 			    objNum, objGen, recursion + 1))) {
+</span></span><span class="line"><span class="cl">145c154
+</span></span><span class="line"><span class="cl">&lt; 			   int objNum, int objGen) {
+</span></span><span class="line"><span class="cl"><span class="gd">---
+</span></span></span><span class="line"><span class="cl"><span class="gd"></span>&gt; 			   int objNum, int objGen, int recursion) {
+</span></span><span class="line"><span class="cl">148,149c157,161
+</span></span><span class="line"><span class="cl">&lt;   Stream *str;
+</span></span><span class="line"><span class="cl">&lt;   Guint pos, endPos, length;
+</span></span><span class="line"><span class="cl"><span class="gd">---
+</span></span></span><span class="line"><span class="cl"><span class="gd"></span>&gt;   Stream *str, *str2;
+</span></span><span class="line"><span class="cl">&gt;   GFileOffset pos, endPos, length;
+</span></span><span class="line"><span class="cl">&gt;   char endstreamBuf[8];
+</span></span><span class="line"><span class="cl">&gt;   GBool foundEndstream;
+</span></span><span class="line"><span class="cl">&gt;   int c, i;
+</span></span><span class="line"><span class="cl">153,162c165
+</span></span><span class="line"><span class="cl">&lt;   pos = lexer-&gt;getPos();
+</span></span><span class="line"><span class="cl">&lt;
+</span></span><span class="line"><span class="cl">&lt;   // get length
+</span></span><span class="line"><span class="cl">&lt;   dict-&gt;dictLookup(&#34;Length&#34;, &amp;obj);
+</span></span><span class="line"><span class="cl">&lt;   if (obj.isInt()) {
+</span></span><span class="line"><span class="cl">&lt;     length = (Guint)obj.getInt();
+</span></span><span class="line"><span class="cl">&lt;     obj.free();
+</span></span><span class="line"><span class="cl">&lt;   } else {
+</span></span><span class="line"><span class="cl">&lt;     error(getPos(), &#34;Bad &#39;Length&#39; attribute in stream&#34;);
+</span></span><span class="line"><span class="cl">&lt;     obj.free();
+</span></span><span class="line"><span class="cl"><span class="gd">---
+</span></span></span><span class="line"><span class="cl"><span class="gd"></span>&gt;   if (!(str = lexer-&gt;getStream())) {
+</span></span><span class="line"><span class="cl">164a168
+</span></span><span class="line"><span class="cl">&gt;   pos = str-&gt;getPos();
+</span></span><span class="line"><span class="cl">168a173,184
+</span></span><span class="line"><span class="cl">&gt;
+</span></span><span class="line"><span class="cl">&gt;   // get length from the stream object
+</span></span><span class="line"><span class="cl">&gt;   } else {
+</span></span><span class="line"><span class="cl">&gt;     dict-&gt;dictLookup(&#34;Length&#34;, &amp;obj, recursion);
+</span></span><span class="line"><span class="cl">&gt;     if (obj.isInt()) {
+</span></span><span class="line"><span class="cl">&gt;       length = (GFileOffset)(Guint)obj.getInt();
+</span></span><span class="line"><span class="cl">&gt;       obj.free();
+</span></span><span class="line"><span class="cl">&gt;     } else {
+</span></span><span class="line"><span class="cl">&gt;       error(errSyntaxError, getPos(), &#34;Bad &#39;Length&#39; attribute in stream&#34;);
+</span></span><span class="line"><span class="cl">&gt;       obj.free();
+</span></span><span class="line"><span class="cl">&gt;       return NULL;
+</span></span><span class="line"><span class="cl">&gt;     }
+</span></span><span class="line"><span class="cl">176c192,194
+</span></span><span class="line"><span class="cl">&lt;   baseStr = lexer-&gt;getStream()-&gt;getBaseStream();
+</span></span><span class="line"><span class="cl"><span class="gd">---
+</span></span></span><span class="line"><span class="cl"><span class="gd"></span>&gt;   // copy the base stream (Lexer will free stream objects when it gets
+</span></span><span class="line"><span class="cl">&gt;   // to end of stream -- which can happen in the shift() calls below)
+</span></span><span class="line"><span class="cl">&gt;   baseStr = (BaseStream *)lexer-&gt;getStream()-&gt;getBaseStream()-&gt;copy();
+</span></span><span class="line"><span class="cl">177a196,198
+</span></span><span class="line"><span class="cl">&gt;   // make new base stream
+</span></span><span class="line"><span class="cl">&gt;   str = baseStr-&gt;makeSubStream(pos, gTrue, length, dict);
+</span></span><span class="line"><span class="cl">&gt;
+</span></span><span class="line"><span class="cl">181,187c202,225
+</span></span><span class="line"><span class="cl">&lt;   // refill token buffers and check for &#39;endstream&#39;
+</span></span><span class="line"><span class="cl">&lt;   shift();  // kill &#39;&gt;&gt;&#39;
+</span></span><span class="line"><span class="cl">&lt;   shift();  // kill &#39;stream&#39;
+</span></span><span class="line"><span class="cl">&lt;   if (buf1.isCmd(&#34;endstream&#34;)) {
+</span></span><span class="line"><span class="cl">&lt;     shift();
+</span></span><span class="line"><span class="cl">&lt;   } else {
+</span></span><span class="line"><span class="cl">&lt;     error(getPos(), &#34;Missing &#39;endstream&#39;&#34;);
+</span></span><span class="line"><span class="cl"><span class="gd">---
+</span></span></span><span class="line"><span class="cl"><span class="gd"></span>&gt;   // check for &#39;endstream&#39;
+</span></span><span class="line"><span class="cl">&gt;   // NB: we never reuse the Parser object to parse objects after a
+</span></span><span class="line"><span class="cl">&gt;   // stream, and we could (if the PDF file is damaged) be in the
+</span></span><span class="line"><span class="cl">&gt;   // middle of binary data at this point, so we check the stream data
+</span></span><span class="line"><span class="cl">&gt;   // directly for &#39;endstream&#39;, rather than calling shift() to parse
+</span></span><span class="line"><span class="cl">&gt;   // objects
+</span></span><span class="line"><span class="cl">&gt;   foundEndstream = gFalse;
+</span></span><span class="line"><span class="cl">&gt;   if ((str2 = lexer-&gt;getStream())) {
+</span></span><span class="line"><span class="cl">&gt;     // skip up to 100 whitespace chars
+</span></span><span class="line"><span class="cl">&gt;     for (i = 0; i &lt; 100; ++i) {
+</span></span><span class="line"><span class="cl">&gt;       c = str2-&gt;getChar();
+</span></span><span class="line"><span class="cl">&gt;       if (!Lexer::isSpace(c)) {
+</span></span><span class="line"><span class="cl">&gt; 	break;
+</span></span><span class="line"><span class="cl">&gt;       }
+</span></span><span class="line"><span class="cl">&gt;     }
+</span></span><span class="line"><span class="cl">&gt;     if (c == &#39;e&#39;) {
+</span></span><span class="line"><span class="cl">&gt;       if (str2-&gt;getBlock(endstreamBuf, 8) == 8 ||
+</span></span><span class="line"><span class="cl">&gt; 	  !memcmp(endstreamBuf, &#34;ndstream&#34;, 8)) {
+</span></span><span class="line"><span class="cl">&gt; 	foundEndstream = gTrue;
+</span></span><span class="line"><span class="cl">&gt;       }
+</span></span><span class="line"><span class="cl">&gt;     }
+</span></span><span class="line"><span class="cl">&gt;   }
+</span></span><span class="line"><span class="cl">&gt;   if (!foundEndstream) {
+</span></span><span class="line"><span class="cl">&gt;     error(errSyntaxError, getPos(), &#34;Missing &#39;endstream&#39;&#34;);
+</span></span><span class="line"><span class="cl">189c227,230
+</span></span><span class="line"><span class="cl">&lt;     // hope its enough
+</span></span><span class="line"><span class="cl"><span class="gd">---
+</span></span></span><span class="line"><span class="cl"><span class="gd"></span>&gt;     // hope it&#39;s enough
+</span></span><span class="line"><span class="cl">&gt;     // (dict is now owned by str, so we need to copy it before deleting str)
+</span></span><span class="line"><span class="cl">&gt;     dict-&gt;copy(&amp;obj);
+</span></span><span class="line"><span class="cl">&gt;     delete str;
+</span></span><span class="line"><span class="cl">190a232
+</span></span><span class="line"><span class="cl">&gt;     str = baseStr-&gt;makeSubStream(pos, gTrue, length, &amp;obj);
+</span></span><span class="line"><span class="cl">193,194c235,236
+</span></span><span class="line"><span class="cl">&lt;   // make base stream
+</span></span><span class="line"><span class="cl">&lt;   str = baseStr-&gt;makeSubStream(pos, gTrue, length, dict);
+</span></span><span class="line"><span class="cl"><span class="gd">---
+</span></span></span><span class="line"><span class="cl"><span class="gd"></span>&gt;   // free the copied base stream
+</span></span><span class="line"><span class="cl">&gt;   delete baseStr;
+</span></span><span class="line"><span class="cl">203c245
+</span></span><span class="line"><span class="cl">&lt;   str = str-&gt;addFilters(dict);
+</span></span><span class="line"><span class="cl"><span class="gd">---
+</span></span></span><span class="line"><span class="cl"><span class="gd"></span>&gt;   str = str-&gt;addFilters(dict, recursion);
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>We can see that the <code>recursion</code> variable is added to limit the recursion depth.</p>
+<h1 id="exercise-2">Exercise 2</h1>
+<p>Download and uncompress libexif-0.6.14:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">wget https://github.com/libexif/libexif/archive/refs/tags/libexif-0_6_14-release.tar.gz
+</span></span><span class="line"><span class="cl">tar -xzvf libexif-0_6_14-release.tar.gz
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Build with <code>aft-clang-lto</code> and install libexif:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="nb">cd</span> libexif-libexif-0_6_14-release/
+</span></span><span class="line"><span class="cl">sudo apt-get install autopoint libtool gettext libpopt-dev
+</span></span><span class="line"><span class="cl">autoreconf -fvi
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">LLVM_CONFIG</span><span class="o">=</span><span class="s2">&#34;llvm-config-11&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">CC</span><span class="o">=</span>afl-clang-lto <span class="nv">CFLAGS</span><span class="o">+=</span><span class="s2">&#34;-g -O0&#34;</span> ./configure --enable-shared<span class="o">=</span>no --prefix<span class="o">=</span>/tmp/install
+</span></span><span class="line"><span class="cl">make
+</span></span><span class="line"><span class="cl">make install
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Download and build exif command-line 0.6.15 with libexif above:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">wget https://github.com/libexif/exif/archive/refs/tags/exif-0_6_15-release.tar.gz
+</span></span><span class="line"><span class="cl">tar -xzvf exif-0_6_15-release.tar.gz
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">LLVM_CONFIG</span><span class="o">=</span><span class="s2">&#34;llvm-config-11&#34;</span>
+</span></span><span class="line"><span class="cl">autoreconf -fvi
+</span></span><span class="line"><span class="cl"><span class="nv">CC</span><span class="o">=</span>afl-clang-lto <span class="nv">CFLAGS</span><span class="o">+=</span><span class="s2">&#34;-g -O0&#34;</span> <span class="nv">PKG_CONFIG_PATH</span><span class="o">=</span>/tmp/install/lib/pkgconfig ./configure --enable-shared<span class="o">=</span>no --prefix<span class="o">=</span>/tmp/install
+</span></span><span class="line"><span class="cl">make
+</span></span><span class="line"><span class="cl">make install
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Now we need to get some exif samples. We&rsquo;re gonna use the sample images from the following repo: <a class="link" href="https://github.com/ianare/exif-samples"  target="_blank" rel="noopener"
+    >https://github.com/ianare/exif-samples</a>. You can download it with:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="nb">cd</span> /tmp
+</span></span><span class="line"><span class="cl">wget https://github.com/ianare/exif-samples/archive/refs/heads/master.zip
+</span></span><span class="line"><span class="cl">unzip master.zip
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Make sure things goes well:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">/tmp/install/bin/exif /tmp/exif-samples-master/jpg/Canon_40D_photoshop_import.jpg
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Now fuzz:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">afl-fuzz -i /tmp/exif-samples-master/jpg -o ./out -s <span class="m">123</span> -- /tmp/install/bin/exif @@
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Test crash:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">/tmp/install/bin/exif ./out/default/crashes/id:000000,sig:11,src:000301,time:45344,execs:66920,op:havoc,rep:16 
+</span></span><span class="line"><span class="cl"><span class="o">[</span>1<span class="o">]</span>    <span class="m">738650</span> segmentation fault  /tmp/install/bin/exif 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Debug with gdb:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">gdb --args /tmp/install/bin/exif ./out/default/crashes/id:000000,sig:11,src:000301,time:45344,execs:66920,op:havoc,rep:16
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Backtrace at segmentation fault:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1">#0  0x000000000022d595 in exif_get_sshort (buf=0x10044aca5 &lt;error: Cannot access memory at address 0x10044aca5&gt;, order=EXIF_BYTE_ORDER_MOTOROLA) at exif-utils.c:92</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#1  0x000000000022d4bd in exif_get_short (buf=0x10044aca5 &lt;error: Cannot access memory at address 0x10044aca5&gt;, order=EXIF_BYTE_ORDER_MOTOROLA) at exif-utils.c:104</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#2  0x000000000021ce95 in exif_data_load_data (data=0x44b130, d_orig=0x44aca0 &#34;Exif&#34;, ds_orig=0x453) at exif-data.c:819</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#3  0x000000000022ab7b in exif_loader_get_data (loader=0x44ac50) at exif-loader.c:387</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#4  0x00000000002166fc in main (argc=0x2, argv=0x7fffffffded8) at main.c:438</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="exercise-3">Exercise 3</h1>
+<p>Download and uncompress tcpdump-4.9.2.tar.gz</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">wget https://github.com/the-tcpdump-group/tcpdump/archive/refs/tags/tcpdump-4.9.2.tar.gz
+</span></span><span class="line"><span class="cl">tar -xzvf tcpdump-4.9.2.tar.gz
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Download and uncompress libpcap-1.8.0.tar.gz:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">wget https://github.com/the-tcpdump-group/libpcap/archive/refs/tags/libpcap-1.8.0.tar.gz
+</span></span><span class="line"><span class="cl">tar -xzvf libpcap-1.8.0.tar.gz
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Compile libpcap with aft-clang-lto and ASAN enabled:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">LLVM_CONFIG</span><span class="o">=</span><span class="s2">&#34;llvm-config-11&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">CC</span><span class="o">=</span>afl-clang-lto ./configure --enable-shared<span class="o">=</span>no --prefix<span class="o">=</span><span class="s2">&#34;tmp/install/&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">AFL_USE_ASAN</span><span class="o">=</span><span class="m">1</span> make
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Same as tcpdump:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="nv">AFL_USE_ASAN</span><span class="o">=</span><span class="m">1</span> <span class="nv">CC</span><span class="o">=</span>afl-clang-lto ./configure --prefix<span class="o">=</span><span class="s2">&#34;/tmp/install/&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">AFL_USE_ASAN</span><span class="o">=</span><span class="m">1</span> make
+</span></span><span class="line"><span class="cl"><span class="nv">AFL_USE_ASAN</span><span class="o">=</span><span class="m">1</span> make install
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Fuzzing time:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">afl-fuzz -m none -i tcpdump-tcpdump-4.9.2/tests -o ./out -s <span class="m">123</span> -- /tmp/install/sbin/tcpdump -vvvvXX 
+</span></span><span class="line"><span class="cl">-ee -nn -r @@
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Test a crash case and get ASAN info:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">sudo /tmp/install/sbin/tcpdump -vvvXX -ee -nn -r id:000000,sig:06,src:002769,time:2888873,execs:2412346,op:havoc,rep:4
+</span></span><span class="line"><span class="cl">……
+</span></span><span class="line"><span class="cl"><span class="o">=================================================================</span>
+</span></span><span class="line"><span class="cl"><span class="o">==</span><span class="nv">2878490</span><span class="o">==</span>ERROR: AddressSanitizer: heap-buffer-overflow on address 0x608000000071 at pc 0x000000439b67 bp 0x7ffc4edbfc30 sp 0x7ffc4edbf3f8
+</span></span><span class="line"><span class="cl">READ of size <span class="m">3</span> at 0x608000000071 thread T0
+</span></span><span class="line"><span class="cl">    <span class="c1">#0 0x439b66 in __asan_memcpy (/tmp/install/sbin/tcpdump+0x439b66)</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#1 0x514db6 in eigrp_print Fuzzing101/Exercise 3/tcpdump-tcpdump-4.9.2/./print-eigrp.c:356:13</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#2 0x55d2ee in ip_print_demux Fuzzing101/Exercise 3/tcpdump-tcpdump-4.9.2/./print-ip.c:430:3</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#3 0x560a0a in ip_print Fuzzing101/Exercise 3/tcpdump-tcpdump-4.9.2/./print-ip.c:673:3</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#4 0x51a4f7 in ethertype_print Fuzzing101/Exercise 3/tcpdump-tcpdump-4.9.2/./print-ether.c:333:10</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#5 0x51923a in ether_print Fuzzing101/Exercise 3/tcpdump-tcpdump-4.9.2/./print-ether.c:236:7</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#6 0x47ca1b in pretty_print_packet Fuzzing101/Exercise 3/tcpdump-tcpdump-4.9.2/./print.c:332:18</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#7 0x47ca1b in print_packet Fuzzing101/Exercise 3/tcpdump-tcpdump-4.9.2/./tcpdump.c:2497:2</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#8 0x839e3d in pcap_offline_read Fuzzing101/Exercise 3/libpcap-1.8.0/./savefile.c:507:4</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#9 0x4744dc in pcap_loop Fuzzing101/Exercise 3/libpcap-1.8.0/./pcap.c:875:8</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#10 0x4744dc in main Fuzzing101/Exercise 3/tcpdump-tcpdump-4.9.2/./tcpdump.c:2000:12</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#11 0x7f2509904d09 in __libc_start_main csu/../csu/libc-start.c:308:16</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#12 0x3c0699 in _start (/tmp/install/sbin/tcpdump+0x3c0699)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">0x608000000071 is located <span class="m">0</span> bytes to the right of 81-byte region <span class="o">[</span>0x608000000020,0x608000000071<span class="o">)</span>
+</span></span><span class="line"><span class="cl">allocated by thread T0 here:
+</span></span><span class="line"><span class="cl">    <span class="c1">#0 0x43a70d in malloc (/tmp/install/sbin/tcpdump+0x43a70d)</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#1 0x83b3b8 in pcap_check_header Fuzzing101/Exercise 3/libpcap-1.8.0/./sf-pcap.c:401:14</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#2 0x8391fd in pcap_fopen_offline_with_tstamp_precision Fuzzing101/Exercise 3/libpcap-1.8.0/./savefile.c:380:7</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#3 0x838f28 in pcap_open_offline_with_tstamp_precision Fuzzing101/Exercise 3/libpcap-1.8.0/./savefile.c:287:6</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">SUMMARY: AddressSanitizer: heap-buffer-overflow <span class="o">(</span>/tmp/install/sbin/tcpdump+0x439b66<span class="o">)</span> in __asan_memcpy
+</span></span><span class="line"><span class="cl">Shadow bytes around the buggy address:
+</span></span><span class="line"><span class="cl">  0x0c107fff7fb0: <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span>
+</span></span><span class="line"><span class="cl">  0x0c107fff7fc0: <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span>
+</span></span><span class="line"><span class="cl">  0x0c107fff7fd0: <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span>
+</span></span><span class="line"><span class="cl">  0x0c107fff7fe0: <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span>
+</span></span><span class="line"><span class="cl">  0x0c107fff7ff0: <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="nv">00</span>
+</span></span><span class="line"><span class="cl"><span class="o">=</span>&gt;0x0c107fff8000: fa fa fa fa <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> 00<span class="o">[</span>01<span class="o">]</span>fa
+</span></span><span class="line"><span class="cl">  0x0c107fff8010: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+</span></span><span class="line"><span class="cl">  0x0c107fff8020: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+</span></span><span class="line"><span class="cl">  0x0c107fff8030: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+</span></span><span class="line"><span class="cl">  0x0c107fff8040: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+</span></span><span class="line"><span class="cl">  0x0c107fff8050: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+</span></span><span class="line"><span class="cl">Shadow byte legend <span class="o">(</span>one shadow byte represents <span class="m">8</span> application bytes<span class="o">)</span>:
+</span></span><span class="line"><span class="cl">  Addressable:           <span class="m">00</span>
+</span></span><span class="line"><span class="cl">  Partially addressable: <span class="m">01</span> <span class="m">02</span> <span class="m">03</span> <span class="m">04</span> <span class="m">05</span> <span class="m">06</span> <span class="m">07</span> 
+</span></span><span class="line"><span class="cl">  Heap left redzone:       fa
+</span></span><span class="line"><span class="cl">  Freed heap region:       fd
+</span></span><span class="line"><span class="cl">  Stack left redzone:      f1
+</span></span><span class="line"><span class="cl">  Stack mid redzone:       f2
+</span></span><span class="line"><span class="cl">  Stack right redzone:     f3
+</span></span><span class="line"><span class="cl">  Stack after <span class="k">return</span>:      f5
+</span></span><span class="line"><span class="cl">  Stack use after scope:   f8
+</span></span><span class="line"><span class="cl">  Global redzone:          f9
+</span></span><span class="line"><span class="cl">  Global init order:       f6
+</span></span><span class="line"><span class="cl">  Poisoned by user:        f7
+</span></span><span class="line"><span class="cl">  Container overflow:      <span class="nb">fc</span>
+</span></span><span class="line"><span class="cl">  Array cookie:            ac
+</span></span><span class="line"><span class="cl">  Intra object redzone:    bb
+</span></span><span class="line"><span class="cl">  ASan internal:           fe
+</span></span><span class="line"><span class="cl">  Left alloca redzone:     ca
+</span></span><span class="line"><span class="cl">  Right alloca redzone:    cb
+</span></span><span class="line"><span class="cl">  Shadow gap:              <span class="nv">cc</span>
+</span></span><span class="line"><span class="cl"><span class="o">==</span><span class="nv">2878490</span><span class="o">==</span>ABORTING
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Official fix:</p>
+<p><a class="link" href="https://github.com/the-tcpdump-group/tcpdump/commit/85078eeaf4bf8fcdc14a4e79b516f92b6ab520fc#diff-05f854a9033643de07f0d0059bc5b98f3b314eeb1e2499ea1057e925e6501ae8L381"  target="_blank" rel="noopener"
+    >https://github.com/the-tcpdump-group/tcpdump/commit/85078eeaf4bf8fcdc14a4e79b516f92b6ab520fc#diff-05f854a9033643de07f0d0059bc5b98f3b314eeb1e2499ea1057e925e6501ae8L381</a></p>
+<h1 id="exercise-4">Exercise 4</h1>
+<p>Download and uncompress libtiff 4.0.4:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">wget https://download.osgeo.org/libtiff/tiff-4.0.4.tar.gz
+</span></span><span class="line"><span class="cl">tar -xzvf tiff-4.0.4.tar.gz
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Install lcov:</p>
+<blockquote>
+<p>LCOV is an extension of GCOV, a GNU tool which provides information about what parts of a program are actually executed (i.e. &ldquo;covered&rdquo;) while running a particular test case. The extension consists of a set of Perl scripts which build on the textual GCOV output to implement the following enhanced functionality:</p>
+<ul>
+<li>HTML based output: coverage rates are additionally indicated using bar graphs and specific colors.</li>
+<li>Support for large projects: overview pages allow quick browsing of coverage data by providing three levels of detail: directory view, file view and source code view.</li>
+</ul>
+<p>LCOV was initially designed to support Linux kernel coverage measurements, but works as well for coverage measurements on standard user space applications.</p>
+</blockquote>
+<blockquote>
+<p>GCOV is a test coverage program. Use it in concert with GCC to analyze your programs to help create more efficient, faster running code and to discover untested parts of your program. You can use gcov as a profiling tool to help discover where your optimization efforts will best affect your code. You can also use gcov along with the other profiling tool, gprof, to assess which parts of your code use the greatest amount of computing time.</p>
+<p>Profiling tools help you analyze your code’s performance. Using a profiler such as gcov or gprof, you can find out some basic performance statistics, such as:</p>
+<ul>
+<li>how often each line of code executes</li>
+<li>what lines of code are actually executed</li>
+<li>how much computing time each section of code uses</li>
+</ul>
+<p>Once you know these things about how your code works when compiled, you can look at each module to see which modules should be optimized. gcov helps you determine where to work on optimization.</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">sudo apt install lcov
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Build libTIFF with the <code>--coverage</code> flag (compiler and linker):</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="nv">CFLAGS</span><span class="o">=</span><span class="s2">&#34;--coverage&#34;</span> <span class="nv">LDFLAGS</span><span class="o">=</span><span class="s2">&#34;--coverage&#34;</span> ./configure --disable-shared
+</span></span><span class="line"><span class="cl">make
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Test once:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">lcov --zerocounters --directory ./
+</span></span><span class="line"><span class="cl">lcov --capture --initial --directory ./ --output-file app.info
+</span></span><span class="line"><span class="cl">./tools/tiffinfo -D -j -c -r -s -w ./test/images/palette-1c-1b.tiff
+</span></span><span class="line"><span class="cl">lcov --no-checksum --directory ./ --capture --output-file app2.info
+</span></span><span class="line"><span class="cl">genhtml --highlight --legend -output-directory ./html-coverage/ ./app2.info
+</span></span><span class="line"><span class="cl">google-chrome ./html-coverage/index.html
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>And we got:</p>
+<p><img src="/post/fuzzing101-writeup/1.png"
+	width="808"
+	height="267"
+	srcset="/post/fuzzing101-writeup/1_hu00952c48111cefa9f6885e28d9972077_85475_480x0_resize_box_3.png 480w, /post/fuzzing101-writeup/1_hu00952c48111cefa9f6885e28d9972077_85475_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="coverage"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="302"
+		data-flex-basis="726px"
+	
+></p>
+<p>Recompile and fuzz:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">make clean
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">LLVM_CONFIG</span><span class="o">=</span><span class="s2">&#34;llvm-config-11&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">CC</span><span class="o">=</span>afl-clang-lto ./configure --prefix<span class="o">=</span><span class="s2">&#34;/tmp/install&#34;</span> --disable-shared
+</span></span><span class="line"><span class="cl"><span class="nv">AFL_USE_ASAN</span><span class="o">=</span><span class="m">1</span> make
+</span></span><span class="line"><span class="cl"><span class="nv">AFL_USE_ASAN</span><span class="o">=</span><span class="m">1</span> make install
+</span></span><span class="line"><span class="cl">afl-fuzz -m none -i ./test/images -o ./out -s <span class="m">123</span> -- /tmp/install/bin/tiffinfo -D -j -c -r -s -w @@
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Test one of the crash:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">/tmp/install/bin/tiffinfo -D -j -c -r -s -w ./out/default/crashes/id:000000,sig:06,src:000016,time:344879,execs:584479,op:havoc,rep:2
+</span></span><span class="line"><span class="cl">……
+</span></span><span class="line"><span class="cl"><span class="o">=================================================================</span>
+</span></span><span class="line"><span class="cl"><span class="o">==</span><span class="nv">741500</span><span class="o">==</span>ERROR: AddressSanitizer: heap-buffer-overflow on address 0x6020000000b1 at pc 0x0000002b0282 bp 0x7fff68d80f50 sp 0x7fff68d80710
+</span></span><span class="line"><span class="cl">READ of size <span class="m">2</span> at 0x6020000000b1 thread T0
+</span></span><span class="line"><span class="cl">    <span class="c1">#0 0x2b0281 in fputs (/tmp/install/bin/tiffinfo+0x2b0281)</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#1 0x4791bf in _TIFFPrintField /home/zkv/Gitrepos/laboratory/Fuzzing101/tiff-4.0.4/libtiff/tif_print.c:127:4</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#2 0x4791bf in TIFFPrintDirectory /home/zkv/Gitrepos/laboratory/Fuzzing101/tiff-4.0.4/libtiff/tif_print.c:641:5</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#3 0x34512d in tiffinfo /home/zkv/Gitrepos/laboratory/Fuzzing101/tiff-4.0.4/tools/tiffinfo.c:449:2</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#4 0x344754 in main /home/zkv/Gitrepos/laboratory/Fuzzing101/tiff-4.0.4/tools/tiffinfo.c:152:6</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#5 0x7fd121ba5d09 in __libc_start_main csu/../csu/libc-start.c:308:16</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#6 0x296ae9 in _start (/tmp/install/bin/tiffinfo+0x296ae9)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">0x6020000000b1 is located <span class="m">0</span> bytes to the right of 1-byte region <span class="o">[</span>0x6020000000b0,0x6020000000b1<span class="o">)</span>
+</span></span><span class="line"><span class="cl">allocated by thread T0 here:
+</span></span><span class="line"><span class="cl">    <span class="c1">#0 0x310b5d in malloc (/tmp/install/bin/tiffinfo+0x310b5d)</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#1 0x35ba55 in _TIFFmalloc /home/zkv/Gitrepos/laboratory/Fuzzing101/tiff-4.0.4/libtiff/tif_unix.c:283:10</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#2 0x35ba55 in setByteArray /home/zkv/Gitrepos/laboratory/Fuzzing101/tiff-4.0.4/libtiff/tif_dir.c:51:19</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#3 0x35ba55 in _TIFFVSetField /home/zkv/Gitrepos/laboratory/Fuzzing101/tiff-4.0.4/libtiff/tif_dir.c:539:4</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#4 0x351856 in TIFFVSetField /home/zkv/Gitrepos/laboratory/Fuzzing101/tiff-4.0.4/libtiff/tif_dir.c:820:6</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#5 0x351856 in TIFFSetField /home/zkv/Gitrepos/laboratory/Fuzzing101/tiff-4.0.4/libtiff/tif_dir.c:764:11</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#6 0x389bce in TIFFFetchNormalTag /home/zkv/Gitrepos/laboratory/Fuzzing101/tiff-4.0.4/libtiff/tif_dirread.c:5164:8</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#7 0x37cef6 in TIFFReadDirectory /home/zkv/Gitrepos/laboratory/Fuzzing101/tiff-4.0.4/libtiff/tif_dirread.c:3810:12</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#8 0x43c6f9 in TIFFClientOpen /home/zkv/Gitrepos/laboratory/Fuzzing101/tiff-4.0.4/libtiff/tif_open.c:466:8</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#9 0x3444c7 in TIFFFdOpen /home/zkv/Gitrepos/laboratory/Fuzzing101/tiff-4.0.4/libtiff/tif_unix.c:178:8</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#10 0x3444c7 in TIFFOpen /home/zkv/Gitrepos/laboratory/Fuzzing101/tiff-4.0.4/libtiff/tif_unix.c:217:8</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#11 0x3444c7 in main /home/zkv/Gitrepos/laboratory/Fuzzing101/tiff-4.0.4/tools/tiffinfo.c:140:9</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#12 0x7fd121ba5d09 in __libc_start_main csu/../csu/libc-start.c:308:16</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">SUMMARY: AddressSanitizer: heap-buffer-overflow <span class="o">(</span>/tmp/install/bin/tiffinfo+0x2b0281<span class="o">)</span> in fputs
+</span></span><span class="line"><span class="cl">Shadow bytes around the buggy address:
+</span></span><span class="line"><span class="cl">  0x0c047fff7fc0: <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span>
+</span></span><span class="line"><span class="cl">  0x0c047fff7fd0: <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span>
+</span></span><span class="line"><span class="cl">  0x0c047fff7fe0: <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span>
+</span></span><span class="line"><span class="cl">  0x0c047fff7ff0: <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span>
+</span></span><span class="line"><span class="cl">  0x0c047fff8000: fa fa <span class="m">00</span> <span class="m">00</span> fa fa fd fa fa fa fd fa fa fa <span class="m">00</span> <span class="nv">fa</span>
+</span></span><span class="line"><span class="cl"><span class="o">=</span>&gt;0x0c047fff8010: fa fa fd fa fa fa<span class="o">[</span>01<span class="o">]</span>fa fa fa fd fa fa fa <span class="m">04</span> fa
+</span></span><span class="line"><span class="cl">  0x0c047fff8020: fa fa fd fa fa fa <span class="m">00</span> fa fa fa fa fa fa fa fa fa
+</span></span><span class="line"><span class="cl">  0x0c047fff8030: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+</span></span><span class="line"><span class="cl">  0x0c047fff8040: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+</span></span><span class="line"><span class="cl">  0x0c047fff8050: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+</span></span><span class="line"><span class="cl">  0x0c047fff8060: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+</span></span><span class="line"><span class="cl">Shadow byte legend <span class="o">(</span>one shadow byte represents <span class="m">8</span> application bytes<span class="o">)</span>:
+</span></span><span class="line"><span class="cl">  Addressable:           <span class="m">00</span>
+</span></span><span class="line"><span class="cl">  Partially addressable: <span class="m">01</span> <span class="m">02</span> <span class="m">03</span> <span class="m">04</span> <span class="m">05</span> <span class="m">06</span> <span class="m">07</span> 
+</span></span><span class="line"><span class="cl">  Heap left redzone:       fa
+</span></span><span class="line"><span class="cl">  Freed heap region:       fd
+</span></span><span class="line"><span class="cl">  Stack left redzone:      f1
+</span></span><span class="line"><span class="cl">  Stack mid redzone:       f2
+</span></span><span class="line"><span class="cl">  Stack right redzone:     f3
+</span></span><span class="line"><span class="cl">  Stack after <span class="k">return</span>:      f5
+</span></span><span class="line"><span class="cl">  Stack use after scope:   f8
+</span></span><span class="line"><span class="cl">  Global redzone:          f9
+</span></span><span class="line"><span class="cl">  Global init order:       f6
+</span></span><span class="line"><span class="cl">  Poisoned by user:        f7
+</span></span><span class="line"><span class="cl">  Container overflow:      <span class="nb">fc</span>
+</span></span><span class="line"><span class="cl">  Array cookie:            ac
+</span></span><span class="line"><span class="cl">  Intra object redzone:    bb
+</span></span><span class="line"><span class="cl">  ASan internal:           fe
+</span></span><span class="line"><span class="cl">  Left alloca redzone:     ca
+</span></span><span class="line"><span class="cl">  Right alloca redzone:    cb
+</span></span><span class="line"><span class="cl">  Shadow gap:              <span class="nv">cc</span>
+</span></span><span class="line"><span class="cl"><span class="o">==</span><span class="nv">741500</span><span class="o">==</span>ABORTING
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Recompile with <code>--coverage</code> flag:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">make clean
+</span></span><span class="line"><span class="cl"><span class="nv">CFLAGS</span><span class="o">=</span><span class="s2">&#34;--coverage&#34;</span> <span class="nv">LDFLAGS</span><span class="o">=</span><span class="s2">&#34;--coverage&#34;</span> ./configure --prefix<span class="o">=</span><span class="s2">&#34;/tmp/install/&#34;</span> --disable-shared
+</span></span><span class="line"><span class="cl">make
+</span></span><span class="line"><span class="cl">make install
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Test again:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">lcov --zerocounters --directory ./
+</span></span><span class="line"><span class="cl">lcov --capture --initial --directory ./ --output-file app.info
+</span></span><span class="line"><span class="cl">/tmp/install/bin/tiffinfo -D -j -c -r -s -w ./out/default/crashes/id:000000,sig:06,src:000016,time:344879,execs:584479,op:havoc,rep:2
+</span></span><span class="line"><span class="cl">lcov --no-checksum --directory ./ --capture --output-file app2.info
+</span></span><span class="line"><span class="cl">genhtml --highlight --legend -output-directory ./html-coverage/ ./app2.info
+</span></span><span class="line"><span class="cl">google-chrome ./html-coverage/index.html
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Official fix:</p>
+<ul>
+<li><a class="link" href="https://github.com/vadz/libtiff/commit/30c9234c7fd0dd5e8b1e83ad44370c875a0270ed"  target="_blank" rel="noopener"
+    >https://github.com/vadz/libtiff/commit/30c9234c7fd0dd5e8b1e83ad44370c875a0270ed</a></li>
+</ul>
+<h1 id="exercise-5">Exercise 5</h1>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2022 Lanikea
+    </section>
+    
+    <section class="powerby">
+        
+            All Rights Abandoned. <br/>
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.13.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#resource">Resource</a></li>
+    <li><a href="#exercise-1">Exercise 1</a></li>
+    <li><a href="#exercise-2">Exercise 2</a></li>
+    <li><a href="#exercise-3">Exercise 3</a></li>
+    <li><a href="#exercise-4">Exercise 4</a></li>
+    <li><a href="#exercise-5">Exercise 5</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

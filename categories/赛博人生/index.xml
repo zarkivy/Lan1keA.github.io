@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>赛博人生 on Zikey Vi</title>
+        <title>赛博人生 on Lanikea</title>
         <link>https://cerr.cc/categories/%E8%B5%9B%E5%8D%9A%E4%BA%BA%E7%94%9F/</link>
-        <description>Recent content in 赛博人生 on Zikey Vi</description>
+        <description>Recent content in 赛博人生 on Lanikea</description>
         <generator>Hugo -- gohugo.io</generator>
         <lastBuildDate>Tue, 13 Sep 2022 15:45:25 +0800</lastBuildDate><atom:link href="https://cerr.cc/categories/%E8%B5%9B%E5%8D%9A%E4%BA%BA%E7%94%9F/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>一次U盘系统盘的折腾记</title>
@@ -78,8 +78,13 @@
         <pubDate>Mon, 05 Sep 2022 16:56:14 +0800</pubDate>
         
         <guid>https://cerr.cc/post/android%E6%90%9E%E6%9C%BA%E7%AC%94%E8%AE%B0/</guid>
-        <description>&lt;img src="https://s2.loli.net/2022/09/13/u6ESQwpdvaU2igk.png" alt="Featured image of post Android搞机笔记" /&gt;&lt;p&gt;参考&lt;a class=&#34;link&#34; href=&#34;https://www.jianshu.com/p/d960a6f517d8&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://www.jianshu.com/p/d960a6f517d8&lt;/a&gt;&lt;/p&gt;
+        <description>&lt;img src="https://s2.loli.net/2022/09/13/u6ESQwpdvaU2igk.png" alt="Featured image of post Android搞机笔记" /&gt;&lt;p&gt;参考&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.jianshu.com/p/d960a6f517d8&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.jianshu.com/p/d960a6f517d8&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://evilpan.com/2020/12/06/android-rooting/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://evilpan.com/2020/12/06/android-rooting/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h2 id=&#34;fastboot&#34;&gt;Fastboot&lt;/h2&gt;
 &lt;p&gt;一个通信协议，用于直接向安卓手机Flash的不同分区中写入数据。&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://android.googlesource.com/platform/system/core/&amp;#43;/refs/heads/master/fastboot/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;

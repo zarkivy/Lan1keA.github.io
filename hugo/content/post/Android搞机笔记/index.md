@@ -9,7 +9,10 @@ tags: [ "Android", "Mobile" ]
 
 
 
-参考[https://www.jianshu.com/p/d960a6f517d8](https://www.jianshu.com/p/d960a6f517d8)
+参考
+
+- [https://www.jianshu.com/p/d960a6f517d8](https://www.jianshu.com/p/d960a6f517d8)
+- [https://evilpan.com/2020/12/06/android-rooting/](https://evilpan.com/2020/12/06/android-rooting/)
 
 ## Fastboot
 

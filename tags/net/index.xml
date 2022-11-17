@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>Net on Zikey Vi</title>
+        <title>Net on Lanikea</title>
         <link>https://cerr.cc/tags/net/</link>
-        <description>Recent content in Net on Zikey Vi</description>
+        <description>Recent content in Net on Lanikea</description>
         <generator>Hugo -- gohugo.io</generator>
         <lastBuildDate>Mon, 23 May 2022 23:21:12 +0800</lastBuildDate><atom:link href="https://cerr.cc/tags/net/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>关于Linux下的网卡与网络设备</title>

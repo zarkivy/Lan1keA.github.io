@@ -54,7 +54,7 @@ Illegal instruction (core dumped)
 
 当然，用到了`openssl`的各个组件，如`httpd`，也是由此无法正常工作的。
 
-动态调试看看。在`qemu-system-arm`环境中启动`gdbserver`：（gdbserver可以来这里获取：[https://github.com/dev2ero/embins](https://github.com/dev2ero/embins)）
+动态调试看看。在`qemu-system-arm`环境中启动`gdbserver`：（gdbserver可以来这里获取：[https://github.com/lan1kea/embins](https://github.com/lan1kea/embins)）
 
 ```sh
 gdbserver :1234 /usr/sbin/openssl

@@ -19,7 +19,7 @@ image: "https://s2.loli.net/2022/05/11/7aWbNEkesXlmYxH.jpg"
 
 ```sh
 sudo apt install zsh git man man-db manpages ssh neovim tmux \
-	curl wget netcat net-tools nmap tcpdump figlet bat \
+	curl wget netcat net-tools nmap tcpdump figlet bat moreutils \
 	binutils xxd strace libncurses5-dev traceroute network-manager \
 	neofetch zip unzip ncdu htop dosfstools nyancat cmatrix
 ```
@@ -36,7 +36,7 @@ sudo apt install gcc g++ gdb gdb-multiarch gdbserver flex bison make cmake clang
 # dotfiles 快速就位
 
 ```sh
-git clone https://github.com/dev2ero/dotfiles.git
+git clone https://github.com/lan1kea/dotfiles.git
 sh -c "$(curl -fsSL https://gitee.com/mirrors/oh-my-zsh/raw/master/tools/install.sh)"
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting

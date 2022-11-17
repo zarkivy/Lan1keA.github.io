@@ -9,4 +9,7 @@ tags: [ "Fuzzing" ]
 
 
 
-AFL的[技术白皮书](http://lcamtuf.coredump.cx/afl/technical_details.txt)
+# 前置阅读
+
+- AFL的[技术白皮书](http://lcamtuf.coredump.cx/afl/technical_details.txt)
+- [LLVM Pass](https://llvm.org/docs/WritingAnLLVMPass.html)

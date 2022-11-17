@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>课堂笔记 on Zikey Vi</title>
+        <title>课堂笔记 on Lanikea</title>
         <link>https://cerr.cc/categories/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0/</link>
-        <description>Recent content in 课堂笔记 on Zikey Vi</description>
+        <description>Recent content in 课堂笔记 on Lanikea</description>
         <generator>Hugo -- gohugo.io</generator>
         <lastBuildDate>Mon, 05 Sep 2022 14:09:16 +0800</lastBuildDate><atom:link href="https://cerr.cc/categories/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>AFL源码分析</title>
@@ -11,8 +11,13 @@
         <pubDate>Mon, 05 Sep 2022 14:09:16 +0800</pubDate>
         
         <guid>https://cerr.cc/post/afl%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/</guid>
-        <description>&lt;p&gt;AFL的&lt;a class=&#34;link&#34; href=&#34;http://lcamtuf.coredump.cx/afl/technical_details.txt&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;技术白皮书&lt;/a&gt;&lt;/p&gt;
+        <description>&lt;h1 id=&#34;前置阅读&#34;&gt;前置阅读&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;AFL的&lt;a class=&#34;link&#34; href=&#34;http://lcamtuf.coredump.cx/afl/technical_details.txt&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;技术白皮书&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://llvm.org/docs/WritingAnLLVMPass.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;LLVM Pass&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 </description>
         </item>
         <item>
@@ -864,6 +869,8 @@
 &lt;h2 id=&#34;练兵场&#34;&gt;练兵场&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/antonio-morales/Fuzzing101&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Fuzzing101&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/mykter/afl-training&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;afl-training&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;兵器&#34;&gt;兵器&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/google/AFL&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;AFL&lt;/a&gt;&lt;/p&gt;
@@ -877,7 +884,25 @@
 &lt;p&gt;1988年，在威斯康星大学Barton Miller教授的计算机实验课上，首次提出&lt;code&gt;Fuzz生成器&lt;/code&gt;(Fuzz Generator)的概念，用于测试Unix程序的健壮性，即用随机数据来测试程序直至崩溃。因此，Barton Miller教授也被多数人尊称为”模糊测试之父”。&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://pages.cs.wisc.edu/~bart/fuzz/CS736-Projects-f1988.pdf&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;http://pages.cs.wisc.edu/~bart/fuzz/CS736-Projects-f1988.pdf&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&#34;代码覆盖引导fuzzing之afl&#34;&gt;代码覆盖引导Fuzzing之AFL&lt;/h3&gt;
+&lt;h3 id=&#34;资料&#34;&gt;资料&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.google.com/presentation/d/1Ap3eUIo4RrI_9GAGfn2Q0RKtBPNmGhI1DZlivdcFKPo/edit#slide=id.p33&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://docs.google.com/presentation/d/1Ap3eUIo4RrI_9GAGfn2Q0RKtBPNmGhI1DZlivdcFKPo/edit#slide=id.p33&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://trustfoundry.net/2020/01/22/introduction-to-triaging-fuzzer-generated-crashes/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://trustfoundry.net/2020/01/22/introduction-to-triaging-fuzzer-generated-crashes/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/antonio-morales/EkoParty_Advanced_Fuzzing_Workshop&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/antonio-morales/EkoParty_Advanced_Fuzzing_Workshop&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.google.com/presentation/d/1FgcMRv_pwgOh1yL5y4GFsl1ozFwd6PMNGlMi2ONkGec/edit#slide=id.g190ecf0108_0_130&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://docs.google.com/presentation/d/1FgcMRv_pwgOh1yL5y4GFsl1ozFwd6PMNGlMi2ONkGec/edit#slide=id.g190ecf0108_0_130&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://vimeo.com/129701495&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://vimeo.com/129701495&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://bughunters.google.com/about/patch-rewards&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://bughunters.google.com/about/patch-rewards&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.vegardno.net/2017/03/fuzzing-openssh-daemon-using-afl.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.vegardno.net/2017/03/fuzzing-openssh-daemon-using-afl.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://lcamtuf.blogspot.com/2014/11/pulling-jpegs-out-of-thin-air.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://lcamtuf.blogspot.com/2014/11/pulling-jpegs-out-of-thin-air.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h1 id=&#34;x01-学步车afl初探&#34;&gt;\x01 学步车AFL初探&lt;/h1&gt;
 &lt;h2 id=&#34;最简单的-fuzzing-demo&#34;&gt;最简单的 fuzzing demo&lt;/h2&gt;
 &lt;p&gt;使用AFL，故先安装：&lt;/p&gt;
