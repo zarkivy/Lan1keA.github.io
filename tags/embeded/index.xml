@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>Embeded on Lanikea</title>
+        <title>Embeded on LanikeA</title>
         <link>https://cerr.cc/tags/embeded/</link>
-        <description>Recent content in Embeded on Lanikea</description>
+        <description>Recent content in Embeded on LanikeA</description>
         <generator>Hugo -- gohugo.io</generator>
         <lastBuildDate>Tue, 08 Nov 2022 17:30:39 +0800</lastBuildDate><atom:link href="https://cerr.cc/tags/embeded/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>树莓派与硬件调试</title>
@@ -514,6 +514,11 @@
         <description>&lt;img src="https://pic1.zhimg.com/v2-983af8971091bf560af2e2299d801cd1_1440w.jpg" alt="Featured image of post ZKV对嵌入式硬件的浅尝不止" /&gt;&lt;blockquote&gt;
 &lt;p&gt;物联网安全是离不开硬件领域的。而计算机科学与技术专业出身的我，嵌入式知识实属匮乏。公司组内有大量免费玩具却不会玩，这口气实在难以下咽。接下来是对自己嵌入式硬件知识的早教记录。&lt;/p&gt;
 &lt;/blockquote&gt;
+&lt;h1 id=&#34;材料&#34;&gt;材料&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://skygo.360.net/firmware-dump-advanced-toturial/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://skygo.360.net/firmware-dump-advanced-toturial/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h1 id=&#34;pcb&#34;&gt;PCB&lt;/h1&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/Printed_circuit_board&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://en.wikipedia.org/wiki/Printed_circuit_board&lt;/a&gt;&lt;/p&gt;

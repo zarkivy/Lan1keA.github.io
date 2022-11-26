@@ -588,3 +588,130 @@ Official fix:
 
 # Exercise 5
 
+Download and uncompress libxml2-2.9.4.tar.gz
+
+```
+wget http://xmlsoft.org/download/libxml2-2.9.4.tar.gz
+tar xvf libxml2-2.9.4.tar.gz && cd libxml2-2.9.4/
+```
+
+Build and install libxml2:
+
+```
+CC=afl-clang-lto CXX=afl-clang-lto++ CFLAGS="-fsanitize=address" CXXFLAGS="-fsanitize=address" LDFLAGS="-fsanitize=address" ./configure --prefix="/tmp/install" --disable-shared --without-debug --without-ftp --without-http --without-legacy --without-python LIBS='-ldl'
+make -j$(nproc)
+make install
+```
+
+Prepare directories for afl-in afl-out and xml-dict:
+
+```sh
+mkdir in out dic
+cd in
+wget https://raw.githubusercontent.com/antonio-morales/Fuzzing101/main/Exercise%205/SampleInput.xml
+cd ..
+cd dic
+wget https://raw.githubusercontent.com/AFLplusplus/AFLplusplus/stable/dictionaries/xml.dict
+cd ..
+```
+
+Master fuzzer:
+
+```sh
+afl-fuzz -i ./in -o ./out -x ./dic -s 123 -D -M master -- ./xmllint --memory --noenc --nocdata --dtdattr --loaddtd --valid --xinclude @@
+```
+
+Slave1 fuzzer:
+
+```sh
+afl-fuzz -i ./in -o ./out -x ./dic -s 234 -S slave1 -- ./xmllint --memory --noenc --nocdata --dtdattr --loaddtd --valid --xinclude @@
+```
+
+Official fix:
+
+- https://github.com/GNOME/libxml2/commit/932cc9896ab41475d4aa429c27d9afd175959d74
+
+# Exercise 6
+
+Ref: https://toastedcornflakes.github.io/articles/fuzzing_capstone_with_afl.html
+
+Prepare Gegl-0.2 source code:
+
+```sh
+wget https://download.gimp.org/pub/gegl/0.2/gegl-0.2.0.tar.bz2
+tar xvf gegl-0.2.0.tar.bz2 && cd gegl-0.2.0
+sed -i 's/CODEC_CAP_TRUNCATED/AV_CODEC_CAP_TRUNCATED/g' ./operations/external/ff-load.c
+sed -i 's/CODEC_FLAG_TRUNCATED/AV_CODEC_FLAG_TRUNCATED/g' ./operations/external/ff-load.c
+```
+
+Build and install Gegl-0.2:
+
+```sh
+./configure --enable-debug --disable-glibtest  --without-vala --without-cairo --without-pango --without-pangocairo --without-gdk-pixbuf --without-lensfun --without-libjpeg --without-libpng --without-librsvg --without-openexr --without-sdl --without-libopenraw --without-jasper --without-graphviz --without-lua --without-libavformat --without-libv4l --without-libspiro --without-exiv2 --without-umfpack
+make -j$(nproc)
+sudo make install
+```
+
+And prepare GIMP 2.8.16:
+
+```sh
+wget https://mirror.klaus-uwe.me/gimp/pub/gimp/v2.8/gimp-2.8.16.tar.bz2
+tar xvf gimp-2.8.16.tar.bz2 && cd gimp-2.8.16/
+```
+
+Apply this patch for persistent mode:
+
+```diff
+--- ../xcf.c	2014-08-20 08:27:58.000000000 -0700
++++ ./app/xcf/xcf.c	2021-10-11 13:02:42.800831192 -0700
+@@ -277,6 +277,10 @@
+ 
+   filename = g_value_get_string (&args->values[1]);
+ 
++#ifdef __AFL_COMPILER
++  while(__AFL_LOOP(10000)){
++#endif
++
+   info.fp = g_fopen (filename, "rb");
+ 
+   if (info.fp)
+@@ -366,6 +370,12 @@
+   if (success)
+     gimp_value_set_image (&return_vals->values[1], image);
+ 
++#ifdef __AFL_COMPILER
++  }
++#endif
++
++  exit(0);
++
+   gimp_unset_busy (gimp);
+ 
+   return return_vals;
+```
+
+Using afl-clang-lto to compile:
+
+```sh
+CC=afl-clang-lto CXX=afl-clang-lto++ PKG_CONFIG_PATH=$PKG_CONFIG_PATH:`pwd`/../gegl-0.2.0 CFLAGS="-fsanitize=address" CXXFLAGS="-fsanitize=address" LDFLAGS="-fsanitize=address" ./configure --disable-gtktest --disable-glibtest --disable-alsatest --disable-nls --without-libtiff --without-libjpeg --without-bzip2 --without-gs --without-libpng --without-libmng --without-libexif --without-aa --without-libxpm --without-webkit --without-librsvg --without-print --without-poppler --without-cairo-pdf --without-gvfs --without-libcurl --without-wmf --without-libjasper --without-alsa --without-gudev --disable-python --enable-gimp-console --without-mac-twain --without-script-fu --without-gudev --without-dbus --disable-mp --without-linux-input --without-xvfb-run --with-gif-compression=none --without-xmc --with-shm=none --enable-debug  --prefix="/tmp/install"
+make -j$(nproc)
+make install
+```
+
+Use the `SampleInput.xcf` as input sample and fuzzing:
+
+```sh
+ASAN_OPTIONS=detect_leaks=0,abort_on_error=1,symbolize=0 afl-fuzz -i './afl_in' -o './afl_out' -D -t 100 -- /tmp/install/bin/gimp-console-2.8 --verbose -d -f @@
+```
+
+Official fixes:
+
+- https://gitlab.gnome.org/GNOME/gimp/-/commit/6d804bf9ae77bc86a0a97f9b944a129844df9395
+
+# Exercise 7
+
+# Exercise 8
+
+# Exercise 9
+
+# Exercise 10

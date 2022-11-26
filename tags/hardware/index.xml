@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>Hardware on Lanikea</title>
+        <title>Hardware on LanikeA</title>
         <link>https://cerr.cc/tags/hardware/</link>
-        <description>Recent content in Hardware on Lanikea</description>
+        <description>Recent content in Hardware on LanikeA</description>
         <generator>Hugo -- gohugo.io</generator>
         <lastBuildDate>Tue, 13 Sep 2022 15:45:25 +0800</lastBuildDate><atom:link href="https://cerr.cc/tags/hardware/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>一次U盘系统盘的折腾记</title>

@@ -11,6 +11,10 @@ image: "https://pic1.zhimg.com/v2-983af8971091bf560af2e2299d801cd1_1440w.jpg"
 
 > 物联网安全是离不开硬件领域的。而计算机科学与技术专业出身的我，嵌入式知识实属匮乏。公司组内有大量免费玩具却不会玩，这口气实在难以下咽。接下来是对自己嵌入式硬件知识的早教记录。
 
+# 材料
+
+- https://skygo.360.net/firmware-dump-advanced-toturial/
+
 # PCB
 
 [https://en.wikipedia.org/wiki/Printed_circuit_board](https://en.wikipedia.org/wiki/Printed_circuit_board)

@@ -251,6 +251,9 @@ menu:
   - [https://lab.github.com/githubtraining/codeql-u-boot-challenge-%28cc++%29](https://lab.github.com/githubtraining/codeql-u-boot-challenge-%28cc++%29)
 - Shellcode-database
     - [http://shell-storm.org/shellcode/](http://shell-storm.org/shellcode/)
+- HackTricks
+    - [https://book.hacktricks.xyz/welcome/readme](https://book.hacktricks.xyz/welcome/readme)
+
 
 
 
