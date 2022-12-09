@@ -669,12 +669,12 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">In</span> <span class="nl">file</span><span class="p">:</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">zkv</span><span class="o">/</span><span class="n">Laboratory</span><span class="o">/</span><span class="n">linux</span><span class="o">/</span><span class="n">kernel</span><span class="o">/</span><span class="n">sched</span><span class="o">/</span><span class="n">idle</span><span class="p">.</span><span class="n">c</span>
-</span></span><span class="line"><span class="cl">   <span class="mi">395</span> <span class="kt">void</span> <span class="n">cpu_startup_entry</span><span class="p">(</span><span class="k">enum</span> <span class="n">cpuhp_state</span> <span class="n">state</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">   <span class="mi">395</span> <span class="kt">void</span> <span class="nf">cpu_startup_entry</span><span class="p">(</span><span class="k">enum</span> <span class="n">cpuhp_state</span> <span class="n">state</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">   <span class="mi">396</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">   <span class="mi">397</span>  <span class="n">arch_cpu_idle_prepare</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">   <span class="mi">397</span>  <span class="nf">arch_cpu_idle_prepare</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl">   <span class="mi">398</span>  <span class="nf">cpuhp_online_idle</span><span class="p">(</span><span class="n">state</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">   <span class="mi">399</span>  <span class="nf">while</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"> <span class="err">►</span> <span class="mi">400</span>          <span class="n">do_idle</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"> <span class="err">►</span> <span class="mi">400</span>          <span class="nf">do_idle</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl">   <span class="mi">401</span> <span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
@@ -774,12 +774,12 @@
 </span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
 </span></span><span class="line"><span class="cl"><span class="k">static</span> <span class="kt">void</span> <span class="nf">do_idle</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">cpu</span> <span class="o">=</span> <span class="n">smp_processor_id</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">cpu</span> <span class="o">=</span> <span class="nf">smp_processor_id</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">        <span class="cm">/*
 </span></span></span><span class="line"><span class="cl"><span class="cm">         * Check if we need to update blocked load
 </span></span></span><span class="line"><span class="cl"><span class="cm">         */</span>
-</span></span><span class="line"><span class="cl">        <span class="n">nohz_run_idle_balance</span><span class="p">(</span><span class="n">cpu</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">nohz_run_idle_balance</span><span class="p">(</span><span class="n">cpu</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">        <span class="cm">/*
 </span></span></span><span class="line"><span class="cl"><span class="cm">         * If the arch has a polling bit, we maintain an invariant:
@@ -790,22 +790,22 @@
 </span></span></span><span class="line"><span class="cl"><span class="cm">         * reschedule.
 </span></span></span><span class="line"><span class="cl"><span class="cm">         */</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">        <span class="n">__current_set_polling</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl">        <span class="n">tick_nohz_idle_enter</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">__current_set_polling</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">tick_nohz_idle_enter</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">        <span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">need_resched</span><span class="p">())</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">                <span class="n">rmb</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="nf">need_resched</span><span class="p">())</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="nf">rmb</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">                <span class="n">local_irq_disable</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">                <span class="nf">local_irq_disable</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">                <span class="k">if</span> <span class="p">(</span><span class="n">cpu_is_offline</span><span class="p">(</span><span class="n">cpu</span><span class="p">))</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">                        <span class="n">tick_nohz_idle_stop_tick</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl">                        <span class="n">cpuhp_report_idle_dead</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl">                        <span class="n">arch_cpu_idle_dead</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">                <span class="k">if</span> <span class="p">(</span><span class="nf">cpu_is_offline</span><span class="p">(</span><span class="n">cpu</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                        <span class="nf">tick_nohz_idle_stop_tick</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">                        <span class="nf">cpuhp_report_idle_dead</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">                        <span class="nf">arch_cpu_idle_dead</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl">                <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">                <span class="n">arch_cpu_idle_enter</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl">                <span class="n">rcu_nocb_flush_deferred_wakeup</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">                <span class="nf">arch_cpu_idle_enter</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">                <span class="nf">rcu_nocb_flush_deferred_wakeup</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">                <span class="cm">/*
 </span></span></span><span class="line"><span class="cl"><span class="cm">                 * In poll mode we reenable interrupts and spin. Also if we
@@ -813,13 +813,13 @@
 </span></span></span><span class="line"><span class="cl"><span class="cm">                 * broadcast device expired for us, we don&#39;t want to go deep
 </span></span></span><span class="line"><span class="cl"><span class="cm">                 * idle as we know that the IPI is going to arrive right away.
 </span></span></span><span class="line"><span class="cl"><span class="cm">                 */</span>
-</span></span><span class="line"><span class="cl">                <span class="k">if</span> <span class="p">(</span><span class="n">cpu_idle_force_poll</span> <span class="o">||</span> <span class="n">tick_check_broadcast_expired</span><span class="p">())</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">                        <span class="n">tick_nohz_idle_restart_tick</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl">                        <span class="n">cpu_idle_poll</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">                <span class="k">if</span> <span class="p">(</span><span class="n">cpu_idle_force_poll</span> <span class="o">||</span> <span class="nf">tick_check_broadcast_expired</span><span class="p">())</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                        <span class="nf">tick_nohz_idle_restart_tick</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">                        <span class="nf">cpu_idle_poll</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl">                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">                        <span class="n">cpuidle_idle_call</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">                        <span class="nf">cpuidle_idle_call</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl">                <span class="p">}</span>
-</span></span><span class="line"><span class="cl">                <span class="n">arch_cpu_idle_exit</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">                <span class="nf">arch_cpu_idle_exit</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl">        <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">        <span class="cm">/*
@@ -829,26 +829,26 @@
 </span></span></span><span class="line"><span class="cl"><span class="cm">         * This is required because for polling idle loops we will not have had
 </span></span></span><span class="line"><span class="cl"><span class="cm">         * an IPI to fold the state for us.
 </span></span></span><span class="line"><span class="cl"><span class="cm">         */</span>
-</span></span><span class="line"><span class="cl">        <span class="n">preempt_set_need_resched</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl">        <span class="n">tick_nohz_idle_exit</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl">        <span class="n">__current_clr_polling</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">preempt_set_need_resched</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">tick_nohz_idle_exit</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">__current_clr_polling</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">        <span class="cm">/*
 </span></span></span><span class="line"><span class="cl"><span class="cm">         * We promise to call sched_ttwu_pending() and reschedule if
 </span></span></span><span class="line"><span class="cl"><span class="cm">         * need_resched() is set while polling is set. That means that clearing
 </span></span></span><span class="line"><span class="cl"><span class="cm">         * polling needs to be visible before doing these things.
 </span></span></span><span class="line"><span class="cl"><span class="cm">         */</span>
-</span></span><span class="line"><span class="cl">        <span class="n">smp_mb__after_atomic</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">smp_mb__after_atomic</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">        <span class="cm">/*
 </span></span></span><span class="line"><span class="cl"><span class="cm">         * RCU relies on this call to be done outside of an RCU read-side
 </span></span></span><span class="line"><span class="cl"><span class="cm">         * critical section.
 </span></span></span><span class="line"><span class="cl"><span class="cm">         */</span>
-</span></span><span class="line"><span class="cl">        <span class="n">flush_smp_call_function_queue</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl">        <span class="n">schedule_idle</span><span class="p">();</span> <span class="c1">// 这里会将CPU交由用户态程序使用
+</span></span><span class="line"><span class="cl">        <span class="nf">flush_smp_call_function_queue</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">schedule_idle</span><span class="p">();</span> <span class="c1">// 这里会将CPU交由用户态程序使用
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">unlikely</span><span class="p">(</span><span class="n">klp_patch_pending</span><span class="p">(</span><span class="n">current</span><span class="p">)))</span>
-</span></span><span class="line"><span class="cl">                <span class="n">klp_update_patch_state</span><span class="p">(</span><span class="n">current</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="nf">unlikely</span><span class="p">(</span><span class="nf">klp_patch_pending</span><span class="p">(</span><span class="n">current</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">                <span class="nf">klp_update_patch_state</span><span class="p">(</span><span class="n">current</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
