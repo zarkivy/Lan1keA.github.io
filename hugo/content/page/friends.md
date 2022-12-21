@@ -59,3 +59,5 @@ menu:
 - [https://m4tsuri.io/](https://m4tsuri.io/)
 - [https://myfzy.top/](https://myfzy.top/)
 - [https://kabeor.cn/](https://kabeor.cn/)
+- https://eqqie.cn/
+- https://cjovi.icu/
